@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SickGUIClass</class>
+ <widget class="QMainWindow" name="SickGUIClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>580</width>
+    <height>488</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>SickGUI</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="1" column="1">
+     <widget class="QPushButton" name="stopVideoButton">
+      <property name="text">
+       <string>Stop</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2">
+     <widget class="QLineEdit" name="ipAddressLineEdit"/>
+    </item>
+    <item row="0" column="0" colspan="3">
+     <widget class="QLabel" name="cameraView">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>100</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QPushButton" name="startVideoButton">
+      <property name="text">
+       <string>Start</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QPushButton" name="testButton">
+      <property name="text">
+       <string>Test Button</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>580</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="SickGUI.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>startVideoButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SickGUIClass</receiver>
+   <slot>startVideo()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>75</x>
+     <y>427</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>50</x>
+     <y>452</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>stopVideoButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SickGUIClass</receiver>
+   <slot>stopVideo()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>164</x>
+     <y>427</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>131</x>
+     <y>456</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>testButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SickGUIClass</receiver>
+   <slot>testButtonClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>53</x>
+     <y>447</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>196</x>
+     <y>443</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>startVideo()</slot>
+  <slot>stopVideo()</slot>
+  <slot>testButtonClick()</slot>
+ </slots>
+</ui>

@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{3EFCC853-5CB7-4E9A-BFA5-024DCD77BD5D}</ProjectGuid>
+    <Keyword>QtVS_v304</Keyword>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0.22000.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0.22000.0</WindowsTargetPlatformVersion>
+    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
+    <Import Project="$(QtMsBuild)\qt_defaults.props" />
+  </ImportGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
+    <QtInstall>6.5.1_msvc2019_64</QtInstall>
+    <QtModules>core;gui;widgets</QtModules>
+    <QtBuildConfig>debug</QtBuildConfig>
+    <QtDeploy>true</QtDeploy>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
+    <QtInstall>6.5.1_msvc2019_64</QtInstall>
+    <QtModules>core;gui;widgets</QtModules>
+    <QtBuildConfig>release</QtBuildConfig>
+    <QtDeploy>true</QtDeploy>
+  </PropertyGroup>
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <IncludePath>C:\Users\loehrkn\Documents\repos\SickCameraQt\SickGUI\snap7;C:\Users\loehrkn\Documents\repos\SickCameraQt\SickGUI\sickapi;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <IncludePath>C:\Users\loehrkn\Documents\repos\SickCameraQt\SickGUI\snap7;C:\Users\loehrkn\Documents\repos\SickCameraQt\SickGUI\sickapi;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="CaptureThread.cpp">
+      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
+      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).moc</QtMocFileName>
+      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|x64'">input</DynamicSource>
+      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).moc</QtMocFileName>
+    </ClCompile>
+    <ClCompile Include="VisionaryFrame.cpp" />
+    <ClCompile Include="PlcThread.cpp" />
+    <ClCompile Include="snap7\snap7.cpp" />
+    <ClCompile Include="VisionaryAutoIPScanCustom.cpp" />
+    <ClCompile Include="VisionaryCamera.cpp" />
+    <QtRcc Include="SickGUI.qrc" />
+    <QtUic Include="SickGUI.ui" />
+    <QtMoc Include="SickGUI.h" />
+    <ClCompile Include="sickapi\AuthenticationLegacy.cpp" />
+    <ClCompile Include="sickapi\CoLa2ProtocolHandler.cpp" />
+    <ClCompile Include="sickapi\CoLaBProtocolHandler.cpp" />
+    <ClCompile Include="sickapi\CoLaCommand.cpp" />
+    <ClCompile Include="sickapi\CoLaParameterReader.cpp" />
+    <ClCompile Include="sickapi\CoLaParameterWriter.cpp" />
+    <ClCompile Include="sickapi\ControlSession.cpp" />
+    <ClCompile Include="sickapi\IAuthentication.cpp" />
+    <ClCompile Include="sickapi\IProtocolHandler.cpp" />
+    <ClCompile Include="sickapi\MD5.cpp" />
+    <ClCompile Include="sickapi\PointCloudPlyWriter.cpp" />
+    <ClCompile Include="sickapi\TcpSocket.cpp" />
+    <ClCompile Include="sickapi\UdpSocket.cpp" />
+    <ClCompile Include="sickapi\VisionaryAutoIPScan.cpp" />
+    <ClCompile Include="sickapi\VisionaryControl.cpp" />
+    <ClCompile Include="sickapi\VisionaryData.cpp" />
+    <ClCompile Include="sickapi\VisionaryDataStream.cpp" />
+    <ClCompile Include="sickapi\VisionarySData.cpp" />
+    <ClCompile Include="sickapi\VisionaryTData.cpp" />
+    <ClCompile Include="sickapi\VisionaryTMiniData.cpp" />
+    <ClCompile Include="SickGUI.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Camera.h" />
+    <QtMoc Include="CaptureThread.h" />
+    <ClInclude Include="VisionaryFrame.h" />
+    <QtMoc Include="PlcThread.h" />
+    <ClInclude Include="snap7\snap7.h" />
+    <ClInclude Include="VisionaryAutoIPScanCustom.h" />
+    <ClInclude Include="VisionaryCamera.h" />
+    <ClInclude Include="sickapi\AuthenticationLegacy.h" />
+    <ClInclude Include="sickapi\CoLa2ProtocolHandler.h" />
+    <ClInclude Include="sickapi\CoLaBProtocolHandler.h" />
+    <ClInclude Include="sickapi\CoLaCommand.h" />
+    <ClInclude Include="sickapi\CoLaCommandType.h" />
+    <ClInclude Include="sickapi\CoLaError.h" />
+    <ClInclude Include="sickapi\CoLaParameterReader.h" />
+    <ClInclude Include="sickapi\CoLaParameterWriter.h" />
+    <ClInclude Include="sickapi\ControlSession.h" />
+    <ClInclude Include="sickapi\IAuthentication.h" />
+    <ClInclude Include="sickapi\IProtocolHandler.h" />
+    <ClInclude Include="sickapi\ITransport.h" />
+    <ClInclude Include="sickapi\MD5.h" />
+    <ClInclude Include="sickapi\PointCloudPlyWriter.h" />
+    <ClInclude Include="sickapi\PointXYZ.h" />
+    <ClInclude Include="sickapi\TcpSocket.h" />
+    <ClInclude Include="sickapi\UdpSocket.h" />
+    <ClInclude Include="sickapi\VisionaryAutoIPScan.h" />
+    <ClInclude Include="sickapi\VisionaryControl.h" />
+    <ClInclude Include="sickapi\VisionaryData.h" />
+    <ClInclude Include="sickapi\VisionaryDataStream.h" />
+    <ClInclude Include="sickapi\VisionaryEndian.h" />
+    <ClInclude Include="sickapi\VisionarySData.h" />
+    <ClInclude Include="sickapi\VisionaryTData.h" />
+    <ClInclude Include="sickapi\VisionaryTMiniData.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <CopyFileToFolders Include="snap7\snap7.dll">
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="snap7\snap7.exp">
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="snap7\snap7.lib" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
+    <Import Project="$(QtMsBuild)\qt.targets" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="..\packages\boost.1.82.0\build\boost.targets" Condition="Exists('..\packages\boost.1.82.0\build\boost.targets')" />
+  </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\boost.1.82.0\build\boost.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\boost.1.82.0\build\boost.targets'))" />
+  </Target>
+</Project>
