@@ -6,7 +6,7 @@
 #include "VisionaryCamera.h"
 #include "VisionaryAutoIPScanCustom.h"
 
-SickGUI::SickGUI(QWidget* parent) : QMainWindow(parent), frameBuffer(frameBufferSize)
+SickGUI::SickGUI(QWidget* parent) : QMainWindow(parent), framesetBuffer(framesetBufferSize)
 {
 	ui.setupUi(this);
 
@@ -57,7 +57,7 @@ void SickGUI::startVideo()
 			return;
 	}
 
-	QObject::connect(captureThread, SIGNAL(newImage(Frame::frame_t)), SLOT(newImage(Frame::frame_t)), Qt::DirectConnection);
+	QObject::connect(captureThread, SIGNAL(newFrameset(Frameset)), SLOT(newFrameset(Frameset)), Qt::DirectConnection);
 
 	if (captureThread->startCapture(camera))
 	{
@@ -82,18 +82,18 @@ void SickGUI::timerEvent(QTimerEvent* event)
 {
 	if (event->timerId() == refreshDisplayTimer)
 	{
-		frameMutex.lock();
-		if (frameBuffer.empty())
+		framesetMutex.lock();
+		if (framesetBuffer.empty())
 		{
-			frameMutex.unlock();
+			framesetMutex.unlock();
 		}
 		else
 		{
-			Frame::frame_t image = frameBuffer.back();
-			frameMutex.unlock();
+			Frameset fs = framesetBuffer.back();
+			framesetMutex.unlock();
 
 			QImage qImage;
-			if (Frame::toQImage(image, qImage))
+			if (fs.getDepth().toQImage(qImage))
 			{
 				showImage(qImage);
 			}
@@ -137,13 +137,13 @@ bool SickGUI::createCamera()
 	return camera != nullptr;
 }
 
-void SickGUI::newImage(Frame::frame_t image)
+void SickGUI::newFrameset(Frameset image)
 {
-	if (!frameMutex.tryLock())
+	if (!framesetMutex.tryLock())
 		return;
 
-	frameBuffer.push_back(image);
-	frameMutex.unlock();
+	framesetBuffer.push_back(image);
+	framesetMutex.unlock();
 }
 
 void SickGUI::testButtonClick()

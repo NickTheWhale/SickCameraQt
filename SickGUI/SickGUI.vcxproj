@@ -108,6 +108,7 @@
     <ClCompile Include="snap7\snap7.cpp" />
     <ClCompile Include="VisionaryAutoIPScanCustom.cpp" />
     <ClCompile Include="VisionaryCamera.cpp" />
+    <ClCompile Include="VisionaryFrameset.cpp" />
     <QtRcc Include="SickGUI.qrc" />
     <QtUic Include="SickGUI.ui" />
     <QtMoc Include="SickGUI.h" />
@@ -136,6 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="VisionaryFrameset.h" />
     <QtMoc Include="CaptureThread.h" />
     <ClInclude Include="VisionaryFrame.h" />
     <QtMoc Include="PlcThread.h" />

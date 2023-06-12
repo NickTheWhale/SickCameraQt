@@ -9,7 +9,9 @@
 #include <boost/circular_buffer.hpp>
 
 #include "CaptureThread.h"
-#include "Image.h"
+
+#include "VisionaryFrameset.h"
+
 
 class CaptureThread;
 
@@ -25,7 +27,7 @@ class SickGUI : public QMainWindow
 public slots:
     void startVideo();
     void stopVideo();
-    void newImage(Frame::frame_t image);
+    void newFrameset(Frameset fs);
     void testButtonClick();
 
 public:
@@ -41,9 +43,9 @@ private:
 
     Ui::SickGUIClass ui;
 
-    const size_t frameBufferSize = 10;
-    boost::circular_buffer<Frame::frame_t> frameBuffer;
-    QMutex frameMutex;
+    const size_t framesetBufferSize = 10;
+    boost::circular_buffer<Frameset> framesetBuffer;
+    QMutex framesetMutex;
 
     Camera *camera = nullptr;
 

@@ -17,7 +17,7 @@ public:
 	bool isOpen() override;
 	bool startCapture() override;
 	bool stopCapture() override;
-	bool getNextImage(Frame::image_t &image) override;
+	bool getNextFrameset(Frameset &fs) override;
 
 	bool available(int timeout);
 

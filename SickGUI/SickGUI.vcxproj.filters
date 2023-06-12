@@ -118,6 +118,9 @@
     <ClCompile Include="VisionaryAutoIPScanCustom.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="VisionaryFrameset.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sickapi\AuthenticationLegacy.h">
@@ -208,6 +211,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="VisionaryAutoIPScanCustom.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VisionaryFrameset.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

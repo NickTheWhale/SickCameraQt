@@ -31,7 +31,7 @@ void CaptureThread::run()
 {
 	while (!stop)
 	{
-		if (!camera->getNextImage(lastFrame))
+		if (!camera->getNextFrameset(lastFrameset))
 		{
 
 			++retryCounter;
@@ -46,7 +46,7 @@ void CaptureThread::run()
 			continue;
 		}
 
-		emit newImage(lastFrame);
+		emit newFrameset(lastFrameset);
 	}
 
 	camera->stopCapture();

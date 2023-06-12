@@ -1,6 +1,8 @@
 #include "VisionaryCamera.h"
 #include "VisionaryAutoIPScanCustom.h"
 
+#include "VisionaryFrameset.h"
+
 using namespace visionary;
 
 VisionaryCamera::VisionaryCamera(std::string ipAddress, short dataPort)
@@ -90,7 +92,7 @@ bool VisionaryCamera::stopCapture()
 	return pVisionaryControl->stopAcquisition();
 }
 
-bool VisionaryCamera::getNextImage(Frame::frame_t& image)
+bool VisionaryCamera::getNextFrameset(Frameset &fs)
 {
 	if (!capturing) { return false; }
 
@@ -98,14 +100,15 @@ bool VisionaryCamera::getNextImage(Frame::frame_t& image)
 	{
 		return false;
 	}
+	auto height = pDataHandler->getHeight();
+	auto width = pDataHandler->getWidth();
+	auto number = pDataHandler->getFrameNum();
+	DepthFrame depth = DepthFrame(pDataHandler->getDistanceMap(), height, width, QImage::Format_Grayscale16, number);
+	ColorFrame color = ColorFrame(pDataHandler->getIntensityMap(), height, width, QImage::Format_Grayscale16, number);
+	StateFrame state = StateFrame(pDataHandler->getStateMap(), height, width, QImage::Format_Grayscale16, number);
 
-	image.color = pDataHandler->getIntensityMap();
-	image.depth = pDataHandler->getDistanceMap();
-	image.height = pDataHandler->getHeight();
-	image.width = pDataHandler->getWidth();
-	image.depthFormat = QImage::Format_Grayscale16;
-	image.frameNumber = pDataHandler->getFrameNum();
 
+	fs = Frameset(depth, color, state);
 	return true;
 }
 

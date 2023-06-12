@@ -3,7 +3,7 @@
 #include <qthread.h>
 #include "SickGUI.h"
 
-#include "Image.h"
+#include "VisionaryFrameset.h"
 
 class Camera;
 
@@ -12,7 +12,7 @@ class CaptureThread : public QThread
 	Q_OBJECT
 
 signals:
-	void newImage(Frame::frame_t image);
+	void newFrameset(Frameset fs);
 	void lostConnection();
 
 public:
@@ -23,7 +23,7 @@ protected:
 	void run() override;
 
 private:
-	Frame::frame_t lastFrame;
+	Frameset lastFrameset;
 	Camera *camera;
 	volatile bool stop;
 

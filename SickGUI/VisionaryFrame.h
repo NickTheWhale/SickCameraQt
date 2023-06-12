@@ -9,78 +9,58 @@ class Frame
 {
 public:
 	Frame() {};
+	Frame(std::vector<uint16_t> data, size_t height, size_t width, QImage::Format format, uint32_t number)
+		: data(data), height(height), width(width), format(format), number(number) {};
 	virtual ~Frame() {};
-	virtual std::vector<uint16_t> getData() const = 0;
-	virtual size_t getHeight() const = 0;
-	virtual size_t getWidth() const = 0;
-	virtual QImage::Format getFormat() const = 0;
-	virtual bool toQImage(QImage& qImage) const = 0;
-};
 
-class DepthFrame : Frame
-{
+	std::vector<uint16_t> getData() { return data; };
+	size_t getHeight() { return height; };
+	size_t getWidth() { return width; };
+	QImage::Format getFormat() { return format; };
 
-};
+	void setData(std::vector<uint16_t> data) { this->data = data; };
+	void setHeight(size_t height) { this->height = height; };
+	void setWidth(size_t width) { this->width = width; };
+	void setFormat(QImage::Format format) { this->format = format; };
 
-class Frameset
-{
-public:
-	Frameset();
-	~Frameset();
-	Frame getDepth() const;
-	Frame getColor() const;
-	Frame getState() const;
+	virtual bool toQImage(QImage& qImage) = 0;
 
 private:
-	Frame depth;
-	Frame color;
-	Frame state;
+	std::vector<uint16_t> data;
+	size_t height;
+	size_t width;
+	QImage::Format format;
+	uint32_t number;
 };
 
 
 
-namespace Frame
+class DepthFrame : public Frame
 {
-	static struct frame_t
-	{
-		std::vector<uint16_t> data;
-		int width;
-		int height;
-		QImage::Format format;
-	};
+public:
+	DepthFrame() {};
+	DepthFrame(std::vector<uint16_t> data, size_t height, size_t width, QImage::Format format, uint32_t number);
+	~DepthFrame() override {};
+	bool toQImage(QImage& qImage) override;
+};
 
-	static struct frameSet_t
-	{
-		frame_t depth;
-		frame_t color;
-	};
 
-	static bool toQImage(frame_t image, QImage& qImage)
-	{
-		bool ret = false;
-		switch (image.format)
-		{
-		case QImage::Format_Grayscale16:
-		{
-			qImage = QImage(image.width, image.height, QImage::Format_Grayscale16);
-			for (int y = 0; y < image.height; ++y)
-			{
-				for (int x = 0; x < image.width; ++x)
-				{
-					uint16_t depth = image.data[static_cast<std::vector<uint16_t, std::allocator<uint16_t>>::size_type>(y) * image.width + x];
-					depth >>= 4;
-					qImage.setPixel(x, y, depth);
-				}
-			}
-			ret = true;
-			break;
-		}
-		default:
-		{
-			ret = false;
-		}
-		}
-		return ret;
-	}
+class ColorFrame : public Frame
+{
+public:
+	ColorFrame() {};
+	ColorFrame(std::vector<uint16_t> data, size_t height, size_t width, QImage::Format format, uint32_t number);
+	~ColorFrame() override {};
+	bool toQImage(QImage& qImage) override;
+};
 
-}
+
+
+class StateFrame : public Frame
+{
+public:
+	StateFrame() {};
+	StateFrame(std::vector<uint16_t> data, size_t height, size_t width, QImage::Format format, uint32_t number);
+	~StateFrame() override {};
+	bool toQImage(QImage& qImage) override;
+};

@@ -1,7 +1,7 @@
 #pragma once
 #include <qthread.h>
 
-#include "Image.h"
+class Frameset;
 
 class Camera : protected QThread
 {
@@ -14,6 +14,6 @@ public:
 	virtual bool isOpen() = 0;
 	virtual bool startCapture() = 0;
 	virtual bool stopCapture() = 0;
-	virtual bool getNextFrameSet(Frame::frameSet_t &fs) = 0;
+	virtual bool getNextFrameset(Frameset &fs) = 0;
 };
 
