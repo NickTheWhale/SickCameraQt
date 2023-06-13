@@ -5,56 +5,59 @@
 #include <qstack.h>
 #include <qmutex.h>
 #include <chrono>
-
 #include <boost/circular_buffer.hpp>
-
 #include "CaptureThread.h"
-
+#include "PlcThread.h"
 #include "VisionaryFrameset.h"
-
 
 class CaptureThread;
 
-struct image_t;
-
 class Camera;
+
+class TS7Client;
 
 class SickGUI : public QMainWindow
 {
-    Q_OBJECT
+	Q_OBJECT
 
 
 public slots:
-    void startVideo();
-    void stopVideo();
-    void newFrameset(Frameset fs);
-    void testButtonClick();
+	void playVideo();
+	void pauseVideo();
+	void newFrameset(Frameset::frameset_t fs);
+	void testButtonClick();
 
 public:
-    SickGUI(QWidget *parent = nullptr);
-    ~SickGUI();
+	SickGUI(QWidget* parent = nullptr);
+	~SickGUI();
 
 private:
-    void timerEvent(QTimerEvent* event);
-    void showImage(QImage image);
-    bool createCamera();
+	void updateDisplay();
+	void writeImage(QImage image);
+	bool createCamera();
 
-    const std::string IP_ADDRESS = "169.254.49.161";
+	bool startCameraThread();
+	bool startPlcThread();
 
-    Ui::SickGUIClass ui;
+	const std::string CAMERA_IP_ADDRESS = "169.254.49.161";
+	const std::string PLC_IP_ADDRESS = "127.0.0.1";
+	const int PLC_RACK = 0;
+	const int PLC_SLOT = 2;
 
-    const size_t framesetBufferSize = 10;
-    boost::circular_buffer<Frameset> framesetBuffer;
-    QMutex framesetMutex;
+	Ui::SickGUIClass ui;
 
-    Camera *camera = nullptr;
+	const size_t framesetBufferSize = 10;
+	boost::circular_buffer<Frameset::frameset_t> framesetBuffer;
+	QMutex framesetMutex;
 
-    CaptureThread *captureThread = nullptr;
+	Camera* camera = nullptr;
+	CaptureThread* captureThread = nullptr;
 
-    int refreshDisplayTimer;
-    int displayInterval = 500; /*milliseconds*/
+	TS7Client* s7Client = nullptr;
+	PlcThread* plcThread = nullptr;
 
-    int plcTimer;
-    const int plcInterval = 1000; /*milliseconds*/
-    unsigned long long loopCount = 0;
+	QTimer *displayTimer;
+	int displayTimerInterval = 33; /* ms */
 };
+
+//refreshDisplayTimer = QObject::startTimer(displayInterval, Qt::PreciseTimer);

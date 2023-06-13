@@ -92,7 +92,7 @@ bool VisionaryCamera::stopCapture()
 	return pVisionaryControl->stopAcquisition();
 }
 
-bool VisionaryCamera::getNextFrameset(Frameset &fs)
+bool VisionaryCamera::getNextFrameset(Frameset::frameset_t &fs)
 {
 	if (!capturing) { return false; }
 
@@ -100,15 +100,14 @@ bool VisionaryCamera::getNextFrameset(Frameset &fs)
 	{
 		return false;
 	}
-	auto height = pDataHandler->getHeight();
-	auto width = pDataHandler->getWidth();
-	auto number = pDataHandler->getFrameNum();
-	DepthFrame depth = DepthFrame(pDataHandler->getDistanceMap(), height, width, QImage::Format_Grayscale16, number);
-	ColorFrame color = ColorFrame(pDataHandler->getIntensityMap(), height, width, QImage::Format_Grayscale16, number);
-	StateFrame state = StateFrame(pDataHandler->getStateMap(), height, width, QImage::Format_Grayscale16, number);
 
+	fs.depth = pDataHandler->getDistanceMap();
+	fs.intensity = pDataHandler->getIntensityMap();
+	fs.state = pDataHandler->getStateMap();
+	fs.height = pDataHandler->getHeight();
+	fs.width = pDataHandler->getWidth();
+	fs.number = pDataHandler->getFrameNum();
 
-	fs = Frameset(depth, color, state);
 	return true;
 }
 

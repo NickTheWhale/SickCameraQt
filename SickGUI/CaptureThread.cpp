@@ -6,7 +6,7 @@
 bool CaptureThread::startCapture(Camera* camera)
 {
 	if (isRunning())
-		return false;
+		return true;
 
 	if (!camera || !camera->open())
 		return false;

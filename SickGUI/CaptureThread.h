@@ -12,7 +12,7 @@ class CaptureThread : public QThread
 	Q_OBJECT
 
 signals:
-	void newFrameset(Frameset fs);
+	void newFrameset(Frameset::frameset_t fs);
 	void lostConnection();
 
 public:
@@ -23,7 +23,7 @@ protected:
 	void run() override;
 
 private:
-	Frameset lastFrameset;
+	Frameset::frameset_t lastFrameset;
 	Camera *camera;
 	volatile bool stop;
 

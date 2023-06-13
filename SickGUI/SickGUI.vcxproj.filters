@@ -106,9 +106,6 @@
     <ClCompile Include="CaptureThread.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="VisionaryFrame.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="PlcThread.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -116,9 +113,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="VisionaryAutoIPScanCustom.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="VisionaryFrameset.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -202,9 +196,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="VisionaryCamera.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="VisionaryFrame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="snap7\snap7.h">

@@ -6,23 +6,27 @@
 #include "VisionaryCamera.h"
 #include "VisionaryAutoIPScanCustom.h"
 
+#include <snap7.h>
+
 SickGUI::SickGUI(QWidget* parent) : QMainWindow(parent), framesetBuffer(framesetBufferSize)
 {
 	ui.setupUi(this);
 
-	ui.startVideoButton->setEnabled(true);
-	ui.stopVideoButton->setEnabled(false);
-	plcTimer = QObject::startTimer(plcInterval, Qt::PreciseTimer);
-	startVideo();
+	displayTimer = new QTimer(this);
+	QObject::connect(displayTimer, &QTimer::timeout, this, &SickGUI::updateDisplay);
+
+	startCameraThread();
+	startPlcThread();
+
+	playVideo();
 }
 
 SickGUI::~SickGUI()
 {
 	if (captureThread)
 	{
-		stopVideo();
-		// kind of hacky. maybe wait the thread?
-		while (captureThread->isRunning()) { QThread::msleep(10); };
+		captureThread->stopCapture();
+		captureThread->wait(2000);
 		delete captureThread;
 		captureThread = nullptr;
 	}
@@ -33,79 +37,73 @@ SickGUI::~SickGUI()
 		camera = nullptr;
 	}
 
-	QObject::killTimer(plcTimer);
-}
-
-void SickGUI::startVideo()
-{
-	if (!camera)
+	if (plcThread)
 	{
-		if (!createCamera())
-			return;
+		plcThread->stopPlc();
+		plcThread->wait(2000);
+		delete plcThread;
+		plcThread = nullptr;
 	}
 
-	if (!camera->open())
+	if (s7Client)
 	{
-		delete camera;
-		camera = nullptr;
+		if (s7Client->Connected())
+			s7Client->Disconnect();
+		delete s7Client;
+		s7Client = nullptr;
 	}
 
-	if (!captureThread)
+	if (displayTimer)
 	{
-		captureThread = new CaptureThread();
-		if (!captureThread)
-			return;
-	}
-
-	QObject::connect(captureThread, SIGNAL(newFrameset(Frameset)), SLOT(newFrameset(Frameset)), Qt::DirectConnection);
-
-	if (captureThread->startCapture(camera))
-	{
-		refreshDisplayTimer = QObject::startTimer(displayInterval, Qt::PreciseTimer);
-		ui.startVideoButton->setEnabled(false);
-		ui.stopVideoButton->setEnabled(true);
+		displayTimer->stop();
 	}
 }
 
-void SickGUI::stopVideo()
+void SickGUI::playVideo()
 {
-	if (captureThread)
-		captureThread->stopCapture();
+	if (!displayTimer) 
+		return;
 
-	QObject::killTimer(refreshDisplayTimer);
+	if (displayTimer->isActive()) 
+		return;
 
-	ui.startVideoButton->setEnabled(true);
-	ui.stopVideoButton->setEnabled(false);
+	if (displayTimer->interval() != displayTimerInterval)
+	{
+		displayTimer->setInterval(displayTimerInterval);
+	}
+
+	displayTimer->start();
 }
 
-void SickGUI::timerEvent(QTimerEvent* event)
+void SickGUI::pauseVideo()
 {
-	if (event->timerId() == refreshDisplayTimer)
+	if (displayTimer)
 	{
-		framesetMutex.lock();
-		if (framesetBuffer.empty())
+		displayTimer->stop();
+	}
+}
+
+void SickGUI::updateDisplay()
+{
+	framesetMutex.lock();
+	if (framesetBuffer.empty())
+	{
+		framesetMutex.unlock();
+	}
+	else
+	{
+		Frameset::frameset_t fs = framesetBuffer.back();
+		framesetMutex.unlock();
+
+		QImage qImage;
+		if (Frameset::depthToQImage(fs, qImage))
 		{
-			framesetMutex.unlock();
-		}
-		else
-		{
-			Frameset fs = framesetBuffer.back();
-			framesetMutex.unlock();
-
-			QImage qImage;
-			if (fs.getDepth().toQImage(qImage))
-			{
-				showImage(qImage);
-			}
+			writeImage(qImage);
 		}
 	}
-	if (event->timerId() == plcTimer)
-	{
-		ui.ipAddressLineEdit->setText(QString::number(++loopCount));
-	}
 }
 
-void SickGUI::showImage(QImage image)
+void SickGUI::writeImage(QImage image)
 {
 	int newWidth = this->width();
 	int newHeight = this->height();
@@ -124,7 +122,7 @@ void SickGUI::showImage(QImage image)
 bool SickGUI::createCamera()
 {
 	if (captureThread && captureThread->isRunning())
-		stopVideo();
+		pauseVideo();
 
 	if (camera)
 	{
@@ -132,24 +130,86 @@ bool SickGUI::createCamera()
 		camera = nullptr;
 	}
 
-	camera = new VisionaryCamera(IP_ADDRESS);
+	camera = new VisionaryCamera(CAMERA_IP_ADDRESS);
 
 	return camera != nullptr;
 }
 
-void SickGUI::newFrameset(Frameset image)
+bool SickGUI::startCameraThread()
+{
+	if (!camera)
+	{
+		if (!createCamera())
+		{
+			qDebug() << "SickGUI::initializeCamera() failed to create camera";
+			return false;
+		}
+	}
+
+	if (!camera->open())
+	{
+		delete camera;
+		camera = nullptr;
+		qDebug() << "SickGUI::initializeCamera() failed to open camera";
+		return false;
+	}
+
+	if (!captureThread)
+	{
+		captureThread = new CaptureThread();
+		if (!captureThread)
+		{
+			qDebug() << "SickGUI::initializeCamera() failed to create capture thread";
+			return false;
+		}
+	}
+
+	QObject::connect(captureThread, SIGNAL(newFrameset(Frameset::frameset_t)), SLOT(newFrameset(Frameset::frameset_t)), Qt::DirectConnection);
+
+	return captureThread->startCapture(camera);
+}
+
+bool SickGUI::startPlcThread()
+{
+	if (s7Client)
+	{
+		if (s7Client->Connected())
+			s7Client->Disconnect();
+		delete s7Client;
+		s7Client = nullptr;
+	}
+
+	s7Client = new TS7Client();
+
+	if (0 != s7Client->ConnectTo(PLC_IP_ADDRESS.c_str(), PLC_RACK, PLC_SLOT))
+	{
+		return false;
+	}
+
+	if (!plcThread)
+	{
+		plcThread = new PlcThread();
+		if (!plcThread)
+		{
+			qDebug() << "SickGUI::startPlcThread() failed to create plc thread";
+			return false;
+		}
+	}
+
+	QObject::connect(captureThread, SIGNAL(newFrameset(Frameset::frameset_t)), plcThread, SLOT(newFrameset(Frameset::frameset_t)), Qt::DirectConnection);
+	return plcThread->startPlc(s7Client);
+}
+
+
+void SickGUI::newFrameset(Frameset::frameset_t fs)
 {
 	if (!framesetMutex.tryLock())
 		return;
 
-	framesetBuffer.push_back(image);
+	framesetBuffer.push_back(fs);
 	framesetMutex.unlock();
 }
 
 void SickGUI::testButtonClick()
 {
-	VisionaryAutoIPScanCustom scanner;
-	auto devices = scanner.doScan(100);
-
-	int i = 0;
 }
