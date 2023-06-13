@@ -207,6 +207,9 @@
     <ClInclude Include="VisionaryFrameset.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Stream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -225,5 +228,10 @@
   </ItemGroup>
   <ItemGroup>
     <Library Include="snap7\snap7.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="StreamSettingDialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
 </Project>

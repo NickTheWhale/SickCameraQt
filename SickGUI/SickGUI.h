@@ -9,6 +9,7 @@
 #include "CaptureThread.h"
 #include "PlcThread.h"
 #include "VisionaryFrameset.h"
+#include "Stream.h"
 
 class CaptureThread;
 
@@ -24,14 +25,22 @@ class SickGUI : public QMainWindow
 public slots:
 	void playVideo();
 	void pauseVideo();
+
+	void selectDepth();
+	void selectIntensity();
+	void selectState();
+
+	void openStreamSettingsDialog();
+
 	void newFrameset(Frameset::frameset_t fs);
-	void testButtonClick();
 
 public:
 	SickGUI(QWidget* parent = nullptr);
 	~SickGUI();
 
 private:
+	void initializeControls();
+
 	void updateDisplay();
 	void writeImage(QImage image);
 	bool createCamera();
@@ -58,6 +67,6 @@ private:
 
 	QTimer *displayTimer;
 	int displayTimerInterval = 33; /* ms */
-};
 
-//refreshDisplayTimer = QObject::startTimer(displayInterval, Qt::PreciseTimer);
+	Stream streamType;
+};

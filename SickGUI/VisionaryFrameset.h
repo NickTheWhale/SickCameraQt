@@ -28,7 +28,7 @@ namespace Frameset
 		return true;
 	}
 
-	static bool colorToQImage(frameset_t fs, QImage& qImage)
+	static bool intensityToQImage(frameset_t fs, QImage& qImage)
 	{
 		qImage = QImage(fs.width, fs.height, QImage::Format_Grayscale16);
 		for (auto y = 0; y < fs.height; ++y)

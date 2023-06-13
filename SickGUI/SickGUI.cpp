@@ -8,17 +8,19 @@
 
 #include <snap7.h>
 
+#include "ui_StreamSettingDialog.h"
+
 SickGUI::SickGUI(QWidget* parent) : QMainWindow(parent), framesetBuffer(framesetBufferSize)
 {
-	ui.setupUi(this);
-
 	displayTimer = new QTimer(this);
 	QObject::connect(displayTimer, &QTimer::timeout, this, &SickGUI::updateDisplay);
 
+	ui.setupUi(this);
+
+	initializeControls();
+
 	startCameraThread();
 	startPlcThread();
-
-	playVideo();
 }
 
 SickGUI::~SickGUI()
@@ -59,28 +61,16 @@ SickGUI::~SickGUI()
 	}
 }
 
-void SickGUI::playVideo()
+
+void SickGUI::initializeControls()
 {
-	if (!displayTimer) 
-		return;
+	ui.actionPlay->setEnabled(true);
+	ui.actionPause->setEnabled(false);
+	ui.actionDepth->setChecked(true);
+	ui.actionIntensity->setChecked(false);
+	ui.actionState->setChecked(false);
 
-	if (displayTimer->isActive()) 
-		return;
-
-	if (displayTimer->interval() != displayTimerInterval)
-	{
-		displayTimer->setInterval(displayTimerInterval);
-	}
-
-	displayTimer->start();
-}
-
-void SickGUI::pauseVideo()
-{
-	if (displayTimer)
-	{
-		displayTimer->stop();
-	}
+	streamType = Stream::Depth;
 }
 
 void SickGUI::updateDisplay()
@@ -96,10 +86,23 @@ void SickGUI::updateDisplay()
 		framesetMutex.unlock();
 
 		QImage qImage;
-		if (Frameset::depthToQImage(fs, qImage))
+
+		switch (streamType)
 		{
-			writeImage(qImage);
+		case Stream::Depth:
+			if (!Frameset::depthToQImage(fs, qImage))
+				return;
+			break;
+		case Stream::Intensity:
+			if (!Frameset::intensityToQImage(fs, qImage))
+				return;
+			break;
+		case Stream::State:
+			if (!Frameset::stateToQImage(fs, qImage))
+				return;
+			break;
 		}
+		writeImage(qImage);
 	}
 }
 
@@ -200,6 +203,88 @@ bool SickGUI::startPlcThread()
 	return plcThread->startPlc(s7Client);
 }
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+//                                      SLOTS                                       //
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+
+void SickGUI::playVideo()
+{
+	if (!displayTimer)
+		return;
+
+	if (displayTimer->isActive())
+		return;
+
+	if (displayTimer->interval() != displayTimerInterval)
+	{
+		displayTimer->setInterval(displayTimerInterval);
+	}
+
+	ui.actionPlay->setEnabled(false);
+	ui.actionPause->setEnabled(true);
+
+	displayTimer->start();
+}
+
+void SickGUI::pauseVideo()
+{
+	if (displayTimer)
+	{
+		displayTimer->stop();
+	}
+
+	ui.actionPlay->setEnabled(true);
+	ui.actionPause->setEnabled(false);
+}
+
+void SickGUI::selectDepth()
+{
+	ui.actionDepth->setChecked(true);
+
+	ui.actionIntensity->setEnabled(true);
+	ui.actionIntensity->setChecked(false);
+
+	ui.actionState->setEnabled(true);
+	ui.actionState->setChecked(false);
+
+	streamType = Stream::Depth;
+}
+
+void SickGUI::selectIntensity()
+{
+	ui.actionDepth->setEnabled(true);
+	ui.actionDepth->setChecked(false);
+
+	ui.actionIntensity->setChecked(true);
+
+	ui.actionState->setEnabled(true);
+	ui.actionState->setChecked(false);
+
+	streamType = Stream::Intensity;
+}
+
+void SickGUI::selectState()
+{
+	ui.actionDepth->setEnabled(true);
+	ui.actionDepth->setChecked(false);
+
+	ui.actionIntensity->setEnabled(true);
+	ui.actionIntensity->setChecked(false);
+
+	ui.actionState->setChecked(true);
+
+	streamType = Stream::State;
+}
+
+void SickGUI::openStreamSettingsDialog()
+{
+	QDialog* dialog = new QDialog(this);
+
+	Ui::streamSettingDialog ui;
+	ui.setupUi(dialog);
+	dialog->exec();
+	dialog->deleteLater();
+}
 
 void SickGUI::newFrameset(Frameset::frameset_t fs)
 {
@@ -208,8 +293,4 @@ void SickGUI::newFrameset(Frameset::frameset_t fs)
 
 	framesetBuffer.push_back(fs);
 	framesetMutex.unlock();
-}
-
-void SickGUI::testButtonClick()
-{
 }

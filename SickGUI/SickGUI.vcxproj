@@ -132,9 +132,11 @@
     <ClCompile Include="sickapi\VisionaryTMiniData.cpp" />
     <ClCompile Include="SickGUI.cpp" />
     <ClCompile Include="main.cpp" />
+    <QtUic Include="StreamSettingDialog.ui" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Stream.h" />
     <ClInclude Include="VisionaryFrameset.h" />
     <QtMoc Include="CaptureThread.h" />
     <QtMoc Include="PlcThread.h" />
