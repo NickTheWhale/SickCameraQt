@@ -55,6 +55,7 @@
    <addaction name="separator"/>
    <addaction name="actionSettings"/>
   </widget>
+  <widget class="QStatusBar" name="statusBar"/>
   <action name="actionPlay">
    <property name="icon">
     <iconset resource="SickGUI.qrc">

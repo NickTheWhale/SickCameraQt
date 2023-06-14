@@ -32,9 +32,6 @@
     <QtMoc Include="SickGUI.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <ClCompile Include="SickGUI.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -113,6 +110,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="VisionaryAutoIPScanCustom.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SickGUI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -5,10 +5,11 @@
 
 #include "VisionaryCamera.h"
 #include "VisionaryAutoIPScanCustom.h"
-
 #include <snap7.h>
-
 #include "ui_StreamSettingDialog.h"
+#include <qmessagebox.h>
+#include <future>
+
 
 SickGUI::SickGUI(QWidget* parent) : QMainWindow(parent), framesetBuffer(framesetBufferSize)
 {
@@ -19,8 +20,30 @@ SickGUI::SickGUI(QWidget* parent) : QMainWindow(parent), framesetBuffer(frameset
 
 	initializeControls();
 
-	startCameraThread();
-	startPlcThread();
+	QTimer::singleShot(1000, this, &SickGUI::startCameraThread);
+	//QTimer::singleShot(1000, this, &SickGUI::startPlcThread);
+
+	//auto camThreadOK = startCameraThread();
+	//auto plcThreadOK = startPlcThread();
+
+
+	//if (!camThreadOK && !plcThreadOK)
+	//{
+	//	QMessageBox::critical(this, "Error", "Failed to start camera and plc thread");
+	//}
+	//else if (!camThreadOK)
+	//{
+	//	QMessageBox::critical(this, "Error", "Failed to start camera thread");
+	//}
+	//else if (!plcThreadOK)
+	//{
+	//	QMessageBox::critical(this, "Error", "Failed to start plc thread");
+	//}
+	//if (!camThreadOK || !plcThreadOK)
+	//{
+	//	_failed = true;
+	//	QMessageBox::information(this, "Info", "Application will close now");
+	//}
 }
 
 SickGUI::~SickGUI()
@@ -138,69 +161,106 @@ bool SickGUI::createCamera()
 	return camera != nullptr;
 }
 
+void SickGUI::showStatusBarMessage(const QString& text, int timeout)
+{
+	QMetaObject::invokeMethod(this, [this, text, timeout]()
+		{
+			ui.statusBar->showMessage(text, timeout);
+			this->update();
+			qDebug() << text;
+		}
+	, Qt::ConnectionType::DirectConnection);
+}
+
 bool SickGUI::startCameraThread()
 {
-	if (!camera)
-	{
-		if (!createCamera())
+	try {
+		showStatusBarMessage("starting camera thread");
+		if (!camera)
 		{
-			qDebug() << "SickGUI::initializeCamera() failed to create camera";
+			showStatusBarMessage("creating camera");
+			if (!createCamera())
+			{
+				showStatusBarMessage("failed to create camera");
+				qDebug() << "SickGUI::initializeCamera() failed to create camera";
+				return false;
+			}
+		}
+		showStatusBarMessage("opening camera");
+		if (!camera->open())
+		{
+			showStatusBarMessage("failed to open camera");
+			delete camera;
+			camera = nullptr;
+			qDebug() << "SickGUI::initializeCamera() failed to open camera";
 			return false;
 		}
-	}
-
-	if (!camera->open())
-	{
-		delete camera;
-		camera = nullptr;
-		qDebug() << "SickGUI::initializeCamera() failed to open camera";
-		return false;
-	}
-
-	if (!captureThread)
-	{
-		captureThread = new CaptureThread();
+		showStatusBarMessage("starting underlying camera thread handler");
 		if (!captureThread)
 		{
-			qDebug() << "SickGUI::initializeCamera() failed to create capture thread";
-			return false;
+			showStatusBarMessage("creating underlying camera thread handler");
+			captureThread = new CaptureThread();
+			if (!captureThread)
+			{
+				showStatusBarMessage("failed to create underlying camera thread handler");
+				qDebug() << "SickGUI::initializeCamera() failed to create capture thread";
+				return false;
+			}
 		}
+
+		QObject::connect(captureThread, SIGNAL(newFrameset(Frameset::frameset_t)), SLOT(newFrameset(Frameset::frameset_t)), Qt::DirectConnection);
+
+		return captureThread->startCapture(camera);
 	}
-
-	QObject::connect(captureThread, SIGNAL(newFrameset(Frameset::frameset_t)), SLOT(newFrameset(Frameset::frameset_t)), Qt::DirectConnection);
-
-	return captureThread->startCapture(camera);
+	catch (std::exception e)
+	{
+		showStatusBarMessage("failed to start camera thread");
+		qDebug() << "Exception SickGUI::startCameraThread(): " << e.what();
+		return false;
+	}
 }
 
 bool SickGUI::startPlcThread()
 {
-	if (s7Client)
-	{
-		if (s7Client->Connected())
-			s7Client->Disconnect();
-		delete s7Client;
-		s7Client = nullptr;
-	}
-
-	s7Client = new TS7Client();
-
-	if (0 != s7Client->ConnectTo(PLC_IP_ADDRESS.c_str(), PLC_RACK, PLC_SLOT))
-	{
-		return false;
-	}
-
-	if (!plcThread)
-	{
-		plcThread = new PlcThread();
-		if (!plcThread)
+	try {
+		if (s7Client)
 		{
-			qDebug() << "SickGUI::startPlcThread() failed to create plc thread";
+			if (s7Client->Connected())
+				s7Client->Disconnect();
+			delete s7Client;
+			s7Client = nullptr;
+		}
+
+		s7Client = new TS7Client();
+
+		if (0 != s7Client->ConnectTo(PLC_IP_ADDRESS.c_str(), PLC_RACK, PLC_SLOT))
+		{
 			return false;
 		}
-	}
 
-	QObject::connect(captureThread, SIGNAL(newFrameset(Frameset::frameset_t)), plcThread, SLOT(newFrameset(Frameset::frameset_t)), Qt::DirectConnection);
-	return plcThread->startPlc(s7Client);
+		if (!plcThread)
+		{
+			plcThread = new PlcThread();
+			if (!plcThread)
+			{
+				qDebug() << "SickGUI::startPlcThread() failed to create plc thread";
+				return false;
+			}
+		}
+
+		QObject::connect(captureThread, SIGNAL(newFrameset(Frameset::frameset_t)), plcThread, SLOT(newFrameset(Frameset::frameset_t)), Qt::DirectConnection);
+		return plcThread->startPlc(s7Client);
+	}
+	catch (std::exception e)
+	{
+		qDebug() << "Exception SickGUI::startPlcThread(): " << e.what();
+		return false;
+	}
+}
+
+bool SickGUI::failed()
+{
+	return _failed;
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//

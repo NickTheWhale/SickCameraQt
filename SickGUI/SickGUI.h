@@ -37,8 +37,11 @@ public slots:
 public:
 	SickGUI(QWidget* parent = nullptr);
 	~SickGUI();
+	bool failed();
 
 private:
+	void showStatusBarMessage(const QString& msg, int timeout = 0);
+
 	void initializeControls();
 
 	void updateDisplay();
@@ -55,6 +58,8 @@ private:
 
 	Ui::SickGUIClass ui;
 
+	volatile bool _failed = false;
+
 	const size_t framesetBufferSize = 10;
 	boost::circular_buffer<Frameset::frameset_t> framesetBuffer;
 	QMutex framesetMutex;
@@ -65,7 +70,7 @@ private:
 	TS7Client* s7Client = nullptr;
 	PlcThread* plcThread = nullptr;
 
-	QTimer *displayTimer;
+	QTimer* displayTimer;
 	int displayTimerInterval = 33; /* ms */
 
 	Stream streamType;
