@@ -161,10 +161,6 @@ void parseBuffer(std::vector<uint8_t> buffer)
 
 		break;
 	}
-
-
-
-	std::cout << header.to_string() << std::endl;
 	std::cout << dev.to_string() << std::endl;
 }
 
