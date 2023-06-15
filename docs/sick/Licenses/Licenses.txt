@@ -1,0 +1,37 @@
+Copyright notices for open-source programs
+
+Software licenses
+SICK uses open-source software in its V3S105-1x products.
+This software is licensed by the rights holders under the
+following free licenses, among others:
+GNU General Public License version 2 (GPL v2) and
+GNU Lesser General Public License (LGPL),
+MIT License, zlib License,
+and licenses derived from the BSD License.
+
+
+List of software licenses and license texts
+In the V3S105-1x product, SICK uses unmodified open-source software and,
+insofar as required and where permitted under the relevant license conditions,
+modified open-source software.
+
+
+The firmware of the V3S105-1x is, therefore, subject to the copyrights listed in the documents in the subfolders of this folder.
+
+This product contains software components that are licensed by the holder of the rights as free software, or Open Source software, under GNU General Public License, Version 2.
+The source code for these software components can be obtained from us on a data carrier (CD or DVD) by submitting a request to our customer service department at the following address within three years after distribution of the product:
+
+SICK AG
+GBC09 BU05 - 3D Compact Systems Techsupport
+Erwin-Sick-Str. 1
+D-79183 Waldkirch
+Germany
+
+E-mail: techsupport0905@sick.de
+
+Subject: "Source code Visionary-T Mini CX 1.6.0.29891R"
+
+Be aware that you will be demanded to pay the costs of providing the data carrier and shipping it.
+
+For additional information of the associated license texts see the licenses directory
+on your local SOPAS installation, usually C:\Program Files (x86)\SICK\SOPAS ET\licenses

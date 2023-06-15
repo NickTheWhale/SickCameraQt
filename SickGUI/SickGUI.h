@@ -10,6 +10,9 @@
 #include "PlcThread.h"
 #include "VisionaryFrameset.h"
 #include "Stream.h"
+#include <qpromise.h>
+#include <qfuturewatcher.h>
+#include "TinyColormap.hpp"
 
 class CaptureThread;
 
@@ -21,33 +24,33 @@ class SickGUI : public QMainWindow
 {
 	Q_OBJECT
 
-
 public slots:
 	void playVideo();
 	void pauseVideo();
-
-	void selectDepth();
-	void selectIntensity();
-	void selectState();
 
 	void openStreamSettingsDialog();
 
 	void newFrameset(Frameset::frameset_t fs);
 
+	void showStatusBarMessage(const QString& msg, int timeout = 0);
+
 public:
 	SickGUI(QWidget* parent = nullptr);
 	~SickGUI();
-	bool failed();
 
 private:
-	void showStatusBarMessage(const QString& msg, int timeout = 0);
+	void resizeEvent(QResizeEvent* event) override;
 
+private:
 	void initializeControls();
 
 	void updateDisplay();
 	void writeImage(QImage image);
 	bool createCamera();
 
+	void checkThreads();
+
+	void startThreads(QPromise<bool>& promise);
 	bool startCameraThread();
 	bool startPlcThread();
 
@@ -57,8 +60,6 @@ private:
 	const int PLC_SLOT = 2;
 
 	Ui::SickGUIClass ui;
-
-	volatile bool _failed = false;
 
 	const size_t framesetBufferSize = 10;
 	boost::circular_buffer<Frameset::frameset_t> framesetBuffer;
@@ -70,8 +71,12 @@ private:
 	TS7Client* s7Client = nullptr;
 	PlcThread* plcThread = nullptr;
 
+	QFutureWatcher<bool>* threadWatcher;
+
 	QTimer* displayTimer;
-	int displayTimerInterval = 33; /* ms */
+	int displayTimerInterval = 100; /* ms */
 
 	Stream streamType;
+	tinycolormap::ColormapType streamColorMapType;
+	volatile bool invertedColor;
 };

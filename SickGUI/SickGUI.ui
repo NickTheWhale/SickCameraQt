@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>622</width>
+    <width>602</width>
     <height>471</height>
    </rect>
   </property>
@@ -29,6 +29,9 @@
         <height>100</height>
        </size>
       </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
       <property name="text">
        <string/>
       </property>
@@ -48,12 +51,6 @@
    </attribute>
    <addaction name="actionPlay"/>
    <addaction name="actionPause"/>
-   <addaction name="separator"/>
-   <addaction name="actionDepth"/>
-   <addaction name="actionIntensity"/>
-   <addaction name="actionState"/>
-   <addaction name="separator"/>
-   <addaction name="actionSettings"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionPlay">
@@ -86,75 +83,6 @@
     <enum>QAction::NoRole</enum>
    </property>
   </action>
-  <action name="actionDepth">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="icon">
-    <iconset resource="SickGUI.qrc">
-     <normaloff>:/SickGUI/icons/straighten_FILL0_wght400_GRAD0_opsz40.png</normaloff>:/SickGUI/icons/straighten_FILL0_wght400_GRAD0_opsz40.png</iconset>
-   </property>
-   <property name="text">
-    <string>Depth</string>
-   </property>
-   <property name="toolTip">
-    <string>Select Depth Stream</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::NoRole</enum>
-   </property>
-  </action>
-  <action name="actionIntensity">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="icon">
-    <iconset resource="SickGUI.qrc">
-     <normaloff>:/SickGUI/icons/palette_FILL0_wght400_GRAD0_opsz40.png</normaloff>:/SickGUI/icons/palette_FILL0_wght400_GRAD0_opsz40.png</iconset>
-   </property>
-   <property name="text">
-    <string>Intensity</string>
-   </property>
-   <property name="toolTip">
-    <string>Select Intensity Stream</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::NoRole</enum>
-   </property>
-  </action>
-  <action name="actionState">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="icon">
-    <iconset resource="SickGUI.qrc">
-     <normaloff>:/SickGUI/icons/bar_chart_4_bars_FILL0_wght400_GRAD0_opsz40.png</normaloff>:/SickGUI/icons/bar_chart_4_bars_FILL0_wght400_GRAD0_opsz40.png</iconset>
-   </property>
-   <property name="text">
-    <string>State</string>
-   </property>
-   <property name="toolTip">
-    <string>Select State Stream</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::NoRole</enum>
-   </property>
-  </action>
-  <action name="actionSettings">
-   <property name="icon">
-    <iconset resource="SickGUI.qrc">
-     <normaloff>:/SickGUI/icons/settings_FILL0_wght400_GRAD0_opsz40.png</normaloff>:/SickGUI/icons/settings_FILL0_wght400_GRAD0_opsz40.png</iconset>
-   </property>
-   <property name="text">
-    <string>Settings</string>
-   </property>
-   <property name="toolTip">
-    <string>Stream Settings</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::NoRole</enum>
-   </property>
-  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
@@ -182,70 +110,6 @@
    <signal>triggered()</signal>
    <receiver>SickGUIClass</receiver>
    <slot>pauseVideo()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>310</x>
-     <y>235</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>actionState</sender>
-   <signal>triggered()</signal>
-   <receiver>SickGUIClass</receiver>
-   <slot>selectState()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>310</x>
-     <y>235</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>actionIntensity</sender>
-   <signal>triggered()</signal>
-   <receiver>SickGUIClass</receiver>
-   <slot>selectIntensity()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>310</x>
-     <y>235</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>actionDepth</sender>
-   <signal>triggered()</signal>
-   <receiver>SickGUIClass</receiver>
-   <slot>selectDepth()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>310</x>
-     <y>235</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>actionSettings</sender>
-   <signal>triggered()</signal>
-   <receiver>SickGUIClass</receiver>
-   <slot>openStreamSettingsDialog()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>

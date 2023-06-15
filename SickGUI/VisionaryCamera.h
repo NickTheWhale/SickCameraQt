@@ -35,5 +35,7 @@ private:
 	std::shared_ptr<visionary::VisionaryTMiniData> pDataHandler;
 	std::shared_ptr<visionary::VisionaryDataStream> pDataStream;
 	std::shared_ptr<visionary::VisionaryControl> pVisionaryControl;
+
+	Frameset::frameset_t lastFrameset;
 };
 
