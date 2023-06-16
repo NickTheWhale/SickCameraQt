@@ -8,7 +8,7 @@
 class VisionaryCamera : public Camera
 {
 public:
-	VisionaryCamera(std::string ipAddress, short dataPort = 2114);
+	VisionaryCamera(std::string ipAddress = "", short dataPort = 2114);
 	~VisionaryCamera() override;
 
 	// overridden from Camera.h

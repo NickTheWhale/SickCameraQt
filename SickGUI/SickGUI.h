@@ -54,7 +54,7 @@ private:
 	bool startCameraThread();
 	bool startPlcThread();
 
-	const std::string CAMERA_IP_ADDRESS = "169.254.49.161";
+	const std::string CAMERA_IP_ADDRESS = "223.168.0.21";
 	const std::string PLC_IP_ADDRESS = "127.0.0.1";
 	const int PLC_RACK = 0;
 	const int PLC_SLOT = 2;

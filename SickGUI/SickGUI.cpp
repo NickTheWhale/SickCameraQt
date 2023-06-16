@@ -315,7 +315,7 @@ bool SickGUI::createCamera()
 		camera = nullptr;
 	}
 
-	camera = new VisionaryCamera(CAMERA_IP_ADDRESS);
+	camera = new VisionaryCamera();
 
 	return camera != nullptr;
 }

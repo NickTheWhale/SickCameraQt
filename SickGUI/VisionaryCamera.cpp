@@ -5,6 +5,7 @@
 #include <CoLaCommand.h>
 #include <CoLaCommandType.h>
 #include <qdebug.h>
+#include <vector>
 
 using namespace visionary;
 
@@ -28,16 +29,17 @@ bool VisionaryCamera::open()
 	// base case
 	if (connected) { return true; }
 
-	// check if camera is available
-	//if (!available(openTimeout))
-	//{
-	//	if (!available(5000))
-	//	{
-	//		return false;
-	//	}
-	//}
-
-	// attempt to open camera
+	// find ip address if invalid
+	if (ipAddress == "")
+	{
+		VisionaryAutoIPScanCustom scanner;
+		auto devices = scanner.doScan(5000);
+		if (!devices.empty())
+		{
+			auto dev = devices.front();
+			ipAddress = dev.IpAddress;
+		}
+	}
 	if (!pDataStream->open(ipAddress, htons(dataPort)))
 	{
 		return false;

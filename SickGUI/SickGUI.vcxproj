@@ -123,7 +123,6 @@
     <ClCompile Include="sickapi\PointCloudPlyWriter.cpp" />
     <ClCompile Include="sickapi\TcpSocket.cpp" />
     <ClCompile Include="sickapi\UdpSocket.cpp" />
-    <ClCompile Include="sickapi\VisionaryAutoIPScan.cpp" />
     <ClCompile Include="sickapi\VisionaryControl.cpp" />
     <ClCompile Include="sickapi\VisionaryData.cpp" />
     <ClCompile Include="sickapi\VisionaryDataStream.cpp" />
@@ -166,7 +165,6 @@
     <ClInclude Include="sickapi\PointXYZ.h" />
     <ClInclude Include="sickapi\TcpSocket.h" />
     <ClInclude Include="sickapi\UdpSocket.h" />
-    <ClInclude Include="sickapi\VisionaryAutoIPScan.h" />
     <ClInclude Include="sickapi\VisionaryControl.h" />
     <ClInclude Include="sickapi\VisionaryData.h" />
     <ClInclude Include="sickapi\VisionaryDataStream.h" />

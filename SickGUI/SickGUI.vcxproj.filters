@@ -76,9 +76,6 @@
     <ClCompile Include="sickapi\UdpSocket.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sickapi\VisionaryAutoIPScan.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="sickapi\VisionaryControl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -166,9 +163,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="sickapi\UdpSocket.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="sickapi\VisionaryAutoIPScan.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="sickapi\VisionaryControl.h">

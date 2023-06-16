@@ -23,6 +23,7 @@ namespace Frameset
 		qImage = QImage(fs.width, fs.height, QImage::Format_ARGB32_Premultiplied);
 		auto max = *std::max_element(fs.depth.begin(), fs.depth.end());
 		auto min = *std::min_element(fs.depth.begin(), fs.depth.end());
+
 		QRgb* qImageData = reinterpret_cast<QRgb*>(qImage.bits());
 		for (auto y = 0; y < fs.height; ++y)
 		{
