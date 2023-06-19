@@ -39,9 +39,13 @@ namespace visionary
 		// AutoIP Discover Packet
 		std::vector<uint8_t> autoIpPacket;
 
-		autoIpPacket.push_back(0x10); //CMD
-		autoIpPacket.push_back(0x00); //reserved
-		// length of datablock
+		// page 76 8.2.2 Commands
+
+		// cmd
+		autoIpPacket.push_back(0x10);
+		// isBC
+		autoIpPacket.push_back(0x01);
+		// length of data
 		autoIpPacket.push_back(0x00);
 		autoIpPacket.push_back(0x08);
 		// MAC address
@@ -56,28 +60,18 @@ namespace visionary
 		autoIpPacket.push_back(0x00);
 		autoIpPacket.push_back(0x00);
 		autoIpPacket.push_back(0x00);
-		// data pulled from wire shark
-		//autoIpPacket.push_back(0x01);
-		//autoIpPacket.push_back(0x02);
-		//autoIpPacket.push_back(0xa9);
-		//autoIpPacket.push_back(0xfe);
-		//autoIpPacket.push_back(0xca);
-		//autoIpPacket.push_back(0x64);
-		//autoIpPacket.push_back(0xff);
-		//autoIpPacket.push_back(0xff);
-		// 
-		// page 76 8.2.2 Commands
-		autoIpPacket.push_back(0xff);
-		autoIpPacket.push_back(0xff);
-		autoIpPacket.push_back(0xff);
-		autoIpPacket.push_back(0xff);
-		autoIpPacket.push_back(0xff);
-		autoIpPacket.push_back(0xff);
-		autoIpPacket.push_back(0xff);
-		autoIpPacket.push_back(0xff);
-		// 
-		// reserved
+		// cs and ffu
+		autoIpPacket.push_back(0x10);
 		autoIpPacket.push_back(0x00);
+		// ip address (255.255.255.255)
+		autoIpPacket.push_back(0xff);
+		autoIpPacket.push_back(0xff);
+		autoIpPacket.push_back(0xff);
+		autoIpPacket.push_back(0xff);
+		//// netmask (255.255.255.0)
+		autoIpPacket.push_back(0xff);
+		autoIpPacket.push_back(0xff);
+		autoIpPacket.push_back(0xff);
 		autoIpPacket.push_back(0x00);
 
 		// Replace telegram id in packet

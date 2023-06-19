@@ -15,9 +15,11 @@
 #include <qfontmetrics.h>
 #include <qpainter.h>
 #include <qsizepolicy.h>
+#include "Fingerprint.h"
 
 #include <qtoolbutton.h>
 #include <qmenu.h>
+#include <qstring.h>
 
 
 SickGUI::SickGUI(QWidget* parent) : QMainWindow(parent), framesetBuffer(framesetBufferSize)
@@ -39,10 +41,20 @@ SickGUI::SickGUI(QWidget* parent) : QMainWindow(parent), framesetBuffer(frameset
 
 SickGUI::~SickGUI()
 {
+	if (displayTimer)
+	{
+		displayTimer->stop();
+	}
+
+	if (threadWatcher && !threadWatcher->isFinished())
+	{
+		threadWatcher->waitForFinished();
+	}
+
 	if (captureThread)
 	{
 		captureThread->stopCapture();
-		captureThread->wait(2000);
+		captureThread->wait(10'000);
 		delete captureThread;
 		captureThread = nullptr;
 	}
@@ -56,7 +68,7 @@ SickGUI::~SickGUI()
 	if (plcThread)
 	{
 		plcThread->stopPlc();
-		plcThread->wait(2000);
+		plcThread->wait(10'000);
 		delete plcThread;
 		plcThread = nullptr;
 	}
@@ -67,11 +79,6 @@ SickGUI::~SickGUI()
 			s7Client->Disconnect();
 		delete s7Client;
 		s7Client = nullptr;
-	}
-
-	if (displayTimer)
-	{
-		displayTimer->stop();
 	}
 }
 
@@ -120,18 +127,18 @@ void SickGUI::initializeControls()
 				streamType = streamActionInfo.streamType;
 				streamButton->setText(streamActionInfo.name);
 			});
-		QObject::connect(streamMenu, &QMenu::aboutToHide, [this, streamActionInfo, streamMenu]()
-			{
-				if (streamMenu->rect().contains(streamMenu->mapFromGlobal(QCursor::pos()))) {
-					QTimer::singleShot(0, streamMenu, &QMenu::show);
-				}
-			});
 		auto currWidth = fontMetrics.boundingRect(streamActionInfo.name).width();
 		if (currWidth > buttonWidth)
 		{
 			buttonWidth = currWidth;
 		}
 	}
+	QObject::connect(streamMenu, &QMenu::aboutToHide, [this, streamMenu]()
+		{
+			if (streamMenu->rect().contains(streamMenu->mapFromGlobal(QCursor::pos()))) {
+				QTimer::singleShot(0, streamMenu, &QMenu::show);
+			}
+		});
 	buttonWidth += streamButton->iconSize().width() + 30;
 	streamButton->setMinimumWidth(buttonWidth);
 	ui.toolBar->addWidget(streamButton);
@@ -183,18 +190,18 @@ void SickGUI::initializeControls()
 				streamColorMapType = colorActionInfo.colormapType;
 				colorButton->setText(colorActionInfo.name);
 			});
-		QObject::connect(colorMenu, &QMenu::aboutToHide, [this, colorActionInfo, colorMenu]()
-			{
-				if (colorMenu->rect().contains(colorMenu->mapFromGlobal(QCursor::pos()))) {
-					QTimer::singleShot(0, colorMenu, &QMenu::show);
-				}
-			});
 		auto currWidth = fontMetrics.boundingRect(colorActionInfo.name).width();
 		if (currWidth > buttonWidth)
 		{
 			buttonWidth = currWidth;
 		}
 	}
+	QObject::connect(colorMenu, &QMenu::aboutToHide, [this, colorMenu]()
+		{
+			if (colorMenu->rect().contains(colorMenu->mapFromGlobal(QCursor::pos()))) {
+				QTimer::singleShot(0, colorMenu, &QMenu::show);
+			}
+		});
 
 	colorMenu->addSeparator();
 
@@ -217,35 +224,6 @@ void SickGUI::initializeControls()
 
 void SickGUI::updateDisplay()
 {
-	/*QtConcurrent::run([this]() {
-		framesetMutex.lock();
-		if (framesetBuffer.empty())
-		{
-			framesetMutex.unlock();
-		}
-		else
-		{
-			Frameset::frameset_t fs = framesetBuffer.back();
-			framesetMutex.unlock();
-
-			QImage qImage;
-
-			switch (streamType)
-			{
-			case Stream::Depth:
-				Frameset::depthToQImage(fs, qImage, streamColorMapType);
-				break;
-			case Stream::Intensity:
-				Frameset::intensityToQImage(fs, qImage);
-				break;
-			case Stream::State:
-				Frameset::stateToQImage(fs, qImage);
-				break;
-			}
-			writeImage(qImage);
-		}
-		});*/
-
 	if (this->isMinimized())
 		return;
 
@@ -266,14 +244,18 @@ void SickGUI::updateDisplay()
 		{
 		case Stream::Depth:
 			Frameset::depthToQImage(fs, qImage, streamColorMapType, invertedColor);
+			Fingerprint::overlayStats(qImage, fs.width, fs.height, fs.depth);
 			break;
 		case Stream::Intensity:
 			Frameset::intensityToQImage(fs, qImage, streamColorMapType, invertedColor);
+			Fingerprint::overlayStats(qImage, fs.width, fs.height, fs.intensity);
 			break;
 		case Stream::State:
 			Frameset::stateToQImage(fs, qImage, streamColorMapType, invertedColor);
+			Fingerprint::overlayStats(qImage, fs.width, fs.height, fs.state);
 			break;
 		}
+
 		writeImage(qImage);
 	}
 }
@@ -297,7 +279,7 @@ void SickGUI::writeImage(QImage image)
 		{
 			auto w = ui.cameraView->width();
 			auto h = ui.cameraView->height();
-			const auto pixmap = QPixmap::fromImage(image).scaled(w, h, Qt::KeepAspectRatio);
+			auto pixmap = QPixmap::fromImage(image).scaled(w, h, Qt::KeepAspectRatio);
 			ui.cameraView->setPixmap(pixmap);
 			ui.cameraView->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 		}
@@ -356,7 +338,10 @@ void SickGUI::checkThreads()
 		QTimer::singleShot(1000, [this]()
 			{
 				std::string msg = std::format("camera: {}  |  plc: {}", CAMERA_IP_ADDRESS, PLC_IP_ADDRESS);
-				statusBar()->showMessage(msg.c_str());
+				QLabel* lbl = new QLabel(this);
+				lbl->setText(msg.c_str());
+				statusBar()->clearMessage();
+				statusBar()->addPermanentWidget(lbl);
 			});
 	}
 }

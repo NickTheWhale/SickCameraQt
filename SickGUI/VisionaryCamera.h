@@ -4,6 +4,7 @@
 #include <VisionaryTMiniData.h>
 #include <VisionaryDataStream.h>
 #include <VisionaryControl.h>
+#include <string>
 
 class VisionaryCamera : public Camera
 {

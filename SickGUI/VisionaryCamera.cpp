@@ -34,12 +34,17 @@ bool VisionaryCamera::open()
 	{
 		VisionaryAutoIPScanCustom scanner;
 		auto devices = scanner.doScan(5000);
-		if (!devices.empty())
+		if (devices.empty())
+		{
+			return false;
+		}
+		else
 		{
 			auto dev = devices.front();
-			ipAddress = dev.IpAddress;
+			this->ipAddress = dev.IpAddress;
 		}
 	}
+
 	if (!pDataStream->open(ipAddress, htons(dataPort)))
 	{
 		return false;

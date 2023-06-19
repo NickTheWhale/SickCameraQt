@@ -207,6 +207,9 @@
     <ClInclude Include="TinyColormap.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Fingerprint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

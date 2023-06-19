@@ -6,7 +6,6 @@
 
 namespace Frameset
 {
-
 	typedef struct
 	{
 		std::vector<uint16_t> depth;
@@ -18,67 +17,48 @@ namespace Frameset
 		uint64_t time;
 	} frameset_t;
 
-	inline void depthToQImage(frameset_t fs, QImage& qImage, tinycolormap::ColormapType colorMap = tinycolormap::ColormapType::Gray, bool invert = false)
+	namespace _internal
 	{
-		qImage = QImage(fs.width, fs.height, QImage::Format_ARGB32_Premultiplied);
-		auto max = *std::max_element(fs.depth.begin(), fs.depth.end());
-		auto min = *std::min_element(fs.depth.begin(), fs.depth.end());
-
-		QRgb* qImageData = reinterpret_cast<QRgb*>(qImage.bits());
-		for (auto y = 0; y < fs.height; ++y)
+		inline void frameToQImage(const std::vector<uint16_t>& frame, int width, int height, QImage& qImage, tinycolormap::ColormapType colorMap, bool invert)
 		{
-			for (auto x = 0; x < fs.width; ++x)
+			qImage = QImage(width, height, QImage::Format_ARGB32_Premultiplied);
+			auto max = *std::max_element(frame.begin(), frame.end());
+			auto min = max;
+			for (const auto& val : frame)
 			{
-				auto depthVal = fs.depth[y * fs.width + x];
-				double depthNorm = (depthVal - min) / static_cast<double>(max);
-				tinycolormap::Color color = tinycolormap::GetColor(depthNorm, colorMap);
-				if (!invert)
-					qImageData[y * fs.width + x] = qRgba(color.ri(), color.gi(), color.bi(), 255);
-				else
-					qImageData[y * fs.width + x] = qRgba(255 - color.ri(), 255 - color.gi(), 255 - color.bi(), 255);
+				if (val > 0 && val < min)
+					min = val;
+			}
+
+			QRgb* qImageData = reinterpret_cast<QRgb*>(qImage.bits());
+			for (auto y = 0; y < height; ++y)
+			{
+				for (auto x = 0; x < width; ++x)
+				{
+					auto val = frame[y * width + x];
+					double valNorm = (val - min) / static_cast<double>(max);
+					tinycolormap::Color color = tinycolormap::GetColor(valNorm, colorMap);
+					if (!invert)
+						qImageData[y * width + x] = qRgba(color.ri(), color.gi(), color.bi(), 255);
+					else
+						qImageData[y * width + x] = qRgba(255 - color.ri(), 255 - color.gi(), 255 - color.bi(), 255);
+				}
 			}
 		}
 	}
 
-	inline void intensityToQImage(frameset_t fs, QImage& qImage, tinycolormap::ColormapType colorMap = tinycolormap::ColormapType::Gray, bool invert = false)
+	inline void depthToQImage(const frameset_t& fs, QImage& qImage, tinycolormap::ColormapType colorMap = tinycolormap::ColormapType::Gray, bool invert = false)
 	{
-		qImage = QImage(fs.width, fs.height, QImage::Format_ARGB32_Premultiplied);
-		auto max = *std::max_element(fs.intensity.begin(), fs.intensity.end());
-		auto min = *std::min_element(fs.intensity.begin(), fs.intensity.end());
-		QRgb* qImageData = reinterpret_cast<QRgb*>(qImage.bits());
-		for (auto y = 0; y < fs.height; ++y)
-		{
-			for (auto x = 0; x < fs.width; ++x)
-			{
-				auto intensityVal = fs.intensity[y * fs.width + x];
-				double intensityNorm = (intensityVal - min) / static_cast<double>(max);
-				tinycolormap::Color color = tinycolormap::GetColor(intensityNorm, colorMap);
-				if (!invert)
-					qImageData[y * fs.width + x] = qRgba(color.ri(), color.gi(), color.bi(), 255);
-				else 
-					qImageData[y * fs.width + x] = qRgba(255 - color.ri(), 255 - color.gi(), 255 - color.bi(), 255);
-			}
-		}
+		_internal::frameToQImage(fs.depth, fs.width, fs.height, qImage, colorMap, invert);
 	}
 
-	inline void stateToQImage(frameset_t fs, QImage& qImage, tinycolormap::ColormapType colorMap = tinycolormap::ColormapType::Gray, bool invert = false)
+	inline void intensityToQImage(const frameset_t& fs, QImage& qImage, tinycolormap::ColormapType colorMap = tinycolormap::ColormapType::Gray, bool invert = false)
 	{
-		qImage = QImage(fs.width, fs.height, QImage::Format_ARGB32_Premultiplied);
-		auto max = *std::max_element(fs.state.begin(), fs.state.end());
-		auto min = *std::min_element(fs.state.begin(), fs.state.end());
-		QRgb* qImageData = reinterpret_cast<QRgb*>(qImage.bits());
-		for (auto y = 0; y < fs.height; ++y)
-		{
-			for (auto x = 0; x < fs.width; ++x)
-			{
-				auto stateVal = fs.state[y * fs.width + x];
-				double stateNorm = (stateVal - min) / static_cast<double>(max);
-				tinycolormap::Color color = tinycolormap::GetColor(stateNorm, colorMap);
-				if (!invert)
-					qImageData[y * fs.width + x] = qRgba(color.ri(), color.gi(), color.bi(), 255);
-				else
-					qImageData[y * fs.width + x] = qRgba(255 - color.ri(), 255 - color.gi(), 255 - color.bi(), 255);
-			}
-		}
+		_internal::frameToQImage(fs.intensity, fs.width, fs.height, qImage, colorMap, invert);
+	}
+
+	inline void stateToQImage(const frameset_t& fs, QImage& qImage, tinycolormap::ColormapType colorMap = tinycolormap::ColormapType::Gray, bool invert = false)
+	{
+		_internal::frameToQImage(fs.state, fs.width, fs.height, qImage, colorMap, invert);
 	}
 }

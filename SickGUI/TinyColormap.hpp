@@ -154,7 +154,11 @@ namespace tinycolormap
 	{
 		inline constexpr double Clamp01(double x) noexcept
 		{
-			return (x < 0.0) ? 0.0 : (x > 1.0) ? 1.0 : x;
+			if (x > 1.0)
+				return 1.0;
+			if (x < 0.0)
+				return 0.0;
+			return x;
 		}
 
 		// A helper function to calculate linear interpolation

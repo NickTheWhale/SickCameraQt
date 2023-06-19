@@ -2,6 +2,7 @@
 #include "qdebug.h"
 #include <algorithm>
 #include <snap7.h>
+#include "Fingerprint.h"
 
 bool PlcThread::startPlc(TS7Client* client)
 {
@@ -31,7 +32,6 @@ void PlcThread::stopPlc()
 
 void PlcThread::run()
 {
-	Frameset::frameset_t oldFs;
 	while (!_stop)
 	{
 		if (!framesetMutex.tryLock())
@@ -45,24 +45,9 @@ void PlcThread::run()
 			continue;
 		}
 
-		framesetMutex.unlock();
-
 		Frameset::frameset_t fs = framesetBuffer.back();
 
-		double avgDepth = std::accumulate(fs.depth.begin(), fs.depth.end(), 0.0) / fs.depth.size();
-		
-		
-
-		if (oldFs.time != fs.time)
-		{
-			if (fs.number - oldFs.number > 1)
-			{
-				qDebug() << "########missed" << fs.number - oldFs.number << "frame(s)";
-			}
-			oldFs = fs;
-		}
-
-		uploadDB();
+		framesetMutex.unlock();
 
 		msleep(1000);
 	}
