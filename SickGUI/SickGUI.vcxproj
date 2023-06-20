@@ -57,10 +57,10 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <IncludePath>$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(ProjectDir)\realsense\include\librealsense2;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <IncludePath>$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(ProjectDir)\realsense\include\librealsense2;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -110,6 +110,7 @@
       <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).moc</QtMocFileName>
     </ClCompile>
     <ClCompile Include="PlcThread.cpp" />
+    <ClCompile Include="RealsenseCamera.cpp" />
     <ClCompile Include="snap7\snap7.cpp" />
     <ClCompile Include="VisionaryAutoIPScanCustom.cpp" />
     <ClCompile Include="VisionaryCamera.cpp" />
@@ -145,8 +146,38 @@
     <QtUic Include="StreamSettingDialog.ui" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Camera.h" />
+    <ClInclude Include="ICamera.h" />
     <ClInclude Include="Fingerprint.h" />
+    <ClInclude Include="RealsenseCamera.h" />
+    <ClInclude Include="realsense\include\librealsense2\hpp\rs_context.hpp" />
+    <ClInclude Include="realsense\include\librealsense2\hpp\rs_device.hpp" />
+    <ClInclude Include="realsense\include\librealsense2\hpp\rs_export.hpp" />
+    <ClInclude Include="realsense\include\librealsense2\hpp\rs_frame.hpp" />
+    <ClInclude Include="realsense\include\librealsense2\hpp\rs_internal.hpp" />
+    <ClInclude Include="realsense\include\librealsense2\hpp\rs_options.hpp" />
+    <ClInclude Include="realsense\include\librealsense2\hpp\rs_pipeline.hpp" />
+    <ClInclude Include="realsense\include\librealsense2\hpp\rs_processing.hpp" />
+    <ClInclude Include="realsense\include\librealsense2\hpp\rs_record_playback.hpp" />
+    <ClInclude Include="realsense\include\librealsense2\hpp\rs_sensor.hpp" />
+    <ClInclude Include="realsense\include\librealsense2\hpp\rs_serializable_device.hpp" />
+    <ClInclude Include="realsense\include\librealsense2\hpp\rs_types.hpp" />
+    <ClInclude Include="realsense\include\librealsense2\h\rs_advanced_mode_command.h" />
+    <ClInclude Include="realsense\include\librealsense2\h\rs_config.h" />
+    <ClInclude Include="realsense\include\librealsense2\h\rs_context.h" />
+    <ClInclude Include="realsense\include\librealsense2\h\rs_device.h" />
+    <ClInclude Include="realsense\include\librealsense2\h\rs_frame.h" />
+    <ClInclude Include="realsense\include\librealsense2\h\rs_internal.h" />
+    <ClInclude Include="realsense\include\librealsense2\h\rs_option.h" />
+    <ClInclude Include="realsense\include\librealsense2\h\rs_pipeline.h" />
+    <ClInclude Include="realsense\include\librealsense2\h\rs_processing.h" />
+    <ClInclude Include="realsense\include\librealsense2\h\rs_record_playback.h" />
+    <ClInclude Include="realsense\include\librealsense2\h\rs_sensor.h" />
+    <ClInclude Include="realsense\include\librealsense2\h\rs_types.h" />
+    <ClInclude Include="realsense\include\librealsense2\rs.h" />
+    <ClInclude Include="realsense\include\librealsense2\rs.hpp" />
+    <ClInclude Include="realsense\include\librealsense2\rsutil.h" />
+    <ClInclude Include="realsense\include\librealsense2\rs_advanced_mode.h" />
+    <ClInclude Include="realsense\include\librealsense2\rs_advanced_mode.hpp" />
     <ClInclude Include="Stream.h" />
     <ClInclude Include="TinyColormap.hpp" />
     <ClInclude Include="VisionaryFrameset.h" />
@@ -188,8 +219,15 @@
     <CopyFileToFolders Include="snap7\snap7.exp">
       <FileType>Document</FileType>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="realsense\Intel.Realsense.dll">
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="realsense\realsense2.dll">
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
+    <Library Include="realsense\lib\realsense2.lib" />
     <Library Include="snap7\snap7.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
