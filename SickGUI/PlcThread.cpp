@@ -32,6 +32,7 @@ void PlcThread::stopPlc()
 
 void PlcThread::run()
 {
+	Frameset::frameset_t fs;
 	while (!_stop)
 	{
 		if (!framesetMutex.tryLock())
@@ -45,11 +46,14 @@ void PlcThread::run()
 			continue;
 		}
 
-		Frameset::frameset_t fs = framesetBuffer.back();
+		fs = framesetBuffer.back();
 
 		framesetMutex.unlock();
 
-		msleep(1000);
+		auto fp = Fingerprint::calculateFingerprint(fs.width, fs.height, fs.depth);
+		qDebug() << "Fingerprint:" << fp << "frame #:" << fs.number;
+
+		msleep(10);
 	}
 }
 

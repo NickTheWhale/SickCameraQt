@@ -13,7 +13,7 @@
 #include "CoLa2ProtocolHandler.h"
 #include "TcpSocket.h"
 #include "ControlSession.h"
-#include "AuthenticationLegacy.h"
+#include "AuthenticationNew.h"
 #include "CoLaParameterWriter.h"
 #include "CoLaParameterReader.h"
 
@@ -65,7 +65,7 @@ namespace visionary
 		pControlSession = std::unique_ptr<ControlSession>(new ControlSession(*pProtocolHandler));
 
 		std::unique_ptr <IAuthentication> pAuthentication;
-		pAuthentication = std::unique_ptr<IAuthentication>(new AuthenticationLegacy(*this));
+		pAuthentication = std::unique_ptr<IAuthentication>(new AuthenticationNew(*this));
 
 		m_pTransport = std::move(pTransport);
 		m_pProtocolHandler = std::move(pProtocolHandler);

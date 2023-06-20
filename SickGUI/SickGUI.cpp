@@ -93,6 +93,7 @@ void SickGUI::initializeControls()
 	streamButton->setPopupMode(QToolButton::InstantPopup);
 	streamButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
 	streamButton->setIcon(QIcon(":/SickGUI/icons/bar_chart_4_bars_FILL0_wght400_GRAD0_opsz40.png"));
+	streamButton->setStatusTip("Select Stream Type");
 
 	struct StreamActionInfo
 	{
@@ -114,6 +115,7 @@ void SickGUI::initializeControls()
 	{
 		QAction* action = streamMenu->addAction(streamActionInfo.name);
 		action->setCheckable(true);
+		action->setStatusTip("Select " + streamActionInfo.name + " Stream");
 		if (firstItem)
 		{
 			firstItem = false;
@@ -169,6 +171,7 @@ void SickGUI::initializeControls()
 	colorButton->setPopupMode(QToolButton::InstantPopup);
 	colorButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
 	colorButton->setIcon(QIcon(":/SickGUI/icons/palette_FILL0_wght400_GRAD0_opsz40.png"));
+	colorButton->setStatusTip("Select Colormap Type");
 
 	fontMetrics = QFontMetrics(colorButton->font());
 	buttonWidth = 0;
@@ -177,6 +180,7 @@ void SickGUI::initializeControls()
 	{
 		QAction* action = colorMenu->addAction(colorActionInfo.name);
 		action->setCheckable(true);
+		action->setStatusTip("Select " + colorActionInfo.name + " Colormap");
 		if (firstItem)
 		{
 			firstItem = false;
@@ -208,6 +212,7 @@ void SickGUI::initializeControls()
 	invertedColor = false;
 	QAction* action = colorMenu->addAction("Invert");
 	action->setCheckable(true);
+	action->setStatusTip("Select To Invert Colormap");
 	QObject::connect(action, &QAction::changed, [this, action]()
 		{
 			invertedColor = action->isChecked();
@@ -220,6 +225,9 @@ void SickGUI::initializeControls()
 
 	ui.actionPlay->setEnabled(true);
 	ui.actionPause->setEnabled(false);
+
+	statusBarLabel = new QLabel(this);
+	statusBar()->addPermanentWidget(statusBarLabel);
 }
 
 void SickGUI::updateDisplay()
@@ -243,17 +251,32 @@ void SickGUI::updateDisplay()
 		switch (streamType)
 		{
 		case Stream::Depth:
+		{
 			Frameset::depthToQImage(fs, qImage, streamColorMapType, invertedColor);
 			Fingerprint::overlayStats(qImage, fs.width, fs.height, fs.depth);
-			break;
+			double fp = Fingerprint::calculateFingerprint(fs.width, fs.height, fs.depth);
+			//statusBarLabel->setText(std::to_string(fp).c_str());
+			//statusBar()->showMessage(std::to_string(fp).c_str());
+		}
+		break;
 		case Stream::Intensity:
+		{
 			Frameset::intensityToQImage(fs, qImage, streamColorMapType, invertedColor);
 			Fingerprint::overlayStats(qImage, fs.width, fs.height, fs.intensity);
-			break;
+			double fp = Fingerprint::calculateFingerprint(fs.width, fs.height, fs.intensity);
+			//statusBarLabel->setText(std::to_string(fp).c_str());
+			statusBar()->showMessage(std::to_string(fp).c_str());
+		}
+		break;
 		case Stream::State:
+		{
 			Frameset::stateToQImage(fs, qImage, streamColorMapType, invertedColor);
 			Fingerprint::overlayStats(qImage, fs.width, fs.height, fs.state);
-			break;
+			double fp = Fingerprint::calculateFingerprint(fs.width, fs.height, fs.state);
+			//statusBarLabel->setText(std::to_string(fp).c_str());
+			statusBar()->showMessage(std::to_string(fp).c_str());
+		}
+		break;
 		}
 
 		writeImage(qImage);
@@ -297,7 +320,7 @@ bool SickGUI::createCamera()
 		camera = nullptr;
 	}
 
-	camera = new VisionaryCamera();
+	camera = new(std::nothrow) VisionaryCamera();
 
 	return camera != nullptr;
 }
@@ -338,10 +361,7 @@ void SickGUI::checkThreads()
 		QTimer::singleShot(1000, [this]()
 			{
 				std::string msg = std::format("camera: {}  |  plc: {}", CAMERA_IP_ADDRESS, PLC_IP_ADDRESS);
-				QLabel* lbl = new QLabel(this);
-				lbl->setText(msg.c_str());
-				statusBar()->clearMessage();
-				statusBar()->addPermanentWidget(lbl);
+				statusBarLabel->setText(msg.c_str());
 			});
 	}
 }
@@ -379,7 +399,7 @@ bool SickGUI::startCameraThread()
 		if (!captureThread)
 		{
 			showStatusBarMessage("creating underlying camera thread handler");
-			captureThread = new CaptureThread();
+			captureThread = new(std::nothrow) CaptureThread();
 			if (!captureThread)
 			{
 				showStatusBarMessage("failed to create underlying camera thread handler");
@@ -438,7 +458,7 @@ bool SickGUI::startPlcThread()
 		if (!plcThread)
 		{
 			showStatusBarMessage("creating underlying plc thread handler");
-			plcThread = new PlcThread();
+			plcThread = new(std::nothrow) PlcThread();
 			if (!plcThread)
 			{
 				showStatusBarMessage("failed to create underlying plc thread handler");

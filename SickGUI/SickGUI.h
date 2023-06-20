@@ -79,4 +79,6 @@ private:
 	Stream streamType;
 	tinycolormap::ColormapType streamColorMapType;
 	volatile bool invertedColor;
+
+	QLabel* statusBarLabel = nullptr;
 };

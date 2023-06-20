@@ -55,7 +55,7 @@ bool VisionaryCamera::open()
 		return false;
 	}
 
-	if (!pVisionaryControl->login(IAuthentication::UserLevel::AUTHORIZED_CLIENT, "CLIENT"))
+	if (!pVisionaryControl->login(IAuthentication::UserLevel::AUTHORIZED_CLIENT, "PASSWORD"))
 	{
 		return false;
 	}
