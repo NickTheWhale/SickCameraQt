@@ -57,19 +57,25 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <IncludePath>C:\Users\loehrkn\Documents\repos\SickCameraQt\SickGUI\snap7;C:\Users\loehrkn\Documents\repos\SickCameraQt\SickGUI\sickapi;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(ProjectDir)\realsense\include\librealsense2;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <IncludePath>C:\Users\loehrkn\Documents\repos\SickCameraQt\SickGUI\snap7;C:\Users\loehrkn\Documents\repos\SickCameraQt\SickGUI\sickapi;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(ProjectDir)\realsense\include\librealsense2;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <PreprocessorDefinitions>NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <PreprocessorDefinitions>NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
@@ -104,6 +110,7 @@
       <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).moc</QtMocFileName>
     </ClCompile>
     <ClCompile Include="PlcThread.cpp" />
+    <ClCompile Include="RealsenseCamera.cpp" />
     <ClCompile Include="snap7\snap7.cpp" />
     <ClCompile Include="VisionaryAutoIPScanCustom.cpp" />
     <ClCompile Include="VisionaryCamera.cpp" />
@@ -123,18 +130,56 @@
     <ClCompile Include="sickapi\PointCloudPlyWriter.cpp" />
     <ClCompile Include="sickapi\TcpSocket.cpp" />
     <ClCompile Include="sickapi\UdpSocket.cpp" />
-    <ClCompile Include="sickapi\VisionaryAutoIPScan.cpp" />
     <ClCompile Include="sickapi\VisionaryControl.cpp" />
     <ClCompile Include="sickapi\VisionaryData.cpp" />
     <ClCompile Include="sickapi\VisionaryDataStream.cpp" />
     <ClCompile Include="sickapi\VisionarySData.cpp" />
     <ClCompile Include="sickapi\VisionaryTData.cpp" />
     <ClCompile Include="sickapi\VisionaryTMiniData.cpp" />
-    <ClCompile Include="SickGUI.cpp" />
+    <ClCompile Include="SickGUI.cpp">
+      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
+      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).moc</QtMocFileName>
+      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|x64'">input</DynamicSource>
+      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).moc</QtMocFileName>
+    </ClCompile>
     <ClCompile Include="main.cpp" />
+    <QtUic Include="StreamSettingDialog.ui" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Camera.h" />
+    <ClInclude Include="ICamera.h" />
+    <ClInclude Include="Fingerprint.h" />
+    <ClInclude Include="RealsenseCamera.h" />
+    <ClInclude Include="realsense\include\librealsense2\hpp\rs_context.hpp" />
+    <ClInclude Include="realsense\include\librealsense2\hpp\rs_device.hpp" />
+    <ClInclude Include="realsense\include\librealsense2\hpp\rs_export.hpp" />
+    <ClInclude Include="realsense\include\librealsense2\hpp\rs_frame.hpp" />
+    <ClInclude Include="realsense\include\librealsense2\hpp\rs_internal.hpp" />
+    <ClInclude Include="realsense\include\librealsense2\hpp\rs_options.hpp" />
+    <ClInclude Include="realsense\include\librealsense2\hpp\rs_pipeline.hpp" />
+    <ClInclude Include="realsense\include\librealsense2\hpp\rs_processing.hpp" />
+    <ClInclude Include="realsense\include\librealsense2\hpp\rs_record_playback.hpp" />
+    <ClInclude Include="realsense\include\librealsense2\hpp\rs_sensor.hpp" />
+    <ClInclude Include="realsense\include\librealsense2\hpp\rs_serializable_device.hpp" />
+    <ClInclude Include="realsense\include\librealsense2\hpp\rs_types.hpp" />
+    <ClInclude Include="realsense\include\librealsense2\h\rs_advanced_mode_command.h" />
+    <ClInclude Include="realsense\include\librealsense2\h\rs_config.h" />
+    <ClInclude Include="realsense\include\librealsense2\h\rs_context.h" />
+    <ClInclude Include="realsense\include\librealsense2\h\rs_device.h" />
+    <ClInclude Include="realsense\include\librealsense2\h\rs_frame.h" />
+    <ClInclude Include="realsense\include\librealsense2\h\rs_internal.h" />
+    <ClInclude Include="realsense\include\librealsense2\h\rs_option.h" />
+    <ClInclude Include="realsense\include\librealsense2\h\rs_pipeline.h" />
+    <ClInclude Include="realsense\include\librealsense2\h\rs_processing.h" />
+    <ClInclude Include="realsense\include\librealsense2\h\rs_record_playback.h" />
+    <ClInclude Include="realsense\include\librealsense2\h\rs_sensor.h" />
+    <ClInclude Include="realsense\include\librealsense2\h\rs_types.h" />
+    <ClInclude Include="realsense\include\librealsense2\rs.h" />
+    <ClInclude Include="realsense\include\librealsense2\rs.hpp" />
+    <ClInclude Include="realsense\include\librealsense2\rsutil.h" />
+    <ClInclude Include="realsense\include\librealsense2\rs_advanced_mode.h" />
+    <ClInclude Include="realsense\include\librealsense2\rs_advanced_mode.hpp" />
+    <ClInclude Include="Stream.h" />
+    <ClInclude Include="TinyColormap.hpp" />
     <ClInclude Include="VisionaryFrameset.h" />
     <QtMoc Include="CaptureThread.h" />
     <QtMoc Include="PlcThread.h" />
@@ -158,7 +203,6 @@
     <ClInclude Include="sickapi\PointXYZ.h" />
     <ClInclude Include="sickapi\TcpSocket.h" />
     <ClInclude Include="sickapi\UdpSocket.h" />
-    <ClInclude Include="sickapi\VisionaryAutoIPScan.h" />
     <ClInclude Include="sickapi\VisionaryControl.h" />
     <ClInclude Include="sickapi\VisionaryData.h" />
     <ClInclude Include="sickapi\VisionaryDataStream.h" />
@@ -175,8 +219,15 @@
     <CopyFileToFolders Include="snap7\snap7.exp">
       <FileType>Document</FileType>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="realsense\Intel.Realsense.dll">
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="realsense\realsense2.dll">
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
+    <Library Include="realsense\lib\realsense2.lib" />
     <Library Include="snap7\snap7.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

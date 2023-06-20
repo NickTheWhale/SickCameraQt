@@ -32,9 +32,6 @@
     <QtMoc Include="SickGUI.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <ClCompile Include="SickGUI.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -79,9 +76,6 @@
     <ClCompile Include="sickapi\UdpSocket.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sickapi\VisionaryAutoIPScan.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="sickapi\VisionaryControl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -113,6 +107,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="VisionaryAutoIPScanCustom.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SickGUI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RealsenseCamera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -168,9 +168,6 @@
     <ClInclude Include="sickapi\UdpSocket.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sickapi\VisionaryAutoIPScan.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="sickapi\VisionaryControl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -192,7 +189,7 @@
     <ClInclude Include="sickapi\VisionaryTMiniData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Camera.h">
+    <ClInclude Include="ICamera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="VisionaryCamera.h">
@@ -205,6 +202,105 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="VisionaryFrameset.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Stream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TinyColormap.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Fingerprint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RealsenseCamera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="realsense\include\librealsense2\h\rs_advanced_mode_command.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="realsense\include\librealsense2\h\rs_config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="realsense\include\librealsense2\h\rs_context.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="realsense\include\librealsense2\h\rs_device.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="realsense\include\librealsense2\h\rs_frame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="realsense\include\librealsense2\h\rs_internal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="realsense\include\librealsense2\h\rs_option.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="realsense\include\librealsense2\h\rs_pipeline.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="realsense\include\librealsense2\h\rs_processing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="realsense\include\librealsense2\h\rs_record_playback.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="realsense\include\librealsense2\h\rs_sensor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="realsense\include\librealsense2\h\rs_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="realsense\include\librealsense2\hpp\rs_context.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="realsense\include\librealsense2\hpp\rs_device.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="realsense\include\librealsense2\hpp\rs_export.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="realsense\include\librealsense2\hpp\rs_frame.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="realsense\include\librealsense2\hpp\rs_internal.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="realsense\include\librealsense2\hpp\rs_options.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="realsense\include\librealsense2\hpp\rs_pipeline.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="realsense\include\librealsense2\hpp\rs_processing.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="realsense\include\librealsense2\hpp\rs_record_playback.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="realsense\include\librealsense2\hpp\rs_sensor.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="realsense\include\librealsense2\hpp\rs_serializable_device.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="realsense\include\librealsense2\hpp\rs_types.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="realsense\include\librealsense2\rs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="realsense\include\librealsense2\rs.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="realsense\include\librealsense2\rs_advanced_mode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="realsense\include\librealsense2\rs_advanced_mode.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="realsense\include\librealsense2\rsutil.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -222,8 +318,16 @@
   <ItemGroup>
     <CopyFileToFolders Include="snap7\snap7.dll" />
     <CopyFileToFolders Include="snap7\snap7.exp" />
+    <CopyFileToFolders Include="realsense\realsense2.dll" />
+    <CopyFileToFolders Include="realsense\Intel.Realsense.dll" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="snap7\snap7.lib" />
+    <Library Include="realsense\lib\realsense2.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="StreamSettingDialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
 </Project>

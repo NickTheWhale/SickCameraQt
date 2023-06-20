@@ -29,6 +29,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="snap7\snap7.exp" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="snap7\snap7.lib" />

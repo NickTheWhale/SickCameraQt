@@ -1,7 +1,11 @@
 #include "VisionaryCamera.h"
 #include "VisionaryAutoIPScanCustom.h"
-
 #include "VisionaryFrameset.h"
+#include <CoLaParameterWriter.h>
+#include <CoLaCommand.h>
+#include <CoLaCommandType.h>
+#include <qdebug.h>
+#include <vector>
 
 using namespace visionary;
 
@@ -25,16 +29,22 @@ bool VisionaryCamera::open()
 	// base case
 	if (connected) { return true; }
 
-	// check if camera is available
-	if (!available(openTimeout))
+	// find ip address if invalid
+	if (ipAddress == "")
 	{
-		if (!available(1000))
+		VisionaryAutoIPScanCustom scanner;
+		auto devices = scanner.doScan(5000);
+		if (devices.empty())
 		{
 			return false;
 		}
+		else
+		{
+			auto dev = devices.front();
+			this->ipAddress = dev.IpAddress;
+		}
 	}
 
-	// attempt to open camera
 	if (!pDataStream->open(ipAddress, htons(dataPort)))
 	{
 		return false;
@@ -92,9 +102,10 @@ bool VisionaryCamera::stopCapture()
 	return pVisionaryControl->stopAcquisition();
 }
 
-bool VisionaryCamera::getNextFrameset(Frameset::frameset_t &fs)
+bool VisionaryCamera::getNextFrameset(Frameset::frameset_t& fs)
 {
-	if (!capturing) { return false; }
+	if (!capturing)
+		return false;
 
 	if (!pDataStream->getNextFrame())
 	{
@@ -107,6 +118,7 @@ bool VisionaryCamera::getNextFrameset(Frameset::frameset_t &fs)
 	fs.height = pDataHandler->getHeight();
 	fs.width = pDataHandler->getWidth();
 	fs.number = pDataHandler->getFrameNum();
+	fs.time = pDataHandler->getTimestampMS();
 
 	return true;
 }

@@ -5,7 +5,7 @@
 
 #include "VisionaryFrameset.h"
 
-class Camera;
+class ICamera;
 
 class CaptureThread : public QThread
 {
@@ -16,7 +16,7 @@ signals:
 	void lostConnection();
 
 public:
-	bool startCapture(Camera *camera);
+	bool startCapture(ICamera *camera);
 	void stopCapture();
 
 protected:
@@ -24,7 +24,7 @@ protected:
 
 private:
 	Frameset::frameset_t lastFrameset;
-	Camera *camera;
+	ICamera *camera;
 	volatile bool stop;
 
 	unsigned int frameRetryDelay = 10; /* ms */

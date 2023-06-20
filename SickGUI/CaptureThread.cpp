@@ -3,7 +3,7 @@
 #include "Camera.h"
 
 
-bool CaptureThread::startCapture(Camera* camera)
+bool CaptureThread::startCapture(ICamera* camera)
 {
 	if (isRunning())
 		return true;
@@ -17,7 +17,7 @@ bool CaptureThread::startCapture(Camera* camera)
 	if (!this->camera->startCapture())
 		return false;
 
-	start(QThread::TimeCriticalPriority);
+	start(QThread::Priority::NormalPriority);
 
 	return true;
 }
@@ -34,13 +34,13 @@ void CaptureThread::run()
 		if (!camera->getNextFrameset(lastFrameset))
 		{
 
-			++retryCounter;
-			if (retryCounter * frameRetryDelay > maxRetryTime)
-			{
-				retryCounter = 0;
-				stop = true;
-				emit lostConnection();
-			}
+			//++retryCounter;
+			//if (retryCounter * frameRetryDelay > maxRetryTime)
+			//{
+			//	retryCounter = 0;
+			//	stop = true;
+			//	emit lostConnection();
+			//}
 
 			QThread::msleep(frameRetryDelay);
 			continue;

@@ -1,4 +1,10 @@
 <RCC>
-    <qresource prefix="SickGUI">
+    <qresource prefix="/SickGUI">
+        <file>icons/bar_chart_4_bars_FILL0_wght400_GRAD0_opsz40.png</file>
+        <file>icons/palette_FILL0_wght400_GRAD0_opsz40.png</file>
+        <file>icons/pause_FILL0_wght400_GRAD0_opsz40.png</file>
+        <file>icons/play_arrow_FILL0_wght400_GRAD0_opsz40.png</file>
+        <file>icons/straighten_FILL0_wght400_GRAD0_opsz40.png</file>
+        <file>icons/settings_FILL0_wght400_GRAD0_opsz40.png</file>
     </qresource>
 </RCC>

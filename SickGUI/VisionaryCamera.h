@@ -4,14 +4,15 @@
 #include <VisionaryTMiniData.h>
 #include <VisionaryDataStream.h>
 #include <VisionaryControl.h>
+#include <string>
 
-class VisionaryCamera : public Camera
+class VisionaryCamera : public ICamera
 {
 public:
-	VisionaryCamera(std::string ipAddress, short dataPort = 2114);
+	VisionaryCamera(std::string ipAddress = "", short dataPort = 2114);
 	~VisionaryCamera() override;
 
-	// overridden from Camera.h
+	// overridden from ICamera.h
 	bool open() override;
 	bool close()  override;
 	bool isOpen() override;
@@ -35,5 +36,7 @@ private:
 	std::shared_ptr<visionary::VisionaryTMiniData> pDataHandler;
 	std::shared_ptr<visionary::VisionaryDataStream> pDataStream;
 	std::shared_ptr<visionary::VisionaryControl> pVisionaryControl;
+
+	Frameset::frameset_t lastFrameset;
 };
 

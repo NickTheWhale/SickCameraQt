@@ -2,6 +2,8 @@
 #include <qthread.h>
 #include <snap7.h>
 #include "VisionaryFrameset.h"
+#include <boost/circular_buffer.hpp>
+#include <qmutex.h>
 
 class PlcThread : public QThread
 {
@@ -19,8 +21,12 @@ protected:
 	void run() override;
 
 private:
-
+	void uploadDB();
 	volatile bool _stop = false;
 	TS7Client* client;
+
+	const size_t framesetBufferSize = 10;
+	boost::circular_buffer<Frameset::frameset_t> framesetBuffer;
+	QMutex framesetMutex;
 };
 
