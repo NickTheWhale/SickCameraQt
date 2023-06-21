@@ -32,13 +32,13 @@
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
     <QtInstall>6.5.1_msvc2019_64</QtInstall>
-    <QtModules>core;gui;widgets</QtModules>
+    <QtModules>core;gui;widgets;charts</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
     <QtDeploy>true</QtDeploy>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
     <QtInstall>6.5.1_msvc2019_64</QtInstall>
-    <QtModules>core;gui;widgets</QtModules>
+    <QtModules>core;gui;widgets;charts</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
     <QtDeploy>true</QtDeploy>
   </PropertyGroup>
@@ -57,10 +57,10 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <IncludePath>$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(ProjectDir)\widgets;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <IncludePath>$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(ProjectDir)\widgets;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -103,6 +103,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="widgets\HistogramWidget.cpp" />
+    <ClCompile Include="widgets\AspectRatioPixmapLabel.cpp" />
+    <ClCompile Include="QToolMenuButton.cpp" />
     <ClCompile Include="sickapi\AuthenticationNew.cpp" />
     <ClCompile Include="CaptureThread.cpp">
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
@@ -146,6 +149,9 @@
     <QtUic Include="StreamSettingDialog.ui" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="QToolMenuButton.h" />
+    <QtMoc Include="widgets\AspectRatioPixmapLabel.h" />
+    <QtMoc Include="widgets\HistogramWidget.h" />
     <ClInclude Include="sickapi\AuthenticationNew.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Fingerprint.h" />

@@ -115,6 +115,15 @@
     <ClCompile Include="sickapi\AuthenticationNew.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="QToolMenuButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="widgets\AspectRatioPixmapLabel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="widgets\HistogramWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sickapi\AuthenticationLegacy.h">
@@ -225,6 +234,15 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="PlcThread.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="QToolMenuButton.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="widgets\AspectRatioPixmapLabel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="widgets\HistogramWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

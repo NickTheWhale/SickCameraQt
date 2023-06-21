@@ -19,13 +19,15 @@
 
 #include <qtoolbutton.h>
 #include <qmenu.h>
-#include <qstring.h>
 
 
 SickGUI::SickGUI(QWidget* parent) : QMainWindow(parent), framesetBuffer(framesetBufferSize)
 {
+	histogram = new HistogramWidget(this);
 	displayTimer = new QTimer(this);
+	chartTimer = new QTimer(this);
 	QObject::connect(displayTimer, &QTimer::timeout, this, &SickGUI::updateDisplay);
+	QObject::connect(chartTimer, &QTimer::timeout, this, &SickGUI::updateChart);
 
 	ui.setupUi(this);
 
@@ -44,6 +46,11 @@ SickGUI::~SickGUI()
 	if (displayTimer)
 	{
 		displayTimer->stop();
+	}
+
+	if (chartTimer)
+	{
+		chartTimer->stop();
 	}
 
 	if (threadWatcher && !threadWatcher->isFinished())
@@ -223,6 +230,18 @@ void SickGUI::initializeControls()
 	ui.toolBar->addWidget(colorButton);
 #pragma endregion
 
+#pragma region HISTOGRAM
+
+	QLayout* layout = new QGridLayout(this);
+	QChartView* chartView = new QChartView(histogram);
+	layout->addWidget(chartView);
+	ui.chartFrame->setLayout(layout);
+	
+	chartTimer->start();
+
+#pragma endregion
+
+
 	ui.actionPlay->setEnabled(true);
 	ui.actionPause->setEnabled(false);
 
@@ -283,28 +302,35 @@ void SickGUI::updateDisplay()
 	}
 }
 
-void SickGUI::resizeEvent(QResizeEvent* event)
+void SickGUI::updateChart()
 {
-	QMetaObject::invokeMethod(this, [this]()
-		{
-			if (ui.cameraView->pixmap().isNull())
-				return;
-			auto w = ui.cameraView->width();
-			auto h = ui.cameraView->height();
-			ui.cameraView->setPixmap(ui.cameraView->pixmap().scaled(w, h, Qt::KeepAspectRatio));
-			ui.cameraView->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-		});
+	if (this->isMinimized())
+		return;
+
+	if (!framesetMutex.tryLock())
+		return;
+	if (framesetBuffer.empty())
+	{
+		framesetMutex.unlock();
+	}
+	else
+	{
+		Frameset::frameset_t fs = framesetBuffer.back();
+		framesetMutex.unlock();
+
+		QMetaObject::invokeMethod(this, [this, fs]()
+			{
+				histogram->updateHistogram(fs.depth);
+			});
+	}
 }
 
 void SickGUI::writeImage(QImage image)
 {
 	QMetaObject::invokeMethod(this, [this, image]()
 		{
-			auto w = ui.cameraView->width();
-			auto h = ui.cameraView->height();
-			auto pixmap = QPixmap::fromImage(image).scaled(w, h, Qt::KeepAspectRatio);
+			auto pixmap = QPixmap::fromImage(image);
 			ui.cameraView->setPixmap(pixmap);
-			ui.cameraView->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 		}
 	, Qt::QueuedConnection);
 }

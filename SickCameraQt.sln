@@ -9,7 +9,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestServer", "TestServer\Te
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestParser", "TestParser\TestParser.vcxproj", "{C6B4F0FE-0E04-4B33-91A6-CE377F402DED}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Scripts", "Scripts\Scripts.vcxproj", "{8749B27A-2455-423B-B120-A20FBFC8A0C4}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestScripts", "Scripts\Scripts.vcxproj", "{8749B27A-2455-423B-B120-A20FBFC8A0C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

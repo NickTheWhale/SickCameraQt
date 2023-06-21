@@ -13,6 +13,7 @@
 #include <qpromise.h>
 #include <qfuturewatcher.h>
 #include "TinyColormap.hpp"
+#include <HistogramWidget.h>
 
 class CaptureThread;
 
@@ -39,12 +40,10 @@ public:
 	~SickGUI();
 
 private:
-	void resizeEvent(QResizeEvent* event) override;
-
-private:
 	void initializeControls();
 
 	void updateDisplay();
+	void updateChart();
 	void writeImage(QImage image);
 	bool createCamera();
 
@@ -73,8 +72,13 @@ private:
 
 	QFutureWatcher<bool>* threadWatcher;
 
-	QTimer* displayTimer;
-	int displayTimerInterval = 100; /* ms */
+	QTimer* displayTimer = nullptr;
+	int displayTimerInterval = 1000; /* ms */
+
+	QTimer* chartTimer = nullptr;
+	int chartTimerInterval = 10; /* ms */
+
+	HistogramWidget* histogram = nullptr;
 
 	Stream streamType;
 	tinycolormap::ColormapType streamColorMapType;
