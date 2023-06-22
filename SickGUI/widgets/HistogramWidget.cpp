@@ -1,19 +1,12 @@
 #include "HistogramWidget.h"
 #include <qdebug.h>
-#include <qstringlist.h>
-#include <string>
-#include <qbarcategoryaxis.h>
-#include <qvalueaxis.h>
 
-HistogramWidget::HistogramWidget(QWidget* parent)
+#include <qpainter.h>
+
+HistogramWidget::HistogramWidget(QWidget* parent) : QWidget(parent)
 {	
-	auto axis = boost::histogram::axis::regular<>(100, 0, 65535);
+	auto axis = boost::histogram::axis::regular<>(NUM_BINS, MIN_VALUE, MAX_VALUE);
 	hs.histogram = boost::histogram::make_histogram(axis);
-	
-	barSet = new QBarSet("", this);
-	series = new QBarSeries(this);
-
-	this->setAnimationOptions(QChart::AnimationOption::NoAnimation);
 }
 
 HistogramWidget::~HistogramWidget()
@@ -23,18 +16,43 @@ HistogramWidget::~HistogramWidget()
 void HistogramWidget::updateHistogram(const std::vector<uint16_t>& data)
 {
 	hs.histogram.reset();
-	hs.histogram.fill(data);
 
-	//series->clear();
-	//this->removeAllSeries();
-	for (auto&& x : indexed(hs.histogram)) 
-	{
-		const auto value = static_cast<uint16_t>(*x);
-		auto isNull = barSet == nullptr;
-		barSet->insert(x.index(0), value);
-	}
+    std::vector<uint16_t> dataCopy = data;
 
-	series->append(barSet);
+    dataCopy.erase(std::remove(dataCopy.begin(), dataCopy.end(), 0), dataCopy.end());
 
-	this->addSeries(series);
+	hs.histogram.fill(dataCopy);
+}
+
+void HistogramWidget::paintEvent(QPaintEvent* event)
+{
+    Q_UNUSED(event);
+    QPainter painter(this);
+    painter.setRenderHint(QPainter::Antialiasing);
+
+    auto barWidth = width() / hs.histogram.axis(0).size();
+
+#if HISTOGRAM_AUTO_SCALE
+    auto maxHeight = 0;
+    for (auto&& x : boost::histogram::indexed(hs.histogram, boost::histogram::coverage::inner))
+    {
+        auto val = static_cast<uint16_t>(*x);
+        if (val > maxHeight)
+            maxHeight = val;
+    }
+#else
+    auto maxHeight = MAX_HEIGHT;
+#endif // HISTOGRAM_AUTO_SCALE
+
+    auto scaleFactor = height() / static_cast<double>(maxHeight);
+
+    // Draw bars
+    int i = 0;
+    for (auto&& x : boost::histogram::indexed(hs.histogram, boost::histogram::coverage::inner)) 
+    {
+        auto barHeight = static_cast<uint16_t>(*x) * scaleFactor;
+        QRect barRect(i * barWidth, height() - barHeight, barWidth, barHeight);
+        painter.fillRect(barRect, Qt::GlobalColor::darkGray);
+        ++i;
+    }
 }

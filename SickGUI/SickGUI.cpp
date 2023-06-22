@@ -19,6 +19,7 @@
 
 #include <qtoolbutton.h>
 #include <qmenu.h>
+#include <qpushbutton.h>
 
 
 SickGUI::SickGUI(QWidget* parent) : QMainWindow(parent), framesetBuffer(framesetBufferSize)
@@ -26,6 +27,7 @@ SickGUI::SickGUI(QWidget* parent) : QMainWindow(parent), framesetBuffer(frameset
 	histogram = new HistogramWidget(this);
 	displayTimer = new QTimer(this);
 	chartTimer = new QTimer(this);
+	chartTimer->setInterval(chartTimerInterval);
 	QObject::connect(displayTimer, &QTimer::timeout, this, &SickGUI::updateDisplay);
 	QObject::connect(chartTimer, &QTimer::timeout, this, &SickGUI::updateChart);
 
@@ -92,6 +94,7 @@ SickGUI::~SickGUI()
 void SickGUI::initializeControls()
 {
 #pragma region STREAM MENU
+
 	QToolButton* streamButton = new QToolButton(this);
 	QMenu* streamMenu = new QMenu(streamButton);
 	QActionGroup* streamGroup = new QActionGroup(this);
@@ -151,10 +154,11 @@ void SickGUI::initializeControls()
 	buttonWidth += streamButton->iconSize().width() + 30;
 	streamButton->setMinimumWidth(buttonWidth);
 	ui.toolBar->addWidget(streamButton);
+
 #pragma endregion
 
-
 #pragma region COLORMAP MENU
+
 	struct ColorMapActionInfo
 	{
 		QString name;
@@ -228,16 +232,61 @@ void SickGUI::initializeControls()
 	buttonWidth += colorButton->iconSize().width() + 30;
 	colorButton->setMinimumWidth(buttonWidth);
 	ui.toolBar->addWidget(colorButton);
+
 #pragma endregion
 
 #pragma region HISTOGRAM
 
-	QLayout* layout = new QGridLayout(this);
-	QChartView* chartView = new QChartView(histogram);
-	layout->addWidget(chartView);
-	ui.chartFrame->setLayout(layout);
-	
-	chartTimer->start();
+	//histogram->setMinimumSize(QSize(300, 100));
+	//QLayout* layout = new QGridLayout(this);
+	//layout->addWidget(histogram);
+	//ui.chartFrame->setLayout(layout);
+
+	histogram->setMinimumSize(QSize(300, 100));
+
+	QToolButton* histogramButton = new QToolButton(this);
+	histogramButton->setCheckable(true);
+	histogramButton->setChecked(showHistogram);
+	histogramButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+	histogramButton->setText("Histogram");
+	histogramButton->setStatusTip("Toggle Histogram");
+	histogramButton->setIcon(QIcon(":/SickGUI/icons/equalizer_FILL0_wght400_GRAD0_opsz40.png"));
+	QLayout* histogramLayout = new QGridLayout(this);
+	histogramLayout->addWidget(histogram);
+	QObject::connect(histogramButton, &QToolButton::toggled, [this, histogramButton]()
+		{
+			showHistogram = histogramButton->isChecked();
+			if (showHistogram)
+			{
+				histogram->show();
+				chartTimer->start();
+			}
+			else
+			{
+				histogram->hide();
+				chartTimer->stop();
+			}
+		});
+	ui.toolBar->addSeparator();
+	ui.toolBar->addWidget(histogramButton);
+	ui.chartFrame->setLayout(histogramLayout);
+
+#pragma endregion
+
+#pragma region OVERLAY_STATS_BUTTON
+
+	QToolButton* statsButton = new QToolButton(this);
+	statsButton->setCheckable(true);
+	statsButton->setChecked(overLayStats);
+	statsButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+	statsButton->setText("Stats");
+	statsButton->setStatusTip("Toggle Statistics Overlay");
+	statsButton->setIcon(QIcon(":/SickGUI/icons/info_FILL0_wght400_GRAD0_opsz40.png"));
+	QObject::connect(statsButton, &QToolButton::toggled, [this, statsButton]()
+		{
+			overLayStats = statsButton->isChecked();
+		});
+	ui.toolBar->addWidget(statsButton);
 
 #pragma endregion
 
@@ -272,28 +321,22 @@ void SickGUI::updateDisplay()
 		case Stream::Depth:
 		{
 			Frameset::depthToQImage(fs, qImage, streamColorMapType, invertedColor);
-			Fingerprint::overlayStats(qImage, fs.width, fs.height, fs.depth);
-			double fp = Fingerprint::calculateFingerprint(fs.width, fs.height, fs.depth);
-			//statusBarLabel->setText(std::to_string(fp).c_str());
-			//statusBar()->showMessage(std::to_string(fp).c_str());
+			if (overLayStats)
+				Fingerprint::overlayStats(qImage, fs.width, fs.height, fs.depth);
 		}
 		break;
 		case Stream::Intensity:
 		{
 			Frameset::intensityToQImage(fs, qImage, streamColorMapType, invertedColor);
-			Fingerprint::overlayStats(qImage, fs.width, fs.height, fs.intensity);
-			double fp = Fingerprint::calculateFingerprint(fs.width, fs.height, fs.intensity);
-			//statusBarLabel->setText(std::to_string(fp).c_str());
-			statusBar()->showMessage(std::to_string(fp).c_str());
+			if (overLayStats)
+				Fingerprint::overlayStats(qImage, fs.width, fs.height, fs.intensity);
 		}
 		break;
 		case Stream::State:
 		{
 			Frameset::stateToQImage(fs, qImage, streamColorMapType, invertedColor);
-			Fingerprint::overlayStats(qImage, fs.width, fs.height, fs.state);
-			double fp = Fingerprint::calculateFingerprint(fs.width, fs.height, fs.state);
-			//statusBarLabel->setText(std::to_string(fp).c_str());
-			statusBar()->showMessage(std::to_string(fp).c_str());
+			if (overLayStats)
+				Fingerprint::overlayStats(qImage, fs.width, fs.height, fs.state);
 		}
 		break;
 		}
@@ -321,7 +364,9 @@ void SickGUI::updateChart()
 		QMetaObject::invokeMethod(this, [this, fs]()
 			{
 				histogram->updateHistogram(fs.depth);
-			});
+				histogram->update();
+			}
+		, Qt::QueuedConnection);
 	}
 }
 

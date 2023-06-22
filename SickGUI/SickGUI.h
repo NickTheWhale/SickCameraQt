@@ -73,7 +73,7 @@ private:
 	QFutureWatcher<bool>* threadWatcher;
 
 	QTimer* displayTimer = nullptr;
-	int displayTimerInterval = 1000; /* ms */
+	int displayTimerInterval = 100; /* ms */
 
 	QTimer* chartTimer = nullptr;
 	int chartTimerInterval = 10; /* ms */
@@ -85,4 +85,7 @@ private:
 	volatile bool invertedColor;
 
 	QLabel* statusBarLabel = nullptr;
+
+	bool overLayStats = false;
+	bool showHistogram = false;
 };

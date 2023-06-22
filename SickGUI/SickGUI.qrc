@@ -6,5 +6,7 @@
         <file>icons/play_arrow_FILL0_wght400_GRAD0_opsz40.png</file>
         <file>icons/straighten_FILL0_wght400_GRAD0_opsz40.png</file>
         <file>icons/settings_FILL0_wght400_GRAD0_opsz40.png</file>
+        <file>icons/info_FILL0_wght400_GRAD0_opsz40.png</file>
+        <file>icons/equalizer_FILL0_wght400_GRAD0_opsz40.png</file>
     </qresource>
 </RCC>

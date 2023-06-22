@@ -53,7 +53,7 @@ namespace Fingerprint
 
 	const inline CellStat calculateCellStatistics(int frameWidth, int frameHeight, const std::vector<uint16_t>& frame, QPoint topLeft, QPoint bottomRight)
 	{
-		auto cellSize = (bottomRight.x() - topLeft.x()) * (bottomRight.y() - topLeft.y());
+		auto stat = CellStat(0, 0, 0, 0);
 
 		std::vector<uint16_t> cellData;
 		for (auto y = topLeft.y(); y < bottomRight.y(); ++y)
@@ -65,21 +65,30 @@ namespace Fingerprint
 					cellData.push_back(val);
 			}
 		}
-		// min
-		const uint16_t min = *std::min_element(cellData.begin(), cellData.end());
-		// max
-		const uint16_t max = *std::max_element(cellData.begin(), cellData.end());
-		// mean
-		size_t sum = std::accumulate(std::begin(cellData), std::end(cellData), 0);
-		const size_t mean = sum / cellData.size();
-		// stdev
-		size_t accum = 0;
-		for (const auto& d : cellData)
+
+		if (cellData.size() > 0)
 		{
-			accum += (d - mean) * (d - mean);
+			// min
+			const uint16_t min = *std::min_element(cellData.begin(), cellData.end());
+			// max
+			const uint16_t max = *std::max_element(cellData.begin(), cellData.end());
+			// mean
+			size_t sum = std::accumulate(std::begin(cellData), std::end(cellData), 0);
+			const size_t mean = sum / cellData.size();
+			// stdev
+			size_t accum = 0;
+			for (const auto& d : cellData)
+			{
+				accum += (d - mean) * (d - mean);
+			}
+			const size_t stdev = static_cast<size_t>(sqrt(accum / (cellData.size() - 1)));
+
+			stat.min = min;
+			stat.max = max;
+			stat.mean = mean;
+			stat.stdev = stdev;
 		}
-		const size_t stdev = static_cast<size_t>(sqrt(accum / (cellData.size() - 1)));
-		const auto stat = CellStat(min, max, mean, stdev);
+
 		return stat;
 	}
 

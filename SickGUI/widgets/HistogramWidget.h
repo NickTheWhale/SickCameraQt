@@ -1,15 +1,12 @@
 #pragma once
 
 #include <qwidget.h>
-#include <qchart.h>
-#include <qbarseries.h>
-#include <qchartview.h>
-#include <qbarset.h>
-#include <qstring.h>
 #include <vector>
 #include <boost/histogram.hpp>
 
-class HistogramWidget : public QChart
+#define HISTOGRAM_AUTO_SCALE (true)
+
+class HistogramWidget : public QWidget
 {
 	Q_OBJECT
 
@@ -17,6 +14,9 @@ public:
 	explicit HistogramWidget(QWidget* parent = nullptr);
 	void updateHistogram(const std::vector<uint16_t>& data);
 	~HistogramWidget();
+
+protected:
+	void paintEvent(QPaintEvent* event) override;
 
 private:
 	struct HolderOfStaticHistogram {
@@ -28,6 +28,9 @@ private:
 
 	HolderOfStaticHistogram hs;
 
-	QBarSet* barSet = nullptr;
-	QBarSeries* series = nullptr;
+	const size_t MAX_VALUE = 20'000;
+	const size_t MIN_VALUE = 1'000;
+	const size_t NUM_BINS = 100;
+	
+	const size_t MAX_HEIGHT = 20'000;
 };

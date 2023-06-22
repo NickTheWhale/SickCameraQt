@@ -12,17 +12,7 @@ void AspectRatioPixmapLabel::setPixmap(const QPixmap& p)
 	pix = p;
 	QLabel::setPixmap(scaledPixmap());
 	QLabel::setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-}
-
-int AspectRatioPixmapLabel::heightForWidth(int width) const
-{
-	return pix.isNull() ? this->height() : ((qreal)pix.height() * width) / pix.width();
-}
-
-QSize AspectRatioPixmapLabel::sizeHint() const
-{
-	int w = this->width();
-	return QSize(w, heightForWidth(w));
+	updateGeometry();
 }
 
 QPixmap AspectRatioPixmapLabel::scaledPixmap() const
@@ -32,6 +22,7 @@ QPixmap AspectRatioPixmapLabel::scaledPixmap() const
 
 void AspectRatioPixmapLabel::resizeEvent(QResizeEvent* e)
 {
+	//adjustSize();
 	if (!pix.isNull())
 		QLabel::setPixmap(scaledPixmap());
 }

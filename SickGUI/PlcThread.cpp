@@ -53,7 +53,7 @@ void PlcThread::run()
 		auto fp = Fingerprint::calculateFingerprint(fs.width, fs.height, fs.depth);
 		qDebug() << "Fingerprint:" << fp << "frame #:" << fs.number;
 
-		msleep(10);
+		msleep(1000);
 	}
 }
 

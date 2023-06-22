@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>836</width>
-    <height>497</height>
+    <width>805</width>
+    <height>518</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <item row="0" column="0">
      <widget class="AspectRatioPixmapLabel" name="cameraView">
       <property name="sizePolicy">
-       <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
@@ -53,8 +53,8 @@
       </property>
       <property name="minimumSize">
        <size>
-        <width>100</width>
-        <height>100</height>
+        <width>0</width>
+        <height>0</height>
        </size>
       </property>
       <property name="frameShape">
