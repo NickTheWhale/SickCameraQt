@@ -12,17 +12,15 @@ void AspectRatioPixmapLabel::setPixmap(const QPixmap& p)
 	pix = p;
 	QLabel::setPixmap(scaledPixmap());
 	QLabel::setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-	updateGeometry();
 }
 
 QPixmap AspectRatioPixmapLabel::scaledPixmap() const
 {
-	return pix.scaled(this->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+	return pix.scaled(this->size(), Qt::KeepAspectRatio, Qt::FastTransformation);
 }
 
 void AspectRatioPixmapLabel::resizeEvent(QResizeEvent* e)
 {
-	//adjustSize();
 	if (!pix.isNull())
 		QLabel::setPixmap(scaledPixmap());
 }

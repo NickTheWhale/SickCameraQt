@@ -40,7 +40,7 @@ public:
 	~SickGUI();
 
 private:
-	void initializeControls();
+	void initializeWidgets();
 
 	void updateDisplay();
 	void updateChart();
@@ -72,13 +72,15 @@ private:
 
 	QFutureWatcher<bool>* threadWatcher;
 
+	// widgets
+	HistogramWidget* histogram = nullptr;
+
 	QTimer* displayTimer = nullptr;
 	int displayTimerInterval = 100; /* ms */
 
 	QTimer* chartTimer = nullptr;
 	int chartTimerInterval = 10; /* ms */
 
-	HistogramWidget* histogram = nullptr;
 
 	Stream streamType;
 	tinycolormap::ColormapType streamColorMapType;
@@ -88,4 +90,5 @@ private:
 
 	bool overLayStats = false;
 	bool showHistogram = false;
+
 };

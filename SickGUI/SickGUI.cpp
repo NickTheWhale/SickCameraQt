@@ -33,7 +33,7 @@ SickGUI::SickGUI(QWidget* parent) : QMainWindow(parent), framesetBuffer(frameset
 
 	ui.setupUi(this);
 
-	initializeControls();
+	initializeWidgets();
 
 	threadWatcher = new QFutureWatcher<bool>(this);
 	QObject::connect(threadWatcher, &QFutureWatcher<bool>::finished, this, &SickGUI::checkThreads);
@@ -91,7 +91,7 @@ SickGUI::~SickGUI()
 	}
 }
 
-void SickGUI::initializeControls()
+void SickGUI::initializeWidgets()
 {
 #pragma region STREAM MENU
 
@@ -265,6 +265,7 @@ void SickGUI::initializeControls()
 			{
 				histogram->hide();
 				chartTimer->stop();
+				ui.chartFrame->resize(ui.chartFrame->minimumSize());
 			}
 		});
 	ui.toolBar->addSeparator();
