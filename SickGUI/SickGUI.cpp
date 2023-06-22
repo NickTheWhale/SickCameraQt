@@ -20,13 +20,12 @@
 #include <qtoolbutton.h>
 #include <qmenu.h>
 #include <qpushbutton.h>
+#include <qdockwidget.h>
+#include <qsettings.h>
 
 
 SickGUI::SickGUI(QWidget* parent) : QMainWindow(parent), framesetBuffer(framesetBufferSize)
 {
-	mainLayout = new QGridLayout(this);
-	cameraView = new AspectRatioPixmapLabel(this);
-	histogram = new HistogramWidget(this);
 	displayTimer = new QTimer(this);
 	chartTimer = new QTimer(this);
 	chartTimer->setInterval(chartTimerInterval);
@@ -36,6 +35,9 @@ SickGUI::SickGUI(QWidget* parent) : QMainWindow(parent), framesetBuffer(frameset
 	ui.setupUi(this);
 
 	initializeWidgets();
+	QSettings settings;
+	this->restoreState(settings.value("windowState").toByteArray());
+	this->restoreGeometry(settings.value("geometry").toByteArray());
 
 	threadWatcher = new QFutureWatcher<bool>(this);
 	QObject::connect(threadWatcher, &QFutureWatcher<bool>::finished, this, &SickGUI::checkThreads);
@@ -93,15 +95,41 @@ SickGUI::~SickGUI()
 	}
 }
 
+void SickGUI::closeEvent(QCloseEvent* event)
+{
+	QSettings settings("WF", "SickGUI");
+	settings.setValue("windowState", this->saveState());
+	settings.setValue("geometry", this->saveGeometry());
+	QMainWindow::closeEvent(event);
+}
+
 void SickGUI::initializeWidgets()
 {
-#pragma region MAIN_LAYOUT
-
-#pragma endregion
 
 #pragma region CAMERA_VIEW
 
-	mainLayout.
+	cameraView = new AspectRatioPixmapLabel(ui.centralWidget);
+	cameraView->setMinimumSize(QSize(300, 300));
+	QDockWidget* dock = new QDockWidget("Camera", this);
+	dock->setAllowedAreas(Qt::DockWidgetArea::AllDockWidgetAreas);
+	dock->setWidget(cameraView);
+	dock->adjustSize();
+	addDockWidget(Qt::DockWidgetArea::LeftDockWidgetArea, dock);
+
+#pragma endregion
+
+
+#pragma region HISTOGRAM
+
+	histogram = new HistogramWidget(ui.centralWidget);
+	histogram->setMinimumSize(QSize(300, 300));
+	dock = new QDockWidget("Histogram", this);
+	dock->setAllowedAreas(Qt::DockWidgetArea::AllDockWidgetAreas);
+	dock->setWidget(histogram);
+	dock->adjustSize();
+	addDockWidget(Qt::DockWidgetArea::RightDockWidgetArea, dock);
+	chartTimer->setInterval(chartTimerInterval);
+	chartTimer->start();
 
 #pragma endregion
 
@@ -248,44 +276,6 @@ void SickGUI::initializeWidgets()
 
 #pragma endregion
 
-#pragma region HISTOGRAM
-
-	//histogram->setMinimumSize(QSize(300, 100));
-	//QLayout* layout = new QGridLayout(this);
-	//layout->addWidget(histogram);
-	//ui.chartFrame->setLayout(layout);
-
-	histogram->setMinimumSize(QSize(300, 100));
-
-	QToolButton* histogramButton = new QToolButton(this);
-	histogramButton->setCheckable(true);
-	histogramButton->setChecked(showHistogram);
-	histogramButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
-	histogramButton->setText("Histogram");
-	histogramButton->setStatusTip("Toggle Histogram");
-	histogramButton->setIcon(QIcon(":/SickGUI/icons/equalizer_FILL0_wght400_GRAD0_opsz40.png"));
-	QLayout* histogramLayout = new QGridLayout(this);
-	histogramLayout->addWidget(histogram);
-	QObject::connect(histogramButton, &QToolButton::toggled, [this, histogramButton]()
-		{
-			showHistogram = histogramButton->isChecked();
-			if (showHistogram)
-			{
-				histogram->show();
-				chartTimer->start();
-			}
-			else
-			{
-				histogram->hide();
-				chartTimer->stop();
-				ui.chartFrame->resize(ui.chartFrame->minimumSize());
-			}
-		});
-	ui.toolBar->addSeparator();
-	ui.toolBar->addWidget(histogramButton);
-	ui.chartFrame->setLayout(histogramLayout);
-
-#pragma endregion
 
 #pragma region OVERLAY_STATS_BUTTON
 
@@ -389,7 +379,7 @@ void SickGUI::writeImage(QImage image)
 	QMetaObject::invokeMethod(this, [this, image]()
 		{
 			auto pixmap = QPixmap::fromImage(image);
-			ui.cameraView->setPixmap(pixmap);
+			cameraView->setPixmap(pixmap);
 		}
 	, Qt::QueuedConnection);
 }

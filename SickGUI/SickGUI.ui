@@ -14,6 +14,9 @@
    <string>SickGUI</string>
   </property>
   <widget class="QWidget" name="centralWidget">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <layout class="QGridLayout" name="gridLayout"/>
   </widget>
   <widget class="QToolBar" name="toolBar">

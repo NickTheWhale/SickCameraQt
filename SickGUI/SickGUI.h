@@ -41,6 +41,7 @@ public:
 	~SickGUI();
 
 private:
+	void closeEvent(QCloseEvent* event) override;
 	void initializeWidgets();
 
 	void updateDisplay();
@@ -74,7 +75,6 @@ private:
 	QFutureWatcher<bool>* threadWatcher;
 
 	// widgets
-	QLayout* mainLayout = nullptr;
 	AspectRatioPixmapLabel* cameraView = nullptr;
 	HistogramWidget* histogram = nullptr;
 
@@ -91,6 +91,4 @@ private:
 	QLabel* statusBarLabel = nullptr;
 
 	bool overLayStats = false;
-	bool showHistogram = false;
-
 };
