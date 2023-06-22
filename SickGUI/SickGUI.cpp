@@ -24,6 +24,8 @@
 
 SickGUI::SickGUI(QWidget* parent) : QMainWindow(parent), framesetBuffer(framesetBufferSize)
 {
+	mainLayout = new QGridLayout(this);
+	cameraView = new AspectRatioPixmapLabel(this);
 	histogram = new HistogramWidget(this);
 	displayTimer = new QTimer(this);
 	chartTimer = new QTimer(this);
@@ -93,6 +95,15 @@ SickGUI::~SickGUI()
 
 void SickGUI::initializeWidgets()
 {
+#pragma region MAIN_LAYOUT
+
+#pragma endregion
+
+#pragma region CAMERA_VIEW
+
+#pragma endregion
+
+
 #pragma region STREAM MENU
 
 	QToolButton* streamButton = new QToolButton(this);

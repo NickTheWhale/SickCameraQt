@@ -14,6 +14,7 @@
 #include <qfuturewatcher.h>
 #include "TinyColormap.hpp"
 #include <HistogramWidget.h>
+#include <AspectRatioPixmapLabel.h>
 
 class CaptureThread;
 
@@ -73,14 +74,15 @@ private:
 	QFutureWatcher<bool>* threadWatcher;
 
 	// widgets
+	QLayout* mainLayout = nullptr;
+	AspectRatioPixmapLabel* cameraView = nullptr;
 	HistogramWidget* histogram = nullptr;
 
 	QTimer* displayTimer = nullptr;
 	int displayTimerInterval = 100; /* ms */
 
 	QTimer* chartTimer = nullptr;
-	int chartTimerInterval = 10; /* ms */
-
+	int chartTimerInterval = 50; /* ms */
 
 	Stream streamType;
 	tinycolormap::ColormapType streamColorMapType;
