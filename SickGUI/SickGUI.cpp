@@ -101,6 +101,8 @@ void SickGUI::initializeWidgets()
 
 #pragma region CAMERA_VIEW
 
+	mainLayout.
+
 #pragma endregion
 
 
