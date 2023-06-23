@@ -18,7 +18,7 @@
 
 class CaptureThread;
 
-class Camera;
+class ICamera;
 
 class TS7Client;
 
@@ -66,7 +66,7 @@ private:
 	boost::circular_buffer<Frameset::frameset_t> framesetBuffer;
 	QMutex framesetMutex;
 
-	Camera* camera = nullptr;
+	ICamera* camera = nullptr;
 	CaptureThread* captureThread = nullptr;
 
 	TS7Client* s7Client = nullptr;
