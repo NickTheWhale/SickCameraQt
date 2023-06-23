@@ -3,7 +3,7 @@
 #include "Camera.h"
 
 
-bool CaptureThread::startCapture(Camera* camera)
+bool CaptureThread::startCapture(ICamera* camera)
 {
 	if (isRunning())
 		return true;

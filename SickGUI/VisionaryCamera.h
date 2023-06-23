@@ -6,13 +6,13 @@
 #include <VisionaryControl.h>
 #include <string>
 
-class VisionaryCamera : public Camera
+class VisionaryCamera : public ICamera
 {
 public:
 	VisionaryCamera(std::string ipAddress = "", short dataPort = 2114);
 	~VisionaryCamera() override;
 
-	// overridden from Camera.h
+	// overridden from ICamera.h
 	bool open() override;
 	bool close()  override;
 	bool isOpen() override;
