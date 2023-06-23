@@ -11,8 +11,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestParser", "TestParser\Te
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestScripts", "Scripts\Scripts.vcxproj", "{8749B27A-2455-423B-B120-A20FBFC8A0C4}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DockingTest", "DockingTest\DockingTest.vcxproj", "{E4658FA1-CDC4-418D-B37C-EB5936EACDDC}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -53,14 +51,6 @@ Global
 		{8749B27A-2455-423B-B120-A20FBFC8A0C4}.Release|x64.Build.0 = Release|x64
 		{8749B27A-2455-423B-B120-A20FBFC8A0C4}.Release|x86.ActiveCfg = Release|Win32
 		{8749B27A-2455-423B-B120-A20FBFC8A0C4}.Release|x86.Build.0 = Release|Win32
-		{E4658FA1-CDC4-418D-B37C-EB5936EACDDC}.Debug|x64.ActiveCfg = Debug|x64
-		{E4658FA1-CDC4-418D-B37C-EB5936EACDDC}.Debug|x64.Build.0 = Debug|x64
-		{E4658FA1-CDC4-418D-B37C-EB5936EACDDC}.Debug|x86.ActiveCfg = Debug|x64
-		{E4658FA1-CDC4-418D-B37C-EB5936EACDDC}.Debug|x86.Build.0 = Debug|x64
-		{E4658FA1-CDC4-418D-B37C-EB5936EACDDC}.Release|x64.ActiveCfg = Release|x64
-		{E4658FA1-CDC4-418D-B37C-EB5936EACDDC}.Release|x64.Build.0 = Release|x64
-		{E4658FA1-CDC4-418D-B37C-EB5936EACDDC}.Release|x86.ActiveCfg = Release|x64
-		{E4658FA1-CDC4-418D-B37C-EB5936EACDDC}.Release|x86.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
