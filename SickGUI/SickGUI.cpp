@@ -310,11 +310,15 @@ void SickGUI::initializeWidgets()
 #pragma endregion
 
 
+#pragma region MISC
+
 	ui.actionPlay->setEnabled(true);
 	ui.actionPause->setEnabled(false);
 
 	statusBarLabel = new QLabel(this);
 	statusBar()->addPermanentWidget(statusBarLabel);
+
+#pragma endregion
 }
 
 void SickGUI::updateDisplay()
