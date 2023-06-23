@@ -25,7 +25,7 @@ private:
 	volatile bool _stop = false;
 	TS7Client* client;
 
-	const size_t framesetBufferSize = 10;
+	const size_t framesetBufferSize = 2;
 	boost::circular_buffer<Frameset::frameset_t> framesetBuffer;
 	QMutex framesetMutex;
 };

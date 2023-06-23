@@ -124,6 +124,9 @@
     <ClCompile Include="widgets\HistogramWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CloseDockWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sickapi\AuthenticationLegacy.h">
@@ -243,6 +246,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="widgets\HistogramWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="CloseDockWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

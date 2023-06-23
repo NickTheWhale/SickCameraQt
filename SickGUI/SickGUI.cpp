@@ -20,15 +20,14 @@
 #include <qtoolbutton.h>
 #include <qmenu.h>
 #include <qpushbutton.h>
-#include <qdockwidget.h>
 #include <qsettings.h>
+#include "CloseDockWidget.h"
 
 
 SickGUI::SickGUI(QWidget* parent) : QMainWindow(parent), framesetBuffer(framesetBufferSize)
 {
 	displayTimer = new QTimer(this);
 	chartTimer = new QTimer(this);
-	chartTimer->setInterval(chartTimerInterval);
 	QObject::connect(displayTimer, &QTimer::timeout, this, &SickGUI::updateDisplay);
 	QObject::connect(chartTimer, &QTimer::timeout, this, &SickGUI::updateChart);
 
@@ -110,29 +109,14 @@ void SickGUI::initializeWidgets()
 
 	cameraView = new AspectRatioPixmapLabel(ui.centralWidget);
 	cameraView->setMinimumSize(QSize(300, 300));
-	QDockWidget* dock = new QDockWidget("Camera", this);
-	dock->setAllowedAreas(Qt::DockWidgetArea::AllDockWidgetAreas);
-	dock->setWidget(cameraView);
-	dock->adjustSize();
-	addDockWidget(Qt::DockWidgetArea::LeftDockWidgetArea, dock);
+	setCentralWidget(cameraView);
+	//QDockWidget* dock = new QDockWidget("Camera", this);
+	//dock->setAllowedAreas(Qt::DockWidgetArea::AllDockWidgetAreas);
+	//dock->setWidget(cameraView);
+	//dock->adjustSize();
+	//addDockWidget(Qt::DockWidgetArea::LeftDockWidgetArea, dock);
 
 #pragma endregion
-
-
-#pragma region HISTOGRAM
-
-	histogram = new HistogramWidget(ui.centralWidget);
-	histogram->setMinimumSize(QSize(300, 300));
-	dock = new QDockWidget("Histogram", this);
-	dock->setAllowedAreas(Qt::DockWidgetArea::AllDockWidgetAreas);
-	dock->setWidget(histogram);
-	dock->adjustSize();
-	addDockWidget(Qt::DockWidgetArea::RightDockWidgetArea, dock);
-	chartTimer->setInterval(chartTimerInterval);
-	chartTimer->start();
-
-#pragma endregion
-
 
 #pragma region STREAM MENU
 
@@ -291,6 +275,37 @@ void SickGUI::initializeWidgets()
 			overLayStats = statsButton->isChecked();
 		});
 	ui.toolBar->addWidget(statsButton);
+
+#pragma endregion
+
+
+#pragma region HISTOGRAM
+
+	histogram = new HistogramWidget(ui.centralWidget);
+	histogram->setMinimumSize(QSize(300, 300));
+	auto dock = new CloseDockWidget("Histogram", this);
+	dock->setAllowedAreas(Qt::DockWidgetArea::AllDockWidgetAreas);
+	dock->setWidget(histogram);
+	dock->adjustSize();
+	addDockWidget(Qt::DockWidgetArea::RightDockWidgetArea, dock);
+	QToolButton* histogramButton = new QToolButton(this);
+	histogramButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+	histogramButton->setIcon(QIcon(":/SickGUI/icons/equalizer_FILL0_wght400_GRAD0_opsz40.png"));
+	histogramButton->setStatusTip("Toggle Histogram View");
+	histogramButton->setText("Histogram");
+	histogramButton->setCheckable(true);
+	QObject::connect(histogramButton, &QToolButton::toggled, [this, histogramButton, dock]()
+		{
+			histogramButton->isChecked() ? dock->show() : dock->hide();
+		});
+	QObject::connect(dock, &CloseDockWidget::visibilityChanged, [this, histogramButton, dock]()
+		{
+			histogramButton->setChecked(dock->isVisible());
+		});
+	
+	histogramButton->setChecked(false);
+	dock->hide();
+	ui.toolBar->addWidget(histogramButton);
 
 #pragma endregion
 
@@ -570,15 +585,23 @@ bool SickGUI::startPlcThread()
 
 void SickGUI::playVideo()
 {
-	if (!displayTimer)
-		return;
-
-	if (displayTimer->isActive())
-		return;
-
-	if (displayTimer->interval() != displayTimerInterval)
+	if (chartTimer && !chartTimer->isActive())
 	{
-		displayTimer->setInterval(displayTimerInterval);
+		if (chartTimer->interval() != chartTimerInterval)
+		{
+			chartTimer->setInterval(chartTimerInterval);
+		}
+		chartTimer->start();
+	}
+
+
+	if (displayTimer && !displayTimer->isActive())
+	{
+		if (displayTimer->interval() != displayTimerInterval)
+		{
+			displayTimer->setInterval(displayTimerInterval);
+		}
+		displayTimer->start();
 	}
 
 	ui.actionPlay->setEnabled(false);
@@ -592,6 +615,11 @@ void SickGUI::pauseVideo()
 	if (displayTimer)
 	{
 		displayTimer->stop();
+	}
+
+	if (chartTimer)
+	{
+		chartTimer->stop();
 	}
 
 	ui.actionPlay->setEnabled(true);

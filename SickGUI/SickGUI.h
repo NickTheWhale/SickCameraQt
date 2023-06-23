@@ -62,7 +62,7 @@ private:
 
 	Ui::SickGUIClass ui;
 
-	const size_t framesetBufferSize = 10;
+	const size_t framesetBufferSize = 2;
 	boost::circular_buffer<Frameset::frameset_t> framesetBuffer;
 	QMutex framesetMutex;
 

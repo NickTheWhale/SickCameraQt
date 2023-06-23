@@ -103,6 +103,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CloseDockWidget.cpp" />
     <ClCompile Include="QToolMenuButton.cpp" />
     <ClCompile Include="sickapi\AuthenticationNew.cpp" />
     <ClCompile Include="CaptureThread.cpp">
@@ -152,6 +153,7 @@
     <QtMoc Include="QToolMenuButton.h" />
     <QtMoc Include="widgets\AspectRatioPixmapLabel.h" />
     <QtMoc Include="widgets\HistogramWidget.h" />
+    <QtMoc Include="CloseDockWidget.h" />
     <ClInclude Include="sickapi\AuthenticationNew.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Fingerprint.h" />

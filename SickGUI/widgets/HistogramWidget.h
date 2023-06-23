@@ -4,7 +4,7 @@
 #include <vector>
 #include <boost/histogram.hpp>
 
-#define HISTOGRAM_AUTO_SCALE (true)
+#define HISTOGRAM_AUTO_SCALE (false)
 
 class HistogramWidget : public QWidget
 {
@@ -17,6 +17,7 @@ public:
 
 protected:
 	void paintEvent(QPaintEvent* event) override;
+	void contextMenuEvent(QContextMenuEvent* event) override;
 
 private:
 	struct HolderOfStaticHistogram {
@@ -28,9 +29,13 @@ private:
 
 	HolderOfStaticHistogram hs;
 
-	const size_t MAX_VALUE = 20'000;
-	const size_t MIN_VALUE = 1'000;
+	const size_t MAX_BIN_VALUE = 20'000;
+	const size_t MIN_BIN_VALUE = 1'000;
 	const size_t NUM_BINS = 100;
-	
-	const size_t MAX_HEIGHT = 20'000;
+
+	const uint16_t MAX_COUNT = 20'000;
+
+	const size_t PADDING = 3;
+	const size_t X_GRAPH_OFFSET = 50;
+	const size_t Y_GRAPH_OFFSET = 50;
 };
