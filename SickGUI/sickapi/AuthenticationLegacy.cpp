@@ -13,8 +13,7 @@
 namespace visionary
 {
 
-	AuthenticationLegacy::AuthenticationLegacy(VisionaryControl& vctrl) :
-		m_VisionaryControl(vctrl)
+	AuthenticationLegacy::AuthenticationLegacy(VisionaryControl& vctrl) : m_VisionaryControl(vctrl)
 	{
 	}
 

@@ -112,6 +112,7 @@
     <ClCompile Include="SickGUI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+
     <ClCompile Include="RealsenseCamera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -213,6 +214,7 @@
     <ClInclude Include="Fingerprint.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+
     <ClInclude Include="RealsenseCamera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -312,6 +314,15 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="PlcThread.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="QToolMenuButton.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="widgets\AspectRatioPixmapLabel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="widgets\HistogramWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

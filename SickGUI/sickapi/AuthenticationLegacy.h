@@ -9,21 +9,20 @@
 #pragma once
 #include "VisionaryControl.h"
 
-namespace visionary 
+namespace visionary
 {
 
-class AuthenticationLegacy:
-  public IAuthentication
-{
-public:
-  explicit AuthenticationLegacy(VisionaryControl& vctrl);
-  virtual ~AuthenticationLegacy();
+	class AuthenticationLegacy : public IAuthentication
+	{
+	public:
+		explicit AuthenticationLegacy(VisionaryControl& vctrl);
+		virtual ~AuthenticationLegacy();
 
-  virtual bool login(UserLevel userLevel, const std::string& password);
-  virtual bool logout();
+		virtual bool login(UserLevel userLevel, const std::string& password);
+		virtual bool logout();
 
-private:
-  VisionaryControl& m_VisionaryControl;
-};
+	private:
+		VisionaryControl& m_VisionaryControl;
+	};
 
 }
