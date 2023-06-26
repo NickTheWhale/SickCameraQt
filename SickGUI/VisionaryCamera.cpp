@@ -13,6 +13,10 @@ VisionaryCamera::VisionaryCamera(std::string ipAddress, short dataPort)
 {
 	this->ipAddress = ipAddress;
 	this->dataPort = dataPort;
+
+	parameters.insert_or_assign("ipAddress", this->ipAddress);
+	parameters.insert_or_assign("dataPort", std::to_string(this->dataPort));
+
 	// create camera handlers
 	pDataHandler = std::make_shared<visionary::VisionaryTMiniData>();
 	pDataStream = std::make_shared<VisionaryDataStream>(pDataHandler);
@@ -41,7 +45,7 @@ bool VisionaryCamera::open()
 		else
 		{
 			auto dev = devices.front();
-			this->ipAddress = dev.IpAddress;
+			setIp(dev.IpAddress);
 		}
 	}
 
@@ -120,7 +124,17 @@ bool VisionaryCamera::getNextFrameset(Frameset::frameset_t& fs)
 	fs.number = pDataHandler->getFrameNum();
 	fs.time = pDataHandler->getTimestampMS();
 
+	for (auto&& val : fs.depth)
+	{
+		val >>= 2;
+	}
+
 	return true;
+}
+
+const std::map<std::string, std::string> VisionaryCamera::getParameters()
+{
+	return parameters;
 }
 
 bool VisionaryCamera::available(int timeout)
@@ -140,10 +154,14 @@ bool VisionaryCamera::available(int timeout)
 void VisionaryCamera::setIp(std::string ipAddress)
 {
 	this->ipAddress = ipAddress;
+
+	parameters.insert_or_assign("ipAddress", this->ipAddress);
 }
 
 void VisionaryCamera::setDataPort(short dataPort)
 {
 	this->dataPort = dataPort;
+
+	parameters.insert_or_assign("dataPort", std::to_string(this->dataPort));
 }
 

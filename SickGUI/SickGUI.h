@@ -29,11 +29,8 @@ class SickGUI : public QMainWindow
 public slots:
 	void playVideo();
 	void pauseVideo();
-
 	void openStreamSettingsDialog();
-
 	void newFrameset(Frameset::frameset_t fs);
-
 	void showStatusBarMessage(const QString& msg, int timeout = 0);
 
 public:
@@ -55,7 +52,9 @@ private:
 	bool startCameraThread();
 	bool startPlcThread();
 
-	const std::string CAMERA_IP_ADDRESS = "223.168.0.21";
+	void saveSettings();
+	void restoreSettings();
+
 	const std::string PLC_IP_ADDRESS = "127.0.0.1";
 	const int PLC_RACK = 0;
 	const int PLC_SLOT = 2;
@@ -76,10 +75,11 @@ private:
 
 	// widgets
 	AspectRatioPixmapLabel* cameraView = nullptr;
-	HistogramWidget* histogram = nullptr;
+	HistogramWidget* depthHistogram = nullptr;
+	HistogramWidget* intensityHistogram = nullptr;
 
 	QTimer* displayTimer = nullptr;
-	int displayTimerInterval = 100; /* ms */
+	int displayTimerInterval = 50; /* ms */
 
 	QTimer* chartTimer = nullptr;
 	int chartTimerInterval = 50; /* ms */

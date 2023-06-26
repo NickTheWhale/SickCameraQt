@@ -17,7 +17,7 @@ void PlcThread::newFrameset(Frameset::frameset_t fs)
 {
 	if (!framesetMutex.tryLock())
 	{
-		qDebug() << "plc thread could not acquire lock";
+		//qDebug() << "plc thread could not acquire lock";
 		return;
 	}
 
@@ -37,7 +37,6 @@ void PlcThread::run()
 	{
 		if (!framesetMutex.tryLock())
 		{
-			qDebug() << "plc thread could not acquire lock";
 			continue;
 		}
 		if (framesetBuffer.empty())
@@ -51,7 +50,7 @@ void PlcThread::run()
 		framesetMutex.unlock();
 
 		auto fp = Fingerprint::calculateFingerprint(fs.width, fs.height, fs.depth);
-		qDebug() << "Fingerprint:" << fp << "frame #:" << fs.number;
+		//qDebug() << "Fingerprint:" << fp << "frame #:" << fs.number;
 
 		msleep(1000);
 	}

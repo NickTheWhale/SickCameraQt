@@ -75,10 +75,17 @@ namespace tinycolormap
 	// Interface
 	//////////////////////////////////////////////////////////////////////////////////
 
-	enum class ColormapType
+	enum  ColormapType
 	{
-		Parula, Heat, Jet, Turbo, Hot, Gray, Magma, Inferno, Plasma, Viridis, Cividis, Github, Cubehelix, HSV
+		Parula, Heat, Jet, Turbo, TurboFast, Hot, Gray, Magma, Inferno, Plasma, Viridis, Cividis, Github, Cubehelix, HSV
 	};
+
+	// removed "class" to use with QSettings::setValue
+	// 
+	//enum class ColormapType
+	//{
+	//	Parula, Heat, Jet, Turbo, Hot, Gray, Magma, Inferno, Plasma, Viridis, Cividis, Github, Cubehelix, HSV
+	//};
 
 	struct Color
 	{
@@ -130,6 +137,7 @@ namespace tinycolormap
 	inline Color GetHeatColor(double x);
 	inline Color GetJetColor(double x);
 	inline Color GetTurboColor(double x);
+	inline Color GetTurboFastColor(double x);
 	inline Color GetHotColor(double x);
 	inline constexpr Color GetGrayColor(double x) noexcept;
 	inline Color GetMagmaColor(double x);
@@ -213,6 +221,8 @@ namespace tinycolormap
 			return GetJetColor(x);
 		case ColormapType::Turbo:
 			return GetTurboColor(x);
+		case ColormapType::TurboFast:
+			return GetTurboFastColor(x);
 		case ColormapType::Hot:
 			return GetHotColor(x);
 		case ColormapType::Gray:
@@ -806,6 +816,23 @@ namespace tinycolormap
 
 		return internal::CalcLerp(x, data);
 	}
+
+	inline Color GetTurboFastColor(double x)
+	{
+		constexpr Color data[] =
+		{
+			{ 0.18995, 0.07176, 0.23217 },
+			{ 0.27543, 0.50115, 0.96594 },
+			{ 0.09267, 0.86554, 0.7623 },
+			{ 0.54658, 0.99907, 0.29581 },
+			{ 0.93301, 0.81236, 0.22667 },
+			{ 0.95801, 0.39958, 0.08831 },
+			{ 0.66449, 0.08436, 0.00424 }
+		};
+
+		return internal::CalcLerp(x, data);
+	}
+
 
 	inline Color GetHotColor(double x)
 	{

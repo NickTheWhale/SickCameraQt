@@ -23,6 +23,8 @@
 #include <qsettings.h>
 #include "CloseDockWidget.h"
 
+#include <HistogramWidget.h>
+
 
 SickGUI::SickGUI(QWidget* parent) : QMainWindow(parent), framesetBuffer(framesetBufferSize)
 {
@@ -34,9 +36,6 @@ SickGUI::SickGUI(QWidget* parent) : QMainWindow(parent), framesetBuffer(frameset
 	ui.setupUi(this);
 
 	initializeWidgets();
-	QSettings settings;
-	this->restoreState(settings.value("windowState").toByteArray());
-	this->restoreGeometry(settings.value("geometry").toByteArray());
 
 	threadWatcher = new QFutureWatcher<bool>(this);
 	QObject::connect(threadWatcher, &QFutureWatcher<bool>::finished, this, &SickGUI::checkThreads);
@@ -44,6 +43,8 @@ SickGUI::SickGUI(QWidget* parent) : QMainWindow(parent), framesetBuffer(frameset
 	QFuture<bool> future = QtConcurrent::run(&SickGUI::startThreads, this);
 
 	threadWatcher->setFuture(future);
+
+	restoreSettings();
 }
 
 SickGUI::~SickGUI()
@@ -96,9 +97,7 @@ SickGUI::~SickGUI()
 
 void SickGUI::closeEvent(QCloseEvent* event)
 {
-	QSettings settings("WF", "SickGUI");
-	settings.setValue("windowState", this->saveState());
-	settings.setValue("geometry", this->saveGeometry());
+	saveSettings();
 	QMainWindow::closeEvent(event);
 }
 
@@ -192,11 +191,13 @@ void SickGUI::initializeWidgets()
 
 	ColorMapActionInfo colorActions[] =
 	{
-		{"Gray",   tinycolormap::ColormapType::Gray},
-		{"Jet",	   tinycolormap::ColormapType::Jet},
-		{"Heat",   tinycolormap::ColormapType::Heat},
-		{"Hot",    tinycolormap::ColormapType::Hot},
-		{"Github", tinycolormap::ColormapType::Github}
+		{"Gray",      tinycolormap::ColormapType::Gray},
+		{"Jet",	      tinycolormap::ColormapType::Jet},
+		{"Heat",      tinycolormap::ColormapType::Heat},
+		{"Hot",       tinycolormap::ColormapType::Hot},
+		{"Github",    tinycolormap::ColormapType::Github},
+		{"Turbo",     tinycolormap::ColormapType::Turbo},
+		{"TurboFast",     tinycolormap::ColormapType::TurboFast}
 	};
 
 	QToolButton* colorButton = new QToolButton(this);
@@ -279,33 +280,36 @@ void SickGUI::initializeWidgets()
 #pragma endregion
 
 
-#pragma region HISTOGRAM
+#pragma region DEPTH_HISTOGRAM
 
-	histogram = new HistogramWidget(ui.centralWidget);
-	histogram->setMinimumSize(QSize(300, 300));
-	auto dock = new CloseDockWidget("Histogram", this);
+	depthHistogram = new HistogramWidget(100, 5'000, 100, 20'000, ui.centralWidget);
+	depthHistogram->setXAxis<double>(0, 0.5, 5, "distance (m)");
+	depthHistogram->setYAxis(3'000, 3'000, 23'000, "count");
+	depthHistogram->setMinimumSize(QSize(260, 200));
+	
+	auto dock = new CloseDockWidget("Depth Histogram", this);
+	dock->setObjectName("depthHistogramDock");
 	dock->setAllowedAreas(Qt::DockWidgetArea::AllDockWidgetAreas);
-	dock->setWidget(histogram);
+	dock->setWidget(depthHistogram);
 	dock->adjustSize();
 	addDockWidget(Qt::DockWidgetArea::RightDockWidgetArea, dock);
-	QToolButton* histogramButton = new QToolButton(this);
-	histogramButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
-	histogramButton->setIcon(QIcon(":/SickGUI/icons/equalizer_FILL0_wght400_GRAD0_opsz40.png"));
-	histogramButton->setStatusTip("Toggle Histogram View");
-	histogramButton->setText("Histogram");
-	histogramButton->setCheckable(true);
-	QObject::connect(histogramButton, &QToolButton::toggled, [this, histogramButton, dock]()
-		{
-			histogramButton->isChecked() ? dock->show() : dock->hide();
-		});
-	QObject::connect(dock, &CloseDockWidget::visibilityChanged, [this, histogramButton, dock]()
-		{
-			histogramButton->setChecked(dock->isVisible());
-		});
+
+#pragma endregion
+
+
+#pragma region INTENSITY_HISTOGRAM
+
+	intensityHistogram = new HistogramWidget(0, 300, 100, 20'000, ui.centralWidget);
+	intensityHistogram->setXAxis<double>(0, 20, 100, "intensity (%)");
+	intensityHistogram->setYAxis(3'000, 3'000, 23'000, "count");
+	intensityHistogram->setMinimumSize(QSize(260, 200));
 	
-	histogramButton->setChecked(false);
-	dock->hide();
-	ui.toolBar->addWidget(histogramButton);
+	dock = new CloseDockWidget("Intensity Histogram", this);
+	dock->setObjectName("intensityHistogramDock");
+	dock->setAllowedAreas(Qt::DockWidgetArea::AllDockWidgetAreas);
+	dock->setWidget(intensityHistogram);
+	dock->adjustSize();
+	addDockWidget(Qt::DockWidgetArea::RightDockWidgetArea, dock);
 
 #pragma endregion
 
@@ -386,8 +390,10 @@ void SickGUI::updateChart()
 
 		QMetaObject::invokeMethod(this, [this, fs]()
 			{
-				histogram->updateHistogram(fs.depth);
-				histogram->update();
+				depthHistogram->updateHistogram(fs.depth);
+				intensityHistogram->updateHistogram(fs.intensity);
+				depthHistogram->update();
+				intensityHistogram->update();
 			}
 		, Qt::QueuedConnection);
 	}
@@ -454,7 +460,17 @@ void SickGUI::checkThreads()
 	{
 		QTimer::singleShot(1000, [this]()
 			{
-				std::string msg = std::format("camera: {}  |  plc: {}", CAMERA_IP_ADDRESS, PLC_IP_ADDRESS);
+				auto camParams = camera->getParameters();
+				std::string msg;
+				if (camParams.count("ipAddress") != 0)
+				{
+					std::string cameraIpAddress = camParams.at("ipAddress");
+					msg = "camera: " + cameraIpAddress + "  |  plc: " + PLC_IP_ADDRESS;
+				}
+				else
+				{
+					msg = "plc: " + PLC_IP_ADDRESS;
+				}
 				statusBarLabel->setText(msg.c_str());
 			});
 	}
@@ -583,6 +599,22 @@ bool SickGUI::startPlcThread()
 	}
 }
 
+void SickGUI::saveSettings()
+{
+	QSettings settings("WF", "SickGUI");
+	settings.setValue("windowState", this->saveState());
+	settings.setValue("geometry", this->saveGeometry());
+
+	settings.sync();
+}
+
+void SickGUI::restoreSettings()
+{
+	QSettings settings("WF", "SickGUI");
+	this->restoreState(settings.value("windowState").toByteArray());
+	this->restoreGeometry(settings.value("geometry").toByteArray());
+}
+
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 //                                      SLOTS                                       //
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
@@ -644,7 +676,6 @@ void SickGUI::newFrameset(Frameset::frameset_t fs)
 {
 	if (!framesetMutex.tryLock())
 	{
-		qDebug() << "gui could not acquire lock";
 		return;
 	}
 

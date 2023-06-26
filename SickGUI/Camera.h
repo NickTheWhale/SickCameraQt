@@ -1,5 +1,6 @@
 #pragma once
 #include <qthread.h>
+#include <map>
 
 #include "VisionaryFrameset.h"
 
@@ -15,5 +16,6 @@ public:
 	virtual bool startCapture() = 0;
 	virtual bool stopCapture() = 0;
 	virtual bool getNextFrameset(Frameset::frameset_t &fs) = 0;
+	virtual const std::map<std::string, std::string> getParameters() = 0;
 };
 

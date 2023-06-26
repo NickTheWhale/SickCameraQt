@@ -5,6 +5,7 @@
 #include <VisionaryDataStream.h>
 #include <VisionaryControl.h>
 #include <string>
+#include <map>
 
 class VisionaryCamera : public Camera
 {
@@ -19,6 +20,7 @@ public:
 	bool startCapture() override;
 	bool stopCapture() override;
 	bool getNextFrameset(Frameset::frameset_t &fs) override;
+	const std::map<std::string, std::string> getParameters() override;
 
 	bool available(int timeout);
 
@@ -32,6 +34,8 @@ private:
 
 	std::string ipAddress;
 	short dataPort;
+
+	std::map<std::string, std::string> parameters;
 
 	std::shared_ptr<visionary::VisionaryTMiniData> pDataHandler;
 	std::shared_ptr<visionary::VisionaryDataStream> pDataStream;
