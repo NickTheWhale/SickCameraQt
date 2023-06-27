@@ -59,7 +59,7 @@ bool VisionaryCamera::open()
 		return false;
 	}
 
-	if (!pVisionaryControl->login(IAuthentication::UserLevel::AUTHORIZED_CLIENT, "PASSWORD"))
+	if (pVisionaryControl->login(IAuthentication::UserLevel::AUTHORIZED_CLIENT, "PASSWORD"))
 	{
 		return false;
 	}
@@ -91,10 +91,10 @@ bool VisionaryCamera::isOpen()
 
 bool VisionaryCamera::startCapture()
 {
-	// base case
 	if (!connected) { return false; }
 	if (capturing) { return true; }
-
+	
+	pVisionaryControl->stopAcquisition();
 	capturing = pVisionaryControl->startAcquisition();
 	return capturing;
 }
