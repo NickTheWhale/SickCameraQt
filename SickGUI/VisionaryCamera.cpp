@@ -54,12 +54,12 @@ bool VisionaryCamera::open()
 		return false;
 	}
 
-	if (!pVisionaryControl->open(VisionaryControl::COLA_2, ipAddress, openTimeout /*ms*/))
+	if (!pVisionaryControl->open(VisionaryControl::ProtocolType::COLA_2, ipAddress, openTimeout/*ms*/))
 	{
 		return false;
 	}
 
-	if (pVisionaryControl->login(IAuthentication::UserLevel::AUTHORIZED_CLIENT, "PASSWORD"))
+	if (!pVisionaryControl->login(IAuthentication::UserLevel::AUTHORIZED_CLIENT, "PASSWORD"))
 	{
 		return false;
 	}
@@ -68,6 +68,44 @@ bool VisionaryCamera::open()
 
 	return connected;
 }
+
+//bool VisionaryCamera::open()
+//{
+//	using namespace visionary;
+//
+//	auto _pDataHandler = std::make_shared<VisionaryTMiniData>();
+//	auto _pDataStream = std::make_shared<VisionaryDataStream>(_pDataHandler);
+//	auto _pVisionaryControl = std::make_shared<VisionaryControl>();
+//
+//	if (!_pDataStream->open("223.168.0.21", htons(2114)))
+//	{
+//		return false;
+//	}
+//	if (!_pVisionaryControl->open(VisionaryControl::ProtocolType::COLA_2, "223.168.0.21", 5000/*ms*/))
+//	{
+//		return false;
+//	}
+//
+//	if (!_pVisionaryControl->login(IAuthentication::UserLevel::AUTHORIZED_CLIENT, "PASSWORD"))
+//	{
+//		return false;
+//	}
+//
+//	if (!_pVisionaryControl->startAcquisition())
+//	{
+//		return false;
+//	}
+//
+//	for (auto i = 0; i < 100; ++i)
+//	{
+//		_pDataStream->getNextFrame();
+//	}
+//
+//	_pVisionaryControl->stopAcquisition();
+//	_pVisionaryControl->close();
+//	_pDataStream->close();
+//	return true;
+//}
 
 bool VisionaryCamera::close()
 {
@@ -93,8 +131,6 @@ bool VisionaryCamera::startCapture()
 {
 	if (!connected) { return false; }
 	if (capturing) { return true; }
-	
-	pVisionaryControl->stopAcquisition();
 	capturing = pVisionaryControl->startAcquisition();
 	return capturing;
 }

@@ -4,10 +4,6 @@
 #include <random>
 #include <chrono>
 #include <algorithm>
-
-#include <boost/property_tree/ptree.hpp>
-#include <boost/property_tree/xml_parser.hpp>
-
 #include <UdpSocket.h>
 
 namespace visionary
@@ -267,10 +263,6 @@ namespace visionary
 		{
 			device.Port = endpoints[0].port;
 		}
-
-
-
-		auto _ = 0;
 		return device;
 	}
 
@@ -342,62 +334,4 @@ namespace visionary
 	{
 		return buffer[pos++];
 	}
-
-	// this is not a good implementation
-	/*
-	VisionaryAutoIPScan::DeviceInfo VisionaryAutoIPScanCustom::parseRawBuffer(std::vector<uint8_t> buffer)
-	{
-		DeviceInfo device;
-		device.DeviceName = "";
-		device.IpAddress = "";
-		device.MacAddress = "";
-		device.Port = "";
-		device.SubNet = "";
-
-		uint8_t byte1;
-		uint8_t byte2;
-		uint8_t byte3;
-		uint8_t byte4;
-
-		int i = 0;
-		while (i < buffer.size())
-		{
-			if (i < buffer.size() - 8)
-			{
-				// get four bytes
-				byte1 = buffer[i++];
-				byte2 = buffer[i++];
-				byte3 = buffer[i++];
-				byte4 = buffer[i++];
-
-				// find name
-				if (byte1 == 0x01 && byte2 == 0x00 && byte3 == 0x00 && byte4 == 0x1d)
-				{
-					device.DeviceName = "";
-					while (buffer[i] != 0x00 && i < buffer.size())
-					{
-						device.DeviceName.assign(std::to_string(buffer[i++]));
-					}
-				}
-
-				// find ip address
-				if (byte1 == 0x50 && byte2 == 0x61 && byte3 == 0x00 && byte4 == 0x04)
-				{
-					device.IpAddress = "";
-					device.IpAddress.append(std::to_string(buffer[i++]));
-					device.IpAddress.append(".");
-					device.IpAddress.append(std::to_string(buffer[i++]));
-					device.IpAddress.append(".");
-					device.IpAddress.append(std::to_string(buffer[i++]));
-					device.IpAddress.append(".");
-					device.IpAddress.append(std::to_string(buffer[i++]));
-				}
-			}
-			++i;
-		}
-
-		return device;
-	}
-	*/
-
 }

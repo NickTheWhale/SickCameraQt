@@ -492,15 +492,14 @@ bool SickGUI::startCameraThread()
 			if (!createCamera())
 			{
 				showStatusBarMessage("failed to create camera");
-				qDebug() << "SickGUI::startCameraThread() failed to create camera";
 				return false;
+
 			}
 		}
 		showStatusBarMessage("opening camera");
 		if (!camera->open())
 		{
 			showStatusBarMessage("failed to open camera");
-			qDebug() << "SickGUI::startCameraThread() failed to open camera";
 			delete camera;
 			camera = nullptr;
 			return false;
@@ -513,7 +512,6 @@ bool SickGUI::startCameraThread()
 			if (!captureThread)
 			{
 				showStatusBarMessage("failed to create underlying camera thread handler");
-				qDebug() << "SickGUI::startCameraThread() failed to create underlying camera thread handler";
 				return false;
 			}
 		}
@@ -529,7 +527,6 @@ bool SickGUI::startCameraThread()
 		else
 		{
 			showStatusBarMessage("camera thread failed");
-			qDebug() << "SickGUI::startCameraThread() camera thread failed";
 		}
 
 		return ret;
@@ -537,7 +534,6 @@ bool SickGUI::startCameraThread()
 	catch (std::exception e)
 	{
 		showStatusBarMessage("failed to start camera thread");
-		qDebug() << "Exception SickGUI::startCameraThread(): " << e.what();
 		return false;
 	}
 }

@@ -28,7 +28,7 @@ public:
 	void setDataPort(short dataPort);
 
 private:
-	const unsigned int openTimeout = 100;
+	const unsigned int openTimeout = 5000;
 	bool connected = false;
 	bool capturing = false;
 
@@ -41,6 +41,6 @@ private:
 	std::shared_ptr<visionary::VisionaryDataStream> pDataStream;
 	std::shared_ptr<visionary::VisionaryControl> pVisionaryControl;
 
-	Frameset::frameset_t lastFrameset;
+	uint32_t lastFrameNumber;
 };
 
