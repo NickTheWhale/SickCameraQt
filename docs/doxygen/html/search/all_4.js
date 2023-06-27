@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['getnextframeset_0',['getNextFrameset',['../class_camera.html#afb93b43b0cca34497d614de8068e6ddf',1,'Camera::getNextFrameset()'],['../class_visionary_camera.html#a8bfda3741ab9a0525b1adc837a47391a',1,'VisionaryCamera::getNextFrameset()']]],
-  ['getparameters_1',['getParameters',['../class_camera.html#ac0d47627924a42ad2d42354144cd6670',1,'Camera::getParameters()'],['../class_visionary_camera.html#a248b76b210f97ea28890a7bfb1248bde',1,'VisionaryCamera::getParameters()']]]
+  ['f2rc_0',['f2rc',['../structvisionary_1_1_camera_parameters.html#a82c778caaf29fc4a560a50126f01b540',1,'visionary::CameraParameters']]],
+  ['framegrabber_1',['FrameGrabber',['../classvisionary_1_1_frame_grabber.html',1,'visionary']]],
+  ['framegrabberbase_2',['FrameGrabberBase',['../classvisionary_1_1_frame_grabber_base.html',1,'visionary']]],
+  ['frameset_5ft_3',['frameset_t',['../struct_frameset_1_1frameset__t.html',1,'Frameset']]],
+  ['fx_4',['fx',['../structvisionary_1_1_camera_parameters.html#adc28f3af0f90c44b3786cf812b0168a2',1,'visionary::CameraParameters']]]
 ];

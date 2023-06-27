@@ -1,0 +1,69 @@
+\doxysection{visionary\+::Authentication\+Legacy Class Reference}
+\hypertarget{classvisionary_1_1_authentication_legacy}{}\label{classvisionary_1_1_authentication_legacy}\index{visionary::AuthenticationLegacy@{visionary::AuthenticationLegacy}}
+Inheritance diagram for visionary\+::Authentication\+Legacy\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classvisionary_1_1_authentication_legacy}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvisionary_1_1_authentication_legacy_aa906f25ea8cc2e12b83c0e0a6f47548b}\label{classvisionary_1_1_authentication_legacy_aa906f25ea8cc2e12b83c0e0a6f47548b} 
+{\bfseries Authentication\+Legacy} (\mbox{\hyperlink{classvisionary_1_1_visionary_control}{Visionary\+Control}} \&vctrl)
+\item 
+bool \mbox{\hyperlink{classvisionary_1_1_authentication_legacy_aa89ae71a26e034a65faf8a8cd2ff5c77}{login}} (\mbox{\hyperlink{classvisionary_1_1_i_authentication_a9d9871f50bf25a43e7faa4afb9e92f08}{User\+Level}} user\+Level, const std\+::string \&password) override
+\item 
+bool \mbox{\hyperlink{classvisionary_1_1_authentication_legacy_a858834c21960da60f361b9bba4a65cb1}{logout}} () override
+\end{DoxyCompactItemize}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvisionary_1_1_i_authentication_a7d9fda80c5bb3b7eedf1c4d9cb603ec9}\label{classvisionary_1_1_i_authentication_a7d9fda80c5bb3b7eedf1c4d9cb603ec9} 
+virtual bool {\bfseries login} (\mbox{\hyperlink{classvisionary_1_1_i_authentication_a9d9871f50bf25a43e7faa4afb9e92f08}{User\+Level}} user\+Level, const std\+::string \&password)=0
+\item 
+\Hypertarget{classvisionary_1_1_i_authentication_a5add7577032fe2ee4e6070df44f82cb3}\label{classvisionary_1_1_i_authentication_a5add7577032fe2ee4e6070df44f82cb3} 
+virtual bool {\bfseries logout} ()=0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{classvisionary_1_1_i_authentication}{visionary\+::\+IAuthentication}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvisionary_1_1_i_authentication_a9d9871f50bf25a43e7faa4afb9e92f08}\label{classvisionary_1_1_i_authentication_a9d9871f50bf25a43e7faa4afb9e92f08} 
+enum class \mbox{\hyperlink{classvisionary_1_1_i_authentication_a9d9871f50bf25a43e7faa4afb9e92f08}{User\+Level}} \+: int8\+\_\+t \{ \newline
+{\bfseries RUN} = 0
+, {\bfseries OPERATOR} = 1
+, {\bfseries MAINTENANCE} = 2
+, {\bfseries AUTHORIZED\+\_\+\+CLIENT} = 3
+, \newline
+{\bfseries SERVICE} = 4
+ \}
+\begin{DoxyCompactList}\small\item\em Available Co\+La user levels. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classvisionary_1_1_authentication_legacy_aa89ae71a26e034a65faf8a8cd2ff5c77}\label{classvisionary_1_1_authentication_legacy_aa89ae71a26e034a65faf8a8cd2ff5c77} 
+\index{visionary::AuthenticationLegacy@{visionary::AuthenticationLegacy}!login@{login}}
+\index{login@{login}!visionary::AuthenticationLegacy@{visionary::AuthenticationLegacy}}
+\doxysubsubsection{\texorpdfstring{login()}{login()}}
+{\footnotesize\ttfamily bool visionary\+::\+Authentication\+Legacy\+::login (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classvisionary_1_1_i_authentication_a9d9871f50bf25a43e7faa4afb9e92f08}{User\+Level}}}]{user\+Level,  }\item[{const std\+::string \&}]{password }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classvisionary_1_1_i_authentication}{visionary\+::\+IAuthentication}}.
+
+\Hypertarget{classvisionary_1_1_authentication_legacy_a858834c21960da60f361b9bba4a65cb1}\label{classvisionary_1_1_authentication_legacy_a858834c21960da60f361b9bba4a65cb1} 
+\index{visionary::AuthenticationLegacy@{visionary::AuthenticationLegacy}!logout@{logout}}
+\index{logout@{logout}!visionary::AuthenticationLegacy@{visionary::AuthenticationLegacy}}
+\doxysubsubsection{\texorpdfstring{logout()}{logout()}}
+{\footnotesize\ttfamily bool visionary\+::\+Authentication\+Legacy\+::logout (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classvisionary_1_1_i_authentication}{visionary\+::\+IAuthentication}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sickapi/src/Authentication\+Legacy.\+h\item 
+sickapi/src/Authentication\+Legacy.\+cpp\end{DoxyCompactItemize}

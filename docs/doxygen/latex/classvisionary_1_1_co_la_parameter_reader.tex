@@ -1,0 +1,59 @@
+\doxysection{visionary\+::Co\+La\+Parameter\+Reader Class Reference}
+\hypertarget{classvisionary_1_1_co_la_parameter_reader}{}\label{classvisionary_1_1_co_la_parameter_reader}\index{visionary::CoLaParameterReader@{visionary::CoLaParameterReader}}
+
+
+Class for reading data from a \doxylink{classvisionary_1_1_co_la_command}{Co\+La\+Command}.  
+
+
+
+
+{\ttfamily \#include $<$Co\+La\+Parameter\+Reader.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvisionary_1_1_co_la_parameter_reader_aaa47210fe84b7eccb4fc7659312ac9e2}\label{classvisionary_1_1_co_la_parameter_reader_aaa47210fe84b7eccb4fc7659312ac9e2} 
+{\bfseries Co\+La\+Parameter\+Reader} (\mbox{\hyperlink{classvisionary_1_1_co_la_command}{Co\+La\+Command}} command)
+\item 
+\Hypertarget{classvisionary_1_1_co_la_parameter_reader_ac06ecea8b9f990d37189f03c872fc21f}\label{classvisionary_1_1_co_la_parameter_reader_ac06ecea8b9f990d37189f03c872fc21f} 
+void {\bfseries rewind} ()
+\begin{DoxyCompactList}\small\item\em Rewind the position to the first parameter. \end{DoxyCompactList}\item 
+\Hypertarget{classvisionary_1_1_co_la_parameter_reader_ab13ad2fca215903bed443761ad6dddcf}\label{classvisionary_1_1_co_la_parameter_reader_ab13ad2fca215903bed443761ad6dddcf} 
+int8\+\_\+t {\bfseries read\+SInt} ()
+\begin{DoxyCompactList}\small\item\em Read a signed short int (8 bit, range \mbox{[}-\/128, 127\mbox{]}) and advances position by 1 byte. Throws an std\+::out\+\_\+of\+\_\+range exception if \doxylink{classvisionary_1_1_co_la_command}{Co\+La\+Command} is invalid. \end{DoxyCompactList}\item 
+\Hypertarget{classvisionary_1_1_co_la_parameter_reader_a1f9f517c1edc206af6b83a1b5acccbc3}\label{classvisionary_1_1_co_la_parameter_reader_a1f9f517c1edc206af6b83a1b5acccbc3} 
+uint8\+\_\+t {\bfseries read\+USInt} ()
+\begin{DoxyCompactList}\small\item\em Read a unsigned short int (8 bit, range \mbox{[}0, 255\mbox{]}) and advances position by 1 byte. Throws an std\+::out\+\_\+of\+\_\+range exception if \doxylink{classvisionary_1_1_co_la_command}{Co\+La\+Command} is invalid. \end{DoxyCompactList}\item 
+\Hypertarget{classvisionary_1_1_co_la_parameter_reader_a001a37985f15225426f8eba1b3620b61}\label{classvisionary_1_1_co_la_parameter_reader_a001a37985f15225426f8eba1b3620b61} 
+int16\+\_\+t {\bfseries read\+Int} ()
+\begin{DoxyCompactList}\small\item\em Read a signed int (16 bit, range \mbox{[}-\/32768, 32767\mbox{]}) and advances position by 2 bytes. Throws an std\+::out\+\_\+of\+\_\+range exception if \doxylink{classvisionary_1_1_co_la_command}{Co\+La\+Command} is invalid. \end{DoxyCompactList}\item 
+\Hypertarget{classvisionary_1_1_co_la_parameter_reader_ac156218f669cad0724a7817002af6c36}\label{classvisionary_1_1_co_la_parameter_reader_ac156218f669cad0724a7817002af6c36} 
+uint16\+\_\+t {\bfseries read\+UInt} ()
+\begin{DoxyCompactList}\small\item\em Read a unsigned int (16 bit, range \mbox{[}0, 65535\mbox{]}) and advances position by 2 bytes. Throws an std\+::out\+\_\+of\+\_\+range exception if \doxylink{classvisionary_1_1_co_la_command}{Co\+La\+Command} is invalid. \end{DoxyCompactList}\item 
+\Hypertarget{classvisionary_1_1_co_la_parameter_reader_ac246b75598d30bdb48c6c2628df45f58}\label{classvisionary_1_1_co_la_parameter_reader_ac246b75598d30bdb48c6c2628df45f58} 
+int32\+\_\+t {\bfseries read\+DInt} ()
+\begin{DoxyCompactList}\small\item\em Read a signed double int (32 bit) and advances position by 4 bytes. Throws an std\+::out\+\_\+of\+\_\+range exception if \doxylink{classvisionary_1_1_co_la_command}{Co\+La\+Command} is invalid. \end{DoxyCompactList}\item 
+\Hypertarget{classvisionary_1_1_co_la_parameter_reader_a9707c73b913b788adfe9c8cca342ba5c}\label{classvisionary_1_1_co_la_parameter_reader_a9707c73b913b788adfe9c8cca342ba5c} 
+uint32\+\_\+t {\bfseries read\+UDInt} ()
+\begin{DoxyCompactList}\small\item\em Read a unsigned int (32 bit) and advances position by 4 bytes. Throws an std\+::out\+\_\+of\+\_\+range exception if \doxylink{classvisionary_1_1_co_la_command}{Co\+La\+Command} is invalid. \end{DoxyCompactList}\item 
+\Hypertarget{classvisionary_1_1_co_la_parameter_reader_a746f81a0a92c65c2edf553cd4b14d23b}\label{classvisionary_1_1_co_la_parameter_reader_a746f81a0a92c65c2edf553cd4b14d23b} 
+float {\bfseries read\+Real} ()
+\begin{DoxyCompactList}\small\item\em Read a IEEE-\/754 single precision (32 bit) and advances position by 4 bytes. Throws an std\+::out\+\_\+of\+\_\+range exception if \doxylink{classvisionary_1_1_co_la_command}{Co\+La\+Command} is invalid. \end{DoxyCompactList}\item 
+\Hypertarget{classvisionary_1_1_co_la_parameter_reader_a05425d40eba0f33c64d75bf00fa84e46}\label{classvisionary_1_1_co_la_parameter_reader_a05425d40eba0f33c64d75bf00fa84e46} 
+double {\bfseries read\+LReal} ()
+\begin{DoxyCompactList}\small\item\em Read a IEEE-\/754 double precision (64 bit) and advances position by 8 bytes. Throws an std\+::out\+\_\+of\+\_\+range exception if \doxylink{classvisionary_1_1_co_la_command}{Co\+La\+Command} is invalid. \end{DoxyCompactList}\item 
+\Hypertarget{classvisionary_1_1_co_la_parameter_reader_a59273d4efbea73480da55448696b61b3}\label{classvisionary_1_1_co_la_parameter_reader_a59273d4efbea73480da55448696b61b3} 
+bool {\bfseries read\+Bool} ()
+\begin{DoxyCompactList}\small\item\em Read a boolean and advance the position by 1 byte. Throws an std\+::out\+\_\+of\+\_\+range exception if \doxylink{classvisionary_1_1_co_la_command}{Co\+La\+Command} is invalid. \end{DoxyCompactList}\item 
+\Hypertarget{classvisionary_1_1_co_la_parameter_reader_afbee227a1cb89997c2865e3feaac4b2b}\label{classvisionary_1_1_co_la_parameter_reader_afbee227a1cb89997c2865e3feaac4b2b} 
+std\+::string {\bfseries read\+Flex\+String} ()
+\begin{DoxyCompactList}\small\item\em Read a flex string, and advance position according to string size. Throws an std\+::out\+\_\+of\+\_\+range exception if \doxylink{classvisionary_1_1_co_la_command}{Co\+La\+Command} is invalid. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for reading data from a \doxylink{classvisionary_1_1_co_la_command}{Co\+La\+Command}. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sickapi/src/Co\+La\+Parameter\+Reader.\+h\item 
+sickapi/src/Co\+La\+Parameter\+Reader.\+cpp\end{DoxyCompactItemize}

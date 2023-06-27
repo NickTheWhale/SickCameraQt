@@ -1,0 +1,62 @@
+\doxysection{Tcp\+Socket.\+h}
+\hypertarget{_tcp_socket_8h_source}{}\label{_tcp_socket_8h_source}\index{sickapi/src/TcpSocket.h@{sickapi/src/TcpSocket.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ SPDX-\/License-\/Identifier:\ Unlicense}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ }}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Created:\ November\ 2019}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ }}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ SICK\ AG,\ Waldkirch}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ email:\ TechSupport0905@sick.de}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}ITransport.h"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ Include\ socket}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#ifdef\ \_WIN32\ \ \ \ }\textcolor{comment}{//\ Windows\ specific}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <winsock2.h>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <ws2tcpip.h>}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ to\ use\ with\ other\ compiler\ than\ Visual\ C++\ need\ to\ set\ Linker\ flag\ -\/lws2\_32}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#ifdef\ \_MSC\_VER}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#pragma\ comment(lib,"{}ws2\_32.lib"{}})}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#else\ \ \ \ \ \ \ \ }\textcolor{comment}{//\ Linux\ specific}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <sys/types.h>}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <sys/socket.h>}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ <netinet/in.h>}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ <arpa/inet.h>}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ <unistd.h>}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{int}\ SOCKET;}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ INVALID\_SOCKET\ \ (SOCKET(\string~0))}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ SOCKET\_ERROR\ \ \ \ (-\/1)}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacevisionary}{visionary}}\ }
+\DoxyCodeLine{00036\ \{}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classvisionary_1_1_tcp_socket}{TcpSocket}}\ :}
+\DoxyCodeLine{00039\ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{classvisionary_1_1_i_transport}{ITransport}}}
+\DoxyCodeLine{00040\ \{}
+\DoxyCodeLine{00041\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00042\ \ \ \mbox{\hyperlink{classvisionary_1_1_tcp_socket}{TcpSocket}}();}
+\DoxyCodeLine{00043\ \ \ \textcolor{keywordtype}{int}\ connect(\textcolor{keyword}{const}\ std::string\&\ hostname,\ uint16\_t\ port,\ \textcolor{keywordtype}{long}\ timeoutMs\ =\ 5000);}
+\DoxyCodeLine{00044\ \ \ \textcolor{keywordtype}{int}\ shutdown()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00045\ \ \ \textcolor{keywordtype}{int}\ getLastError()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classvisionary_1_1_i_transport_a8aa95dafb0bd9662eb5b686b28523e60}{ITransport::send}};}
+\DoxyCodeLine{00048\ \ \ send\_return\_t\ send(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ pData,\ \textcolor{keywordtype}{size\_t}\ size)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00049\ \ \ recv\_return\_t\ \mbox{\hyperlink{classvisionary_1_1_tcp_socket_af522e4c8bd834badbe86c55c5c61976e}{recv}}(std::vector<std::uint8\_t>\&\ buffer,\ std::size\_t\ maxBytesToReceive)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00050\ \ \ recv\_return\_t\ \mbox{\hyperlink{classvisionary_1_1_tcp_socket_a9a4e4b3eba8de7e3809bec59a64910e4}{read}}(std::vector<std::uint8\_t>\&\ buffer,\ std::size\_t\ nBytesToReceive)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00053\ \ \ SOCKET\ m\_socket;}
+\DoxyCodeLine{00054\ \};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \}}
+
+\end{DoxyCode}

@@ -1,5 +1,14 @@
 \doxysection{Close\+Dock\+Widget Class Reference}
 \hypertarget{class_close_dock_widget}{}\label{class_close_dock_widget}\index{CloseDockWidget@{CloseDockWidget}}
+
+
+The \doxylink{class_close_dock_widget}{Close\+Dock\+Widget} class represents a dockable widget with a public \doxylink{class_close_dock_widget_af93b643bee6708be8e9a053dfb958163}{closed()} signal.  
+
+
+
+
+{\ttfamily \#include $<$Close\+Dock\+Widget.\+h$>$}
+
 Inheritance diagram for Close\+Dock\+Widget\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -11,22 +20,68 @@ Inheritance diagram for Close\+Dock\+Widget\+:\begin{figure}[H]
 \item 
 \Hypertarget{class_close_dock_widget_af93b643bee6708be8e9a053dfb958163}\label{class_close_dock_widget_af93b643bee6708be8e9a053dfb958163} 
 void {\bfseries closed} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Signal emitted when the close button is clicked or when the widget is closed. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_close_dock_widget_ae6697cdb7b3cb1f384079b2c09ac9298}\label{class_close_dock_widget_ae6697cdb7b3cb1f384079b2c09ac9298} 
-{\bfseries Close\+Dock\+Widget} (const QString \&title, QWidget \texorpdfstring{$\ast$}{*}parent=nullptr)
-\end{DoxyCompactItemize}
+\mbox{\hyperlink{class_close_dock_widget_ae6697cdb7b3cb1f384079b2c09ac9298}{Close\+Dock\+Widget}} (const QString \&title, QWidget \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_close_dock_widget}{Close\+Dock\+Widget} with the specified title and parent widget. \end{DoxyCompactList}\item 
+\Hypertarget{class_close_dock_widget_a404a25ff545381764378df69ed97c281}\label{class_close_dock_widget_a404a25ff545381764378df69ed97c281} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Close\+Dock\+Widget} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_close_dock_widget}{Close\+Dock\+Widget} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+void \mbox{\hyperlink{class_close_dock_widget_ad8855a028a7aaf80835e6ab255b1ff12}{close\+Event}} (QClose\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Overridden method that is called when the widget is closed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{class_close_dock_widget}{Close\+Dock\+Widget} class represents a dockable widget with a public \doxylink{class_close_dock_widget_af93b643bee6708be8e9a053dfb958163}{closed()} signal. 
+
+The \doxylink{class_close_dock_widget}{Close\+Dock\+Widget} class is a subclass of QDock\+Widget that adds a public close() signal useful for state synchronization. It emits a signal when the close button is clicked or when the widget is closed through other means. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_close_dock_widget_ae6697cdb7b3cb1f384079b2c09ac9298}\label{class_close_dock_widget_ae6697cdb7b3cb1f384079b2c09ac9298} 
+\index{CloseDockWidget@{CloseDockWidget}!CloseDockWidget@{CloseDockWidget}}
+\index{CloseDockWidget@{CloseDockWidget}!CloseDockWidget@{CloseDockWidget}}
+\doxysubsubsection{\texorpdfstring{CloseDockWidget()}{CloseDockWidget()}}
+{\footnotesize\ttfamily Close\+Dock\+Widget\+::\+Close\+Dock\+Widget (\begin{DoxyParamCaption}\item[{const QString \&}]{title,  }\item[{QWidget \texorpdfstring{$\ast$}{*}}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructs a \doxylink{class_close_dock_widget}{Close\+Dock\+Widget} with the specified title and parent widget. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em title} & The title of the dock widget. \\
+\hline
+{\em parent} & The parent widget of the dock widget (optional). \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
 \Hypertarget{class_close_dock_widget_ad8855a028a7aaf80835e6ab255b1ff12}\label{class_close_dock_widget_ad8855a028a7aaf80835e6ab255b1ff12} 
-void {\bfseries close\+Event} (QClose\+Event \texorpdfstring{$\ast$}{*}event) override
-\end{DoxyCompactItemize}
+\index{CloseDockWidget@{CloseDockWidget}!closeEvent@{closeEvent}}
+\index{closeEvent@{closeEvent}!CloseDockWidget@{CloseDockWidget}}
+\doxysubsubsection{\texorpdfstring{closeEvent()}{closeEvent()}}
+{\footnotesize\ttfamily void Close\+Dock\+Widget\+::close\+Event (\begin{DoxyParamCaption}\item[{QClose\+Event \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Overridden method that is called when the widget is closed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & The close event object. \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Close\+Dock\+Widget.\+h\item 
-Close\+Dock\+Widget.\+cpp\end{DoxyCompactItemize}
+widgets/Close\+Dock\+Widget.\+h\item 
+widgets/Close\+Dock\+Widget.\+cpp\item 
+x64/\+Debug/moc/moc\+\_\+\+Close\+Dock\+Widget.\+cpp\item 
+x64/\+Release/moc/moc\+\_\+\+Close\+Dock\+Widget.\+cpp\end{DoxyCompactItemize}

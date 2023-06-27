@@ -1,0 +1,170 @@
+\doxysection{visionary\+::Udp\+Socket Class Reference}
+\hypertarget{classvisionary_1_1_udp_socket}{}\label{classvisionary_1_1_udp_socket}\index{visionary::UdpSocket@{visionary::UdpSocket}}
+Inheritance diagram for visionary\+::Udp\+Socket\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classvisionary_1_1_udp_socket}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvisionary_1_1_udp_socket_aec5987424e3cac9f328aa345566402d7}\label{classvisionary_1_1_udp_socket_aec5987424e3cac9f328aa345566402d7} 
+int {\bfseries connect} (const std\+::string \&hostname, uint16\+\_\+t port)
+\item 
+int \mbox{\hyperlink{classvisionary_1_1_udp_socket_a53247b6bd96f5110991b15af6f10a19b}{shutdown}} () override
+\item 
+int \mbox{\hyperlink{classvisionary_1_1_udp_socket_a0e7c2d8aa41a9500e938abb2b02f942b}{get\+Last\+Error}} () override
+\item 
+send\+\_\+return\+\_\+t \mbox{\hyperlink{classvisionary_1_1_udp_socket_a372fa311a658e8931729208ea7650659}{send}} (const char \texorpdfstring{$\ast$}{*}p\+Data, size\+\_\+t size) override
+\item 
+recv\+\_\+return\+\_\+t \mbox{\hyperlink{classvisionary_1_1_udp_socket_a653283a07b9f12fcaa2699599b543d79}{recv}} (std\+::vector$<$ std\+::uint8\+\_\+t $>$ \&buffer, std\+::size\+\_\+t max\+Bytes\+To\+Receive) override
+\item 
+recv\+\_\+return\+\_\+t \mbox{\hyperlink{classvisionary_1_1_udp_socket_af1566df8bd08ca50553d454f107b0634}{read}} (std\+::vector$<$ std\+::uint8\+\_\+t $>$ \&buffer, std\+::size\+\_\+t n\+Bytes\+To\+Receive) override
+\item 
+{\footnotesize template$<$typename T $>$ }\\send\+\_\+return\+\_\+t \mbox{\hyperlink{classvisionary_1_1_udp_socket_a8aa95dafb0bd9662eb5b686b28523e60}{send}} (const std\+::vector$<$ T $>$ \&buffer)
+\item 
+virtual send\+\_\+return\+\_\+t \mbox{\hyperlink{classvisionary_1_1_udp_socket_a234d93e8bda3649ce068c8bb531a4d35}{send}} (const char \texorpdfstring{$\ast$}{*}p\+Data, size\+\_\+t size)=0
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classvisionary_1_1_i_transport}{visionary\+::\+ITransport}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual int {\bfseries shutdown} ()=0
+\item 
+virtual int {\bfseries get\+Last\+Error} ()=0
+\item 
+{\footnotesize template$<$typename T $>$ }\\send\+\_\+return\+\_\+t \mbox{\hyperlink{classvisionary_1_1_i_transport_a8aa95dafb0bd9662eb5b686b28523e60}{send}} (const std\+::vector$<$ T $>$ \&buffer)
+\item 
+virtual recv\+\_\+return\+\_\+t \mbox{\hyperlink{classvisionary_1_1_i_transport_a270896bd4df1f742e6e32f8866f05b5d}{recv}} (std\+::vector$<$ std\+::uint8\+\_\+t $>$ \&buffer, std\+::size\+\_\+t max\+Bytes\+To\+Receive)=0
+\item 
+virtual recv\+\_\+return\+\_\+t \mbox{\hyperlink{classvisionary_1_1_i_transport_af7d6052b61f9e837cbfdc155389a0308}{read}} (std\+::vector$<$ std\+::uint8\+\_\+t $>$ \&buffer, std\+::size\+\_\+t n\+Bytes\+To\+Receive)=0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{classvisionary_1_1_i_transport}{visionary\+::\+ITransport}}}
+\begin{DoxyCompactItemize}
+\item 
+using {\bfseries send\+\_\+return\+\_\+t} = ssize\+\_\+t
+\item 
+using {\bfseries recv\+\_\+return\+\_\+t} = ssize\+\_\+t
+\end{DoxyCompactItemize}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvisionary_1_1_i_transport_a234d93e8bda3649ce068c8bb531a4d35}\label{classvisionary_1_1_i_transport_a234d93e8bda3649ce068c8bb531a4d35} 
+virtual send\+\_\+return\+\_\+t {\bfseries send} (const char \texorpdfstring{$\ast$}{*}p\+Data, size\+\_\+t size)=0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classvisionary_1_1_udp_socket_a0e7c2d8aa41a9500e938abb2b02f942b}\label{classvisionary_1_1_udp_socket_a0e7c2d8aa41a9500e938abb2b02f942b} 
+\index{visionary::UdpSocket@{visionary::UdpSocket}!getLastError@{getLastError}}
+\index{getLastError@{getLastError}!visionary::UdpSocket@{visionary::UdpSocket}}
+\doxysubsubsection{\texorpdfstring{getLastError()}{getLastError()}}
+{\footnotesize\ttfamily int visionary\+::\+Udp\+Socket\+::get\+Last\+Error (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classvisionary_1_1_i_transport}{visionary\+::\+ITransport}}.
+
+\Hypertarget{classvisionary_1_1_udp_socket_af1566df8bd08ca50553d454f107b0634}\label{classvisionary_1_1_udp_socket_af1566df8bd08ca50553d454f107b0634} 
+\index{visionary::UdpSocket@{visionary::UdpSocket}!read@{read}}
+\index{read@{read}!visionary::UdpSocket@{visionary::UdpSocket}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily ITransport\+::recv\+\_\+return\+\_\+t visionary\+::\+Udp\+Socket\+::read (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::uint8\+\_\+t $>$ \&}]{buffer,  }\item[{std\+::size\+\_\+t}]{n\+Bytes\+To\+Receive }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Read a number of bytes
+
+Contrary to recv this method reads precisely {\itshape n\+Bytes\+To\+Receive} bytes.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em buffer} & buffer containing the bytes that shall be sent. \\
+\hline
+\mbox{\texttt{ in}}  & {\em n\+Bytes\+To\+Receive} & maximum number of bytes to receive.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of received bytes, negative values are OS error codes. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classvisionary_1_1_i_transport_af7d6052b61f9e837cbfdc155389a0308}{visionary\+::\+ITransport}}.
+
+\Hypertarget{classvisionary_1_1_udp_socket_a653283a07b9f12fcaa2699599b543d79}\label{classvisionary_1_1_udp_socket_a653283a07b9f12fcaa2699599b543d79} 
+\index{visionary::UdpSocket@{visionary::UdpSocket}!recv@{recv}}
+\index{recv@{recv}!visionary::UdpSocket@{visionary::UdpSocket}}
+\doxysubsubsection{\texorpdfstring{recv()}{recv()}}
+{\footnotesize\ttfamily ITransport\+::recv\+\_\+return\+\_\+t visionary\+::\+Udp\+Socket\+::recv (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::uint8\+\_\+t $>$ \&}]{buffer,  }\item[{std\+::size\+\_\+t}]{max\+Bytes\+To\+Receive }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Receive data on socket to device
+
+Receive at most {\itshape max\+Bytes\+To\+Receive} bytes.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em buffer} & buffer containing the bytes that shall be sent. \\
+\hline
+\mbox{\texttt{ in}}  & {\em max\+Bytes\+To\+Receive} & maximum number of bytes to receive.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of received bytes, negative values are OS error codes. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classvisionary_1_1_i_transport_a270896bd4df1f742e6e32f8866f05b5d}{visionary\+::\+ITransport}}.
+
+\Hypertarget{classvisionary_1_1_udp_socket_a372fa311a658e8931729208ea7650659}\label{classvisionary_1_1_udp_socket_a372fa311a658e8931729208ea7650659} 
+\index{visionary::UdpSocket@{visionary::UdpSocket}!send@{send}}
+\index{send@{send}!visionary::UdpSocket@{visionary::UdpSocket}}
+\doxysubsubsection{\texorpdfstring{send()}{send()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily ITransport\+::send\+\_\+return\+\_\+t visionary\+::\+Udp\+Socket\+::send (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{p\+Data,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classvisionary_1_1_i_transport}{visionary\+::\+ITransport}}.
+
+\Hypertarget{classvisionary_1_1_udp_socket_a234d93e8bda3649ce068c8bb531a4d35}\label{classvisionary_1_1_udp_socket_a234d93e8bda3649ce068c8bb531a4d35} 
+\index{visionary::UdpSocket@{visionary::UdpSocket}!send@{send}}
+\index{send@{send}!visionary::UdpSocket@{visionary::UdpSocket}}
+\doxysubsubsection{\texorpdfstring{send()}{send()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily virtual send\+\_\+return\+\_\+t visionary\+::\+ITransport\+::send (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{p\+Data,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classvisionary_1_1_i_transport}{visionary\+::\+ITransport}}.
+
+\Hypertarget{classvisionary_1_1_udp_socket_a8aa95dafb0bd9662eb5b686b28523e60}\label{classvisionary_1_1_udp_socket_a8aa95dafb0bd9662eb5b686b28523e60} 
+\index{visionary::UdpSocket@{visionary::UdpSocket}!send@{send}}
+\index{send@{send}!visionary::UdpSocket@{visionary::UdpSocket}}
+\doxysubsubsection{\texorpdfstring{send()}{send()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+send\+\_\+return\+\_\+t visionary\+::\+ITransport\+::send (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ T $>$ \&}]{buffer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Send data on socket to device
+
+{\itshape All} bytes are sent on the socket. It is regarded as error if this is not possible.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em buffer} & buffer containing the bytes that shall be sent.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OS error code. 
+\end{DoxyReturn}
+\Hypertarget{classvisionary_1_1_udp_socket_a53247b6bd96f5110991b15af6f10a19b}\label{classvisionary_1_1_udp_socket_a53247b6bd96f5110991b15af6f10a19b} 
+\index{visionary::UdpSocket@{visionary::UdpSocket}!shutdown@{shutdown}}
+\index{shutdown@{shutdown}!visionary::UdpSocket@{visionary::UdpSocket}}
+\doxysubsubsection{\texorpdfstring{shutdown()}{shutdown()}}
+{\footnotesize\ttfamily int visionary\+::\+Udp\+Socket\+::shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classvisionary_1_1_i_transport}{visionary\+::\+ITransport}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sickapi/src/Udp\+Socket.\+h\item 
+sickapi/src/Udp\+Socket.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,187 @@
+\doxysection{Histogram\+Widget Class Reference}
+\hypertarget{class_histogram_widget}{}\label{class_histogram_widget}\index{HistogramWidget@{HistogramWidget}}
+
+
+The \doxylink{class_histogram_widget}{Histogram\+Widget} class represents a widget for displaying histograms.  
+
+
+
+
+{\ttfamily \#include $<$Histogram\+Widget.\+h$>$}
+
+Inheritance diagram for Histogram\+Widget\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_histogram_widget}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_histogram_widget_a7900598d380f8fb47f90b76f29f9273c}{Histogram\+Widget}} (size\+\_\+t min\+Val, size\+\_\+t max\+Val, size\+\_\+t bins, size\+\_\+t max\+Count, QWidget \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_histogram_widget}{Histogram\+Widget} object with the specified parameters. \end{DoxyCompactList}\item 
+\Hypertarget{class_histogram_widget_a76c7278ed776d108368d2a2dbaeab3d5}\label{class_histogram_widget_a76c7278ed776d108368d2a2dbaeab3d5} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Histogram\+Widget} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_histogram_widget}{Histogram\+Widget} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_histogram_widget_a599bda635a4751bd6c83349eb407ab77}{update\+Histogram}} (const std\+::vector$<$ uint16\+\_\+t $>$ \&data)
+\begin{DoxyCompactList}\small\item\em Updates the histogram with the provided data. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{class_histogram_widget_a85c75518f7fdfcd017763f62058b3097}{set\+XAxis}} (T start, T step, T stop, std\+::string label=\"{}\"{}, bool reverse=false)
+\begin{DoxyCompactList}\small\item\em Sets the x-\/axis for the histogram. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{class_histogram_widget_a2f4bda97d068b0bfd40b0cc0b660fd98}{set\+YAxis}} (T start, T step, T stop, std\+::string label=\"{}\"{}, bool reverse=false)
+\begin{DoxyCompactList}\small\item\em Sets the y-\/axis for the histogram. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_histogram_widget_a5a51a999ee9b5d07d809ab8edbb394b4}{paint\+Event}} (QPaint\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Overridden method that is called when a paint event occurs. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_histogram_widget_aac7b32878f96181aecd84d4c04ba3e68}{context\+Menu\+Event}} (QContext\+Menu\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Overridden method that is called when a context menu event occurs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{class_histogram_widget}{Histogram\+Widget} class represents a widget for displaying histograms. 
+
+The \doxylink{class_histogram_widget}{Histogram\+Widget} class provides a custom widget for displaying histograms. It supports updating the histogram data and customizing the x-\/axis and y-\/axis. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_histogram_widget_a7900598d380f8fb47f90b76f29f9273c}\label{class_histogram_widget_a7900598d380f8fb47f90b76f29f9273c} 
+\index{HistogramWidget@{HistogramWidget}!HistogramWidget@{HistogramWidget}}
+\index{HistogramWidget@{HistogramWidget}!HistogramWidget@{HistogramWidget}}
+\doxysubsubsection{\texorpdfstring{HistogramWidget()}{HistogramWidget()}}
+{\footnotesize\ttfamily Histogram\+Widget\+::\+Histogram\+Widget (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{min\+Val,  }\item[{size\+\_\+t}]{max\+Val,  }\item[{size\+\_\+t}]{bins,  }\item[{size\+\_\+t}]{max\+Count,  }\item[{QWidget \texorpdfstring{$\ast$}{*}}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructs a \doxylink{class_histogram_widget}{Histogram\+Widget} object with the specified parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em min\+Val} & The minimum value for the histogram. \\
+\hline
+{\em max\+Val} & The maximum value for the histogram. \\
+\hline
+{\em bins} & The number of bins for the histogram. \\
+\hline
+{\em max\+Count} & The maximum count for the histogram. \\
+\hline
+{\em parent} & The parent widget of the histogram widget (optional). \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_histogram_widget_aac7b32878f96181aecd84d4c04ba3e68}\label{class_histogram_widget_aac7b32878f96181aecd84d4c04ba3e68} 
+\index{HistogramWidget@{HistogramWidget}!contextMenuEvent@{contextMenuEvent}}
+\index{contextMenuEvent@{contextMenuEvent}!HistogramWidget@{HistogramWidget}}
+\doxysubsubsection{\texorpdfstring{contextMenuEvent()}{contextMenuEvent()}}
+{\footnotesize\ttfamily void Histogram\+Widget\+::context\+Menu\+Event (\begin{DoxyParamCaption}\item[{QContext\+Menu\+Event \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Overridden method that is called when a context menu event occurs. 
+
+Used to allow saving the histogram as an image. 
+\begin{DoxyParams}{Parameters}
+{\em event} & The context menu event object. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_histogram_widget_a5a51a999ee9b5d07d809ab8edbb394b4}\label{class_histogram_widget_a5a51a999ee9b5d07d809ab8edbb394b4} 
+\index{HistogramWidget@{HistogramWidget}!paintEvent@{paintEvent}}
+\index{paintEvent@{paintEvent}!HistogramWidget@{HistogramWidget}}
+\doxysubsubsection{\texorpdfstring{paintEvent()}{paintEvent()}}
+{\footnotesize\ttfamily void Histogram\+Widget\+::paint\+Event (\begin{DoxyParamCaption}\item[{QPaint\+Event \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Overridden method that is called when a paint event occurs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & The paint event object. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_histogram_widget_a85c75518f7fdfcd017763f62058b3097}\label{class_histogram_widget_a85c75518f7fdfcd017763f62058b3097} 
+\index{HistogramWidget@{HistogramWidget}!setXAxis@{setXAxis}}
+\index{setXAxis@{setXAxis}!HistogramWidget@{HistogramWidget}}
+\doxysubsubsection{\texorpdfstring{setXAxis()}{setXAxis()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void Histogram\+Widget\+::set\+XAxis (\begin{DoxyParamCaption}\item[{T}]{start,  }\item[{T}]{step,  }\item[{T}]{stop,  }\item[{std\+::string}]{label = {\ttfamily \"{}\"{}},  }\item[{bool}]{reverse = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the x-\/axis for the histogram. 
+
+\begin{DoxyNote}{Note}
+This method does not respect the min\+Val, max\+Val, or bins set during construction. This means its possible to create nonsensical axis labels. 
+\end{DoxyNote}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The data type for the x-\/axis. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em start} & The start value of the x-\/axis. \\
+\hline
+{\em step} & The step value for each bin on the x-\/axis. \\
+\hline
+{\em stop} & The stop value of the x-\/axis. \\
+\hline
+{\em label} & The label for the x-\/axis (optional). \\
+\hline
+{\em reverse} & Flag indicating whether to reverse the x-\/axis (optional). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_histogram_widget_a2f4bda97d068b0bfd40b0cc0b660fd98}\label{class_histogram_widget_a2f4bda97d068b0bfd40b0cc0b660fd98} 
+\index{HistogramWidget@{HistogramWidget}!setYAxis@{setYAxis}}
+\index{setYAxis@{setYAxis}!HistogramWidget@{HistogramWidget}}
+\doxysubsubsection{\texorpdfstring{setYAxis()}{setYAxis()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void Histogram\+Widget\+::set\+YAxis (\begin{DoxyParamCaption}\item[{T}]{start,  }\item[{T}]{step,  }\item[{T}]{stop,  }\item[{std\+::string}]{label = {\ttfamily \"{}\"{}},  }\item[{bool}]{reverse = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the y-\/axis for the histogram. 
+
+\begin{DoxyNote}{Note}
+This method does not respect the max\+Count or bins set during construction. This means its possible to create nonsensical axis labels. 
+\end{DoxyNote}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The data type for the y-\/axis. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em start} & The start value of the y-\/axis. \\
+\hline
+{\em step} & The step value for each bin on the y-\/axis. \\
+\hline
+{\em stop} & The stop value of the y-\/axis. \\
+\hline
+{\em label} & The label for the y-\/axis (optional). \\
+\hline
+{\em reverse} & Flag indicating whether to reverse the y-\/axis (optional). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_histogram_widget_a599bda635a4751bd6c83349eb407ab77}\label{class_histogram_widget_a599bda635a4751bd6c83349eb407ab77} 
+\index{HistogramWidget@{HistogramWidget}!updateHistogram@{updateHistogram}}
+\index{updateHistogram@{updateHistogram}!HistogramWidget@{HistogramWidget}}
+\doxysubsubsection{\texorpdfstring{updateHistogram()}{updateHistogram()}}
+{\footnotesize\ttfamily void Histogram\+Widget\+::update\+Histogram (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ uint16\+\_\+t $>$ \&}]{data }\end{DoxyParamCaption})}
+
+
+
+Updates the histogram with the provided data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The vector of uint16\+\_\+t data to update the histogram. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+widgets/Histogram\+Widget.\+h\item 
+widgets/Histogram\+Widget.\+cpp\end{DoxyCompactItemize}

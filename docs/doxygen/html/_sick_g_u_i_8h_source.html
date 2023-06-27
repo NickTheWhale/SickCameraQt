@@ -133,7 +133,7 @@ $(function() {
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> PLC_RACK = 0;</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> PLC_SLOT = 2;</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    Ui::SickGUIClass ui;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <a class="code hl_class" href="class_ui_1_1_sick_g_u_i_class.html">Ui::SickGUIClass</a> ui;</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keyword">const</span> <span class="keywordtype">size_t</span> framesetBufferSize = 2;</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    boost::circular_buffer&lt;Frameset::frameset_t&gt; framesetBuffer;</div>
@@ -148,9 +148,9 @@ $(function() {
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    QFutureWatcher&lt;bool&gt;* threadWatcher;</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="comment">// widgets</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    AspectRatioPixmapLabel* cameraView = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    HistogramWidget* depthHistogram = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    HistogramWidget* intensityHistogram = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <a class="code hl_class" href="class_aspect_ratio_pixmap_label.html">AspectRatioPixmapLabel</a>* cameraView = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <a class="code hl_class" href="class_histogram_widget.html">HistogramWidget</a>* depthHistogram = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <a class="code hl_class" href="class_histogram_widget.html">HistogramWidget</a>* intensityHistogram = <span class="keyword">nullptr</span>;</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    QTimer* displayTimer = <span class="keyword">nullptr</span>;</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordtype">int</span> displayTimerInterval = 50; <span class="comment">/* ms */</span></div>
@@ -166,10 +166,13 @@ $(function() {
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="keywordtype">bool</span> overLayStats = <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>};</div>
+<div class="ttc" id="aclass_aspect_ratio_pixmap_label_html"><div class="ttname"><a href="class_aspect_ratio_pixmap_label.html">AspectRatioPixmapLabel</a></div><div class="ttdoc">The AspectRatioPixmapLabel class is a QLabel subclass that displays a resizable pixmap while maintain...</div><div class="ttdef"><b>Definition</b> AspectRatioPixmapLabel.h:15</div></div>
 <div class="ttc" id="aclass_camera_html"><div class="ttname"><a href="class_camera.html">Camera</a></div><div class="ttdoc">The Camera class represents a camera device.</div><div class="ttdef"><b>Definition</b> Camera.h:17</div></div>
-<div class="ttc" id="aclass_capture_thread_html"><div class="ttname"><a href="class_capture_thread.html">CaptureThread</a></div><div class="ttdoc">The CaptureThread class handles the capture of frames from a camera.</div><div class="ttdef"><b>Definition</b> CaptureThread.h:15</div></div>
+<div class="ttc" id="aclass_capture_thread_html"><div class="ttname"><a href="class_capture_thread.html">CaptureThread</a></div><div class="ttdoc">The CaptureThread class handles the capture of frames from a camera.</div><div class="ttdef"><b>Definition</b> CaptureThread.h:17</div></div>
+<div class="ttc" id="aclass_histogram_widget_html"><div class="ttname"><a href="class_histogram_widget.html">HistogramWidget</a></div><div class="ttdoc">The HistogramWidget class represents a widget for displaying histograms.</div><div class="ttdef"><b>Definition</b> HistogramWidget.h:15</div></div>
 <div class="ttc" id="aclass_plc_thread_html"><div class="ttname"><a href="class_plc_thread.html">PlcThread</a></div><div class="ttdef"><b>Definition</b> PlcThread.h:9</div></div>
 <div class="ttc" id="aclass_sick_g_u_i_html"><div class="ttname"><a href="class_sick_g_u_i.html">SickGUI</a></div><div class="ttdef"><b>Definition</b> SickGUI.h:26</div></div>
+<div class="ttc" id="aclass_ui_1_1_sick_g_u_i_class_html"><div class="ttname"><a href="class_ui_1_1_sick_g_u_i_class.html">Ui::SickGUIClass</a></div><div class="ttdef"><b>Definition</b> ui_SickGUI.h:92</div></div>
 <div class="ttc" id="astruct_frameset_1_1frameset__t_html"><div class="ttname"><a href="struct_frameset_1_1frameset__t.html">Frameset::frameset_t</a></div><div class="ttdef"><b>Definition</b> VisionaryFrameset.h:11</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

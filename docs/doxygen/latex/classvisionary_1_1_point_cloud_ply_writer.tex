@@ -1,0 +1,147 @@
+\doxysection{visionary\+::Point\+Cloud\+Ply\+Writer Class Reference}
+\hypertarget{classvisionary_1_1_point_cloud_ply_writer}{}\label{classvisionary_1_1_point_cloud_ply_writer}\index{visionary::PointCloudPlyWriter@{visionary::PointCloudPlyWriter}}
+
+
+Class for writing point clouds to PLY files.  
+
+
+
+
+{\ttfamily \#include $<$Point\+Cloud\+Ply\+Writer.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvisionary_1_1_point_cloud_ply_writer_ad32f47aab2663bd6e09518d76178bed1}\label{classvisionary_1_1_point_cloud_ply_writer_ad32f47aab2663bd6e09518d76178bed1} 
+{\bfseries Point\+Cloud\+Ply\+Writer} (const \mbox{\hyperlink{classvisionary_1_1_point_cloud_ply_writer}{Point\+Cloud\+Ply\+Writer}} \&)=delete
+\item 
+\Hypertarget{classvisionary_1_1_point_cloud_ply_writer_a3aacb2f7087a01771427365106df4037}\label{classvisionary_1_1_point_cloud_ply_writer_a3aacb2f7087a01771427365106df4037} 
+const \mbox{\hyperlink{classvisionary_1_1_point_cloud_ply_writer}{Point\+Cloud\+Ply\+Writer}} \& {\bfseries operator=} (const \mbox{\hyperlink{classvisionary_1_1_point_cloud_ply_writer}{Point\+Cloud\+Ply\+Writer}} \&)=delete
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{classvisionary_1_1_point_cloud_ply_writer_a9cf796ec1b2bb5e01bb7cc47ee15c626}{Write\+Format\+PLY}} (const char \texorpdfstring{$\ast$}{*}filename, const std\+::vector$<$ \mbox{\hyperlink{structvisionary_1_1_point_x_y_z}{Point\+XYZ}} $>$ \&points, bool use\+Binary, \mbox{\hyperlink{namespacevisionary_a9361aa279d6b7abd9b7e9107cb1711d1}{Invalid\+Point\+Presentation}} presentation=\mbox{\hyperlink{namespacevisionary_a9361aa279d6b7abd9b7e9107cb1711d1ab105957661bfa9b3451156a56a1e08c2}{INVALID\+\_\+\+AS\+\_\+\+NAN}})
+\begin{DoxyCompactList}\small\item\em Save a point cloud to a file in Polygon File Format (PLY), see\+: \href{https://en.wikipedia.org/wiki/PLY_\%28file_format\%29}{\texttt{ https\+://en.\+wikipedia.\+org/wiki/\+PLY\+\_\+\%28file\+\_\+format\%29}}. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classvisionary_1_1_point_cloud_ply_writer_a1a44d1eb4bf68b5723203af8f08a1dae}{Write\+Format\+PLY}} (const char \texorpdfstring{$\ast$}{*}filename, const std\+::vector$<$ \mbox{\hyperlink{structvisionary_1_1_point_x_y_z}{Point\+XYZ}} $>$ \&points, const std\+::vector$<$ uint32\+\_\+t $>$ \&rgba\+Map, bool use\+Binary, \mbox{\hyperlink{namespacevisionary_a9361aa279d6b7abd9b7e9107cb1711d1}{Invalid\+Point\+Presentation}} presentation=\mbox{\hyperlink{namespacevisionary_a9361aa279d6b7abd9b7e9107cb1711d1ab105957661bfa9b3451156a56a1e08c2}{INVALID\+\_\+\+AS\+\_\+\+NAN}})
+\begin{DoxyCompactList}\small\item\em Save a point cloud to a file in Polygon File Format (PLY) which has colors for each point, see\+: \href{https://en.wikipedia.org/wiki/PLY_\%28file_format\%29}{\texttt{ https\+://en.\+wikipedia.\+org/wiki/\+PLY\+\_\+\%28file\+\_\+format\%29}}. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classvisionary_1_1_point_cloud_ply_writer_a8a264082082972ee36347d7aa001f03d}{Write\+Format\+PLY}} (const char \texorpdfstring{$\ast$}{*}filename, const std\+::vector$<$ \mbox{\hyperlink{structvisionary_1_1_point_x_y_z}{Point\+XYZ}} $>$ \&points, const std\+::vector$<$ uint16\+\_\+t $>$ \&intensity\+Map, bool use\+Binary, \mbox{\hyperlink{namespacevisionary_a9361aa279d6b7abd9b7e9107cb1711d1}{Invalid\+Point\+Presentation}} presentation=\mbox{\hyperlink{namespacevisionary_a9361aa279d6b7abd9b7e9107cb1711d1ab105957661bfa9b3451156a56a1e08c2}{INVALID\+\_\+\+AS\+\_\+\+NAN}})
+\begin{DoxyCompactList}\small\item\em Save a point cloud to a file in Polygon File Format (PLY) which has intensities for each point, see\+: \href{https://en.wikipedia.org/wiki/PLY_\%28file_format\%29}{\texttt{ https\+://en.\+wikipedia.\+org/wiki/\+PLY\+\_\+\%28file\+\_\+format\%29}}. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classvisionary_1_1_point_cloud_ply_writer_a95ff10ff5447df0958d7ccc1df9551b4}{Write\+Format\+PLY}} (const char \texorpdfstring{$\ast$}{*}filename, const std\+::vector$<$ \mbox{\hyperlink{structvisionary_1_1_point_x_y_z}{Point\+XYZ}} $>$ \&points, const std\+::vector$<$ uint32\+\_\+t $>$ \&rgba\+Map, const std\+::vector$<$ uint16\+\_\+t $>$ \&intensity\+Map, bool use\+Binary, \mbox{\hyperlink{namespacevisionary_a9361aa279d6b7abd9b7e9107cb1711d1}{Invalid\+Point\+Presentation}} presentation=\mbox{\hyperlink{namespacevisionary_a9361aa279d6b7abd9b7e9107cb1711d1ab105957661bfa9b3451156a56a1e08c2}{INVALID\+\_\+\+AS\+\_\+\+NAN}})
+\begin{DoxyCompactList}\small\item\em Save a point cloud to a file in Polygon File Format (PLY) which has intensities and colors for each point, see\+: \href{https://en.wikipedia.org/wiki/PLY_\%28file_format\%29}{\texttt{ https\+://en.\+wikipedia.\+org/wiki/\+PLY\+\_\+\%28file\+\_\+format\%29}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for writing point clouds to PLY files. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classvisionary_1_1_point_cloud_ply_writer_a9cf796ec1b2bb5e01bb7cc47ee15c626}\label{classvisionary_1_1_point_cloud_ply_writer_a9cf796ec1b2bb5e01bb7cc47ee15c626} 
+\index{visionary::PointCloudPlyWriter@{visionary::PointCloudPlyWriter}!WriteFormatPLY@{WriteFormatPLY}}
+\index{WriteFormatPLY@{WriteFormatPLY}!visionary::PointCloudPlyWriter@{visionary::PointCloudPlyWriter}}
+\doxysubsubsection{\texorpdfstring{WriteFormatPLY()}{WriteFormatPLY()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily bool visionary\+::\+Point\+Cloud\+Ply\+Writer\+::\+Write\+Format\+PLY (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{filename,  }\item[{const std\+::vector$<$ \mbox{\hyperlink{structvisionary_1_1_point_x_y_z}{Point\+XYZ}} $>$ \&}]{points,  }\item[{bool}]{use\+Binary,  }\item[{\mbox{\hyperlink{namespacevisionary_a9361aa279d6b7abd9b7e9107cb1711d1}{Invalid\+Point\+Presentation}}}]{presentation = {\ttfamily \mbox{\hyperlink{namespacevisionary_a9361aa279d6b7abd9b7e9107cb1711d1ab105957661bfa9b3451156a56a1e08c2}{INVALID\+\_\+\+AS\+\_\+\+NAN}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Save a point cloud to a file in Polygon File Format (PLY), see\+: \href{https://en.wikipedia.org/wiki/PLY_\%28file_format\%29}{\texttt{ https\+://en.\+wikipedia.\+org/wiki/\+PLY\+\_\+\%28file\+\_\+format\%29}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The file to save the point cloud to\\
+\hline
+{\em points} & The points to save\\
+\hline
+{\em use\+Binary} & If the output file is binary or ascii\\
+\hline
+{\em presentation} & Definition how invalid points should be presented inside the PLY file \mbox{[}optional\mbox{]}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if write was successful and false otherwise
+\end{DoxyReturn}
+\Hypertarget{classvisionary_1_1_point_cloud_ply_writer_a8a264082082972ee36347d7aa001f03d}\label{classvisionary_1_1_point_cloud_ply_writer_a8a264082082972ee36347d7aa001f03d} 
+\index{visionary::PointCloudPlyWriter@{visionary::PointCloudPlyWriter}!WriteFormatPLY@{WriteFormatPLY}}
+\index{WriteFormatPLY@{WriteFormatPLY}!visionary::PointCloudPlyWriter@{visionary::PointCloudPlyWriter}}
+\doxysubsubsection{\texorpdfstring{WriteFormatPLY()}{WriteFormatPLY()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily bool visionary\+::\+Point\+Cloud\+Ply\+Writer\+::\+Write\+Format\+PLY (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{filename,  }\item[{const std\+::vector$<$ \mbox{\hyperlink{structvisionary_1_1_point_x_y_z}{Point\+XYZ}} $>$ \&}]{points,  }\item[{const std\+::vector$<$ uint16\+\_\+t $>$ \&}]{intensity\+Map,  }\item[{bool}]{use\+Binary,  }\item[{\mbox{\hyperlink{namespacevisionary_a9361aa279d6b7abd9b7e9107cb1711d1}{Invalid\+Point\+Presentation}}}]{presentation = {\ttfamily \mbox{\hyperlink{namespacevisionary_a9361aa279d6b7abd9b7e9107cb1711d1ab105957661bfa9b3451156a56a1e08c2}{INVALID\+\_\+\+AS\+\_\+\+NAN}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Save a point cloud to a file in Polygon File Format (PLY) which has intensities for each point, see\+: \href{https://en.wikipedia.org/wiki/PLY_\%28file_format\%29}{\texttt{ https\+://en.\+wikipedia.\+org/wiki/\+PLY\+\_\+\%28file\+\_\+format\%29}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The file to save the point cloud to\\
+\hline
+{\em points} & The points to save\\
+\hline
+{\em intensity\+Map} & Intensities for each point, must be same length as points\\
+\hline
+{\em use\+Binary} & If the output file is binary or ascii\\
+\hline
+{\em presentation} & Definition how invalid points should be presented inside the PLY file \mbox{[}optional\mbox{]}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if write was successful and false otherwise
+\end{DoxyReturn}
+\Hypertarget{classvisionary_1_1_point_cloud_ply_writer_a1a44d1eb4bf68b5723203af8f08a1dae}\label{classvisionary_1_1_point_cloud_ply_writer_a1a44d1eb4bf68b5723203af8f08a1dae} 
+\index{visionary::PointCloudPlyWriter@{visionary::PointCloudPlyWriter}!WriteFormatPLY@{WriteFormatPLY}}
+\index{WriteFormatPLY@{WriteFormatPLY}!visionary::PointCloudPlyWriter@{visionary::PointCloudPlyWriter}}
+\doxysubsubsection{\texorpdfstring{WriteFormatPLY()}{WriteFormatPLY()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily bool visionary\+::\+Point\+Cloud\+Ply\+Writer\+::\+Write\+Format\+PLY (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{filename,  }\item[{const std\+::vector$<$ \mbox{\hyperlink{structvisionary_1_1_point_x_y_z}{Point\+XYZ}} $>$ \&}]{points,  }\item[{const std\+::vector$<$ uint32\+\_\+t $>$ \&}]{rgba\+Map,  }\item[{bool}]{use\+Binary,  }\item[{\mbox{\hyperlink{namespacevisionary_a9361aa279d6b7abd9b7e9107cb1711d1}{Invalid\+Point\+Presentation}}}]{presentation = {\ttfamily \mbox{\hyperlink{namespacevisionary_a9361aa279d6b7abd9b7e9107cb1711d1ab105957661bfa9b3451156a56a1e08c2}{INVALID\+\_\+\+AS\+\_\+\+NAN}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Save a point cloud to a file in Polygon File Format (PLY) which has colors for each point, see\+: \href{https://en.wikipedia.org/wiki/PLY_\%28file_format\%29}{\texttt{ https\+://en.\+wikipedia.\+org/wiki/\+PLY\+\_\+\%28file\+\_\+format\%29}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The file to save the point cloud to\\
+\hline
+{\em points} & The points to save\\
+\hline
+{\em rgba\+Map} & RGBA colors for each point, must be same length as points\\
+\hline
+{\em use\+Binary} & If the output file is binary or ascii\\
+\hline
+{\em presentation} & Definition how invalid points should be presented inside the PLY file \mbox{[}optional\mbox{]}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if write was successful and false otherwise
+\end{DoxyReturn}
+\Hypertarget{classvisionary_1_1_point_cloud_ply_writer_a95ff10ff5447df0958d7ccc1df9551b4}\label{classvisionary_1_1_point_cloud_ply_writer_a95ff10ff5447df0958d7ccc1df9551b4} 
+\index{visionary::PointCloudPlyWriter@{visionary::PointCloudPlyWriter}!WriteFormatPLY@{WriteFormatPLY}}
+\index{WriteFormatPLY@{WriteFormatPLY}!visionary::PointCloudPlyWriter@{visionary::PointCloudPlyWriter}}
+\doxysubsubsection{\texorpdfstring{WriteFormatPLY()}{WriteFormatPLY()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily bool visionary\+::\+Point\+Cloud\+Ply\+Writer\+::\+Write\+Format\+PLY (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{filename,  }\item[{const std\+::vector$<$ \mbox{\hyperlink{structvisionary_1_1_point_x_y_z}{Point\+XYZ}} $>$ \&}]{points,  }\item[{const std\+::vector$<$ uint32\+\_\+t $>$ \&}]{rgba\+Map,  }\item[{const std\+::vector$<$ uint16\+\_\+t $>$ \&}]{intensity\+Map,  }\item[{bool}]{use\+Binary,  }\item[{\mbox{\hyperlink{namespacevisionary_a9361aa279d6b7abd9b7e9107cb1711d1}{Invalid\+Point\+Presentation}}}]{presentation = {\ttfamily \mbox{\hyperlink{namespacevisionary_a9361aa279d6b7abd9b7e9107cb1711d1ab105957661bfa9b3451156a56a1e08c2}{INVALID\+\_\+\+AS\+\_\+\+NAN}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Save a point cloud to a file in Polygon File Format (PLY) which has intensities and colors for each point, see\+: \href{https://en.wikipedia.org/wiki/PLY_\%28file_format\%29}{\texttt{ https\+://en.\+wikipedia.\+org/wiki/\+PLY\+\_\+\%28file\+\_\+format\%29}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The file to save the point cloud to\\
+\hline
+{\em points} & The points to save\\
+\hline
+{\em rgba\+Map} & RGBA colors for each point, must be same length as points\\
+\hline
+{\em intensity\+Map} & Intensities for each point, must be same length as points\\
+\hline
+{\em use\+Binary} & If the output file is binary or ascii\\
+\hline
+{\em presentation} & Definition how invalid points should be presented inside the PLY file \mbox{[}optional\mbox{]}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if write was successful and false otherwise
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sickapi/src/Point\+Cloud\+Ply\+Writer.\+h\item 
+sickapi/src/Point\+Cloud\+Ply\+Writer.\+cpp\end{DoxyCompactItemize}

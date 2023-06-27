@@ -1,0 +1,471 @@
+\doxysection{visionary\+::Co\+La\+Parameter\+Writer Class Reference}
+\hypertarget{classvisionary_1_1_co_la_parameter_writer}{}\label{classvisionary_1_1_co_la_parameter_writer}\index{visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}}
+
+
+Builder for constructing \doxylink{classvisionary_1_1_co_la_command}{Co\+La\+Command}s.  
+
+
+
+
+{\ttfamily \#include $<$Co\+La\+Parameter\+Writer.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer_a367bffde9f27e6bfabd9ba5625d3bc76}{Co\+La\+Parameter\+Writer}} (Co\+La\+Command\+Type\+::\+Enum type, const char \texorpdfstring{$\ast$}{*}name)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer_a74a9010b7713a78fb7cc1574d3ac9d56}{parameter\+SInt}} (const int8\+\_\+t s\+Int)
+\begin{DoxyCompactList}\small\item\em Add a signed short (8-\/bit, range \mbox{[}-\/128, 127\mbox{]}). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer_a9d905b3d5c286e33767d10c6991f3281}{parameter\+USInt}} (const uint8\+\_\+t u\+SInt)
+\begin{DoxyCompactList}\small\item\em Add a unsigned short (8-\/bit, range \mbox{[}0, 255\mbox{]}). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer_afa89ce2141046f63d925f97e1b006d40}{parameter\+Int}} (const int16\+\_\+t integer)
+\begin{DoxyCompactList}\small\item\em Add a signed int (16-\/bit). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer_aff3705ad6c9103b227cacfb5adec327c}{parameter\+UInt}} (const uint16\+\_\+t u\+Int)
+\begin{DoxyCompactList}\small\item\em Add a unsigned int (16-\/bit, range \mbox{[}0, 65535\mbox{]}). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer_aa1c22a485249e5d4d505a75e880e6f0e}{parameter\+DInt}} (const int32\+\_\+t d\+Int)
+\begin{DoxyCompactList}\small\item\em Add an signed double int (32-\/bit). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer_a6d274971a446cc10162684f0d17273d8}{parameter\+UDInt}} (const uint32\+\_\+t u\+DInt)
+\begin{DoxyCompactList}\small\item\em Add an unsigned double int (32-\/bit, range \mbox{[}0, 4294967295\mbox{]}). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer_a6a6761a285c61ac1853bdf6acc383d72}{parameter\+Real}} (const float real)
+\begin{DoxyCompactList}\small\item\em Add a IEEE-\/754 single precision (32-\/bit). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer_a192c19c08292c8160cfd640e9666ea97}{parameter\+LReal}} (const double l\+Real)
+\begin{DoxyCompactList}\small\item\em Add a IEEE-\/754 double precision (64-\/bit). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer_a0733e5cdc2e1df65d37f3fe9f20d2f35}{parameter\+Bool}} (const bool boolean)
+\begin{DoxyCompactList}\small\item\em Add a boolean as a byte, with 0 representing false, and 1 representing true. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer_a76c74b18ff2efd38e8980aee9ec1ec4f}{parameter\+Password\+MD5}} (const std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Add the given password as a UDInt, using \doxylink{classvisionary_1_1_m_d5}{MD5} hashing. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer_aad89df3a2a17267cbc33267a2cc14b08}{parameter\+Flex\+String}} (const std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Add a string as a flex string. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer_ae5b02c5330c2c78354af17135a385a49}{operator$<$$<$}} (const char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Add a string parameter, must be null-\/terminated. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer_af22ba63c49ab3739a76232cdeaaa39ee}{operator$<$$<$}} (const int8\+\_\+t s\+Int)
+\begin{DoxyCompactList}\small\item\em Add a signed short (8-\/bit, range \mbox{[}-\/128, 127\mbox{]}). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer_acace5aefb5a736b3d7e9675cdcf26a38}{operator$<$$<$}} (const uint8\+\_\+t u\+SInt)
+\begin{DoxyCompactList}\small\item\em Add a unsigned short (8-\/bit, range \mbox{[}0, 255\mbox{]}). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer_a0f0210d2e542757935f524af7fd06934}{operator$<$$<$}} (const int16\+\_\+t integer)
+\begin{DoxyCompactList}\small\item\em Add a signed int (16-\/bit). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer_a01bb35c0e9810f77168cf733bf879e99}{operator$<$$<$}} (const uint16\+\_\+t u\+Int)
+\begin{DoxyCompactList}\small\item\em Add a unsigned int (16-\/bit, range \mbox{[}0, 65535\mbox{]}). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer_a306ba98ec088c63234cf972f6625891b}{operator$<$$<$}} (const int32\+\_\+t d\+Int)
+\begin{DoxyCompactList}\small\item\em Add an signed double int (32-\/bit). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer_a8a2a83575dc132af652246e6e0102dbc}{operator$<$$<$}} (const uint32\+\_\+t u\+DInt)
+\begin{DoxyCompactList}\small\item\em Add an unsigned double int (32-\/bit, range \mbox{[}0, 4294967295\mbox{]}). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer_a1921ded7f6695dd9b9b1054e487b738c}{operator$<$$<$}} (const float real)
+\begin{DoxyCompactList}\small\item\em Add a IEEE-\/754 single precision (32-\/bit). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer_af3058a52b247db1e5729ae4bf65e0052}{operator$<$$<$}} (const double l\+Real)
+\begin{DoxyCompactList}\small\item\em Add a IEEE-\/754 double precision (64-\/bit). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer_a3a59308e97952b43a32cd7340a3f2443}{operator$<$$<$}} (const bool boolean)
+\begin{DoxyCompactList}\small\item\em Add a boolean as a byte, with 0 representing false, and 1 representing true. \end{DoxyCompactList}\item 
+\Hypertarget{classvisionary_1_1_co_la_parameter_writer_a13d8516a375acacd226a46f432e06053}\label{classvisionary_1_1_co_la_parameter_writer_a13d8516a375acacd226a46f432e06053} 
+const \mbox{\hyperlink{classvisionary_1_1_co_la_command}{Co\+La\+Command}} {\bfseries build} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Builder for constructing \doxylink{classvisionary_1_1_co_la_command}{Co\+La\+Command}s. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classvisionary_1_1_co_la_parameter_writer_a367bffde9f27e6bfabd9ba5625d3bc76}\label{classvisionary_1_1_co_la_parameter_writer_a367bffde9f27e6bfabd9ba5625d3bc76} 
+\index{visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}!CoLaParameterWriter@{CoLaParameterWriter}}
+\index{CoLaParameterWriter@{CoLaParameterWriter}!visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}}
+\doxysubsubsection{\texorpdfstring{CoLaParameterWriter()}{CoLaParameterWriter()}}
+{\footnotesize\ttfamily visionary\+::\+Co\+La\+Parameter\+Writer\+::\+Co\+La\+Parameter\+Writer (\begin{DoxyParamCaption}\item[{Co\+La\+Command\+Type\+::\+Enum}]{type,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{name }\end{DoxyParamCaption})}
+
+
+
+Construct a new \doxylink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & Type of command.\\
+\hline
+{\em name} & The command, e.\+g. for methods this should be the \"{}communication name\"{} from the CID.\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classvisionary_1_1_co_la_parameter_writer_a3a59308e97952b43a32cd7340a3f2443}\label{classvisionary_1_1_co_la_parameter_writer_a3a59308e97952b43a32cd7340a3f2443} 
+\index{visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [1/10]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& visionary\+::\+Co\+La\+Parameter\+Writer\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{const bool}]{boolean }\end{DoxyParamCaption})}
+
+
+
+Add a boolean as a byte, with 0 representing false, and 1 representing true. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em boolean} & Boolean to add.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+This builder.
+\end{DoxyReturn}
+\Hypertarget{classvisionary_1_1_co_la_parameter_writer_ae5b02c5330c2c78354af17135a385a49}\label{classvisionary_1_1_co_la_parameter_writer_ae5b02c5330c2c78354af17135a385a49} 
+\index{visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [2/10]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& visionary\+::\+Co\+La\+Parameter\+Writer\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str }\end{DoxyParamCaption})}
+
+
+
+Add a string parameter, must be null-\/terminated. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & String to add.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+This builder.
+\end{DoxyReturn}
+\Hypertarget{classvisionary_1_1_co_la_parameter_writer_af3058a52b247db1e5729ae4bf65e0052}\label{classvisionary_1_1_co_la_parameter_writer_af3058a52b247db1e5729ae4bf65e0052} 
+\index{visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [3/10]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& visionary\+::\+Co\+La\+Parameter\+Writer\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{const double}]{l\+Real }\end{DoxyParamCaption})}
+
+
+
+Add a IEEE-\/754 double precision (64-\/bit). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l\+Real} & Long real to add.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+This builder.
+\end{DoxyReturn}
+\Hypertarget{classvisionary_1_1_co_la_parameter_writer_a1921ded7f6695dd9b9b1054e487b738c}\label{classvisionary_1_1_co_la_parameter_writer_a1921ded7f6695dd9b9b1054e487b738c} 
+\index{visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [4/10]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& visionary\+::\+Co\+La\+Parameter\+Writer\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{const float}]{real }\end{DoxyParamCaption})}
+
+
+
+Add a IEEE-\/754 single precision (32-\/bit). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em real} & Real to add.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+This builder.
+\end{DoxyReturn}
+\Hypertarget{classvisionary_1_1_co_la_parameter_writer_a0f0210d2e542757935f524af7fd06934}\label{classvisionary_1_1_co_la_parameter_writer_a0f0210d2e542757935f524af7fd06934} 
+\index{visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [5/10]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& visionary\+::\+Co\+La\+Parameter\+Writer\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{const int16\+\_\+t}]{integer }\end{DoxyParamCaption})}
+
+
+
+Add a signed int (16-\/bit). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em integer} & Int to add.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+This builder.
+\end{DoxyReturn}
+\Hypertarget{classvisionary_1_1_co_la_parameter_writer_a306ba98ec088c63234cf972f6625891b}\label{classvisionary_1_1_co_la_parameter_writer_a306ba98ec088c63234cf972f6625891b} 
+\index{visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [6/10]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& visionary\+::\+Co\+La\+Parameter\+Writer\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{const int32\+\_\+t}]{d\+Int }\end{DoxyParamCaption})}
+
+
+
+Add an signed double int (32-\/bit). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em d\+Int} & d\+Int to add.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+This builder.
+\end{DoxyReturn}
+\Hypertarget{classvisionary_1_1_co_la_parameter_writer_af22ba63c49ab3739a76232cdeaaa39ee}\label{classvisionary_1_1_co_la_parameter_writer_af22ba63c49ab3739a76232cdeaaa39ee} 
+\index{visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [7/10]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& visionary\+::\+Co\+La\+Parameter\+Writer\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{const int8\+\_\+t}]{s\+Int }\end{DoxyParamCaption})}
+
+
+
+Add a signed short (8-\/bit, range \mbox{[}-\/128, 127\mbox{]}). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s\+Int} & SInt to add\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+This builder.
+\end{DoxyReturn}
+\Hypertarget{classvisionary_1_1_co_la_parameter_writer_a01bb35c0e9810f77168cf733bf879e99}\label{classvisionary_1_1_co_la_parameter_writer_a01bb35c0e9810f77168cf733bf879e99} 
+\index{visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [8/10]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& visionary\+::\+Co\+La\+Parameter\+Writer\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{const uint16\+\_\+t}]{u\+Int }\end{DoxyParamCaption})}
+
+
+
+Add a unsigned int (16-\/bit, range \mbox{[}0, 65535\mbox{]}). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u\+Int} & UInt to add.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+This builder.
+\end{DoxyReturn}
+\Hypertarget{classvisionary_1_1_co_la_parameter_writer_a8a2a83575dc132af652246e6e0102dbc}\label{classvisionary_1_1_co_la_parameter_writer_a8a2a83575dc132af652246e6e0102dbc} 
+\index{visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [9/10]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& visionary\+::\+Co\+La\+Parameter\+Writer\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t}]{u\+DInt }\end{DoxyParamCaption})}
+
+
+
+Add an unsigned double int (32-\/bit, range \mbox{[}0, 4294967295\mbox{]}). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u\+DInt} & UDInt to add.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+This builder.
+\end{DoxyReturn}
+\Hypertarget{classvisionary_1_1_co_la_parameter_writer_acace5aefb5a736b3d7e9675cdcf26a38}\label{classvisionary_1_1_co_la_parameter_writer_acace5aefb5a736b3d7e9675cdcf26a38} 
+\index{visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [10/10]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& visionary\+::\+Co\+La\+Parameter\+Writer\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t}]{u\+SInt }\end{DoxyParamCaption})}
+
+
+
+Add a unsigned short (8-\/bit, range \mbox{[}0, 255\mbox{]}). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u\+SInt} & USInt to add.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+This builder.
+\end{DoxyReturn}
+\Hypertarget{classvisionary_1_1_co_la_parameter_writer_a0733e5cdc2e1df65d37f3fe9f20d2f35}\label{classvisionary_1_1_co_la_parameter_writer_a0733e5cdc2e1df65d37f3fe9f20d2f35} 
+\index{visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}!parameterBool@{parameterBool}}
+\index{parameterBool@{parameterBool}!visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}}
+\doxysubsubsection{\texorpdfstring{parameterBool()}{parameterBool()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& visionary\+::\+Co\+La\+Parameter\+Writer\+::parameter\+Bool (\begin{DoxyParamCaption}\item[{const bool}]{boolean }\end{DoxyParamCaption})}
+
+
+
+Add a boolean as a byte, with 0 representing false, and 1 representing true. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em boolean} & Boolean to add.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+This builder.
+\end{DoxyReturn}
+\Hypertarget{classvisionary_1_1_co_la_parameter_writer_aa1c22a485249e5d4d505a75e880e6f0e}\label{classvisionary_1_1_co_la_parameter_writer_aa1c22a485249e5d4d505a75e880e6f0e} 
+\index{visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}!parameterDInt@{parameterDInt}}
+\index{parameterDInt@{parameterDInt}!visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}}
+\doxysubsubsection{\texorpdfstring{parameterDInt()}{parameterDInt()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& visionary\+::\+Co\+La\+Parameter\+Writer\+::parameter\+DInt (\begin{DoxyParamCaption}\item[{const int32\+\_\+t}]{d\+Int }\end{DoxyParamCaption})}
+
+
+
+Add an signed double int (32-\/bit). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em d\+Int} & d\+Int to add.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+This builder.
+\end{DoxyReturn}
+\Hypertarget{classvisionary_1_1_co_la_parameter_writer_aad89df3a2a17267cbc33267a2cc14b08}\label{classvisionary_1_1_co_la_parameter_writer_aad89df3a2a17267cbc33267a2cc14b08} 
+\index{visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}!parameterFlexString@{parameterFlexString}}
+\index{parameterFlexString@{parameterFlexString}!visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}}
+\doxysubsubsection{\texorpdfstring{parameterFlexString()}{parameterFlexString()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& visionary\+::\+Co\+La\+Parameter\+Writer\+::parameter\+Flex\+String (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+
+
+Add a string as a flex string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & String to add.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+This builder.
+\end{DoxyReturn}
+\Hypertarget{classvisionary_1_1_co_la_parameter_writer_afa89ce2141046f63d925f97e1b006d40}\label{classvisionary_1_1_co_la_parameter_writer_afa89ce2141046f63d925f97e1b006d40} 
+\index{visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}!parameterInt@{parameterInt}}
+\index{parameterInt@{parameterInt}!visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}}
+\doxysubsubsection{\texorpdfstring{parameterInt()}{parameterInt()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& visionary\+::\+Co\+La\+Parameter\+Writer\+::parameter\+Int (\begin{DoxyParamCaption}\item[{const int16\+\_\+t}]{integer }\end{DoxyParamCaption})}
+
+
+
+Add a signed int (16-\/bit). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em integer} & Int to add.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+This builder.
+\end{DoxyReturn}
+\Hypertarget{classvisionary_1_1_co_la_parameter_writer_a192c19c08292c8160cfd640e9666ea97}\label{classvisionary_1_1_co_la_parameter_writer_a192c19c08292c8160cfd640e9666ea97} 
+\index{visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}!parameterLReal@{parameterLReal}}
+\index{parameterLReal@{parameterLReal}!visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}}
+\doxysubsubsection{\texorpdfstring{parameterLReal()}{parameterLReal()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& visionary\+::\+Co\+La\+Parameter\+Writer\+::parameter\+LReal (\begin{DoxyParamCaption}\item[{const double}]{l\+Real }\end{DoxyParamCaption})}
+
+
+
+Add a IEEE-\/754 double precision (64-\/bit). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l\+Real} & Long real to add.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+This builder.
+\end{DoxyReturn}
+\Hypertarget{classvisionary_1_1_co_la_parameter_writer_a76c74b18ff2efd38e8980aee9ec1ec4f}\label{classvisionary_1_1_co_la_parameter_writer_a76c74b18ff2efd38e8980aee9ec1ec4f} 
+\index{visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}!parameterPasswordMD5@{parameterPasswordMD5}}
+\index{parameterPasswordMD5@{parameterPasswordMD5}!visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}}
+\doxysubsubsection{\texorpdfstring{parameterPasswordMD5()}{parameterPasswordMD5()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& visionary\+::\+Co\+La\+Parameter\+Writer\+::parameter\+Password\+MD5 (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+
+
+Add the given password as a UDInt, using \doxylink{classvisionary_1_1_m_d5}{MD5} hashing. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & String to hash and add as parameter.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+This builder.
+\end{DoxyReturn}
+\Hypertarget{classvisionary_1_1_co_la_parameter_writer_a6a6761a285c61ac1853bdf6acc383d72}\label{classvisionary_1_1_co_la_parameter_writer_a6a6761a285c61ac1853bdf6acc383d72} 
+\index{visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}!parameterReal@{parameterReal}}
+\index{parameterReal@{parameterReal}!visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}}
+\doxysubsubsection{\texorpdfstring{parameterReal()}{parameterReal()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& visionary\+::\+Co\+La\+Parameter\+Writer\+::parameter\+Real (\begin{DoxyParamCaption}\item[{const float}]{real }\end{DoxyParamCaption})}
+
+
+
+Add a IEEE-\/754 single precision (32-\/bit). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em real} & Real to add.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+This builder.
+\end{DoxyReturn}
+\Hypertarget{classvisionary_1_1_co_la_parameter_writer_a74a9010b7713a78fb7cc1574d3ac9d56}\label{classvisionary_1_1_co_la_parameter_writer_a74a9010b7713a78fb7cc1574d3ac9d56} 
+\index{visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}!parameterSInt@{parameterSInt}}
+\index{parameterSInt@{parameterSInt}!visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}}
+\doxysubsubsection{\texorpdfstring{parameterSInt()}{parameterSInt()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& visionary\+::\+Co\+La\+Parameter\+Writer\+::parameter\+SInt (\begin{DoxyParamCaption}\item[{const int8\+\_\+t}]{s\+Int }\end{DoxyParamCaption})}
+
+
+
+Add a signed short (8-\/bit, range \mbox{[}-\/128, 127\mbox{]}). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s\+Int} & SInt to add\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+This builder.
+\end{DoxyReturn}
+\Hypertarget{classvisionary_1_1_co_la_parameter_writer_a6d274971a446cc10162684f0d17273d8}\label{classvisionary_1_1_co_la_parameter_writer_a6d274971a446cc10162684f0d17273d8} 
+\index{visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}!parameterUDInt@{parameterUDInt}}
+\index{parameterUDInt@{parameterUDInt}!visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}}
+\doxysubsubsection{\texorpdfstring{parameterUDInt()}{parameterUDInt()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& visionary\+::\+Co\+La\+Parameter\+Writer\+::parameter\+UDInt (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t}]{u\+DInt }\end{DoxyParamCaption})}
+
+
+
+Add an unsigned double int (32-\/bit, range \mbox{[}0, 4294967295\mbox{]}). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u\+DInt} & UDInt to add.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+This builder.
+\end{DoxyReturn}
+\Hypertarget{classvisionary_1_1_co_la_parameter_writer_aff3705ad6c9103b227cacfb5adec327c}\label{classvisionary_1_1_co_la_parameter_writer_aff3705ad6c9103b227cacfb5adec327c} 
+\index{visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}!parameterUInt@{parameterUInt}}
+\index{parameterUInt@{parameterUInt}!visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}}
+\doxysubsubsection{\texorpdfstring{parameterUInt()}{parameterUInt()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& visionary\+::\+Co\+La\+Parameter\+Writer\+::parameter\+UInt (\begin{DoxyParamCaption}\item[{const uint16\+\_\+t}]{u\+Int }\end{DoxyParamCaption})}
+
+
+
+Add a unsigned int (16-\/bit, range \mbox{[}0, 65535\mbox{]}). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u\+Int} & UInt to add.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+This builder.
+\end{DoxyReturn}
+\Hypertarget{classvisionary_1_1_co_la_parameter_writer_a9d905b3d5c286e33767d10c6991f3281}\label{classvisionary_1_1_co_la_parameter_writer_a9d905b3d5c286e33767d10c6991f3281} 
+\index{visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}!parameterUSInt@{parameterUSInt}}
+\index{parameterUSInt@{parameterUSInt}!visionary::CoLaParameterWriter@{visionary::CoLaParameterWriter}}
+\doxysubsubsection{\texorpdfstring{parameterUSInt()}{parameterUSInt()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}} \& visionary\+::\+Co\+La\+Parameter\+Writer\+::parameter\+USInt (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t}]{u\+SInt }\end{DoxyParamCaption})}
+
+
+
+Add a unsigned short (8-\/bit, range \mbox{[}0, 255\mbox{]}). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u\+SInt} & USInt to add.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+This builder.
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sickapi/src/Co\+La\+Parameter\+Writer.\+h\item 
+sickapi/src/Co\+La\+Parameter\+Writer.\+cpp\end{DoxyCompactItemize}

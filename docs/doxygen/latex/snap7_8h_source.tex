@@ -1,0 +1,963 @@
+\doxysection{snap7.\+h}
+\hypertarget{snap7_8h_source}{}\label{snap7_8h_source}\index{snap7/snap7.h@{snap7/snap7.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*=============================================================================|}}
+\DoxyCodeLine{00002\ \textcolor{comment}{|\ \ PROJECT\ SNAP7\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1.4.0\ |}}
+\DoxyCodeLine{00003\ \textcolor{comment}{|==============================================================================|}}
+\DoxyCodeLine{00004\ \textcolor{comment}{|\ \ Copyright\ (C)\ 2013,\ 2014\ Davide\ Nardella\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |}}
+\DoxyCodeLine{00005\ \textcolor{comment}{|\ \ All\ rights\ reserved.\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |}}
+\DoxyCodeLine{00006\ \textcolor{comment}{|==============================================================================|}}
+\DoxyCodeLine{00007\ \textcolor{comment}{|\ \ SNAP7\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |}}
+\DoxyCodeLine{00008\ \textcolor{comment}{|\ \ it\ under\ the\ terms\ of\ the\ Lesser\ GNU\ General\ Public\ License\ as\ published\ by\ |}}
+\DoxyCodeLine{00009\ \textcolor{comment}{|\ \ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or\ \ \ \ \ \ \ \ \ \ \ |}}
+\DoxyCodeLine{00010\ \textcolor{comment}{|\ \ (at\ your\ option)\ any\ later\ version.\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |}}
+\DoxyCodeLine{00011\ \textcolor{comment}{|\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |}}
+\DoxyCodeLine{00012\ \textcolor{comment}{|\ \ It\ means\ that\ you\ can\ distribute\ your\ commercial\ software\ linked\ with\ \ \ \ \ \ \ |}}
+\DoxyCodeLine{00013\ \textcolor{comment}{|\ \ SNAP7\ without\ the\ requirement\ to\ distribute\ the\ source\ code\ of\ your\ \ \ \ \ \ \ \ \ |}}
+\DoxyCodeLine{00014\ \textcolor{comment}{|\ \ application\ and\ without\ the\ requirement\ that\ your\ application\ be\ itself\ \ \ \ \ |}}
+\DoxyCodeLine{00015\ \textcolor{comment}{|\ \ distributed\ under\ LGPL.\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |}}
+\DoxyCodeLine{00016\ \textcolor{comment}{|\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |}}
+\DoxyCodeLine{00017\ \textcolor{comment}{|\ \ SNAP7\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |}}
+\DoxyCodeLine{00018\ \textcolor{comment}{|\ \ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of\ \ \ \ \ \ \ \ \ \ \ \ \ \ |}}
+\DoxyCodeLine{00019\ \textcolor{comment}{|\ \ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |}}
+\DoxyCodeLine{00020\ \textcolor{comment}{|\ \ Lesser\ GNU\ General\ Public\ License\ for\ more\ details.\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |}}
+\DoxyCodeLine{00021\ \textcolor{comment}{|\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |}}
+\DoxyCodeLine{00022\ \textcolor{comment}{|\ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License\ and\ a\ \ \ \ \ |}}
+\DoxyCodeLine{00023\ \textcolor{comment}{|\ \ copy\ of\ Lesser\ GNU\ General\ Public\ License\ along\ with\ Snap7.\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |}}
+\DoxyCodeLine{00024\ \textcolor{comment}{|\ \ If\ not,\ see\ \ http://www.gnu.org/licenses/\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |}}
+\DoxyCodeLine{00025\ \textcolor{comment}{|==============================================================================|}}
+\DoxyCodeLine{00026\ \textcolor{comment}{|\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |}}
+\DoxyCodeLine{00027\ \textcolor{comment}{|\ \ C/C++\ Snap\ 7\ classes/Imports\ definitions\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |}}
+\DoxyCodeLine{00028\ \textcolor{comment}{|\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |}}
+\DoxyCodeLine{00029\ \textcolor{comment}{|=============================================================================*/}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#ifndef\ snap7\_h}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ snap7\_h}}
+\DoxyCodeLine{00032\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00033\ \textcolor{comment}{//\ Platform\ detection}}
+\DoxyCodeLine{00034\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#if\ defined\ (\_WIN32)||defined(\_WIN64)||defined(\_\_WIN32\_\_)||defined(\_\_WINDOWS\_\_)}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#\ define\ OS\_WINDOWS}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{comment}{//\ Visual\ Studio\ needs\ this\ to\ use\ the\ correct\ time\_t\ size}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#if\ defined\ (\_WIN32)\ \&\&\ !defined(\_WIN64)}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#\ define\ \_USE\_32BIT\_TIME\_T\ }}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#if\ defined(unix)\ ||\ defined(\_\_unix\_\_)\ ||\ defined(\_\_unix)}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#\ define\ PLATFORM\_UNIX}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#if\ defined(\_\_SVR4)\ ||\ defined(\_\_svr4\_\_)}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#\ define\ OS\_SOLARIS}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#if\ BSD>=0}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#\ define\ OS\_BSD}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#if\ defined(\_\_APPLE\_\_)}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#\ define\ OS\_OSX}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#if\ defined(PLATFORM\_UNIX)\ ||\ defined(OS\_OSX)}}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#\ include\ <unistd.h>}}
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#\ if\ defined(\_POSIX\_VERSION)}}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#\ \ \ define\ POSIX}}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#\ endif}}
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00068\ \textcolor{comment}{//\ C++\ Library}}
+\DoxyCodeLine{00069\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#include\ <time.h>}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \textcolor{comment}{//\ Visual\ C++\ not\ C99\ compliant\ (VS2008-\/-\/)}}
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#ifdef\ \_MSC\_VER}}
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#\ if\ \_MSC\_VER\ >=\ 1600}}
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#\ \ include\ <stdint.h>}\ \ \textcolor{comment}{//\ VS2010++\ have\ it\ }}
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#\ else}}
+\DoxyCodeLine{00079\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{signed}\ \_\_int8\ \ \ \ \ int8\_t;}
+\DoxyCodeLine{00080\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{signed}\ \_\_int16\ \ \ \ int16\_t;}
+\DoxyCodeLine{00081\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{signed}\ \_\_int32\ \ \ \ int32\_t;}
+\DoxyCodeLine{00082\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{signed}\ \_\_int64\ \ \ \ int64\_t;}
+\DoxyCodeLine{00083\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \_\_int8\ \ \ uint8\_t;}
+\DoxyCodeLine{00084\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \_\_int16\ \ uint16\_t;}
+\DoxyCodeLine{00085\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \_\_int32\ \ uint32\_t;}
+\DoxyCodeLine{00086\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \_\_int64\ \ uint64\_t;}
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\#ifdef\ \_WIN64}}
+\DoxyCodeLine{00088\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \_\_int64\ \ uintptr\_t;}
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00090\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \_\_int32\ \ uintptr\_t;}
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\#\ endif}}
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#\ include\ <stdint.h>}}
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{comment}{//\ C\ exact\ length\ types}}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00102\ \textcolor{preprocessor}{\#ifndef\ \_\_cplusplus}}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\#ifdef\ OS\_BSD}}
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\#\ \ include\ <stdint.h>}}
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\#\ \ include\ <time.h>}}
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \textcolor{preprocessor}{\#ifdef\ OS\_OSX}}
+\DoxyCodeLine{00110\ \textcolor{preprocessor}{\#\ \ include\ <stdint.h>}\ \ }
+\DoxyCodeLine{00111\ \textcolor{preprocessor}{\#\ \ include\ <time.h>}}
+\DoxyCodeLine{00112\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \textcolor{preprocessor}{\#ifdef\ OS\_SOLARIS}}
+\DoxyCodeLine{00115\ \textcolor{preprocessor}{\#\ \ include\ <stdint.h>}\ \ }
+\DoxyCodeLine{00116\ \textcolor{preprocessor}{\#\ \ include\ <time.h>}}
+\DoxyCodeLine{00117\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \textcolor{preprocessor}{\#if\ defined(\_UINTPTR\_T\_DEFINED)}}
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\#\ \ include\ <stdint.h>}}
+\DoxyCodeLine{00121\ \textcolor{preprocessor}{\#\ \ include\ <time.h>}}
+\DoxyCodeLine{00122\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \textcolor{preprocessor}{\#if\ !defined(\_UINTPTR\_T\_DEFINED)\ \&\&\ !defined(OS\_SOLARIS)\ \&\&\ !defined(OS\_BSD)\ \&\&\ !defined(OS\_OSX)}}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \ \ uint8\_t;\ \ \textcolor{comment}{//\ \ 8\ bit\ unsigned\ integer}}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \ uint16\_t;\ \textcolor{comment}{//\ 16\ bit\ unsigned\ integer}}
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \ \ \ uint32\_t;\ \textcolor{comment}{//\ 32\ bit\ unsigned\ integer}}
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \ \ uintptr\_t;\textcolor{comment}{//\ 64\ bit\ unsigned\ integer}}
+\DoxyCodeLine{00129\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \textcolor{preprocessor}{\#ifdef\ OS\_WINDOWS}}
+\DoxyCodeLine{00134\ \textcolor{preprocessor}{\#\ define\ S7API\ \_\_stdcall}}
+\DoxyCodeLine{00135\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00136\ \textcolor{preprocessor}{\#\ define\ S7API}}
+\DoxyCodeLine{00137\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \textcolor{preprocessor}{\#pragma\ pack(1)}}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{comment}{//******************************************************************************}}
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ COMMON}}
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{comment}{//******************************************************************************}}
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{comment}{//\ Exact\ length\ types\ regardless\ of\ platform/processor}}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keyword}{typedef}\ uint8\_t\ \ \ \ byte;}
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keyword}{typedef}\ uint16\_t\ \ \ word;}
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keyword}{typedef}\ uint32\_t\ \ \ longword;}
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{byte}*\ pbyte;}
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keyword}{typedef}\ word*\ pword;}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keyword}{typedef}\ uintptr\_t\ \ S7Object;\ \textcolor{comment}{//\ multi\ platform/processor\ object\ reference}}
+\DoxyCodeLine{00150\ \ \ \ \ \textcolor{comment}{//\ DON'T\ CONFUSE\ IT\ WITH\ AN\ OLE\ OBJECT,\ IT'S\ SIMPLY}}
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{comment}{//\ AN\ INTEGER\ VALUE\ (32\ OR\ 64\ BIT)\ USED\ AS\ HANDLE.}}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00153\ \textcolor{preprocessor}{\#ifndef\ \_\_cplusplus}}
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00155\ \ \ \ \ \{}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ tm\_sec;}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ tm\_min;}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ tm\_hour;}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ tm\_mday;}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ tm\_mon;}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ tm\_year;}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ tm\_wday;}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ tm\_yday;}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ tm\_isdst;}
+\DoxyCodeLine{00165\ \ \ \ \ \}\mbox{\hyperlink{structtm}{tm}};}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{int}\ bool;}
+\DoxyCodeLine{00168\ \textcolor{preprocessor}{\#define\ false\ 0;}}
+\DoxyCodeLine{00169\ \textcolor{preprocessor}{\#define\ true\ \ 1;}}
+\DoxyCodeLine{00170\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ errLibInvalidParam\ =\ -\/1;}
+\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ errLibInvalidObject\ =\ -\/2;}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{comment}{//\ CPU\ status}}
+\DoxyCodeLine{00176\ \textcolor{preprocessor}{\#define\ S7CpuStatusUnknown\ \ 0x00}}
+\DoxyCodeLine{00177\ \textcolor{preprocessor}{\#define\ S7CpuStatusRun\ \ \ \ \ \ 0x08}}
+\DoxyCodeLine{00178\ \textcolor{preprocessor}{\#define\ S7CpuStatusStop\ \ \ \ \ 0x04}}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00180\ \textcolor{comment}{//\ ISO\ Errors}}
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errIsoConnect\ =\ 0x00010000;\ \textcolor{comment}{//\ Connection\ error}}
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errIsoDisconnect\ =\ 0x00020000;\ \textcolor{comment}{//\ Disconnect\ error}}
+\DoxyCodeLine{00183\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errIsoInvalidPDU\ =\ 0x00030000;\ \textcolor{comment}{//\ Bad\ format}}
+\DoxyCodeLine{00184\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errIsoInvalidDataSize\ =\ 0x00040000;\ \textcolor{comment}{//\ Bad\ Datasize\ passed\ to\ send/recv\ buffer\ is\ invalid}}
+\DoxyCodeLine{00185\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errIsoNullPointer\ =\ 0x00050000;\ \textcolor{comment}{//\ Null\ passed\ as\ pointer}}
+\DoxyCodeLine{00186\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errIsoShortPacket\ =\ 0x00060000;\ \textcolor{comment}{//\ A\ short\ packet\ received}}
+\DoxyCodeLine{00187\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errIsoTooManyFragments\ =\ 0x00070000;\ \textcolor{comment}{//\ Too\ many\ packets\ without\ EoT\ flag}}
+\DoxyCodeLine{00188\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errIsoPduOverflow\ =\ 0x00080000;\ \textcolor{comment}{//\ The\ sum\ of\ fragments\ data\ exceded\ maximum\ packet\ size}}
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errIsoSendPacket\ =\ 0x00090000;\ \textcolor{comment}{//\ An\ error\ occurred\ during\ send}}
+\DoxyCodeLine{00190\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errIsoRecvPacket\ =\ 0x000A0000;\ \textcolor{comment}{//\ An\ error\ occurred\ during\ recv}}
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errIsoInvalidParams\ =\ 0x000B0000;\ \textcolor{comment}{//\ Invalid\ TSAP\ params}}
+\DoxyCodeLine{00192\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errIsoResvd\_1\ =\ 0x000C0000;\ \textcolor{comment}{//\ Unassigned}}
+\DoxyCodeLine{00193\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errIsoResvd\_2\ =\ 0x000D0000;\ \textcolor{comment}{//\ Unassigned}}
+\DoxyCodeLine{00194\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errIsoResvd\_3\ =\ 0x000E0000;\ \textcolor{comment}{//\ Unassigned}}
+\DoxyCodeLine{00195\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errIsoResvd\_4\ =\ 0x000F0000;\ \textcolor{comment}{//\ Unassigned}}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00197\ \ \ \ \ \textcolor{comment}{//\ Tag\ Struct}}
+\DoxyCodeLine{00198\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ Area;}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ DBNumber;}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ Start;}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ Size;}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ WordLen;}
+\DoxyCodeLine{00204\ \ \ \ \ \}\mbox{\hyperlink{struct_t_s7_tag}{TS7Tag}},\ *\ \mbox{\hyperlink{struct_t_s7_tag}{PS7Tag}};}
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00206\ \ \ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00207\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PARAMS\ LIST\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00208\ \ \ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00209\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ p\_u16\_LocalPort\ =\ 1;}
+\DoxyCodeLine{00210\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ p\_u16\_RemotePort\ =\ 2;}
+\DoxyCodeLine{00211\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ p\_i32\_PingTimeout\ =\ 3;}
+\DoxyCodeLine{00212\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ p\_i32\_SendTimeout\ =\ 4;}
+\DoxyCodeLine{00213\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ p\_i32\_RecvTimeout\ =\ 5;}
+\DoxyCodeLine{00214\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ p\_i32\_WorkInterval\ =\ 6;}
+\DoxyCodeLine{00215\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ p\_u16\_SrcRef\ =\ 7;}
+\DoxyCodeLine{00216\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ p\_u16\_DstRef\ =\ 8;}
+\DoxyCodeLine{00217\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ p\_u16\_SrcTSap\ =\ 9;}
+\DoxyCodeLine{00218\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ p\_i32\_PDURequest\ =\ 10;}
+\DoxyCodeLine{00219\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ p\_i32\_MaxClients\ =\ 11;}
+\DoxyCodeLine{00220\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ p\_i32\_BSendTimeout\ =\ 12;}
+\DoxyCodeLine{00221\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ p\_i32\_BRecvTimeout\ =\ 13;}
+\DoxyCodeLine{00222\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ p\_u32\_RecoveryTime\ =\ 14;}
+\DoxyCodeLine{00223\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ p\_u32\_KeepAliveTime\ =\ 15;}
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00225\ \ \ \ \ \textcolor{comment}{//\ Client/Partner\ Job\ status\ }}
+\DoxyCodeLine{00226\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ JobComplete\ =\ 0;}
+\DoxyCodeLine{00227\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ JobPending\ =\ 1;}
+\DoxyCodeLine{00228\ }
+\DoxyCodeLine{00229\ \ \ \ \ \textcolor{comment}{//******************************************************************************}}
+\DoxyCodeLine{00230\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CLIENT}}
+\DoxyCodeLine{00231\ \ \ \ \ \textcolor{comment}{//******************************************************************************}}
+\DoxyCodeLine{00232\ }
+\DoxyCodeLine{00233\ \ \ \ \ \textcolor{comment}{//\ Error\ codes}}
+\DoxyCodeLine{00234\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errNegotiatingPDU\ =\ 0x00100000;}
+\DoxyCodeLine{00235\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errCliInvalidParams\ =\ 0x00200000;}
+\DoxyCodeLine{00236\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errCliJobPending\ =\ 0x00300000;}
+\DoxyCodeLine{00237\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errCliTooManyItems\ =\ 0x00400000;}
+\DoxyCodeLine{00238\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errCliInvalidWordLen\ =\ 0x00500000;}
+\DoxyCodeLine{00239\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errCliPartialDataWritten\ =\ 0x00600000;}
+\DoxyCodeLine{00240\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errCliSizeOverPDU\ =\ 0x00700000;}
+\DoxyCodeLine{00241\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errCliInvalidPlcAnswer\ =\ 0x00800000;}
+\DoxyCodeLine{00242\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errCliAddressOutOfRange\ =\ 0x00900000;}
+\DoxyCodeLine{00243\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errCliInvalidTransportSize\ =\ 0x00A00000;}
+\DoxyCodeLine{00244\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errCliWriteDataSizeMismatch\ =\ 0x00B00000;}
+\DoxyCodeLine{00245\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errCliItemNotAvailable\ =\ 0x00C00000;}
+\DoxyCodeLine{00246\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errCliInvalidValue\ =\ 0x00D00000;}
+\DoxyCodeLine{00247\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errCliCannotStartPLC\ =\ 0x00E00000;}
+\DoxyCodeLine{00248\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errCliAlreadyRun\ =\ 0x00F00000;}
+\DoxyCodeLine{00249\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errCliCannotStopPLC\ =\ 0x01000000;}
+\DoxyCodeLine{00250\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errCliCannotCopyRamToRom\ =\ 0x01100000;}
+\DoxyCodeLine{00251\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errCliCannotCompress\ =\ 0x01200000;}
+\DoxyCodeLine{00252\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errCliAlreadyStop\ =\ 0x01300000;}
+\DoxyCodeLine{00253\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errCliFunNotAvailable\ =\ 0x01400000;}
+\DoxyCodeLine{00254\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errCliUploadSequenceFailed\ =\ 0x01500000;}
+\DoxyCodeLine{00255\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errCliInvalidDataSizeRecvd\ =\ 0x01600000;}
+\DoxyCodeLine{00256\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errCliInvalidBlockType\ =\ 0x01700000;}
+\DoxyCodeLine{00257\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errCliInvalidBlockNumber\ =\ 0x01800000;}
+\DoxyCodeLine{00258\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errCliInvalidBlockSize\ =\ 0x01900000;}
+\DoxyCodeLine{00259\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errCliDownloadSequenceFailed\ =\ 0x01A00000;}
+\DoxyCodeLine{00260\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errCliInsertRefused\ =\ 0x01B00000;}
+\DoxyCodeLine{00261\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errCliDeleteRefused\ =\ 0x01C00000;}
+\DoxyCodeLine{00262\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errCliNeedPassword\ =\ 0x01D00000;}
+\DoxyCodeLine{00263\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errCliInvalidPassword\ =\ 0x01E00000;}
+\DoxyCodeLine{00264\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errCliNoPasswordToSetOrClear\ =\ 0x01F00000;}
+\DoxyCodeLine{00265\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errCliJobTimeout\ =\ 0x02000000;}
+\DoxyCodeLine{00266\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errCliPartialDataRead\ =\ 0x02100000;}
+\DoxyCodeLine{00267\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errCliBufferTooSmall\ =\ 0x02200000;}
+\DoxyCodeLine{00268\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errCliFunctionRefused\ =\ 0x02300000;}
+\DoxyCodeLine{00269\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errCliDestroying\ =\ 0x02400000;}
+\DoxyCodeLine{00270\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errCliInvalidParamNumber\ =\ 0x02500000;}
+\DoxyCodeLine{00271\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errCliCannotChangeParam\ =\ 0x02600000;}
+\DoxyCodeLine{00272\ }
+\DoxyCodeLine{00273\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ MaxVars\ =\ 20;\ \textcolor{comment}{//\ Max\ vars\ that\ can\ be\ transferred\ with\ MultiRead/MultiWrite}}
+\DoxyCodeLine{00274\ }
+\DoxyCodeLine{00275\ \ \ \ \ \textcolor{comment}{//\ Client\ Connection\ Type}}
+\DoxyCodeLine{00276\ \ \ \ \ \textcolor{keyword}{const}\ word\ CONNTYPE\_PG\ =\ 0x0001;\ \ \textcolor{comment}{//\ Connect\ to\ the\ PLC\ as\ a\ PG}}
+\DoxyCodeLine{00277\ \ \ \ \ \textcolor{keyword}{const}\ word\ CONNTYPE\_OP\ =\ 0x0002;\ \ \textcolor{comment}{//\ Connect\ to\ the\ PLC\ as\ an\ OP}}
+\DoxyCodeLine{00278\ \ \ \ \ \textcolor{keyword}{const}\ word\ CONNTYPE\_BASIC\ =\ 0x0003;\ \ \textcolor{comment}{//\ Basic\ connection}}
+\DoxyCodeLine{00279\ }
+\DoxyCodeLine{00280\ \ \ \ \ \textcolor{comment}{//\ Area\ ID}}
+\DoxyCodeLine{00281\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{byte}\ S7AreaPE\ =\ 0x81;}
+\DoxyCodeLine{00282\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{byte}\ S7AreaPA\ =\ 0x82;}
+\DoxyCodeLine{00283\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{byte}\ S7AreaMK\ =\ 0x83;}
+\DoxyCodeLine{00284\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{byte}\ S7AreaDB\ =\ 0x84;}
+\DoxyCodeLine{00285\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{byte}\ S7AreaCT\ =\ 0x1C;}
+\DoxyCodeLine{00286\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{byte}\ S7AreaTM\ =\ 0x1D;}
+\DoxyCodeLine{00287\ }
+\DoxyCodeLine{00288\ \ \ \ \ \textcolor{comment}{//\ Word\ Length}}
+\DoxyCodeLine{00289\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ S7WLBit\ =\ 0x01;}
+\DoxyCodeLine{00290\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ S7WLByte\ =\ 0x02;}
+\DoxyCodeLine{00291\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ S7WLWord\ =\ 0x04;}
+\DoxyCodeLine{00292\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ S7WLDWord\ =\ 0x06;}
+\DoxyCodeLine{00293\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ S7WLReal\ =\ 0x08;}
+\DoxyCodeLine{00294\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ S7WLCounter\ =\ 0x1C;}
+\DoxyCodeLine{00295\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ S7WLTimer\ =\ 0x1D;}
+\DoxyCodeLine{00296\ }
+\DoxyCodeLine{00297\ \ \ \ \ \textcolor{comment}{//\ Block\ type}}
+\DoxyCodeLine{00298\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{byte}\ Block\_OB\ =\ 0x38;}
+\DoxyCodeLine{00299\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{byte}\ Block\_DB\ =\ 0x41;}
+\DoxyCodeLine{00300\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{byte}\ Block\_SDB\ =\ 0x42;}
+\DoxyCodeLine{00301\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{byte}\ Block\_FC\ =\ 0x43;}
+\DoxyCodeLine{00302\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{byte}\ Block\_SFC\ =\ 0x44;}
+\DoxyCodeLine{00303\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{byte}\ Block\_FB\ =\ 0x45;}
+\DoxyCodeLine{00304\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{byte}\ Block\_SFB\ =\ 0x46;}
+\DoxyCodeLine{00305\ }
+\DoxyCodeLine{00306\ \ \ \ \ \textcolor{comment}{//\ Sub\ Block\ Type}}
+\DoxyCodeLine{00307\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{byte}\ SubBlk\_OB\ =\ 0x08;}
+\DoxyCodeLine{00308\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{byte}\ SubBlk\_DB\ =\ 0x0A;}
+\DoxyCodeLine{00309\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{byte}\ SubBlk\_SDB\ =\ 0x0B;}
+\DoxyCodeLine{00310\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{byte}\ SubBlk\_FC\ =\ 0x0C;}
+\DoxyCodeLine{00311\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{byte}\ SubBlk\_SFC\ =\ 0x0D;}
+\DoxyCodeLine{00312\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{byte}\ SubBlk\_FB\ =\ 0x0E;}
+\DoxyCodeLine{00313\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{byte}\ SubBlk\_SFB\ =\ 0x0F;}
+\DoxyCodeLine{00314\ }
+\DoxyCodeLine{00315\ \ \ \ \ \textcolor{comment}{//\ Block\ languages}}
+\DoxyCodeLine{00316\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{byte}\ BlockLangAWL\ =\ 0x01;}
+\DoxyCodeLine{00317\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{byte}\ BlockLangKOP\ =\ 0x02;}
+\DoxyCodeLine{00318\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{byte}\ BlockLangFUP\ =\ 0x03;}
+\DoxyCodeLine{00319\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{byte}\ BlockLangSCL\ =\ 0x04;}
+\DoxyCodeLine{00320\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{byte}\ BlockLangDB\ =\ 0x05;}
+\DoxyCodeLine{00321\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{byte}\ BlockLangGRAPH\ =\ 0x06;}
+\DoxyCodeLine{00322\ }
+\DoxyCodeLine{00323\ \ \ \ \ \textcolor{comment}{//\ Read/Write\ Multivars}}
+\DoxyCodeLine{00324\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ Area;}
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ WordLen;}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ Result;}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ DBNumber;}
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ Start;}
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ Amount;}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ pdata;}
+\DoxyCodeLine{00332\ \ \ \ \ \}\ \mbox{\hyperlink{struct_t_s7_data_item}{TS7DataItem}},\ *\ \mbox{\hyperlink{struct_t_s7_data_item}{PS7DataItem}};}
+\DoxyCodeLine{00333\ }
+\DoxyCodeLine{00334\ \ \ \ \ \textcolor{comment}{//typedef\ int\ TS7ResultItems[MaxVars];}}
+\DoxyCodeLine{00335\ \ \ \ \ \textcolor{comment}{//typedef\ TS7ResultItems\ *PS7ResultItems;}}
+\DoxyCodeLine{00336\ }
+\DoxyCodeLine{00337\ \ \ \ \ \textcolor{comment}{//\ List\ Blocks}}
+\DoxyCodeLine{00338\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ OBCount;}
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ FBCount;}
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ FCCount;}
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ SFBCount;}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ SFCCount;}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ DBCount;}
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ SDBCount;}
+\DoxyCodeLine{00346\ \ \ \ \ \}\ \mbox{\hyperlink{struct_t_s7_blocks_list}{TS7BlocksList}},\ *\ \mbox{\hyperlink{struct_t_s7_blocks_list}{PS7BlocksList}};}
+\DoxyCodeLine{00347\ }
+\DoxyCodeLine{00348\ \ \ \ \ \textcolor{comment}{//\ Blocks\ info}}
+\DoxyCodeLine{00349\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ BlkType;\ \ \ \ \textcolor{comment}{//\ Block\ Type\ (OB,\ DB)\ }}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ BlkNumber;\ \ \textcolor{comment}{//\ Block\ number}}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ BlkLang;\ \ \ \ \textcolor{comment}{//\ Block\ Language}}
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ BlkFlags;\ \ \ \textcolor{comment}{//\ Block\ flags}}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ MC7Size;\ \ \ \ \textcolor{comment}{//\ The\ real\ size\ in\ bytes}}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ LoadSize;\ \ \ \textcolor{comment}{//\ Load\ memory\ size}}
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ LocalData;\ \ \textcolor{comment}{//\ Local\ data}}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ SBBLength;\ \ \textcolor{comment}{//\ SBB\ Length}}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ CheckSum;\ \ \ \textcolor{comment}{//\ Checksum}}
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ Version;\ \ \ \ \textcolor{comment}{//\ Block\ version}}
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Chars\ info}}
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ CodeDate[11];\ \textcolor{comment}{//\ Code\ date}}
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ IntfDate[11];\ \textcolor{comment}{//\ Interface\ date\ }}
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ Author[9];\ \ \ \ \textcolor{comment}{//\ Author}}
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ Family[9];\ \ \ \ \textcolor{comment}{//\ Family}}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ Header[9];\ \ \ \ \textcolor{comment}{//\ Header}}
+\DoxyCodeLine{00366\ \ \ \ \ \}\ \mbox{\hyperlink{struct_t_s7_block_info}{TS7BlockInfo}},\ *\ \mbox{\hyperlink{struct_t_s7_block_info}{PS7BlockInfo}};}
+\DoxyCodeLine{00367\ }
+\DoxyCodeLine{00368\ \ \ \ \ \textcolor{keyword}{typedef}\ word\ TS7BlocksOfType[0x2000];}
+\DoxyCodeLine{00369\ \ \ \ \ \textcolor{keyword}{typedef}\ TS7BlocksOfType*\ PS7BlocksOfType;}
+\DoxyCodeLine{00370\ }
+\DoxyCodeLine{00371\ \ \ \ \ \textcolor{comment}{//\ Order\ code}}
+\DoxyCodeLine{00372\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00373\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ Code[21];}
+\DoxyCodeLine{00374\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{byte}\ V1;}
+\DoxyCodeLine{00375\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{byte}\ V2;}
+\DoxyCodeLine{00376\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{byte}\ V3;}
+\DoxyCodeLine{00377\ \ \ \ \ \}\ \mbox{\hyperlink{struct_t_s7_order_code}{TS7OrderCode}},\ *\ \mbox{\hyperlink{struct_t_s7_order_code}{PS7OrderCode}};}
+\DoxyCodeLine{00378\ }
+\DoxyCodeLine{00379\ \ \ \ \ \textcolor{comment}{//\ CPU\ Info}}
+\DoxyCodeLine{00380\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00381\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ ModuleTypeName[33];}
+\DoxyCodeLine{00382\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ SerialNumber[25];}
+\DoxyCodeLine{00383\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ ASName[25];}
+\DoxyCodeLine{00384\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ Copyright[27];}
+\DoxyCodeLine{00385\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ ModuleName[25];}
+\DoxyCodeLine{00386\ \ \ \ \ \}\ \mbox{\hyperlink{struct_t_s7_cpu_info}{TS7CpuInfo}},\ *\ \mbox{\hyperlink{struct_t_s7_cpu_info}{PS7CpuInfo}};}
+\DoxyCodeLine{00387\ }
+\DoxyCodeLine{00388\ \ \ \ \ \textcolor{comment}{//\ CP\ Info}}
+\DoxyCodeLine{00389\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00390\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ MaxPduLengt;}
+\DoxyCodeLine{00391\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ MaxConnections;}
+\DoxyCodeLine{00392\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ MaxMpiRate;}
+\DoxyCodeLine{00393\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ MaxBusRate;}
+\DoxyCodeLine{00394\ \ \ \ \ \}\ \mbox{\hyperlink{struct_t_s7_cp_info}{TS7CpInfo}},\ *\ \mbox{\hyperlink{struct_t_s7_cp_info}{PS7CpInfo}};}
+\DoxyCodeLine{00395\ }
+\DoxyCodeLine{00396\ \ \ \ \ \textcolor{comment}{//\ See\ §33.1\ of\ "{}System\ Software\ for\ S7-\/300/400\ System\ and\ Standard\ Functions"{}}}
+\DoxyCodeLine{00397\ \ \ \ \ \textcolor{comment}{//\ and\ see\ SFC51\ description\ too}}
+\DoxyCodeLine{00398\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00399\ \ \ \ \ \ \ \ \ word\ LENTHDR;}
+\DoxyCodeLine{00400\ \ \ \ \ \ \ \ \ word\ N\_DR;}
+\DoxyCodeLine{00401\ \ \ \ \ \}\ \mbox{\hyperlink{struct_s_z_l___h_e_a_d_e_r}{SZL\_HEADER}},\ *\ \mbox{\hyperlink{struct_s_z_l___h_e_a_d_e_r}{PSZL\_HEADER}};}
+\DoxyCodeLine{00402\ }
+\DoxyCodeLine{00403\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00404\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_s_z_l___h_e_a_d_e_r}{SZL\_HEADER}}\ Header;}
+\DoxyCodeLine{00405\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{byte}\ Data[0x4000\ -\/\ 4];}
+\DoxyCodeLine{00406\ \ \ \ \ \}\ \mbox{\hyperlink{struct_t_s7_s_z_l}{TS7SZL}},\ *\ \mbox{\hyperlink{struct_t_s7_s_z_l}{PS7SZL}};}
+\DoxyCodeLine{00407\ }
+\DoxyCodeLine{00408\ \ \ \ \ \textcolor{comment}{//\ SZL\ List\ of\ available\ SZL\ IDs\ :\ same\ as\ SZL\ but\ List\ items\ are\ big-\/endian\ adjusted}}
+\DoxyCodeLine{00409\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00410\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_s_z_l___h_e_a_d_e_r}{SZL\_HEADER}}\ Header;}
+\DoxyCodeLine{00411\ \ \ \ \ \ \ \ \ word\ List[0x2000\ -\/\ 2];}
+\DoxyCodeLine{00412\ \ \ \ \ \}\ \mbox{\hyperlink{struct_t_s7_s_z_l_list}{TS7SZLList}},\ *\ \mbox{\hyperlink{struct_t_s7_s_z_l_list}{PS7SZLList}};}
+\DoxyCodeLine{00413\ }
+\DoxyCodeLine{00414\ \ \ \ \ \textcolor{comment}{//\ See\ §33.19\ of\ "{}System\ Software\ for\ S7-\/300/400\ System\ and\ Standard\ Functions"{}}}
+\DoxyCodeLine{00415\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00416\ \ \ \ \ \ \ \ \ word\ \ sch\_schal;}
+\DoxyCodeLine{00417\ \ \ \ \ \ \ \ \ word\ \ sch\_par;}
+\DoxyCodeLine{00418\ \ \ \ \ \ \ \ \ word\ \ sch\_rel;}
+\DoxyCodeLine{00419\ \ \ \ \ \ \ \ \ word\ \ bart\_sch;}
+\DoxyCodeLine{00420\ \ \ \ \ \ \ \ \ word\ \ anl\_sch;}
+\DoxyCodeLine{00421\ \ \ \ \ \}\ \mbox{\hyperlink{struct_t_s7_protection}{TS7Protection}},\ *\ \mbox{\hyperlink{struct_t_s7_protection}{PS7Protection}};}
+\DoxyCodeLine{00422\ }
+\DoxyCodeLine{00423\ \ \ \ \ \textcolor{comment}{//\ Client\ completion\ callback}}
+\DoxyCodeLine{00424\ \ \ \ \ \textcolor{keyword}{typedef}\ void\ (S7API*\ pfn\_CliCompletion)\ (\textcolor{keywordtype}{void}*\ usrPtr,\ \textcolor{keywordtype}{int}\ opCode,\ \textcolor{keywordtype}{int}\ opResult);}
+\DoxyCodeLine{00425\ \ \ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00426\ \ \ \ \ \textcolor{comment}{//\ \ Import\ prototypes}}
+\DoxyCodeLine{00427\ \ \ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00428\ \ \ \ \ S7Object\ S7API\ Cli\_Create();}
+\DoxyCodeLine{00429\ \ \ \ \ \textcolor{keywordtype}{void}\ S7API\ Cli\_Destroy(S7Object*\ Client);}
+\DoxyCodeLine{00430\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_ConnectTo(S7Object\ Client,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ Address,\ \textcolor{keywordtype}{int}\ Rack,\ \textcolor{keywordtype}{int}\ Slot);}
+\DoxyCodeLine{00431\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_SetConnectionParams(S7Object\ Client,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ Address,\ word\ LocalTSAP,\ word\ RemoteTSAP);}
+\DoxyCodeLine{00432\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_SetConnectionType(S7Object\ Client,\ word\ ConnectionType);}
+\DoxyCodeLine{00433\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_Connect(S7Object\ Client);}
+\DoxyCodeLine{00434\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_Disconnect(S7Object\ Client);}
+\DoxyCodeLine{00435\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_GetParam(S7Object\ Client,\ \textcolor{keywordtype}{int}\ ParamNumber,\ \textcolor{keywordtype}{void}*\ pValue);}
+\DoxyCodeLine{00436\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_SetParam(S7Object\ Client,\ \textcolor{keywordtype}{int}\ ParamNumber,\ \textcolor{keywordtype}{void}*\ pValue);}
+\DoxyCodeLine{00437\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_SetAsCallback(S7Object\ Client,\ pfn\_CliCompletion\ pCompletion,\ \textcolor{keywordtype}{void}*\ usrPtr);}
+\DoxyCodeLine{00438\ \ \ \ \ \textcolor{comment}{//\ Data\ I/O\ main\ functions}}
+\DoxyCodeLine{00439\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_ReadArea(S7Object\ Client,\ \textcolor{keywordtype}{int}\ Area,\ \textcolor{keywordtype}{int}\ DBNumber,\ \textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Amount,\ \textcolor{keywordtype}{int}\ WordLen,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00440\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_WriteArea(S7Object\ Client,\ \textcolor{keywordtype}{int}\ Area,\ \textcolor{keywordtype}{int}\ DBNumber,\ \textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Amount,\ \textcolor{keywordtype}{int}\ WordLen,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00441\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_ReadMultiVars(S7Object\ Client,\ \mbox{\hyperlink{struct_t_s7_data_item}{PS7DataItem}}\ Item,\ \textcolor{keywordtype}{int}\ ItemsCount);}
+\DoxyCodeLine{00442\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_WriteMultiVars(S7Object\ Client,\ \mbox{\hyperlink{struct_t_s7_data_item}{PS7DataItem}}\ Item,\ \textcolor{keywordtype}{int}\ ItemsCount);}
+\DoxyCodeLine{00443\ \ \ \ \ \textcolor{comment}{//\ Data\ I/O\ Lean\ functions}}
+\DoxyCodeLine{00444\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_DBRead(S7Object\ Client,\ \textcolor{keywordtype}{int}\ DBNumber,\ \textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Size,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00445\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_DBWrite(S7Object\ Client,\ \textcolor{keywordtype}{int}\ DBNumber,\ \textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Size,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00446\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_MBRead(S7Object\ Client,\ \textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Size,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00447\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_MBWrite(S7Object\ Client,\ \textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Size,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00448\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_EBRead(S7Object\ Client,\ \textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Size,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00449\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_EBWrite(S7Object\ Client,\ \textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Size,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00450\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_ABRead(S7Object\ Client,\ \textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Size,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00451\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_ABWrite(S7Object\ Client,\ \textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Size,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00452\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_TMRead(S7Object\ Client,\ \textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Amount,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00453\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_TMWrite(S7Object\ Client,\ \textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Amount,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00454\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_CTRead(S7Object\ Client,\ \textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Amount,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00455\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_CTWrite(S7Object\ Client,\ \textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Amount,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00456\ \ \ \ \ \textcolor{comment}{//\ Directory\ functions}}
+\DoxyCodeLine{00457\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_ListBlocks(S7Object\ Client,\ \mbox{\hyperlink{struct_t_s7_blocks_list}{TS7BlocksList}}*\ pUsrData);}
+\DoxyCodeLine{00458\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_GetAgBlockInfo(S7Object\ Client,\ \textcolor{keywordtype}{int}\ BlockType,\ \textcolor{keywordtype}{int}\ BlockNum,\ \mbox{\hyperlink{struct_t_s7_block_info}{TS7BlockInfo}}*\ pUsrData);}
+\DoxyCodeLine{00459\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_GetPgBlockInfo(S7Object\ Client,\ \textcolor{keywordtype}{void}*\ pBlock,\ \mbox{\hyperlink{struct_t_s7_block_info}{TS7BlockInfo}}*\ pUsrData,\ \textcolor{keywordtype}{int}\ Size);}
+\DoxyCodeLine{00460\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_ListBlocksOfType(S7Object\ Client,\ \textcolor{keywordtype}{int}\ BlockType,\ TS7BlocksOfType*\ pUsrData,\ \textcolor{keywordtype}{int}*\ ItemsCount);}
+\DoxyCodeLine{00461\ \ \ \ \ \textcolor{comment}{//\ Blocks\ functions}}
+\DoxyCodeLine{00462\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_Upload(S7Object\ Client,\ \textcolor{keywordtype}{int}\ BlockType,\ \textcolor{keywordtype}{int}\ BlockNum,\ \textcolor{keywordtype}{void}*\ pUsrData,\ \textcolor{keywordtype}{int}*\ Size);}
+\DoxyCodeLine{00463\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_FullUpload(S7Object\ Client,\ \textcolor{keywordtype}{int}\ BlockType,\ \textcolor{keywordtype}{int}\ BlockNum,\ \textcolor{keywordtype}{void}*\ pUsrData,\ \textcolor{keywordtype}{int}*\ Size);}
+\DoxyCodeLine{00464\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_Download(S7Object\ Client,\ \textcolor{keywordtype}{int}\ BlockNum,\ \textcolor{keywordtype}{void}*\ pUsrData,\ \textcolor{keywordtype}{int}\ Size);}
+\DoxyCodeLine{00465\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_Delete(S7Object\ Client,\ \textcolor{keywordtype}{int}\ BlockType,\ \textcolor{keywordtype}{int}\ BlockNum);}
+\DoxyCodeLine{00466\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_DBGet(S7Object\ Client,\ \textcolor{keywordtype}{int}\ DBNumber,\ \textcolor{keywordtype}{void}*\ pUsrData,\ \textcolor{keywordtype}{int}*\ Size);}
+\DoxyCodeLine{00467\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_DBFill(S7Object\ Client,\ \textcolor{keywordtype}{int}\ DBNumber,\ \textcolor{keywordtype}{int}\ FillChar);}
+\DoxyCodeLine{00468\ \ \ \ \ \textcolor{comment}{//\ Date/Time\ functions}}
+\DoxyCodeLine{00469\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_GetPlcDateTime(S7Object\ Client,\ \mbox{\hyperlink{structtm}{tm}}*\ DateTime);}
+\DoxyCodeLine{00470\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_SetPlcDateTime(S7Object\ Client,\ \mbox{\hyperlink{structtm}{tm}}*\ DateTime);}
+\DoxyCodeLine{00471\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_SetPlcSystemDateTime(S7Object\ Client);}
+\DoxyCodeLine{00472\ \ \ \ \ \textcolor{comment}{//\ System\ Info\ functions}}
+\DoxyCodeLine{00473\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_GetOrderCode(S7Object\ Client,\ \mbox{\hyperlink{struct_t_s7_order_code}{TS7OrderCode}}*\ pUsrData);}
+\DoxyCodeLine{00474\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_GetCpuInfo(S7Object\ Client,\ \mbox{\hyperlink{struct_t_s7_cpu_info}{TS7CpuInfo}}*\ pUsrData);}
+\DoxyCodeLine{00475\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_GetCpInfo(S7Object\ Client,\ \mbox{\hyperlink{struct_t_s7_cp_info}{TS7CpInfo}}*\ pUsrData);}
+\DoxyCodeLine{00476\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_ReadSZL(S7Object\ Client,\ \textcolor{keywordtype}{int}\ ID,\ \textcolor{keywordtype}{int}\ Index,\ \mbox{\hyperlink{struct_t_s7_s_z_l}{TS7SZL}}*\ pUsrData,\ \textcolor{keywordtype}{int}*\ Size);}
+\DoxyCodeLine{00477\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_ReadSZLList(S7Object\ Client,\ \mbox{\hyperlink{struct_t_s7_s_z_l_list}{TS7SZLList}}*\ pUsrData,\ \textcolor{keywordtype}{int}*\ ItemsCount);}
+\DoxyCodeLine{00478\ \ \ \ \ \textcolor{comment}{//\ Control\ functions}}
+\DoxyCodeLine{00479\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_PlcHotStart(S7Object\ Client);}
+\DoxyCodeLine{00480\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_PlcColdStart(S7Object\ Client);}
+\DoxyCodeLine{00481\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_PlcStop(S7Object\ Client);}
+\DoxyCodeLine{00482\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_CopyRamToRom(S7Object\ Client,\ \textcolor{keywordtype}{int}\ Timeout);}
+\DoxyCodeLine{00483\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_Compress(S7Object\ Client,\ \textcolor{keywordtype}{int}\ Timeout);}
+\DoxyCodeLine{00484\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_GetPlcStatus(S7Object\ Client,\ \textcolor{keywordtype}{int}*\ Status);}
+\DoxyCodeLine{00485\ \ \ \ \ \textcolor{comment}{//\ Security\ functions}}
+\DoxyCodeLine{00486\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_GetProtection(S7Object\ Client,\ \mbox{\hyperlink{struct_t_s7_protection}{TS7Protection}}*\ pUsrData);}
+\DoxyCodeLine{00487\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_SetSessionPassword(S7Object\ Client,\ \textcolor{keywordtype}{char}*\ Password);}
+\DoxyCodeLine{00488\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_ClearSessionPassword(S7Object\ Client);}
+\DoxyCodeLine{00489\ \ \ \ \ \textcolor{comment}{//\ Low\ level}}
+\DoxyCodeLine{00490\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_IsoExchangeBuffer(S7Object\ Client,\ \textcolor{keywordtype}{void}*\ pUsrData,\ \textcolor{keywordtype}{int}*\ Size);}
+\DoxyCodeLine{00491\ \ \ \ \ \textcolor{comment}{//\ Misc}}
+\DoxyCodeLine{00492\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_GetExecTime(S7Object\ Client,\ \textcolor{keywordtype}{int}*\ Time);}
+\DoxyCodeLine{00493\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_GetLastError(S7Object\ Client,\ \textcolor{keywordtype}{int}*\ LastError);}
+\DoxyCodeLine{00494\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_GetPduLength(S7Object\ Client,\ \textcolor{keywordtype}{int}*\ Requested,\ \textcolor{keywordtype}{int}*\ Negotiated);}
+\DoxyCodeLine{00495\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_ErrorText(\textcolor{keywordtype}{int}\ Error,\ \textcolor{keywordtype}{char}*\ Text,\ \textcolor{keywordtype}{int}\ TextLen);}
+\DoxyCodeLine{00496\ \ \ \ \ \textcolor{comment}{//\ 1.1.0}}
+\DoxyCodeLine{00497\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_GetConnected(S7Object\ Client,\ \textcolor{keywordtype}{int}*\ Connected);}
+\DoxyCodeLine{00498\ \ \ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00499\ \ \ \ \ \textcolor{comment}{//\ \ Async\ functions}}
+\DoxyCodeLine{00500\ \ \ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00501\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_AsReadArea(S7Object\ Client,\ \textcolor{keywordtype}{int}\ Area,\ \textcolor{keywordtype}{int}\ DBNumber,\ \textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Amount,\ \textcolor{keywordtype}{int}\ WordLen,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00502\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_AsWriteArea(S7Object\ Client,\ \textcolor{keywordtype}{int}\ Area,\ \textcolor{keywordtype}{int}\ DBNumber,\ \textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Amount,\ \textcolor{keywordtype}{int}\ WordLen,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00503\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_AsDBRead(S7Object\ Client,\ \textcolor{keywordtype}{int}\ DBNumber,\ \textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Size,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00504\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_AsDBWrite(S7Object\ Client,\ \textcolor{keywordtype}{int}\ DBNumber,\ \textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Size,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00505\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_AsMBRead(S7Object\ Client,\ \textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Size,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00506\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_AsMBWrite(S7Object\ Client,\ \textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Size,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00507\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_AsEBRead(S7Object\ Client,\ \textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Size,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00508\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_AsEBWrite(S7Object\ Client,\ \textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Size,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00509\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_AsABRead(S7Object\ Client,\ \textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Size,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00510\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_AsABWrite(S7Object\ Client,\ \textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Size,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00511\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_AsTMRead(S7Object\ Client,\ \textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Amount,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00512\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_AsTMWrite(S7Object\ Client,\ \textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Amount,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00513\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_AsCTRead(S7Object\ Client,\ \textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Amount,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00514\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_AsCTWrite(S7Object\ Client,\ \textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Amount,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00515\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_AsListBlocksOfType(S7Object\ Client,\ \textcolor{keywordtype}{int}\ BlockType,\ TS7BlocksOfType*\ pUsrData,\ \textcolor{keywordtype}{int}*\ ItemsCount);}
+\DoxyCodeLine{00516\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_AsReadSZL(S7Object\ Client,\ \textcolor{keywordtype}{int}\ ID,\ \textcolor{keywordtype}{int}\ Index,\ \mbox{\hyperlink{struct_t_s7_s_z_l}{TS7SZL}}*\ pUsrData,\ \textcolor{keywordtype}{int}*\ Size);}
+\DoxyCodeLine{00517\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_AsReadSZLList(S7Object\ Client,\ \mbox{\hyperlink{struct_t_s7_s_z_l_list}{TS7SZLList}}*\ pUsrData,\ \textcolor{keywordtype}{int}*\ ItemsCount);}
+\DoxyCodeLine{00518\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_AsUpload(S7Object\ Client,\ \textcolor{keywordtype}{int}\ BlockType,\ \textcolor{keywordtype}{int}\ BlockNum,\ \textcolor{keywordtype}{void}*\ pUsrData,\ \textcolor{keywordtype}{int}*\ Size);}
+\DoxyCodeLine{00519\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_AsFullUpload(S7Object\ Client,\ \textcolor{keywordtype}{int}\ BlockType,\ \textcolor{keywordtype}{int}\ BlockNum,\ \textcolor{keywordtype}{void}*\ pUsrData,\ \textcolor{keywordtype}{int}*\ Size);}
+\DoxyCodeLine{00520\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_AsDownload(S7Object\ Client,\ \textcolor{keywordtype}{int}\ BlockNum,\ \textcolor{keywordtype}{void}*\ pUsrData,\ \textcolor{keywordtype}{int}\ Size);}
+\DoxyCodeLine{00521\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_AsCopyRamToRom(S7Object\ Client,\ \textcolor{keywordtype}{int}\ Timeout);}
+\DoxyCodeLine{00522\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_AsCompress(S7Object\ Client,\ \textcolor{keywordtype}{int}\ Timeout);}
+\DoxyCodeLine{00523\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_AsDBGet(S7Object\ Client,\ \textcolor{keywordtype}{int}\ DBNumber,\ \textcolor{keywordtype}{void}*\ pUsrData,\ \textcolor{keywordtype}{int}*\ Size);}
+\DoxyCodeLine{00524\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_AsDBFill(S7Object\ Client,\ \textcolor{keywordtype}{int}\ DBNumber,\ \textcolor{keywordtype}{int}\ FillChar);}
+\DoxyCodeLine{00525\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_CheckAsCompletion(S7Object\ Client,\ \textcolor{keywordtype}{int}*\ opResult);}
+\DoxyCodeLine{00526\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Cli\_WaitAsCompletion(S7Object\ Client,\ \textcolor{keywordtype}{int}\ Timeout);}
+\DoxyCodeLine{00527\ }
+\DoxyCodeLine{00528\ \ \ \ \ \textcolor{comment}{//******************************************************************************}}
+\DoxyCodeLine{00529\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SERVER}}
+\DoxyCodeLine{00530\ \ \ \ \ \textcolor{comment}{//******************************************************************************}}
+\DoxyCodeLine{00531\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ OperationRead\ =\ 0;}
+\DoxyCodeLine{00532\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ OperationWrite\ =\ 1;}
+\DoxyCodeLine{00533\ }
+\DoxyCodeLine{00534\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ mkEvent\ =\ 0;}
+\DoxyCodeLine{00535\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ mkLog\ =\ 1;}
+\DoxyCodeLine{00536\ }
+\DoxyCodeLine{00537\ \ \ \ \ \textcolor{comment}{//\ Server\ Area\ ID\ \ (use\ with\ Register/unregister\ -\/\ Lock/unlock\ Area)}}
+\DoxyCodeLine{00538\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ srvAreaPE\ =\ 0;}
+\DoxyCodeLine{00539\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ srvAreaPA\ =\ 1;}
+\DoxyCodeLine{00540\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ srvAreaMK\ =\ 2;}
+\DoxyCodeLine{00541\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ srvAreaCT\ =\ 3;}
+\DoxyCodeLine{00542\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ srvAreaTM\ =\ 4;}
+\DoxyCodeLine{00543\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ srvAreaDB\ =\ 5;}
+\DoxyCodeLine{00544\ }
+\DoxyCodeLine{00545\ \ \ \ \ \textcolor{comment}{//\ Errors}}
+\DoxyCodeLine{00546\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errSrvCannotStart\ =\ 0x00100000;\ \textcolor{comment}{//\ Server\ cannot\ start}}
+\DoxyCodeLine{00547\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errSrvDBNullPointer\ =\ 0x00200000;\ \textcolor{comment}{//\ Passed\ null\ as\ PData}}
+\DoxyCodeLine{00548\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errSrvAreaAlreadyExists\ =\ 0x00300000;\ \textcolor{comment}{//\ Area\ Re-\/registration}}
+\DoxyCodeLine{00549\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errSrvUnknownArea\ =\ 0x00400000;\ \textcolor{comment}{//\ Unknown\ area}}
+\DoxyCodeLine{00550\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errSrvInvalidParams\ =\ 0x00500000;\ \textcolor{comment}{//\ Invalid\ param(s)\ supplied}}
+\DoxyCodeLine{00551\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errSrvTooManyDB\ =\ 0x00600000;\ \textcolor{comment}{//\ Cannot\ register\ DB}}
+\DoxyCodeLine{00552\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errSrvInvalidParamNumber\ =\ 0x00700000;\ \textcolor{comment}{//\ Invalid\ param\ (srv\_get/set\_param)}}
+\DoxyCodeLine{00553\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errSrvCannotChangeParam\ =\ 0x00800000;\ \textcolor{comment}{//\ Cannot\ change\ because\ running}}
+\DoxyCodeLine{00554\ }
+\DoxyCodeLine{00555\ \ \ \ \ \textcolor{comment}{//\ TCP\ Server\ Event\ codes}}
+\DoxyCodeLine{00556\ \ \ \ \ \textcolor{keyword}{const}\ longword\ evcServerStarted\ =\ 0x00000001;}
+\DoxyCodeLine{00557\ \ \ \ \ \textcolor{keyword}{const}\ longword\ evcServerStopped\ =\ 0x00000002;}
+\DoxyCodeLine{00558\ \ \ \ \ \textcolor{keyword}{const}\ longword\ evcListenerCannotStart\ =\ 0x00000004;}
+\DoxyCodeLine{00559\ \ \ \ \ \textcolor{keyword}{const}\ longword\ evcClientAdded\ =\ 0x00000008;}
+\DoxyCodeLine{00560\ \ \ \ \ \textcolor{keyword}{const}\ longword\ evcClientRejected\ =\ 0x00000010;}
+\DoxyCodeLine{00561\ \ \ \ \ \textcolor{keyword}{const}\ longword\ evcClientNoRoom\ =\ 0x00000020;}
+\DoxyCodeLine{00562\ \ \ \ \ \textcolor{keyword}{const}\ longword\ evcClientException\ =\ 0x00000040;}
+\DoxyCodeLine{00563\ \ \ \ \ \textcolor{keyword}{const}\ longword\ evcClientDisconnected\ =\ 0x00000080;}
+\DoxyCodeLine{00564\ \ \ \ \ \textcolor{keyword}{const}\ longword\ evcClientTerminated\ =\ 0x00000100;}
+\DoxyCodeLine{00565\ \ \ \ \ \textcolor{keyword}{const}\ longword\ evcClientsDropped\ =\ 0x00000200;}
+\DoxyCodeLine{00566\ \ \ \ \ \textcolor{keyword}{const}\ longword\ evcReserved\_00000400\ =\ 0x00000400;\ \textcolor{comment}{//\ actually\ unused}}
+\DoxyCodeLine{00567\ \ \ \ \ \textcolor{keyword}{const}\ longword\ evcReserved\_00000800\ =\ 0x00000800;\ \textcolor{comment}{//\ actually\ unused}}
+\DoxyCodeLine{00568\ \ \ \ \ \textcolor{keyword}{const}\ longword\ evcReserved\_00001000\ =\ 0x00001000;\ \textcolor{comment}{//\ actually\ unused}}
+\DoxyCodeLine{00569\ \ \ \ \ \textcolor{keyword}{const}\ longword\ evcReserved\_00002000\ =\ 0x00002000;\ \textcolor{comment}{//\ actually\ unused}}
+\DoxyCodeLine{00570\ \ \ \ \ \textcolor{keyword}{const}\ longword\ evcReserved\_00004000\ =\ 0x00004000;\ \textcolor{comment}{//\ actually\ unused}}
+\DoxyCodeLine{00571\ \ \ \ \ \textcolor{keyword}{const}\ longword\ evcReserved\_00008000\ =\ 0x00008000;\ \textcolor{comment}{//\ actually\ unused}}
+\DoxyCodeLine{00572\ \ \ \ \ \textcolor{comment}{//\ S7\ Server\ Event\ Code}}
+\DoxyCodeLine{00573\ \ \ \ \ \textcolor{keyword}{const}\ longword\ evcPDUincoming\ =\ 0x00010000;}
+\DoxyCodeLine{00574\ \ \ \ \ \textcolor{keyword}{const}\ longword\ evcDataRead\ =\ 0x00020000;}
+\DoxyCodeLine{00575\ \ \ \ \ \textcolor{keyword}{const}\ longword\ evcDataWrite\ =\ 0x00040000;}
+\DoxyCodeLine{00576\ \ \ \ \ \textcolor{keyword}{const}\ longword\ evcNegotiatePDU\ =\ 0x00080000;}
+\DoxyCodeLine{00577\ \ \ \ \ \textcolor{keyword}{const}\ longword\ evcReadSZL\ =\ 0x00100000;}
+\DoxyCodeLine{00578\ \ \ \ \ \textcolor{keyword}{const}\ longword\ evcClock\ =\ 0x00200000;}
+\DoxyCodeLine{00579\ \ \ \ \ \textcolor{keyword}{const}\ longword\ evcUpload\ =\ 0x00400000;}
+\DoxyCodeLine{00580\ \ \ \ \ \textcolor{keyword}{const}\ longword\ evcDownload\ =\ 0x00800000;}
+\DoxyCodeLine{00581\ \ \ \ \ \textcolor{keyword}{const}\ longword\ evcDirectory\ =\ 0x01000000;}
+\DoxyCodeLine{00582\ \ \ \ \ \textcolor{keyword}{const}\ longword\ evcSecurity\ =\ 0x02000000;}
+\DoxyCodeLine{00583\ \ \ \ \ \textcolor{keyword}{const}\ longword\ evcControl\ =\ 0x04000000;}
+\DoxyCodeLine{00584\ \ \ \ \ \textcolor{keyword}{const}\ longword\ evcReserved\_08000000\ =\ 0x08000000;\ \textcolor{comment}{//\ actually\ unused}}
+\DoxyCodeLine{00585\ \ \ \ \ \textcolor{keyword}{const}\ longword\ evcReserved\_10000000\ =\ 0x10000000;\ \textcolor{comment}{//\ actually\ unused}}
+\DoxyCodeLine{00586\ \ \ \ \ \textcolor{keyword}{const}\ longword\ evcReserved\_20000000\ =\ 0x20000000;\ \textcolor{comment}{//\ actually\ unused}}
+\DoxyCodeLine{00587\ \ \ \ \ \textcolor{keyword}{const}\ longword\ evcReserved\_40000000\ =\ 0x40000000;\ \textcolor{comment}{//\ actually\ unused}}
+\DoxyCodeLine{00588\ \ \ \ \ \textcolor{keyword}{const}\ longword\ evcReserved\_80000000\ =\ 0x80000000;\ \textcolor{comment}{//\ actually\ unused}}
+\DoxyCodeLine{00589\ \ \ \ \ \textcolor{comment}{//\ Masks\ to\ enable/disable\ all\ events}}
+\DoxyCodeLine{00590\ \ \ \ \ \textcolor{keyword}{const}\ longword\ evcAll\ =\ 0xFFFFFFFF;}
+\DoxyCodeLine{00591\ \ \ \ \ \textcolor{keyword}{const}\ longword\ evcNone\ =\ 0x00000000;}
+\DoxyCodeLine{00592\ \ \ \ \ \textcolor{comment}{//\ Event\ SubCodes}}
+\DoxyCodeLine{00593\ \ \ \ \ \textcolor{keyword}{const}\ word\ evsUnknown\ =\ 0x0000;}
+\DoxyCodeLine{00594\ \ \ \ \ \textcolor{keyword}{const}\ word\ evsStartUpload\ =\ 0x0001;}
+\DoxyCodeLine{00595\ \ \ \ \ \textcolor{keyword}{const}\ word\ evsStartDownload\ =\ 0x0001;}
+\DoxyCodeLine{00596\ \ \ \ \ \textcolor{keyword}{const}\ word\ evsGetBlockList\ =\ 0x0001;}
+\DoxyCodeLine{00597\ \ \ \ \ \textcolor{keyword}{const}\ word\ evsStartListBoT\ =\ 0x0002;}
+\DoxyCodeLine{00598\ \ \ \ \ \textcolor{keyword}{const}\ word\ evsListBoT\ =\ 0x0003;}
+\DoxyCodeLine{00599\ \ \ \ \ \textcolor{keyword}{const}\ word\ evsGetBlockInfo\ =\ 0x0004;}
+\DoxyCodeLine{00600\ \ \ \ \ \textcolor{keyword}{const}\ word\ evsGetClock\ =\ 0x0001;}
+\DoxyCodeLine{00601\ \ \ \ \ \textcolor{keyword}{const}\ word\ evsSetClock\ =\ 0x0002;}
+\DoxyCodeLine{00602\ \ \ \ \ \textcolor{keyword}{const}\ word\ evsSetPassword\ =\ 0x0001;}
+\DoxyCodeLine{00603\ \ \ \ \ \textcolor{keyword}{const}\ word\ evsClrPassword\ =\ 0x0002;}
+\DoxyCodeLine{00604\ \ \ \ \ \textcolor{comment}{//\ Event\ Params\ :\ functions\ group}}
+\DoxyCodeLine{00605\ \ \ \ \ \textcolor{keyword}{const}\ word\ grProgrammer\ =\ 0x0041;}
+\DoxyCodeLine{00606\ \ \ \ \ \textcolor{keyword}{const}\ word\ grCyclicData\ =\ 0x0042;}
+\DoxyCodeLine{00607\ \ \ \ \ \textcolor{keyword}{const}\ word\ grBlocksInfo\ =\ 0x0043;}
+\DoxyCodeLine{00608\ \ \ \ \ \textcolor{keyword}{const}\ word\ grSZL\ =\ 0x0044;}
+\DoxyCodeLine{00609\ \ \ \ \ \textcolor{keyword}{const}\ word\ grPassword\ =\ 0x0045;}
+\DoxyCodeLine{00610\ \ \ \ \ \textcolor{keyword}{const}\ word\ grBSend\ =\ 0x0046;}
+\DoxyCodeLine{00611\ \ \ \ \ \textcolor{keyword}{const}\ word\ grClock\ =\ 0x0047;}
+\DoxyCodeLine{00612\ \ \ \ \ \textcolor{keyword}{const}\ word\ grSecurity\ =\ 0x0045;}
+\DoxyCodeLine{00613\ \ \ \ \ \textcolor{comment}{//\ Event\ Params\ :\ control\ codes}}
+\DoxyCodeLine{00614\ \ \ \ \ \textcolor{keyword}{const}\ word\ CodeControlUnknown\ =\ 0x0000;}
+\DoxyCodeLine{00615\ \ \ \ \ \textcolor{keyword}{const}\ word\ CodeControlColdStart\ =\ 0x0001;}
+\DoxyCodeLine{00616\ \ \ \ \ \textcolor{keyword}{const}\ word\ CodeControlWarmStart\ =\ 0x0002;}
+\DoxyCodeLine{00617\ \ \ \ \ \textcolor{keyword}{const}\ word\ CodeControlStop\ =\ 0x0003;}
+\DoxyCodeLine{00618\ \ \ \ \ \textcolor{keyword}{const}\ word\ CodeControlCompress\ =\ 0x0004;}
+\DoxyCodeLine{00619\ \ \ \ \ \textcolor{keyword}{const}\ word\ CodeControlCpyRamRom\ =\ 0x0005;}
+\DoxyCodeLine{00620\ \ \ \ \ \textcolor{keyword}{const}\ word\ CodeControlInsDel\ =\ 0x0006;}
+\DoxyCodeLine{00621\ \ \ \ \ \textcolor{comment}{//\ Event\ Result}}
+\DoxyCodeLine{00622\ \ \ \ \ \textcolor{keyword}{const}\ word\ evrNoError\ =\ 0x0000;}
+\DoxyCodeLine{00623\ \ \ \ \ \textcolor{keyword}{const}\ word\ evrFragmentRejected\ =\ 0x0001;}
+\DoxyCodeLine{00624\ \ \ \ \ \textcolor{keyword}{const}\ word\ evrMalformedPDU\ =\ 0x0002;}
+\DoxyCodeLine{00625\ \ \ \ \ \textcolor{keyword}{const}\ word\ evrSparseBytes\ =\ 0x0003;}
+\DoxyCodeLine{00626\ \ \ \ \ \textcolor{keyword}{const}\ word\ evrCannotHandlePDU\ =\ 0x0004;}
+\DoxyCodeLine{00627\ \ \ \ \ \textcolor{keyword}{const}\ word\ evrNotImplemented\ =\ 0x0005;}
+\DoxyCodeLine{00628\ \ \ \ \ \textcolor{keyword}{const}\ word\ evrErrException\ =\ 0x0006;}
+\DoxyCodeLine{00629\ \ \ \ \ \textcolor{keyword}{const}\ word\ evrErrAreaNotFound\ =\ 0x0007;}
+\DoxyCodeLine{00630\ \ \ \ \ \textcolor{keyword}{const}\ word\ evrErrOutOfRange\ =\ 0x0008;}
+\DoxyCodeLine{00631\ \ \ \ \ \textcolor{keyword}{const}\ word\ evrErrOverPDU\ =\ 0x0009;}
+\DoxyCodeLine{00632\ \ \ \ \ \textcolor{keyword}{const}\ word\ evrErrTransportSize\ =\ 0x000A;}
+\DoxyCodeLine{00633\ \ \ \ \ \textcolor{keyword}{const}\ word\ evrInvalidGroupUData\ =\ 0x000B;}
+\DoxyCodeLine{00634\ \ \ \ \ \textcolor{keyword}{const}\ word\ evrInvalidSZL\ =\ 0x000C;}
+\DoxyCodeLine{00635\ \ \ \ \ \textcolor{keyword}{const}\ word\ evrDataSizeMismatch\ =\ 0x000D;}
+\DoxyCodeLine{00636\ \ \ \ \ \textcolor{keyword}{const}\ word\ evrCannotUpload\ =\ 0x000E;}
+\DoxyCodeLine{00637\ \ \ \ \ \textcolor{keyword}{const}\ word\ evrCannotDownload\ =\ 0x000F;}
+\DoxyCodeLine{00638\ \ \ \ \ \textcolor{keyword}{const}\ word\ evrUploadInvalidID\ =\ 0x0010;}
+\DoxyCodeLine{00639\ \ \ \ \ \textcolor{keyword}{const}\ word\ evrResNotFound\ =\ 0x0011;}
+\DoxyCodeLine{00640\ }
+\DoxyCodeLine{00641\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00642\ \ \ \ \ \ \ \ \ time\_t\ EvtTime;\ \ \ \ \textcolor{comment}{//\ Timestamp}}
+\DoxyCodeLine{00643\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ EvtSender;\ \ \ \ \ \textcolor{comment}{//\ Sender}}
+\DoxyCodeLine{00644\ \ \ \ \ \ \ \ \ longword\ EvtCode;\ \ \textcolor{comment}{//\ Event\ code}}
+\DoxyCodeLine{00645\ \ \ \ \ \ \ \ \ word\ EvtRetCode;\ \ \ \textcolor{comment}{//\ Event\ result}}
+\DoxyCodeLine{00646\ \ \ \ \ \ \ \ \ word\ EvtParam1;\ \ \ \ \textcolor{comment}{//\ Param\ 1\ (if\ available)}}
+\DoxyCodeLine{00647\ \ \ \ \ \ \ \ \ word\ EvtParam2;\ \ \ \ \textcolor{comment}{//\ Param\ 2\ (if\ available)}}
+\DoxyCodeLine{00648\ \ \ \ \ \ \ \ \ word\ EvtParam3;\ \ \ \ \textcolor{comment}{//\ Param\ 3\ (if\ available)}}
+\DoxyCodeLine{00649\ \ \ \ \ \ \ \ \ word\ EvtParam4;\ \ \ \ \textcolor{comment}{//\ Param\ 4\ (if\ available)}}
+\DoxyCodeLine{00650\ \ \ \ \ \}\mbox{\hyperlink{struct_t_srv_event}{TSrvEvent}},\ *\ \mbox{\hyperlink{struct_t_srv_event}{PSrvEvent}};}
+\DoxyCodeLine{00651\ }
+\DoxyCodeLine{00652\ \ \ \ \ \textcolor{comment}{//\ Server\ Events\ callback}}
+\DoxyCodeLine{00653\ \ \ \ \ \textcolor{keyword}{typedef}\ void\ (S7API*\ pfn\_SrvCallBack)(\textcolor{keywordtype}{void}*\ usrPtr,\ \mbox{\hyperlink{struct_t_srv_event}{PSrvEvent}}\ PEvent,\ \textcolor{keywordtype}{int}\ Size);}
+\DoxyCodeLine{00654\ \ \ \ \ \textcolor{comment}{//\ Server\ Read/Write\ callback}}
+\DoxyCodeLine{00655\ \ \ \ \ \textcolor{keyword}{typedef}\ int(S7API*\ pfn\_RWAreaCallBack)(\textcolor{keywordtype}{void}*\ usrPtr,\ \textcolor{keywordtype}{int}\ Sender,\ \textcolor{keywordtype}{int}\ Operation,\ \mbox{\hyperlink{struct_t_s7_tag}{PS7Tag}}\ PTag,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00656\ }
+\DoxyCodeLine{00657\ \ \ \ \ S7Object\ S7API\ Srv\_Create();}
+\DoxyCodeLine{00658\ \ \ \ \ \textcolor{keywordtype}{void}\ S7API\ Srv\_Destroy(S7Object*\ Server);}
+\DoxyCodeLine{00659\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Srv\_GetParam(S7Object\ Server,\ \textcolor{keywordtype}{int}\ ParamNumber,\ \textcolor{keywordtype}{void}*\ pValue);}
+\DoxyCodeLine{00660\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Srv\_SetParam(S7Object\ Server,\ \textcolor{keywordtype}{int}\ ParamNumber,\ \textcolor{keywordtype}{void}*\ pValue);}
+\DoxyCodeLine{00661\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Srv\_StartTo(S7Object\ Server,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ Address);}
+\DoxyCodeLine{00662\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Srv\_Start(S7Object\ Server);}
+\DoxyCodeLine{00663\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Srv\_Stop(S7Object\ Server);}
+\DoxyCodeLine{00664\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Srv\_RegisterArea(S7Object\ Server,\ \textcolor{keywordtype}{int}\ AreaCode,\ word\ Index,\ \textcolor{keywordtype}{void}*\ pUsrData,\ \textcolor{keywordtype}{int}\ Size);}
+\DoxyCodeLine{00665\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Srv\_UnregisterArea(S7Object\ Server,\ \textcolor{keywordtype}{int}\ AreaCode,\ word\ Index);}
+\DoxyCodeLine{00666\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Srv\_LockArea(S7Object\ Server,\ \textcolor{keywordtype}{int}\ AreaCode,\ word\ Index);}
+\DoxyCodeLine{00667\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Srv\_UnlockArea(S7Object\ Server,\ \textcolor{keywordtype}{int}\ AreaCode,\ word\ Index);}
+\DoxyCodeLine{00668\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Srv\_GetStatus(S7Object\ Server,\ \textcolor{keywordtype}{int}*\ ServerStatus,\ \textcolor{keywordtype}{int}*\ CpuStatus,\ \textcolor{keywordtype}{int}*\ ClientsCount);}
+\DoxyCodeLine{00669\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Srv\_SetCpuStatus(S7Object\ Server,\ \textcolor{keywordtype}{int}\ CpuStatus);}
+\DoxyCodeLine{00670\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Srv\_ClearEvents(S7Object\ Server);}
+\DoxyCodeLine{00671\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Srv\_PickEvent(S7Object\ Server,\ \mbox{\hyperlink{struct_t_srv_event}{TSrvEvent}}*\ pEvent,\ \textcolor{keywordtype}{int}*\ EvtReady);}
+\DoxyCodeLine{00672\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Srv\_GetMask(S7Object\ Server,\ \textcolor{keywordtype}{int}\ MaskKind,\ longword*\ Mask);}
+\DoxyCodeLine{00673\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Srv\_SetMask(S7Object\ Server,\ \textcolor{keywordtype}{int}\ MaskKind,\ longword\ Mask);}
+\DoxyCodeLine{00674\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Srv\_SetEventsCallback(S7Object\ Server,\ pfn\_SrvCallBack\ pCallback,\ \textcolor{keywordtype}{void}*\ usrPtr);}
+\DoxyCodeLine{00675\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Srv\_SetReadEventsCallback(S7Object\ Server,\ pfn\_SrvCallBack\ pCallback,\ \textcolor{keywordtype}{void}*\ usrPtr);}
+\DoxyCodeLine{00676\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Srv\_SetRWAreaCallback(S7Object\ Server,\ pfn\_RWAreaCallBack\ pCallback,\ \textcolor{keywordtype}{void}*\ usrPtr);}
+\DoxyCodeLine{00677\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Srv\_EventText(\mbox{\hyperlink{struct_t_srv_event}{TSrvEvent}}*\ Event,\ \textcolor{keywordtype}{char}*\ Text,\ \textcolor{keywordtype}{int}\ TextLen);}
+\DoxyCodeLine{00678\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Srv\_ErrorText(\textcolor{keywordtype}{int}\ Error,\ \textcolor{keywordtype}{char}*\ Text,\ \textcolor{keywordtype}{int}\ TextLen);}
+\DoxyCodeLine{00679\ }
+\DoxyCodeLine{00680\ \ \ \ \ \textcolor{comment}{//******************************************************************************}}
+\DoxyCodeLine{00681\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PARTNER}}
+\DoxyCodeLine{00682\ \ \ \ \ \textcolor{comment}{//******************************************************************************}}
+\DoxyCodeLine{00683\ }
+\DoxyCodeLine{00684\ \ \ \ \ \textcolor{comment}{//\ Status}}
+\DoxyCodeLine{00685\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ par\_stopped\ =\ 0;\ \ \ \textcolor{comment}{//\ stopped}}
+\DoxyCodeLine{00686\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ par\_connecting\ =\ 1;\ \ \ \textcolor{comment}{//\ running\ and\ active\ connecting}}
+\DoxyCodeLine{00687\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ par\_waiting\ =\ 2;\ \ \ \textcolor{comment}{//\ running\ and\ waiting\ for\ a\ connection}}
+\DoxyCodeLine{00688\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ par\_linked\ =\ 3;\ \ \ \textcolor{comment}{//\ running\ and\ connected\ :\ linked}}
+\DoxyCodeLine{00689\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ par\_sending\ =\ 4;\ \ \ \textcolor{comment}{//\ sending\ data}}
+\DoxyCodeLine{00690\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ par\_receiving\ =\ 5;\ \ \ \textcolor{comment}{//\ receiving\ data}}
+\DoxyCodeLine{00691\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ par\_binderror\ =\ 6;\ \ \ \textcolor{comment}{//\ error\ starting\ passive\ server}}
+\DoxyCodeLine{00692\ }
+\DoxyCodeLine{00693\ \ \ \ \ \textcolor{comment}{//\ Errors}}
+\DoxyCodeLine{00694\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errParAddressInUse\ =\ 0x00200000;}
+\DoxyCodeLine{00695\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errParNoRoom\ =\ 0x00300000;}
+\DoxyCodeLine{00696\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errServerNoRoom\ =\ 0x00400000;}
+\DoxyCodeLine{00697\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errParInvalidParams\ =\ 0x00500000;}
+\DoxyCodeLine{00698\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errParNotLinked\ =\ 0x00600000;}
+\DoxyCodeLine{00699\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errParBusy\ =\ 0x00700000;}
+\DoxyCodeLine{00700\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errParFrameTimeout\ =\ 0x00800000;}
+\DoxyCodeLine{00701\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errParInvalidPDU\ =\ 0x00900000;}
+\DoxyCodeLine{00702\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errParSendTimeout\ =\ 0x00A00000;}
+\DoxyCodeLine{00703\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errParRecvTimeout\ =\ 0x00B00000;}
+\DoxyCodeLine{00704\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errParSendRefused\ =\ 0x00C00000;}
+\DoxyCodeLine{00705\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errParNegotiatingPDU\ =\ 0x00D00000;}
+\DoxyCodeLine{00706\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errParSendingBlock\ =\ 0x00E00000;}
+\DoxyCodeLine{00707\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errParRecvingBlock\ =\ 0x00F00000;}
+\DoxyCodeLine{00708\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errParBindError\ =\ 0x01000000;}
+\DoxyCodeLine{00709\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errParDestroying\ =\ 0x01100000;}
+\DoxyCodeLine{00710\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errParInvalidParamNumber\ =\ 0x01200000;\ \textcolor{comment}{//\ Invalid\ param\ (par\_get/set\_param)}}
+\DoxyCodeLine{00711\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errParCannotChangeParam\ =\ 0x01300000;\ \textcolor{comment}{//\ Cannot\ change\ because\ running}}
+\DoxyCodeLine{00712\ \ \ \ \ \textcolor{keyword}{const}\ longword\ errParBufferTooSmall\ =\ 0x01400000;\ \textcolor{comment}{//\ Raised\ by\ LabVIEW\ wrapper}}
+\DoxyCodeLine{00713\ }
+\DoxyCodeLine{00714\ \ \ \ \ \textcolor{comment}{//\ Brecv\ Data\ incoming\ Callback}}
+\DoxyCodeLine{00715\ \ \ \ \ \textcolor{keyword}{typedef}\ void\ (S7API*\ pfn\_ParRecvCallBack)(\textcolor{keywordtype}{void}*\ usrPtr,\ \textcolor{keywordtype}{int}\ opResult,\ longword\ R\_ID,\ \textcolor{keywordtype}{void}*\ pData,\ \textcolor{keywordtype}{int}\ Size);}
+\DoxyCodeLine{00716\ \ \ \ \ \textcolor{comment}{//\ BSend\ Completion\ Callback}}
+\DoxyCodeLine{00717\ \ \ \ \ \textcolor{keyword}{typedef}\ void\ (S7API*\ pfn\_ParSendCompletion)(\textcolor{keywordtype}{void}*\ usrPtr,\ \textcolor{keywordtype}{int}\ opResult);}
+\DoxyCodeLine{00718\ }
+\DoxyCodeLine{00719\ \ \ \ \ S7Object\ S7API\ Par\_Create(\textcolor{keywordtype}{int}\ Active);}
+\DoxyCodeLine{00720\ \ \ \ \ \textcolor{keywordtype}{void}\ S7API\ Par\_Destroy(S7Object*\ Partner);}
+\DoxyCodeLine{00721\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Par\_GetParam(S7Object\ Partner,\ \textcolor{keywordtype}{int}\ ParamNumber,\ \textcolor{keywordtype}{void}*\ pValue);}
+\DoxyCodeLine{00722\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Par\_SetParam(S7Object\ Partner,\ \textcolor{keywordtype}{int}\ ParamNumber,\ \textcolor{keywordtype}{void}*\ pValue);}
+\DoxyCodeLine{00723\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Par\_StartTo(S7Object\ Partner,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ LocalAddress,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ RemoteAddress,}
+\DoxyCodeLine{00724\ \ \ \ \ \ \ \ \ word\ LocTsap,\ word\ RemTsap);}
+\DoxyCodeLine{00725\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Par\_Start(S7Object\ Partner);}
+\DoxyCodeLine{00726\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Par\_Stop(S7Object\ Partner);}
+\DoxyCodeLine{00727\ \ \ \ \ \textcolor{comment}{//\ BSend}}
+\DoxyCodeLine{00728\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Par\_BSend(S7Object\ Partner,\ longword\ R\_ID,\ \textcolor{keywordtype}{void}*\ pUsrData,\ \textcolor{keywordtype}{int}\ Size);}
+\DoxyCodeLine{00729\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Par\_AsBSend(S7Object\ Partner,\ longword\ R\_ID,\ \textcolor{keywordtype}{void}*\ pUsrData,\ \textcolor{keywordtype}{int}\ Size);}
+\DoxyCodeLine{00730\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Par\_CheckAsBSendCompletion(S7Object\ Partner,\ \textcolor{keywordtype}{int}*\ opResult);}
+\DoxyCodeLine{00731\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Par\_WaitAsBSendCompletion(S7Object\ Partner,\ longword\ Timeout);}
+\DoxyCodeLine{00732\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Par\_SetSendCallback(S7Object\ Partner,\ pfn\_ParSendCompletion\ pCompletion,\ \textcolor{keywordtype}{void}*\ usrPtr);}
+\DoxyCodeLine{00733\ \ \ \ \ \textcolor{comment}{//\ BRecv}}
+\DoxyCodeLine{00734\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Par\_BRecv(S7Object\ Partner,\ longword*\ R\_ID,\ \textcolor{keywordtype}{void}*\ pData,\ \textcolor{keywordtype}{int}*\ Size,\ longword\ Timeout);}
+\DoxyCodeLine{00735\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Par\_CheckAsBRecvCompletion(S7Object\ Partner,\ \textcolor{keywordtype}{int}*\ opResult,\ longword*\ R\_ID,}
+\DoxyCodeLine{00736\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ pData,\ \textcolor{keywordtype}{int}*\ Size);}
+\DoxyCodeLine{00737\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Par\_SetRecvCallback(S7Object\ Partner,\ pfn\_ParRecvCallBack\ pCompletion,\ \textcolor{keywordtype}{void}*\ usrPtr);}
+\DoxyCodeLine{00738\ \ \ \ \ \textcolor{comment}{//\ Stat}}
+\DoxyCodeLine{00739\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Par\_GetTimes(S7Object\ Partner,\ longword*\ SendTime,\ longword*\ RecvTime);}
+\DoxyCodeLine{00740\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Par\_GetStats(S7Object\ Partner,\ longword*\ BytesSent,\ longword*\ BytesRecv,}
+\DoxyCodeLine{00741\ \ \ \ \ \ \ \ \ longword*\ SendErrors,\ longword*\ RecvErrors);}
+\DoxyCodeLine{00742\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Par\_GetLastError(S7Object\ Partner,\ \textcolor{keywordtype}{int}*\ LastError);}
+\DoxyCodeLine{00743\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Par\_GetStatus(S7Object\ Partner,\ \textcolor{keywordtype}{int}*\ Status);}
+\DoxyCodeLine{00744\ \ \ \ \ \textcolor{keywordtype}{int}\ S7API\ Par\_ErrorText(\textcolor{keywordtype}{int}\ Error,\ \textcolor{keywordtype}{char}*\ Text,\ \textcolor{keywordtype}{int}\ TextLen);}
+\DoxyCodeLine{00745\ }
+\DoxyCodeLine{00746\ }
+\DoxyCodeLine{00747\ \textcolor{preprocessor}{\#pragma\ pack()}}
+\DoxyCodeLine{00748\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00749\ \}}
+\DoxyCodeLine{00750\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_cplusplus}}
+\DoxyCodeLine{00751\ }
+\DoxyCodeLine{00752\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00753\ }
+\DoxyCodeLine{00754\ \textcolor{comment}{//******************************************************************************}}
+\DoxyCodeLine{00755\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CLIENT\ CLASS\ DEFINITION}}
+\DoxyCodeLine{00756\ \textcolor{comment}{//******************************************************************************}}
+\DoxyCodeLine{00757\ \textcolor{keyword}{class\ }TS7Client}
+\DoxyCodeLine{00758\ \{}
+\DoxyCodeLine{00759\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00760\ \ \ \ \ S7Object\ Client;}
+\DoxyCodeLine{00761\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00762\ \ \ \ \ TS7Client();}
+\DoxyCodeLine{00763\ \ \ \ \ \string~TS7Client();}
+\DoxyCodeLine{00764\ \ \ \ \ \textcolor{comment}{//\ Control\ functions}}
+\DoxyCodeLine{00765\ \ \ \ \ \textcolor{keywordtype}{int}\ Connect();}
+\DoxyCodeLine{00766\ \ \ \ \ \textcolor{keywordtype}{int}\ ConnectTo(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ RemAddress,\ \textcolor{keywordtype}{int}\ Rack,\ \textcolor{keywordtype}{int}\ Slot);}
+\DoxyCodeLine{00767\ \ \ \ \ \textcolor{keywordtype}{int}\ SetConnectionParams(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ RemAddress,\ word\ LocalTSAP,\ word\ RemoteTSAP);}
+\DoxyCodeLine{00768\ \ \ \ \ \textcolor{keywordtype}{int}\ SetConnectionType(word\ ConnectionType);}
+\DoxyCodeLine{00769\ \ \ \ \ \textcolor{keywordtype}{int}\ Disconnect();}
+\DoxyCodeLine{00770\ \ \ \ \ \textcolor{keywordtype}{int}\ GetParam(\textcolor{keywordtype}{int}\ ParamNumber,\ \textcolor{keywordtype}{void}*\ pValue);}
+\DoxyCodeLine{00771\ \ \ \ \ \textcolor{keywordtype}{int}\ SetParam(\textcolor{keywordtype}{int}\ ParamNumber,\ \textcolor{keywordtype}{void}*\ pValue);}
+\DoxyCodeLine{00772\ \ \ \ \ \textcolor{comment}{//\ Data\ I/O\ Main\ functions}}
+\DoxyCodeLine{00773\ \ \ \ \ \textcolor{keywordtype}{int}\ ReadArea(\textcolor{keywordtype}{int}\ Area,\ \textcolor{keywordtype}{int}\ DBNumber,\ \textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Amount,\ \textcolor{keywordtype}{int}\ WordLen,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00774\ \ \ \ \ \textcolor{keywordtype}{int}\ WriteArea(\textcolor{keywordtype}{int}\ Area,\ \textcolor{keywordtype}{int}\ DBNumber,\ \textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Amount,\ \textcolor{keywordtype}{int}\ WordLen,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00775\ \ \ \ \ \textcolor{keywordtype}{int}\ ReadMultiVars(\mbox{\hyperlink{struct_t_s7_data_item}{PS7DataItem}}\ Item,\ \textcolor{keywordtype}{int}\ ItemsCount);}
+\DoxyCodeLine{00776\ \ \ \ \ \textcolor{keywordtype}{int}\ WriteMultiVars(\mbox{\hyperlink{struct_t_s7_data_item}{PS7DataItem}}\ Item,\ \textcolor{keywordtype}{int}\ ItemsCount);}
+\DoxyCodeLine{00777\ \ \ \ \ \textcolor{comment}{//\ Data\ I/O\ Lean\ functions}}
+\DoxyCodeLine{00778\ \ \ \ \ \textcolor{keywordtype}{int}\ DBRead(\textcolor{keywordtype}{int}\ DBNumber,\ \textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Size,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00779\ \ \ \ \ \textcolor{keywordtype}{int}\ DBWrite(\textcolor{keywordtype}{int}\ DBNumber,\ \textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Size,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00780\ \ \ \ \ \textcolor{keywordtype}{int}\ MBRead(\textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Size,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00781\ \ \ \ \ \textcolor{keywordtype}{int}\ MBWrite(\textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Size,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00782\ \ \ \ \ \textcolor{keywordtype}{int}\ EBRead(\textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Size,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00783\ \ \ \ \ \textcolor{keywordtype}{int}\ EBWrite(\textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Size,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00784\ \ \ \ \ \textcolor{keywordtype}{int}\ ABRead(\textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Size,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00785\ \ \ \ \ \textcolor{keywordtype}{int}\ ABWrite(\textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Size,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00786\ \ \ \ \ \textcolor{keywordtype}{int}\ TMRead(\textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Amount,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00787\ \ \ \ \ \textcolor{keywordtype}{int}\ TMWrite(\textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Amount,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00788\ \ \ \ \ \textcolor{keywordtype}{int}\ CTRead(\textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Amount,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00789\ \ \ \ \ \textcolor{keywordtype}{int}\ CTWrite(\textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Amount,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00790\ \ \ \ \ \textcolor{comment}{//\ Directory\ functions}}
+\DoxyCodeLine{00791\ \ \ \ \ \textcolor{keywordtype}{int}\ ListBlocks(\mbox{\hyperlink{struct_t_s7_blocks_list}{PS7BlocksList}}\ pUsrData);}
+\DoxyCodeLine{00792\ \ \ \ \ \textcolor{keywordtype}{int}\ GetAgBlockInfo(\textcolor{keywordtype}{int}\ BlockType,\ \textcolor{keywordtype}{int}\ BlockNum,\ \mbox{\hyperlink{struct_t_s7_block_info}{PS7BlockInfo}}\ pUsrData);}
+\DoxyCodeLine{00793\ \ \ \ \ \textcolor{keywordtype}{int}\ GetPgBlockInfo(\textcolor{keywordtype}{void}*\ pBlock,\ \mbox{\hyperlink{struct_t_s7_block_info}{PS7BlockInfo}}\ pUsrData,\ \textcolor{keywordtype}{int}\ Size);}
+\DoxyCodeLine{00794\ \ \ \ \ \textcolor{keywordtype}{int}\ ListBlocksOfType(\textcolor{keywordtype}{int}\ BlockType,\ TS7BlocksOfType*\ pUsrData,\ \textcolor{keywordtype}{int}*\ ItemsCount);}
+\DoxyCodeLine{00795\ \ \ \ \ \textcolor{comment}{//\ Blocks\ functions}}
+\DoxyCodeLine{00796\ \ \ \ \ \textcolor{keywordtype}{int}\ Upload(\textcolor{keywordtype}{int}\ BlockType,\ \textcolor{keywordtype}{int}\ BlockNum,\ \textcolor{keywordtype}{void}*\ pUsrData,\ \textcolor{keywordtype}{int}*\ Size);}
+\DoxyCodeLine{00797\ \ \ \ \ \textcolor{keywordtype}{int}\ FullUpload(\textcolor{keywordtype}{int}\ BlockType,\ \textcolor{keywordtype}{int}\ BlockNum,\ \textcolor{keywordtype}{void}*\ pUsrData,\ \textcolor{keywordtype}{int}*\ Size);}
+\DoxyCodeLine{00798\ \ \ \ \ \textcolor{keywordtype}{int}\ Download(\textcolor{keywordtype}{int}\ BlockNum,\ \textcolor{keywordtype}{void}*\ pUsrData,\ \textcolor{keywordtype}{int}\ Size);}
+\DoxyCodeLine{00799\ \ \ \ \ \textcolor{keywordtype}{int}\ Delete(\textcolor{keywordtype}{int}\ BlockType,\ \textcolor{keywordtype}{int}\ BlockNum);}
+\DoxyCodeLine{00800\ \ \ \ \ \textcolor{keywordtype}{int}\ DBGet(\textcolor{keywordtype}{int}\ DBNumber,\ \textcolor{keywordtype}{void}*\ pUsrData,\ \textcolor{keywordtype}{int}*\ Size);}
+\DoxyCodeLine{00801\ \ \ \ \ \textcolor{keywordtype}{int}\ DBFill(\textcolor{keywordtype}{int}\ DBNumber,\ \textcolor{keywordtype}{int}\ FillChar);}
+\DoxyCodeLine{00802\ \ \ \ \ \textcolor{comment}{//\ Date/Time\ functions}}
+\DoxyCodeLine{00803\ \ \ \ \ \textcolor{keywordtype}{int}\ GetPlcDateTime(\mbox{\hyperlink{structtm}{tm}}*\ DateTime);}
+\DoxyCodeLine{00804\ \ \ \ \ \textcolor{keywordtype}{int}\ SetPlcDateTime(\mbox{\hyperlink{structtm}{tm}}*\ DateTime);}
+\DoxyCodeLine{00805\ \ \ \ \ \textcolor{keywordtype}{int}\ SetPlcSystemDateTime();}
+\DoxyCodeLine{00806\ \ \ \ \ \textcolor{comment}{//\ System\ Info\ functions}}
+\DoxyCodeLine{00807\ \ \ \ \ \textcolor{keywordtype}{int}\ GetOrderCode(\mbox{\hyperlink{struct_t_s7_order_code}{PS7OrderCode}}\ pUsrData);}
+\DoxyCodeLine{00808\ \ \ \ \ \textcolor{keywordtype}{int}\ GetCpuInfo(\mbox{\hyperlink{struct_t_s7_cpu_info}{PS7CpuInfo}}\ pUsrData);}
+\DoxyCodeLine{00809\ \ \ \ \ \textcolor{keywordtype}{int}\ GetCpInfo(\mbox{\hyperlink{struct_t_s7_cp_info}{PS7CpInfo}}\ pUsrData);}
+\DoxyCodeLine{00810\ \ \ \ \ \textcolor{keywordtype}{int}\ ReadSZL(\textcolor{keywordtype}{int}\ ID,\ \textcolor{keywordtype}{int}\ Index,\ \mbox{\hyperlink{struct_t_s7_s_z_l}{PS7SZL}}\ pUsrData,\ \textcolor{keywordtype}{int}*\ Size);}
+\DoxyCodeLine{00811\ \ \ \ \ \textcolor{keywordtype}{int}\ ReadSZLList(\mbox{\hyperlink{struct_t_s7_s_z_l_list}{PS7SZLList}}\ pUsrData,\ \textcolor{keywordtype}{int}*\ ItemsCount);}
+\DoxyCodeLine{00812\ \ \ \ \ \textcolor{comment}{//\ Control\ functions}}
+\DoxyCodeLine{00813\ \ \ \ \ \textcolor{keywordtype}{int}\ PlcHotStart();}
+\DoxyCodeLine{00814\ \ \ \ \ \textcolor{keywordtype}{int}\ PlcColdStart();}
+\DoxyCodeLine{00815\ \ \ \ \ \textcolor{keywordtype}{int}\ PlcStop();}
+\DoxyCodeLine{00816\ \ \ \ \ \textcolor{keywordtype}{int}\ CopyRamToRom(\textcolor{keywordtype}{int}\ Timeout);}
+\DoxyCodeLine{00817\ \ \ \ \ \textcolor{keywordtype}{int}\ Compress(\textcolor{keywordtype}{int}\ Timeout);}
+\DoxyCodeLine{00818\ \ \ \ \ \textcolor{comment}{//\ Security\ functions}}
+\DoxyCodeLine{00819\ \ \ \ \ \textcolor{keywordtype}{int}\ GetProtection(\mbox{\hyperlink{struct_t_s7_protection}{PS7Protection}}\ pUsrData);}
+\DoxyCodeLine{00820\ \ \ \ \ \textcolor{keywordtype}{int}\ SetSessionPassword(\textcolor{keywordtype}{char}*\ Password);}
+\DoxyCodeLine{00821\ \ \ \ \ \textcolor{keywordtype}{int}\ ClearSessionPassword();}
+\DoxyCodeLine{00822\ \ \ \ \ \textcolor{comment}{//\ Properties}}
+\DoxyCodeLine{00823\ \ \ \ \ \textcolor{keywordtype}{int}\ ExecTime();}
+\DoxyCodeLine{00824\ \ \ \ \ \textcolor{keywordtype}{int}\ LastError();}
+\DoxyCodeLine{00825\ \ \ \ \ \textcolor{keywordtype}{int}\ PDURequested();}
+\DoxyCodeLine{00826\ \ \ \ \ \textcolor{keywordtype}{int}\ PDULength();}
+\DoxyCodeLine{00827\ \ \ \ \ \textcolor{keywordtype}{int}\ PlcStatus();}
+\DoxyCodeLine{00828\ \ \ \ \ \textcolor{keywordtype}{bool}\ Connected();}
+\DoxyCodeLine{00829\ \ \ \ \ \textcolor{comment}{//\ Async\ functions}}
+\DoxyCodeLine{00830\ \ \ \ \ \textcolor{keywordtype}{int}\ SetAsCallback(pfn\_CliCompletion\ pCompletion,\ \textcolor{keywordtype}{void}*\ usrPtr);}
+\DoxyCodeLine{00831\ \ \ \ \ \textcolor{keywordtype}{bool}\ CheckAsCompletion(\textcolor{keywordtype}{int}*\ opResult);}
+\DoxyCodeLine{00832\ \ \ \ \ \textcolor{keywordtype}{int}\ WaitAsCompletion(longword\ Timeout);}
+\DoxyCodeLine{00833\ \ \ \ \ \textcolor{keywordtype}{int}\ AsReadArea(\textcolor{keywordtype}{int}\ Area,\ \textcolor{keywordtype}{int}\ DBNumber,\ \textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Amount,\ \textcolor{keywordtype}{int}\ WordLen,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00834\ \ \ \ \ \textcolor{keywordtype}{int}\ AsWriteArea(\textcolor{keywordtype}{int}\ Area,\ \textcolor{keywordtype}{int}\ DBNumber,\ \textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Amount,\ \textcolor{keywordtype}{int}\ WordLen,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00835\ \ \ \ \ \textcolor{keywordtype}{int}\ AsListBlocksOfType(\textcolor{keywordtype}{int}\ BlockType,\ PS7BlocksOfType\ pUsrData,\ \textcolor{keywordtype}{int}*\ ItemsCount);}
+\DoxyCodeLine{00836\ \ \ \ \ \textcolor{keywordtype}{int}\ AsReadSZL(\textcolor{keywordtype}{int}\ ID,\ \textcolor{keywordtype}{int}\ Index,\ \mbox{\hyperlink{struct_t_s7_s_z_l}{PS7SZL}}\ pUsrData,\ \textcolor{keywordtype}{int}*\ Size);}
+\DoxyCodeLine{00837\ \ \ \ \ \textcolor{keywordtype}{int}\ AsReadSZLList(\mbox{\hyperlink{struct_t_s7_s_z_l_list}{PS7SZLList}}\ pUsrData,\ \textcolor{keywordtype}{int}*\ ItemsCount);}
+\DoxyCodeLine{00838\ \ \ \ \ \textcolor{keywordtype}{int}\ AsUpload(\textcolor{keywordtype}{int}\ BlockType,\ \textcolor{keywordtype}{int}\ BlockNum,\ \textcolor{keywordtype}{void}*\ pUsrData,\ \textcolor{keywordtype}{int}*\ Size);}
+\DoxyCodeLine{00839\ \ \ \ \ \textcolor{keywordtype}{int}\ AsFullUpload(\textcolor{keywordtype}{int}\ BlockType,\ \textcolor{keywordtype}{int}\ BlockNum,\ \textcolor{keywordtype}{void}*\ pUsrData,\ \textcolor{keywordtype}{int}*\ Size);}
+\DoxyCodeLine{00840\ \ \ \ \ \textcolor{keywordtype}{int}\ AsDownload(\textcolor{keywordtype}{int}\ BlockNum,\ \textcolor{keywordtype}{void}*\ pUsrData,\ \textcolor{keywordtype}{int}\ Size);}
+\DoxyCodeLine{00841\ \ \ \ \ \textcolor{keywordtype}{int}\ AsCopyRamToRom(\textcolor{keywordtype}{int}\ Timeout);}
+\DoxyCodeLine{00842\ \ \ \ \ \textcolor{keywordtype}{int}\ AsCompress(\textcolor{keywordtype}{int}\ Timeout);}
+\DoxyCodeLine{00843\ \ \ \ \ \textcolor{keywordtype}{int}\ AsDBRead(\textcolor{keywordtype}{int}\ DBNumber,\ \textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Size,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00844\ \ \ \ \ \textcolor{keywordtype}{int}\ AsDBWrite(\textcolor{keywordtype}{int}\ DBNumber,\ \textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Size,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00845\ \ \ \ \ \textcolor{keywordtype}{int}\ AsMBRead(\textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Size,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00846\ \ \ \ \ \textcolor{keywordtype}{int}\ AsMBWrite(\textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Size,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00847\ \ \ \ \ \textcolor{keywordtype}{int}\ AsEBRead(\textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Size,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00848\ \ \ \ \ \textcolor{keywordtype}{int}\ AsEBWrite(\textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Size,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00849\ \ \ \ \ \textcolor{keywordtype}{int}\ AsABRead(\textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Size,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00850\ \ \ \ \ \textcolor{keywordtype}{int}\ AsABWrite(\textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Size,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00851\ \ \ \ \ \textcolor{keywordtype}{int}\ AsTMRead(\textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Amount,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00852\ \ \ \ \ \textcolor{keywordtype}{int}\ AsTMWrite(\textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Amount,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00853\ \ \ \ \ \textcolor{keywordtype}{int}\ AsCTRead(\textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Amount,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00854\ \ \ \ \ \textcolor{keywordtype}{int}\ AsCTWrite(\textcolor{keywordtype}{int}\ Start,\ \textcolor{keywordtype}{int}\ Amount,\ \textcolor{keywordtype}{void}*\ pUsrData);}
+\DoxyCodeLine{00855\ \ \ \ \ \textcolor{keywordtype}{int}\ AsDBGet(\textcolor{keywordtype}{int}\ DBNumber,\ \textcolor{keywordtype}{void}*\ pUsrData,\ \textcolor{keywordtype}{int}*\ Size);}
+\DoxyCodeLine{00856\ \ \ \ \ \textcolor{keywordtype}{int}\ AsDBFill(\textcolor{keywordtype}{int}\ DBNumber,\ \textcolor{keywordtype}{int}\ FillChar);}
+\DoxyCodeLine{00857\ \};}
+\DoxyCodeLine{00858\ \textcolor{keyword}{typedef}\ TS7Client*\ PS7Client;}
+\DoxyCodeLine{00859\ \textcolor{comment}{//******************************************************************************}}
+\DoxyCodeLine{00860\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SERVER\ CLASS\ DEFINITION}}
+\DoxyCodeLine{00861\ \textcolor{comment}{//******************************************************************************}}
+\DoxyCodeLine{00862\ \textcolor{keyword}{class\ }TS7Server}
+\DoxyCodeLine{00863\ \{}
+\DoxyCodeLine{00864\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00865\ \ \ \ \ S7Object\ Server;}
+\DoxyCodeLine{00866\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00867\ \ \ \ \ TS7Server();}
+\DoxyCodeLine{00868\ \ \ \ \ \string~TS7Server();}
+\DoxyCodeLine{00869\ \ \ \ \ \textcolor{comment}{//\ Control}}
+\DoxyCodeLine{00870\ \ \ \ \ \textcolor{keywordtype}{int}\ Start();}
+\DoxyCodeLine{00871\ \ \ \ \ \textcolor{keywordtype}{int}\ StartTo(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ Address);}
+\DoxyCodeLine{00872\ \ \ \ \ \textcolor{keywordtype}{int}\ Stop();}
+\DoxyCodeLine{00873\ \ \ \ \ \textcolor{keywordtype}{int}\ GetParam(\textcolor{keywordtype}{int}\ ParamNumber,\ \textcolor{keywordtype}{void}*\ pValue);}
+\DoxyCodeLine{00874\ \ \ \ \ \textcolor{keywordtype}{int}\ SetParam(\textcolor{keywordtype}{int}\ ParamNumber,\ \textcolor{keywordtype}{void}*\ pValue);}
+\DoxyCodeLine{00875\ \ \ \ \ \textcolor{comment}{//\ Events}}
+\DoxyCodeLine{00876\ \ \ \ \ \textcolor{keywordtype}{int}\ SetEventsCallback(pfn\_SrvCallBack\ PCallBack,\ \textcolor{keywordtype}{void}*\ UsrPtr);}
+\DoxyCodeLine{00877\ \ \ \ \ \textcolor{keywordtype}{int}\ SetReadEventsCallback(pfn\_SrvCallBack\ PCallBack,\ \textcolor{keywordtype}{void}*\ UsrPtr);}
+\DoxyCodeLine{00878\ \ \ \ \ \textcolor{keywordtype}{int}\ SetRWAreaCallback(pfn\_RWAreaCallBack\ PCallBack,\ \textcolor{keywordtype}{void}*\ UsrPtr);}
+\DoxyCodeLine{00879\ \ \ \ \ \textcolor{keywordtype}{bool}\ PickEvent(\mbox{\hyperlink{struct_t_srv_event}{TSrvEvent}}*\ pEvent);}
+\DoxyCodeLine{00880\ \ \ \ \ \textcolor{keywordtype}{void}\ ClearEvents();}
+\DoxyCodeLine{00881\ \ \ \ \ longword\ GetEventsMask();}
+\DoxyCodeLine{00882\ \ \ \ \ longword\ GetLogMask();}
+\DoxyCodeLine{00883\ \ \ \ \ \textcolor{keywordtype}{void}\ SetEventsMask(longword\ Mask);}
+\DoxyCodeLine{00884\ \ \ \ \ \textcolor{keywordtype}{void}\ SetLogMask(longword\ Mask);}
+\DoxyCodeLine{00885\ \ \ \ \ \textcolor{comment}{//\ Resources}}
+\DoxyCodeLine{00886\ \ \ \ \ \textcolor{keywordtype}{int}\ RegisterArea(\textcolor{keywordtype}{int}\ AreaCode,\ word\ Index,\ \textcolor{keywordtype}{void}*\ pUsrData,\ word\ Size);}
+\DoxyCodeLine{00887\ \ \ \ \ \textcolor{keywordtype}{int}\ UnregisterArea(\textcolor{keywordtype}{int}\ AreaCode,\ word\ Index);}
+\DoxyCodeLine{00888\ \ \ \ \ \textcolor{keywordtype}{int}\ LockArea(\textcolor{keywordtype}{int}\ AreaCode,\ word\ Index);}
+\DoxyCodeLine{00889\ \ \ \ \ \textcolor{keywordtype}{int}\ UnlockArea(\textcolor{keywordtype}{int}\ AreaCode,\ word\ Index);}
+\DoxyCodeLine{00890\ \ \ \ \ \textcolor{comment}{//\ Properties}}
+\DoxyCodeLine{00891\ \ \ \ \ \textcolor{keywordtype}{int}\ ServerStatus();}
+\DoxyCodeLine{00892\ \ \ \ \ \textcolor{keywordtype}{int}\ GetCpuStatus();}
+\DoxyCodeLine{00893\ \ \ \ \ \textcolor{keywordtype}{int}\ SetCpuStatus(\textcolor{keywordtype}{int}\ Status);}
+\DoxyCodeLine{00894\ \ \ \ \ \textcolor{keywordtype}{int}\ ClientsCount();}
+\DoxyCodeLine{00895\ \};}
+\DoxyCodeLine{00896\ \textcolor{keyword}{typedef}\ TS7Server*\ PS7Server;}
+\DoxyCodeLine{00897\ }
+\DoxyCodeLine{00898\ \textcolor{comment}{//******************************************************************************}}
+\DoxyCodeLine{00899\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PARTNER\ CLASS\ DEFINITION}}
+\DoxyCodeLine{00900\ \textcolor{comment}{//******************************************************************************}}
+\DoxyCodeLine{00901\ \textcolor{keyword}{class\ }TS7Partner}
+\DoxyCodeLine{00902\ \{}
+\DoxyCodeLine{00903\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00904\ \ \ \ \ S7Object\ Partner;\ \textcolor{comment}{//\ Partner\ Handle}}
+\DoxyCodeLine{00905\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00906\ \ \ \ \ TS7Partner(\textcolor{keywordtype}{bool}\ Active);}
+\DoxyCodeLine{00907\ \ \ \ \ \string~TS7Partner();}
+\DoxyCodeLine{00908\ \ \ \ \ \textcolor{comment}{//\ Control}}
+\DoxyCodeLine{00909\ \ \ \ \ \textcolor{keywordtype}{int}\ GetParam(\textcolor{keywordtype}{int}\ ParamNumber,\ \textcolor{keywordtype}{void}*\ pValue);}
+\DoxyCodeLine{00910\ \ \ \ \ \textcolor{keywordtype}{int}\ SetParam(\textcolor{keywordtype}{int}\ ParamNumber,\ \textcolor{keywordtype}{void}*\ pValue);}
+\DoxyCodeLine{00911\ \ \ \ \ \textcolor{keywordtype}{int}\ Start();}
+\DoxyCodeLine{00912\ \ \ \ \ \textcolor{keywordtype}{int}\ StartTo(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ LocalAddress,}
+\DoxyCodeLine{00913\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ RemoteAddress,}
+\DoxyCodeLine{00914\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ LocalTSAP,}
+\DoxyCodeLine{00915\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ RemoteTSAP);}
+\DoxyCodeLine{00916\ \ \ \ \ \textcolor{keywordtype}{int}\ Stop();}
+\DoxyCodeLine{00917\ \ \ \ \ \textcolor{comment}{//\ Data\ I/O\ functions\ :\ BSend}}
+\DoxyCodeLine{00918\ \ \ \ \ \textcolor{keywordtype}{int}\ BSend(longword\ R\_ID,\ \textcolor{keywordtype}{void}*\ pUsrData,\ \textcolor{keywordtype}{int}\ Size);}
+\DoxyCodeLine{00919\ \ \ \ \ \textcolor{keywordtype}{int}\ AsBSend(longword\ R\_ID,\ \textcolor{keywordtype}{void}*\ pUsrData,\ \textcolor{keywordtype}{int}\ Size);}
+\DoxyCodeLine{00920\ \ \ \ \ \textcolor{keywordtype}{bool}\ CheckAsBSendCompletion(\textcolor{keywordtype}{int}*\ opResult);}
+\DoxyCodeLine{00921\ \ \ \ \ \textcolor{keywordtype}{int}\ WaitAsBSendCompletion(longword\ Timeout);}
+\DoxyCodeLine{00922\ \ \ \ \ \textcolor{keywordtype}{int}\ SetSendCallback(pfn\_ParSendCompletion\ pCompletion,\ \textcolor{keywordtype}{void}*\ usrPtr);}
+\DoxyCodeLine{00923\ \ \ \ \ \textcolor{comment}{//\ Data\ I/O\ functions\ :\ BRecv}}
+\DoxyCodeLine{00924\ \ \ \ \ \textcolor{keywordtype}{int}\ BRecv(longword*\ R\_ID,\ \textcolor{keywordtype}{void}*\ pUsrData,\ \textcolor{keywordtype}{int}*\ Size,\ longword\ Timeout);}
+\DoxyCodeLine{00925\ \ \ \ \ \textcolor{keywordtype}{bool}\ CheckAsBRecvCompletion(\textcolor{keywordtype}{int}*\ opResult,\ longword*\ R\_ID,\ \textcolor{keywordtype}{void}*\ pUsrData,\ \textcolor{keywordtype}{int}*\ Size);}
+\DoxyCodeLine{00926\ \ \ \ \ \textcolor{keywordtype}{int}\ SetRecvCallback(pfn\_ParRecvCallBack\ pCallback,\ \textcolor{keywordtype}{void}*\ usrPtr);}
+\DoxyCodeLine{00927\ \ \ \ \ \textcolor{comment}{//\ Properties}}
+\DoxyCodeLine{00928\ \ \ \ \ \textcolor{keywordtype}{int}\ Status();}
+\DoxyCodeLine{00929\ \ \ \ \ \textcolor{keywordtype}{int}\ LastError();}
+\DoxyCodeLine{00930\ \ \ \ \ \textcolor{keywordtype}{int}\ GetTimes(longword*\ SendTime,\ longword*\ RecvTime);}
+\DoxyCodeLine{00931\ \ \ \ \ \textcolor{keywordtype}{int}\ GetStats(longword*\ BytesSent,}
+\DoxyCodeLine{00932\ \ \ \ \ \ \ \ \ longword*\ BytesRecv,}
+\DoxyCodeLine{00933\ \ \ \ \ \ \ \ \ longword*\ ErrSend,}
+\DoxyCodeLine{00934\ \ \ \ \ \ \ \ \ longword*\ ErrRecv);}
+\DoxyCodeLine{00935\ \ \ \ \ \textcolor{keywordtype}{bool}\ Linked();}
+\DoxyCodeLine{00936\ \};}
+\DoxyCodeLine{00937\ \textcolor{keyword}{typedef}\ TS7Partner*\ PS7Partner;}
+\DoxyCodeLine{00938\ \textcolor{comment}{//******************************************************************************}}
+\DoxyCodeLine{00939\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TEXT\ ROUTINES}}
+\DoxyCodeLine{00940\ \textcolor{comment}{//\ Only\ for\ C++,\ for\ pure\ C\ use\ xxx\_ErrorText()\ which\ uses\ *char}}
+\DoxyCodeLine{00941\ \textcolor{comment}{//******************************************************************************}}
+\DoxyCodeLine{00942\ \textcolor{preprocessor}{\#define\ TextLen\ 1024}}
+\DoxyCodeLine{00943\ }
+\DoxyCodeLine{00944\ \textcolor{comment}{//\ String\ type}}
+\DoxyCodeLine{00945\ \textcolor{comment}{//\ Here\ we\ define\ generic\ TextString\ (by\ default\ mapped\ onto\ std::string).}}
+\DoxyCodeLine{00946\ \textcolor{comment}{//\ So\ you\ can\ change\ it\ if\ needed\ (Unicodestring,\ Ansistring\ etc...)}}
+\DoxyCodeLine{00947\ }
+\DoxyCodeLine{00948\ \textcolor{keyword}{typedef}\ std::string\ TextString;}
+\DoxyCodeLine{00949\ }
+\DoxyCodeLine{00950\ TextString\ CliErrorText(\textcolor{keywordtype}{int}\ Error);}
+\DoxyCodeLine{00951\ TextString\ SrvErrorText(\textcolor{keywordtype}{int}\ Error);}
+\DoxyCodeLine{00952\ TextString\ ParErrorText(\textcolor{keywordtype}{int}\ Error);}
+\DoxyCodeLine{00953\ TextString\ SrvEventText(\mbox{\hyperlink{struct_t_srv_event}{TSrvEvent}}*\ Event);}
+\DoxyCodeLine{00954\ }
+\DoxyCodeLine{00955\ }
+\DoxyCodeLine{00956\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_cplusplus}}
+\DoxyCodeLine{00957\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ snap7\_h}}
+
+\end{DoxyCode}

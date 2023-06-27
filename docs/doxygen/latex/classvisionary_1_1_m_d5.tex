@@ -1,0 +1,41 @@
+\doxysection{visionary\+::MD5 Class Reference}
+\hypertarget{classvisionary_1_1_m_d5}{}\label{classvisionary_1_1_m_d5}\index{visionary::MD5@{visionary::MD5}}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvisionary_1_1_m_d5_a5f6ce615382551350adf404a76ca7d0e}\label{classvisionary_1_1_m_d5_a5f6ce615382551350adf404a76ca7d0e} 
+typedef unsigned int {\bfseries size\+\_\+type}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvisionary_1_1_m_d5_aa4e70a12aa64575167068edda7a4d6d7}\label{classvisionary_1_1_m_d5_aa4e70a12aa64575167068edda7a4d6d7} 
+{\bfseries MD5} (const std\+::string \&text)
+\item 
+\Hypertarget{classvisionary_1_1_m_d5_abd2e3650e2c93d0f01556dd15082fc84}\label{classvisionary_1_1_m_d5_abd2e3650e2c93d0f01556dd15082fc84} 
+void {\bfseries update} (const unsigned char \texorpdfstring{$\ast$}{*}buf, size\+\_\+type length)
+\item 
+\Hypertarget{classvisionary_1_1_m_d5_a4b02c6cca991ace505b159c8b3e273ff}\label{classvisionary_1_1_m_d5_a4b02c6cca991ace505b159c8b3e273ff} 
+void {\bfseries update} (const char \texorpdfstring{$\ast$}{*}buf, size\+\_\+type length)
+\item 
+\Hypertarget{classvisionary_1_1_m_d5_a33e3b52667992b4b859b978f0d9649c0}\label{classvisionary_1_1_m_d5_a33e3b52667992b4b859b978f0d9649c0} 
+\mbox{\hyperlink{classvisionary_1_1_m_d5}{MD5}} \& {\bfseries finalize} ()
+\item 
+\Hypertarget{classvisionary_1_1_m_d5_a8aac559a90c7fa81fc0927b00533fbfd}\label{classvisionary_1_1_m_d5_a8aac559a90c7fa81fc0927b00533fbfd} 
+std\+::string {\bfseries hexdigest} () const
+\item 
+\Hypertarget{classvisionary_1_1_m_d5_a1679417587e308493939f5a7720e5f71}\label{classvisionary_1_1_m_d5_a1679417587e308493939f5a7720e5f71} 
+const unsigned char \texorpdfstring{$\ast$}{*} {\bfseries get\+Digest} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvisionary_1_1_m_d5_a18cb04ba932bf64a61be07b38e43fd1f}\label{classvisionary_1_1_m_d5_a18cb04ba932bf64a61be07b38e43fd1f} 
+std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&, \mbox{\hyperlink{classvisionary_1_1_m_d5}{MD5}} md5)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sickapi/src/MD5.\+h\item 
+sickapi/src/MD5.\+cpp\end{DoxyCompactItemize}

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['newframeset_0',['newFrameset',['../class_capture_thread.html#abe68c8ea1844de605784b48d3202aac5',1,'CaptureThread']]]
+  ['histogramwidget_0',['HistogramWidget',['../class_histogram_widget.html#a7900598d380f8fb47f90b76f29f9273c',1,'HistogramWidget']]]
 ];

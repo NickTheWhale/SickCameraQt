@@ -1,0 +1,103 @@
+\doxysection{Co\+La\+Error.\+h}
+\hypertarget{_co_la_error_8h_source}{}\label{_co_la_error_8h_source}\index{sickapi/src/CoLaError.h@{sickapi/src/CoLaError.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ SPDX-\/License-\/Identifier:\ Unlicense}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ }}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Created:\ October\ 2018}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ }}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ SICK\ AG,\ Waldkirch}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ email:\ TechSupport0905@sick.de}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacevisionary}{visionary}}\ }
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{namespace\ }CoLaError}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00017\ \ \ \textcolor{keyword}{enum}\ Enum\ }
+\DoxyCodeLine{00018\ \ \ \{}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00021\ \ \ \ \ NETWORK\_ERROR\ =\ -\/1,}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00024\ \ \ \ \ OK\ =\ 0,}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00027\ \ \ \ \ METHOD\_IN\_ACCESS\_DENIED\ =\ 1,}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00030\ \ \ \ \ METHOD\_IN\_UNKNOWN\_INDEX\ =\ 2,}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00033\ \ \ \ \ VARIABLE\_UNKNOWN\_INDEX\ =\ 3,}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00036\ \ \ \ \ LOCAL\_CONDITION\_FAILED\ =\ 4,}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00039\ \ \ \ \ INVALID\_DATA\ =\ 5,}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00042\ \ \ \ \ UNKNOWN\_ERROR\ =\ 6,}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00045\ \ \ \ \ BUFFER\_OVERFLOW\ =\ 7,}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00048\ \ \ \ \ BUFFER\_UNDERFLOW\ =\ 8,}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00051\ \ \ \ \ ERROR\_UNKNOWN\_TYPE\ =\ 9,}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00054\ \ \ \ \ VARIABLE\_WRITE\_ACCESS\_DENIED\ =\ 10,}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00057\ \ \ \ \ UNKNOWN\_CMD\_FOR\_NAMESERVER\ =\ 11,}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00060\ \ \ \ \ UNKNOWN\_COLA\_COMMAND\ =\ 12,}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00063\ \ \ \ \ METHOD\_IN\_SERVER\_BUSY\ =\ 13,}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00066\ \ \ \ \ FLEX\_OUT\_OF\_BOUNDS\ =\ 14,}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00069\ \ \ \ \ EVENT\_REG\_UNKNOWN\_INDEX\ =\ 15,}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00072\ \ \ \ \ COLA\_VALUE\_UNDERFLOW\ =\ 16,}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00075\ \ \ \ \ COLA\_A\_INVALID\_CHARACTER\ =\ 17,}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00078\ \ \ \ \ OSAI\_NO\_MESSAGE\ =\ 18,}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00081\ \ \ \ \ OSAI\_NO\_ANSWER\_MESSAGE\ =\ 19,}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00084\ \ \ \ \ INTERNAL\ =\ 20,}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00087\ \ \ \ \ HUB\_ADDRESS\_CORRUPTED\ =\ 21,}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00090\ \ \ \ \ HUB\_ADDRESS\_DECODING\ =\ 22,}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00093\ \ \ \ \ HUB\_ADDRESS\_ADDRESS\_EXCEEDED\ =\ 23,}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00096\ \ \ \ \ HUB\_ADDRESS\_BLANK\_EXPECTED\ =\ 24,}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00099\ \ \ \ \ ASYNC\_METHODS\_ARE\_SUPPRESSED\ =\ 25,}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00102\ \ \ \ \ COMPLEX\_ARRAYS\_NOT\_SUPPORTED\ =\ 32,}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00105\ \ \ \ \ SESSION\_NO\_RESOURCES\ =\ 33,}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00108\ \ \ \ \ SESSION\_UNKNOWN\_ID\ =\ 34,}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00111\ \ \ \ \ CANNOT\_CONNECT\ =\ 35,}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00114\ \ \ \ \ INVALID\_PORT\ =\ 36,}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00117\ \ \ \ \ SCAN\_ALREADY\_ACTIVE\ =\ 37,}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00120\ \ \ \ \ OUT\_OF\_TIMERS\ =\ 38,}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00123\ \ \ \ \ WRITE\_MODE\_NOT\_ENABLED\ =\ 39,}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00126\ \ \ \ \ SET\_PORT\_FAILED\ =\ 40,}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00129\ \ \ \ \ IO\_LINK\_FUNC\_TEMP\_NOT\_AVAILABLE\ =\ 256,}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00132\ \ \ \ \ UNKNOWN\ =\ 32767}
+\DoxyCodeLine{00133\ \ \ \};}
+\DoxyCodeLine{00134\ \}}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \}}
+
+\end{DoxyCode}

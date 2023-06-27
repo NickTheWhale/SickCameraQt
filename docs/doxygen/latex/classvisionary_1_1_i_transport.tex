@@ -1,0 +1,113 @@
+\doxysection{visionary\+::ITransport Class Reference}
+\hypertarget{classvisionary_1_1_i_transport}{}\label{classvisionary_1_1_i_transport}\index{visionary::ITransport@{visionary::ITransport}}
+Inheritance diagram for visionary\+::ITransport\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classvisionary_1_1_i_transport}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvisionary_1_1_i_transport_af22c797e44b229b510534d4cc59cc6f6}\label{classvisionary_1_1_i_transport_af22c797e44b229b510534d4cc59cc6f6} 
+using {\bfseries send\+\_\+return\+\_\+t} = ssize\+\_\+t
+\item 
+\Hypertarget{classvisionary_1_1_i_transport_ab505fdcfbf2fe1c8e6da7914e0752a2d}\label{classvisionary_1_1_i_transport_ab505fdcfbf2fe1c8e6da7914e0752a2d} 
+using {\bfseries recv\+\_\+return\+\_\+t} = ssize\+\_\+t
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvisionary_1_1_i_transport_a8f5620b729c54859b68e40db76cb19ad}\label{classvisionary_1_1_i_transport_a8f5620b729c54859b68e40db76cb19ad} 
+virtual int {\bfseries shutdown} ()=0
+\item 
+\Hypertarget{classvisionary_1_1_i_transport_a7996815ead62c1b57bcbb26f8f447550}\label{classvisionary_1_1_i_transport_a7996815ead62c1b57bcbb26f8f447550} 
+virtual int {\bfseries get\+Last\+Error} ()=0
+\item 
+{\footnotesize template$<$typename T $>$ }\\send\+\_\+return\+\_\+t \mbox{\hyperlink{classvisionary_1_1_i_transport_a8aa95dafb0bd9662eb5b686b28523e60}{send}} (const std\+::vector$<$ T $>$ \&buffer)
+\item 
+virtual recv\+\_\+return\+\_\+t \mbox{\hyperlink{classvisionary_1_1_i_transport_a270896bd4df1f742e6e32f8866f05b5d}{recv}} (std\+::vector$<$ std\+::uint8\+\_\+t $>$ \&buffer, std\+::size\+\_\+t max\+Bytes\+To\+Receive)=0
+\item 
+virtual recv\+\_\+return\+\_\+t \mbox{\hyperlink{classvisionary_1_1_i_transport_af7d6052b61f9e837cbfdc155389a0308}{read}} (std\+::vector$<$ std\+::uint8\+\_\+t $>$ \&buffer, std\+::size\+\_\+t n\+Bytes\+To\+Receive)=0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvisionary_1_1_i_transport_a234d93e8bda3649ce068c8bb531a4d35}\label{classvisionary_1_1_i_transport_a234d93e8bda3649ce068c8bb531a4d35} 
+virtual send\+\_\+return\+\_\+t {\bfseries send} (const char \texorpdfstring{$\ast$}{*}p\+Data, size\+\_\+t size)=0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classvisionary_1_1_i_transport_af7d6052b61f9e837cbfdc155389a0308}\label{classvisionary_1_1_i_transport_af7d6052b61f9e837cbfdc155389a0308} 
+\index{visionary::ITransport@{visionary::ITransport}!read@{read}}
+\index{read@{read}!visionary::ITransport@{visionary::ITransport}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily virtual recv\+\_\+return\+\_\+t visionary\+::\+ITransport\+::read (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::uint8\+\_\+t $>$ \&}]{buffer,  }\item[{std\+::size\+\_\+t}]{n\+Bytes\+To\+Receive }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Read a number of bytes
+
+Contrary to recv this method reads precisely {\itshape n\+Bytes\+To\+Receive} bytes.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em buffer} & buffer containing the bytes that shall be sent. \\
+\hline
+\mbox{\texttt{ in}}  & {\em n\+Bytes\+To\+Receive} & maximum number of bytes to receive.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of received bytes, negative values are OS error codes. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classvisionary_1_1_tcp_socket_a9a4e4b3eba8de7e3809bec59a64910e4}{visionary\+::\+Tcp\+Socket}}, and \mbox{\hyperlink{classvisionary_1_1_udp_socket_af1566df8bd08ca50553d454f107b0634}{visionary\+::\+Udp\+Socket}}.
+
+\Hypertarget{classvisionary_1_1_i_transport_a270896bd4df1f742e6e32f8866f05b5d}\label{classvisionary_1_1_i_transport_a270896bd4df1f742e6e32f8866f05b5d} 
+\index{visionary::ITransport@{visionary::ITransport}!recv@{recv}}
+\index{recv@{recv}!visionary::ITransport@{visionary::ITransport}}
+\doxysubsubsection{\texorpdfstring{recv()}{recv()}}
+{\footnotesize\ttfamily virtual recv\+\_\+return\+\_\+t visionary\+::\+ITransport\+::recv (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::uint8\+\_\+t $>$ \&}]{buffer,  }\item[{std\+::size\+\_\+t}]{max\+Bytes\+To\+Receive }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Receive data on socket to device
+
+Receive at most {\itshape max\+Bytes\+To\+Receive} bytes.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em buffer} & buffer containing the bytes that shall be sent. \\
+\hline
+\mbox{\texttt{ in}}  & {\em max\+Bytes\+To\+Receive} & maximum number of bytes to receive.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of received bytes, negative values are OS error codes. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classvisionary_1_1_tcp_socket_af522e4c8bd834badbe86c55c5c61976e}{visionary\+::\+Tcp\+Socket}}, and \mbox{\hyperlink{classvisionary_1_1_udp_socket_a653283a07b9f12fcaa2699599b543d79}{visionary\+::\+Udp\+Socket}}.
+
+\Hypertarget{classvisionary_1_1_i_transport_a8aa95dafb0bd9662eb5b686b28523e60}\label{classvisionary_1_1_i_transport_a8aa95dafb0bd9662eb5b686b28523e60} 
+\index{visionary::ITransport@{visionary::ITransport}!send@{send}}
+\index{send@{send}!visionary::ITransport@{visionary::ITransport}}
+\doxysubsubsection{\texorpdfstring{send()}{send()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+send\+\_\+return\+\_\+t visionary\+::\+ITransport\+::send (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ T $>$ \&}]{buffer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Send data on socket to device
+
+{\itshape All} bytes are sent on the socket. It is regarded as error if this is not possible.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em buffer} & buffer containing the bytes that shall be sent.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OS error code. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+sickapi/src/ITransport.\+h\end{DoxyCompactItemize}

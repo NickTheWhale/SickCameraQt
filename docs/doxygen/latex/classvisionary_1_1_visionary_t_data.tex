@@ -1,0 +1,148 @@
+\doxysection{visionary\+::Visionary\+TData Class Reference}
+\hypertarget{classvisionary_1_1_visionary_t_data}{}\label{classvisionary_1_1_visionary_t_data}\index{visionary::VisionaryTData@{visionary::VisionaryTData}}
+Inheritance diagram for visionary\+::Visionary\+TData\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classvisionary_1_1_visionary_t_data}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvisionary_1_1_visionary_t_data_a279d2cc2a76894662df620e58767bfdc}\label{classvisionary_1_1_visionary_t_data_a279d2cc2a76894662df620e58767bfdc} 
+const std\+::vector$<$ uint16\+\_\+t $>$ \& {\bfseries get\+Distance\+Map} () const
+\item 
+\Hypertarget{classvisionary_1_1_visionary_t_data_a2f644c38223b4b9a7f675f106c032b2e}\label{classvisionary_1_1_visionary_t_data_a2f644c38223b4b9a7f675f106c032b2e} 
+const std\+::vector$<$ uint16\+\_\+t $>$ \& {\bfseries get\+Intensity\+Map} () const
+\item 
+\Hypertarget{classvisionary_1_1_visionary_t_data_a70bc49389993315f8ea8914b4441557c}\label{classvisionary_1_1_visionary_t_data_a70bc49389993315f8ea8914b4441557c} 
+const std\+::vector$<$ uint16\+\_\+t $>$ \& {\bfseries get\+Confidence\+Map} () const
+\item 
+\Hypertarget{classvisionary_1_1_visionary_t_data_aa042cdbd20dc1d29c0419fe9c2454f96}\label{classvisionary_1_1_visionary_t_data_aa042cdbd20dc1d29c0419fe9c2454f96} 
+uint8\+\_\+t {\bfseries get\+Polar\+Size} () const
+\item 
+\Hypertarget{classvisionary_1_1_visionary_t_data_a39c50b7e610f9a289ed5b1db5ef4fcbc}\label{classvisionary_1_1_visionary_t_data_a39c50b7e610f9a289ed5b1db5ef4fcbc} 
+float {\bfseries get\+Polar\+Start\+Angle} () const
+\item 
+\Hypertarget{classvisionary_1_1_visionary_t_data_afcf62a78f161f584ff3fe6e151572c56}\label{classvisionary_1_1_visionary_t_data_afcf62a78f161f584ff3fe6e151572c56} 
+float {\bfseries get\+Polar\+Angular\+Resolution} () const
+\item 
+\Hypertarget{classvisionary_1_1_visionary_t_data_a0cc6a82bc848cca38da2103b61a6d05d}\label{classvisionary_1_1_visionary_t_data_a0cc6a82bc848cca38da2103b61a6d05d} 
+const std\+::vector$<$ float $>$ \& {\bfseries get\+Polar\+Distance\+Data} () const
+\item 
+\Hypertarget{classvisionary_1_1_visionary_t_data_a20fa6672bc08396863b9cf8fdf6c2fb0}\label{classvisionary_1_1_visionary_t_data_a20fa6672bc08396863b9cf8fdf6c2fb0} 
+const std\+::vector$<$ float $>$ \& {\bfseries get\+Polar\+Confidence\+Data} () const
+\item 
+\Hypertarget{classvisionary_1_1_visionary_t_data_a4ba38c2272cbf961baffe6fa9342211a}\label{classvisionary_1_1_visionary_t_data_a4ba38c2272cbf961baffe6fa9342211a} 
+uint32\+\_\+t {\bfseries get\+Cartesian\+Size} () const
+\item 
+\Hypertarget{classvisionary_1_1_visionary_t_data_a9127e78f021c796a32e7e2db7f4af3e5}\label{classvisionary_1_1_visionary_t_data_a9127e78f021c796a32e7e2db7f4af3e5} 
+const std\+::vector$<$ \mbox{\hyperlink{structvisionary_1_1_point_x_y_z_c}{Point\+XYZC}} $>$ \& {\bfseries get\+Cartesian\+Data} () const
+\item 
+void \mbox{\hyperlink{classvisionary_1_1_visionary_t_data_ae78d0169fd943732de997f92cfc62856}{generate\+Point\+Cloud}} (std\+::vector$<$ \mbox{\hyperlink{structvisionary_1_1_point_x_y_z}{Point\+XYZ}} $>$ \&point\+Cloud) override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classvisionary_1_1_visionary_data}{visionary\+::\+Visionary\+Data}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void {\bfseries generate\+Point\+Cloud} (std\+::vector$<$ \mbox{\hyperlink{structvisionary_1_1_point_x_y_z}{Point\+XYZ}} $>$ \&point\+Cloud)=0
+\item 
+void {\bfseries transform\+Point\+Cloud} (std\+::vector$<$ \mbox{\hyperlink{structvisionary_1_1_point_x_y_z}{Point\+XYZ}} $>$ \&point\+Cloud) const
+\item 
+int {\bfseries get\+Height} () const
+\item 
+int {\bfseries get\+Width} () const
+\item 
+uint32\+\_\+t {\bfseries get\+Frame\+Num} () const
+\item 
+uint64\+\_\+t {\bfseries get\+Timestamp} () const
+\item 
+uint64\+\_\+t {\bfseries get\+Timestamp\+MS} () const
+\item 
+const \mbox{\hyperlink{structvisionary_1_1_camera_parameters}{Camera\+Parameters}} \& {\bfseries get\+Camera\+Parameters} () const
+\item 
+virtual bool {\bfseries parse\+XML} (const std\+::string \&xml\+String, uint32\+\_\+t change\+Counter)=0
+\item 
+virtual bool {\bfseries parse\+Binary\+Data} (std\+::vector$<$ uint8\+\_\+t $>$\+::iterator input\+Buffer, size\+\_\+t length)=0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classvisionary_1_1_visionary_t_data_a3fd6de19ce381249d9413dce90ad2926}{parse\+XML}} (const std\+::string \&xml\+String, uint32\+\_\+t change\+Counter) override
+\item 
+bool \mbox{\hyperlink{classvisionary_1_1_visionary_t_data_afd2d21e2435f0b3fbcc81fdd27e0e081}{parse\+Binary\+Data}} (std\+::vector$<$ uint8\+\_\+t $>$\+::iterator it\+Buf, size\+\_\+t size) override
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classvisionary_1_1_visionary_data}{visionary\+::\+Visionary\+Data}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries get\+Item\+Length} (std\+::string data\+Type)
+\item 
+void {\bfseries pre\+Calc\+Cam\+Info} (const Image\+Type \&type)
+\item 
+void {\bfseries generate\+Point\+Cloud} (const std\+::vector$<$ uint16\+\_\+t $>$ \&map, const Image\+Type \&img\+Type, std\+::vector$<$ \mbox{\hyperlink{structvisionary_1_1_point_x_y_z}{Point\+XYZ}} $>$ \&point\+Cloud)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Types inherited from \mbox{\hyperlink{classvisionary_1_1_visionary_data}{visionary\+::\+Visionary\+Data}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvisionary_1_1_visionary_data_afad1ab4faef29334737711aca7009921}\label{classvisionary_1_1_visionary_data_afad1ab4faef29334737711aca7009921} 
+enum {\bfseries Image\+Type} \{ {\bfseries UNKNOWN}
+, {\bfseries PLANAR}
+, {\bfseries RADIAL}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classvisionary_1_1_visionary_data}{visionary\+::\+Visionary\+Data}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structvisionary_1_1_camera_parameters}{Camera\+Parameters}} {\bfseries m\+\_\+camera\+Params} \{\}
+\item 
+float {\bfseries m\+\_\+scaleZ}
+\begin{DoxyCompactList}\small\item\em Factor to convert unit of distance image to mm. \end{DoxyCompactList}\item 
+uint\+\_\+fast32\+\_\+t {\bfseries m\+\_\+change\+Counter}
+\begin{DoxyCompactList}\small\item\em Change counter to detect changes in XML. \end{DoxyCompactList}\item 
+uint\+\_\+fast32\+\_\+t \mbox{\hyperlink{classvisionary_1_1_visionary_data_a4debd809bb153bffdc0c928680d39475}{m\+\_\+frame\+Num}}
+\item 
+uint64\+\_\+t {\bfseries m\+\_\+blob\+Timestamp}
+\item 
+Image\+Type {\bfseries m\+\_\+pre\+Calc\+Cam\+Info\+Type}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structvisionary_1_1_point_x_y_z}{Point\+XYZ}} $>$ {\bfseries m\+\_\+pre\+Calc\+Cam\+Info}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classvisionary_1_1_visionary_t_data_ae78d0169fd943732de997f92cfc62856}\label{classvisionary_1_1_visionary_t_data_ae78d0169fd943732de997f92cfc62856} 
+\index{visionary::VisionaryTData@{visionary::VisionaryTData}!generatePointCloud@{generatePointCloud}}
+\index{generatePointCloud@{generatePointCloud}!visionary::VisionaryTData@{visionary::VisionaryTData}}
+\doxysubsubsection{\texorpdfstring{generatePointCloud()}{generatePointCloud()}}
+{\footnotesize\ttfamily void visionary\+::\+Visionary\+TData\+::generate\+Point\+Cloud (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{structvisionary_1_1_point_x_y_z}{Point\+XYZ}} $>$ \&}]{point\+Cloud }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classvisionary_1_1_visionary_data}{visionary\+::\+Visionary\+Data}}.
+
+\Hypertarget{classvisionary_1_1_visionary_t_data_afd2d21e2435f0b3fbcc81fdd27e0e081}\label{classvisionary_1_1_visionary_t_data_afd2d21e2435f0b3fbcc81fdd27e0e081} 
+\index{visionary::VisionaryTData@{visionary::VisionaryTData}!parseBinaryData@{parseBinaryData}}
+\index{parseBinaryData@{parseBinaryData}!visionary::VisionaryTData@{visionary::VisionaryTData}}
+\doxysubsubsection{\texorpdfstring{parseBinaryData()}{parseBinaryData()}}
+{\footnotesize\ttfamily bool visionary\+::\+Visionary\+TData\+::parse\+Binary\+Data (\begin{DoxyParamCaption}\item[{std\+::vector$<$ uint8\+\_\+t $>$\+::iterator}]{it\+Buf,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classvisionary_1_1_visionary_data}{visionary\+::\+Visionary\+Data}}.
+
+\Hypertarget{classvisionary_1_1_visionary_t_data_a3fd6de19ce381249d9413dce90ad2926}\label{classvisionary_1_1_visionary_t_data_a3fd6de19ce381249d9413dce90ad2926} 
+\index{visionary::VisionaryTData@{visionary::VisionaryTData}!parseXML@{parseXML}}
+\index{parseXML@{parseXML}!visionary::VisionaryTData@{visionary::VisionaryTData}}
+\doxysubsubsection{\texorpdfstring{parseXML()}{parseXML()}}
+{\footnotesize\ttfamily bool visionary\+::\+Visionary\+TData\+::parse\+XML (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{xml\+String,  }\item[{uint32\+\_\+t}]{change\+Counter }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classvisionary_1_1_visionary_data}{visionary\+::\+Visionary\+Data}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sickapi/src/Visionary\+TData.\+h\item 
+sickapi/src/Visionary\+TData.\+cpp\end{DoxyCompactItemize}

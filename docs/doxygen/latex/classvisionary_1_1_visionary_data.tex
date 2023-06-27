@@ -1,0 +1,100 @@
+\doxysection{visionary\+::Visionary\+Data Class Reference}
+\hypertarget{classvisionary_1_1_visionary_data}{}\label{classvisionary_1_1_visionary_data}\index{visionary::VisionaryData@{visionary::VisionaryData}}
+Inheritance diagram for visionary\+::Visionary\+Data\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.975309cm]{classvisionary_1_1_visionary_data}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvisionary_1_1_visionary_data_acc13524ebe878dde099cfbde179c4c8d}\label{classvisionary_1_1_visionary_data_acc13524ebe878dde099cfbde179c4c8d} 
+virtual void {\bfseries generate\+Point\+Cloud} (std\+::vector$<$ \mbox{\hyperlink{structvisionary_1_1_point_x_y_z}{Point\+XYZ}} $>$ \&point\+Cloud)=0
+\item 
+\Hypertarget{classvisionary_1_1_visionary_data_a987fc90b4d16151d40ffd017c9f652f6}\label{classvisionary_1_1_visionary_data_a987fc90b4d16151d40ffd017c9f652f6} 
+void {\bfseries transform\+Point\+Cloud} (std\+::vector$<$ \mbox{\hyperlink{structvisionary_1_1_point_x_y_z}{Point\+XYZ}} $>$ \&point\+Cloud) const
+\item 
+\Hypertarget{classvisionary_1_1_visionary_data_aa6c842722c2aaacf7eb7df3b73fe96b2}\label{classvisionary_1_1_visionary_data_aa6c842722c2aaacf7eb7df3b73fe96b2} 
+int {\bfseries get\+Height} () const
+\item 
+\Hypertarget{classvisionary_1_1_visionary_data_af1729608235379b2ffcc39fe504327bd}\label{classvisionary_1_1_visionary_data_af1729608235379b2ffcc39fe504327bd} 
+int {\bfseries get\+Width} () const
+\item 
+\Hypertarget{classvisionary_1_1_visionary_data_acbbdc05cdeb62e5f94dac4c3a1e6dfa8}\label{classvisionary_1_1_visionary_data_acbbdc05cdeb62e5f94dac4c3a1e6dfa8} 
+uint32\+\_\+t {\bfseries get\+Frame\+Num} () const
+\item 
+\Hypertarget{classvisionary_1_1_visionary_data_a4fb23884eac3fb89c00fe4e2311cb135}\label{classvisionary_1_1_visionary_data_a4fb23884eac3fb89c00fe4e2311cb135} 
+uint64\+\_\+t {\bfseries get\+Timestamp} () const
+\item 
+\Hypertarget{classvisionary_1_1_visionary_data_ac01587a6a00fefceb00b3ff0202739f2}\label{classvisionary_1_1_visionary_data_ac01587a6a00fefceb00b3ff0202739f2} 
+uint64\+\_\+t {\bfseries get\+Timestamp\+MS} () const
+\item 
+\Hypertarget{classvisionary_1_1_visionary_data_ad8697a8d954d164b019e62105ada1546}\label{classvisionary_1_1_visionary_data_ad8697a8d954d164b019e62105ada1546} 
+const \mbox{\hyperlink{structvisionary_1_1_camera_parameters}{Camera\+Parameters}} \& {\bfseries get\+Camera\+Parameters} () const
+\item 
+\Hypertarget{classvisionary_1_1_visionary_data_ac677fd73361ec21b78c3997273fa9c2a}\label{classvisionary_1_1_visionary_data_ac677fd73361ec21b78c3997273fa9c2a} 
+virtual bool {\bfseries parse\+XML} (const std\+::string \&xml\+String, uint32\+\_\+t change\+Counter)=0
+\item 
+\Hypertarget{classvisionary_1_1_visionary_data_a68438ca476a679b7e7371755bfe00fad}\label{classvisionary_1_1_visionary_data_a68438ca476a679b7e7371755bfe00fad} 
+virtual bool {\bfseries parse\+Binary\+Data} (std\+::vector$<$ uint8\+\_\+t $>$\+::iterator input\+Buffer, size\+\_\+t length)=0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvisionary_1_1_visionary_data_afad1ab4faef29334737711aca7009921}\label{classvisionary_1_1_visionary_data_afad1ab4faef29334737711aca7009921} 
+enum {\bfseries Image\+Type} \{ {\bfseries UNKNOWN}
+, {\bfseries PLANAR}
+, {\bfseries RADIAL}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvisionary_1_1_visionary_data_aa8bbfc5e620bfac2efe2a51cd0347ad2}\label{classvisionary_1_1_visionary_data_aa8bbfc5e620bfac2efe2a51cd0347ad2} 
+int {\bfseries get\+Item\+Length} (std\+::string data\+Type)
+\item 
+\Hypertarget{classvisionary_1_1_visionary_data_ab3fe68159de8d43c89a2b210e6c7dd15}\label{classvisionary_1_1_visionary_data_ab3fe68159de8d43c89a2b210e6c7dd15} 
+void {\bfseries pre\+Calc\+Cam\+Info} (const Image\+Type \&type)
+\item 
+\Hypertarget{classvisionary_1_1_visionary_data_ac580042f7f29cbe001610cdfd29ee9d0}\label{classvisionary_1_1_visionary_data_ac580042f7f29cbe001610cdfd29ee9d0} 
+void {\bfseries generate\+Point\+Cloud} (const std\+::vector$<$ uint16\+\_\+t $>$ \&map, const Image\+Type \&img\+Type, std\+::vector$<$ \mbox{\hyperlink{structvisionary_1_1_point_x_y_z}{Point\+XYZ}} $>$ \&point\+Cloud)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvisionary_1_1_visionary_data_a354f56d263aec1ff7aa08cfffd25cb5b}\label{classvisionary_1_1_visionary_data_a354f56d263aec1ff7aa08cfffd25cb5b} 
+\mbox{\hyperlink{structvisionary_1_1_camera_parameters}{Camera\+Parameters}} {\bfseries m\+\_\+camera\+Params} \{\}
+\item 
+\Hypertarget{classvisionary_1_1_visionary_data_ab1bc40424a7ce980ff27d5c0e7300e45}\label{classvisionary_1_1_visionary_data_ab1bc40424a7ce980ff27d5c0e7300e45} 
+float {\bfseries m\+\_\+scaleZ}
+\begin{DoxyCompactList}\small\item\em Factor to convert unit of distance image to mm. \end{DoxyCompactList}\item 
+\Hypertarget{classvisionary_1_1_visionary_data_aabd2504ea82e6c87c1e383f0683af048}\label{classvisionary_1_1_visionary_data_aabd2504ea82e6c87c1e383f0683af048} 
+uint\+\_\+fast32\+\_\+t {\bfseries m\+\_\+change\+Counter}
+\begin{DoxyCompactList}\small\item\em Change counter to detect changes in XML. \end{DoxyCompactList}\item 
+uint\+\_\+fast32\+\_\+t \mbox{\hyperlink{classvisionary_1_1_visionary_data_a4debd809bb153bffdc0c928680d39475}{m\+\_\+frame\+Num}}
+\item 
+\Hypertarget{classvisionary_1_1_visionary_data_ac99e7704b5a8fe1d412002e2ba8e91f3}\label{classvisionary_1_1_visionary_data_ac99e7704b5a8fe1d412002e2ba8e91f3} 
+uint64\+\_\+t {\bfseries m\+\_\+blob\+Timestamp}
+\item 
+\Hypertarget{classvisionary_1_1_visionary_data_aae0d1d8e11c88c99bb7bfef231888d66}\label{classvisionary_1_1_visionary_data_aae0d1d8e11c88c99bb7bfef231888d66} 
+Image\+Type {\bfseries m\+\_\+pre\+Calc\+Cam\+Info\+Type}
+\item 
+\Hypertarget{classvisionary_1_1_visionary_data_ad1b24fb1860ce472c457725e99d1acd2}\label{classvisionary_1_1_visionary_data_ad1b24fb1860ce472c457725e99d1acd2} 
+std\+::vector$<$ \mbox{\hyperlink{structvisionary_1_1_point_x_y_z}{Point\+XYZ}} $>$ {\bfseries m\+\_\+pre\+Calc\+Cam\+Info}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classvisionary_1_1_visionary_data_a4debd809bb153bffdc0c928680d39475}\label{classvisionary_1_1_visionary_data_a4debd809bb153bffdc0c928680d39475} 
+\index{visionary::VisionaryData@{visionary::VisionaryData}!m\_frameNum@{m\_frameNum}}
+\index{m\_frameNum@{m\_frameNum}!visionary::VisionaryData@{visionary::VisionaryData}}
+\doxysubsubsection{\texorpdfstring{m\_frameNum}{m\_frameNum}}
+{\footnotesize\ttfamily uint\+\_\+fast32\+\_\+t visionary\+::\+Visionary\+Data\+::m\+\_\+frame\+Num\hspace{0.3cm}{\ttfamily [protected]}}
+
+Dataset Version 1\+: incremented on each received image Dataset Version 2\+: framenumber received with dataset 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sickapi/src/Visionary\+Data.\+h\item 
+sickapi/src/Visionary\+Data.\+cpp\end{DoxyCompactItemize}

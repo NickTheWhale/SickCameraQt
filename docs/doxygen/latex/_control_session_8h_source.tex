@@ -1,0 +1,36 @@
+\doxysection{Control\+Session.\+h}
+\hypertarget{_control_session_8h_source}{}\label{_control_session_8h_source}\index{sickapi/src/ControlSession.h@{sickapi/src/ControlSession.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}CoLaCommand.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}IProtocolHandler.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacevisionary}{visionary}}\ }
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classvisionary_1_1_control_session}{ControlSession}}}
+\DoxyCodeLine{00018\ \{}
+\DoxyCodeLine{00019\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \mbox{\hyperlink{classvisionary_1_1_control_session}{ControlSession}}(\mbox{\hyperlink{classvisionary_1_1_i_protocol_handler}{IProtocolHandler}}\&\ ProtocolHandler);}
+\DoxyCodeLine{00021\ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classvisionary_1_1_control_session}{\string~ControlSession}}();}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \textcolor{comment}{//void\ login(IAuthentication::UserLevel\ userLevel,\ const\ std::string\&\ password);}}
+\DoxyCodeLine{00024\ \ \ \textcolor{comment}{//void\ logout();}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \mbox{\hyperlink{classvisionary_1_1_co_la_command}{CoLaCommand}}\ prepareRead(\textcolor{keyword}{const}\ std::string\&\ varname);}
+\DoxyCodeLine{00027\ \ \ \mbox{\hyperlink{classvisionary_1_1_co_la_command}{CoLaCommand}}\ prepareWrite(\textcolor{keyword}{const}\ std::string\&\ varname);}
+\DoxyCodeLine{00028\ \ \ \mbox{\hyperlink{classvisionary_1_1_co_la_command}{CoLaCommand}}\ prepareCall(\textcolor{keyword}{const}\ std::string\&\ varname);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \mbox{\hyperlink{classvisionary_1_1_co_la_command}{CoLaCommand}}\ send(\textcolor{keyword}{const}\ \mbox{\hyperlink{classvisionary_1_1_co_la_command}{CoLaCommand}}\&\ cmd);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00033\ \ \ \mbox{\hyperlink{classvisionary_1_1_i_protocol_handler}{IProtocolHandler}}\&\ m\_ProtocolHandler;}
+\DoxyCodeLine{00034\ \};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \}}
+
+\end{DoxyCode}

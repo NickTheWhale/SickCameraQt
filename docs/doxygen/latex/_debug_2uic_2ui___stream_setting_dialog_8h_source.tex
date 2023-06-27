@@ -1,0 +1,134 @@
+\doxysection{ui\+\_\+\+Stream\+Setting\+Dialog.\+h}
+\hypertarget{_debug_2uic_2ui___stream_setting_dialog_8h_source}{}\label{_debug_2uic_2ui___stream_setting_dialog_8h_source}\index{x64/Debug/uic/ui\_StreamSettingDialog.h@{x64/Debug/uic/ui\_StreamSettingDialog.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/********************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{**\ Form\ generated\ from\ reading\ UI\ file\ 'StreamSettingDialog.ui'}}
+\DoxyCodeLine{00003\ \textcolor{comment}{**}}
+\DoxyCodeLine{00004\ \textcolor{comment}{**\ Created\ by:\ Qt\ User\ Interface\ Compiler\ version\ 6.5.1}}
+\DoxyCodeLine{00005\ \textcolor{comment}{**}}
+\DoxyCodeLine{00006\ \textcolor{comment}{**\ WARNING!\ All\ changes\ made\ in\ this\ file\ will\ be\ lost\ when\ recompiling\ UI\ file!}}
+\DoxyCodeLine{00007\ \textcolor{comment}{********************************************************************************/}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ UI\_STREAMSETTINGDIALOG\_H}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ UI\_STREAMSETTINGDIALOG\_H}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <QtCore/QVariant>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <QtWidgets/QApplication>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <QtWidgets/QDialog>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <QtWidgets/QGridLayout>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <QtWidgets/QGroupBox>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <QtWidgets/QRadioButton>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ QT\_BEGIN\_NAMESPACE}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ui__stream_setting_dialog}{Ui\_streamSettingDialog}}}
+\DoxyCodeLine{00022\ \{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ QGridLayout\ *gridLayout;}
+\DoxyCodeLine{00025\ \ \ \ \ QGroupBox\ *colormapGroupBox;}
+\DoxyCodeLine{00026\ \ \ \ \ QGridLayout\ *gridLayout\_2;}
+\DoxyCodeLine{00027\ \ \ \ \ QRadioButton\ *grayscaleButton;}
+\DoxyCodeLine{00028\ \ \ \ \ QRadioButton\ *turboButton;}
+\DoxyCodeLine{00029\ \ \ \ \ QRadioButton\ *jetButton;}
+\DoxyCodeLine{00030\ \ \ \ \ QRadioButton\ *rawButton;}
+\DoxyCodeLine{00031\ \ \ \ \ QGroupBox\ *fpsGroupBox;}
+\DoxyCodeLine{00032\ \ \ \ \ QGridLayout\ *gridLayout\_3;}
+\DoxyCodeLine{00033\ \ \ \ \ QRadioButton\ *oneFpsButton;}
+\DoxyCodeLine{00034\ \ \ \ \ QRadioButton\ *tenFpsButton;}
+\DoxyCodeLine{00035\ \ \ \ \ QRadioButton\ *thirtyFpsButton;}
+\DoxyCodeLine{00036\ \ \ \ \ QRadioButton\ *maxFpsButton;}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ setupUi(QDialog\ *streamSettingDialog)}
+\DoxyCodeLine{00039\ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (streamSettingDialog-\/>objectName().isEmpty())}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ streamSettingDialog-\/>setObjectName(\textcolor{stringliteral}{"{}streamSettingDialog"{}});}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ streamSettingDialog-\/>resize(250,\ 152);}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ gridLayout\ =\ \textcolor{keyword}{new}\ QGridLayout(streamSettingDialog);}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ gridLayout-\/>setObjectName(\textcolor{stringliteral}{"{}gridLayout"{}});}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ colormapGroupBox\ =\ \textcolor{keyword}{new}\ QGroupBox(streamSettingDialog);}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ colormapGroupBox-\/>setObjectName(\textcolor{stringliteral}{"{}colormapGroupBox"{}});}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ gridLayout\_2\ =\ \textcolor{keyword}{new}\ QGridLayout(colormapGroupBox);}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ gridLayout\_2-\/>setObjectName(\textcolor{stringliteral}{"{}gridLayout\_2"{}});}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ grayscaleButton\ =\ \textcolor{keyword}{new}\ QRadioButton(colormapGroupBox);}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ grayscaleButton-\/>setObjectName(\textcolor{stringliteral}{"{}grayscaleButton"{}});}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ gridLayout\_2-\/>addWidget(grayscaleButton,\ 0,\ 0,\ 1,\ 1);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ turboButton\ =\ \textcolor{keyword}{new}\ QRadioButton(colormapGroupBox);}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ turboButton-\/>setObjectName(\textcolor{stringliteral}{"{}turboButton"{}});}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ gridLayout\_2-\/>addWidget(turboButton,\ 1,\ 0,\ 1,\ 1);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ jetButton\ =\ \textcolor{keyword}{new}\ QRadioButton(colormapGroupBox);}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ jetButton-\/>setObjectName(\textcolor{stringliteral}{"{}jetButton"{}});}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ gridLayout\_2-\/>addWidget(jetButton,\ 2,\ 0,\ 1,\ 1);}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ rawButton\ =\ \textcolor{keyword}{new}\ QRadioButton(colormapGroupBox);}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ rawButton-\/>setObjectName(\textcolor{stringliteral}{"{}rawButton"{}});}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ gridLayout\_2-\/>addWidget(rawButton,\ 3,\ 0,\ 1,\ 1);}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ gridLayout-\/>addWidget(colormapGroupBox,\ 0,\ 0,\ 1,\ 1);}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ fpsGroupBox\ =\ \textcolor{keyword}{new}\ QGroupBox(streamSettingDialog);}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ fpsGroupBox-\/>setObjectName(\textcolor{stringliteral}{"{}fpsGroupBox"{}});}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ gridLayout\_3\ =\ \textcolor{keyword}{new}\ QGridLayout(fpsGroupBox);}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ gridLayout\_3-\/>setObjectName(\textcolor{stringliteral}{"{}gridLayout\_3"{}});}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ oneFpsButton\ =\ \textcolor{keyword}{new}\ QRadioButton(fpsGroupBox);}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ oneFpsButton-\/>setObjectName(\textcolor{stringliteral}{"{}oneFpsButton"{}});}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ gridLayout\_3-\/>addWidget(oneFpsButton,\ 0,\ 0,\ 1,\ 1);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ tenFpsButton\ =\ \textcolor{keyword}{new}\ QRadioButton(fpsGroupBox);}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ tenFpsButton-\/>setObjectName(\textcolor{stringliteral}{"{}tenFpsButton"{}});}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ gridLayout\_3-\/>addWidget(tenFpsButton,\ 1,\ 0,\ 1,\ 1);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ thirtyFpsButton\ =\ \textcolor{keyword}{new}\ QRadioButton(fpsGroupBox);}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ thirtyFpsButton-\/>setObjectName(\textcolor{stringliteral}{"{}thirtyFpsButton"{}});}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ gridLayout\_3-\/>addWidget(thirtyFpsButton,\ 2,\ 0,\ 1,\ 1);}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ maxFpsButton\ =\ \textcolor{keyword}{new}\ QRadioButton(fpsGroupBox);}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ maxFpsButton-\/>setObjectName(\textcolor{stringliteral}{"{}maxFpsButton"{}});}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ gridLayout\_3-\/>addWidget(maxFpsButton,\ 3,\ 0,\ 1,\ 1);}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ gridLayout-\/>addWidget(fpsGroupBox,\ 0,\ 1,\ 1,\ 1);}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ retranslateUi(streamSettingDialog);}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ QMetaObject::connectSlotsByName(streamSettingDialog);}
+\DoxyCodeLine{00103\ \ \ \ \ \}\ \textcolor{comment}{//\ setupUi}}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{void}\ retranslateUi(QDialog\ *streamSettingDialog)}
+\DoxyCodeLine{00106\ \ \ \ \ \{}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ streamSettingDialog-\/>setWindowTitle(QCoreApplication::translate(\textcolor{stringliteral}{"{}streamSettingDialog"{}},\ \textcolor{stringliteral}{"{}Dialog"{}},\ \textcolor{keyword}{nullptr}));}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ colormapGroupBox-\/>setTitle(QCoreApplication::translate(\textcolor{stringliteral}{"{}streamSettingDialog"{}},\ \textcolor{stringliteral}{"{}Colormap"{}},\ \textcolor{keyword}{nullptr}));}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ grayscaleButton-\/>setText(QCoreApplication::translate(\textcolor{stringliteral}{"{}streamSettingDialog"{}},\ \textcolor{stringliteral}{"{}Grayscale"{}},\ \textcolor{keyword}{nullptr}));}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ turboButton-\/>setText(QCoreApplication::translate(\textcolor{stringliteral}{"{}streamSettingDialog"{}},\ \textcolor{stringliteral}{"{}Turbo"{}},\ \textcolor{keyword}{nullptr}));}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ jetButton-\/>setText(QCoreApplication::translate(\textcolor{stringliteral}{"{}streamSettingDialog"{}},\ \textcolor{stringliteral}{"{}Jet"{}},\ \textcolor{keyword}{nullptr}));}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ rawButton-\/>setText(QCoreApplication::translate(\textcolor{stringliteral}{"{}streamSettingDialog"{}},\ \textcolor{stringliteral}{"{}Raw"{}},\ \textcolor{keyword}{nullptr}));}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ fpsGroupBox-\/>setTitle(QCoreApplication::translate(\textcolor{stringliteral}{"{}streamSettingDialog"{}},\ \textcolor{stringliteral}{"{}FPS"{}},\ \textcolor{keyword}{nullptr}));}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ oneFpsButton-\/>setText(QCoreApplication::translate(\textcolor{stringliteral}{"{}streamSettingDialog"{}},\ \textcolor{stringliteral}{"{}1"{}},\ \textcolor{keyword}{nullptr}));}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ tenFpsButton-\/>setText(QCoreApplication::translate(\textcolor{stringliteral}{"{}streamSettingDialog"{}},\ \textcolor{stringliteral}{"{}10"{}},\ \textcolor{keyword}{nullptr}));}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ thirtyFpsButton-\/>setText(QCoreApplication::translate(\textcolor{stringliteral}{"{}streamSettingDialog"{}},\ \textcolor{stringliteral}{"{}30"{}},\ \textcolor{keyword}{nullptr}));}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ maxFpsButton-\/>setText(QCoreApplication::translate(\textcolor{stringliteral}{"{}streamSettingDialog"{}},\ \textcolor{stringliteral}{"{}Max"{}},\ \textcolor{keyword}{nullptr}));}
+\DoxyCodeLine{00118\ \ \ \ \ \}\ \textcolor{comment}{//\ retranslateUi}}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \};}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \textcolor{keyword}{namespace\ }Ui\ \{}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ui_1_1stream_setting_dialog}{streamSettingDialog}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_ui__stream_setting_dialog}{Ui\_streamSettingDialog}}\ \{\};}
+\DoxyCodeLine{00124\ \}\ \textcolor{comment}{//\ namespace\ Ui}}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ QT\_END\_NAMESPACE}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ UI\_STREAMSETTINGDIALOG\_H}}
+
+\end{DoxyCode}

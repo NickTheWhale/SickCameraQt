@@ -1,0 +1,85 @@
+\doxysection{Visionary\+Control.\+h}
+\hypertarget{_visionary_control_8h_source}{}\label{_visionary_control_8h_source}\index{sickapi/src/VisionaryControl.h@{sickapi/src/VisionaryControl.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ SPDX-\/License-\/Identifier:\ Unlicense}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ }}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Created:\ August\ 2017}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ }}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ SICK\ AG,\ Waldkirch}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ email:\ TechSupport0905@sick.de}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}CoLaCommand.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}IProtocolHandler.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}IAuthentication.h"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}TcpSocket.h"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}ControlSession.h"{}}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacevisionary}{visionary}}\ }
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classvisionary_1_1_visionary_control}{VisionaryControl}}}
+\DoxyCodeLine{00024\ \{}
+\DoxyCodeLine{00025\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{classvisionary_1_1_visionary_control_ad48d462fa9f65368bb9be70191372395}{ProtocolType}}}
+\DoxyCodeLine{00028\ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ INVALID\_PROTOCOL\ =\ -\/1,}
+\DoxyCodeLine{00030\ \ \ \ \ COLA\_A\ =\ 2111,}
+\DoxyCodeLine{00031\ \ \ \ \ COLA\_B\ =\ 2112,}
+\DoxyCodeLine{00032\ \ \ \ \ COLA\_2\ =\ 2122}
+\DoxyCodeLine{00033\ \ \ \};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00036\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint32\_t\ \mbox{\hyperlink{classvisionary_1_1_visionary_control_a3cdb0a16107d7022225cb50b29f2ebd7}{kSessionTimeout\_ms}}\ =\ 5000;}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \mbox{\hyperlink{classvisionary_1_1_visionary_control}{VisionaryControl}}();}
+\DoxyCodeLine{00039\ \ \ \mbox{\hyperlink{classvisionary_1_1_visionary_control}{\string~VisionaryControl}}();}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00056\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvisionary_1_1_visionary_control_ae297192d83dfae28e24cd3c4afed5307}{open}}(\mbox{\hyperlink{classvisionary_1_1_visionary_control_ad48d462fa9f65368bb9be70191372395}{ProtocolType}}\ type,\ \textcolor{keyword}{const}\ std::string\&\ hostname,\ uint32\_t\ sessionTimeout\_ms\ =\ \mbox{\hyperlink{classvisionary_1_1_visionary_control_a3cdb0a16107d7022225cb50b29f2ebd7}{kSessionTimeout\_ms}},}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ autoReconnect\ =\ \textcolor{keyword}{true},\ uint32\_t\ connectTimeout\_ms\ =\ \mbox{\hyperlink{classvisionary_1_1_visionary_control_a3cdb0a16107d7022225cb50b29f2ebd7}{kSessionTimeout\_ms}});}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00063\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvisionary_1_1_visionary_control_a69ae1a82ccb2c6ecf36619f60c837733}{close}}();}
+\DoxyCodeLine{00064\ \ \ \ \ }
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00071\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvisionary_1_1_visionary_control_ae8790b4fe299e4337969f7494e824422}{login}}(\mbox{\hyperlink{classvisionary_1_1_i_authentication_a9d9871f50bf25a43e7faa4afb9e92f08}{IAuthentication::UserLevel}}\ userLevel,\ \textcolor{keyword}{const}\ std::string\&\ password);}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00075\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvisionary_1_1_visionary_control_aa314c077f5018c70c6658af5451d48ab}{logout}}();}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00081\ \ \ std::string\ \mbox{\hyperlink{classvisionary_1_1_visionary_control_a7b74823466b7fa1434e423753344c75b}{getDeviceIdent}}();}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00087\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvisionary_1_1_visionary_control_ae7ecb32527b4d25ec2225acec71e6641}{startAcquisition}}();}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00093\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvisionary_1_1_visionary_control_a33897fd24b290db7210d81902f21eba6}{stepAcquisition}}();}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00098\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvisionary_1_1_visionary_control_a7a16fff5119b8369a2a5bf7f051c6bba}{stopAcquisition}}();}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00104\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvisionary_1_1_visionary_control_a9d81896b4a8c75fa88d7189ab2d7e479}{getDataStreamConfig}}();}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00109\ \ \ \mbox{\hyperlink{classvisionary_1_1_co_la_command}{CoLaCommand}}\ \mbox{\hyperlink{classvisionary_1_1_visionary_control_a35e9f9d814181c5649d876d83a35fc8c}{sendCommand}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classvisionary_1_1_co_la_command}{CoLaCommand}}\&\ command);}
+\DoxyCodeLine{00110\ \ \ }
+\DoxyCodeLine{00111\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00112\ \ \ std::string\ receiveCoLaResponse();}
+\DoxyCodeLine{00113\ \ \ \mbox{\hyperlink{classvisionary_1_1_co_la_command}{CoLaCommand}}\ receiveCoLaCommand();}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ std::unique\_ptr<TcpSocket>\ \ \ \ \ \ \ \ m\_pTransport;}
+\DoxyCodeLine{00116\ \ \ std::unique\_ptr<IProtocolHandler>\ m\_pProtocolHandler;}
+\DoxyCodeLine{00117\ \ \ std::unique\_ptr<IAuthentication>\ \ m\_pAuthentication;}
+\DoxyCodeLine{00118\ \ \ std::unique\_ptr<ControlSession>\ \ \ m\_pControlSession;}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \mbox{\hyperlink{classvisionary_1_1_visionary_control_ad48d462fa9f65368bb9be70191372395}{ProtocolType}}\ m\_protocolType;}
+\DoxyCodeLine{00121\ \ \ std::string\ m\_hostname;}
+\DoxyCodeLine{00122\ \ \ uint32\_t\ m\_sessionTimeout\_ms;}
+\DoxyCodeLine{00123\ \ \ uint32\_t\ m\_connectTimeout\_ms;}
+\DoxyCodeLine{00124\ \ \ \textcolor{keywordtype}{bool}\ m\_autoReconnect;}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \};}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \}}
+
+\end{DoxyCode}

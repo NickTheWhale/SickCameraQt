@@ -5,6 +5,8 @@
 
 #include "VisionaryFrameset.h"
 
+class Camera;
+
 /**
  * @brief The CaptureThread class handles the capture of frames from a camera.
  *

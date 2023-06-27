@@ -1,0 +1,193 @@
+\doxysection{visionary\+::Visionary\+Control Class Reference}
+\hypertarget{classvisionary_1_1_visionary_control}{}\label{classvisionary_1_1_visionary_control}\index{visionary::VisionaryControl@{visionary::VisionaryControl}}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvisionary_1_1_visionary_control_ad48d462fa9f65368bb9be70191372395}\label{classvisionary_1_1_visionary_control_ad48d462fa9f65368bb9be70191372395} 
+enum \mbox{\hyperlink{classvisionary_1_1_visionary_control_ad48d462fa9f65368bb9be70191372395}{Protocol\+Type}} \{ {\bfseries INVALID\+\_\+\+PROTOCOL} = -\/1
+, {\bfseries COLA\+\_\+A} = 2111
+, {\bfseries COLA\+\_\+B} = 2112
+, {\bfseries COLA\+\_\+2} = 2122
+ \}
+\begin{DoxyCompactList}\small\item\em The numbers used for the protocols are the port numbers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classvisionary_1_1_visionary_control_ae297192d83dfae28e24cd3c4afed5307}{open}} (\mbox{\hyperlink{classvisionary_1_1_visionary_control_ad48d462fa9f65368bb9be70191372395}{Protocol\+Type}} type, const std\+::string \&hostname, uint32\+\_\+t session\+Timeout\+\_\+ms=\mbox{\hyperlink{classvisionary_1_1_visionary_control_a3cdb0a16107d7022225cb50b29f2ebd7}{k\+Session\+Timeout\+\_\+ms}}, bool auto\+Reconnect=true, uint32\+\_\+t connect\+Timeout\+\_\+ms=\mbox{\hyperlink{classvisionary_1_1_visionary_control_a3cdb0a16107d7022225cb50b29f2ebd7}{k\+Session\+Timeout\+\_\+ms}})
+\item 
+void \mbox{\hyperlink{classvisionary_1_1_visionary_control_a69ae1a82ccb2c6ecf36619f60c837733}{close}} ()
+\item 
+bool \mbox{\hyperlink{classvisionary_1_1_visionary_control_ae8790b4fe299e4337969f7494e824422}{login}} (\mbox{\hyperlink{classvisionary_1_1_i_authentication_a9d9871f50bf25a43e7faa4afb9e92f08}{IAuthentication\+::\+User\+Level}} user\+Level, const std\+::string \&password)
+\item 
+bool \mbox{\hyperlink{classvisionary_1_1_visionary_control_aa314c077f5018c70c6658af5451d48ab}{logout}} ()
+\begin{DoxyCompactList}\small\item\em Logout from the device. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classvisionary_1_1_visionary_control_a7b74823466b7fa1434e423753344c75b}{get\+Device\+Ident}} ()
+\begin{DoxyCompactList}\small\item\em Get device information by calling the \"{}\+Device\+Ident\"{} method on the device. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classvisionary_1_1_visionary_control_ae7ecb32527b4d25ec2225acec71e6641}{start\+Acquisition}} ()
+\begin{DoxyCompactList}\small\item\em Start streaming the data by calling the \"{}\+PLAYSTART\"{} method on the device. Works only when acquisition is stopped. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classvisionary_1_1_visionary_control_a33897fd24b290db7210d81902f21eba6}{step\+Acquisition}} ()
+\begin{DoxyCompactList}\small\item\em Trigger a single image on the device. Works only when acquisition is stopped. \end{DoxyCompactList}\item 
+\Hypertarget{classvisionary_1_1_visionary_control_a7a16fff5119b8369a2a5bf7f051c6bba}\label{classvisionary_1_1_visionary_control_a7a16fff5119b8369a2a5bf7f051c6bba} 
+bool {\bfseries stop\+Acquisition} ()
+\begin{DoxyCompactList}\small\item\em Stops the data stream. Works always, also when acquisition is already stopped before. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classvisionary_1_1_visionary_control_a9d81896b4a8c75fa88d7189ab2d7e479}{get\+Data\+Stream\+Config}} ()
+\begin{DoxyCompactList}\small\item\em Tells the device that there is a streaming channel by invoking a method named Get\+Blob\+Client\+Config. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classvisionary_1_1_co_la_command}{Co\+La\+Command}} \mbox{\hyperlink{classvisionary_1_1_visionary_control_a35e9f9d814181c5649d876d83a35fc8c}{send\+Command}} (const \mbox{\hyperlink{classvisionary_1_1_co_la_command}{Co\+La\+Command}} \&command)
+\begin{DoxyCompactList}\small\item\em Send a Co\+La\+BCommand to the device and waits for the result. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvisionary_1_1_visionary_control_a3cdb0a16107d7022225cb50b29f2ebd7}\label{classvisionary_1_1_visionary_control_a3cdb0a16107d7022225cb50b29f2ebd7} 
+static constexpr uint32\+\_\+t {\bfseries k\+Session\+Timeout\+\_\+ms} = 5000
+\begin{DoxyCompactList}\small\item\em Default session timeout. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classvisionary_1_1_visionary_control_a69ae1a82ccb2c6ecf36619f60c837733}\label{classvisionary_1_1_visionary_control_a69ae1a82ccb2c6ecf36619f60c837733} 
+\index{visionary::VisionaryControl@{visionary::VisionaryControl}!close@{close}}
+\index{close@{close}!visionary::VisionaryControl@{visionary::VisionaryControl}}
+\doxysubsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily void visionary\+::\+Visionary\+Control\+::close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Close a connection
+
+Closes the control connection. It is allowed to call close of a connection that is not open. In this case this call is a no-\/op. \Hypertarget{classvisionary_1_1_visionary_control_a9d81896b4a8c75fa88d7189ab2d7e479}\label{classvisionary_1_1_visionary_control_a9d81896b4a8c75fa88d7189ab2d7e479} 
+\index{visionary::VisionaryControl@{visionary::VisionaryControl}!getDataStreamConfig@{getDataStreamConfig}}
+\index{getDataStreamConfig@{getDataStreamConfig}!visionary::VisionaryControl@{visionary::VisionaryControl}}
+\doxysubsubsection{\texorpdfstring{getDataStreamConfig()}{getDataStreamConfig()}}
+{\footnotesize\ttfamily bool visionary\+::\+Visionary\+Control\+::get\+Data\+Stream\+Config (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Tells the device that there is a streaming channel by invoking a method named Get\+Blob\+Client\+Config. 
+
+\begin{DoxyReturn}{Returns}
+True if successful, false otherwise.
+\end{DoxyReturn}
+\Hypertarget{classvisionary_1_1_visionary_control_a7b74823466b7fa1434e423753344c75b}\label{classvisionary_1_1_visionary_control_a7b74823466b7fa1434e423753344c75b} 
+\index{visionary::VisionaryControl@{visionary::VisionaryControl}!getDeviceIdent@{getDeviceIdent}}
+\index{getDeviceIdent@{getDeviceIdent}!visionary::VisionaryControl@{visionary::VisionaryControl}}
+\doxysubsubsection{\texorpdfstring{getDeviceIdent()}{getDeviceIdent()}}
+{\footnotesize\ttfamily std\+::string visionary\+::\+Visionary\+Control\+::get\+Device\+Ident (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get device information by calling the \"{}\+Device\+Ident\"{} method on the device. 
+
+\begin{DoxyReturn}{Returns}
+True if successful, false otherwise.
+\end{DoxyReturn}
+\Hypertarget{classvisionary_1_1_visionary_control_ae8790b4fe299e4337969f7494e824422}\label{classvisionary_1_1_visionary_control_ae8790b4fe299e4337969f7494e824422} 
+\index{visionary::VisionaryControl@{visionary::VisionaryControl}!login@{login}}
+\index{login@{login}!visionary::VisionaryControl@{visionary::VisionaryControl}}
+\doxysubsubsection{\texorpdfstring{login()}{login()}}
+{\footnotesize\ttfamily bool visionary\+::\+Visionary\+Control\+::login (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classvisionary_1_1_i_authentication_a9d9871f50bf25a43e7faa4afb9e92f08}{IAuthentication\+::\+User\+Level}}}]{user\+Level,  }\item[{const std\+::string \&}]{password }\end{DoxyParamCaption})}
+
+Login to the device.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em user\+Level} & The user level to login as. \\
+\hline
+\mbox{\texttt{ in}}  & {\em password} & Password for the selected user level. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code, 0 on success 
+\end{DoxyReturn}
+\Hypertarget{classvisionary_1_1_visionary_control_aa314c077f5018c70c6658af5451d48ab}\label{classvisionary_1_1_visionary_control_aa314c077f5018c70c6658af5451d48ab} 
+\index{visionary::VisionaryControl@{visionary::VisionaryControl}!logout@{logout}}
+\index{logout@{logout}!visionary::VisionaryControl@{visionary::VisionaryControl}}
+\doxysubsubsection{\texorpdfstring{logout()}{logout()}}
+{\footnotesize\ttfamily bool visionary\+::\+Visionary\+Control\+::logout (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Logout from the device. 
+
+\begin{DoxyReturn}{Returns}
+True if logout was successful, false otherwise.
+\end{DoxyReturn}
+\Hypertarget{classvisionary_1_1_visionary_control_ae297192d83dfae28e24cd3c4afed5307}\label{classvisionary_1_1_visionary_control_ae297192d83dfae28e24cd3c4afed5307} 
+\index{visionary::VisionaryControl@{visionary::VisionaryControl}!open@{open}}
+\index{open@{open}!visionary::VisionaryControl@{visionary::VisionaryControl}}
+\doxysubsubsection{\texorpdfstring{open()}{open()}}
+{\footnotesize\ttfamily bool visionary\+::\+Visionary\+Control\+::open (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classvisionary_1_1_visionary_control_ad48d462fa9f65368bb9be70191372395}{Protocol\+Type}}}]{type,  }\item[{const std\+::string \&}]{hostname,  }\item[{uint32\+\_\+t}]{session\+Timeout\+\_\+ms = {\ttfamily \mbox{\hyperlink{classvisionary_1_1_visionary_control_a3cdb0a16107d7022225cb50b29f2ebd7}{k\+Session\+Timeout\+\_\+ms}}},  }\item[{bool}]{auto\+Reconnect = {\ttfamily true},  }\item[{uint32\+\_\+t}]{connect\+Timeout\+\_\+ms = {\ttfamily \mbox{\hyperlink{classvisionary_1_1_visionary_control_a3cdb0a16107d7022225cb50b29f2ebd7}{k\+Session\+Timeout\+\_\+ms}}} }\end{DoxyParamCaption})}
+
+Opens a connection to a Visionary sensor
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em type} & protocol type the sensor understands (Co\+La-\/A, Co\+La-\/B or Co\+La-\/2). This information is found in the sensor documentation. \\
+\hline
+\mbox{\texttt{ in}}  & {\em hostname} & name or IP address of the Visionary sensor. \\
+\hline
+\mbox{\texttt{ in}}  & {\em session\+Timeout\+\_\+ms} & Timeout for Session (only used for Cola2) \\
+\hline
+\mbox{\texttt{ in}}  & {\em auto\+Reconnect} & Auto reconnect when connection was lost \\
+\hline
+\mbox{\texttt{ in}}  & {\em connect\+Timeout\+\_\+ms} & Timeout for Connection\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em true} & The connection to the sensor successfully was established. \\
+\hline
+{\em false} & The connection attempt failed; the sensor is either
+\begin{DoxyItemize}
+\item switched off or has a different IP address or name
+\item not available using for PCs network settings (different subnet)
+\item the protocol type or the port did not match. Please check your sensor documentation. 
+\end{DoxyItemize}\\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{classvisionary_1_1_visionary_control_a35e9f9d814181c5649d876d83a35fc8c}\label{classvisionary_1_1_visionary_control_a35e9f9d814181c5649d876d83a35fc8c} 
+\index{visionary::VisionaryControl@{visionary::VisionaryControl}!sendCommand@{sendCommand}}
+\index{sendCommand@{sendCommand}!visionary::VisionaryControl@{visionary::VisionaryControl}}
+\doxysubsubsection{\texorpdfstring{sendCommand()}{sendCommand()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classvisionary_1_1_co_la_command}{Co\+La\+Command}} visionary\+::\+Visionary\+Control\+::send\+Command (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classvisionary_1_1_co_la_command}{Co\+La\+Command}} \&}]{command }\end{DoxyParamCaption})}
+
+
+
+Send a Co\+La\+BCommand to the device and waits for the result. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em command} & Command to send\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The response.
+\end{DoxyReturn}
+\Hypertarget{classvisionary_1_1_visionary_control_ae7ecb32527b4d25ec2225acec71e6641}\label{classvisionary_1_1_visionary_control_ae7ecb32527b4d25ec2225acec71e6641} 
+\index{visionary::VisionaryControl@{visionary::VisionaryControl}!startAcquisition@{startAcquisition}}
+\index{startAcquisition@{startAcquisition}!visionary::VisionaryControl@{visionary::VisionaryControl}}
+\doxysubsubsection{\texorpdfstring{startAcquisition()}{startAcquisition()}}
+{\footnotesize\ttfamily bool visionary\+::\+Visionary\+Control\+::start\+Acquisition (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Start streaming the data by calling the \"{}\+PLAYSTART\"{} method on the device. Works only when acquisition is stopped. 
+
+\begin{DoxyReturn}{Returns}
+True if successful, false otherwise.
+\end{DoxyReturn}
+\Hypertarget{classvisionary_1_1_visionary_control_a33897fd24b290db7210d81902f21eba6}\label{classvisionary_1_1_visionary_control_a33897fd24b290db7210d81902f21eba6} 
+\index{visionary::VisionaryControl@{visionary::VisionaryControl}!stepAcquisition@{stepAcquisition}}
+\index{stepAcquisition@{stepAcquisition}!visionary::VisionaryControl@{visionary::VisionaryControl}}
+\doxysubsubsection{\texorpdfstring{stepAcquisition()}{stepAcquisition()}}
+{\footnotesize\ttfamily bool visionary\+::\+Visionary\+Control\+::step\+Acquisition (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Trigger a single image on the device. Works only when acquisition is stopped. 
+
+\begin{DoxyReturn}{Returns}
+True if successful, false otherwise.
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sickapi/src/Visionary\+Control.\+h\item 
+sickapi/src/Visionary\+Control.\+cpp\end{DoxyCompactItemize}

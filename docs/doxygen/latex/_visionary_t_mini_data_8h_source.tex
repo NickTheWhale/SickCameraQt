@@ -1,0 +1,77 @@
+\doxysection{Visionary\+TMini\+Data.\+h}
+\hypertarget{_visionary_t_mini_data_8h_source}{}\label{_visionary_t_mini_data_8h_source}\index{sickapi/src/VisionaryTMiniData.h@{sickapi/src/VisionaryTMiniData.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ SPDX-\/License-\/Identifier:\ Unlicense}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ }}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Created:\ August\ 2020}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ }}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ SICK\ AG,\ Waldkirch}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ email:\ TechSupport0905@sick.de}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}VisionaryData.h"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacevisionary}{visionary}}}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classvisionary_1_1_visionary_t_mini_data}{VisionaryTMiniData}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classvisionary_1_1_visionary_data}{VisionaryData}}}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \mbox{\hyperlink{classvisionary_1_1_visionary_t_mini_data}{VisionaryTMiniData}}();}
+\DoxyCodeLine{00023\ \ \ \mbox{\hyperlink{classvisionary_1_1_visionary_t_mini_data}{\string~VisionaryTMiniData}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00026\ \ \ \textcolor{comment}{//\ Getter\ Functions}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//\ Gets\ the\ radial\ distance\ map}}
+\DoxyCodeLine{00029\ \ \ \textcolor{comment}{//\ The\ unit\ of\ the\ distancemap\ is\ 1/4\ mm}}
+\DoxyCodeLine{00030\ \ \ \textcolor{keyword}{const}\ std::vector<uint16\_t>\&\ getDistanceMap()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \textcolor{comment}{//\ Gets\ the\ intensity\ map}}
+\DoxyCodeLine{00033\ \ \ \textcolor{keyword}{const}\ std::vector<uint16\_t>\&\ getIntensityMap()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \textcolor{comment}{//\ Gets\ the\ state\ map}}
+\DoxyCodeLine{00036\ \ \ \textcolor{keyword}{const}\ std::vector<uint16\_t>\&\ getStateMap()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \textcolor{comment}{//\ Calculate\ and\ return\ the\ Point\ Cloud\ in\ the\ camera\ perspective.\ Units\ are\ in\ meters.}}
+\DoxyCodeLine{00039\ \ \ \textcolor{keywordtype}{void}\ generatePointCloud(std::vector<PointXYZ>\ \&pointCloud)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \textcolor{comment}{//\ factor\ to\ convert\ Radial\ distance\ map\ from\ fixed\ point\ to\ floating\ point}}
+\DoxyCodeLine{00042\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ DISTANCE\_MAP\_UNIT;}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00045\ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00046\ \ \ \textcolor{comment}{//\ functions\ for\ parsing\ received\ blob}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \textcolor{comment}{//\ Parse\ the\ XML\ Metadata\ part\ to\ get\ information\ about\ the\ sensor\ and\ the\ following\ image\ data.}}
+\DoxyCodeLine{00049\ \ \ \textcolor{comment}{//\ This\ function\ uses\ boost\ library.\ An\ other\ XML\ parser\ is\ needed\ to\ remove\ boost\ from\ source.}}
+\DoxyCodeLine{00050\ \ \ \textcolor{comment}{//\ Returns\ true\ when\ parsing\ was\ successful.}}
+\DoxyCodeLine{00051\ \ \ \textcolor{keywordtype}{bool}\ parseXML(\textcolor{keyword}{const}\ std::string\ \&\ xmlString,\ uint32\_t\ changeCounter)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \textcolor{comment}{//\ Parse\ the\ Binary\ data\ part\ to\ extract\ the\ image\ data.}}
+\DoxyCodeLine{00054\ \ \ \textcolor{comment}{//\ some\ variables\ are\ commented\ out,\ because\ they\ are\ not\ used\ in\ this\ sample.}}
+\DoxyCodeLine{00055\ \ \ \textcolor{comment}{//\ Returns\ true\ when\ parsing\ was\ successful.}}
+\DoxyCodeLine{00056\ \ \ \textcolor{keywordtype}{bool}\ parseBinaryData(std::vector<uint8\_t>::iterator\ itBuf,\ \textcolor{keywordtype}{size\_t}\ size)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00059\ \ \ \textcolor{comment}{//\ Indicator\ for\ the\ received\ data\ sets}}
+\DoxyCodeLine{00060\ \ \ \mbox{\hyperlink{structvisionary_1_1_data_sets_active}{DataSetsActive}}\ m\_dataSetsActive;}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \textcolor{comment}{//\ Byte\ depth\ of\ images}}
+\DoxyCodeLine{00063\ \ \ \textcolor{keywordtype}{int}\ m\_distanceByteDepth,\ m\_intensityByteDepth,\ m\_stateByteDepth;}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \textcolor{comment}{//\ Pointers\ to\ the\ image\ data}}
+\DoxyCodeLine{00066\ \ \ std::vector<uint16\_t>\ m\_distanceMap;}
+\DoxyCodeLine{00067\ \ \ std::vector<uint16\_t>\ m\_intensityMap;}
+\DoxyCodeLine{00068\ \ \ std::vector<uint16\_t>\ m\_stateMap;}
+\DoxyCodeLine{00069\ \};}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \}}
+
+\end{DoxyCode}

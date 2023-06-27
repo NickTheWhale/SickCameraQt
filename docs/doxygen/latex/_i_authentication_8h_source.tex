@@ -1,0 +1,33 @@
+\doxysection{IAuthentication.\+h}
+\hypertarget{_i_authentication_8h_source}{}\label{_i_authentication_8h_source}\index{sickapi/src/IAuthentication.h@{sickapi/src/IAuthentication.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacevisionary}{visionary}}\ }
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classvisionary_1_1_i_authentication}{IAuthentication}}}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{classvisionary_1_1_i_authentication_a9d9871f50bf25a43e7faa4afb9e92f08}{UserLevel}}:\ int8\_t}
+\DoxyCodeLine{00020\ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ RUN\ =\ 0,}
+\DoxyCodeLine{00022\ \ \ \ \ OPERATOR\ =\ 1,}
+\DoxyCodeLine{00023\ \ \ \ \ MAINTENANCE\ =\ 2,}
+\DoxyCodeLine{00024\ \ \ \ \ AUTHORIZED\_CLIENT\ =\ 3,}
+\DoxyCodeLine{00025\ \ \ \ \ SERVICE\ =\ 4}
+\DoxyCodeLine{00026\ \ \ \};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classvisionary_1_1_i_authentication}{\string~IAuthentication}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ login(\mbox{\hyperlink{classvisionary_1_1_i_authentication_a9d9871f50bf25a43e7faa4afb9e92f08}{UserLevel}}\ userLevel,\ \textcolor{keyword}{const}\ std::string\&\ password)\ =\ 0;}
+\DoxyCodeLine{00031\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ logout()\ =\ 0;}
+\DoxyCodeLine{00032\ \};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \}}
+
+\end{DoxyCode}

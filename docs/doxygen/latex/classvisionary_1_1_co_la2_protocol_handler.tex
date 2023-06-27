@@ -1,0 +1,70 @@
+\doxysection{visionary\+::Co\+La2\+Protocol\+Handler Class Reference}
+\hypertarget{classvisionary_1_1_co_la2_protocol_handler}{}\label{classvisionary_1_1_co_la2_protocol_handler}\index{visionary::CoLa2ProtocolHandler@{visionary::CoLa2ProtocolHandler}}
+Inheritance diagram for visionary\+::Co\+La2\+Protocol\+Handler\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classvisionary_1_1_co_la2_protocol_handler}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvisionary_1_1_co_la2_protocol_handler_a9a2d58a74a485ebd82f3acacca0fe328}\label{classvisionary_1_1_co_la2_protocol_handler_a9a2d58a74a485ebd82f3acacca0fe328} 
+{\bfseries Co\+La2\+Protocol\+Handler} (\mbox{\hyperlink{classvisionary_1_1_i_transport}{ITransport}} \&r\+Transport)
+\item 
+bool \mbox{\hyperlink{classvisionary_1_1_co_la2_protocol_handler_ae32cad6542d9408000d253a287864863}{open\+Session}} (uint8\+\_\+t session\+Timeout) override
+\item 
+void \mbox{\hyperlink{classvisionary_1_1_co_la2_protocol_handler_ab44946f54959978648997eef848b836c}{close\+Session}} () override
+\item 
+\mbox{\hyperlink{classvisionary_1_1_co_la_command}{Co\+La\+Command}} \mbox{\hyperlink{classvisionary_1_1_co_la2_protocol_handler_a609bbb04a683631815dd6dc5e8a341b8}{send}} (\mbox{\hyperlink{classvisionary_1_1_co_la_command}{Co\+La\+Command}} cmd) override
+\end{DoxyCompactItemize}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvisionary_1_1_i_protocol_handler_a14ae8bef5eeff27e872130bc8896add2}\label{classvisionary_1_1_i_protocol_handler_a14ae8bef5eeff27e872130bc8896add2} 
+virtual bool {\bfseries open\+Session} (uint8\+\_\+t session\+Timeout)=0
+\item 
+\Hypertarget{classvisionary_1_1_i_protocol_handler_a7469cd86c83fa2b876550e8c5718c12a}\label{classvisionary_1_1_i_protocol_handler_a7469cd86c83fa2b876550e8c5718c12a} 
+virtual void {\bfseries close\+Session} ()=0
+\item 
+\Hypertarget{classvisionary_1_1_i_protocol_handler_ad5f5fab3227139581627a4492ef50a41}\label{classvisionary_1_1_i_protocol_handler_ad5f5fab3227139581627a4492ef50a41} 
+virtual \mbox{\hyperlink{classvisionary_1_1_co_la_command}{Co\+La\+Command}} {\bfseries send} (\mbox{\hyperlink{classvisionary_1_1_co_la_command}{Co\+La\+Command}} cmd)=0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classvisionary_1_1_co_la2_protocol_handler_ab44946f54959978648997eef848b836c}\label{classvisionary_1_1_co_la2_protocol_handler_ab44946f54959978648997eef848b836c} 
+\index{visionary::CoLa2ProtocolHandler@{visionary::CoLa2ProtocolHandler}!closeSession@{closeSession}}
+\index{closeSession@{closeSession}!visionary::CoLa2ProtocolHandler@{visionary::CoLa2ProtocolHandler}}
+\doxysubsubsection{\texorpdfstring{closeSession()}{closeSession()}}
+{\footnotesize\ttfamily void visionary\+::\+Co\+La2\+Protocol\+Handler\+::close\+Session (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classvisionary_1_1_i_protocol_handler}{visionary\+::\+IProtocol\+Handler}}.
+
+\Hypertarget{classvisionary_1_1_co_la2_protocol_handler_ae32cad6542d9408000d253a287864863}\label{classvisionary_1_1_co_la2_protocol_handler_ae32cad6542d9408000d253a287864863} 
+\index{visionary::CoLa2ProtocolHandler@{visionary::CoLa2ProtocolHandler}!openSession@{openSession}}
+\index{openSession@{openSession}!visionary::CoLa2ProtocolHandler@{visionary::CoLa2ProtocolHandler}}
+\doxysubsubsection{\texorpdfstring{openSession()}{openSession()}}
+{\footnotesize\ttfamily bool visionary\+::\+Co\+La2\+Protocol\+Handler\+::open\+Session (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{session\+Timeout }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classvisionary_1_1_i_protocol_handler}{visionary\+::\+IProtocol\+Handler}}.
+
+\Hypertarget{classvisionary_1_1_co_la2_protocol_handler_a609bbb04a683631815dd6dc5e8a341b8}\label{classvisionary_1_1_co_la2_protocol_handler_a609bbb04a683631815dd6dc5e8a341b8} 
+\index{visionary::CoLa2ProtocolHandler@{visionary::CoLa2ProtocolHandler}!send@{send}}
+\index{send@{send}!visionary::CoLa2ProtocolHandler@{visionary::CoLa2ProtocolHandler}}
+\doxysubsubsection{\texorpdfstring{send()}{send()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classvisionary_1_1_co_la_command}{Co\+La\+Command}} visionary\+::\+Co\+La2\+Protocol\+Handler\+::send (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classvisionary_1_1_co_la_command}{Co\+La\+Command}}}]{cmd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classvisionary_1_1_i_protocol_handler}{visionary\+::\+IProtocol\+Handler}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sickapi/src/Co\+La2\+Protocol\+Handler.\+h\item 
+sickapi/src/Co\+La2\+Protocol\+Handler.\+cpp\end{DoxyCompactItemize}

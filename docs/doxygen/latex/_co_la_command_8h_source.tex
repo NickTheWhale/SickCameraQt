@@ -1,0 +1,54 @@
+\doxysection{Co\+La\+Command.\+h}
+\hypertarget{_co_la_command_8h_source}{}\label{_co_la_command_8h_source}\index{sickapi/src/CoLaCommand.h@{sickapi/src/CoLaCommand.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ SPDX-\/License-\/Identifier:\ Unlicense}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ }}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Created:\ October\ 2018}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ }}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ SICK\ AG,\ Waldkirch}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ email:\ TechSupport0905@sick.de}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}CoLaError.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}CoLaCommandType.h"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacevisionary}{visionary}}\ }
+\DoxyCodeLine{00018\ \{}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classvisionary_1_1_co_la_command}{CoLaCommand}}}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00023\ \ \ std::vector<uint8\_t>\ m\_buffer;}
+\DoxyCodeLine{00024\ \ \ CoLaCommandType::Enum\ m\_type;}
+\DoxyCodeLine{00025\ \ \ std::string\ m\_name;}
+\DoxyCodeLine{00026\ \ \ \textcolor{keywordtype}{size\_t}\ m\_parameterOffset;}
+\DoxyCodeLine{00027\ \ \ CoLaError::Enum\ m\_error;}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00030\ \ \ \mbox{\hyperlink{classvisionary_1_1_co_la_command}{CoLaCommand}}(CoLaCommandType::Enum\ commandType,\ CoLaError::Enum\ error,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ name);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00034\ \ \ \mbox{\hyperlink{classvisionary_1_1_co_la_command}{CoLaCommand}}(std::vector<uint8\_t>\ buffer);}
+\DoxyCodeLine{00035\ \ \ \mbox{\hyperlink{classvisionary_1_1_co_la_command}{\string~CoLaCommand}}();}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00038\ \ \ \textcolor{keyword}{const}\ std::vector<uint8\_t>\&\ \mbox{\hyperlink{classvisionary_1_1_co_la_command_a59dcac83d787ebbde35649a0f4c412ae}{getBuffer}}();}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00041\ \ \ CoLaCommandType::Enum\ \mbox{\hyperlink{classvisionary_1_1_co_la_command_a30163bf7b7e473a1f0c1eecc1aad7e9f}{getType}}();}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00044\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{classvisionary_1_1_co_la_command_a92f693e0465257ddbc6e503a181a80ce}{getName}}();}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00047\ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classvisionary_1_1_co_la_command_af59b530e473108fcc6e12dab069cdbba}{getParameterOffset}}();}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00050\ \ \ CoLaError::Enum\ \mbox{\hyperlink{classvisionary_1_1_co_la_command_a3af24905d84cf8239b7277b3afa3625c}{getError}}();}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00053\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classvisionary_1_1_co_la_command}{CoLaCommand}}\ \mbox{\hyperlink{classvisionary_1_1_co_la_command_a414a39d91212cc2179e5e425b74dee19}{networkErrorCommand}}();}
+\DoxyCodeLine{00054\ \};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \}}
+
+\end{DoxyCode}

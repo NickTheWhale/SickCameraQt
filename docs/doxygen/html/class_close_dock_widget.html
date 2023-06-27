@@ -77,6 +77,11 @@ $(function() {
   <div class="headertitle"><div class="title">CloseDockWidget Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>The <a class="el" href="class_close_dock_widget.html" title="The CloseDockWidget class represents a dockable widget with a public closed() signal.">CloseDockWidget</a> class represents a dockable widget with a public <a class="el" href="class_close_dock_widget.html#af93b643bee6708be8e9a053dfb958163" title="Signal emitted when the close button is clicked or when the widget is closed.">closed()</a> signal.  
+ <a href="class_close_dock_widget.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_close_dock_widget_8h_source.html">CloseDockWidget.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for CloseDockWidget:</div>
 <div class="dyncontent">
@@ -88,23 +93,114 @@ Inheritance diagram for CloseDockWidget:</div>
 Signals</h2></td></tr>
 <tr class="memitem:af93b643bee6708be8e9a053dfb958163"><td class="memItemLeft" align="right" valign="top"><a id="af93b643bee6708be8e9a053dfb958163" name="af93b643bee6708be8e9a053dfb958163"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>closed</b> ()</td></tr>
+<tr class="memdesc:af93b643bee6708be8e9a053dfb958163"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal emitted when the close button is clicked or when the widget is closed. <br /></td></tr>
 <tr class="separator:af93b643bee6708be8e9a053dfb958163"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae6697cdb7b3cb1f384079b2c09ac9298"><td class="memItemLeft" align="right" valign="top"><a id="ae6697cdb7b3cb1f384079b2c09ac9298" name="ae6697cdb7b3cb1f384079b2c09ac9298"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>CloseDockWidget</b> (const QString &amp;title, QWidget *parent=nullptr)</td></tr>
+<tr class="memitem:ae6697cdb7b3cb1f384079b2c09ac9298"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_close_dock_widget.html#ae6697cdb7b3cb1f384079b2c09ac9298">CloseDockWidget</a> (const QString &amp;title, QWidget *parent=nullptr)</td></tr>
+<tr class="memdesc:ae6697cdb7b3cb1f384079b2c09ac9298"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="class_close_dock_widget.html" title="The CloseDockWidget class represents a dockable widget with a public closed() signal.">CloseDockWidget</a> with the specified title and parent widget.  <br /></td></tr>
 <tr class="separator:ae6697cdb7b3cb1f384079b2c09ac9298"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a404a25ff545381764378df69ed97c281"><td class="memItemLeft" align="right" valign="top"><a id="a404a25ff545381764378df69ed97c281" name="a404a25ff545381764378df69ed97c281"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>~CloseDockWidget</b> ()</td></tr>
+<tr class="memdesc:a404a25ff545381764378df69ed97c281"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for the <a class="el" href="class_close_dock_widget.html" title="The CloseDockWidget class represents a dockable widget with a public closed() signal.">CloseDockWidget</a> class. <br /></td></tr>
+<tr class="separator:a404a25ff545381764378df69ed97c281"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:ad8855a028a7aaf80835e6ab255b1ff12"><td class="memItemLeft" align="right" valign="top"><a id="ad8855a028a7aaf80835e6ab255b1ff12" name="ad8855a028a7aaf80835e6ab255b1ff12"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>closeEvent</b> (QCloseEvent *event) override</td></tr>
+<tr class="memitem:ad8855a028a7aaf80835e6ab255b1ff12"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_close_dock_widget.html#ad8855a028a7aaf80835e6ab255b1ff12">closeEvent</a> (QCloseEvent *event) override</td></tr>
+<tr class="memdesc:ad8855a028a7aaf80835e6ab255b1ff12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overridden method that is called when the widget is closed.  <br /></td></tr>
 <tr class="separator:ad8855a028a7aaf80835e6ab255b1ff12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The <a class="el" href="class_close_dock_widget.html" title="The CloseDockWidget class represents a dockable widget with a public closed() signal.">CloseDockWidget</a> class represents a dockable widget with a public <a class="el" href="class_close_dock_widget.html#af93b643bee6708be8e9a053dfb958163" title="Signal emitted when the close button is clicked or when the widget is closed.">closed()</a> signal. </p>
+<p>The <a class="el" href="class_close_dock_widget.html" title="The CloseDockWidget class represents a dockable widget with a public closed() signal.">CloseDockWidget</a> class is a subclass of QDockWidget that adds a public close() signal useful for state synchronization. It emits a signal when the close button is clicked or when the widget is closed through other means. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ae6697cdb7b3cb1f384079b2c09ac9298" name="ae6697cdb7b3cb1f384079b2c09ac9298"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6697cdb7b3cb1f384079b2c09ac9298">&#9670;&#160;</a></span>CloseDockWidget()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">CloseDockWidget::CloseDockWidget </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>title</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QWidget *&#160;</td>
+          <td class="paramname"><em>parent</em> = <code>nullptr</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructs a <a class="el" href="class_close_dock_widget.html" title="The CloseDockWidget class represents a dockable widget with a public closed() signal.">CloseDockWidget</a> with the specified title and parent widget. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">title</td><td>The title of the dock widget. </td></tr>
+    <tr><td class="paramname">parent</td><td>The parent widget of the dock widget (optional). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ad8855a028a7aaf80835e6ab255b1ff12" name="ad8855a028a7aaf80835e6ab255b1ff12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8855a028a7aaf80835e6ab255b1ff12">&#9670;&#160;</a></span>closeEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CloseDockWidget::closeEvent </td>
+          <td>(</td>
+          <td class="paramtype">QCloseEvent *&#160;</td>
+          <td class="paramname"><em>event</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Overridden method that is called when the widget is closed. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">event</td><td>The close event object. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="_close_dock_widget_8h_source.html">CloseDockWidget.h</a></li>
-<li>CloseDockWidget.cpp</li>
+<li>widgets/<a class="el" href="_close_dock_widget_8h_source.html">CloseDockWidget.h</a></li>
+<li>widgets/CloseDockWidget.cpp</li>
+<li>x64/Debug/moc/moc_CloseDockWidget.cpp</li>
+<li>x64/Release/moc/moc_CloseDockWidget.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

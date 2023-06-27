@@ -103,7 +103,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CloseDockWidget.cpp" />
+    <ClCompile Include="widgets\CloseDockWidget.cpp" />
     <ClCompile Include="QToolMenuButton.cpp" />
     <ClCompile Include="CaptureThread.cpp">
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
@@ -158,7 +158,7 @@
     <QtMoc Include="QToolMenuButton.h" />
     <QtMoc Include="widgets\AspectRatioPixmapLabel.h" />
     <QtMoc Include="widgets\HistogramWidget.h" />
-    <QtMoc Include="CloseDockWidget.h" />
+    <QtMoc Include="widgets\CloseDockWidget.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Fingerprint.h" />
     <ClInclude Include="sickapi\src\AuthenticationLegacy.h" />

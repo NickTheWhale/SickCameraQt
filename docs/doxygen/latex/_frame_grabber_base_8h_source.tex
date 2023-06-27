@@ -1,0 +1,47 @@
+\doxysection{Frame\+Grabber\+Base.\+h}
+\hypertarget{_frame_grabber_base_8h_source}{}\label{_frame_grabber_base_8h_source}\index{sickapi/src/FrameGrabberBase.h@{sickapi/src/FrameGrabberBase.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Copyright\ note:\ Redistribution\ and\ use\ in\ source,\ with\ or\ without\ modification,\ are\ permitted.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ }}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Created:\ February\ 2023}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ }}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ SICK\ AG,\ Waldkirch}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ email:\ TechSupport0905@sick.de}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}VisionaryDataStream.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <thread>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <mutex>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <condition\_variable>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacevisionary}{visionary}}}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classvisionary_1_1_frame_grabber_base}{FrameGrabberBase}}}
+\DoxyCodeLine{00019\ \ \ \ \ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvisionary_1_1_frame_grabber_base}{FrameGrabberBase}}(\textcolor{keyword}{const}\ std::string\&\ hostname,\ std::uint16\_t\ port,\ std::uint64\_t\ timeoutMs);}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvisionary_1_1_frame_grabber_base}{\string~FrameGrabberBase}}();}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ start(std::shared\_ptr<VisionaryData>\ inactiveDataHandler,\ std::shared\_ptr<VisionaryData>\ activeDataHandler);}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ getNextFrame(std::shared\_ptr<VisionaryData>\&\ pDataHandler,\ std::uint64\_t\ timeoutMs\ =\ 1000);}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ getCurrentFrame(std::shared\_ptr<VisionaryData>\&\ pDataHandler);}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ run();}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isRunning;}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_FrameAvailable;}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_connected;}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ m\_hostname;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::uint16\_t\ m\_port;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::uint64\_t\ m\_timeoutMs;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ std::unique\_ptr<VisionaryDataStream>\ m\_pDataStream;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ std::thread\ m\_grabberThread;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ std::shared\_ptr<VisionaryData>\ m\_pDataHandler;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ std::mutex\ m\_dataHandler\_mutex;}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ std::condition\_variable\ m\_frameAvailableCv;}
+\DoxyCodeLine{00040\ \ \ \ \ \};}
+\DoxyCodeLine{00041\ \}}
+
+\end{DoxyCode}

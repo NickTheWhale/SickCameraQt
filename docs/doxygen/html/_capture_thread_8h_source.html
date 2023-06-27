@@ -79,37 +79,39 @@ $(function() {
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;VisionaryFrameset.h&quot;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="class_capture_thread.html">   14</a></span><span class="keyword">class </span><a class="code hl_class" href="class_capture_thread.html">CaptureThread</a> : <span class="keyword">public</span> QThread</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    Q_OBJECT</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>signals:</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="class_capture_thread.html#abe68c8ea1844de605784b48d3202aac5">   23</a></span>    <span class="keywordtype">void</span> <a class="code hl_signal" href="class_capture_thread.html#abe68c8ea1844de605784b48d3202aac5">newFrameset</a>(<a class="code hl_struct" href="struct_frameset_1_1frameset__t.html">Frameset::frameset_t</a> fs);</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="class_capture_thread.html#aca95366c9f7d55802e0828b461d561d0">   28</a></span>    <span class="keywordtype">void</span> <a class="code hl_signal" href="class_capture_thread.html#aca95366c9f7d55802e0828b461d561d0">lostConnection</a>();</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_capture_thread.html#af0cef714c6485ba7e0aac3888da18c20">startCapture</a>(<a class="code hl_class" href="class_camera.html">Camera</a>* camera);</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_capture_thread.html#a552aad21d7c4c4a8f612c62a9e06bd18">stopCapture</a>();</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_capture_thread.html#a7b3ce730549a2beea9ae989a4cf44d35">run</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <a class="code hl_struct" href="struct_frameset_1_1frameset__t.html">Frameset::frameset_t</a> lastFrameset; </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <a class="code hl_class" href="class_camera.html">Camera</a>* camera; </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keyword">volatile</span> <span class="keywordtype">bool</span> stop; </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> frameRetryDelay = 10; </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    uint32_t retryCounter = 0; </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> maxRetryTime = 2000; </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>};</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">class </span><a class="code hl_class" href="class_camera.html">Camera</a>;</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="class_capture_thread.html">   16</a></span><span class="keyword">class </span><a class="code hl_class" href="class_capture_thread.html">CaptureThread</a> : <span class="keyword">public</span> QThread</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>{</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    Q_OBJECT</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>signals:</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordtype">void</span> <a class="code hl_signal" href="class_capture_thread.html#abe68c8ea1844de605784b48d3202aac5">newFrameset</a>(<a class="code hl_struct" href="struct_frameset_1_1frameset__t.html">Frameset::frameset_t</a> fs);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordtype">void</span> <a class="code hl_signal" href="class_capture_thread.html#aca95366c9f7d55802e0828b461d561d0">lostConnection</a>();</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_capture_thread.html#af0cef714c6485ba7e0aac3888da18c20">startCapture</a>(<a class="code hl_class" href="class_camera.html">Camera</a>* camera);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_capture_thread.html#a552aad21d7c4c4a8f612c62a9e06bd18">stopCapture</a>();</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_capture_thread.html#a7b3ce730549a2beea9ae989a4cf44d35">run</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <a class="code hl_struct" href="struct_frameset_1_1frameset__t.html">Frameset::frameset_t</a> lastFrameset; </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <a class="code hl_class" href="class_camera.html">Camera</a>* camera; </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keyword">volatile</span> <span class="keywordtype">bool</span> stop; </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> frameRetryDelay = 10; </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    uint32_t retryCounter = 0; </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> maxRetryTime = 2000; </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>};</div>
 <div class="ttc" id="aclass_camera_html"><div class="ttname"><a href="class_camera.html">Camera</a></div><div class="ttdoc">The Camera class represents a camera device.</div><div class="ttdef"><b>Definition</b> Camera.h:17</div></div>
-<div class="ttc" id="aclass_capture_thread_html"><div class="ttname"><a href="class_capture_thread.html">CaptureThread</a></div><div class="ttdoc">The CaptureThread class handles the capture of frames from a camera.</div><div class="ttdef"><b>Definition</b> CaptureThread.h:15</div></div>
+<div class="ttc" id="aclass_capture_thread_html"><div class="ttname"><a href="class_capture_thread.html">CaptureThread</a></div><div class="ttdoc">The CaptureThread class handles the capture of frames from a camera.</div><div class="ttdef"><b>Definition</b> CaptureThread.h:17</div></div>
 <div class="ttc" id="aclass_capture_thread_html_a552aad21d7c4c4a8f612c62a9e06bd18"><div class="ttname"><a href="class_capture_thread.html#a552aad21d7c4c4a8f612c62a9e06bd18">CaptureThread::stopCapture</a></div><div class="ttdeci">void stopCapture()</div><div class="ttdoc">Stops capturing frames.</div><div class="ttdef"><b>Definition</b> CaptureThread.cpp:25</div></div>
 <div class="ttc" id="aclass_capture_thread_html_a7b3ce730549a2beea9ae989a4cf44d35"><div class="ttname"><a href="class_capture_thread.html#a7b3ce730549a2beea9ae989a4cf44d35">CaptureThread::run</a></div><div class="ttdeci">void run() override</div><div class="ttdoc">Overridden method from QThread that runs the capture loop.</div><div class="ttdef"><b>Definition</b> CaptureThread.cpp:30</div></div>
-<div class="ttc" id="aclass_capture_thread_html_abe68c8ea1844de605784b48d3202aac5"><div class="ttname"><a href="class_capture_thread.html#abe68c8ea1844de605784b48d3202aac5">CaptureThread::newFrameset</a></div><div class="ttdeci">void newFrameset(Frameset::frameset_t fs)</div><div class="ttdoc">Signal emitted when a new frameset is available.</div></div>
-<div class="ttc" id="aclass_capture_thread_html_aca95366c9f7d55802e0828b461d561d0"><div class="ttname"><a href="class_capture_thread.html#aca95366c9f7d55802e0828b461d561d0">CaptureThread::lostConnection</a></div><div class="ttdeci">void lostConnection()</div><div class="ttdoc">Signal emitted when the connection to the camera is lost.</div></div>
+<div class="ttc" id="aclass_capture_thread_html_abe68c8ea1844de605784b48d3202aac5"><div class="ttname"><a href="class_capture_thread.html#abe68c8ea1844de605784b48d3202aac5">CaptureThread::newFrameset</a></div><div class="ttdeci">void newFrameset(Frameset::frameset_t fs)</div><div class="ttdoc">Signal emitted when a new frameset is available.</div><div class="ttdef"><b>Definition</b> moc_CaptureThread.cpp:182</div></div>
+<div class="ttc" id="aclass_capture_thread_html_aca95366c9f7d55802e0828b461d561d0"><div class="ttname"><a href="class_capture_thread.html#aca95366c9f7d55802e0828b461d561d0">CaptureThread::lostConnection</a></div><div class="ttdeci">void lostConnection()</div><div class="ttdoc">Signal emitted when the connection to the camera is lost.</div><div class="ttdef"><b>Definition</b> moc_CaptureThread.cpp:189</div></div>
 <div class="ttc" id="aclass_capture_thread_html_af0cef714c6485ba7e0aac3888da18c20"><div class="ttname"><a href="class_capture_thread.html#af0cef714c6485ba7e0aac3888da18c20">CaptureThread::startCapture</a></div><div class="ttdeci">bool startCapture(Camera *camera)</div><div class="ttdoc">Starts capturing frames from the specified camera.</div><div class="ttdef"><b>Definition</b> CaptureThread.cpp:6</div></div>
 <div class="ttc" id="astruct_frameset_1_1frameset__t_html"><div class="ttname"><a href="struct_frameset_1_1frameset__t.html">Frameset::frameset_t</a></div><div class="ttdef"><b>Definition</b> VisionaryFrameset.h:11</div></div>
 </div><!-- fragment --></div><!-- contents -->

@@ -1,0 +1,103 @@
+\doxysection{ui\+\_\+\+Sick\+GUI.\+h}
+\hypertarget{_release_2uic_2ui___sick_g_u_i_8h_source}{}\label{_release_2uic_2ui___sick_g_u_i_8h_source}\index{x64/Release/uic/ui\_SickGUI.h@{x64/Release/uic/ui\_SickGUI.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/********************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{**\ Form\ generated\ from\ reading\ UI\ file\ 'SickGUI.ui'}}
+\DoxyCodeLine{00003\ \textcolor{comment}{**}}
+\DoxyCodeLine{00004\ \textcolor{comment}{**\ Created\ by:\ Qt\ User\ Interface\ Compiler\ version\ 6.5.1}}
+\DoxyCodeLine{00005\ \textcolor{comment}{**}}
+\DoxyCodeLine{00006\ \textcolor{comment}{**\ WARNING!\ All\ changes\ made\ in\ this\ file\ will\ be\ lost\ when\ recompiling\ UI\ file!}}
+\DoxyCodeLine{00007\ \textcolor{comment}{********************************************************************************/}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ UI\_SICKGUI\_H}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ UI\_SICKGUI\_H}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <QtCore/QVariant>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <QtGui/QAction>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <QtWidgets/QApplication>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <QtWidgets/QGridLayout>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <QtWidgets/QMainWindow>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <QtWidgets/QStatusBar>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <QtWidgets/QToolBar>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <QtWidgets/QWidget>}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ QT\_BEGIN\_NAMESPACE}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ui___sick_g_u_i_class}{Ui\_SickGUIClass}}}
+\DoxyCodeLine{00024\ \{}
+\DoxyCodeLine{00025\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \ \ QAction\ *actionPlay;}
+\DoxyCodeLine{00027\ \ \ \ \ QAction\ *actionPause;}
+\DoxyCodeLine{00028\ \ \ \ \ QWidget\ *centralWidget;}
+\DoxyCodeLine{00029\ \ \ \ \ QGridLayout\ *gridLayout;}
+\DoxyCodeLine{00030\ \ \ \ \ QToolBar\ *toolBar;}
+\DoxyCodeLine{00031\ \ \ \ \ QStatusBar\ *statusBar;}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ setupUi(QMainWindow\ *SickGUIClass)}
+\DoxyCodeLine{00034\ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (SickGUIClass-\/>objectName().isEmpty())}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ SickGUIClass-\/>setObjectName(\textcolor{stringliteral}{"{}SickGUIClass"{}});}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ SickGUIClass-\/>resize(424,\ 424);}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ actionPlay\ =\ \textcolor{keyword}{new}\ QAction(SickGUIClass);}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ actionPlay-\/>setObjectName(\textcolor{stringliteral}{"{}actionPlay"{}});}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ QIcon\ icon;}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ icon.addFile(QString::fromUtf8(\textcolor{stringliteral}{"{}:/SickGUI/icons/play\_arrow\_FILL0\_wght400\_GRAD0\_opsz40.png"{}}),\ QSize(),\ QIcon::Normal,\ QIcon::Off);}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ actionPlay-\/>setIcon(icon);}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ actionPlay-\/>setMenuRole(QAction::NoRole);}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ actionPause\ =\ \textcolor{keyword}{new}\ QAction(SickGUIClass);}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ actionPause-\/>setObjectName(\textcolor{stringliteral}{"{}actionPause"{}});}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ QIcon\ icon1;}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ icon1.addFile(QString::fromUtf8(\textcolor{stringliteral}{"{}:/SickGUI/icons/pause\_FILL0\_wght400\_GRAD0\_opsz40.png"{}}),\ QSize(),\ QIcon::Normal,\ QIcon::Off);}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ actionPause-\/>setIcon(icon1);}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ actionPause-\/>setMenuRole(QAction::NoRole);}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ centralWidget\ =\ \textcolor{keyword}{new}\ QWidget(SickGUIClass);}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ centralWidget-\/>setObjectName(\textcolor{stringliteral}{"{}centralWidget"{}});}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ centralWidget-\/>setEnabled(\textcolor{keyword}{false});}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ gridLayout\ =\ \textcolor{keyword}{new}\ QGridLayout(centralWidget);}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ gridLayout-\/>setSpacing(6);}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ gridLayout-\/>setContentsMargins(11,\ 11,\ 11,\ 11);}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ gridLayout-\/>setObjectName(\textcolor{stringliteral}{"{}gridLayout"{}});}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ SickGUIClass-\/>setCentralWidget(centralWidget);}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ toolBar\ =\ \textcolor{keyword}{new}\ QToolBar(SickGUIClass);}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ toolBar-\/>setObjectName(\textcolor{stringliteral}{"{}toolBar"{}});}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ SickGUIClass-\/>addToolBar(Qt::TopToolBarArea,\ toolBar);}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ statusBar\ =\ \textcolor{keyword}{new}\ QStatusBar(SickGUIClass);}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ statusBar-\/>setObjectName(\textcolor{stringliteral}{"{}statusBar"{}});}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ SickGUIClass-\/>setStatusBar(statusBar);}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ toolBar-\/>addAction(actionPlay);}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ toolBar-\/>addAction(actionPause);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ retranslateUi(SickGUIClass);}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ QObject::connect(actionPlay,\ SIGNAL(triggered()),\ SickGUIClass,\ SLOT(playVideo()));}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ QObject::connect(actionPause,\ SIGNAL(triggered()),\ SickGUIClass,\ SLOT(pauseVideo()));}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ QMetaObject::connectSlotsByName(SickGUIClass);}
+\DoxyCodeLine{00073\ \ \ \ \ \}\ \textcolor{comment}{//\ setupUi}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{void}\ retranslateUi(QMainWindow\ *SickGUIClass)}
+\DoxyCodeLine{00076\ \ \ \ \ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ SickGUIClass-\/>setWindowTitle(QCoreApplication::translate(\textcolor{stringliteral}{"{}SickGUIClass"{}},\ \textcolor{stringliteral}{"{}SickGUI"{}},\ \textcolor{keyword}{nullptr}));}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ actionPlay-\/>setText(QCoreApplication::translate(\textcolor{stringliteral}{"{}SickGUIClass"{}},\ \textcolor{stringliteral}{"{}Play"{}},\ \textcolor{keyword}{nullptr}));}
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#if\ QT\_CONFIG(tooltip)}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ actionPlay-\/>setToolTip(QCoreApplication::translate(\textcolor{stringliteral}{"{}SickGUIClass"{}},\ \textcolor{stringliteral}{"{}Play"{}},\ \textcolor{keyword}{nullptr}));}
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ QT\_CONFIG(tooltip)}}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ actionPause-\/>setText(QCoreApplication::translate(\textcolor{stringliteral}{"{}SickGUIClass"{}},\ \textcolor{stringliteral}{"{}Pause"{}},\ \textcolor{keyword}{nullptr}));}
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\#if\ QT\_CONFIG(tooltip)}}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ actionPause-\/>setToolTip(QCoreApplication::translate(\textcolor{stringliteral}{"{}SickGUIClass"{}},\ \textcolor{stringliteral}{"{}Pause"{}},\ \textcolor{keyword}{nullptr}));}
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ QT\_CONFIG(tooltip)}}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ toolBar-\/>setWindowTitle(QCoreApplication::translate(\textcolor{stringliteral}{"{}SickGUIClass"{}},\ \textcolor{stringliteral}{"{}toolBar"{}},\ \textcolor{keyword}{nullptr}));}
+\DoxyCodeLine{00087\ \ \ \ \ \}\ \textcolor{comment}{//\ retranslateUi}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \};}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \textcolor{keyword}{namespace\ }Ui\ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keyword}{class\ }SickGUIClass:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_ui___sick_g_u_i_class}{Ui\_SickGUIClass}}\ \{\};}
+\DoxyCodeLine{00093\ \}\ \textcolor{comment}{//\ namespace\ Ui}}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ QT\_END\_NAMESPACE}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ UI\_SICKGUI\_H}}
+
+\end{DoxyCode}

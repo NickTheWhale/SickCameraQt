@@ -1,0 +1,126 @@
+\doxysection{Aspect\+Ratio\+Pixmap\+Label Class Reference}
+\hypertarget{class_aspect_ratio_pixmap_label}{}\label{class_aspect_ratio_pixmap_label}\index{AspectRatioPixmapLabel@{AspectRatioPixmapLabel}}
+
+
+The \doxylink{class_aspect_ratio_pixmap_label}{Aspect\+Ratio\+Pixmap\+Label} class is a QLabel subclass that displays a resizable pixmap while maintaining aspect ratio.  
+
+
+
+
+{\ttfamily \#include $<$Aspect\+Ratio\+Pixmap\+Label.\+h$>$}
+
+Inheritance diagram for Aspect\+Ratio\+Pixmap\+Label\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_aspect_ratio_pixmap_label}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_aspect_ratio_pixmap_label_ae731b8cb4f304432971625db6436126c}{set\+Pixmap}} (const QPixmap \&)
+\begin{DoxyCompactList}\small\item\em Sets the pixmap to be displayed by the label. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_aspect_ratio_pixmap_label_a93b0f0fa4dd1407e2e3c07f5acbb14b0}{Aspect\+Ratio\+Pixmap\+Label}} (QWidget \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructs an \doxylink{class_aspect_ratio_pixmap_label}{Aspect\+Ratio\+Pixmap\+Label} object with the specified parent widget. \end{DoxyCompactList}\item 
+QPixmap \mbox{\hyperlink{class_aspect_ratio_pixmap_label_afe6bd4b782873923c82d85f27d836a7f}{scaled\+Pixmap}} () const
+\begin{DoxyCompactList}\small\item\em Returns the scaled pixmap currently displayed by the label. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_aspect_ratio_pixmap_label_a5e64fc72f5b25b9cc4a13ed5560eb282}{resize\+Event}} (QResize\+Event \texorpdfstring{$\ast$}{*}) override
+\begin{DoxyCompactList}\small\item\em Overridden method that is called when the label is resized. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_aspect_ratio_pixmap_label_a437a69042ba5aeb5a325a70dc29e783d}{context\+Menu\+Event}} (QContext\+Menu\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Overridden method that is called when a context menu event occurs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{class_aspect_ratio_pixmap_label}{Aspect\+Ratio\+Pixmap\+Label} class is a QLabel subclass that displays a resizable pixmap while maintaining aspect ratio. 
+
+The \doxylink{class_aspect_ratio_pixmap_label}{Aspect\+Ratio\+Pixmap\+Label} class provides a QLabel with additional functionality to display a pixmap while preserving its aspect ratio. It automatically scales the pixmap to fit within the label\textquotesingle{}s size, maintaining the original aspect ratio of the pixmap. It also overrides certain event handling methods to customize the behavior of the label. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_aspect_ratio_pixmap_label_a93b0f0fa4dd1407e2e3c07f5acbb14b0}\label{class_aspect_ratio_pixmap_label_a93b0f0fa4dd1407e2e3c07f5acbb14b0} 
+\index{AspectRatioPixmapLabel@{AspectRatioPixmapLabel}!AspectRatioPixmapLabel@{AspectRatioPixmapLabel}}
+\index{AspectRatioPixmapLabel@{AspectRatioPixmapLabel}!AspectRatioPixmapLabel@{AspectRatioPixmapLabel}}
+\doxysubsubsection{\texorpdfstring{AspectRatioPixmapLabel()}{AspectRatioPixmapLabel()}}
+{\footnotesize\ttfamily Aspect\+Ratio\+Pixmap\+Label\+::\+Aspect\+Ratio\+Pixmap\+Label (\begin{DoxyParamCaption}\item[{QWidget \texorpdfstring{$\ast$}{*}}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructs an \doxylink{class_aspect_ratio_pixmap_label}{Aspect\+Ratio\+Pixmap\+Label} object with the specified parent widget. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & The parent widget of the label (optional). \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_aspect_ratio_pixmap_label_a437a69042ba5aeb5a325a70dc29e783d}\label{class_aspect_ratio_pixmap_label_a437a69042ba5aeb5a325a70dc29e783d} 
+\index{AspectRatioPixmapLabel@{AspectRatioPixmapLabel}!contextMenuEvent@{contextMenuEvent}}
+\index{contextMenuEvent@{contextMenuEvent}!AspectRatioPixmapLabel@{AspectRatioPixmapLabel}}
+\doxysubsubsection{\texorpdfstring{contextMenuEvent()}{contextMenuEvent()}}
+{\footnotesize\ttfamily void Aspect\+Ratio\+Pixmap\+Label\+::context\+Menu\+Event (\begin{DoxyParamCaption}\item[{QContext\+Menu\+Event \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Overridden method that is called when a context menu event occurs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & The context menu event object. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_aspect_ratio_pixmap_label_a5e64fc72f5b25b9cc4a13ed5560eb282}\label{class_aspect_ratio_pixmap_label_a5e64fc72f5b25b9cc4a13ed5560eb282} 
+\index{AspectRatioPixmapLabel@{AspectRatioPixmapLabel}!resizeEvent@{resizeEvent}}
+\index{resizeEvent@{resizeEvent}!AspectRatioPixmapLabel@{AspectRatioPixmapLabel}}
+\doxysubsubsection{\texorpdfstring{resizeEvent()}{resizeEvent()}}
+{\footnotesize\ttfamily void Aspect\+Ratio\+Pixmap\+Label\+::resize\+Event (\begin{DoxyParamCaption}\item[{QResize\+Event \texorpdfstring{$\ast$}{*}}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Overridden method that is called when the label is resized. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & The resize event object. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_aspect_ratio_pixmap_label_afe6bd4b782873923c82d85f27d836a7f}\label{class_aspect_ratio_pixmap_label_afe6bd4b782873923c82d85f27d836a7f} 
+\index{AspectRatioPixmapLabel@{AspectRatioPixmapLabel}!scaledPixmap@{scaledPixmap}}
+\index{scaledPixmap@{scaledPixmap}!AspectRatioPixmapLabel@{AspectRatioPixmapLabel}}
+\doxysubsubsection{\texorpdfstring{scaledPixmap()}{scaledPixmap()}}
+{\footnotesize\ttfamily QPixmap Aspect\+Ratio\+Pixmap\+Label\+::scaled\+Pixmap (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the scaled pixmap currently displayed by the label. 
+
+\begin{DoxyReturn}{Returns}
+The scaled pixmap. 
+\end{DoxyReturn}
+\Hypertarget{class_aspect_ratio_pixmap_label_ae731b8cb4f304432971625db6436126c}\label{class_aspect_ratio_pixmap_label_ae731b8cb4f304432971625db6436126c} 
+\index{AspectRatioPixmapLabel@{AspectRatioPixmapLabel}!setPixmap@{setPixmap}}
+\index{setPixmap@{setPixmap}!AspectRatioPixmapLabel@{AspectRatioPixmapLabel}}
+\doxysubsubsection{\texorpdfstring{setPixmap}{setPixmap}}
+{\footnotesize\ttfamily void Aspect\+Ratio\+Pixmap\+Label\+::set\+Pixmap (\begin{DoxyParamCaption}\item[{const QPixmap \&}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Sets the pixmap to be displayed by the label. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pixmap} & The pixmap to be displayed. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+widgets/Aspect\+Ratio\+Pixmap\+Label.\+h\item 
+widgets/Aspect\+Ratio\+Pixmap\+Label.\+cpp\end{DoxyCompactItemize}

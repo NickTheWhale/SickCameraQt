@@ -1,0 +1,230 @@
+\doxysection{visionary Namespace Reference}
+\hypertarget{namespacevisionary}{}\label{namespacevisionary}\index{visionary@{visionary}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classvisionary_1_1_authentication_legacy}{Authentication\+Legacy}}
+\item 
+class \mbox{\hyperlink{classvisionary_1_1_authentication_secure}{Authentication\+Secure}}
+\item 
+struct \mbox{\hyperlink{structvisionary_1_1_camera_parameters}{Camera\+Parameters}}
+\item 
+struct \mbox{\hyperlink{structvisionary_1_1_challenge_request}{Challenge\+Request}}
+\item 
+class \mbox{\hyperlink{classvisionary_1_1_co_la2_protocol_handler}{Co\+La2\+Protocol\+Handler}}
+\item 
+class \mbox{\hyperlink{classvisionary_1_1_co_la_b_protocol_handler}{Co\+La\+BProtocol\+Handler}}
+\item 
+class \mbox{\hyperlink{classvisionary_1_1_co_la_command}{Co\+La\+Command}}
+\item 
+class \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_reader}{Co\+La\+Parameter\+Reader}}
+\begin{DoxyCompactList}\small\item\em Class for reading data from a \doxylink{classvisionary_1_1_co_la_command}{Co\+La\+Command}. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_writer}{Co\+La\+Parameter\+Writer}}
+\begin{DoxyCompactList}\small\item\em Builder for constructing \doxylink{classvisionary_1_1_co_la_command}{Co\+La\+Command}s. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classvisionary_1_1_control_session}{Control\+Session}}
+\item 
+struct \mbox{\hyperlink{structvisionary_1_1_data_sets_active}{Data\+Sets\+Active}}
+\item 
+struct \mbox{\hyperlink{structvisionary_1_1_endpoint}{Endpoint}}
+\item 
+class \mbox{\hyperlink{classvisionary_1_1_frame_grabber}{Frame\+Grabber}}
+\begin{DoxyCompactList}\small\item\em Class which receives frames from the device in background thread and provides the latest one via an interface. This helps avoiding getting old frames because of buffering of data within the network infrastructure. It also handles automatically reconnects in case of connection issues. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classvisionary_1_1_frame_grabber_base}{Frame\+Grabber\+Base}}
+\item 
+class \mbox{\hyperlink{classvisionary_1_1_i_authentication}{IAuthentication}}
+\item 
+class \mbox{\hyperlink{classvisionary_1_1_i_protocol_handler}{IProtocol\+Handler}}
+\item 
+class \mbox{\hyperlink{classvisionary_1_1_i_transport}{ITransport}}
+\item 
+class \mbox{\hyperlink{classvisionary_1_1_m_d5}{MD5}}
+\item 
+class \mbox{\hyperlink{classvisionary_1_1_point_cloud_ply_writer}{Point\+Cloud\+Ply\+Writer}}
+\begin{DoxyCompactList}\small\item\em Class for writing point clouds to PLY files. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structvisionary_1_1_point_x_y_z}{Point\+XYZ}}
+\item 
+struct \mbox{\hyperlink{structvisionary_1_1_point_x_y_z_c}{Point\+XYZC}}
+\item 
+struct \mbox{\hyperlink{structvisionary_1_1_polar_parameters}{Polar\+Parameters}}
+\item 
+class \mbox{\hyperlink{classvisionary_1_1_tcp_socket}{Tcp\+Socket}}
+\item 
+class \mbox{\hyperlink{classvisionary_1_1_udp_socket}{Udp\+Socket}}
+\item 
+class \mbox{\hyperlink{classvisionary_1_1_visionary_auto_i_p_scan}{Visionary\+Auto\+IPScan}}
+\item 
+class \mbox{\hyperlink{classvisionary_1_1_visionary_auto_i_p_scan_custom}{Visionary\+Auto\+IPScan\+Custom}}
+\item 
+class \mbox{\hyperlink{classvisionary_1_1_visionary_control}{Visionary\+Control}}
+\item 
+class \mbox{\hyperlink{classvisionary_1_1_visionary_data}{Visionary\+Data}}
+\item 
+class \mbox{\hyperlink{classvisionary_1_1_visionary_data_stream}{Visionary\+Data\+Stream}}
+\item 
+class \mbox{\hyperlink{classvisionary_1_1_visionary_s_data}{Visionary\+SData}}
+\item 
+class \mbox{\hyperlink{classvisionary_1_1_visionary_t_data}{Visionary\+TData}}
+\item 
+class \mbox{\hyperlink{classvisionary_1_1_visionary_t_mini_data}{Visionary\+TMini\+Data}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{namespacevisionary_a288962be13c22d9b88d65e151cb5961f}\label{namespacevisionary_a288962be13c22d9b88d65e151cb5961f} 
+typedef std\+::array$<$ std\+::uint8\+\_\+t, 32 $>$ {\bfseries Password\+Hash}
+\item 
+\Hypertarget{namespacevisionary_a770512c55c2807f05651f1d9cb4a2382}\label{namespacevisionary_a770512c55c2807f05651f1d9cb4a2382} 
+typedef std\+::array$<$ std\+::uint8\+\_\+t, 32 $>$ {\bfseries Challenge\+Response}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{namespacevisionary_a557238be3b0c43e9f28b6dc68ecd86c0}\label{namespacevisionary_a557238be3b0c43e9f28b6dc68ecd86c0} 
+enum {\bfseries Protocol\+Type} \{ {\bfseries UNKNOWN}
+, {\bfseries SUL1}
+, {\bfseries SUL2}
+ \}
+\item 
+enum \mbox{\hyperlink{namespacevisionary_a9361aa279d6b7abd9b7e9107cb1711d1}{Invalid\+Point\+Presentation}} \{ \mbox{\hyperlink{namespacevisionary_a9361aa279d6b7abd9b7e9107cb1711d1ab105957661bfa9b3451156a56a1e08c2}{INVALID\+\_\+\+AS\+\_\+\+NAN}} = 0
+, \mbox{\hyperlink{namespacevisionary_a9361aa279d6b7abd9b7e9107cb1711d1abd8f02c715d3a2e9449cfd31a01d095a}{INVALID\+\_\+\+AS\+\_\+\+ZERO}} = 1
+, \mbox{\hyperlink{namespacevisionary_a9361aa279d6b7abd9b7e9107cb1711d1a29882b575af80fc294e4aec01172680f}{INVALID\+\_\+\+SKIP}} = 2
+ \}
+\item 
+\Hypertarget{namespacevisionary_a7ef1d3a98ca68cb810ab2c7312c9e363}\label{namespacevisionary_a7ef1d3a98ca68cb810ab2c7312c9e363} 
+enum class {\bfseries Protocol} \+: uint8\+\_\+t \{ \newline
+{\bfseries COLA\+\_\+B} = 0
+, {\bfseries COLA\+\_\+2\+\_\+0} = 1
+, {\bfseries COLA\+\_\+2\+\_\+1} = 2
+, {\bfseries COLA\+\_\+A} = 3
+, \newline
+{\bfseries HTTP} = 4
+, {\bfseries HTTPS} = 5
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{namespacevisionary_adead39e11a5e5e269c52637ffb6af6f0}\label{namespacevisionary_adead39e11a5e5e269c52637ffb6af6f0} 
+std\+::string {\bfseries md5} (const std\+::string \&str)
+\item 
+\Hypertarget{namespacevisionary_ab1eef2b34e41b5b1b46d6ef9cad9caa7}\label{namespacevisionary_ab1eef2b34e41b5b1b46d6ef9cad9caa7} 
+{\footnotesize template$<$class T $>$ }\\T {\bfseries read\+Unaligned} (const void \texorpdfstring{$\ast$}{*}ptr)
+\item 
+\Hypertarget{namespacevisionary_a2efb5d48c9cf16fa491febd346065c2a}\label{namespacevisionary_a2efb5d48c9cf16fa491febd346065c2a} 
+{\footnotesize template$<$typename TAlias , typename T $>$ }\\T {\bfseries byteswap\+Alias} (T val)
+\item 
+\Hypertarget{namespacevisionary_a43c800a9eb197bb6fa4bda730142debd}\label{namespacevisionary_a43c800a9eb197bb6fa4bda730142debd} 
+uint8\+\_\+t {\bfseries byteswap} (uint8\+\_\+t val)
+\item 
+\Hypertarget{namespacevisionary_aa2a2ca57776cc64e5a32c0cbd4174fff}\label{namespacevisionary_aa2a2ca57776cc64e5a32c0cbd4174fff} 
+int8\+\_\+t {\bfseries byteswap} (int8\+\_\+t val)
+\item 
+\Hypertarget{namespacevisionary_a333e6c78cd0c1e431daddb82a4ca6e8e}\label{namespacevisionary_a333e6c78cd0c1e431daddb82a4ca6e8e} 
+char {\bfseries byteswap} (char val)
+\item 
+\Hypertarget{namespacevisionary_a89ac0c4f03981368ee07f6a9624827e0}\label{namespacevisionary_a89ac0c4f03981368ee07f6a9624827e0} 
+uint16\+\_\+t {\bfseries byteswap} (uint16\+\_\+t val)
+\item 
+\Hypertarget{namespacevisionary_aab3505f0ce6628bc27cc833a7f404637}\label{namespacevisionary_aab3505f0ce6628bc27cc833a7f404637} 
+int16\+\_\+t {\bfseries byteswap} (int16\+\_\+t val)
+\item 
+\Hypertarget{namespacevisionary_a873e63d9cec1bea957ee7d10fc69f3c0}\label{namespacevisionary_a873e63d9cec1bea957ee7d10fc69f3c0} 
+wchar\+\_\+t {\bfseries byteswap} (wchar\+\_\+t val)
+\item 
+\Hypertarget{namespacevisionary_aea4ba0dab9459f17c2de662037a6adfa}\label{namespacevisionary_aea4ba0dab9459f17c2de662037a6adfa} 
+uint32\+\_\+t {\bfseries byteswap} (uint32\+\_\+t val)
+\item 
+\Hypertarget{namespacevisionary_a56ef606c2511dffcec5197c7f9174e95}\label{namespacevisionary_a56ef606c2511dffcec5197c7f9174e95} 
+int32\+\_\+t {\bfseries byteswap} (int32\+\_\+t val)
+\item 
+\Hypertarget{namespacevisionary_ab2bab9c0c689789f32a7d5dc792e657d}\label{namespacevisionary_ab2bab9c0c689789f32a7d5dc792e657d} 
+float {\bfseries byteswap} (float val)
+\item 
+\Hypertarget{namespacevisionary_a7131dd8b31bc443101491c0a0df133a5}\label{namespacevisionary_a7131dd8b31bc443101491c0a0df133a5} 
+uint64\+\_\+t {\bfseries byteswap} (uint64\+\_\+t val)
+\item 
+\Hypertarget{namespacevisionary_a06b73bafb7d6d6e3c79ea48413c8e543}\label{namespacevisionary_a06b73bafb7d6d6e3c79ea48413c8e543} 
+int64\+\_\+t {\bfseries byteswap} (int64\+\_\+t val)
+\item 
+\Hypertarget{namespacevisionary_a907f6a266bfba204d2bafcf1fbc6430d}\label{namespacevisionary_a907f6a266bfba204d2bafcf1fbc6430d} 
+double {\bfseries byteswap} (double val)
+\item 
+\Hypertarget{namespacevisionary_a5fea97411549492f7eacf2edaa525213}\label{namespacevisionary_a5fea97411549492f7eacf2edaa525213} 
+{\footnotesize template$<$typename T $>$ }\\T {\bfseries native\+To\+Little\+Endian} (T x)
+\item 
+\Hypertarget{namespacevisionary_a61d449cf36d1741710c7eaa50209c483}\label{namespacevisionary_a61d449cf36d1741710c7eaa50209c483} 
+{\footnotesize template$<$typename T $>$ }\\T {\bfseries little\+Endian\+To\+Native} (T x)
+\item 
+\Hypertarget{namespacevisionary_ae17300f7f57385088f6ce1f4d1d0ee1a}\label{namespacevisionary_ae17300f7f57385088f6ce1f4d1d0ee1a} 
+{\footnotesize template$<$typename T $>$ }\\T {\bfseries native\+To\+Big\+Endian} (T x)
+\item 
+\Hypertarget{namespacevisionary_ab456419906aa5054acc67b101e3624e1}\label{namespacevisionary_ab456419906aa5054acc67b101e3624e1} 
+{\footnotesize template$<$typename T $>$ }\\T {\bfseries big\+Endian\+To\+Native} (T x)
+\item 
+\Hypertarget{namespacevisionary_adcde9bbe31d6ce4a167c081700a5def1}\label{namespacevisionary_adcde9bbe31d6ce4a167c081700a5def1} 
+{\footnotesize template$<$typename T $>$ }\\T {\bfseries read\+Unalign\+Big\+Endian} (const void \texorpdfstring{$\ast$}{*}ptr)
+\item 
+\Hypertarget{namespacevisionary_a451e7357de40d74240234ad0c53d6c11}\label{namespacevisionary_a451e7357de40d74240234ad0c53d6c11} 
+{\footnotesize template$<$typename T $>$ }\\T {\bfseries read\+Unalign\+Little\+Endian} (const void \texorpdfstring{$\ast$}{*}ptr)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{namespacevisionary_aa8b6cea77ed543f87f8a489e67b3b72f}\label{namespacevisionary_aa8b6cea77ed543f87f8a489e67b3b72f} 
+const float {\bfseries bad\+\_\+point} = std\+::numeric\+\_\+limits$<$float$>$\+::quiet\+\_\+\+NaN()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyCopyright}{Copyright}
+All rights reversed \href{http://www.unlicense.org/}{\texttt{ http\+://www.\+unlicense.\+org/}} (public domain)
+\end{DoxyCopyright}
+Definition of the controlsession interface
+
+\textbackslash{}email \href{mailto:TechSupport0905@sick.de}{\texttt{ Tech\+Support0905@sick.\+de}}
+
+\begin{DoxyVersion}{Version}
+0.\+0.\+1
+\end{DoxyVersion}
+\begin{DoxyCopyright}{Copyright}
+All rights reversed \href{http://www.unlicense.org/}{\texttt{ http\+://www.\+unlicense.\+org/}} (public domain)
+\end{DoxyCopyright}
+Definition of the control session interface
+
+\textbackslash{}email \href{mailto:TechSupport0905@sick.de}{\texttt{ Tech\+Support0905@sick.\+de}}
+
+\begin{DoxyVersion}{Version}
+0.\+0.\+1
+\end{DoxyVersion}
+\textbackslash{}\+SPDX-\/License-\/\+Identifier\+: Unlicense
+
+Definition of the interface used for authentication at a SICK SOPAS device
+
+\textbackslash{}email \href{mailto:TechSupport0905@sick.de}{\texttt{ Tech\+Support0905@sick.\+de}}
+
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{namespacevisionary_a9361aa279d6b7abd9b7e9107cb1711d1}\label{namespacevisionary_a9361aa279d6b7abd9b7e9107cb1711d1} 
+\index{visionary@{visionary}!InvalidPointPresentation@{InvalidPointPresentation}}
+\index{InvalidPointPresentation@{InvalidPointPresentation}!visionary@{visionary}}
+\doxysubsubsection{\texorpdfstring{InvalidPointPresentation}{InvalidPointPresentation}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacevisionary_a9361aa279d6b7abd9b7e9107cb1711d1}{visionary\+::\+Invalid\+Point\+Presentation}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{INVALID\_AS\_NAN@{INVALID\_AS\_NAN}!visionary@{visionary}}\index{visionary@{visionary}!INVALID\_AS\_NAN@{INVALID\_AS\_NAN}}}\Hypertarget{namespacevisionary_a9361aa279d6b7abd9b7e9107cb1711d1ab105957661bfa9b3451156a56a1e08c2}\label{namespacevisionary_a9361aa279d6b7abd9b7e9107cb1711d1ab105957661bfa9b3451156a56a1e08c2} 
+INVALID\+\_\+\+AS\+\_\+\+NAN&Not a Number = nan. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{INVALID\_AS\_ZERO@{INVALID\_AS\_ZERO}!visionary@{visionary}}\index{visionary@{visionary}!INVALID\_AS\_ZERO@{INVALID\_AS\_ZERO}}}\Hypertarget{namespacevisionary_a9361aa279d6b7abd9b7e9107cb1711d1abd8f02c715d3a2e9449cfd31a01d095a}\label{namespacevisionary_a9361aa279d6b7abd9b7e9107cb1711d1abd8f02c715d3a2e9449cfd31a01d095a} 
+INVALID\+\_\+\+AS\+\_\+\+ZERO&Zero = 0.\+0. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{INVALID\_SKIP@{INVALID\_SKIP}!visionary@{visionary}}\index{visionary@{visionary}!INVALID\_SKIP@{INVALID\_SKIP}}}\Hypertarget{namespacevisionary_a9361aa279d6b7abd9b7e9107cb1711d1a29882b575af80fc294e4aec01172680f}\label{namespacevisionary_a9361aa279d6b7abd9b7e9107cb1711d1a29882b575af80fc294e4aec01172680f} 
+INVALID\+\_\+\+SKIP&Skip =\texorpdfstring{$>$}{>} don\textquotesingle{}t print the number. \\
+\hline
+
+\end{DoxyEnumFields}

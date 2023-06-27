@@ -64,7 +64,7 @@
     <ClCompile Include="widgets\HistogramWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CloseDockWidget.cpp">
+    <ClCompile Include="widgets\CloseDockWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="sickapi\include\libs\smart_ptr\src\sp_collector.cpp">
@@ -272,7 +272,7 @@
     <QtMoc Include="widgets\HistogramWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="CloseDockWidget.h">
+    <QtMoc Include="widgets\CloseDockWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

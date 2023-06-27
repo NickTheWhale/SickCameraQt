@@ -1,0 +1,55 @@
+\doxysection{ITransport.\+h}
+\hypertarget{_i_transport_8h_source}{}\label{_i_transport_8h_source}\index{sickapi/src/ITransport.h@{sickapi/src/ITransport.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ SPDX-\/License-\/Identifier:\ Unlicense}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ }}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Created:\ November\ 2019}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ }}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ SICK\ AG,\ Waldkirch}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ email:\ TechSupport0905@sick.de}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <cstddef>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacevisionary}{visionary}}\ }
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classvisionary_1_1_i_transport}{ITransport}}}
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#ifdef\ \_WIN32}}
+\DoxyCodeLine{00022\ \ \ \textcolor{keyword}{using\ }send\_return\_t\ =\ int;}
+\DoxyCodeLine{00023\ \ \ \textcolor{keyword}{using\ }recv\_return\_t\ =\ int;}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00025\ \ \ \textcolor{keyword}{using\ }send\_return\_t\ =\ ssize\_t;}
+\DoxyCodeLine{00026\ \ \ \textcolor{keyword}{using\ }recv\_return\_t\ =\ ssize\_t;}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classvisionary_1_1_i_transport}{\string~ITransport}}()\ =\ \textcolor{keywordflow}{default};\ \textcolor{comment}{//\ destructor,\ use\ it\ to\ call\ destructor\ of\ the\ inherit\ classes}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ shutdown()\ =\ 0;}
+\DoxyCodeLine{00032\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ getLastError()\ =\ 0;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00041\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00042\ \ \ send\_return\_t\ \mbox{\hyperlink{classvisionary_1_1_i_transport_a8aa95dafb0bd9662eb5b686b28523e60}{send}}(\textcolor{keyword}{const}\ std::vector<T>\&\ buffer)\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classvisionary_1_1_i_transport_a8aa95dafb0bd9662eb5b686b28523e60}{send}}(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(buffer.data()),\ buffer.size()*\textcolor{keyword}{sizeof}(T));}
+\DoxyCodeLine{00044\ \ \ \}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00055\ \ \ \textcolor{keyword}{virtual}\ recv\_return\_t\ \mbox{\hyperlink{classvisionary_1_1_i_transport_a270896bd4df1f742e6e32f8866f05b5d}{recv}}(std::vector<std::uint8\_t>\&\ buffer,\ std::size\_t\ maxBytesToReceive)\ =\ 0;}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00065\ \ \ \textcolor{keyword}{virtual}\ recv\_return\_t\ \mbox{\hyperlink{classvisionary_1_1_i_transport_af7d6052b61f9e837cbfdc155389a0308}{read}}(std::vector<std::uint8\_t>\&\ buffer,\ std::size\_t\ nBytesToReceive)\ =\ 0;}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00068\ \ \ \textcolor{keyword}{virtual}\ send\_return\_t\ \mbox{\hyperlink{classvisionary_1_1_i_transport_a8aa95dafb0bd9662eb5b686b28523e60}{send}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ pData,\ \textcolor{keywordtype}{size\_t}\ size)\ =\ 0;}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \}}
+
+\end{DoxyCode}
