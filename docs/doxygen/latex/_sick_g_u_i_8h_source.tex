@@ -1,0 +1,99 @@
+\doxysection{Sick\+GUI.\+h}
+\hypertarget{_sick_g_u_i_8h_source}{}\label{_sick_g_u_i_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <QtWidgets/QMainWindow>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}ui\_SickGUI.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <qstack.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <qmutex.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <boost/circular\_buffer.hpp>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}CaptureThread.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}PlcThread.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}VisionaryFrameset.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}Stream.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <qpromise.h>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <qfuturewatcher.h>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}TinyColormap.hpp"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <HistogramWidget.h>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <AspectRatioPixmapLabel.h>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_capture_thread}{CaptureThread}};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_camera}{Camera}};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }TS7Client;}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_sick_g_u_i}{SickGUI}}\ :\ \textcolor{keyword}{public}\ QMainWindow}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{public}\ slots:}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ playVideo();}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ pauseVideo();}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ openStreamSettingsDialog();}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ newFrameset(\mbox{\hyperlink{struct_frameset_1_1frameset__t}{Frameset::frameset\_t}}\ fs);}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ showStatusBarMessage(\textcolor{keyword}{const}\ QString\&\ msg,\ \textcolor{keywordtype}{int}\ timeout\ =\ 0);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{class_sick_g_u_i}{SickGUI}}(QWidget*\ parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{class_sick_g_u_i}{\string~SickGUI}}();}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ closeEvent(QCloseEvent*\ event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ initializeWidgets();}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ updateDisplay();}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ updateChart();}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ writeImage(QImage\ image);}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{bool}\ createCamera();}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ checkThreads();}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ startThreads(QPromise<bool>\&\ promise);}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{bool}\ startCameraThread();}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{bool}\ startPlcThread();}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ saveSettings();}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ restoreSettings();}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ PLC\_IP\_ADDRESS\ =\ \textcolor{stringliteral}{"{}127.0.0.1"{}};}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ PLC\_RACK\ =\ 0;}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ PLC\_SLOT\ =\ 2;}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ Ui::SickGUIClass\ ui;}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ framesetBufferSize\ =\ 2;}
+\DoxyCodeLine{00065\ \ \ \ \ boost::circular\_buffer<Frameset::frameset\_t>\ framesetBuffer;}
+\DoxyCodeLine{00066\ \ \ \ \ QMutex\ framesetMutex;}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \mbox{\hyperlink{class_camera}{Camera}}*\ camera\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00069\ \ \ \ \ \mbox{\hyperlink{class_capture_thread}{CaptureThread}}*\ captureThread\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ TS7Client*\ s7Client\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00072\ \ \ \ \ \mbox{\hyperlink{class_plc_thread}{PlcThread}}*\ plcThread\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ QFutureWatcher<bool>*\ threadWatcher;}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{comment}{//\ widgets}}
+\DoxyCodeLine{00077\ \ \ \ \ AspectRatioPixmapLabel*\ cameraView\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00078\ \ \ \ \ HistogramWidget*\ depthHistogram\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00079\ \ \ \ \ HistogramWidget*\ intensityHistogram\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ QTimer*\ displayTimer\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{int}\ displayTimerInterval\ =\ 50;\ \textcolor{comment}{/*\ ms\ */}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ QTimer*\ chartTimer\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{int}\ chartTimerInterval\ =\ 50;\ \textcolor{comment}{/*\ ms\ */}}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ Stream\ streamType;}
+\DoxyCodeLine{00088\ \ \ \ \ tinycolormap::ColormapType\ streamColorMapType;}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keyword}{volatile}\ \textcolor{keywordtype}{bool}\ invertedColor;}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ QLabel*\ statusBarLabel\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{bool}\ overLayStats\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00094\ \};}
+
+\end{DoxyCode}

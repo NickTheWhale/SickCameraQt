@@ -1,0 +1,37 @@
+\doxysection{Capture\+Thread.\+h}
+\hypertarget{_capture_thread_8h_source}{}\label{_capture_thread_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <qthread.h>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}SickGUI.h"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}VisionaryFrameset.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_capture_thread}{CaptureThread}}\ :\ \textcolor{keyword}{public}\ QThread}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ signals:}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_capture_thread_abe68c8ea1844de605784b48d3202aac5}{newFrameset}}(\mbox{\hyperlink{struct_frameset_1_1frameset__t}{Frameset::frameset\_t}}\ fs);}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_capture_thread_aca95366c9f7d55802e0828b461d561d0}{lostConnection}}();}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_capture_thread_af0cef714c6485ba7e0aac3888da18c20}{startCapture}}(\mbox{\hyperlink{class_camera}{Camera}}*\ camera);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_capture_thread_a552aad21d7c4c4a8f612c62a9e06bd18}{stopCapture}}();}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_capture_thread_a7b3ce730549a2beea9ae989a4cf44d35}{run}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{struct_frameset_1_1frameset__t}{Frameset::frameset\_t}}\ lastFrameset;\ }
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{class_camera}{Camera}}*\ camera;\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{volatile}\ \textcolor{keywordtype}{bool}\ stop;\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ frameRetryDelay\ =\ 10;\ }
+\DoxyCodeLine{00055\ \ \ \ \ uint32\_t\ retryCounter\ =\ 0;\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ maxRetryTime\ =\ 2000;\ }
+\DoxyCodeLine{00057\ \};}
+
+\end{DoxyCode}

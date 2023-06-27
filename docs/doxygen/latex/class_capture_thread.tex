@@ -1,0 +1,86 @@
+\doxysection{Capture\+Thread Class Reference}
+\hypertarget{class_capture_thread}{}\label{class_capture_thread}\index{CaptureThread@{CaptureThread}}
+
+
+The \doxylink{class_capture_thread}{Capture\+Thread} class handles the capture of frames from a camera.  
+
+
+
+
+{\ttfamily \#include $<$Capture\+Thread.\+h$>$}
+
+Inheritance diagram for Capture\+Thread\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_capture_thread}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_capture_thread_abe68c8ea1844de605784b48d3202aac5}{new\+Frameset}} (\mbox{\hyperlink{struct_frameset_1_1frameset__t}{Frameset\+::frameset\+\_\+t}} fs)
+\begin{DoxyCompactList}\small\item\em Signal emitted when a new frameset is available. \end{DoxyCompactList}\item 
+\Hypertarget{class_capture_thread_aca95366c9f7d55802e0828b461d561d0}\label{class_capture_thread_aca95366c9f7d55802e0828b461d561d0} 
+void {\bfseries lost\+Connection} ()
+\begin{DoxyCompactList}\small\item\em Signal emitted when the connection to the camera is lost. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_capture_thread_af0cef714c6485ba7e0aac3888da18c20}{start\+Capture}} (\mbox{\hyperlink{class_camera}{Camera}} \texorpdfstring{$\ast$}{*}camera)
+\begin{DoxyCompactList}\small\item\em Starts capturing frames from the specified camera. \end{DoxyCompactList}\item 
+\Hypertarget{class_capture_thread_a552aad21d7c4c4a8f612c62a9e06bd18}\label{class_capture_thread_a552aad21d7c4c4a8f612c62a9e06bd18} 
+void {\bfseries stop\+Capture} ()
+\begin{DoxyCompactList}\small\item\em Stops capturing frames. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_capture_thread_a7b3ce730549a2beea9ae989a4cf44d35}\label{class_capture_thread_a7b3ce730549a2beea9ae989a4cf44d35} 
+void {\bfseries run} () override
+\begin{DoxyCompactList}\small\item\em Overridden method from QThread that runs the capture loop. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{class_capture_thread}{Capture\+Thread} class handles the capture of frames from a camera. 
+
+The \doxylink{class_capture_thread}{Capture\+Thread} class is a QThread subclass that captures frames from a camera and emits signals whenever a new frameset is available or the connection to the camera is lost. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_capture_thread_abe68c8ea1844de605784b48d3202aac5}\label{class_capture_thread_abe68c8ea1844de605784b48d3202aac5} 
+\index{CaptureThread@{CaptureThread}!newFrameset@{newFrameset}}
+\index{newFrameset@{newFrameset}!CaptureThread@{CaptureThread}}
+\doxysubsubsection{\texorpdfstring{newFrameset}{newFrameset}}
+{\footnotesize\ttfamily void Capture\+Thread\+::new\+Frameset (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_frameset_1_1frameset__t}{Frameset\+::frameset\+\_\+t}}}]{fs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+Signal emitted when a new frameset is available. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fs} & The frameset object containing the captured frames. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_capture_thread_af0cef714c6485ba7e0aac3888da18c20}\label{class_capture_thread_af0cef714c6485ba7e0aac3888da18c20} 
+\index{CaptureThread@{CaptureThread}!startCapture@{startCapture}}
+\index{startCapture@{startCapture}!CaptureThread@{CaptureThread}}
+\doxysubsubsection{\texorpdfstring{startCapture()}{startCapture()}}
+{\footnotesize\ttfamily bool Capture\+Thread\+::start\+Capture (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_camera}{Camera}} \texorpdfstring{$\ast$}{*}}]{camera }\end{DoxyParamCaption})}
+
+
+
+Starts capturing frames from the specified camera. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em camera} & Pointer to the \doxylink{class_camera}{Camera} object to capture frames from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the capture was started successfully, false otherwise. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Capture\+Thread.\+h\item 
+Capture\+Thread.\+cpp\end{DoxyCompactItemize}
