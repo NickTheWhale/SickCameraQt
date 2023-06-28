@@ -17,44 +17,44 @@
 \DoxyCodeLine{00013\ }
 \DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}VisionaryData.h"{}}}
 \DoxyCodeLine{00015\ }
-\DoxyCodeLine{00016\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacevisionary}{visionary}}\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacevisionary}{visionary}}}
 \DoxyCodeLine{00017\ \{}
 \DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classvisionary_1_1_visionary_s_data}{VisionarySData}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classvisionary_1_1_visionary_data}{VisionaryData}}}
-\DoxyCodeLine{00020\ \{}
-\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00022\ \ \ \mbox{\hyperlink{classvisionary_1_1_visionary_s_data}{VisionarySData}}();}
-\DoxyCodeLine{00023\ \ \ \mbox{\hyperlink{classvisionary_1_1_visionary_s_data}{\string~VisionarySData}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classvisionary_1_1_visionary_s_data}{VisionarySData}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classvisionary_1_1_visionary_data}{VisionaryData}}}
+\DoxyCodeLine{00020\ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvisionary_1_1_visionary_s_data}{VisionarySData}}();}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvisionary_1_1_visionary_s_data}{\string~VisionarySData}}()\ \textcolor{keyword}{override};}
 \DoxyCodeLine{00024\ }
-\DoxyCodeLine{00025\ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{00026\ \ \ \textcolor{comment}{//\ Getter\ Functions}}
-\DoxyCodeLine{00027\ \ \ \textcolor{keyword}{const}\ std::vector<uint16\_t>\&\ getZMap()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00028\ \ \ \textcolor{keyword}{const}\ std::vector<uint32\_t>\&\ getRGBAMap()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00029\ \ \ \textcolor{keyword}{const}\ std::vector<uint16\_t>\&\ getConfidenceMap()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00030\ \ \ \textcolor{comment}{//\ Calculate\ and\ return\ the\ Point\ Cloud\ in\ the\ camera\ perspective.\ Units\ are\ in\ meters.}}
-\DoxyCodeLine{00031\ \ \ \textcolor{keywordtype}{void}\ generatePointCloud(std::vector<PointXYZ>\ \&pointCloud)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Getter\ Functions}}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<uint16\_t>\&\ getZMap()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<uint32\_t>\&\ getRGBAMap()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<uint16\_t>\&\ getConfidenceMap()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ and\ return\ the\ Point\ Cloud\ in\ the\ camera\ perspective.\ Units\ are\ in\ meters.}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ generatePointCloud(std::vector<PointXYZ>\&\ pointCloud)\ \textcolor{keyword}{override};}
 \DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \textcolor{keyword}{protected}:}
-\DoxyCodeLine{00034\ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{00035\ \ \ \textcolor{comment}{//\ functions\ for\ parsing\ received\ blob}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ functions\ for\ parsing\ received\ blob}}
 \DoxyCodeLine{00036\ }
-\DoxyCodeLine{00037\ \ \ \textcolor{comment}{//\ Parse\ the\ XML\ Metadata\ part\ to\ get\ information\ about\ the\ sensor\ and\ the\ following\ image\ data.}}
-\DoxyCodeLine{00038\ \ \ \textcolor{comment}{//\ This\ function\ uses\ boost\ library.\ An\ other\ XML\ parser\ is\ needed\ to\ remove\ boost\ from\ source.}}
-\DoxyCodeLine{00039\ \ \ \textcolor{comment}{//\ Returns\ true\ when\ parsing\ was\ successful.}}
-\DoxyCodeLine{00040\ \ \ \textcolor{keywordtype}{bool}\ parseXML(\textcolor{keyword}{const}\ std::string\ \&\ xmlString,\ uint32\_t\ changeCounter)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Parse\ the\ XML\ Metadata\ part\ to\ get\ information\ about\ the\ sensor\ and\ the\ following\ image\ data.}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ This\ function\ uses\ boost\ library.\ An\ other\ XML\ parser\ is\ needed\ to\ remove\ boost\ from\ source.}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Returns\ true\ when\ parsing\ was\ successful.}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ parseXML(\textcolor{keyword}{const}\ std::string\&\ xmlString,\ uint32\_t\ changeCounter)\ \textcolor{keyword}{override};}
 \DoxyCodeLine{00041\ }
-\DoxyCodeLine{00042\ \ \ \textcolor{comment}{//\ Parse\ the\ Binary\ data\ part\ to\ extract\ the\ image\ data.\ }}
-\DoxyCodeLine{00043\ \ \ \textcolor{comment}{//\ Returns\ true\ when\ parsing\ was\ successful.}}
-\DoxyCodeLine{00044\ \ \ \textcolor{keywordtype}{bool}\ parseBinaryData(std::vector<uint8\_t>::iterator\ itBuf,\ \textcolor{keywordtype}{size\_t}\ size)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Parse\ the\ Binary\ data\ part\ to\ extract\ the\ image\ data.\ }}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Returns\ true\ when\ parsing\ was\ successful.}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ parseBinaryData(std::vector<uint8\_t>::iterator\ itBuf,\ \textcolor{keywordtype}{size\_t}\ size)\ \textcolor{keyword}{override};}
 \DoxyCodeLine{00045\ }
-\DoxyCodeLine{00046\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00048\ \ \ \textcolor{keywordtype}{int}\ m\_zByteDepth,\ m\_rgbaByteDepth,\ m\_confidenceByteDepth;}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classvisionary_1_1_visionary_s_data_a9f494382825a0ab83c031f4e6992adf2}{m\_zByteDepth}},\ m\_rgbaByteDepth,\ m\_confidenceByteDepth;}
 \DoxyCodeLine{00049\ }
-\DoxyCodeLine{00050\ \ \ \textcolor{comment}{//\ Pointers\ to\ the\ image\ data}}
-\DoxyCodeLine{00051\ \ \ std::vector<uint16\_t>\ m\_zMap;}
-\DoxyCodeLine{00052\ \ \ std::vector<uint32\_t>\ m\_rgbaMap;}
-\DoxyCodeLine{00053\ \ \ std::vector<uint16\_t>\ m\_confidenceMap;}
-\DoxyCodeLine{00054\ \};}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Pointers\ to\ the\ image\ data}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ std::vector<uint16\_t>\ m\_zMap;}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ std::vector<uint32\_t>\ m\_rgbaMap;}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ std::vector<uint16\_t>\ m\_confidenceMap;}
+\DoxyCodeLine{00054\ \ \ \ \ \};}
 \DoxyCodeLine{00055\ }
 \DoxyCodeLine{00056\ \}}
 

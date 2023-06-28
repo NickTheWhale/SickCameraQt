@@ -1,0 +1,48 @@
+\doxysection{Visionary\+Frameset.\+h File Reference}
+\hypertarget{_visionary_frameset_8h}{}\label{_visionary_frameset_8h}\index{VisionaryFrameset.h@{VisionaryFrameset.h}}
+
+
+Defines a frameset and contains frame to QImage helper functions.  
+
+
+{\ttfamily \#include $<$qimage.\+h$>$}\newline
+{\ttfamily \#include \"{}Tiny\+Colormap.\+hpp\"{}}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$qdebug.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_frameset_1_1frameset__t}{Frameset\+::frameset\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Defines a frameset. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_frameset}{Frameset}}
+\begin{DoxyCompactList}\small\item\em Defines a frameset and contains frame to QImage helper functions. \end{DoxyCompactList}\item 
+namespace \mbox{\hyperlink{namespace_frameset_1_1__internal}{Frameset\+::\+\_\+internal}}
+\begin{DoxyCompactList}\small\item\em Contains internal helper functions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{namespace_frameset_1_1__internal_ae30a8ca519fbb880805ee091044e427f}{Frameset\+::\+\_\+internal\+::lin\+To\+Log}} (double x)
+\begin{DoxyCompactList}\small\item\em Linear to logarithmic LUT. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_frameset_1_1__internal_a4a2d41dbe6535713fb6e531ddcaf5930}{Frameset\+::\+\_\+internal\+::frame\+To\+QImage}} (const std\+::vector$<$ uint16\+\_\+t $>$ \&frame, int width, int height, QImage \&q\+Image, tinycolormap\+::\+Colormap\+Type color\+Map, bool invert, bool log)
+\begin{DoxyCompactList}\small\item\em Converts a grayscale frame to color QImage. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_frameset_acb7903afdaea70f614e22dc96b1ede93}{Frameset\+::depth\+To\+QImage}} (const \mbox{\hyperlink{struct_frameset_1_1frameset__t}{frameset\+\_\+t}} \&fs, QImage \&q\+Image, tinycolormap\+::\+Colormap\+Type color\+Map=tinycolormap\+::\+Colormap\+Type\+::\+Gray, bool invert=false)
+\begin{DoxyCompactList}\small\item\em Converts a depth frame to a color QImage. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_frameset_a9dd6741a477d79762ff3540b7d40372b}{Frameset\+::intensity\+To\+QImage}} (const \mbox{\hyperlink{struct_frameset_1_1frameset__t}{frameset\+\_\+t}} \&fs, QImage \&q\+Image, tinycolormap\+::\+Colormap\+Type color\+Map=tinycolormap\+::\+Colormap\+Type\+::\+Gray, bool invert=false)
+\begin{DoxyCompactList}\small\item\em Converts an intensity frame to a color QImage. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_frameset_af957a114394740c82ff79b4ed8c941cd}{Frameset\+::state\+To\+QImage}} (const \mbox{\hyperlink{struct_frameset_1_1frameset__t}{frameset\+\_\+t}} \&fs, QImage \&q\+Image, tinycolormap\+::\+Colormap\+Type color\+Map=tinycolormap\+::\+Colormap\+Type\+::\+Gray, bool invert=false)
+\begin{DoxyCompactList}\small\item\em Converts a state frame to a color QImage. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Defines a frameset and contains frame to QImage helper functions. 
+
+\begin{DoxyAuthor}{Author}
+Nicholas Loehrke 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+June 2023 
+\end{DoxyDate}

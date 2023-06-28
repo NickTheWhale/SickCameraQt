@@ -9,9 +9,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -46,6 +51,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('_visionary_s_data_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,16 +89,11 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_23d3d343015a8bd7e9dbef71a9e03858.html">sickapi</a></li><li class="navelem"><a class="el" href="dir_f9343132e416b1d631e13da8b9569f26.html">src</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">VisionarySData.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//</span></div>
+<a href="_visionary_s_data_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">// SPDX-License-Identifier: Unlicense</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">// </span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">// Created: August 2017</span></div>
@@ -89,55 +106,74 @@ $(function() {
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;VisionaryData.h&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="_visionary_data_8h.html">VisionaryData.h</a>&quot;</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacevisionary.html">visionary</a> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacevisionary.html">visionary</a></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>{</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="classvisionary_1_1_visionary_s_data.html">   19</a></span><span class="keyword">class </span><a class="code hl_class" href="classvisionary_1_1_visionary_s_data.html">VisionarySData</a> : <span class="keyword">public</span> <a class="code hl_class" href="classvisionary_1_1_visionary_data.html">VisionaryData</a></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>{</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>  <a class="code hl_class" href="classvisionary_1_1_visionary_s_data.html">VisionarySData</a>();</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>  <a class="code hl_class" href="classvisionary_1_1_visionary_s_data.html">~VisionarySData</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="classvisionary_1_1_visionary_s_data.html">   19</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classvisionary_1_1_visionary_s_data.html">VisionarySData</a> : <span class="keyword">public</span> <a class="code hl_class" href="classvisionary_1_1_visionary_data.html">VisionaryData</a></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <a class="code hl_function" href="classvisionary_1_1_visionary_s_data.html#ab1fd5f6cbe8c800a0fba09ca929c7065">VisionarySData</a>();</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classvisionary_1_1_visionary_s_data.html#ab3c60b7c0e17aa0ec3e67a7584049543">   23</a></span>        <a class="code hl_function" href="classvisionary_1_1_visionary_s_data.html#ab3c60b7c0e17aa0ec3e67a7584049543">~VisionarySData</a>() <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  <span class="comment">//-----------------------------------------------</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>  <span class="comment">// Getter Functions</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>  <span class="keyword">const</span> std::vector&lt;uint16_t&gt;&amp; getZMap() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>  <span class="keyword">const</span> std::vector&lt;uint32_t&gt;&amp; getRGBAMap() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>  <span class="keyword">const</span> std::vector&lt;uint16_t&gt;&amp; getConfidenceMap() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>  <span class="comment">// Calculate and return the Point Cloud in the camera perspective. Units are in meters.</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>  <span class="keywordtype">void</span> generatePointCloud(std::vector&lt;PointXYZ&gt; &amp;pointCloud) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="comment">//-----------------------------------------------</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="comment">// Getter Functions</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="keyword">const</span> std::vector&lt;uint16_t&gt;&amp; <a class="code hl_function" href="classvisionary_1_1_visionary_s_data.html#ad9068e23b2a411322a3b82f6395fadb3">getZMap</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="keyword">const</span> std::vector&lt;uint32_t&gt;&amp; <a class="code hl_function" href="classvisionary_1_1_visionary_s_data.html#a5936649b22a8b7a8178714d827c16c90">getRGBAMap</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="keyword">const</span> std::vector&lt;uint16_t&gt;&amp; <a class="code hl_function" href="classvisionary_1_1_visionary_s_data.html#a812321b727d027ad905a2196796eb55a">getConfidenceMap</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="comment">// Calculate and return the Point Cloud in the camera perspective. Units are in meters.</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classvisionary_1_1_visionary_s_data.html#a5b122aee7d79d385c8520e2160a169db">generatePointCloud</a>(std::vector&lt;PointXYZ&gt;&amp; pointCloud) <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>  <span class="comment">//-----------------------------------------------</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>  <span class="comment">// functions for parsing received blob</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="comment">//-----------------------------------------------</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="comment">// functions for parsing received blob</span></div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>  <span class="comment">// Parse the XML Metadata part to get information about the sensor and the following image data.</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>  <span class="comment">// This function uses boost library. An other XML parser is needed to remove boost from source.</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>  <span class="comment">// Returns true when parsing was successful.</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>  <span class="keywordtype">bool</span> parseXML(<span class="keyword">const</span> std::string &amp; xmlString, uint32_t changeCounter) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="comment">// Parse the XML Metadata part to get information about the sensor and the following image data.</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="comment">// This function uses boost library. An other XML parser is needed to remove boost from source.</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="comment">// Returns true when parsing was successful.</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classvisionary_1_1_visionary_s_data.html#acc551de1b887a9a64a91b798075bef4e">parseXML</a>(<span class="keyword">const</span> std::string&amp; xmlString, uint32_t changeCounter) <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>  <span class="comment">// Parse the Binary data part to extract the image data. </span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>  <span class="comment">// Returns true when parsing was successful.</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  <span class="keywordtype">bool</span> parseBinaryData(std::vector&lt;uint8_t&gt;::iterator itBuf, <span class="keywordtype">size_t</span> size) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="comment">// Parse the Binary data part to extract the image data. </span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="comment">// Returns true when parsing was successful.</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classvisionary_1_1_visionary_s_data.html#a6d05e94b8f9dd4805132b5ce8d068e8e">parseBinaryData</a>(std::vector&lt;uint8_t&gt;::iterator itBuf, <span class="keywordtype">size_t</span> size) <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  <span class="keywordtype">int</span> m_zByteDepth, m_rgbaByteDepth, m_confidenceByteDepth;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="classvisionary_1_1_visionary_s_data.html#a771d964baf65f3ce54f0c32ef37c3d6c">   48</a></span>        <span class="keywordtype">int</span> <a class="code hl_variable" href="classvisionary_1_1_visionary_s_data.html#a9f494382825a0ab83c031f4e6992adf2">m_zByteDepth</a>, <a class="code hl_variable" href="classvisionary_1_1_visionary_s_data.html#a6e49af4540f85cfa1e9a1fca4be8da3c">m_rgbaByteDepth</a>, <a class="code hl_variable" href="classvisionary_1_1_visionary_s_data.html#a771d964baf65f3ce54f0c32ef37c3d6c">m_confidenceByteDepth</a>;</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>  <span class="comment">// Pointers to the image data</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  std::vector&lt;uint16_t&gt; m_zMap;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  std::vector&lt;uint32_t&gt; m_rgbaMap;</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  std::vector&lt;uint16_t&gt; m_confidenceMap;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>};</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="comment">// Pointers to the image data</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="classvisionary_1_1_visionary_s_data.html#a37a6821a27259effcc4176bff76c7b28">   51</a></span>        std::vector&lt;uint16_t&gt; <a class="code hl_variable" href="classvisionary_1_1_visionary_s_data.html#a37a6821a27259effcc4176bff76c7b28">m_zMap</a>;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="classvisionary_1_1_visionary_s_data.html#aa0a6f3c2e2c9fcc2865aa0b9e9e5e192">   52</a></span>        std::vector&lt;uint32_t&gt; <a class="code hl_variable" href="classvisionary_1_1_visionary_s_data.html#aa0a6f3c2e2c9fcc2865aa0b9e9e5e192">m_rgbaMap</a>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="classvisionary_1_1_visionary_s_data.html#a81cc764a40c684bcc41aa3fd3767a39c">   53</a></span>        std::vector&lt;uint16_t&gt; <a class="code hl_variable" href="classvisionary_1_1_visionary_s_data.html#a81cc764a40c684bcc41aa3fd3767a39c">m_confidenceMap</a>;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    };</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>}</div>
+<div class="ttc" id="a_visionary_data_8h_html"><div class="ttname"><a href="_visionary_data_8h.html">VisionaryData.h</a></div></div>
 <div class="ttc" id="aclassvisionary_1_1_visionary_data_html"><div class="ttname"><a href="classvisionary_1_1_visionary_data.html">visionary::VisionaryData</a></div><div class="ttdef"><b>Definition</b> VisionaryData.h:50</div></div>
 <div class="ttc" id="aclassvisionary_1_1_visionary_s_data_html"><div class="ttname"><a href="classvisionary_1_1_visionary_s_data.html">visionary::VisionarySData</a></div><div class="ttdef"><b>Definition</b> VisionarySData.h:20</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_s_data_html_a37a6821a27259effcc4176bff76c7b28"><div class="ttname"><a href="classvisionary_1_1_visionary_s_data.html#a37a6821a27259effcc4176bff76c7b28">visionary::VisionarySData::m_zMap</a></div><div class="ttdeci">std::vector&lt; uint16_t &gt; m_zMap</div><div class="ttdef"><b>Definition</b> VisionarySData.h:51</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_s_data_html_a5936649b22a8b7a8178714d827c16c90"><div class="ttname"><a href="classvisionary_1_1_visionary_s_data.html#a5936649b22a8b7a8178714d827c16c90">visionary::VisionarySData::getRGBAMap</a></div><div class="ttdeci">const std::vector&lt; uint32_t &gt; &amp; getRGBAMap() const</div><div class="ttdef"><b>Definition</b> VisionarySData.cpp:226</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_s_data_html_a5b122aee7d79d385c8520e2160a169db"><div class="ttname"><a href="classvisionary_1_1_visionary_s_data.html#a5b122aee7d79d385c8520e2160a169db">visionary::VisionarySData::generatePointCloud</a></div><div class="ttdeci">void generatePointCloud(std::vector&lt; PointXYZ &gt; &amp;pointCloud) override</div><div class="ttdef"><b>Definition</b> VisionarySData.cpp:216</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_s_data_html_a6d05e94b8f9dd4805132b5ce8d068e8e"><div class="ttname"><a href="classvisionary_1_1_visionary_s_data.html#a6d05e94b8f9dd4805132b5ce8d068e8e">visionary::VisionarySData::parseBinaryData</a></div><div class="ttdeci">bool parseBinaryData(std::vector&lt; uint8_t &gt;::iterator itBuf, size_t size) override</div><div class="ttdef"><b>Definition</b> VisionarySData.cpp:105</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_s_data_html_a6e49af4540f85cfa1e9a1fca4be8da3c"><div class="ttname"><a href="classvisionary_1_1_visionary_s_data.html#a6e49af4540f85cfa1e9a1fca4be8da3c">visionary::VisionarySData::m_rgbaByteDepth</a></div><div class="ttdeci">int m_rgbaByteDepth</div><div class="ttdef"><b>Definition</b> VisionarySData.h:48</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_s_data_html_a771d964baf65f3ce54f0c32ef37c3d6c"><div class="ttname"><a href="classvisionary_1_1_visionary_s_data.html#a771d964baf65f3ce54f0c32ef37c3d6c">visionary::VisionarySData::m_confidenceByteDepth</a></div><div class="ttdeci">int m_confidenceByteDepth</div><div class="ttdef"><b>Definition</b> VisionarySData.h:48</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_s_data_html_a812321b727d027ad905a2196796eb55a"><div class="ttname"><a href="classvisionary_1_1_visionary_s_data.html#a812321b727d027ad905a2196796eb55a">visionary::VisionarySData::getConfidenceMap</a></div><div class="ttdeci">const std::vector&lt; uint16_t &gt; &amp; getConfidenceMap() const</div><div class="ttdef"><b>Definition</b> VisionarySData.cpp:231</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_s_data_html_a81cc764a40c684bcc41aa3fd3767a39c"><div class="ttname"><a href="classvisionary_1_1_visionary_s_data.html#a81cc764a40c684bcc41aa3fd3767a39c">visionary::VisionarySData::m_confidenceMap</a></div><div class="ttdeci">std::vector&lt; uint16_t &gt; m_confidenceMap</div><div class="ttdef"><b>Definition</b> VisionarySData.h:53</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_s_data_html_a9f494382825a0ab83c031f4e6992adf2"><div class="ttname"><a href="classvisionary_1_1_visionary_s_data.html#a9f494382825a0ab83c031f4e6992adf2">visionary::VisionarySData::m_zByteDepth</a></div><div class="ttdeci">int m_zByteDepth</div><div class="ttdoc">Byte depth of images.</div><div class="ttdef"><b>Definition</b> VisionarySData.h:48</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_s_data_html_aa0a6f3c2e2c9fcc2865aa0b9e9e5e192"><div class="ttname"><a href="classvisionary_1_1_visionary_s_data.html#aa0a6f3c2e2c9fcc2865aa0b9e9e5e192">visionary::VisionarySData::m_rgbaMap</a></div><div class="ttdeci">std::vector&lt; uint32_t &gt; m_rgbaMap</div><div class="ttdef"><b>Definition</b> VisionarySData.h:52</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_s_data_html_ab1fd5f6cbe8c800a0fba09ca929c7065"><div class="ttname"><a href="classvisionary_1_1_visionary_s_data.html#ab1fd5f6cbe8c800a0fba09ca929c7065">visionary::VisionarySData::VisionarySData</a></div><div class="ttdeci">VisionarySData()</div><div class="ttdef"><b>Definition</b> VisionarySData.cpp:35</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_s_data_html_ab3c60b7c0e17aa0ec3e67a7584049543"><div class="ttname"><a href="classvisionary_1_1_visionary_s_data.html#ab3c60b7c0e17aa0ec3e67a7584049543">visionary::VisionarySData::~VisionarySData</a></div><div class="ttdeci">~VisionarySData() override</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_s_data_html_acc551de1b887a9a64a91b798075bef4e"><div class="ttname"><a href="classvisionary_1_1_visionary_s_data.html#acc551de1b887a9a64a91b798075bef4e">visionary::VisionarySData::parseXML</a></div><div class="ttdeci">bool parseXML(const std::string &amp;xmlString, uint32_t changeCounter) override</div><div class="ttdef"><b>Definition</b> VisionarySData.cpp:46</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_s_data_html_ad9068e23b2a411322a3b82f6395fadb3"><div class="ttname"><a href="classvisionary_1_1_visionary_s_data.html#ad9068e23b2a411322a3b82f6395fadb3">visionary::VisionarySData::getZMap</a></div><div class="ttdeci">const std::vector&lt; uint16_t &gt; &amp; getZMap() const</div><div class="ttdef"><b>Definition</b> VisionarySData.cpp:221</div></div>
 <div class="ttc" id="anamespacevisionary_html"><div class="ttname"><a href="namespacevisionary.html">visionary</a></div><div class="ttdef"><b>Definition</b> AuthenticationLegacy.cpp:14</div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_23d3d343015a8bd7e9dbef71a9e03858.html">sickapi</a></li><li class="navelem"><a class="el" href="dir_f9343132e416b1d631e13da8b9569f26.html">src</a></li><li class="navelem"><a class="el" href="_visionary_s_data_8h.html">VisionarySData.h</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+  </ul>
+</div>
 </body>
 </html>

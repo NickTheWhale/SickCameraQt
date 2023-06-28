@@ -37,7 +37,7 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="VisionaryCamera.cpp">
+    <ClCompile Include="cameraimpl\VisionaryCamera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CaptureThread.cpp">
@@ -53,9 +53,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SickGUI.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QToolMenuButton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="widgets\AspectRatioPixmapLabel.cpp">
@@ -147,7 +144,7 @@
     <ClInclude Include="Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="VisionaryCamera.h">
+    <ClInclude Include="cameraimpl\VisionaryCamera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="snap7\snap7.h">
@@ -263,9 +260,6 @@
     <QtMoc Include="PlcThread.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="QToolMenuButton.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="widgets\AspectRatioPixmapLabel.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -284,11 +278,7 @@
     <Library Include="snap7\snap7.lib" />
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="StreamSettingDialog.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Doxyfile" />
   </ItemGroup>
 </Project>

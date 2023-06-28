@@ -9,9 +9,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -46,6 +51,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('structvisionary_1_1_camera_parameters.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,11 +89,6 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="namespacevisionary.html">visionary</a></li><li class="navelem"><a class="el" href="structvisionary_1_1_camera_parameters.html">CameraParameters</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">visionary::CameraParameters Member List</div></div>
 </div><!--header-->
@@ -80,22 +97,25 @@ $(function() {
 <p>This is the complete list of members for <a class="el" href="structvisionary_1_1_camera_parameters.html">visionary::CameraParameters</a>, including all inherited members.</p>
 <table class="directory">
   <tr class="even"><td class="entry"><a class="el" href="structvisionary_1_1_camera_parameters.html#a91c5e3ba125c0f17846039df412c002a">cam2worldMatrix</a></td><td class="entry"><a class="el" href="structvisionary_1_1_camera_parameters.html">visionary::CameraParameters</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>cx</b> (defined in <a class="el" href="structvisionary_1_1_camera_parameters.html">visionary::CameraParameters</a>)</td><td class="entry"><a class="el" href="structvisionary_1_1_camera_parameters.html">visionary::CameraParameters</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>cy</b> (defined in <a class="el" href="structvisionary_1_1_camera_parameters.html">visionary::CameraParameters</a>)</td><td class="entry"><a class="el" href="structvisionary_1_1_camera_parameters.html">visionary::CameraParameters</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="structvisionary_1_1_camera_parameters.html#a2ac88f015d90ecdaa7d0f0d714d48dfa">cx</a></td><td class="entry"><a class="el" href="structvisionary_1_1_camera_parameters.html">visionary::CameraParameters</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="structvisionary_1_1_camera_parameters.html#a8748be20abcb3b61c8e002f878a3db2a">cy</a></td><td class="entry"><a class="el" href="structvisionary_1_1_camera_parameters.html">visionary::CameraParameters</a></td><td class="entry"></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="structvisionary_1_1_camera_parameters.html#a82c778caaf29fc4a560a50126f01b540">f2rc</a></td><td class="entry"><a class="el" href="structvisionary_1_1_camera_parameters.html">visionary::CameraParameters</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="structvisionary_1_1_camera_parameters.html#adc28f3af0f90c44b3786cf812b0168a2">fx</a></td><td class="entry"><a class="el" href="structvisionary_1_1_camera_parameters.html">visionary::CameraParameters</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>fy</b> (defined in <a class="el" href="structvisionary_1_1_camera_parameters.html">visionary::CameraParameters</a>)</td><td class="entry"><a class="el" href="structvisionary_1_1_camera_parameters.html">visionary::CameraParameters</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="structvisionary_1_1_camera_parameters.html#a71ed00b523cb51ca3c4b8b5e079b6653">fy</a></td><td class="entry"><a class="el" href="structvisionary_1_1_camera_parameters.html">visionary::CameraParameters</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="structvisionary_1_1_camera_parameters.html#ab169cf570583dd59545a02d0409d9d66">height</a></td><td class="entry"><a class="el" href="structvisionary_1_1_camera_parameters.html">visionary::CameraParameters</a></td><td class="entry"></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="structvisionary_1_1_camera_parameters.html#a62316e149dfbc91e7d54ad8a79f86c6b">k1</a></td><td class="entry"><a class="el" href="structvisionary_1_1_camera_parameters.html">visionary::CameraParameters</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>k2</b> (defined in <a class="el" href="structvisionary_1_1_camera_parameters.html">visionary::CameraParameters</a>)</td><td class="entry"><a class="el" href="structvisionary_1_1_camera_parameters.html">visionary::CameraParameters</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>k3</b> (defined in <a class="el" href="structvisionary_1_1_camera_parameters.html">visionary::CameraParameters</a>)</td><td class="entry"><a class="el" href="structvisionary_1_1_camera_parameters.html">visionary::CameraParameters</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>p1</b> (defined in <a class="el" href="structvisionary_1_1_camera_parameters.html">visionary::CameraParameters</a>)</td><td class="entry"><a class="el" href="structvisionary_1_1_camera_parameters.html">visionary::CameraParameters</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>p2</b> (defined in <a class="el" href="structvisionary_1_1_camera_parameters.html">visionary::CameraParameters</a>)</td><td class="entry"><a class="el" href="structvisionary_1_1_camera_parameters.html">visionary::CameraParameters</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="structvisionary_1_1_camera_parameters.html#af98c6422ee4001f8309444bd310b9c32">k2</a></td><td class="entry"><a class="el" href="structvisionary_1_1_camera_parameters.html">visionary::CameraParameters</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="structvisionary_1_1_camera_parameters.html#add19718616eea6d0499620c61f5b35a5">k3</a></td><td class="entry"><a class="el" href="structvisionary_1_1_camera_parameters.html">visionary::CameraParameters</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="structvisionary_1_1_camera_parameters.html#a17c79b9865e9bfa461cefbeb0b56f2c9">p1</a></td><td class="entry"><a class="el" href="structvisionary_1_1_camera_parameters.html">visionary::CameraParameters</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="structvisionary_1_1_camera_parameters.html#a1978c201bf85384f01d5f86e8fa20d15">p2</a></td><td class="entry"><a class="el" href="structvisionary_1_1_camera_parameters.html">visionary::CameraParameters</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="structvisionary_1_1_camera_parameters.html#a7b2839790bd58b6ac797b018175bfba7">width</a></td><td class="entry"><a class="el" href="structvisionary_1_1_camera_parameters.html">visionary::CameraParameters</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+  </ul>
+</div>
 </body>
 </html>

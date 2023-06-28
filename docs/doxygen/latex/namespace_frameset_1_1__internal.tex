@@ -55,16 +55,41 @@ Converts a grayscale frame to color QImage.
 
 Linear to logarithmic LUT. 
 
-
+The table was generated using the following python code\+: 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keyword}{import}\ time}
-\DoxyCodeLine{print(\textcolor{stringliteral}{"{}hello\ world"{}})}
-\DoxyCodeLine{\textcolor{keyword}{def\ }MyClass:}
-\DoxyCodeLine{\ \textcolor{keyword}{def\ }\_\_init\_\_(self):}
-\DoxyCodeLine{\ \ \textcolor{keywordflow}{pass}}
+\DoxyCodeLine{\textcolor{comment}{\#\ Import\ libraries}}
+\DoxyCodeLine{\textcolor{keyword}{import}\ matplotlib.pyplot\ \textcolor{keyword}{as}\ plt}
+\DoxyCodeLine{\textcolor{keyword}{import}\ numpy\ \textcolor{keyword}{as}\ np}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{\#\ Creating\ vectors\ X\ and\ Y}}
+\DoxyCodeLine{x\ =\ np.linspace(0,\ 1,\ 1023)}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{\#\ Define\ f\ =\ log2(x\ +\ 1)}}
+\DoxyCodeLine{f\ =\ \textcolor{keyword}{lambda}\ x:\ np.log2(x\ +\ 1)}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{\#\ Number\ of\ applications\ of\ f(x)}}
+\DoxyCodeLine{iterations\ =\ 10}
+\DoxyCodeLine{}
+\DoxyCodeLine{y\ =\ f(x)}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ i\ \textcolor{keywordflow}{in}\ range(iterations\ -\/\ 1):}
+\DoxyCodeLine{\ \ \ \ y\ =\ f(y)}
+\DoxyCodeLine{}
+\DoxyCodeLine{fig\ =\ plt.figure(figsize=(10,\ 5))}
+\DoxyCodeLine{\textcolor{comment}{\#\ Create\ the\ plot}}
+\DoxyCodeLine{plt.plot(x,\ y)}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{\#\ Write\ 'y'\ values\ to\ file}}
+\DoxyCodeLine{\textcolor{keyword}{with}\ open(\textcolor{stringliteral}{"{}lut.txt"{}},\ \textcolor{stringliteral}{"{}w"{}})\ \textcolor{keyword}{as}\ file:}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ val\ \textcolor{keywordflow}{in}\ y:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ file.write(f\textcolor{stringliteral}{"{}\{val:.4f\},\(\backslash\)n"{}})}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{\#\ Show\ the\ plot}}
+\DoxyCodeLine{plt.show()}
 
 \end{DoxyCode}
- 
+
+
+
 \begin{DoxyParams}{Parameters}
 {\em x} & Linear input within \mbox{[}0.\+0, 1.\+0\mbox{]} \\
 \hline

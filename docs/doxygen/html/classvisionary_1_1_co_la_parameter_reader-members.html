@@ -9,9 +9,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -46,6 +51,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classvisionary_1_1_co_la_parameter_reader.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,11 +89,6 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="namespacevisionary.html">visionary</a></li><li class="navelem"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html">CoLaParameterReader</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">visionary::CoLaParameterReader Member List</div></div>
 </div><!--header-->
@@ -79,23 +96,29 @@ $(function() {
 
 <p>This is the complete list of members for <a class="el" href="classvisionary_1_1_co_la_parameter_reader.html">visionary::CoLaParameterReader</a>, including all inherited members.</p>
 <table class="directory">
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>CoLaParameterReader</b>(CoLaCommand command) (defined in <a class="el" href="classvisionary_1_1_co_la_parameter_reader.html">visionary::CoLaParameterReader</a>)</td><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html">visionary::CoLaParameterReader</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#a59273d4efbea73480da55448696b61b3">readBool</a>()</td><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html">visionary::CoLaParameterReader</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#ac246b75598d30bdb48c6c2628df45f58">readDInt</a>()</td><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html">visionary::CoLaParameterReader</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#afbee227a1cb89997c2865e3feaac4b2b">readFlexString</a>()</td><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html">visionary::CoLaParameterReader</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#a001a37985f15225426f8eba1b3620b61">readInt</a>()</td><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html">visionary::CoLaParameterReader</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#a05425d40eba0f33c64d75bf00fa84e46">readLReal</a>()</td><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html">visionary::CoLaParameterReader</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#a746f81a0a92c65c2edf553cd4b14d23b">readReal</a>()</td><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html">visionary::CoLaParameterReader</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#ab13ad2fca215903bed443761ad6dddcf">readSInt</a>()</td><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html">visionary::CoLaParameterReader</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#a9707c73b913b788adfe9c8cca342ba5c">readUDInt</a>()</td><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html">visionary::CoLaParameterReader</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#ac156218f669cad0724a7817002af6c36">readUInt</a>()</td><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html">visionary::CoLaParameterReader</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#a1f9f517c1edc206af6b83a1b5acccbc3">readUSInt</a>()</td><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html">visionary::CoLaParameterReader</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#ac06ecea8b9f990d37189f03c872fc21f">rewind</a>()</td><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html">visionary::CoLaParameterReader</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>~CoLaParameterReader</b>() (defined in <a class="el" href="classvisionary_1_1_co_la_parameter_reader.html">visionary::CoLaParameterReader</a>)</td><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html">visionary::CoLaParameterReader</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#a1def89f99ab46edbe38832763f660509">checkSize</a>(size_t pos, size_t size)</td><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html">visionary::CoLaParameterReader</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#aaa47210fe84b7eccb4fc7659312ac9e2">CoLaParameterReader</a>(CoLaCommand command)</td><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html">visionary::CoLaParameterReader</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#ac119309de335a3024a2d15baa625b962">m_command</a></td><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html">visionary::CoLaParameterReader</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#a13ee9899708e9b9b2aa0dfc80a5bc0d7">m_currentPosition</a></td><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html">visionary::CoLaParameterReader</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#a59273d4efbea73480da55448696b61b3">readBool</a>()</td><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html">visionary::CoLaParameterReader</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#ac246b75598d30bdb48c6c2628df45f58">readDInt</a>()</td><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html">visionary::CoLaParameterReader</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#afbee227a1cb89997c2865e3feaac4b2b">readFlexString</a>()</td><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html">visionary::CoLaParameterReader</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#a001a37985f15225426f8eba1b3620b61">readInt</a>()</td><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html">visionary::CoLaParameterReader</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#a05425d40eba0f33c64d75bf00fa84e46">readLReal</a>()</td><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html">visionary::CoLaParameterReader</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#a746f81a0a92c65c2edf553cd4b14d23b">readReal</a>()</td><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html">visionary::CoLaParameterReader</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#ab13ad2fca215903bed443761ad6dddcf">readSInt</a>()</td><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html">visionary::CoLaParameterReader</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#a9707c73b913b788adfe9c8cca342ba5c">readUDInt</a>()</td><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html">visionary::CoLaParameterReader</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#ac156218f669cad0724a7817002af6c36">readUInt</a>()</td><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html">visionary::CoLaParameterReader</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#a1f9f517c1edc206af6b83a1b5acccbc3">readUSInt</a>()</td><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html">visionary::CoLaParameterReader</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#ac06ecea8b9f990d37189f03c872fc21f">rewind</a>()</td><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html">visionary::CoLaParameterReader</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#a26ebf15574dd6cc356b789ee56c15545">~CoLaParameterReader</a>()</td><td class="entry"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html">visionary::CoLaParameterReader</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+  </ul>
+</div>
 </body>
 </html>

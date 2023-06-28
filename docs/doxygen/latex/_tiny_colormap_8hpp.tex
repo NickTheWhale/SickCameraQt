@@ -1,0 +1,114 @@
+\doxysection{Tiny\+Colormap.\+hpp File Reference}
+\hypertarget{_tiny_colormap_8hpp}{}\label{_tiny_colormap_8hpp}\index{TinyColormap.hpp@{TinyColormap.hpp}}
+
+
+Functions to calculate color maps.  
+
+
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$cstdint$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structtinycolormap_1_1_color}{tinycolormap\+::\+Color}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_tiny_colormap_8hpp_a61cc7d7b7c1d4086d2763172baed0551}\label{_tiny_colormap_8hpp_a61cc7d7b7c1d4086d2763172baed0551} 
+enum {\bfseries Colormap\+Type} \{ \newline
+{\bfseries Parula}
+, {\bfseries Heat}
+, {\bfseries Jet}
+, {\bfseries Turbo}
+, \newline
+{\bfseries Turbo\+Fast}
+, {\bfseries Hot}
+, {\bfseries Gray}
+, {\bfseries Magma}
+, \newline
+{\bfseries Inferno}
+, {\bfseries Plasma}
+, {\bfseries Viridis}
+, {\bfseries Cividis}
+, \newline
+{\bfseries Github}
+, {\bfseries Cubehelix}
+, {\bfseries HSV}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_tiny_colormap_8hpp_a7c60647493e7429f704fa3bacc1adb45}\label{_tiny_colormap_8hpp_a7c60647493e7429f704fa3bacc1adb45} 
+\mbox{\hyperlink{structtinycolormap_1_1_color}{Color}} {\bfseries tinycolormap\+::\+Get\+Color} (double x, Colormap\+Type type=Colormap\+Type\+::\+Viridis)
+\item 
+\Hypertarget{_tiny_colormap_8hpp_ae79657ff71e6a829b72426c9efbc2e29}\label{_tiny_colormap_8hpp_ae79657ff71e6a829b72426c9efbc2e29} 
+\mbox{\hyperlink{structtinycolormap_1_1_color}{Color}} {\bfseries tinycolormap\+::\+Get\+Quantized\+Color} (double x, unsigned int num\+\_\+levels, Colormap\+Type type=Colormap\+Type\+::\+Viridis)
+\item 
+\Hypertarget{_tiny_colormap_8hpp_af39c0ad31e3c70bb253f7831df89aa52}\label{_tiny_colormap_8hpp_af39c0ad31e3c70bb253f7831df89aa52} 
+\mbox{\hyperlink{structtinycolormap_1_1_color}{Color}} {\bfseries tinycolormap\+::\+Get\+Parula\+Color} (double x)
+\item 
+\Hypertarget{_tiny_colormap_8hpp_ac04f3ca27a888dcd5501a8b29be794ac}\label{_tiny_colormap_8hpp_ac04f3ca27a888dcd5501a8b29be794ac} 
+\mbox{\hyperlink{structtinycolormap_1_1_color}{Color}} {\bfseries tinycolormap\+::\+Get\+Heat\+Color} (double x)
+\item 
+\Hypertarget{_tiny_colormap_8hpp_ab186228ae79b69e25e8bc99529373444}\label{_tiny_colormap_8hpp_ab186228ae79b69e25e8bc99529373444} 
+\mbox{\hyperlink{structtinycolormap_1_1_color}{Color}} {\bfseries tinycolormap\+::\+Get\+Jet\+Color} (double x)
+\item 
+\Hypertarget{_tiny_colormap_8hpp_ab9bde3fa4718b83a4f457e408fdf1e3e}\label{_tiny_colormap_8hpp_ab9bde3fa4718b83a4f457e408fdf1e3e} 
+\mbox{\hyperlink{structtinycolormap_1_1_color}{Color}} {\bfseries tinycolormap\+::\+Get\+Turbo\+Color} (double x)
+\item 
+\Hypertarget{_tiny_colormap_8hpp_a60432d3cd6843be99d80ee2bbefcd309}\label{_tiny_colormap_8hpp_a60432d3cd6843be99d80ee2bbefcd309} 
+\mbox{\hyperlink{structtinycolormap_1_1_color}{Color}} {\bfseries tinycolormap\+::\+Get\+Turbo\+Fast\+Color} (double x)
+\item 
+\Hypertarget{_tiny_colormap_8hpp_ac68e87978008d949f119e1db82a1c242}\label{_tiny_colormap_8hpp_ac68e87978008d949f119e1db82a1c242} 
+\mbox{\hyperlink{structtinycolormap_1_1_color}{Color}} {\bfseries tinycolormap\+::\+Get\+Hot\+Color} (double x)
+\item 
+\Hypertarget{_tiny_colormap_8hpp_afc8b00d812d2418eabce4660e0b11686}\label{_tiny_colormap_8hpp_afc8b00d812d2418eabce4660e0b11686} 
+constexpr \mbox{\hyperlink{structtinycolormap_1_1_color}{Color}} {\bfseries tinycolormap\+::\+Get\+Gray\+Color} (double x) noexcept
+\item 
+\Hypertarget{_tiny_colormap_8hpp_a24643af125161afe1780e03b9af77d5a}\label{_tiny_colormap_8hpp_a24643af125161afe1780e03b9af77d5a} 
+\mbox{\hyperlink{structtinycolormap_1_1_color}{Color}} {\bfseries tinycolormap\+::\+Get\+Magma\+Color} (double x)
+\item 
+\Hypertarget{_tiny_colormap_8hpp_ace306477c41e0405ac4b05eafca6e476}\label{_tiny_colormap_8hpp_ace306477c41e0405ac4b05eafca6e476} 
+\mbox{\hyperlink{structtinycolormap_1_1_color}{Color}} {\bfseries tinycolormap\+::\+Get\+Inferno\+Color} (double x)
+\item 
+\Hypertarget{_tiny_colormap_8hpp_a2d99710fd3bd6bbbb64f1ec1b4261ebb}\label{_tiny_colormap_8hpp_a2d99710fd3bd6bbbb64f1ec1b4261ebb} 
+\mbox{\hyperlink{structtinycolormap_1_1_color}{Color}} {\bfseries tinycolormap\+::\+Get\+Plasma\+Color} (double x)
+\item 
+\Hypertarget{_tiny_colormap_8hpp_a3b5db471c1ec3c701ff2392d493515fc}\label{_tiny_colormap_8hpp_a3b5db471c1ec3c701ff2392d493515fc} 
+\mbox{\hyperlink{structtinycolormap_1_1_color}{Color}} {\bfseries tinycolormap\+::\+Get\+Viridis\+Color} (double x)
+\item 
+\Hypertarget{_tiny_colormap_8hpp_a0bea0c4c25557fef4ffe38572d88cd12}\label{_tiny_colormap_8hpp_a0bea0c4c25557fef4ffe38572d88cd12} 
+\mbox{\hyperlink{structtinycolormap_1_1_color}{Color}} {\bfseries tinycolormap\+::\+Get\+Cividis\+Color} (double x)
+\item 
+\Hypertarget{_tiny_colormap_8hpp_a80ef8e736b27d3d13996ec7b39aa6ff3}\label{_tiny_colormap_8hpp_a80ef8e736b27d3d13996ec7b39aa6ff3} 
+\mbox{\hyperlink{structtinycolormap_1_1_color}{Color}} {\bfseries tinycolormap\+::\+Get\+Github\+Color} (double x)
+\item 
+\Hypertarget{_tiny_colormap_8hpp_a99790c341744e365318d3c00e3edda48}\label{_tiny_colormap_8hpp_a99790c341744e365318d3c00e3edda48} 
+\mbox{\hyperlink{structtinycolormap_1_1_color}{Color}} {\bfseries tinycolormap\+::\+Get\+Cubehelix\+Color} (double x)
+\item 
+\Hypertarget{_tiny_colormap_8hpp_a0ceff49886b7e1c2836013bbb4f7f45d}\label{_tiny_colormap_8hpp_a0ceff49886b7e1c2836013bbb4f7f45d} 
+\mbox{\hyperlink{structtinycolormap_1_1_color}{Color}} {\bfseries tinycolormap\+::\+Get\+HSVColor} (double x)
+\item 
+\Hypertarget{_tiny_colormap_8hpp_aabb6c73c20106a367c816868044593be}\label{_tiny_colormap_8hpp_aabb6c73c20106a367c816868044593be} 
+constexpr double {\bfseries tinycolormap\+::internal\+::\+Clamp01} (double x) noexcept
+\item 
+\Hypertarget{_tiny_colormap_8hpp_abf381ae90edf760cf909a0604a4de010}\label{_tiny_colormap_8hpp_abf381ae90edf760cf909a0604a4de010} 
+{\footnotesize template$<$std\+::size\+\_\+t N$>$ }\\\mbox{\hyperlink{structtinycolormap_1_1_color}{Color}} {\bfseries tinycolormap\+::internal\+::\+Calc\+Lerp} (double x, const \mbox{\hyperlink{structtinycolormap_1_1_color}{Color}}(\&data)\mbox{[}N\mbox{]})
+\item 
+\Hypertarget{_tiny_colormap_8hpp_a47b9cbefd1b1eadf25132db4660a8fdd}\label{_tiny_colormap_8hpp_a47b9cbefd1b1eadf25132db4660a8fdd} 
+double {\bfseries tinycolormap\+::internal\+::\+Quantize\+Argument} (double x, unsigned int num\+\_\+levels)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Functions to calculate color maps. 
+
+\begin{DoxyAuthor}{Author}
+Yuki Koyama, Nicholas Loehrke 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+June 2023 
+\end{DoxyDate}

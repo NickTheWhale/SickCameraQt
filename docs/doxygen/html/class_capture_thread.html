@@ -9,9 +9,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -46,6 +51,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('class_capture_thread.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,12 +89,12 @@ $(function() {
 </div>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#signals">Signals</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_capture_thread-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">CaptureThread Class Reference</div></div>
 </div><!--header-->
@@ -94,32 +116,73 @@ Signals</h2></td></tr>
 <tr class="memitem:abe68c8ea1844de605784b48d3202aac5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_capture_thread.html#abe68c8ea1844de605784b48d3202aac5">newFrameset</a> (<a class="el" href="struct_frameset_1_1frameset__t.html">Frameset::frameset_t</a> fs)</td></tr>
 <tr class="memdesc:abe68c8ea1844de605784b48d3202aac5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal emitted when a new frameset is available.  <br /></td></tr>
 <tr class="separator:abe68c8ea1844de605784b48d3202aac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca95366c9f7d55802e0828b461d561d0"><td class="memItemLeft" align="right" valign="top"><a id="aca95366c9f7d55802e0828b461d561d0" name="aca95366c9f7d55802e0828b461d561d0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>lostConnection</b> ()</td></tr>
-<tr class="memdesc:aca95366c9f7d55802e0828b461d561d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal emitted when the connection to the camera is lost. <br /></td></tr>
+<tr class="memitem:aca95366c9f7d55802e0828b461d561d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_capture_thread.html#aca95366c9f7d55802e0828b461d561d0">lostConnection</a> ()</td></tr>
+<tr class="memdesc:aca95366c9f7d55802e0828b461d561d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal emitted when the connection to the camera is lost.  <br /></td></tr>
 <tr class="separator:aca95366c9f7d55802e0828b461d561d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:af0cef714c6485ba7e0aac3888da18c20"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_capture_thread.html#af0cef714c6485ba7e0aac3888da18c20">startCapture</a> (<a class="el" href="class_camera.html">Camera</a> *camera)</td></tr>
+<tr class="memitem:af0cef714c6485ba7e0aac3888da18c20"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_capture_thread.html#af0cef714c6485ba7e0aac3888da18c20">startCapture</a> (<a class="el" href="class_camera.html">Camera</a> *<a class="el" href="class_capture_thread.html#ad625e71220121cb3f8d41f56670083aa">camera</a>)</td></tr>
 <tr class="memdesc:af0cef714c6485ba7e0aac3888da18c20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts capturing frames from the specified camera.  <br /></td></tr>
 <tr class="separator:af0cef714c6485ba7e0aac3888da18c20"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a552aad21d7c4c4a8f612c62a9e06bd18"><td class="memItemLeft" align="right" valign="top"><a id="a552aad21d7c4c4a8f612c62a9e06bd18" name="a552aad21d7c4c4a8f612c62a9e06bd18"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>stopCapture</b> ()</td></tr>
-<tr class="memdesc:a552aad21d7c4c4a8f612c62a9e06bd18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops capturing frames. <br /></td></tr>
+<tr class="memitem:a552aad21d7c4c4a8f612c62a9e06bd18"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_capture_thread.html#a552aad21d7c4c4a8f612c62a9e06bd18">stopCapture</a> ()</td></tr>
+<tr class="memdesc:a552aad21d7c4c4a8f612c62a9e06bd18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops capturing frames.  <br /></td></tr>
 <tr class="separator:a552aad21d7c4c4a8f612c62a9e06bd18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a7b3ce730549a2beea9ae989a4cf44d35"><td class="memItemLeft" align="right" valign="top"><a id="a7b3ce730549a2beea9ae989a4cf44d35" name="a7b3ce730549a2beea9ae989a4cf44d35"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>run</b> () override</td></tr>
-<tr class="memdesc:a7b3ce730549a2beea9ae989a4cf44d35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overridden method from QThread that runs the capture loop. <br /></td></tr>
+<tr class="memitem:a7b3ce730549a2beea9ae989a4cf44d35"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_capture_thread.html#a7b3ce730549a2beea9ae989a4cf44d35">run</a> () override</td></tr>
+<tr class="memdesc:a7b3ce730549a2beea9ae989a4cf44d35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overridden method from QThread that runs the capture loop.  <br /></td></tr>
 <tr class="separator:a7b3ce730549a2beea9ae989a4cf44d35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a200d8018a27b33d9d30a0a1ee98ac31b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_frameset_1_1frameset__t.html">Frameset::frameset_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_capture_thread.html#a200d8018a27b33d9d30a0a1ee98ac31b">lastFrameset</a></td></tr>
+<tr class="separator:a200d8018a27b33d9d30a0a1ee98ac31b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad625e71220121cb3f8d41f56670083aa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_camera.html">Camera</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_capture_thread.html#ad625e71220121cb3f8d41f56670083aa">camera</a></td></tr>
+<tr class="separator:ad625e71220121cb3f8d41f56670083aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ed6e4e8d8edb71fcd16c6f4ef6441ea"><td class="memItemLeft" align="right" valign="top">volatile <a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_capture_thread.html#a2ed6e4e8d8edb71fcd16c6f4ef6441ea">stop</a></td></tr>
+<tr class="separator:a2ed6e4e8d8edb71fcd16c6f4ef6441ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbbc0a9e0f7a616a1c5af6d216d75194"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_capture_thread.html#adbbc0a9e0f7a616a1c5af6d216d75194">frameRetryDelay</a> = 10</td></tr>
+<tr class="memdesc:adbbc0a9e0f7a616a1c5af6d216d75194"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delay in milliseconds between frame capture retries.  <br /></td></tr>
+<tr class="separator:adbbc0a9e0f7a616a1c5af6d216d75194"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a742b05eb2452c2a570fc342c49994b55"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_capture_thread.html#a742b05eb2452c2a570fc342c49994b55">maxRetryTime</a> = 2000</td></tr>
+<tr class="memdesc:a742b05eb2452c2a570fc342c49994b55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum time in milliseconds for frame capture retries (must be greater than frameRetryDelay)  <br /></td></tr>
+<tr class="separator:a742b05eb2452c2a570fc342c49994b55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5acef2470bace8bf696c98c6fbd411c"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_capture_thread.html#ad5acef2470bace8bf696c98c6fbd411c">retryCounter</a> = 0</td></tr>
+<tr class="separator:ad5acef2470bace8bf696c98c6fbd411c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <a class="el" href="class_capture_thread.html" title="The CaptureThread class handles the capture of frames from a camera.">CaptureThread</a> class handles the capture of frames from a camera. </p>
 <p>The <a class="el" href="class_capture_thread.html" title="The CaptureThread class handles the capture of frames from a camera.">CaptureThread</a> class is a QThread subclass that captures frames from a camera and emits signals whenever a new frameset is available or the connection to the camera is lost. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="aca95366c9f7d55802e0828b461d561d0" name="aca95366c9f7d55802e0828b461d561d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca95366c9f7d55802e0828b461d561d0">&#9670;&#160;</a></span>lostConnection</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CaptureThread::lostConnection </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Signal emitted when the connection to the camera is lost. </p>
+
+</div>
+</div>
 <a id="abe68c8ea1844de605784b48d3202aac5" name="abe68c8ea1844de605784b48d3202aac5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abe68c8ea1844de605784b48d3202aac5">&#9670;&#160;</a></span>newFrameset</h2>
 
@@ -154,6 +217,33 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>run</b> () override</
 
 </div>
 </div>
+<a id="a7b3ce730549a2beea9ae989a4cf44d35" name="a7b3ce730549a2beea9ae989a4cf44d35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b3ce730549a2beea9ae989a4cf44d35">&#9670;&#160;</a></span>run()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CaptureThread::run </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Overridden method from QThread that runs the capture loop. </p>
+
+</div>
+</div>
 <a id="af0cef714c6485ba7e0aac3888da18c20" name="af0cef714c6485ba7e0aac3888da18c20"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af0cef714c6485ba7e0aac3888da18c20">&#9670;&#160;</a></span>startCapture()</h2>
 
@@ -161,7 +251,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>run</b> () override</
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool CaptureThread::startCapture </td>
+          <td class="memname"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> CaptureThread::startCapture </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_camera.html">Camera</a> *&#160;</td>
           <td class="paramname"><em>camera</em></td><td>)</td>
@@ -173,7 +263,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>run</b> () override</
 <p>Starts capturing frames from the specified camera. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">camera</td><td>Pointer to the <a class="el" href="class_camera.html" title="The Camera class represents a camera device.">Camera</a> object to capture frames from. </td></tr>
+    <tr><td class="paramname">camera</td><td>Pointer to the <a class="el" href="class_camera.html">Camera</a> object to capture frames from. </td></tr>
   </table>
   </dd>
 </dl>
@@ -181,16 +271,174 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>run</b> () override</
 
 </div>
 </div>
+<a id="a552aad21d7c4c4a8f612c62a9e06bd18" name="a552aad21d7c4c4a8f612c62a9e06bd18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a552aad21d7c4c4a8f612c62a9e06bd18">&#9670;&#160;</a></span>stopCapture()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CaptureThread::stopCapture </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Stops capturing frames. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ad625e71220121cb3f8d41f56670083aa" name="ad625e71220121cb3f8d41f56670083aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad625e71220121cb3f8d41f56670083aa">&#9670;&#160;</a></span>camera</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_camera.html">Camera</a>* CaptureThread::camera</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adbbc0a9e0f7a616a1c5af6d216d75194" name="adbbc0a9e0f7a616a1c5af6d216d75194"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbbc0a9e0f7a616a1c5af6d216d75194">&#9670;&#160;</a></span>frameRetryDelay</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int CaptureThread::frameRetryDelay = 10</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Delay in milliseconds between frame capture retries. </p>
+
+</div>
+</div>
+<a id="a200d8018a27b33d9d30a0a1ee98ac31b" name="a200d8018a27b33d9d30a0a1ee98ac31b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a200d8018a27b33d9d30a0a1ee98ac31b">&#9670;&#160;</a></span>lastFrameset</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_frameset_1_1frameset__t.html">Frameset::frameset_t</a> CaptureThread::lastFrameset</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a742b05eb2452c2a570fc342c49994b55" name="a742b05eb2452c2a570fc342c49994b55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a742b05eb2452c2a570fc342c49994b55">&#9670;&#160;</a></span>maxRetryTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int CaptureThread::maxRetryTime = 2000</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Maximum time in milliseconds for frame capture retries (must be greater than frameRetryDelay) </p>
+
+</div>
+</div>
+<a id="ad5acef2470bace8bf696c98c6fbd411c" name="ad5acef2470bace8bf696c98c6fbd411c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5acef2470bace8bf696c98c6fbd411c">&#9670;&#160;</a></span>retryCounter</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t CaptureThread::retryCounter = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2ed6e4e8d8edb71fcd16c6f4ef6441ea" name="a2ed6e4e8d8edb71fcd16c6f4ef6441ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ed6e4e8d8edb71fcd16c6f4ef6441ea">&#9670;&#160;</a></span>stop</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile <a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> CaptureThread::stop</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="_capture_thread_8h_source.html">CaptureThread.h</a></li>
-<li>CaptureThread.cpp</li>
-<li>x64/Debug/moc/moc_CaptureThread.cpp</li>
-<li>x64/Release/moc/moc_CaptureThread.cpp</li>
+<li><a class="el" href="_capture_thread_8cpp.html">CaptureThread.cpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_capture_thread.html">CaptureThread</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+  </ul>
+</div>
 </body>
 </html>

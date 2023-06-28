@@ -9,9 +9,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -46,6 +51,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('class_sick_g_u_i.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,7 +89,6 @@ $(function() {
 </div>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">SickGUI Member List</div></div>
 </div><!--header-->
@@ -75,17 +96,55 @@ $(function() {
 
 <p>This is the complete list of members for <a class="el" href="class_sick_g_u_i.html">SickGUI</a>, including all inherited members.</p>
 <table class="directory">
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>newFrameset</b>(Frameset::frameset_t fs) (defined in <a class="el" href="class_sick_g_u_i.html">SickGUI</a>)</td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">slot</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>openStreamSettingsDialog</b>() (defined in <a class="el" href="class_sick_g_u_i.html">SickGUI</a>)</td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">slot</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>pauseVideo</b>() (defined in <a class="el" href="class_sick_g_u_i.html">SickGUI</a>)</td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">slot</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>playVideo</b>() (defined in <a class="el" href="class_sick_g_u_i.html">SickGUI</a>)</td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">slot</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>showStatusBarMessage</b>(const QString &amp;msg, int timeout=0) (defined in <a class="el" href="class_sick_g_u_i.html">SickGUI</a>)</td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">slot</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>SickGUI</b>(QWidget *parent=nullptr) (defined in <a class="el" href="class_sick_g_u_i.html">SickGUI</a>)</td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>~SickGUI</b>() (defined in <a class="el" href="class_sick_g_u_i.html">SickGUI</a>)</td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_sick_g_u_i.html#a24da7b9eeaed1134cfb599d9b9956899">camera</a></td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_sick_g_u_i.html#a79774394e644af7618da69f2c6c4e66a">cameraView</a></td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_sick_g_u_i.html#ac10b9ef943f5250c86717b9e7bedd888">captureThread</a></td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_sick_g_u_i.html#af6865bf21957258e2f86c8199c09fe51">chartTimer</a></td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_sick_g_u_i.html#af149144055fa48f328b5f2ac7ef33840">chartTimerInterval</a></td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_sick_g_u_i.html#a93cfef918e585738172a2239600f8acd">checkThreads</a>()</td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_sick_g_u_i.html#ab547535d9ffe1eac0597e8af13d269c9">closeEvent</a>(QCloseEvent *event) override</td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_sick_g_u_i.html#afb8fd7dc56a1b3356ad28edae28373bf">createCamera</a>()</td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_sick_g_u_i.html#a1e87536903e3914f7a6f6b2164ddbfdb">depthHistogram</a></td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_sick_g_u_i.html#ae6ce4e4e0b35a6a9724dc6b65966663a">displayTimer</a></td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_sick_g_u_i.html#a76fa715b877311476825849499094d81">displayTimerInterval</a></td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_sick_g_u_i.html#a0ec97b3bc8d22d4daae60c47d3db82cc">framesetBuffer</a></td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_sick_g_u_i.html#a75814cc5d72a9b976c5162c66951da34">framesetBufferSize</a></td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_sick_g_u_i.html#a121577d54443bb9a94d27532cddb352c">framesetMutex</a></td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_sick_g_u_i.html#aba95da04d9673e22c036f4bf1e771b4d">initializeWidgets</a>()</td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_sick_g_u_i.html#ac5d18fcd2b8510f9509cc1ce2faa3ff0">intensityHistogram</a></td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_sick_g_u_i.html#ad7201b584ad55725222fe8da3a6c7eb8">invertedColor</a></td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_sick_g_u_i.html#ad92ec970e9e45866ec7f7554ab1b13f7">newFrameset</a>(Frameset::frameset_t fs)</td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">slot</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_sick_g_u_i.html#a3f3c28bafbbf618a444eeab04d164b6d">overLayStats</a></td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_sick_g_u_i.html#a4333916b17fdae5bd1d90152b8e613d5">pauseVideo</a>()</td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">slot</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_sick_g_u_i.html#a9c4920226e6f464d0744ddc0995ec90d">playVideo</a>()</td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">slot</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_sick_g_u_i.html#a128ff334147d36ed8ad57df7dfa93dd3">PLC_IP_ADDRESS</a></td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_sick_g_u_i.html#a96591b891c2f7f1cc2625e4ee38d6de6">PLC_RACK</a></td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_sick_g_u_i.html#a97ae8842dfc4cfffed2fe2a7d78313a6">PLC_SLOT</a></td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_sick_g_u_i.html#ade1ec9372abf32c5d5e1c013f410302f">plcThread</a></td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_sick_g_u_i.html#a805420ecff9d15222ef5dbb1ec7672e4">restoreSettings</a>()</td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_sick_g_u_i.html#a2e47c8e7c5e78860684d301e7cf4dc52">s7Client</a></td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_sick_g_u_i.html#a10196da0ff8310703c172eac4f61e29f">saveSettings</a>()</td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_sick_g_u_i.html#a69fa81855a9c4aeb49c3c68b8002091c">showStatusBarMessage</a>(const QString &amp;msg, int timeout=0)</td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">slot</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_sick_g_u_i.html#a3c0fe23f18ffa352e0d638be8c44b26d">SickGUI</a>(QWidget *parent=nullptr)</td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_sick_g_u_i.html#a17628a0479af79698c8326df5486ae5d">startCameraThread</a>()</td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_sick_g_u_i.html#af2d3fbe8f33123a10c35fbfe9d0a5773">startPlcThread</a>()</td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_sick_g_u_i.html#a1d8901fe58fd749cbb5c5db4543bb726">startThreads</a>(QPromise&lt; bool &gt; &amp;promise)</td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_sick_g_u_i.html#a61a4758059628345dcd24e49b268ea00">statusBarLabel</a></td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_sick_g_u_i.html#a67185a0cbb471906016aff71fcdaf9f1">streamColorMapType</a></td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_sick_g_u_i.html#a0ce1582efdaa435d7a5e72dbfaf21261">streamType</a></td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_sick_g_u_i.html#ab379222f21326c2ecc18b9cb1cd0ebd2">threadWatcher</a></td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_sick_g_u_i.html#aa00b7661eba6d0fe8942bc1ada405db4">ui</a></td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_sick_g_u_i.html#a945bc46b6b9517e84d1e99a1c53de7c9">updateCharts</a>()</td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_sick_g_u_i.html#aeab61b5b968b32eb196d6d9595cf327f">updateDisplay</a>()</td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_sick_g_u_i.html#a09428bf68aaa7a52cdb8b3b93ade497d">writeImage</a>(QImage image)</td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_sick_g_u_i.html#ac17d52e06e5c5e20df4dc4114332aa8c">~SickGUI</a>()</td><td class="entry"><a class="el" href="class_sick_g_u_i.html">SickGUI</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+  </ul>
+</div>
 </body>
 </html>

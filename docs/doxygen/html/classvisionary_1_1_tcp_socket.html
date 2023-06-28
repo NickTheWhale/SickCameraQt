@@ -9,9 +9,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -46,6 +51,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classvisionary_1_1_tcp_socket.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,18 +89,16 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="namespacevisionary.html">visionary</a></li><li class="navelem"><a class="el" href="classvisionary_1_1_tcp_socket.html">TcpSocket</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classvisionary_1_1_tcp_socket-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">visionary::TcpSocket Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_tcp_socket_8h_source.html">TcpSocket.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for visionary::TcpSocket:</div>
 <div class="dyncontent">
@@ -91,53 +111,108 @@ Inheritance diagram for visionary::TcpSocket:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:abb83bab5918a266f718e53d42387dd76"><td class="memItemLeft" align="right" valign="top"><a id="abb83bab5918a266f718e53d42387dd76" name="abb83bab5918a266f718e53d42387dd76"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>connect</b> (const std::string &amp;hostname, uint16_t port, long timeoutMs=5000)</td></tr>
+<tr class="memitem:a3534fd61d8171da3939f6770928f06e6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_tcp_socket.html#a3534fd61d8171da3939f6770928f06e6">TcpSocket</a> ()</td></tr>
+<tr class="separator:a3534fd61d8171da3939f6770928f06e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb83bab5918a266f718e53d42387dd76"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_tcp_socket.html#abb83bab5918a266f718e53d42387dd76">connect</a> (const std::string &amp;hostname, uint16_t port, long timeoutMs=5000)</td></tr>
 <tr class="separator:abb83bab5918a266f718e53d42387dd76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a894090a1d10e3c39df2b06a08ecabfc7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_tcp_socket.html#a894090a1d10e3c39df2b06a08ecabfc7">shutdown</a> () override</td></tr>
 <tr class="separator:a894090a1d10e3c39df2b06a08ecabfc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf43b366b5f415f77fef1f701e1e0ef4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_tcp_socket.html#abf43b366b5f415f77fef1f701e1e0ef4">getLastError</a> () override</td></tr>
 <tr class="separator:abf43b366b5f415f77fef1f701e1e0ef4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a69a49fcb32c23d8d3bc42e5034449acf"><td class="memItemLeft" align="right" valign="top">send_return_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_tcp_socket.html#a69a49fcb32c23d8d3bc42e5034449acf">send</a> (const char *pData, size_t size) override</td></tr>
+<tr class="memitem:a69a49fcb32c23d8d3bc42e5034449acf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classvisionary_1_1_i_transport.html#af22c797e44b229b510534d4cc59cc6f6">send_return_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_tcp_socket.html#a69a49fcb32c23d8d3bc42e5034449acf">send</a> (const char *pData, size_t size) override</td></tr>
 <tr class="separator:a69a49fcb32c23d8d3bc42e5034449acf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af522e4c8bd834badbe86c55c5c61976e"><td class="memItemLeft" align="right" valign="top">recv_return_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_tcp_socket.html#af522e4c8bd834badbe86c55c5c61976e">recv</a> (std::vector&lt; std::uint8_t &gt; &amp;buffer, std::size_t maxBytesToReceive) override</td></tr>
+<tr class="memitem:af522e4c8bd834badbe86c55c5c61976e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classvisionary_1_1_i_transport.html#ab505fdcfbf2fe1c8e6da7914e0752a2d">recv_return_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_tcp_socket.html#af522e4c8bd834badbe86c55c5c61976e">recv</a> (std::vector&lt; std::uint8_t &gt; &amp;buffer, std::size_t maxBytesToReceive) override</td></tr>
 <tr class="separator:af522e4c8bd834badbe86c55c5c61976e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a4e4b3eba8de7e3809bec59a64910e4"><td class="memItemLeft" align="right" valign="top">recv_return_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_tcp_socket.html#a9a4e4b3eba8de7e3809bec59a64910e4">read</a> (std::vector&lt; std::uint8_t &gt; &amp;buffer, std::size_t nBytesToReceive) override</td></tr>
+<tr class="memitem:a9a4e4b3eba8de7e3809bec59a64910e4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classvisionary_1_1_i_transport.html#ab505fdcfbf2fe1c8e6da7914e0752a2d">recv_return_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_tcp_socket.html#a9a4e4b3eba8de7e3809bec59a64910e4">read</a> (std::vector&lt; std::uint8_t &gt; &amp;buffer, std::size_t nBytesToReceive) override</td></tr>
 <tr class="separator:a9a4e4b3eba8de7e3809bec59a64910e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8aa95dafb0bd9662eb5b686b28523e60"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a8aa95dafb0bd9662eb5b686b28523e60"><td class="memTemplItemLeft" align="right" valign="top">send_return_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_tcp_socket.html#a8aa95dafb0bd9662eb5b686b28523e60">send</a> (const std::vector&lt; T &gt; &amp;buffer)</td></tr>
+<tr class="memitem:a8aa95dafb0bd9662eb5b686b28523e60"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classvisionary_1_1_i_transport.html#af22c797e44b229b510534d4cc59cc6f6">send_return_t</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_tcp_socket.html#a8aa95dafb0bd9662eb5b686b28523e60">send</a> (const std::vector&lt; T &gt; &amp;buffer)</td></tr>
 <tr class="separator:a8aa95dafb0bd9662eb5b686b28523e60"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a234d93e8bda3649ce068c8bb531a4d35"><td class="memItemLeft" align="right" valign="top">virtual send_return_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_tcp_socket.html#a234d93e8bda3649ce068c8bb531a4d35">send</a> (const char *pData, size_t size)=0</td></tr>
+<tr class="memitem:a234d93e8bda3649ce068c8bb531a4d35"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classvisionary_1_1_i_transport.html#af22c797e44b229b510534d4cc59cc6f6">send_return_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_tcp_socket.html#a234d93e8bda3649ce068c8bb531a4d35">send</a> (const char *pData, size_t size)=0</td></tr>
 <tr class="separator:a234d93e8bda3649ce068c8bb531a4d35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classvisionary_1_1_i_transport"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classvisionary_1_1_i_transport')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classvisionary_1_1_i_transport.html">visionary::ITransport</a></td></tr>
-<tr class="memitem:a8f5620b729c54859b68e40db76cb19ad inherit pub_methods_classvisionary_1_1_i_transport"><td class="memItemLeft" align="right" valign="top">
-virtual int&#160;</td><td class="memItemRight" valign="bottom"><b>shutdown</b> ()=0</td></tr>
+<tr class="memitem:ab57693b9538502ac724bdb26795ec2c9 inherit pub_methods_classvisionary_1_1_i_transport"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_i_transport.html#ab57693b9538502ac724bdb26795ec2c9">~ITransport</a> ()=default</td></tr>
+<tr class="separator:ab57693b9538502ac724bdb26795ec2c9 inherit pub_methods_classvisionary_1_1_i_transport"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f5620b729c54859b68e40db76cb19ad inherit pub_methods_classvisionary_1_1_i_transport"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_i_transport.html#a8f5620b729c54859b68e40db76cb19ad">shutdown</a> ()=0</td></tr>
 <tr class="separator:a8f5620b729c54859b68e40db76cb19ad inherit pub_methods_classvisionary_1_1_i_transport"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7996815ead62c1b57bcbb26f8f447550 inherit pub_methods_classvisionary_1_1_i_transport"><td class="memItemLeft" align="right" valign="top">
-virtual int&#160;</td><td class="memItemRight" valign="bottom"><b>getLastError</b> ()=0</td></tr>
+<tr class="memitem:a7996815ead62c1b57bcbb26f8f447550 inherit pub_methods_classvisionary_1_1_i_transport"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_i_transport.html#a7996815ead62c1b57bcbb26f8f447550">getLastError</a> ()=0</td></tr>
 <tr class="separator:a7996815ead62c1b57bcbb26f8f447550 inherit pub_methods_classvisionary_1_1_i_transport"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8aa95dafb0bd9662eb5b686b28523e60 inherit pub_methods_classvisionary_1_1_i_transport"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a8aa95dafb0bd9662eb5b686b28523e60 inherit pub_methods_classvisionary_1_1_i_transport"><td class="memTemplItemLeft" align="right" valign="top">send_return_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_i_transport.html#a8aa95dafb0bd9662eb5b686b28523e60">send</a> (const std::vector&lt; T &gt; &amp;buffer)</td></tr>
+<tr class="memitem:a8aa95dafb0bd9662eb5b686b28523e60 inherit pub_methods_classvisionary_1_1_i_transport"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classvisionary_1_1_i_transport.html#af22c797e44b229b510534d4cc59cc6f6">send_return_t</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_i_transport.html#a8aa95dafb0bd9662eb5b686b28523e60">send</a> (const std::vector&lt; T &gt; &amp;buffer)</td></tr>
 <tr class="separator:a8aa95dafb0bd9662eb5b686b28523e60 inherit pub_methods_classvisionary_1_1_i_transport"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a270896bd4df1f742e6e32f8866f05b5d inherit pub_methods_classvisionary_1_1_i_transport"><td class="memItemLeft" align="right" valign="top">virtual recv_return_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_i_transport.html#a270896bd4df1f742e6e32f8866f05b5d">recv</a> (std::vector&lt; std::uint8_t &gt; &amp;buffer, std::size_t maxBytesToReceive)=0</td></tr>
+<tr class="memitem:a270896bd4df1f742e6e32f8866f05b5d inherit pub_methods_classvisionary_1_1_i_transport"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classvisionary_1_1_i_transport.html#ab505fdcfbf2fe1c8e6da7914e0752a2d">recv_return_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_i_transport.html#a270896bd4df1f742e6e32f8866f05b5d">recv</a> (std::vector&lt; std::uint8_t &gt; &amp;buffer, std::size_t maxBytesToReceive)=0</td></tr>
 <tr class="separator:a270896bd4df1f742e6e32f8866f05b5d inherit pub_methods_classvisionary_1_1_i_transport"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af7d6052b61f9e837cbfdc155389a0308 inherit pub_methods_classvisionary_1_1_i_transport"><td class="memItemLeft" align="right" valign="top">virtual recv_return_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_i_transport.html#af7d6052b61f9e837cbfdc155389a0308">read</a> (std::vector&lt; std::uint8_t &gt; &amp;buffer, std::size_t nBytesToReceive)=0</td></tr>
+<tr class="memitem:af7d6052b61f9e837cbfdc155389a0308 inherit pub_methods_classvisionary_1_1_i_transport"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classvisionary_1_1_i_transport.html#ab505fdcfbf2fe1c8e6da7914e0752a2d">recv_return_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_i_transport.html#af7d6052b61f9e837cbfdc155389a0308">read</a> (std::vector&lt; std::uint8_t &gt; &amp;buffer, std::size_t nBytesToReceive)=0</td></tr>
 <tr class="separator:af7d6052b61f9e837cbfdc155389a0308 inherit pub_methods_classvisionary_1_1_i_transport"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a4e36fdf072abac5fff1b235d701ce90f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_tcp_socket_8h.html#a8dc8083897335125630f1af5dafd5831">SOCKET</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_tcp_socket.html#a4e36fdf072abac5fff1b235d701ce90f">m_socket</a></td></tr>
+<tr class="separator:a4e36fdf072abac5fff1b235d701ce90f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_types_classvisionary_1_1_i_transport"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classvisionary_1_1_i_transport')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="classvisionary_1_1_i_transport.html">visionary::ITransport</a></td></tr>
-<tr class="memitem:af22c797e44b229b510534d4cc59cc6f6 inherit pub_types_classvisionary_1_1_i_transport"><td class="memItemLeft" align="right" valign="top">
-using&#160;</td><td class="memItemRight" valign="bottom"><b>send_return_t</b> = ssize_t</td></tr>
+<tr class="memitem:af22c797e44b229b510534d4cc59cc6f6 inherit pub_types_classvisionary_1_1_i_transport"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_i_transport.html#af22c797e44b229b510534d4cc59cc6f6">send_return_t</a> = ssize_t</td></tr>
 <tr class="separator:af22c797e44b229b510534d4cc59cc6f6 inherit pub_types_classvisionary_1_1_i_transport"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab505fdcfbf2fe1c8e6da7914e0752a2d inherit pub_types_classvisionary_1_1_i_transport"><td class="memItemLeft" align="right" valign="top">
-using&#160;</td><td class="memItemRight" valign="bottom"><b>recv_return_t</b> = ssize_t</td></tr>
+<tr class="memitem:ab505fdcfbf2fe1c8e6da7914e0752a2d inherit pub_types_classvisionary_1_1_i_transport"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_i_transport.html#ab505fdcfbf2fe1c8e6da7914e0752a2d">recv_return_t</a> = ssize_t</td></tr>
 <tr class="separator:ab505fdcfbf2fe1c8e6da7914e0752a2d inherit pub_types_classvisionary_1_1_i_transport"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a234d93e8bda3649ce068c8bb531a4d35"><td class="memItemLeft" align="right" valign="top"><a id="a234d93e8bda3649ce068c8bb531a4d35" name="a234d93e8bda3649ce068c8bb531a4d35"></a>
-virtual send_return_t&#160;</td><td class="memItemRight" valign="bottom"><b>send</b> (const char *pData, size_t size)=0</td></tr>
+<tr class="memitem:a234d93e8bda3649ce068c8bb531a4d35"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classvisionary_1_1_i_transport.html#af22c797e44b229b510534d4cc59cc6f6">send_return_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_i_transport.html#a234d93e8bda3649ce068c8bb531a4d35">send</a> (const char *pData, size_t size)=0</td></tr>
 <tr class="separator:a234d93e8bda3649ce068c8bb531a4d35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a3534fd61d8171da3939f6770928f06e6" name="a3534fd61d8171da3939f6770928f06e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3534fd61d8171da3939f6770928f06e6">&#9670;&#160;</a></span>TcpSocket()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">visionary::TcpSocket::TcpSocket </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="abb83bab5918a266f718e53d42387dd76" name="abb83bab5918a266f718e53d42387dd76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb83bab5918a266f718e53d42387dd76">&#9670;&#160;</a></span>connect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int visionary::TcpSocket::connect </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>hostname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>port</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>timeoutMs</em> = <code>5000</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="abf43b366b5f415f77fef1f701e1e0ef4" name="abf43b366b5f415f77fef1f701e1e0ef4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abf43b366b5f415f77fef1f701e1e0ef4">&#9670;&#160;</a></span>getLastError()</h2>
 
@@ -161,7 +236,7 @@ virtual send_return_t&#160;</td><td class="memItemRight" valign="bottom"><b>send
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="classvisionary_1_1_i_transport.html">visionary::ITransport</a>.</p>
+<p>Implements <a class="el" href="classvisionary_1_1_i_transport.html#a7996815ead62c1b57bcbb26f8f447550">visionary::ITransport</a>.</p>
 
 </div>
 </div>
@@ -175,7 +250,7 @@ virtual send_return_t&#160;</td><td class="memItemRight" valign="bottom"><b>send
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">ITransport::recv_return_t visionary::TcpSocket::read </td>
+          <td class="memname"><a class="el" href="classvisionary_1_1_i_transport.html#ab505fdcfbf2fe1c8e6da7914e0752a2d">ITransport::recv_return_t</a> visionary::TcpSocket::read </td>
           <td>(</td>
           <td class="paramtype">std::vector&lt; std::uint8_t &gt; &amp;&#160;</td>
           <td class="paramname"><em>buffer</em>, </td>
@@ -223,7 +298,7 @@ virtual send_return_t&#160;</td><td class="memItemRight" valign="bottom"><b>send
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">ITransport::recv_return_t visionary::TcpSocket::recv </td>
+          <td class="memname"><a class="el" href="classvisionary_1_1_i_transport.html#ab505fdcfbf2fe1c8e6da7914e0752a2d">ITransport::recv_return_t</a> visionary::TcpSocket::recv </td>
           <td>(</td>
           <td class="paramtype">std::vector&lt; std::uint8_t &gt; &amp;&#160;</td>
           <td class="paramname"><em>buffer</em>, </td>
@@ -271,7 +346,7 @@ virtual send_return_t&#160;</td><td class="memItemRight" valign="bottom"><b>send
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">ITransport::send_return_t visionary::TcpSocket::send </td>
+          <td class="memname"><a class="el" href="classvisionary_1_1_i_transport.html#af22c797e44b229b510534d4cc59cc6f6">ITransport::send_return_t</a> visionary::TcpSocket::send </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>pData</em>, </td>
@@ -295,7 +370,7 @@ virtual send_return_t&#160;</td><td class="memItemRight" valign="bottom"><b>send
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="classvisionary_1_1_i_transport.html">visionary::ITransport</a>.</p>
+<p>Implements <a class="el" href="classvisionary_1_1_i_transport.html#a234d93e8bda3649ce068c8bb531a4d35">visionary::ITransport</a>.</p>
 
 </div>
 </div>
@@ -309,7 +384,7 @@ virtual send_return_t&#160;</td><td class="memItemRight" valign="bottom"><b>send
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual send_return_t visionary::ITransport::send </td>
+          <td class="memname">virtual <a class="el" href="classvisionary_1_1_i_transport.html#af22c797e44b229b510534d4cc59cc6f6">send_return_t</a> visionary::ITransport::send </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>pData</em>, </td>
@@ -333,7 +408,7 @@ virtual send_return_t&#160;</td><td class="memItemRight" valign="bottom"><b>send
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="classvisionary_1_1_i_transport.html">visionary::ITransport</a>.</p>
+<p>Implements <a class="el" href="classvisionary_1_1_i_transport.html#a234d93e8bda3649ce068c8bb531a4d35">visionary::ITransport</a>.</p>
 
 </div>
 </div>
@@ -349,7 +424,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">send_return_t visionary::ITransport::send </td>
+          <td class="memname"><a class="el" href="classvisionary_1_1_i_transport.html#af22c797e44b229b510534d4cc59cc6f6">send_return_t</a> visionary::ITransport::send </td>
           <td>(</td>
           <td class="paramtype">const std::vector&lt; T &gt; &amp;&#160;</td>
           <td class="paramname"><em>buffer</em></td><td>)</td>
@@ -397,18 +472,45 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="classvisionary_1_1_i_transport.html">visionary::ITransport</a>.</p>
+<p>Implements <a class="el" href="classvisionary_1_1_i_transport.html#a8f5620b729c54859b68e40db76cb19ad">visionary::ITransport</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a4e36fdf072abac5fff1b235d701ce90f" name="a4e36fdf072abac5fff1b235d701ce90f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e36fdf072abac5fff1b235d701ce90f">&#9670;&#160;</a></span>m_socket</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_tcp_socket_8h.html#a8dc8083897335125630f1af5dafd5831">SOCKET</a> visionary::TcpSocket::m_socket</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>sickapi/src/<a class="el" href="_tcp_socket_8h_source.html">TcpSocket.h</a></li>
-<li>sickapi/src/TcpSocket.cpp</li>
+<li>sickapi/src/<a class="el" href="_tcp_socket_8cpp.html">TcpSocket.cpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacevisionary.html">visionary</a></li><li class="navelem"><a class="el" href="classvisionary_1_1_tcp_socket.html">TcpSocket</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+  </ul>
+</div>
 </body>
 </html>

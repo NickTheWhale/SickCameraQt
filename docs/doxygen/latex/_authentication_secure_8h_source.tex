@@ -16,43 +16,43 @@
 \DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}CoLaParameterReader.h"{}}}
 \DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}VisionaryControl.h"{}}}
 \DoxyCodeLine{00014\ }
-\DoxyCodeLine{00015\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacevisionary}{visionary}}\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacevisionary}{visionary}}}
 \DoxyCodeLine{00016\ \{}
-\DoxyCodeLine{00017\ \textcolor{keyword}{enum}\ ProtocolType}
-\DoxyCodeLine{00018\ \{}
-\DoxyCodeLine{00019\ \ \ \ \ UNKNOWN,}
-\DoxyCodeLine{00020\ \ \ \ \ SUL1,}
-\DoxyCodeLine{00021\ \ \ \ \ SUL2}
-\DoxyCodeLine{00022\ \};}
-\DoxyCodeLine{00023\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structvisionary_1_1_challenge_request}{ChallengeRequest}}}
-\DoxyCodeLine{00024\ \{}
-\DoxyCodeLine{00025\ \ \ std::array<std::uint8\_t,\ 16>\ challenge;}
-\DoxyCodeLine{00026\ \ \ std::array<std::uint8\_t,\ 16>\ salt;}
-\DoxyCodeLine{00027\ \};}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{enum}\ ProtocolType}
+\DoxyCodeLine{00018\ \ \ \ \ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ UNKNOWN,}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ SUL1,}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ SUL2}
+\DoxyCodeLine{00022\ \ \ \ \ \};}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structvisionary_1_1_challenge_request}{ChallengeRequest}}}
+\DoxyCodeLine{00024\ \ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ std::array<std::uint8\_t,\ 16>\ challenge;}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ std::array<std::uint8\_t,\ 16>\ salt;}
+\DoxyCodeLine{00027\ \ \ \ \ \};}
 \DoxyCodeLine{00028\ }
-\DoxyCodeLine{00029\ \textcolor{keyword}{typedef}\ std::array<std::uint8\_t,\ 32>\ PasswordHash;}
-\DoxyCodeLine{00030\ \textcolor{keyword}{typedef}\ std::array<std::uint8\_t,\ 32>\ ChallengeResponse;}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{typedef}\ std::array<std::uint8\_t,\ 32>\ PasswordHash;}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{typedef}\ std::array<std::uint8\_t,\ 32>\ ChallengeResponse;}
 \DoxyCodeLine{00031\ }
 \DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classvisionary_1_1_authentication_secure}{AuthenticationSecure}}:}
-\DoxyCodeLine{00034\ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{classvisionary_1_1_i_authentication}{IAuthentication}}}
-\DoxyCodeLine{00035\ \{}
-\DoxyCodeLine{00036\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00037\ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classvisionary_1_1_authentication_secure}{AuthenticationSecure}}(\mbox{\hyperlink{classvisionary_1_1_visionary_control}{VisionaryControl}}\&\ vctrl);}
-\DoxyCodeLine{00038\ \ \ \mbox{\hyperlink{classvisionary_1_1_authentication_secure}{\string~AuthenticationSecure}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classvisionary_1_1_authentication_secure}{AuthenticationSecure}}\ :}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{classvisionary_1_1_i_authentication}{IAuthentication}}}
+\DoxyCodeLine{00035\ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classvisionary_1_1_authentication_secure}{AuthenticationSecure}}(\mbox{\hyperlink{classvisionary_1_1_visionary_control}{VisionaryControl}}\&\ vctrl);}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvisionary_1_1_authentication_secure}{\string~AuthenticationSecure}}()\ \textcolor{keyword}{override};}
 \DoxyCodeLine{00039\ }
-\DoxyCodeLine{00040\ \ \ \textcolor{keywordtype}{bool}\ login(\mbox{\hyperlink{classvisionary_1_1_i_authentication_a9d9871f50bf25a43e7faa4afb9e92f08}{UserLevel}}\ userLevel,\ \textcolor{keyword}{const}\ std::string\&\ password)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00041\ \ \ \textcolor{keywordtype}{bool}\ logout()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ login(\mbox{\hyperlink{classvisionary_1_1_i_authentication_a9d9871f50bf25a43e7faa4afb9e92f08}{UserLevel}}\ userLevel,\ \textcolor{keyword}{const}\ std::string\&\ password)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ logout()\ \textcolor{keyword}{override};}
 \DoxyCodeLine{00042\ }
-\DoxyCodeLine{00043\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00044\ \ \ \mbox{\hyperlink{classvisionary_1_1_visionary_control}{VisionaryControl}}\&\ m\_VisionaryControl;}
-\DoxyCodeLine{00045\ \ \ ProtocolType\ m\_protocolType;}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvisionary_1_1_visionary_control}{VisionaryControl}}\&\ m\_VisionaryControl;}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ ProtocolType\ m\_protocolType;}
 \DoxyCodeLine{00046\ }
-\DoxyCodeLine{00047\ \ \ PasswordHash\ CreatePasswordHash(\mbox{\hyperlink{classvisionary_1_1_i_authentication_a9d9871f50bf25a43e7faa4afb9e92f08}{UserLevel}}\ userLevel,\ \textcolor{keyword}{const}\ std::string\&\ password,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structvisionary_1_1_challenge_request}{ChallengeRequest}}\&\ challengeRequest,\ ProtocolType\ protocolType);}
-\DoxyCodeLine{00048\ \ \ ChallengeResponse\ CreateChallengeResponse(\mbox{\hyperlink{classvisionary_1_1_i_authentication_a9d9871f50bf25a43e7faa4afb9e92f08}{UserLevel}}\ userLevel,\ \textcolor{keyword}{const}\ std::string\&\ password,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structvisionary_1_1_challenge_request}{ChallengeRequest}}\&\ challengeRequest,\ ProtocolType\ protocolType);}
-\DoxyCodeLine{00049\ \ \ \textcolor{keywordtype}{bool}\ loginImpl(\mbox{\hyperlink{classvisionary_1_1_i_authentication_a9d9871f50bf25a43e7faa4afb9e92f08}{UserLevel}}\ userLevel,\ \textcolor{keyword}{const}\ std::string\&\ password,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_reader}{CoLaParameterReader}}\&\ getChallengeResponse,\ ProtocolType\ protocolType);}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ PasswordHash\ CreatePasswordHash(\mbox{\hyperlink{classvisionary_1_1_i_authentication_a9d9871f50bf25a43e7faa4afb9e92f08}{UserLevel}}\ userLevel,\ \textcolor{keyword}{const}\ std::string\&\ password,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structvisionary_1_1_challenge_request}{ChallengeRequest}}\&\ challengeRequest,\ ProtocolType\ protocolType);}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ ChallengeResponse\ CreateChallengeResponse(\mbox{\hyperlink{classvisionary_1_1_i_authentication_a9d9871f50bf25a43e7faa4afb9e92f08}{UserLevel}}\ userLevel,\ \textcolor{keyword}{const}\ std::string\&\ password,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structvisionary_1_1_challenge_request}{ChallengeRequest}}\&\ challengeRequest,\ ProtocolType\ protocolType);}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ loginImpl(\mbox{\hyperlink{classvisionary_1_1_i_authentication_a9d9871f50bf25a43e7faa4afb9e92f08}{UserLevel}}\ userLevel,\ \textcolor{keyword}{const}\ std::string\&\ password,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_reader}{CoLaParameterReader}}\&\ getChallengeResponse,\ ProtocolType\ protocolType);}
 \DoxyCodeLine{00050\ }
-\DoxyCodeLine{00051\ \};}
+\DoxyCodeLine{00051\ \ \ \ \ \};}
 \DoxyCodeLine{00052\ }
 \DoxyCodeLine{00053\ \}}
 

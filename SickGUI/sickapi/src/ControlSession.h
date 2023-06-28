@@ -11,26 +11,26 @@
 #include "CoLaCommand.h"
 #include "IProtocolHandler.h"
 
-namespace visionary 
+namespace visionary
 {
 
-class ControlSession
-{
-public:
-  ControlSession(IProtocolHandler& ProtocolHandler);
-  virtual ~ControlSession();
+	class ControlSession
+	{
+	public:
+		ControlSession(IProtocolHandler& ProtocolHandler);
+		virtual ~ControlSession();
 
-  //void login(IAuthentication::UserLevel userLevel, const std::string& password);
-  //void logout();
+		//void login(IAuthentication::UserLevel userLevel, const std::string& password);
+		//void logout();
 
-  CoLaCommand prepareRead(const std::string& varname);
-  CoLaCommand prepareWrite(const std::string& varname);
-  CoLaCommand prepareCall(const std::string& varname);
+		CoLaCommand prepareRead(const std::string& varname);
+		CoLaCommand prepareWrite(const std::string& varname);
+		CoLaCommand prepareCall(const std::string& varname);
 
-  CoLaCommand send(const CoLaCommand& cmd);
+		CoLaCommand send(const CoLaCommand& cmd);
 
-private:
-  IProtocolHandler& m_ProtocolHandler;
-};
+	private:
+		IProtocolHandler& m_ProtocolHandler;
+	};
 
 }

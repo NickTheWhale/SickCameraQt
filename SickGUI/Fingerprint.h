@@ -1,3 +1,10 @@
+/*****************************************************************//**
+ * @file   Fingerprint.h
+ * @brief  
+ * 
+ * @author Nicholas Loehrke
+ * @date   June 2023
+ *********************************************************************/
 #pragma once
 
 #include <iostream>
@@ -15,9 +22,16 @@
 
 namespace Fingerprint
 {
+	//! number of rows used in calculateFingerprint() and overlayStats()
 	const size_t GRID_ROWS = 3;
+	//! number of columns used in calculateFingerprint() and overlayStats()
 	const size_t GRID_COLS = 3;
 
+	/**
+	 * @brief Stores min, max, mean, and stdev.
+	 * 
+	 * Struct to store min, max, mean, and stdev. Also has overloaded '+' and '+=' operators.
+	 */
 	struct CellStat
 	{
 		uint16_t min;
@@ -44,6 +58,11 @@ namespace Fingerprint
 			return *this;
 		}
 
+		/**
+		 * @brief To string.
+		 * 
+		 * @return "min: {}, max: {}, mean: {}, stdev: {}".
+		 */
 		std::string to_string()
 		{
 			return std::format("min: {}, max: {}, mean: {}, stdev: {}",
@@ -51,16 +70,28 @@ namespace Fingerprint
 		}
 	};
 
+	/**
+	 * @brief Calculates statistics of a cell at a specified topLeft and bottomRight location.
+	 * 
+	 * @param frameWidth Width of the total frame (not just the cell).
+	 * @param frameHeight Height of the total frame (not just the cell).
+	 * @param frame Frame.
+	 * @param topLeft Location of the top left corner of the cell.
+	 * @param bottomRight Location of the bottom right corner of the cell.
+	 * @return CellStat with the calculated values, or CellStat(0, 0, 0, 0) is no valid frame data.
+	 */
 	const inline CellStat calculateCellStatistics(int frameWidth, int frameHeight, const std::vector<uint16_t>& frame, QPoint topLeft, QPoint bottomRight)
 	{
 		auto stat = CellStat(0, 0, 0, 0);
 
+		// get the frame data contained by the cell
 		std::vector<uint16_t> cellData;
 		for (auto y = topLeft.y(); y < bottomRight.y(); ++y)
 		{
 			for (auto x = topLeft.x(); x < bottomRight.x(); ++x)
 			{
 				auto val = frame[y * frameWidth + x];
+				// we only care about values greater than 0
 				if (val > 0)
 					cellData.push_back(val);
 			}
@@ -92,6 +123,18 @@ namespace Fingerprint
 		return stat;
 	}
 
+	/**
+	 * @brief Calculate the 'fingerprint' of a frame.
+	 * 
+	 * This algorithm works by spliting a frame into a GRID_ROWS x GRID_COLS grid and calculating
+	 * the statistics for each cell within the grid. Once statistics for each cell are calculated,
+	 * they are summed into a single value.
+	 * 
+	 * @param frameWidth
+	 * @param frameHeight
+	 * @param frame
+	 * @return 
+	 */
 	const inline unsigned long calculateFingerprint(int frameWidth, int frameHeight, const std::vector<uint16_t>& frame)
 	{
 		auto cStat = CellStat(0, 0, 0, 0);
@@ -108,6 +151,17 @@ namespace Fingerprint
 		return cStat.min + cStat.max + cStat.mean + cStat.stdev;
 	}
 
+	/**
+	 * @brief Method to draw cell statistics on a QImage.
+	 * 
+	 * Draws a grid with dimensions GRID_ROWS x GRID_COLS and draws the statistics contained within
+	 * each grid cell.
+	 * 
+	 * @param qImage Output image to draw on.
+	 * @param width	Frame width.
+	 * @param height Frame height.
+	 * @param frame Frame.
+	 */
 	inline void overlayStats(QImage& qImage, int width, int height, const std::vector<uint16_t>& frame)
 	{
 		const auto NUM_COL = GRID_COLS;

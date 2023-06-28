@@ -9,9 +9,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -46,6 +51,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('class_histogram_widget.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,12 +89,13 @@ $(function() {
 </div>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_histogram_widget-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">HistogramWidget Class Reference</div></div>
 </div><!--header-->
@@ -89,24 +112,28 @@ Inheritance diagram for HistogramWidget:</div>
   <img src="class_histogram_widget.png" alt=""/>
  </div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_histogram_widget_1_1_holder_of_static_histogram.html">HolderOfStaticHistogram</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a7900598d380f8fb47f90b76f29f9273c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_widget.html#a7900598d380f8fb47f90b76f29f9273c">HistogramWidget</a> (size_t minVal, size_t maxVal, size_t bins, size_t maxCount, QWidget *parent=nullptr)</td></tr>
+<tr class="memitem:a7900598d380f8fb47f90b76f29f9273c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_widget.html#a7900598d380f8fb47f90b76f29f9273c">HistogramWidget</a> (size_t <a class="el" href="class_histogram_widget.html#a5fced7e474af8777f30602e85d7428f2">minVal</a>, size_t <a class="el" href="class_histogram_widget.html#a3dd78df3ec842e0f266c2a0f500adf08">maxVal</a>, size_t bins, size_t <a class="el" href="class_histogram_widget.html#aaa94979873ac26c14e909e6bbf8d30b4">maxCount</a>, QWidget *parent=nullptr)</td></tr>
 <tr class="memdesc:a7900598d380f8fb47f90b76f29f9273c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="class_histogram_widget.html" title="The HistogramWidget class represents a widget for displaying histograms.">HistogramWidget</a> object with the specified parameters.  <br /></td></tr>
 <tr class="separator:a7900598d380f8fb47f90b76f29f9273c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a76c7278ed776d108368d2a2dbaeab3d5"><td class="memItemLeft" align="right" valign="top"><a id="a76c7278ed776d108368d2a2dbaeab3d5" name="a76c7278ed776d108368d2a2dbaeab3d5"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>~HistogramWidget</b> ()</td></tr>
-<tr class="memdesc:a76c7278ed776d108368d2a2dbaeab3d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for the <a class="el" href="class_histogram_widget.html" title="The HistogramWidget class represents a widget for displaying histograms.">HistogramWidget</a> class. <br /></td></tr>
+<tr class="memitem:a76c7278ed776d108368d2a2dbaeab3d5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_widget.html#a76c7278ed776d108368d2a2dbaeab3d5">~HistogramWidget</a> ()</td></tr>
+<tr class="memdesc:a76c7278ed776d108368d2a2dbaeab3d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for the <a class="el" href="class_histogram_widget.html" title="The HistogramWidget class represents a widget for displaying histograms.">HistogramWidget</a> class.  <br /></td></tr>
 <tr class="separator:a76c7278ed776d108368d2a2dbaeab3d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a599bda635a4751bd6c83349eb407ab77"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_widget.html#a599bda635a4751bd6c83349eb407ab77">updateHistogram</a> (const std::vector&lt; uint16_t &gt; &amp;data)</td></tr>
 <tr class="memdesc:a599bda635a4751bd6c83349eb407ab77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the histogram with the provided data.  <br /></td></tr>
 <tr class="separator:a599bda635a4751bd6c83349eb407ab77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85c75518f7fdfcd017763f62058b3097"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a85c75518f7fdfcd017763f62058b3097"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_histogram_widget.html#a85c75518f7fdfcd017763f62058b3097">setXAxis</a> (T start, T step, T stop, std::string label=&quot;&quot;, bool reverse=false)</td></tr>
+<tr class="memitem:a85c75518f7fdfcd017763f62058b3097"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_histogram_widget.html#a85c75518f7fdfcd017763f62058b3097">setXAxis</a> (T start, T step, T stop, std::string label=&quot;&quot;, <a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> reverse=<a class="el" href="snap7_8h.html#a65e9886d74aaee76545e83dd09011727">false</a>)</td></tr>
 <tr class="memdesc:a85c75518f7fdfcd017763f62058b3097"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the x-axis for the histogram.  <br /></td></tr>
 <tr class="separator:a85c75518f7fdfcd017763f62058b3097"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f4bda97d068b0bfd40b0cc0b660fd98"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a2f4bda97d068b0bfd40b0cc0b660fd98"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_histogram_widget.html#a2f4bda97d068b0bfd40b0cc0b660fd98">setYAxis</a> (T start, T step, T stop, std::string label=&quot;&quot;, bool reverse=false)</td></tr>
+<tr class="memitem:a2f4bda97d068b0bfd40b0cc0b660fd98"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_histogram_widget.html#a2f4bda97d068b0bfd40b0cc0b660fd98">setYAxis</a> (T start, T step, T stop, std::string label=&quot;&quot;, <a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> reverse=<a class="el" href="snap7_8h.html#a65e9886d74aaee76545e83dd09011727">false</a>)</td></tr>
 <tr class="memdesc:a2f4bda97d068b0bfd40b0cc0b660fd98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the y-axis for the histogram.  <br /></td></tr>
 <tr class="separator:a2f4bda97d068b0bfd40b0cc0b660fd98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -118,6 +145,44 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:aac7b32878f96181aecd84d4c04ba3e68"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_widget.html#aac7b32878f96181aecd84d4c04ba3e68">contextMenuEvent</a> (QContextMenuEvent *event) override</td></tr>
 <tr class="memdesc:aac7b32878f96181aecd84d4c04ba3e68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overridden method that is called when a context menu event occurs.  <br /></td></tr>
 <tr class="separator:aac7b32878f96181aecd84d4c04ba3e68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a83c3752527900e5ba4a9682acdfafbc9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_widget.html#a83c3752527900e5ba4a9682acdfafbc9">setGraphXOffsetForXAxis</a> (<a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> forLabel)</td></tr>
+<tr class="separator:a83c3752527900e5ba4a9682acdfafbc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c59e05d4470dd99bdbac9b06953a298"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_widget.html#a5c59e05d4470dd99bdbac9b06953a298">setGraphYOffsetForYAxis</a> (<a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> forLabel)</td></tr>
+<tr class="separator:a5c59e05d4470dd99bdbac9b06953a298"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a3360a5562a05a930d01a799de00bc355"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_widget.html#a3360a5562a05a930d01a799de00bc355">showXAxis</a> = <a class="el" href="snap7_8h.html#a65e9886d74aaee76545e83dd09011727">false</a></td></tr>
+<tr class="separator:a3360a5562a05a930d01a799de00bc355"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c581be1deca32690e9a4b9b6eadc753"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_widget.html#a2c581be1deca32690e9a4b9b6eadc753">showYAxis</a> = <a class="el" href="snap7_8h.html#a65e9886d74aaee76545e83dd09011727">false</a></td></tr>
+<tr class="separator:a2c581be1deca32690e9a4b9b6eadc753"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0783cf7ec2177305b6e197983dd28ba9"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_widget.html#a0783cf7ec2177305b6e197983dd28ba9">xAxisLabel</a> = &quot;&quot;</td></tr>
+<tr class="separator:a0783cf7ec2177305b6e197983dd28ba9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae09d26d9e46010769aeb8ec31a7eb6bf"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_widget.html#ae09d26d9e46010769aeb8ec31a7eb6bf">yAxisLabel</a> = &quot;&quot;</td></tr>
+<tr class="separator:ae09d26d9e46010769aeb8ec31a7eb6bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc9ae08e44bd5740b70de5090e3de03e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_widget.html#abc9ae08e44bd5740b70de5090e3de03e">xAxis</a></td></tr>
+<tr class="separator:abc9ae08e44bd5740b70de5090e3de03e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9230f76ab8004bef7abb2f230cc2ee6e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_widget.html#a9230f76ab8004bef7abb2f230cc2ee6e">yAxis</a></td></tr>
+<tr class="separator:a9230f76ab8004bef7abb2f230cc2ee6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c8b9fb27e8346a8bd788fb7455196b2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_histogram_widget_1_1_holder_of_static_histogram.html">HolderOfStaticHistogram</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_widget.html#a6c8b9fb27e8346a8bd788fb7455196b2">hs</a></td></tr>
+<tr class="separator:a6c8b9fb27e8346a8bd788fb7455196b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fced7e474af8777f30602e85d7428f2"><td class="memItemLeft" align="right" valign="top">const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_widget.html#a5fced7e474af8777f30602e85d7428f2">minVal</a></td></tr>
+<tr class="separator:a5fced7e474af8777f30602e85d7428f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3dd78df3ec842e0f266c2a0f500adf08"><td class="memItemLeft" align="right" valign="top">const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_widget.html#a3dd78df3ec842e0f266c2a0f500adf08">maxVal</a></td></tr>
+<tr class="separator:a3dd78df3ec842e0f266c2a0f500adf08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3a7ad4c376636def5f0b325506a0a44"><td class="memItemLeft" align="right" valign="top">const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_widget.html#ab3a7ad4c376636def5f0b325506a0a44">numBins</a></td></tr>
+<tr class="separator:ab3a7ad4c376636def5f0b325506a0a44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa94979873ac26c14e909e6bbf8d30b4"><td class="memItemLeft" align="right" valign="top">const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_widget.html#aaa94979873ac26c14e909e6bbf8d30b4">maxCount</a></td></tr>
+<tr class="separator:aaa94979873ac26c14e909e6bbf8d30b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa82a095b0b281f0e3266d27b0add936d"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_widget.html#aa82a095b0b281f0e3266d27b0add936d">PADDING</a> = 3</td></tr>
+<tr class="separator:aa82a095b0b281f0e3266d27b0add936d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d5d7bf8844488baf5d67d6a5db44529"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_widget.html#a6d5d7bf8844488baf5d67d6a5db44529">X_GRAPH_OFFSET</a> = 50</td></tr>
+<tr class="separator:a6d5d7bf8844488baf5d67d6a5db44529"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af24829a5682d554c41403fdbf4a4a8f7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_widget.html#af24829a5682d554c41403fdbf4a4a8f7">Y_GRAPH_OFFSET</a> = 50</td></tr>
+<tr class="separator:af24829a5682d554c41403fdbf4a4a8f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <a class="el" href="class_histogram_widget.html" title="The HistogramWidget class represents a widget for displaying histograms.">HistogramWidget</a> class represents a widget for displaying histograms. </p>
@@ -186,6 +251,25 @@ Protected Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a76c7278ed776d108368d2a2dbaeab3d5" name="a76c7278ed776d108368d2a2dbaeab3d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76c7278ed776d108368d2a2dbaeab3d5">&#9670;&#160;</a></span>~HistogramWidget()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HistogramWidget::~HistogramWidget </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Destructor for the <a class="el" href="class_histogram_widget.html" title="The HistogramWidget class represents a widget for displaying histograms.">HistogramWidget</a> class. </p>
 
 </div>
 </div>
@@ -258,6 +342,58 @@ Protected Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a83c3752527900e5ba4a9682acdfafbc9" name="a83c3752527900e5ba4a9682acdfafbc9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83c3752527900e5ba4a9682acdfafbc9">&#9670;&#160;</a></span>setGraphXOffsetForXAxis()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HistogramWidget::setGraphXOffsetForXAxis </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td>
+          <td class="paramname"><em>forLabel</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5c59e05d4470dd99bdbac9b06953a298" name="a5c59e05d4470dd99bdbac9b06953a298"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c59e05d4470dd99bdbac9b06953a298">&#9670;&#160;</a></span>setGraphYOffsetForYAxis()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HistogramWidget::setGraphYOffsetForYAxis </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td>
+          <td class="paramname"><em>forLabel</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a85c75518f7fdfcd017763f62058b3097" name="a85c75518f7fdfcd017763f62058b3097"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a85c75518f7fdfcd017763f62058b3097">&#9670;&#160;</a></span>setXAxis()</h2>
 
@@ -296,8 +432,8 @@ template&lt;typename T &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>reverse</em> = <code>false</code>&#160;</td>
+          <td class="paramtype"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td>
+          <td class="paramname"><em>reverse</em> = <code><a class="el" href="snap7_8h.html#a65e9886d74aaee76545e83dd09011727">false</a></code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -371,8 +507,8 @@ template&lt;typename T &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>reverse</em> = <code>false</code>&#160;</td>
+          <td class="paramtype"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td>
+          <td class="paramname"><em>reverse</em> = <code><a class="el" href="snap7_8h.html#a65e9886d74aaee76545e83dd09011727">false</a></code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -434,14 +570,327 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a6c8b9fb27e8346a8bd788fb7455196b2" name="a6c8b9fb27e8346a8bd788fb7455196b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c8b9fb27e8346a8bd788fb7455196b2">&#9670;&#160;</a></span>hs</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_histogram_widget_1_1_holder_of_static_histogram.html">HolderOfStaticHistogram</a> HistogramWidget::hs</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaa94979873ac26c14e909e6bbf8d30b4" name="aaa94979873ac26c14e909e6bbf8d30b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa94979873ac26c14e909e6bbf8d30b4">&#9670;&#160;</a></span>maxCount</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const size_t HistogramWidget::maxCount</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3dd78df3ec842e0f266c2a0f500adf08" name="a3dd78df3ec842e0f266c2a0f500adf08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3dd78df3ec842e0f266c2a0f500adf08">&#9670;&#160;</a></span>maxVal</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const size_t HistogramWidget::maxVal</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5fced7e474af8777f30602e85d7428f2" name="a5fced7e474af8777f30602e85d7428f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fced7e474af8777f30602e85d7428f2">&#9670;&#160;</a></span>minVal</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const size_t HistogramWidget::minVal</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab3a7ad4c376636def5f0b325506a0a44" name="ab3a7ad4c376636def5f0b325506a0a44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3a7ad4c376636def5f0b325506a0a44">&#9670;&#160;</a></span>numBins</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const size_t HistogramWidget::numBins</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa82a095b0b281f0e3266d27b0add936d" name="aa82a095b0b281f0e3266d27b0add936d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa82a095b0b281f0e3266d27b0add936d">&#9670;&#160;</a></span>PADDING</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int HistogramWidget::PADDING = 3</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3360a5562a05a930d01a799de00bc355" name="a3360a5562a05a930d01a799de00bc355"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3360a5562a05a930d01a799de00bc355">&#9670;&#160;</a></span>showXAxis</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> HistogramWidget::showXAxis = <a class="el" href="snap7_8h.html#a65e9886d74aaee76545e83dd09011727">false</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2c581be1deca32690e9a4b9b6eadc753" name="a2c581be1deca32690e9a4b9b6eadc753"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c581be1deca32690e9a4b9b6eadc753">&#9670;&#160;</a></span>showYAxis</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> HistogramWidget::showYAxis = <a class="el" href="snap7_8h.html#a65e9886d74aaee76545e83dd09011727">false</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6d5d7bf8844488baf5d67d6a5db44529" name="a6d5d7bf8844488baf5d67d6a5db44529"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d5d7bf8844488baf5d67d6a5db44529">&#9670;&#160;</a></span>X_GRAPH_OFFSET</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int HistogramWidget::X_GRAPH_OFFSET = 50</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abc9ae08e44bd5740b70de5090e3de03e" name="abc9ae08e44bd5740b70de5090e3de03e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc9ae08e44bd5740b70de5090e3de03e">&#9670;&#160;</a></span>xAxis</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;double&gt; HistogramWidget::xAxis</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0783cf7ec2177305b6e197983dd28ba9" name="a0783cf7ec2177305b6e197983dd28ba9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0783cf7ec2177305b6e197983dd28ba9">&#9670;&#160;</a></span>xAxisLabel</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string HistogramWidget::xAxisLabel = &quot;&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af24829a5682d554c41403fdbf4a4a8f7" name="af24829a5682d554c41403fdbf4a4a8f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af24829a5682d554c41403fdbf4a4a8f7">&#9670;&#160;</a></span>Y_GRAPH_OFFSET</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int HistogramWidget::Y_GRAPH_OFFSET = 50</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9230f76ab8004bef7abb2f230cc2ee6e" name="a9230f76ab8004bef7abb2f230cc2ee6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9230f76ab8004bef7abb2f230cc2ee6e">&#9670;&#160;</a></span>yAxis</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;double&gt; HistogramWidget::yAxis</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae09d26d9e46010769aeb8ec31a7eb6bf" name="ae09d26d9e46010769aeb8ec31a7eb6bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae09d26d9e46010769aeb8ec31a7eb6bf">&#9670;&#160;</a></span>yAxisLabel</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string HistogramWidget::yAxisLabel = &quot;&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>widgets/<a class="el" href="_histogram_widget_8h_source.html">HistogramWidget.h</a></li>
-<li>widgets/HistogramWidget.cpp</li>
+<li>widgets/<a class="el" href="_histogram_widget_8cpp.html">HistogramWidget.cpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_histogram_widget.html">HistogramWidget</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+  </ul>
+</div>
 </body>
 </html>

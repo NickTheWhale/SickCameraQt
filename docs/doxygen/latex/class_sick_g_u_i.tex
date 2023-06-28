@@ -9,30 +9,343 @@ Inheritance diagram for Sick\+GUI\+:\begin{figure}[H]
 \doxysubsubsection*{Public Slots}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_sick_g_u_i_a9c4920226e6f464d0744ddc0995ec90d}\label{class_sick_g_u_i_a9c4920226e6f464d0744ddc0995ec90d} 
-void {\bfseries play\+Video} ()
-\item 
-\Hypertarget{class_sick_g_u_i_a4333916b17fdae5bd1d90152b8e613d5}\label{class_sick_g_u_i_a4333916b17fdae5bd1d90152b8e613d5} 
-void {\bfseries pause\+Video} ()
-\item 
-\Hypertarget{class_sick_g_u_i_a0598f10f170515a328acc30a5eb9183d}\label{class_sick_g_u_i_a0598f10f170515a328acc30a5eb9183d} 
-void {\bfseries open\+Stream\+Settings\+Dialog} ()
-\item 
-\Hypertarget{class_sick_g_u_i_ad92ec970e9e45866ec7f7554ab1b13f7}\label{class_sick_g_u_i_ad92ec970e9e45866ec7f7554ab1b13f7} 
-void {\bfseries new\+Frameset} (\mbox{\hyperlink{struct_frameset_1_1frameset__t}{Frameset\+::frameset\+\_\+t}} fs)
-\item 
-\Hypertarget{class_sick_g_u_i_a69fa81855a9c4aeb49c3c68b8002091c}\label{class_sick_g_u_i_a69fa81855a9c4aeb49c3c68b8002091c} 
-void {\bfseries show\+Status\+Bar\+Message} (const QString \&msg, int timeout=0)
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{class_sick_g_u_i_a9c4920226e6f464d0744ddc0995ec90d}{play\+Video}} ()
+\begin{DoxyCompactList}\small\item\em Slot to start live video stream and histograms. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sick_g_u_i_a4333916b17fdae5bd1d90152b8e613d5}{pause\+Video}} ()
+\begin{DoxyCompactList}\small\item\em Slot to pause live video stream and histograms. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sick_g_u_i_ad92ec970e9e45866ec7f7554ab1b13f7}{new\+Frameset}} (\mbox{\hyperlink{struct_frameset_1_1frameset__t}{Frameset\+::frameset\+\_\+t}} fs)
+\begin{DoxyCompactList}\small\item\em Slot to receive new frameset emitted by capture\+Thread. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sick_g_u_i_a69fa81855a9c4aeb49c3c68b8002091c}{show\+Status\+Bar\+Message}} (const QString \&msg, int timeout=0)
+\begin{DoxyCompactList}\small\item\em Slot to show a message on the status bar. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \Hypertarget{class_sick_g_u_i_a3c0fe23f18ffa352e0d638be8c44b26d}\label{class_sick_g_u_i_a3c0fe23f18ffa352e0d638be8c44b26d} 
 {\bfseries Sick\+GUI} (QWidget \texorpdfstring{$\ast$}{*}parent=nullptr)
 \end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_sick_g_u_i_ab547535d9ffe1eac0597e8af13d269c9}{close\+Event}} (QClose\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Called when the main window is closing. Used to save dock layout. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sick_g_u_i_aba95da04d9673e22c036f4bf1e771b4d}{initialize\+Widgets}} ()
+\begin{DoxyCompactList}\small\item\em Initializes widgets. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sick_g_u_i_aeab61b5b968b32eb196d6d9595cf327f}{update\+Display}} ()
+\begin{DoxyCompactList}\small\item\em Shows latest camera frame. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sick_g_u_i_a945bc46b6b9517e84d1e99a1c53de7c9}{update\+Charts}} ()
+\begin{DoxyCompactList}\small\item\em Updates depth and intensity histograms. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sick_g_u_i_a09428bf68aaa7a52cdb8b3b93ade497d}{write\+Image}} (QImage image)
+\begin{DoxyCompactList}\small\item\em Writes QImage to display. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_sick_g_u_i_afb8fd7dc56a1b3356ad28edae28373bf}{create\+Camera}} ()
+\begin{DoxyCompactList}\small\item\em Creates a new \doxylink{class_camera}{Camera}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sick_g_u_i_a93cfef918e585738172a2239600f8acd}{check\+Threads}} ()
+\begin{DoxyCompactList}\small\item\em QFuture\+Watcher callback to check camera and plc thread start status. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sick_g_u_i_a1d8901fe58fd749cbb5c5db4543bb726}{start\+Threads}} (QPromise$<$ bool $>$ \&promise)
+\begin{DoxyCompactList}\small\item\em Method to start camera and plc threads. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_sick_g_u_i_a17628a0479af79698c8326df5486ae5d}{start\+Camera\+Thread}} ()
+\begin{DoxyCompactList}\small\item\em Starts camera thread. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_sick_g_u_i_af2d3fbe8f33123a10c35fbfe9d0a5773}{start\+Plc\+Thread}} ()
+\begin{DoxyCompactList}\small\item\em Starts plc thread. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sick_g_u_i_a10196da0ff8310703c172eac4f61e29f}{save\+Settings}} ()
+\begin{DoxyCompactList}\small\item\em Saves window state and geometry. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sick_g_u_i_a805420ecff9d15222ef5dbb1ec7672e4}{restore\+Settings}} ()
+\begin{DoxyCompactList}\small\item\em Restores window state and geometry. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_sick_g_u_i_a128ff334147d36ed8ad57df7dfa93dd3}\label{class_sick_g_u_i_a128ff334147d36ed8ad57df7dfa93dd3} 
+const std\+::string {\bfseries PLC\+\_\+\+IP\+\_\+\+ADDRESS} = \"{}127.\+0.\+0.\+1\"{}
+\item 
+\Hypertarget{class_sick_g_u_i_a96591b891c2f7f1cc2625e4ee38d6de6}\label{class_sick_g_u_i_a96591b891c2f7f1cc2625e4ee38d6de6} 
+const int {\bfseries PLC\+\_\+\+RACK} = 0
+\item 
+\Hypertarget{class_sick_g_u_i_a97ae8842dfc4cfffed2fe2a7d78313a6}\label{class_sick_g_u_i_a97ae8842dfc4cfffed2fe2a7d78313a6} 
+const int {\bfseries PLC\+\_\+\+SLOT} = 2
+\item 
+\Hypertarget{class_sick_g_u_i_aa00b7661eba6d0fe8942bc1ada405db4}\label{class_sick_g_u_i_aa00b7661eba6d0fe8942bc1ada405db4} 
+Ui\+::\+Sick\+GUIClass {\bfseries ui}
+\item 
+\Hypertarget{class_sick_g_u_i_a75814cc5d72a9b976c5162c66951da34}\label{class_sick_g_u_i_a75814cc5d72a9b976c5162c66951da34} 
+const size\+\_\+t {\bfseries frameset\+Buffer\+Size} = 2
+\item 
+\Hypertarget{class_sick_g_u_i_a0ec97b3bc8d22d4daae60c47d3db82cc}\label{class_sick_g_u_i_a0ec97b3bc8d22d4daae60c47d3db82cc} 
+boost\+::circular\+\_\+buffer$<$ \mbox{\hyperlink{struct_frameset_1_1frameset__t}{Frameset\+::frameset\+\_\+t}} $>$ {\bfseries frameset\+Buffer}
+\item 
+\Hypertarget{class_sick_g_u_i_a121577d54443bb9a94d27532cddb352c}\label{class_sick_g_u_i_a121577d54443bb9a94d27532cddb352c} 
+QMutex {\bfseries frameset\+Mutex}
+\item 
+\Hypertarget{class_sick_g_u_i_a24da7b9eeaed1134cfb599d9b9956899}\label{class_sick_g_u_i_a24da7b9eeaed1134cfb599d9b9956899} 
+\mbox{\hyperlink{class_camera}{Camera}} \texorpdfstring{$\ast$}{*} {\bfseries camera} = nullptr
+\item 
+\Hypertarget{class_sick_g_u_i_ac10b9ef943f5250c86717b9e7bedd888}\label{class_sick_g_u_i_ac10b9ef943f5250c86717b9e7bedd888} 
+\mbox{\hyperlink{class_capture_thread}{Capture\+Thread}} \texorpdfstring{$\ast$}{*} {\bfseries capture\+Thread} = nullptr
+\item 
+\Hypertarget{class_sick_g_u_i_a2e47c8e7c5e78860684d301e7cf4dc52}\label{class_sick_g_u_i_a2e47c8e7c5e78860684d301e7cf4dc52} 
+TS7\+Client \texorpdfstring{$\ast$}{*} {\bfseries s7\+Client} = nullptr
+\item 
+\Hypertarget{class_sick_g_u_i_ade1ec9372abf32c5d5e1c013f410302f}\label{class_sick_g_u_i_ade1ec9372abf32c5d5e1c013f410302f} 
+\mbox{\hyperlink{class_plc_thread}{Plc\+Thread}} \texorpdfstring{$\ast$}{*} {\bfseries plc\+Thread} = nullptr
+\item 
+\Hypertarget{class_sick_g_u_i_ab379222f21326c2ecc18b9cb1cd0ebd2}\label{class_sick_g_u_i_ab379222f21326c2ecc18b9cb1cd0ebd2} 
+QFuture\+Watcher$<$ bool $>$ \texorpdfstring{$\ast$}{*} {\bfseries thread\+Watcher}
+\item 
+\Hypertarget{class_sick_g_u_i_a79774394e644af7618da69f2c6c4e66a}\label{class_sick_g_u_i_a79774394e644af7618da69f2c6c4e66a} 
+\mbox{\hyperlink{class_aspect_ratio_pixmap_label}{Aspect\+Ratio\+Pixmap\+Label}} \texorpdfstring{$\ast$}{*} {\bfseries camera\+View} = nullptr
+\item 
+\Hypertarget{class_sick_g_u_i_a1e87536903e3914f7a6f6b2164ddbfdb}\label{class_sick_g_u_i_a1e87536903e3914f7a6f6b2164ddbfdb} 
+\mbox{\hyperlink{class_histogram_widget}{Histogram\+Widget}} \texorpdfstring{$\ast$}{*} {\bfseries depth\+Histogram} = nullptr
+\item 
+\Hypertarget{class_sick_g_u_i_ac5d18fcd2b8510f9509cc1ce2faa3ff0}\label{class_sick_g_u_i_ac5d18fcd2b8510f9509cc1ce2faa3ff0} 
+\mbox{\hyperlink{class_histogram_widget}{Histogram\+Widget}} \texorpdfstring{$\ast$}{*} {\bfseries intensity\+Histogram} = nullptr
+\item 
+\Hypertarget{class_sick_g_u_i_ae6ce4e4e0b35a6a9724dc6b65966663a}\label{class_sick_g_u_i_ae6ce4e4e0b35a6a9724dc6b65966663a} 
+QTimer \texorpdfstring{$\ast$}{*} {\bfseries display\+Timer} = nullptr
+\item 
+\Hypertarget{class_sick_g_u_i_a76fa715b877311476825849499094d81}\label{class_sick_g_u_i_a76fa715b877311476825849499094d81} 
+int {\bfseries display\+Timer\+Interval} = 50
+\item 
+\Hypertarget{class_sick_g_u_i_af6865bf21957258e2f86c8199c09fe51}\label{class_sick_g_u_i_af6865bf21957258e2f86c8199c09fe51} 
+QTimer \texorpdfstring{$\ast$}{*} {\bfseries chart\+Timer} = nullptr
+\item 
+\Hypertarget{class_sick_g_u_i_af149144055fa48f328b5f2ac7ef33840}\label{class_sick_g_u_i_af149144055fa48f328b5f2ac7ef33840} 
+int {\bfseries chart\+Timer\+Interval} = 50
+\item 
+\Hypertarget{class_sick_g_u_i_a0ce1582efdaa435d7a5e72dbfaf21261}\label{class_sick_g_u_i_a0ce1582efdaa435d7a5e72dbfaf21261} 
+Stream {\bfseries stream\+Type}
+\item 
+\Hypertarget{class_sick_g_u_i_a67185a0cbb471906016aff71fcdaf9f1}\label{class_sick_g_u_i_a67185a0cbb471906016aff71fcdaf9f1} 
+tinycolormap\+::\+Colormap\+Type {\bfseries stream\+Color\+Map\+Type}
+\item 
+\Hypertarget{class_sick_g_u_i_ad7201b584ad55725222fe8da3a6c7eb8}\label{class_sick_g_u_i_ad7201b584ad55725222fe8da3a6c7eb8} 
+volatile bool {\bfseries inverted\+Color}
+\item 
+\Hypertarget{class_sick_g_u_i_a61a4758059628345dcd24e49b268ea00}\label{class_sick_g_u_i_a61a4758059628345dcd24e49b268ea00} 
+QLabel \texorpdfstring{$\ast$}{*} {\bfseries status\+Bar\+Label} = nullptr
+\item 
+\Hypertarget{class_sick_g_u_i_a3f3c28bafbbf618a444eeab04d164b6d}\label{class_sick_g_u_i_a3f3c28bafbbf618a444eeab04d164b6d} 
+bool {\bfseries over\+Lay\+Stats} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_sick_g_u_i_a93cfef918e585738172a2239600f8acd}\label{class_sick_g_u_i_a93cfef918e585738172a2239600f8acd} 
+\index{SickGUI@{SickGUI}!checkThreads@{checkThreads}}
+\index{checkThreads@{checkThreads}!SickGUI@{SickGUI}}
+\doxysubsubsection{\texorpdfstring{checkThreads()}{checkThreads()}}
+{\footnotesize\ttfamily void Sick\+GUI\+::check\+Threads (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+QFuture\+Watcher callback to check camera and plc thread start status. 
+
+\begin{DoxyNote}{Note}
+If start\+Threads is not successful, a popup will show which thread(s) errored and then the application will close. 
+\end{DoxyNote}
+\Hypertarget{class_sick_g_u_i_ab547535d9ffe1eac0597e8af13d269c9}\label{class_sick_g_u_i_ab547535d9ffe1eac0597e8af13d269c9} 
+\index{SickGUI@{SickGUI}!closeEvent@{closeEvent}}
+\index{closeEvent@{closeEvent}!SickGUI@{SickGUI}}
+\doxysubsubsection{\texorpdfstring{closeEvent()}{closeEvent()}}
+{\footnotesize\ttfamily void Sick\+GUI\+::close\+Event (\begin{DoxyParamCaption}\item[{QClose\+Event \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}}
+
+
+
+Called when the main window is closing. Used to save dock layout. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & QClose\+Event. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_sick_g_u_i_afb8fd7dc56a1b3356ad28edae28373bf}\label{class_sick_g_u_i_afb8fd7dc56a1b3356ad28edae28373bf} 
+\index{SickGUI@{SickGUI}!createCamera@{createCamera}}
+\index{createCamera@{createCamera}!SickGUI@{SickGUI}}
+\doxysubsubsection{\texorpdfstring{createCamera()}{createCamera()}}
+{\footnotesize\ttfamily bool Sick\+GUI\+::create\+Camera (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Creates a new \doxylink{class_camera}{Camera}. 
+
+\begin{DoxyReturn}{Returns}
+true if created, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_sick_g_u_i_aba95da04d9673e22c036f4bf1e771b4d}\label{class_sick_g_u_i_aba95da04d9673e22c036f4bf1e771b4d} 
+\index{SickGUI@{SickGUI}!initializeWidgets@{initializeWidgets}}
+\index{initializeWidgets@{initializeWidgets}!SickGUI@{SickGUI}}
+\doxysubsubsection{\texorpdfstring{initializeWidgets()}{initializeWidgets()}}
+{\footnotesize\ttfamily void Sick\+GUI\+::initialize\+Widgets (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Initializes widgets. 
+
+\Hypertarget{class_sick_g_u_i_ad92ec970e9e45866ec7f7554ab1b13f7}\label{class_sick_g_u_i_ad92ec970e9e45866ec7f7554ab1b13f7} 
+\index{SickGUI@{SickGUI}!newFrameset@{newFrameset}}
+\index{newFrameset@{newFrameset}!SickGUI@{SickGUI}}
+\doxysubsubsection{\texorpdfstring{newFrameset}{newFrameset}}
+{\footnotesize\ttfamily void Sick\+GUI\+::new\+Frameset (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_frameset_1_1frameset__t}{Frameset\+::frameset\+\_\+t}}}]{fs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Slot to receive new frameset emitted by capture\+Thread. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fs} & Output frameset. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_sick_g_u_i_a4333916b17fdae5bd1d90152b8e613d5}\label{class_sick_g_u_i_a4333916b17fdae5bd1d90152b8e613d5} 
+\index{SickGUI@{SickGUI}!pauseVideo@{pauseVideo}}
+\index{pauseVideo@{pauseVideo}!SickGUI@{SickGUI}}
+\doxysubsubsection{\texorpdfstring{pauseVideo}{pauseVideo}}
+{\footnotesize\ttfamily void Sick\+GUI\+::pause\+Video (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Slot to pause live video stream and histograms. 
+
+\begin{DoxyNote}{Note}
+This slot has no effect on the plc\+Thread and will not pause the plc\+Thread\textquotesingle{}s frame capture. 
+\end{DoxyNote}
+\Hypertarget{class_sick_g_u_i_a9c4920226e6f464d0744ddc0995ec90d}\label{class_sick_g_u_i_a9c4920226e6f464d0744ddc0995ec90d} 
+\index{SickGUI@{SickGUI}!playVideo@{playVideo}}
+\index{playVideo@{playVideo}!SickGUI@{SickGUI}}
+\doxysubsubsection{\texorpdfstring{playVideo}{playVideo}}
+{\footnotesize\ttfamily void Sick\+GUI\+::play\+Video (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Slot to start live video stream and histograms. 
+
+\begin{DoxyNote}{Note}
+This slot has no effect on the plc\+Thread and will not effect the plc\+Thread\textquotesingle{}s ability to receive new frames. 
+\end{DoxyNote}
+\Hypertarget{class_sick_g_u_i_a805420ecff9d15222ef5dbb1ec7672e4}\label{class_sick_g_u_i_a805420ecff9d15222ef5dbb1ec7672e4} 
+\index{SickGUI@{SickGUI}!restoreSettings@{restoreSettings}}
+\index{restoreSettings@{restoreSettings}!SickGUI@{SickGUI}}
+\doxysubsubsection{\texorpdfstring{restoreSettings()}{restoreSettings()}}
+{\footnotesize\ttfamily void Sick\+GUI\+::restore\+Settings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Restores window state and geometry. 
+
+\Hypertarget{class_sick_g_u_i_a10196da0ff8310703c172eac4f61e29f}\label{class_sick_g_u_i_a10196da0ff8310703c172eac4f61e29f} 
+\index{SickGUI@{SickGUI}!saveSettings@{saveSettings}}
+\index{saveSettings@{saveSettings}!SickGUI@{SickGUI}}
+\doxysubsubsection{\texorpdfstring{saveSettings()}{saveSettings()}}
+{\footnotesize\ttfamily void Sick\+GUI\+::save\+Settings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Saves window state and geometry. 
+
+\Hypertarget{class_sick_g_u_i_a69fa81855a9c4aeb49c3c68b8002091c}\label{class_sick_g_u_i_a69fa81855a9c4aeb49c3c68b8002091c} 
+\index{SickGUI@{SickGUI}!showStatusBarMessage@{showStatusBarMessage}}
+\index{showStatusBarMessage@{showStatusBarMessage}!SickGUI@{SickGUI}}
+\doxysubsubsection{\texorpdfstring{showStatusBarMessage}{showStatusBarMessage}}
+{\footnotesize\ttfamily void Sick\+GUI\+::show\+Status\+Bar\+Message (\begin{DoxyParamCaption}\item[{const QString \&}]{msg,  }\item[{int}]{timeout = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Slot to show a message on the status bar. 
+
+\begin{DoxyNote}{Note}
+\texorpdfstring{$\ast$}{*}\+Messages shown with this method are not required to be persistent even with a timeout of 0. 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & Message to show. \\
+\hline
+{\em timeout} & How long to display the message in milliseconds. Use timeout = 0 for a persistent\texorpdfstring{$\ast$}{*} message. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_sick_g_u_i_a17628a0479af79698c8326df5486ae5d}\label{class_sick_g_u_i_a17628a0479af79698c8326df5486ae5d} 
+\index{SickGUI@{SickGUI}!startCameraThread@{startCameraThread}}
+\index{startCameraThread@{startCameraThread}!SickGUI@{SickGUI}}
+\doxysubsubsection{\texorpdfstring{startCameraThread()}{startCameraThread()}}
+{\footnotesize\ttfamily bool Sick\+GUI\+::start\+Camera\+Thread (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Starts camera thread. 
+
+Creates and open a \doxylink{class_camera}{Camera}, assigns camera to a \doxylink{class_capture_thread}{Capture\+Thread}, and starts the \doxylink{class_capture_thread}{Capture\+Thread}. Also connects the \doxylink{class_capture_thread}{Capture\+Thread}\textquotesingle{}s new\+Frameset signal to \doxylink{class_sick_g_u_i_ad92ec970e9e45866ec7f7554ab1b13f7}{Sick\+GUI\+::new\+Frameset} slot.
+
+\begin{DoxyReturn}{Returns}
+true if started, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_sick_g_u_i_af2d3fbe8f33123a10c35fbfe9d0a5773}\label{class_sick_g_u_i_af2d3fbe8f33123a10c35fbfe9d0a5773} 
+\index{SickGUI@{SickGUI}!startPlcThread@{startPlcThread}}
+\index{startPlcThread@{startPlcThread}!SickGUI@{SickGUI}}
+\doxysubsubsection{\texorpdfstring{startPlcThread()}{startPlcThread()}}
+{\footnotesize\ttfamily bool Sick\+GUI\+::start\+Plc\+Thread (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Starts plc thread. 
+
+Creates snap7 client, connects to plc, and starts \doxylink{class_plc_thread}{Plc\+Thread}. Also connects the \doxylink{class_capture_thread}{Capture\+Thread}\textquotesingle{}s new\+Frameset signal to \doxylink{class_plc_thread_a1c3c07593f1adc04dca82099e52a4656}{Plc\+Thread\+::new\+Frameset} slot.
+
+\begin{DoxyNote}{Note}
+This method cannot be called unless \doxylink{class_sick_g_u_i_a17628a0479af79698c8326df5486ae5d}{start\+Camera\+Thread()} was called and returned true.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+true if started, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_sick_g_u_i_a1d8901fe58fd749cbb5c5db4543bb726}\label{class_sick_g_u_i_a1d8901fe58fd749cbb5c5db4543bb726} 
+\index{SickGUI@{SickGUI}!startThreads@{startThreads}}
+\index{startThreads@{startThreads}!SickGUI@{SickGUI}}
+\doxysubsubsection{\texorpdfstring{startThreads()}{startThreads()}}
+{\footnotesize\ttfamily void Sick\+GUI\+::start\+Threads (\begin{DoxyParamCaption}\item[{QPromise$<$ bool $>$ \&}]{promise }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Method to start camera and plc threads. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em promise} & Output promise \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_sick_g_u_i_a945bc46b6b9517e84d1e99a1c53de7c9}\label{class_sick_g_u_i_a945bc46b6b9517e84d1e99a1c53de7c9} 
+\index{SickGUI@{SickGUI}!updateCharts@{updateCharts}}
+\index{updateCharts@{updateCharts}!SickGUI@{SickGUI}}
+\doxysubsubsection{\texorpdfstring{updateCharts()}{updateCharts()}}
+{\footnotesize\ttfamily void Sick\+GUI\+::update\+Charts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Updates depth and intensity histograms. 
+
+Grabs the latest frameset from the frameset buffer and calls \doxylink{class_histogram_widget_a599bda635a4751bd6c83349eb407ab77}{Histogram\+Widget\+::update\+Histogram} followed by Histogram\+Widget\+::update(). \Hypertarget{class_sick_g_u_i_aeab61b5b968b32eb196d6d9595cf327f}\label{class_sick_g_u_i_aeab61b5b968b32eb196d6d9595cf327f} 
+\index{SickGUI@{SickGUI}!updateDisplay@{updateDisplay}}
+\index{updateDisplay@{updateDisplay}!SickGUI@{SickGUI}}
+\doxysubsubsection{\texorpdfstring{updateDisplay()}{updateDisplay()}}
+{\footnotesize\ttfamily void Sick\+GUI\+::update\+Display (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Shows latest camera frame. 
+
+Grabs the latest frameset from the frameset buffer and converts the selected frame type to a QImage. Optionally overlays statistics. Uses \doxylink{class_sick_g_u_i_a09428bf68aaa7a52cdb8b3b93ade497d}{Sick\+GUI\+::write\+Image()} to display the image \Hypertarget{class_sick_g_u_i_a09428bf68aaa7a52cdb8b3b93ade497d}\label{class_sick_g_u_i_a09428bf68aaa7a52cdb8b3b93ade497d} 
+\index{SickGUI@{SickGUI}!writeImage@{writeImage}}
+\index{writeImage@{writeImage}!SickGUI@{SickGUI}}
+\doxysubsubsection{\texorpdfstring{writeImage()}{writeImage()}}
+{\footnotesize\ttfamily void Sick\+GUI\+::write\+Image (\begin{DoxyParamCaption}\item[{QImage}]{image }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Writes QImage to display. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em image} & Image to write. \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Sick\+GUI.\+h\item 
+\mbox{\hyperlink{_sick_g_u_i_8h}{Sick\+GUI.\+h}}\item 
 Sick\+GUI.\+cpp\end{DoxyCompactItemize}

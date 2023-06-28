@@ -15,6 +15,11 @@ Inheritance diagram for Histogram\+Widget\+:\begin{figure}[H]
 \includegraphics[height=2.000000cm]{class_histogram_widget}
 \end{center}
 \end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_histogram_widget_1_1_holder_of_static_histogram}{Holder\+Of\+Static\+Histogram}}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -36,6 +41,60 @@ void \mbox{\hyperlink{class_histogram_widget_a5a51a999ee9b5d07d809ab8edbb394b4}{
 \begin{DoxyCompactList}\small\item\em Overridden method that is called when a paint event occurs. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_histogram_widget_aac7b32878f96181aecd84d4c04ba3e68}{context\+Menu\+Event}} (QContext\+Menu\+Event \texorpdfstring{$\ast$}{*}event) override
 \begin{DoxyCompactList}\small\item\em Overridden method that is called when a context menu event occurs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_histogram_widget_a83c3752527900e5ba4a9682acdfafbc9}\label{class_histogram_widget_a83c3752527900e5ba4a9682acdfafbc9} 
+void {\bfseries set\+Graph\+XOffset\+For\+XAxis} (bool for\+Label)
+\item 
+\Hypertarget{class_histogram_widget_a5c59e05d4470dd99bdbac9b06953a298}\label{class_histogram_widget_a5c59e05d4470dd99bdbac9b06953a298} 
+void {\bfseries set\+Graph\+YOffset\+For\+YAxis} (bool for\+Label)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_histogram_widget_a3360a5562a05a930d01a799de00bc355}\label{class_histogram_widget_a3360a5562a05a930d01a799de00bc355} 
+bool {\bfseries show\+XAxis} = false
+\item 
+\Hypertarget{class_histogram_widget_a2c581be1deca32690e9a4b9b6eadc753}\label{class_histogram_widget_a2c581be1deca32690e9a4b9b6eadc753} 
+bool {\bfseries show\+YAxis} = false
+\item 
+\Hypertarget{class_histogram_widget_a0783cf7ec2177305b6e197983dd28ba9}\label{class_histogram_widget_a0783cf7ec2177305b6e197983dd28ba9} 
+std\+::string {\bfseries x\+Axis\+Label} = \"{}\"{}
+\item 
+\Hypertarget{class_histogram_widget_ae09d26d9e46010769aeb8ec31a7eb6bf}\label{class_histogram_widget_ae09d26d9e46010769aeb8ec31a7eb6bf} 
+std\+::string {\bfseries y\+Axis\+Label} = \"{}\"{}
+\item 
+\Hypertarget{class_histogram_widget_abc9ae08e44bd5740b70de5090e3de03e}\label{class_histogram_widget_abc9ae08e44bd5740b70de5090e3de03e} 
+std\+::vector$<$ double $>$ {\bfseries x\+Axis}
+\item 
+\Hypertarget{class_histogram_widget_a9230f76ab8004bef7abb2f230cc2ee6e}\label{class_histogram_widget_a9230f76ab8004bef7abb2f230cc2ee6e} 
+std\+::vector$<$ double $>$ {\bfseries y\+Axis}
+\item 
+\Hypertarget{class_histogram_widget_a6c8b9fb27e8346a8bd788fb7455196b2}\label{class_histogram_widget_a6c8b9fb27e8346a8bd788fb7455196b2} 
+\mbox{\hyperlink{struct_histogram_widget_1_1_holder_of_static_histogram}{Holder\+Of\+Static\+Histogram}} {\bfseries hs}
+\item 
+\Hypertarget{class_histogram_widget_a5fced7e474af8777f30602e85d7428f2}\label{class_histogram_widget_a5fced7e474af8777f30602e85d7428f2} 
+const size\+\_\+t {\bfseries min\+Val}
+\item 
+\Hypertarget{class_histogram_widget_a3dd78df3ec842e0f266c2a0f500adf08}\label{class_histogram_widget_a3dd78df3ec842e0f266c2a0f500adf08} 
+const size\+\_\+t {\bfseries max\+Val}
+\item 
+\Hypertarget{class_histogram_widget_ab3a7ad4c376636def5f0b325506a0a44}\label{class_histogram_widget_ab3a7ad4c376636def5f0b325506a0a44} 
+const size\+\_\+t {\bfseries num\+Bins}
+\item 
+\Hypertarget{class_histogram_widget_aaa94979873ac26c14e909e6bbf8d30b4}\label{class_histogram_widget_aaa94979873ac26c14e909e6bbf8d30b4} 
+const size\+\_\+t {\bfseries max\+Count}
+\item 
+\Hypertarget{class_histogram_widget_aa82a095b0b281f0e3266d27b0add936d}\label{class_histogram_widget_aa82a095b0b281f0e3266d27b0add936d} 
+const int {\bfseries PADDING} = 3
+\item 
+\Hypertarget{class_histogram_widget_a6d5d7bf8844488baf5d67d6a5db44529}\label{class_histogram_widget_a6d5d7bf8844488baf5d67d6a5db44529} 
+int {\bfseries X\+\_\+\+GRAPH\+\_\+\+OFFSET} = 50
+\item 
+\Hypertarget{class_histogram_widget_af24829a5682d554c41403fdbf4a4a8f7}\label{class_histogram_widget_af24829a5682d554c41403fdbf4a4a8f7} 
+int {\bfseries Y\+\_\+\+GRAPH\+\_\+\+OFFSET} = 50
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -183,5 +242,5 @@ Updates the histogram with the provided data.
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-widgets/Histogram\+Widget.\+h\item 
+widgets/\mbox{\hyperlink{_histogram_widget_8h}{Histogram\+Widget.\+h}}\item 
 widgets/Histogram\+Widget.\+cpp\end{DoxyCompactItemize}

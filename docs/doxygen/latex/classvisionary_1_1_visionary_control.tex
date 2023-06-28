@@ -40,6 +40,45 @@ bool \mbox{\hyperlink{classvisionary_1_1_visionary_control_a9d81896b4a8c75fa88d7
 \Hypertarget{classvisionary_1_1_visionary_control_a3cdb0a16107d7022225cb50b29f2ebd7}\label{classvisionary_1_1_visionary_control_a3cdb0a16107d7022225cb50b29f2ebd7} 
 static constexpr uint32\+\_\+t {\bfseries k\+Session\+Timeout\+\_\+ms} = 5000
 \begin{DoxyCompactList}\small\item\em Default session timeout. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvisionary_1_1_visionary_control_a60e42b66a49090f5720b270325c3328f}\label{classvisionary_1_1_visionary_control_a60e42b66a49090f5720b270325c3328f} 
+std\+::string {\bfseries receive\+Co\+La\+Response} ()
+\item 
+\Hypertarget{classvisionary_1_1_visionary_control_aee96196d04e6fdf907604ed458c70968}\label{classvisionary_1_1_visionary_control_aee96196d04e6fdf907604ed458c70968} 
+\mbox{\hyperlink{classvisionary_1_1_co_la_command}{Co\+La\+Command}} {\bfseries receive\+Co\+La\+Command} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvisionary_1_1_visionary_control_ab62497a6995c5144414a6463047b2dea}\label{classvisionary_1_1_visionary_control_ab62497a6995c5144414a6463047b2dea} 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classvisionary_1_1_tcp_socket}{Tcp\+Socket}} $>$ {\bfseries m\+\_\+p\+Transport}
+\item 
+\Hypertarget{classvisionary_1_1_visionary_control_a0d7a0371848bc96ccaebdef1eecb3ee6}\label{classvisionary_1_1_visionary_control_a0d7a0371848bc96ccaebdef1eecb3ee6} 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classvisionary_1_1_i_protocol_handler}{IProtocol\+Handler}} $>$ {\bfseries m\+\_\+p\+Protocol\+Handler}
+\item 
+\Hypertarget{classvisionary_1_1_visionary_control_ab0e0aa76dbd142fe4f64c12cdc9ce648}\label{classvisionary_1_1_visionary_control_ab0e0aa76dbd142fe4f64c12cdc9ce648} 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classvisionary_1_1_i_authentication}{IAuthentication}} $>$ {\bfseries m\+\_\+p\+Authentication}
+\item 
+\Hypertarget{classvisionary_1_1_visionary_control_aedfc2d9b0313d7adcc622ab2335eae57}\label{classvisionary_1_1_visionary_control_aedfc2d9b0313d7adcc622ab2335eae57} 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classvisionary_1_1_control_session}{Control\+Session}} $>$ {\bfseries m\+\_\+p\+Control\+Session}
+\item 
+\Hypertarget{classvisionary_1_1_visionary_control_a95da8bc24c5120e3a266a10774fad97f}\label{classvisionary_1_1_visionary_control_a95da8bc24c5120e3a266a10774fad97f} 
+\mbox{\hyperlink{classvisionary_1_1_visionary_control_ad48d462fa9f65368bb9be70191372395}{Protocol\+Type}} {\bfseries m\+\_\+protocol\+Type}
+\item 
+\Hypertarget{classvisionary_1_1_visionary_control_a7abacc7a36d9821bb379b37196d2ac38}\label{classvisionary_1_1_visionary_control_a7abacc7a36d9821bb379b37196d2ac38} 
+std\+::string {\bfseries m\+\_\+hostname}
+\item 
+\Hypertarget{classvisionary_1_1_visionary_control_a27921d64e2781c2db8ac88b0d29b7d16}\label{classvisionary_1_1_visionary_control_a27921d64e2781c2db8ac88b0d29b7d16} 
+uint32\+\_\+t {\bfseries m\+\_\+session\+Timeout\+\_\+ms}
+\item 
+\Hypertarget{classvisionary_1_1_visionary_control_a922bf32cc750cd1d1937f1c2a0cd2682}\label{classvisionary_1_1_visionary_control_a922bf32cc750cd1d1937f1c2a0cd2682} 
+uint32\+\_\+t {\bfseries m\+\_\+connect\+Timeout\+\_\+ms}
+\item 
+\Hypertarget{classvisionary_1_1_visionary_control_a5d5be20f9da94b19cf26eb95fa7ab119}\label{classvisionary_1_1_visionary_control_a5d5be20f9da94b19cf26eb95fa7ab119} 
+bool {\bfseries m\+\_\+auto\+Reconnect}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Member Function Documentation}

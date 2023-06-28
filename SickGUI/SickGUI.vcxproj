@@ -57,10 +57,10 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <IncludePath>$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(ProjectDir)\widgets;$(ProjectDir)\sickapi\include;$(ProjectDir)\sickapi\src;$(ProjectDir)\sickapi\3pp;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(ProjectDir)\widgets;$(ProjectDir)\sickapi\include;$(ProjectDir)\sickapi\src;$(ProjectDir)\sickapi\3pp;$(ProjectDir)\sickapi\camimpl;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <IncludePath>$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(ProjectDir)\widgets;$(ProjectDir)\sickapi\include;$(ProjectDir)\sickapi\src;$(ProjectDir)\sickapi\3pp;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(ProjectDir)\widgets;$(ProjectDir)\sickapi\include;$(ProjectDir)\sickapi\src;$(ProjectDir)\sickapi\3pp;$(ProjectDir)\sickapi\camimpl;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -104,7 +104,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="widgets\CloseDockWidget.cpp" />
-    <ClCompile Include="QToolMenuButton.cpp" />
     <ClCompile Include="CaptureThread.cpp">
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
       <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).moc</QtMocFileName>
@@ -139,7 +138,7 @@
     <ClCompile Include="sickapi\src\VisionaryTMiniData.cpp" />
     <ClCompile Include="snap7\snap7.cpp" />
     <ClCompile Include="VisionaryAutoIPScanCustom.cpp" />
-    <ClCompile Include="VisionaryCamera.cpp" />
+    <ClCompile Include="cameraimpl\VisionaryCamera.cpp" />
     <ClCompile Include="widgets\AspectRatioPixmapLabel.cpp" />
     <ClCompile Include="widgets\HistogramWidget.cpp" />
     <QtRcc Include="SickGUI.qrc" />
@@ -152,10 +151,8 @@
       <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).moc</QtMocFileName>
     </ClCompile>
     <ClCompile Include="main.cpp" />
-    <QtUic Include="StreamSettingDialog.ui" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="QToolMenuButton.h" />
     <QtMoc Include="widgets\AspectRatioPixmapLabel.h" />
     <QtMoc Include="widgets\HistogramWidget.h" />
     <QtMoc Include="widgets\CloseDockWidget.h" />
@@ -197,7 +194,7 @@
     <QtMoc Include="PlcThread.h" />
     <ClInclude Include="snap7\snap7.h" />
     <ClInclude Include="VisionaryAutoIPScanCustom.h" />
-    <ClInclude Include="VisionaryCamera.h" />
+    <ClInclude Include="cameraimpl\VisionaryCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="snap7\snap7.dll">
@@ -211,6 +208,7 @@
     <Library Include="snap7\snap7.lib" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Doxyfile" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

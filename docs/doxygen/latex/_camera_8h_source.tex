@@ -1,36 +1,37 @@
 \doxysection{Camera.\+h}
-\hypertarget{_camera_8h_source}{}\label{_camera_8h_source}
+\hypertarget{_camera_8h_source}{}\label{_camera_8h_source}\mbox{\hyperlink{_camera_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
-\DoxyCodeLine{00002\ }
-\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <qthread.h>}}
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <map>}}
-\DoxyCodeLine{00005\ }
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}VisionaryFrameset.h"{}}}
-\DoxyCodeLine{00007\ }
-\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_camera}{Camera}}\ :\ \textcolor{keyword}{protected}\ QThread}
-\DoxyCodeLine{00017\ \{}
-\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{class_camera_a01f94c3543f56ede7af49dc778f19331}{Camera}}()\ \{\}}
-\DoxyCodeLine{00023\ }
-\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_camera_ac9ed2a1433c5afdfb9cdf5b282fbc350}{\string~Camera}}()\ \{\}}
-\DoxyCodeLine{00028\ }
-\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_camera_a86b0b93c14ef5e0bc3736bfaaf343b7f}{open}}()\ =\ 0;}
-\DoxyCodeLine{00035\ }
-\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_camera_a56cb2dfa677ed0c1bed120b4d4a769a1}{close}}()\ =\ 0;}
-\DoxyCodeLine{00042\ }
-\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_camera_a70c5abd6bd16f5c91fc3768d6d76f49c}{isOpen}}()\ =\ 0;}
-\DoxyCodeLine{00048\ }
-\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_camera_acdb890f53f359f4a1c3c72a8772228f0}{startCapture}}()\ =\ 0;}
-\DoxyCodeLine{00055\ }
-\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_camera_a0701c1d212f7c236e13f8980d2b2e566}{stopCapture}}()\ =\ 0;}
-\DoxyCodeLine{00062\ }
-\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_camera_afb93b43b0cca34497d614de8068e6ddf}{getNextFrameset}}(\mbox{\hyperlink{struct_frameset_1_1frameset__t}{Frameset::frameset\_t}}\&\ fs)\ =\ 0;}
-\DoxyCodeLine{00069\ }
-\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ std::map<std::string,\ std::string>\ \mbox{\hyperlink{class_camera_ac0d47627924a42ad2d42354144cd6670}{getParameters}}()}
-\DoxyCodeLine{00081\ \ \ \ \ \{}
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::map<std::string,\ std::string>();}
-\DoxyCodeLine{00083\ \ \ \ \ \}}
-\DoxyCodeLine{00084\ \};}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*****************************************************************/}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <qthread.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_visionary_frameset_8h}{VisionaryFrameset.h}}"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_camera}{Camera}}\ :\ \textcolor{keyword}{protected}\ QThread}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{class_camera_a01f94c3543f56ede7af49dc778f19331}{Camera}}()\ \{\}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_camera_ac9ed2a1433c5afdfb9cdf5b282fbc350}{\string~Camera}}()\ \{\}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_camera_a86b0b93c14ef5e0bc3736bfaaf343b7f}{open}}()\ =\ 0;}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_camera_a56cb2dfa677ed0c1bed120b4d4a769a1}{close}}()\ =\ 0;}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_camera_a70c5abd6bd16f5c91fc3768d6d76f49c}{isOpen}}()\ =\ 0;}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_camera_acdb890f53f359f4a1c3c72a8772228f0}{startCapture}}()\ =\ 0;}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_camera_a0701c1d212f7c236e13f8980d2b2e566}{stopCapture}}()\ =\ 0;}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_camera_afb93b43b0cca34497d614de8068e6ddf}{getNextFrameset}}(\mbox{\hyperlink{struct_frameset_1_1frameset__t}{Frameset::frameset\_t}}\&\ fs)\ =\ 0;}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ std::map<std::string,\ std::string>\ \mbox{\hyperlink{class_camera_ac0d47627924a42ad2d42354144cd6670}{getParameters}}()}
+\DoxyCodeLine{00080\ \ \ \ \ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::map<std::string,\ std::string>();}
+\DoxyCodeLine{00082\ \ \ \ \ \}}
+\DoxyCodeLine{00083\ \};}
 
 \end{DoxyCode}

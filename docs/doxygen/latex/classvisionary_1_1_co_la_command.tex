@@ -27,6 +27,30 @@ Co\+La\+Error\+::\+Enum {\bfseries get\+Error} ()
 \Hypertarget{classvisionary_1_1_co_la_command_a414a39d91212cc2179e5e425b74dee19}\label{classvisionary_1_1_co_la_command_a414a39d91212cc2179e5e425b74dee19} 
 static \mbox{\hyperlink{classvisionary_1_1_co_la_command}{Co\+La\+Command}} {\bfseries network\+Error\+Command} ()
 \begin{DoxyCompactList}\small\item\em Create a command for network errors. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvisionary_1_1_co_la_command_af5ee5fce07d58af061eb524e29176854}\label{classvisionary_1_1_co_la_command_af5ee5fce07d58af061eb524e29176854} 
+{\bfseries Co\+La\+Command} (Co\+La\+Command\+Type\+::\+Enum command\+Type, Co\+La\+Error\+::\+Enum error, const char \texorpdfstring{$\ast$}{*}name)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classvisionary_1_1_co_la_command}{Co\+La\+Command} with the given command type, error, and name, but without any data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvisionary_1_1_co_la_command_af19d22c4cb332320559cf62fd72fcf25}\label{classvisionary_1_1_co_la_command_af19d22c4cb332320559cf62fd72fcf25} 
+std\+::vector$<$ uint8\+\_\+t $>$ {\bfseries m\+\_\+buffer}
+\item 
+\Hypertarget{classvisionary_1_1_co_la_command_a46e2a5c031ee6c4d22eb1ce622e15f8e}\label{classvisionary_1_1_co_la_command_a46e2a5c031ee6c4d22eb1ce622e15f8e} 
+Co\+La\+Command\+Type\+::\+Enum {\bfseries m\+\_\+type}
+\item 
+\Hypertarget{classvisionary_1_1_co_la_command_ac22abea814276cf347c30e576a0d24df}\label{classvisionary_1_1_co_la_command_ac22abea814276cf347c30e576a0d24df} 
+std\+::string {\bfseries m\+\_\+name}
+\item 
+\Hypertarget{classvisionary_1_1_co_la_command_aadfaab5fcbf541afb320aafb961c5e1f}\label{classvisionary_1_1_co_la_command_aadfaab5fcbf541afb320aafb961c5e1f} 
+size\+\_\+t {\bfseries m\+\_\+parameter\+Offset}
+\item 
+\Hypertarget{classvisionary_1_1_co_la_command_a345ce636896c202ccde38c6d91267139}\label{classvisionary_1_1_co_la_command_a345ce636896c202ccde38c6d91267139} 
+Co\+La\+Error\+::\+Enum {\bfseries m\+\_\+error}
+\end{DoxyCompactItemize}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

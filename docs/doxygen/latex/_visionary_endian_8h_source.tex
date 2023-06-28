@@ -17,179 +17,179 @@
 \DoxyCodeLine{00013\ }
 \DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ ENDIAN\_LITTLE}}
 \DoxyCodeLine{00015\ }
-\DoxyCodeLine{00016\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacevisionary}{visionary}}\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacevisionary}{visionary}}}
 \DoxyCodeLine{00017\ \{}
 \DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \textcolor{comment}{//-\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/}}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{comment}{//-\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/}}
 \DoxyCodeLine{00020\ }
-\DoxyCodeLine{00021\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>}
-\DoxyCodeLine{00022\ T\ readUnaligned(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *ptr)}
-\DoxyCodeLine{00023\ \{}
-\DoxyCodeLine{00024\ \ \ T\ r;}
-\DoxyCodeLine{00025\ \ \ memcpy(\&r,\ ptr,\ \textcolor{keyword}{sizeof}(T));}
-\DoxyCodeLine{00026\ \ \ \textcolor{keywordflow}{return}\ r;}
-\DoxyCodeLine{00027\ \}}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{00022\ \ \ \ \ T\ readUnaligned(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ ptr)}
+\DoxyCodeLine{00023\ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ T\ r;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ memcpy(\&r,\ ptr,\ \textcolor{keyword}{sizeof}(T));}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ r;}
+\DoxyCodeLine{00027\ \ \ \ \ \}}
 \DoxyCodeLine{00028\ }
-\DoxyCodeLine{00029\ \textcolor{comment}{//-\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//-\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/}}
 \DoxyCodeLine{00030\ }
 \DoxyCodeLine{00031\ }
-\DoxyCodeLine{00032\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ TAlias,\ \textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00033\ \textcolor{keyword}{inline}\ T\ byteswapAlias(T\ val);}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ TAlias,\ \textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{inline}\ T\ byteswapAlias(T\ val);}
 \DoxyCodeLine{00034\ }
-\DoxyCodeLine{00035\ \textcolor{comment}{//-\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/}}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//-\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/}}
 \DoxyCodeLine{00036\ }
-\DoxyCodeLine{00037\ \textcolor{keyword}{inline}\ uint8\_t\ byteswap(uint8\_t\ val)}
-\DoxyCodeLine{00038\ \{}
-\DoxyCodeLine{00039\ \ \ \textcolor{keywordflow}{return}\ val;}
-\DoxyCodeLine{00040\ \}}
-\DoxyCodeLine{00041\ \textcolor{keyword}{inline}\ int8\_t\ byteswap(int8\_t\ val)}
-\DoxyCodeLine{00042\ \{}
-\DoxyCodeLine{00043\ \ \ \textcolor{keywordflow}{return}\ byteswapAlias<uint8\_t>(val);}
-\DoxyCodeLine{00044\ \}}
-\DoxyCodeLine{00045\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{char}\ byteswap(\textcolor{keywordtype}{char}\ val)}
-\DoxyCodeLine{00046\ \{}
-\DoxyCodeLine{00047\ \ \ \textcolor{keywordflow}{return}\ byteswapAlias<uint8\_t>(val);}
-\DoxyCodeLine{00048\ \}}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{inline}\ uint8\_t\ byteswap(uint8\_t\ val)}
+\DoxyCodeLine{00038\ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ val;}
+\DoxyCodeLine{00040\ \ \ \ \ \}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{inline}\ int8\_t\ byteswap(int8\_t\ val)}
+\DoxyCodeLine{00042\ \ \ \ \ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ byteswapAlias<uint8\_t>(val);}
+\DoxyCodeLine{00044\ \ \ \ \ \}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{char}\ byteswap(\textcolor{keywordtype}{char}\ val)}
+\DoxyCodeLine{00046\ \ \ \ \ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ byteswapAlias<uint8\_t>(val);}
+\DoxyCodeLine{00048\ \ \ \ \ \}}
 \DoxyCodeLine{00049\ }
-\DoxyCodeLine{00050\ \textcolor{comment}{//-\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/}}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{comment}{//-\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/}}
 \DoxyCodeLine{00051\ }
-\DoxyCodeLine{00052\ \textcolor{keyword}{inline}\ uint16\_t\ byteswap(uint16\_t\ val)}
-\DoxyCodeLine{00053\ \{}
-\DoxyCodeLine{00054\ \ \ \textcolor{keywordflow}{return}\ ((val\ <<\ 8)\ \&\ 0xFF00)\ |\ ((val\ >>\ 8)\ \&\ 0x00FF);}
-\DoxyCodeLine{00055\ \}}
-\DoxyCodeLine{00056\ \textcolor{keyword}{inline}\ int16\_t\ byteswap(int16\_t\ val)}
-\DoxyCodeLine{00057\ \{}
-\DoxyCodeLine{00058\ \ \ \textcolor{keywordflow}{return}\ byteswapAlias<uint16\_t>(val);}
-\DoxyCodeLine{00059\ \}}
-\DoxyCodeLine{00060\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{wchar\_t}\ byteswap(\textcolor{keywordtype}{wchar\_t}\ val)}
-\DoxyCodeLine{00061\ \{}
-\DoxyCodeLine{00062\ \ \ \textcolor{keywordflow}{return}\ byteswapAlias<uint16\_t>(val);}
-\DoxyCodeLine{00063\ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{inline}\ uint16\_t\ byteswap(uint16\_t\ val)}
+\DoxyCodeLine{00053\ \ \ \ \ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ((val\ <<\ 8)\ \&\ 0xFF00)\ |\ ((val\ >>\ 8)\ \&\ 0x00FF);}
+\DoxyCodeLine{00055\ \ \ \ \ \}}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{inline}\ int16\_t\ byteswap(int16\_t\ val)}
+\DoxyCodeLine{00057\ \ \ \ \ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ byteswapAlias<uint16\_t>(val);}
+\DoxyCodeLine{00059\ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{wchar\_t}\ byteswap(\textcolor{keywordtype}{wchar\_t}\ val)}
+\DoxyCodeLine{00061\ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ byteswapAlias<uint16\_t>(val);}
+\DoxyCodeLine{00063\ \ \ \ \ \}}
 \DoxyCodeLine{00064\ }
-\DoxyCodeLine{00065\ \textcolor{comment}{//-\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/}}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{comment}{//-\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/}}
 \DoxyCodeLine{00066\ }
-\DoxyCodeLine{00067\ \textcolor{keyword}{inline}\ uint32\_t\ byteswap(uint32\_t\ val)}
-\DoxyCodeLine{00068\ \{}
-\DoxyCodeLine{00069\ \ \ val\ =\ ((val\ <<\ 8)\ \&\ 0xFF00FF00)\ |\ ((val\ >>\ 8)\ \&\ 0x00FF00FF);}
-\DoxyCodeLine{00070\ \ \ \textcolor{keywordflow}{return}\ ((val\ <<\ 16)\ \&\ 0xFFFF0000)\ |\ ((val\ >>\ 16)\ \&\ 0x0000FFFF);}
-\DoxyCodeLine{00071\ \}}
-\DoxyCodeLine{00072\ \textcolor{keyword}{inline}\ int32\_t\ byteswap(int32\_t\ val)}
-\DoxyCodeLine{00073\ \{}
-\DoxyCodeLine{00074\ \ \ \textcolor{keywordflow}{return}\ byteswapAlias<uint32\_t>(val);}
-\DoxyCodeLine{00075\ \}}
-\DoxyCodeLine{00076\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{float}\ byteswap(\textcolor{keywordtype}{float}\ val)}
-\DoxyCodeLine{00077\ \{}
-\DoxyCodeLine{00078\ \ \ \textcolor{keyword}{union\ }\{}
-\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{float}\ f32;}
-\DoxyCodeLine{00080\ \ \ \ \ uint32\_t\ \ u32;}
-\DoxyCodeLine{00081\ \ \ \}\ v;}
-\DoxyCodeLine{00082\ \ \ v.f32\ =\ val;}
-\DoxyCodeLine{00083\ \ \ v.u32\ =\ byteswap(v.u32);}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{inline}\ uint32\_t\ byteswap(uint32\_t\ val)}
+\DoxyCodeLine{00068\ \ \ \ \ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ val\ =\ ((val\ <<\ 8)\ \&\ 0xFF00FF00)\ |\ ((val\ >>\ 8)\ \&\ 0x00FF00FF);}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ((val\ <<\ 16)\ \&\ 0xFFFF0000)\ |\ ((val\ >>\ 16)\ \&\ 0x0000FFFF);}
+\DoxyCodeLine{00071\ \ \ \ \ \}}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{inline}\ int32\_t\ byteswap(int32\_t\ val)}
+\DoxyCodeLine{00073\ \ \ \ \ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ byteswapAlias<uint32\_t>(val);}
+\DoxyCodeLine{00075\ \ \ \ \ \}}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{float}\ byteswap(\textcolor{keywordtype}{float}\ val)}
+\DoxyCodeLine{00077\ \ \ \ \ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keyword}{union\ }\{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ f32;}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ \ u32;}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \}\ v;}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ v.f32\ =\ val;}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ v.u32\ =\ byteswap(v.u32);}
 \DoxyCodeLine{00084\ }
-\DoxyCodeLine{00085\ \ \ \textcolor{keywordflow}{return}\ v.f32;}
-\DoxyCodeLine{00086\ \}}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ v.f32;}
+\DoxyCodeLine{00086\ \ \ \ \ \}}
 \DoxyCodeLine{00087\ }
-\DoxyCodeLine{00088\ \textcolor{comment}{//-\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/}}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{comment}{//-\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/}}
 \DoxyCodeLine{00089\ }
-\DoxyCodeLine{00090\ \textcolor{keyword}{inline}\ uint64\_t\ byteswap(uint64\_t\ val)}
-\DoxyCodeLine{00091\ \{}
-\DoxyCodeLine{00092\ \ \ val\ =\ ((val\ <<\ 8)\ \&\ 0xFF00FF00FF00FF00)\ |\ ((val\ >>\ 8)\ \&\ 0x00FF00FF00FF00FF);}
-\DoxyCodeLine{00093\ \ \ val\ =\ ((val\ <<\ 16)\ \&\ 0xFFFF0000FFFF0000)\ |\ ((val\ >>\ 16)\ \&\ 0x0000FFFF0000FFFF);}
-\DoxyCodeLine{00094\ \ \ \textcolor{keywordflow}{return}\ ((val\ <<\ 32)\ \&\ 0xFFFFFFFF00000000)\ |\ ((val\ >>\ 32)\ \&\ 0x00000000FFFFFFFF);}
-\DoxyCodeLine{00095\ \}}
-\DoxyCodeLine{00096\ \textcolor{keyword}{inline}\ int64\_t\ byteswap(int64\_t\ val)}
-\DoxyCodeLine{00097\ \{}
-\DoxyCodeLine{00098\ \ \ \textcolor{keywordflow}{return}\ byteswapAlias<uint64\_t>(val);}
-\DoxyCodeLine{00099\ \}}
-\DoxyCodeLine{00100\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ byteswap(\textcolor{keywordtype}{double}\ val)}
-\DoxyCodeLine{00101\ \{}
-\DoxyCodeLine{00102\ \ \ \textcolor{keyword}{union\ }\{}
-\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordtype}{double}\ f64;}
-\DoxyCodeLine{00104\ \ \ \ \ uint64\_t\ \ u64;}
-\DoxyCodeLine{00105\ \ \ \}\ v;}
-\DoxyCodeLine{00106\ \ \ v.f64\ =\ val;}
-\DoxyCodeLine{00107\ \ \ v.u64\ =\ byteswap(v.u64);}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keyword}{inline}\ uint64\_t\ byteswap(uint64\_t\ val)}
+\DoxyCodeLine{00091\ \ \ \ \ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ val\ =\ ((val\ <<\ 8)\ \&\ 0xFF00FF00FF00FF00)\ |\ ((val\ >>\ 8)\ \&\ 0x00FF00FF00FF00FF);}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ val\ =\ ((val\ <<\ 16)\ \&\ 0xFFFF0000FFFF0000)\ |\ ((val\ >>\ 16)\ \&\ 0x0000FFFF0000FFFF);}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ((val\ <<\ 32)\ \&\ 0xFFFFFFFF00000000)\ |\ ((val\ >>\ 32)\ \&\ 0x00000000FFFFFFFF);}
+\DoxyCodeLine{00095\ \ \ \ \ \}}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keyword}{inline}\ int64\_t\ byteswap(int64\_t\ val)}
+\DoxyCodeLine{00097\ \ \ \ \ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ byteswapAlias<uint64\_t>(val);}
+\DoxyCodeLine{00099\ \ \ \ \ \}}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ byteswap(\textcolor{keywordtype}{double}\ val)}
+\DoxyCodeLine{00101\ \ \ \ \ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keyword}{union\ }\{}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ f64;}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ uint64\_t\ \ u64;}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \}\ v;}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ v.f64\ =\ val;}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ v.u64\ =\ byteswap(v.u64);}
 \DoxyCodeLine{00108\ }
-\DoxyCodeLine{00109\ \ \ \textcolor{keywordflow}{return}\ v.f64;}
-\DoxyCodeLine{00110\ \}}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ v.f64;}
+\DoxyCodeLine{00110\ \ \ \ \ \}}
 \DoxyCodeLine{00111\ }
-\DoxyCodeLine{00112\ \textcolor{comment}{//-\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/}}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{comment}{//-\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/}}
 \DoxyCodeLine{00113\ }
-\DoxyCodeLine{00114\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ TAlias,\ \textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00115\ \textcolor{keyword}{inline}\ T\ byteswapAlias(T\ val)}
-\DoxyCodeLine{00116\ \{}
-\DoxyCodeLine{00117\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(byteswap(\textcolor{keyword}{static\_cast<}TAlias\textcolor{keyword}{>}(val)));}
-\DoxyCodeLine{00118\ \}}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ TAlias,\ \textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keyword}{inline}\ T\ byteswapAlias(T\ val)}
+\DoxyCodeLine{00116\ \ \ \ \ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(byteswap(\textcolor{keyword}{static\_cast<}TAlias\textcolor{keyword}{>}(val)));}
+\DoxyCodeLine{00118\ \ \ \ \ \}}
 \DoxyCodeLine{00119\ }
-\DoxyCodeLine{00120\ \textcolor{comment}{//-\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/}}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{comment}{//-\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/}}
 \DoxyCodeLine{00121\ }
 \DoxyCodeLine{00122\ \textcolor{preprocessor}{\#if\ defined\ ENDIAN\_LITTLE}}
-\DoxyCodeLine{00123\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00124\ \textcolor{keyword}{inline}\ T\ nativeToLittleEndian(T\ x)}
-\DoxyCodeLine{00125\ \{}
-\DoxyCodeLine{00126\ \ \ \textcolor{keywordflow}{return}\ x;}
-\DoxyCodeLine{00127\ \}}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keyword}{inline}\ T\ nativeToLittleEndian(T\ x)}
+\DoxyCodeLine{00125\ \ \ \ \ \{}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ x;}
+\DoxyCodeLine{00127\ \ \ \ \ \}}
 \DoxyCodeLine{00128\ }
-\DoxyCodeLine{00129\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00130\ \textcolor{keyword}{inline}\ T\ littleEndianToNative(T\ x)}
-\DoxyCodeLine{00131\ \{}
-\DoxyCodeLine{00132\ \ \ \textcolor{keywordflow}{return}\ x;}
-\DoxyCodeLine{00133\ \}}
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keyword}{inline}\ T\ littleEndianToNative(T\ x)}
+\DoxyCodeLine{00131\ \ \ \ \ \{}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ x;}
+\DoxyCodeLine{00133\ \ \ \ \ \}}
 \DoxyCodeLine{00134\ }
-\DoxyCodeLine{00135\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00136\ \textcolor{keyword}{inline}\ T\ nativeToBigEndian(T\ x)}
-\DoxyCodeLine{00137\ \{}
-\DoxyCodeLine{00138\ \ \ \textcolor{keywordflow}{return}\ byteswap(x);}
-\DoxyCodeLine{00139\ \}}
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keyword}{inline}\ T\ nativeToBigEndian(T\ x)}
+\DoxyCodeLine{00137\ \ \ \ \ \{}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ byteswap(x);}
+\DoxyCodeLine{00139\ \ \ \ \ \}}
 \DoxyCodeLine{00140\ }
-\DoxyCodeLine{00141\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00142\ \textcolor{keyword}{inline}\ T\ bigEndianToNative(T\ x)}
-\DoxyCodeLine{00143\ \{}
-\DoxyCodeLine{00144\ \ \ \textcolor{keywordflow}{return}\ byteswap(x);}
-\DoxyCodeLine{00145\ \}}
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keyword}{inline}\ T\ bigEndianToNative(T\ x)}
+\DoxyCodeLine{00143\ \ \ \ \ \{}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ byteswap(x);}
+\DoxyCodeLine{00145\ \ \ \ \ \}}
 \DoxyCodeLine{00146\ \textcolor{preprocessor}{\#elif\ defined\ ENDIAN\_BIG}}
-\DoxyCodeLine{00147\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00148\ \textcolor{keyword}{inline}\ T\ nativeToLittleEndian(T\ x)}
-\DoxyCodeLine{00149\ \{}
-\DoxyCodeLine{00150\ \ \ \textcolor{keywordflow}{return}\ byteswap(x);}
-\DoxyCodeLine{00151\ \}}
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keyword}{inline}\ T\ nativeToLittleEndian(T\ x)}
+\DoxyCodeLine{00149\ \ \ \ \ \{}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ byteswap(x);}
+\DoxyCodeLine{00151\ \ \ \ \ \}}
 \DoxyCodeLine{00152\ }
-\DoxyCodeLine{00153\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00154\ \textcolor{keyword}{inline}\ T\ littleEndianToNative(T\ x)}
-\DoxyCodeLine{00155\ \{}
-\DoxyCodeLine{00156\ \ \ \textcolor{keywordflow}{return}\ byteswap(x);}
-\DoxyCodeLine{00157\ \}}
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keyword}{inline}\ T\ littleEndianToNative(T\ x)}
+\DoxyCodeLine{00155\ \ \ \ \ \{}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ byteswap(x);}
+\DoxyCodeLine{00157\ \ \ \ \ \}}
 \DoxyCodeLine{00158\ }
-\DoxyCodeLine{00159\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00160\ \textcolor{keyword}{inline}\ T\ nativeToBigEndian(T\ x)}
-\DoxyCodeLine{00161\ \{}
-\DoxyCodeLine{00162\ \ \ \textcolor{keywordflow}{return}\ x;}
-\DoxyCodeLine{00163\ \}}
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keyword}{inline}\ T\ nativeToBigEndian(T\ x)}
+\DoxyCodeLine{00161\ \ \ \ \ \{}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ x;}
+\DoxyCodeLine{00163\ \ \ \ \ \}}
 \DoxyCodeLine{00164\ }
-\DoxyCodeLine{00165\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00166\ \textcolor{keyword}{inline}\ T\ bigEndianToNative(T\ x)}
-\DoxyCodeLine{00167\ \{}
-\DoxyCodeLine{00168\ \ \ \textcolor{keywordflow}{return}\ x;}
-\DoxyCodeLine{00169\ \}}
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keyword}{inline}\ T\ bigEndianToNative(T\ x)}
+\DoxyCodeLine{00167\ \ \ \ \ \{}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ x;}
+\DoxyCodeLine{00169\ \ \ \ \ \}}
 \DoxyCodeLine{00170\ \textcolor{preprocessor}{\#else}}
 \DoxyCodeLine{00171\ \textcolor{preprocessor}{\#error\ Endianess\ is\ not\ defined,\ please\ define\ either\ LITTLE\_ENDIAN\ or\ BIG\_ENDIAN\ depending\ on\ the\ platform.}}
 \DoxyCodeLine{00172\ \textcolor{preprocessor}{\#endif}}
 \DoxyCodeLine{00173\ }
 \DoxyCodeLine{00174\ \textcolor{comment}{//-\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/}}
 \DoxyCodeLine{00175\ }
-\DoxyCodeLine{00176\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00177\ \textcolor{keyword}{inline}\ T\ readUnalignBigEndian(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *ptr)}
-\DoxyCodeLine{00178\ \{}
-\DoxyCodeLine{00179\ \ \ \textcolor{keywordflow}{return}\ bigEndianToNative<T>(readUnaligned<T>(ptr));}
-\DoxyCodeLine{00180\ \}}
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00177\ \ \ \ \ \textcolor{keyword}{inline}\ T\ readUnalignBigEndian(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ ptr)}
+\DoxyCodeLine{00178\ \ \ \ \ \{}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ bigEndianToNative<T>(readUnaligned<T>(ptr));}
+\DoxyCodeLine{00180\ \ \ \ \ \}}
 \DoxyCodeLine{00181\ }
-\DoxyCodeLine{00182\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00183\ \textcolor{keyword}{inline}\ T\ readUnalignLittleEndian(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *ptr)}
-\DoxyCodeLine{00184\ \{}
-\DoxyCodeLine{00185\ \ \ \textcolor{keywordflow}{return}\ littleEndianToNative<T>(readUnaligned<T>(ptr));}
-\DoxyCodeLine{00186\ \}}
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00183\ \ \ \ \ \textcolor{keyword}{inline}\ T\ readUnalignLittleEndian(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ ptr)}
+\DoxyCodeLine{00184\ \ \ \ \ \{}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ littleEndianToNative<T>(readUnaligned<T>(ptr));}
+\DoxyCodeLine{00186\ \ \ \ \ \}}
 \DoxyCodeLine{00187\ }
-\DoxyCodeLine{00188\ \textcolor{comment}{//-\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/}}
+\DoxyCodeLine{00188\ \ \ \ \ \textcolor{comment}{//-\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/\ -\/}}
 \DoxyCodeLine{00189\ }
 \DoxyCodeLine{00190\ \}}
 

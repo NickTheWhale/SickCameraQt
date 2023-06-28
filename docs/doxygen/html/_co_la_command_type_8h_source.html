@@ -9,9 +9,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -46,6 +51,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('_co_la_command_type_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,16 +89,11 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_23d3d343015a8bd7e9dbef71a9e03858.html">sickapi</a></li><li class="navelem"><a class="el" href="dir_f9343132e416b1d631e13da8b9569f26.html">src</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">CoLaCommandType.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//</span></div>
+<a href="_co_la_command_type_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">// SPDX-License-Identifier: Unlicense</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">// </span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">// Created: October 2018</span></div>
@@ -86,32 +103,46 @@ $(function() {
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacevisionary.html">visionary</a> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacevisionary.html">visionary</a></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>{</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">// Available CoLa command types.</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">namespace </span>CoLaCommandType</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>  <span class="keyword">enum</span> Enum</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>  {</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    NETWORK_ERROR = -2,</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    UNKNOWN = -1,</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    READ_VARIABLE,</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    READ_VARIABLE_RESPONSE,</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    WRITE_VARIABLE,</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    WRITE_VARIABLE_RESPONSE,</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    METHOD_INVOCATION,</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    METHOD_RETURN_VALUE,</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    COLA_ERROR</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>  };</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>}</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="comment">// Available CoLa command types.</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="namespacevisionary_1_1_co_la_command_type.html">   15</a></span>    <span class="keyword">namespace </span>CoLaCommandType</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    {</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="namespacevisionary_1_1_co_la_command_type.html#ac6a07ccab53586bbf1b77bb2bd94bde6">   17</a></span>        <span class="keyword">enum</span> <a class="code hl_enumeration" href="namespacevisionary_1_1_co_la_command_type.html#ac6a07ccab53586bbf1b77bb2bd94bde6">Enum</a></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        {</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="namespacevisionary_1_1_co_la_command_type.html#ac6a07ccab53586bbf1b77bb2bd94bde6a5d1aa1045bdf65067751192d0f5d7ced">   19</a></span>            <a class="code hl_enumvalue" href="namespacevisionary_1_1_co_la_command_type.html#ac6a07ccab53586bbf1b77bb2bd94bde6a5d1aa1045bdf65067751192d0f5d7ced">NETWORK_ERROR</a> = -2,</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="namespacevisionary_1_1_co_la_command_type.html#ac6a07ccab53586bbf1b77bb2bd94bde6aa223272d95d8e9e1bb16ff7f71d4fe64">   20</a></span>            <a class="code hl_enumvalue" href="namespacevisionary_1_1_co_la_command_type.html#ac6a07ccab53586bbf1b77bb2bd94bde6aa223272d95d8e9e1bb16ff7f71d4fe64">UNKNOWN</a> = -1,</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="namespacevisionary_1_1_co_la_command_type.html#ac6a07ccab53586bbf1b77bb2bd94bde6a2b62cbb84d69432d8f5b37cfd5007550">   21</a></span>            <a class="code hl_enumvalue" href="namespacevisionary_1_1_co_la_command_type.html#ac6a07ccab53586bbf1b77bb2bd94bde6a2b62cbb84d69432d8f5b37cfd5007550">READ_VARIABLE</a>,</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="namespacevisionary_1_1_co_la_command_type.html#ac6a07ccab53586bbf1b77bb2bd94bde6a4886f2619025c84a5504636ca7deecea">   22</a></span>            <a class="code hl_enumvalue" href="namespacevisionary_1_1_co_la_command_type.html#ac6a07ccab53586bbf1b77bb2bd94bde6a4886f2619025c84a5504636ca7deecea">READ_VARIABLE_RESPONSE</a>,</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="namespacevisionary_1_1_co_la_command_type.html#ac6a07ccab53586bbf1b77bb2bd94bde6a595f1ab79beb6b62782b87836845ab9e">   23</a></span>            <a class="code hl_enumvalue" href="namespacevisionary_1_1_co_la_command_type.html#ac6a07ccab53586bbf1b77bb2bd94bde6a595f1ab79beb6b62782b87836845ab9e">WRITE_VARIABLE</a>,</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="namespacevisionary_1_1_co_la_command_type.html#ac6a07ccab53586bbf1b77bb2bd94bde6a9e37366a432668266eecbf839c1527a8">   24</a></span>            <a class="code hl_enumvalue" href="namespacevisionary_1_1_co_la_command_type.html#ac6a07ccab53586bbf1b77bb2bd94bde6a9e37366a432668266eecbf839c1527a8">WRITE_VARIABLE_RESPONSE</a>,</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="namespacevisionary_1_1_co_la_command_type.html#ac6a07ccab53586bbf1b77bb2bd94bde6a29f572013850f8ad1c5ba6c7dd358b24">   25</a></span>            <a class="code hl_enumvalue" href="namespacevisionary_1_1_co_la_command_type.html#ac6a07ccab53586bbf1b77bb2bd94bde6a29f572013850f8ad1c5ba6c7dd358b24">METHOD_INVOCATION</a>,</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="namespacevisionary_1_1_co_la_command_type.html#ac6a07ccab53586bbf1b77bb2bd94bde6a0d39cc5f5611366e1c67132f2d24c7ba">   26</a></span>            <a class="code hl_enumvalue" href="namespacevisionary_1_1_co_la_command_type.html#ac6a07ccab53586bbf1b77bb2bd94bde6a0d39cc5f5611366e1c67132f2d24c7ba">METHOD_RETURN_VALUE</a>,</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            <a class="code hl_enumvalue" href="namespacevisionary_1_1_co_la_command_type.html#ac6a07ccab53586bbf1b77bb2bd94bde6a1137f7d4ad4e18aaaf54a31b9f3693d5">COLA_ERROR</a></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="namespacevisionary_1_1_co_la_command_type.html#ac6a07ccab53586bbf1b77bb2bd94bde6a1137f7d4ad4e18aaaf54a31b9f3693d5">   28</a></span>        };</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    }</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>}</div>
+<div class="ttc" id="anamespacevisionary_1_1_co_la_command_type_html_ac6a07ccab53586bbf1b77bb2bd94bde6"><div class="ttname"><a href="namespacevisionary_1_1_co_la_command_type.html#ac6a07ccab53586bbf1b77bb2bd94bde6">visionary::CoLaCommandType::Enum</a></div><div class="ttdeci">Enum</div><div class="ttdef"><b>Definition</b> CoLaCommandType.h:18</div></div>
+<div class="ttc" id="anamespacevisionary_1_1_co_la_command_type_html_ac6a07ccab53586bbf1b77bb2bd94bde6a0d39cc5f5611366e1c67132f2d24c7ba"><div class="ttname"><a href="namespacevisionary_1_1_co_la_command_type.html#ac6a07ccab53586bbf1b77bb2bd94bde6a0d39cc5f5611366e1c67132f2d24c7ba">visionary::CoLaCommandType::METHOD_RETURN_VALUE</a></div><div class="ttdeci">@ METHOD_RETURN_VALUE</div><div class="ttdef"><b>Definition</b> CoLaCommandType.h:26</div></div>
+<div class="ttc" id="anamespacevisionary_1_1_co_la_command_type_html_ac6a07ccab53586bbf1b77bb2bd94bde6a1137f7d4ad4e18aaaf54a31b9f3693d5"><div class="ttname"><a href="namespacevisionary_1_1_co_la_command_type.html#ac6a07ccab53586bbf1b77bb2bd94bde6a1137f7d4ad4e18aaaf54a31b9f3693d5">visionary::CoLaCommandType::COLA_ERROR</a></div><div class="ttdeci">@ COLA_ERROR</div><div class="ttdef"><b>Definition</b> CoLaCommandType.h:27</div></div>
+<div class="ttc" id="anamespacevisionary_1_1_co_la_command_type_html_ac6a07ccab53586bbf1b77bb2bd94bde6a29f572013850f8ad1c5ba6c7dd358b24"><div class="ttname"><a href="namespacevisionary_1_1_co_la_command_type.html#ac6a07ccab53586bbf1b77bb2bd94bde6a29f572013850f8ad1c5ba6c7dd358b24">visionary::CoLaCommandType::METHOD_INVOCATION</a></div><div class="ttdeci">@ METHOD_INVOCATION</div><div class="ttdef"><b>Definition</b> CoLaCommandType.h:25</div></div>
+<div class="ttc" id="anamespacevisionary_1_1_co_la_command_type_html_ac6a07ccab53586bbf1b77bb2bd94bde6a2b62cbb84d69432d8f5b37cfd5007550"><div class="ttname"><a href="namespacevisionary_1_1_co_la_command_type.html#ac6a07ccab53586bbf1b77bb2bd94bde6a2b62cbb84d69432d8f5b37cfd5007550">visionary::CoLaCommandType::READ_VARIABLE</a></div><div class="ttdeci">@ READ_VARIABLE</div><div class="ttdef"><b>Definition</b> CoLaCommandType.h:21</div></div>
+<div class="ttc" id="anamespacevisionary_1_1_co_la_command_type_html_ac6a07ccab53586bbf1b77bb2bd94bde6a4886f2619025c84a5504636ca7deecea"><div class="ttname"><a href="namespacevisionary_1_1_co_la_command_type.html#ac6a07ccab53586bbf1b77bb2bd94bde6a4886f2619025c84a5504636ca7deecea">visionary::CoLaCommandType::READ_VARIABLE_RESPONSE</a></div><div class="ttdeci">@ READ_VARIABLE_RESPONSE</div><div class="ttdef"><b>Definition</b> CoLaCommandType.h:22</div></div>
+<div class="ttc" id="anamespacevisionary_1_1_co_la_command_type_html_ac6a07ccab53586bbf1b77bb2bd94bde6a595f1ab79beb6b62782b87836845ab9e"><div class="ttname"><a href="namespacevisionary_1_1_co_la_command_type.html#ac6a07ccab53586bbf1b77bb2bd94bde6a595f1ab79beb6b62782b87836845ab9e">visionary::CoLaCommandType::WRITE_VARIABLE</a></div><div class="ttdeci">@ WRITE_VARIABLE</div><div class="ttdef"><b>Definition</b> CoLaCommandType.h:23</div></div>
+<div class="ttc" id="anamespacevisionary_1_1_co_la_command_type_html_ac6a07ccab53586bbf1b77bb2bd94bde6a5d1aa1045bdf65067751192d0f5d7ced"><div class="ttname"><a href="namespacevisionary_1_1_co_la_command_type.html#ac6a07ccab53586bbf1b77bb2bd94bde6a5d1aa1045bdf65067751192d0f5d7ced">visionary::CoLaCommandType::NETWORK_ERROR</a></div><div class="ttdeci">@ NETWORK_ERROR</div><div class="ttdef"><b>Definition</b> CoLaCommandType.h:19</div></div>
+<div class="ttc" id="anamespacevisionary_1_1_co_la_command_type_html_ac6a07ccab53586bbf1b77bb2bd94bde6a9e37366a432668266eecbf839c1527a8"><div class="ttname"><a href="namespacevisionary_1_1_co_la_command_type.html#ac6a07ccab53586bbf1b77bb2bd94bde6a9e37366a432668266eecbf839c1527a8">visionary::CoLaCommandType::WRITE_VARIABLE_RESPONSE</a></div><div class="ttdeci">@ WRITE_VARIABLE_RESPONSE</div><div class="ttdef"><b>Definition</b> CoLaCommandType.h:24</div></div>
+<div class="ttc" id="anamespacevisionary_1_1_co_la_command_type_html_ac6a07ccab53586bbf1b77bb2bd94bde6aa223272d95d8e9e1bb16ff7f71d4fe64"><div class="ttname"><a href="namespacevisionary_1_1_co_la_command_type.html#ac6a07ccab53586bbf1b77bb2bd94bde6aa223272d95d8e9e1bb16ff7f71d4fe64">visionary::CoLaCommandType::UNKNOWN</a></div><div class="ttdeci">@ UNKNOWN</div><div class="ttdef"><b>Definition</b> CoLaCommandType.h:20</div></div>
 <div class="ttc" id="anamespacevisionary_html"><div class="ttname"><a href="namespacevisionary.html">visionary</a></div><div class="ttdef"><b>Definition</b> AuthenticationLegacy.cpp:14</div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_23d3d343015a8bd7e9dbef71a9e03858.html">sickapi</a></li><li class="navelem"><a class="el" href="dir_f9343132e416b1d631e13da8b9569f26.html">src</a></li><li class="navelem"><a class="el" href="_co_la_command_type_8h.html">CoLaCommandType.h</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+  </ul>
+</div>
 </body>
 </html>

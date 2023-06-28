@@ -11,16 +11,16 @@
 #include <cstdint>
 #include "CoLaCommand.h"
 
-namespace visionary 
+namespace visionary
 {
 
-class IProtocolHandler
-{
-public:
-  virtual ~IProtocolHandler() = default;
-  virtual bool openSession(uint8_t sessionTimeout /*secs*/) = 0;
-  virtual void closeSession() = 0;
-  virtual CoLaCommand send(CoLaCommand cmd) = 0;
-};
+	class IProtocolHandler
+	{
+	public:
+		virtual ~IProtocolHandler() = default;
+		virtual bool openSession(uint8_t sessionTimeout /*secs*/) = 0;
+		virtual void closeSession() = 0;
+		virtual CoLaCommand send(CoLaCommand cmd) = 0;
+	};
 
 }

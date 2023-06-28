@@ -1,91 +1,92 @@
 \doxysection{Histogram\+Widget.\+h}
 \hypertarget{_histogram_widget_8h_source}{}\label{_histogram_widget_8h_source}\index{widgets/HistogramWidget.h@{widgets/HistogramWidget.h}}
-
+\mbox{\hyperlink{_histogram_widget_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
-\DoxyCodeLine{00002\ }
-\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <qwidget.h>}}
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <boost/histogram.hpp>}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <algorithm>}}
-\DoxyCodeLine{00007\ }
-\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_histogram_widget}{HistogramWidget}}\ :\ \textcolor{keyword}{public}\ QWidget}
-\DoxyCodeLine{00015\ \{}
-\DoxyCodeLine{00016\ \ \ \ \ Q\_OBJECT}
-\DoxyCodeLine{00017\ }
-\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_histogram_widget}{HistogramWidget}}(\textcolor{keywordtype}{size\_t}\ minVal,\ \textcolor{keywordtype}{size\_t}\ maxVal,\ \textcolor{keywordtype}{size\_t}\ bins,\ \textcolor{keywordtype}{size\_t}\ maxCount,\ QWidget*\ parent\ =\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{00028\ }
-\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{class_histogram_widget_a76c7278ed776d108368d2a2dbaeab3d5}{\string~HistogramWidget}}();}
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_histogram_widget_a599bda635a4751bd6c83349eb407ab77}{updateHistogram}}(\textcolor{keyword}{const}\ std::vector<uint16\_t>\&\ data);}
-\DoxyCodeLine{00039\ }
-\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_histogram_widget_a85c75518f7fdfcd017763f62058b3097}{setXAxis}}(T\ start,\ T\ step,\ T\ stop,\ std::string\ label\ =\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keywordtype}{bool}\ reverse\ =\ \textcolor{keyword}{false})}
-\DoxyCodeLine{00053\ \ \ \ \ \{}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ showXAxis\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ xAxisLabel\ =\ label;}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ size\ =\ (stop\ -\/\ start)\ /\ step;}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ xAxis.clear();}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ i\ =\ 0;\ i\ <\ size;\ ++i)}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ xAxis.push\_back(start\ +\ i\ *\ step);}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (reverse)}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ std::reverse(xAxis.begin(),\ xAxis.end());}
-\DoxyCodeLine{00064\ \ \ \ \ \}}
-\DoxyCodeLine{00065\ }
-\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_histogram_widget_a2f4bda97d068b0bfd40b0cc0b660fd98}{setYAxis}}(T\ start,\ T\ step,\ T\ stop,\ std::string\ label\ =\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keywordtype}{bool}\ reverse\ =\ \textcolor{keyword}{false})}
-\DoxyCodeLine{00079\ \ \ \ \ \{}
-\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ showYAxis\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ yAxisLabel\ =\ label;}
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ size\ =\ (stop\ -\/\ start)\ /\ step;}
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ yAxis.clear();}
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ i\ =\ 0;\ i\ <\ size;\ ++i)}
-\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ yAxis.push\_back(start\ +\ i\ *\ step);}
-\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (reverse)}
-\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ std::reverse(xAxis.begin(),\ xAxis.end());}
-\DoxyCodeLine{00090\ \ \ \ \ \}}
-\DoxyCodeLine{00091\ }
-\DoxyCodeLine{00092\ \textcolor{keyword}{protected}:}
-\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_histogram_widget_a5a51a999ee9b5d07d809ab8edbb394b4}{paintEvent}}(QPaintEvent*\ event)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00098\ }
-\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_histogram_widget_aac7b32878f96181aecd84d4c04ba3e68}{contextMenuEvent}}(QContextMenuEvent*\ event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*****************************************************************/}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <qwidget.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <boost/histogram.hpp>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_histogram_widget}{HistogramWidget}}\ :\ \textcolor{keyword}{public}\ QWidget}
+\DoxyCodeLine{00023\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_histogram_widget}{HistogramWidget}}(\textcolor{keywordtype}{size\_t}\ minVal,\ \textcolor{keywordtype}{size\_t}\ maxVal,\ \textcolor{keywordtype}{size\_t}\ bins,\ \textcolor{keywordtype}{size\_t}\ maxCount,\ QWidget*\ parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{class_histogram_widget_a76c7278ed776d108368d2a2dbaeab3d5}{\string~HistogramWidget}}();}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_histogram_widget_a599bda635a4751bd6c83349eb407ab77}{updateHistogram}}(\textcolor{keyword}{const}\ std::vector<uint16\_t>\&\ data);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_histogram_widget_a85c75518f7fdfcd017763f62058b3097}{setXAxis}}(T\ start,\ T\ step,\ T\ stop,\ std::string\ label\ =\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keywordtype}{bool}\ reverse\ =\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00061\ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ showXAxis\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ xAxisLabel\ =\ label;}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ size\ =\ (stop\ -\/\ start)\ /\ step;}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ xAxis.clear();}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ i\ =\ 0;\ i\ <\ size;\ ++i)}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ xAxis.push\_back(start\ +\ i\ *\ step);}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (reverse)}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ std::reverse(xAxis.begin(),\ xAxis.end());}
+\DoxyCodeLine{00072\ \ \ \ \ \}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_histogram_widget_a2f4bda97d068b0bfd40b0cc0b660fd98}{setYAxis}}(T\ start,\ T\ step,\ T\ stop,\ std::string\ label\ =\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keywordtype}{bool}\ reverse\ =\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00087\ \ \ \ \ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ showYAxis\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ yAxisLabel\ =\ label;}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ size\ =\ (stop\ -\/\ start)\ /\ step;}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ yAxis.clear();}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ i\ =\ 0;\ i\ <\ size;\ ++i)}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ yAxis.push\_back(start\ +\ i\ *\ step);}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (reverse)}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ std::reverse(xAxis.begin(),\ xAxis.end());}
+\DoxyCodeLine{00098\ \ \ \ \ \}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_histogram_widget_a5a51a999ee9b5d07d809ab8edbb394b4}{paintEvent}}(QPaintEvent*\ event)\ \textcolor{keyword}{override};}
 \DoxyCodeLine{00106\ }
-\DoxyCodeLine{00107\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{bool}\ showXAxis\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordtype}{bool}\ showYAxis\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00110\ }
-\DoxyCodeLine{00111\ \ \ \ \ std::string\ xAxisLabel\ =\ \textcolor{stringliteral}{"{}"{}};}
-\DoxyCodeLine{00112\ \ \ \ \ std::string\ yAxisLabel\ =\ \textcolor{stringliteral}{"{}"{}};}
-\DoxyCodeLine{00113\ }
-\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordtype}{void}\ setGraphXOffsetForXAxis(\textcolor{keywordtype}{bool}\ forLabel);}
-\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordtype}{void}\ setGraphYOffsetForYAxis(\textcolor{keywordtype}{bool}\ forLabel);}
-\DoxyCodeLine{00116\ }
-\DoxyCodeLine{00117\ \ \ \ \ std::vector<double>\ xAxis;}
-\DoxyCodeLine{00118\ \ \ \ \ std::vector<double>\ yAxis;}
-\DoxyCodeLine{00119\ }
-\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keyword}{struct\ }HolderOfStaticHistogram}
-\DoxyCodeLine{00121\ \ \ \ \ \{}
-\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }axes\_t\ =\ std::tuple<boost::histogram::axis::regular<>>;}
-\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }hist\_t\ =\ boost::histogram::histogram<axes\_t>;}
-\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ hist\_t\ histogram;}
-\DoxyCodeLine{00125\ \ \ \ \ \};}
-\DoxyCodeLine{00126\ }
-\DoxyCodeLine{00127\ \ \ \ \ HolderOfStaticHistogram\ hs;}
-\DoxyCodeLine{00128\ }
-\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ minVal;}
-\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ maxVal;}
-\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ numBins;}
-\DoxyCodeLine{00132\ }
-\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ maxCount;}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_histogram_widget_aac7b32878f96181aecd84d4c04ba3e68}{contextMenuEvent}}(QContextMenuEvent*\ event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keywordtype}{bool}\ showXAxis\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordtype}{bool}\ showYAxis\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ std::string\ xAxisLabel\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00120\ \ \ \ \ std::string\ yAxisLabel\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordtype}{void}\ setGraphXOffsetForXAxis(\textcolor{keywordtype}{bool}\ forLabel);}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keywordtype}{void}\ setGraphYOffsetForYAxis(\textcolor{keywordtype}{bool}\ forLabel);}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \ \ std::vector<double>\ xAxis;}
+\DoxyCodeLine{00126\ \ \ \ \ std::vector<double>\ yAxis;}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_histogram_widget_1_1_holder_of_static_histogram}{HolderOfStaticHistogram}}}
+\DoxyCodeLine{00129\ \ \ \ \ \{}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }axes\_t\ =\ std::tuple<boost::histogram::axis::regular<>>;}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }hist\_t\ =\ boost::histogram::histogram<axes\_t>;}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ hist\_t\ histogram;}
+\DoxyCodeLine{00133\ \ \ \ \ \};}
 \DoxyCodeLine{00134\ }
-\DoxyCodeLine{00135\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ PADDING\ =\ 3;}
-\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordtype}{int}\ X\_GRAPH\_OFFSET\ =\ 50;}
-\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordtype}{int}\ Y\_GRAPH\_OFFSET\ =\ 50;}
-\DoxyCodeLine{00138\ \};}
+\DoxyCodeLine{00135\ \ \ \ \ \mbox{\hyperlink{struct_histogram_widget_1_1_holder_of_static_histogram}{HolderOfStaticHistogram}}\ hs;}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ minVal;}
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ maxVal;}
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ numBins;}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ maxCount;}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ PADDING\ =\ 3;}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keywordtype}{int}\ X\_GRAPH\_OFFSET\ =\ 50;}
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keywordtype}{int}\ Y\_GRAPH\_OFFSET\ =\ 50;}
+\DoxyCodeLine{00146\ \};}
 
 \end{DoxyCode}

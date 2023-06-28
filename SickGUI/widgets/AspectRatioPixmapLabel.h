@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   AspectRatioPixmapLabel.h
+ * @brief  QLabel subclass used to auto-scale a pixmap.
+ * 
+ * @author Nicholas Loehrke
+ * @date   June 2023
+ *********************************************************************/
+
 #pragma once
 
 #include <qlabel>

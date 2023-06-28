@@ -9,9 +9,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -46,6 +51,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classvisionary_1_1_visionary_control.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,11 +89,6 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="namespacevisionary.html">visionary</a></li><li class="navelem"><a class="el" href="classvisionary_1_1_visionary_control.html">VisionaryControl</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">visionary::VisionaryControl Member List</div></div>
 </div><!--header-->
@@ -80,27 +97,41 @@ $(function() {
 <p>This is the complete list of members for <a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a>, including all inherited members.</p>
 <table class="directory">
   <tr class="even"><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html#a69ae1a82ccb2c6ecf36619f60c837733">close</a>()</td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>COLA_2</b> enum value (defined in <a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a>)</td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>COLA_A</b> enum value (defined in <a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a>)</td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>COLA_B</b> enum value (defined in <a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a>)</td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html#ad48d462fa9f65368bb9be70191372395aa9b211b49f5b9598111333737dd2d438">COLA_2</a> enum value</td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html#ad48d462fa9f65368bb9be70191372395adb1c595bd56235ce4bddc6647f307b7f">COLA_A</a> enum value</td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html#ad48d462fa9f65368bb9be70191372395afea7996bbc6aaec57eb498a273abfaa5">COLA_B</a> enum value</td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html#a9d81896b4a8c75fa88d7189ab2d7e479">getDataStreamConfig</a>()</td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html#a7b74823466b7fa1434e423753344c75b">getDeviceIdent</a>()</td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>INVALID_PROTOCOL</b> enum value (defined in <a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a>)</td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html#ad48d462fa9f65368bb9be70191372395afa31197be7132af7fc1a4b56fc9e8b6d">INVALID_PROTOCOL</a> enum value</td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html#a3cdb0a16107d7022225cb50b29f2ebd7">kSessionTimeout_ms</a></td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html#ae8790b4fe299e4337969f7494e824422">login</a>(IAuthentication::UserLevel userLevel, const std::string &amp;password)</td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html#aa314c077f5018c70c6658af5451d48ab">logout</a>()</td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html#ae297192d83dfae28e24cd3c4afed5307">open</a>(ProtocolType type, const std::string &amp;hostname, uint32_t sessionTimeout_ms=kSessionTimeout_ms, bool autoReconnect=true, uint32_t connectTimeout_ms=kSessionTimeout_ms)</td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html#ad48d462fa9f65368bb9be70191372395">ProtocolType</a> enum name</td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html#a35e9f9d814181c5649d876d83a35fc8c">sendCommand</a>(const CoLaCommand &amp;command)</td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html#ae7ecb32527b4d25ec2225acec71e6641">startAcquisition</a>()</td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html#a33897fd24b290db7210d81902f21eba6">stepAcquisition</a>()</td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html#a7a16fff5119b8369a2a5bf7f051c6bba">stopAcquisition</a>()</td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>VisionaryControl</b>() (defined in <a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a>)</td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>~VisionaryControl</b>() (defined in <a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a>)</td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html#a5d5be20f9da94b19cf26eb95fa7ab119">m_autoReconnect</a></td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html#a922bf32cc750cd1d1937f1c2a0cd2682">m_connectTimeout_ms</a></td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html#a7abacc7a36d9821bb379b37196d2ac38">m_hostname</a></td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html#ab0e0aa76dbd142fe4f64c12cdc9ce648">m_pAuthentication</a></td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html#aedfc2d9b0313d7adcc622ab2335eae57">m_pControlSession</a></td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html#a0d7a0371848bc96ccaebdef1eecb3ee6">m_pProtocolHandler</a></td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html#a95da8bc24c5120e3a266a10774fad97f">m_protocolType</a></td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html#ab62497a6995c5144414a6463047b2dea">m_pTransport</a></td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html#a27921d64e2781c2db8ac88b0d29b7d16">m_sessionTimeout_ms</a></td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html#ae297192d83dfae28e24cd3c4afed5307">open</a>(ProtocolType type, const std::string &amp;hostname, uint32_t sessionTimeout_ms=kSessionTimeout_ms, bool autoReconnect=true, uint32_t connectTimeout_ms=kSessionTimeout_ms)</td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html#ad48d462fa9f65368bb9be70191372395">ProtocolType</a> enum name</td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html#aee96196d04e6fdf907604ed458c70968">receiveCoLaCommand</a>()</td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html#a60e42b66a49090f5720b270325c3328f">receiveCoLaResponse</a>()</td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html#a35e9f9d814181c5649d876d83a35fc8c">sendCommand</a>(const CoLaCommand &amp;command)</td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html#ae7ecb32527b4d25ec2225acec71e6641">startAcquisition</a>()</td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html#a33897fd24b290db7210d81902f21eba6">stepAcquisition</a>()</td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html#a7a16fff5119b8369a2a5bf7f051c6bba">stopAcquisition</a>()</td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html#a39afb77e82405e38da3618419ddf2271">VisionaryControl</a>()</td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html#af7c72486b745eed31e5a35baf19db7e4">~VisionaryControl</a>()</td><td class="entry"><a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+  </ul>
+</div>
 </body>
 </html>

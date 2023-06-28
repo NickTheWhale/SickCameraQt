@@ -9,9 +9,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -46,6 +51,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('_histogram_widget_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,111 +89,131 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_fc86ce11cfb5284f2928e718eeab9679.html">widgets</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">HistogramWidget.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;qwidget.h&gt;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;boost/histogram.hpp&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="class_histogram_widget.html">   14</a></span><span class="keyword">class </span><a class="code hl_class" href="class_histogram_widget.html">HistogramWidget</a> : <span class="keyword">public</span> QWidget</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    Q_OBJECT</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keyword">explicit</span> <a class="code hl_class" href="class_histogram_widget.html">HistogramWidget</a>(<span class="keywordtype">size_t</span> minVal, <span class="keywordtype">size_t</span> maxVal, <span class="keywordtype">size_t</span> bins, <span class="keywordtype">size_t</span> maxCount, QWidget* parent = <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <a class="code hl_function" href="class_histogram_widget.html#a76c7278ed776d108368d2a2dbaeab3d5">~HistogramWidget</a>();</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_histogram_widget.html#a599bda635a4751bd6c83349eb407ab77">updateHistogram</a>(<span class="keyword">const</span> std::vector&lt;uint16_t&gt;&amp; data);</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="class_histogram_widget.html#a85c75518f7fdfcd017763f62058b3097">   52</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_histogram_widget.html#a85c75518f7fdfcd017763f62058b3097">setXAxis</a>(T start, T step, T stop, std::string label = <span class="stringliteral">&quot;&quot;</span>, <span class="keywordtype">bool</span> reverse = <span class="keyword">false</span>)</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    {</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        showXAxis = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        xAxisLabel = label;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keywordtype">size_t</span> size = (stop - start) / step;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        xAxis.clear();</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = 0; i &lt; size; ++i)</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        {</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            xAxis.push_back(start + i * step);</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        }</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keywordflow">if</span> (reverse)</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            std::reverse(xAxis.begin(), xAxis.end());</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    }</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="class_histogram_widget.html#a2f4bda97d068b0bfd40b0cc0b660fd98">   78</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_histogram_widget.html#a2f4bda97d068b0bfd40b0cc0b660fd98">setYAxis</a>(T start, T step, T stop, std::string label = <span class="stringliteral">&quot;&quot;</span>, <span class="keywordtype">bool</span> reverse = <span class="keyword">false</span>)</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    {</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        showYAxis = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        yAxisLabel = label;</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="keywordtype">size_t</span> size = (stop - start) / step;</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        yAxis.clear();</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = 0; i &lt; size; ++i)</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        {</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            yAxis.push_back(start + i * step);</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        }</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <span class="keywordflow">if</span> (reverse)</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            std::reverse(xAxis.begin(), xAxis.end());</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    }</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_histogram_widget.html#a5a51a999ee9b5d07d809ab8edbb394b4">paintEvent</a>(QPaintEvent* event) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_histogram_widget.html#aac7b32878f96181aecd84d4c04ba3e68">contextMenuEvent</a>(QContextMenuEvent* event) <span class="keyword">override</span>;</div>
+<a href="_histogram_widget_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*****************************************************************/</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;qwidget.h&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;boost/histogram.hpp&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="class_histogram_widget.html">   22</a></span><span class="keyword">class </span><a class="code hl_class" href="class_histogram_widget.html">HistogramWidget</a> : <span class="keyword">public</span> QWidget</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>{</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    Q_OBJECT</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keyword">explicit</span> <a class="code hl_class" href="class_histogram_widget.html">HistogramWidget</a>(<span class="keywordtype">size_t</span> <a class="code hl_variable" href="class_histogram_widget.html#a5fced7e474af8777f30602e85d7428f2">minVal</a>, <span class="keywordtype">size_t</span> <a class="code hl_variable" href="class_histogram_widget.html#a3dd78df3ec842e0f266c2a0f500adf08">maxVal</a>, <span class="keywordtype">size_t</span> bins, <span class="keywordtype">size_t</span> <a class="code hl_variable" href="class_histogram_widget.html#aaa94979873ac26c14e909e6bbf8d30b4">maxCount</a>, QWidget* parent = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <a class="code hl_function" href="class_histogram_widget.html#a76c7278ed776d108368d2a2dbaeab3d5">~HistogramWidget</a>();</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_histogram_widget.html#a599bda635a4751bd6c83349eb407ab77">updateHistogram</a>(<span class="keyword">const</span> std::vector&lt;uint16_t&gt;&amp; data);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="class_histogram_widget.html#a85c75518f7fdfcd017763f62058b3097">   60</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_histogram_widget.html#a85c75518f7fdfcd017763f62058b3097">setXAxis</a>(T start, T step, T stop, std::string label = <span class="stringliteral">&quot;&quot;</span>, <span class="keywordtype">bool</span> reverse = <span class="keyword">false</span>)</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    {</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <a class="code hl_variable" href="class_histogram_widget.html#a3360a5562a05a930d01a799de00bc355">showXAxis</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <a class="code hl_variable" href="class_histogram_widget.html#a0783cf7ec2177305b6e197983dd28ba9">xAxisLabel</a> = label;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keywordtype">size_t</span> size = (stop - start) / step;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <a class="code hl_variable" href="class_histogram_widget.html#abc9ae08e44bd5740b70de5090e3de03e">xAxis</a>.clear();</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = 0; i &lt; size; ++i)</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        {</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            <a class="code hl_variable" href="class_histogram_widget.html#abc9ae08e44bd5740b70de5090e3de03e">xAxis</a>.push_back(start + i * step);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        }</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keywordflow">if</span> (reverse)</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            std::reverse(<a class="code hl_variable" href="class_histogram_widget.html#abc9ae08e44bd5740b70de5090e3de03e">xAxis</a>.begin(), <a class="code hl_variable" href="class_histogram_widget.html#abc9ae08e44bd5740b70de5090e3de03e">xAxis</a>.end());</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    }</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="class_histogram_widget.html#a2f4bda97d068b0bfd40b0cc0b660fd98">   86</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_histogram_widget.html#a2f4bda97d068b0bfd40b0cc0b660fd98">setYAxis</a>(T start, T step, T stop, std::string label = <span class="stringliteral">&quot;&quot;</span>, <span class="keywordtype">bool</span> reverse = <span class="keyword">false</span>)</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    {</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <a class="code hl_variable" href="class_histogram_widget.html#a2c581be1deca32690e9a4b9b6eadc753">showYAxis</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <a class="code hl_variable" href="class_histogram_widget.html#ae09d26d9e46010769aeb8ec31a7eb6bf">yAxisLabel</a> = label;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <span class="keywordtype">size_t</span> size = (stop - start) / step;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <a class="code hl_variable" href="class_histogram_widget.html#a9230f76ab8004bef7abb2f230cc2ee6e">yAxis</a>.clear();</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = 0; i &lt; size; ++i)</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        {</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>            <a class="code hl_variable" href="class_histogram_widget.html#a9230f76ab8004bef7abb2f230cc2ee6e">yAxis</a>.push_back(start + i * step);</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        }</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <span class="keywordflow">if</span> (reverse)</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>            std::reverse(<a class="code hl_variable" href="class_histogram_widget.html#abc9ae08e44bd5740b70de5090e3de03e">xAxis</a>.begin(), <a class="code hl_variable" href="class_histogram_widget.html#abc9ae08e44bd5740b70de5090e3de03e">xAxis</a>.end());</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    }</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_histogram_widget.html#a5a51a999ee9b5d07d809ab8edbb394b4">paintEvent</a>(QPaintEvent* event) <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="keywordtype">bool</span> showXAxis = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keywordtype">bool</span> showYAxis = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    std::string xAxisLabel = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    std::string yAxisLabel = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <span class="keywordtype">void</span> setGraphXOffsetForXAxis(<span class="keywordtype">bool</span> forLabel);</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <span class="keywordtype">void</span> setGraphYOffsetForYAxis(<span class="keywordtype">bool</span> forLabel);</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    std::vector&lt;double&gt; xAxis;</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    std::vector&lt;double&gt; yAxis;</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keyword">struct </span>HolderOfStaticHistogram</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    {</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        <span class="keyword">using </span>axes_t = std::tuple&lt;boost::histogram::axis::regular&lt;&gt;&gt;;</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        <span class="keyword">using </span>hist_t = boost::histogram::histogram&lt;axes_t&gt;;</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        hist_t histogram;</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    };</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    HolderOfStaticHistogram hs;</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <span class="keyword">const</span> <span class="keywordtype">size_t</span> minVal;</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <span class="keyword">const</span> <span class="keywordtype">size_t</span> maxVal;</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <span class="keyword">const</span> <span class="keywordtype">size_t</span> numBins;</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <span class="keyword">const</span> <span class="keywordtype">size_t</span> maxCount;</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_histogram_widget.html#aac7b32878f96181aecd84d4c04ba3e68">contextMenuEvent</a>(QContextMenuEvent* event) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno"><a class="line" href="class_histogram_widget.html#a3360a5562a05a930d01a799de00bc355">  116</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="class_histogram_widget.html#a3360a5562a05a930d01a799de00bc355">showXAxis</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="class_histogram_widget.html#a2c581be1deca32690e9a4b9b6eadc753">  117</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="class_histogram_widget.html#a2c581be1deca32690e9a4b9b6eadc753">showYAxis</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno"><a class="line" href="class_histogram_widget.html#a0783cf7ec2177305b6e197983dd28ba9">  119</a></span>    std::string <a class="code hl_variable" href="class_histogram_widget.html#a0783cf7ec2177305b6e197983dd28ba9">xAxisLabel</a> = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno"><a class="line" href="class_histogram_widget.html#ae09d26d9e46010769aeb8ec31a7eb6bf">  120</a></span>    std::string <a class="code hl_variable" href="class_histogram_widget.html#ae09d26d9e46010769aeb8ec31a7eb6bf">yAxisLabel</a> = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_histogram_widget.html#a83c3752527900e5ba4a9682acdfafbc9">setGraphXOffsetForXAxis</a>(<span class="keywordtype">bool</span> forLabel);</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_histogram_widget.html#a5c59e05d4470dd99bdbac9b06953a298">setGraphYOffsetForYAxis</a>(<span class="keywordtype">bool</span> forLabel);</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno"><a class="line" href="class_histogram_widget.html#abc9ae08e44bd5740b70de5090e3de03e">  125</a></span>    std::vector&lt;double&gt; <a class="code hl_variable" href="class_histogram_widget.html#abc9ae08e44bd5740b70de5090e3de03e">xAxis</a>;</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno"><a class="line" href="class_histogram_widget.html#a9230f76ab8004bef7abb2f230cc2ee6e">  126</a></span>    std::vector&lt;double&gt; <a class="code hl_variable" href="class_histogram_widget.html#a9230f76ab8004bef7abb2f230cc2ee6e">yAxis</a>;</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno"><a class="line" href="struct_histogram_widget_1_1_holder_of_static_histogram.html">  128</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="struct_histogram_widget_1_1_holder_of_static_histogram.html">HolderOfStaticHistogram</a></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    {</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno"><a class="line" href="struct_histogram_widget_1_1_holder_of_static_histogram.html#ae1c2fbb843d59c6c28198ab05914fe60">  130</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="struct_histogram_widget_1_1_holder_of_static_histogram.html#ae1c2fbb843d59c6c28198ab05914fe60">axes_t</a> = std::tuple&lt;boost::histogram::axis::regular&lt;&gt;&gt;;</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno"><a class="line" href="struct_histogram_widget_1_1_holder_of_static_histogram.html#abe143eaebe7a4e2488890cd4a0528114">  131</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="struct_histogram_widget_1_1_holder_of_static_histogram.html#abe143eaebe7a4e2488890cd4a0528114">hist_t</a> = boost::histogram::histogram&lt;axes_t&gt;;</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno"><a class="line" href="struct_histogram_widget_1_1_holder_of_static_histogram.html#a0d11168b67dec23ee7b54d419459a5f1">  132</a></span>        <a class="code hl_typedef" href="struct_histogram_widget_1_1_holder_of_static_histogram.html#abe143eaebe7a4e2488890cd4a0528114">hist_t</a> <a class="code hl_variable" href="struct_histogram_widget_1_1_holder_of_static_histogram.html#a0d11168b67dec23ee7b54d419459a5f1">histogram</a>;</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    };</div>
 <div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> PADDING = 3;</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    <span class="keywordtype">int</span> X_GRAPH_OFFSET = 50;</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    <span class="keywordtype">int</span> Y_GRAPH_OFFSET = 50;</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>};</div>
-<div class="ttc" id="aclass_histogram_widget_html"><div class="ttname"><a href="class_histogram_widget.html">HistogramWidget</a></div><div class="ttdoc">The HistogramWidget class represents a widget for displaying histograms.</div><div class="ttdef"><b>Definition</b> HistogramWidget.h:15</div></div>
-<div class="ttc" id="aclass_histogram_widget_html_a2f4bda97d068b0bfd40b0cc0b660fd98"><div class="ttname"><a href="class_histogram_widget.html#a2f4bda97d068b0bfd40b0cc0b660fd98">HistogramWidget::setYAxis</a></div><div class="ttdeci">void setYAxis(T start, T step, T stop, std::string label=&quot;&quot;, bool reverse=false)</div><div class="ttdoc">Sets the y-axis for the histogram.</div><div class="ttdef"><b>Definition</b> HistogramWidget.h:78</div></div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno"><a class="line" href="class_histogram_widget.html#a6c8b9fb27e8346a8bd788fb7455196b2">  135</a></span>    <a class="code hl_struct" href="struct_histogram_widget_1_1_holder_of_static_histogram.html">HolderOfStaticHistogram</a> <a class="code hl_variable" href="class_histogram_widget.html#a6c8b9fb27e8346a8bd788fb7455196b2">hs</a>;</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno"><a class="line" href="class_histogram_widget.html#a5fced7e474af8777f30602e85d7428f2">  137</a></span>    <span class="keyword">const</span> <span class="keywordtype">size_t</span> <a class="code hl_variable" href="class_histogram_widget.html#a5fced7e474af8777f30602e85d7428f2">minVal</a>;</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno"><a class="line" href="class_histogram_widget.html#a3dd78df3ec842e0f266c2a0f500adf08">  138</a></span>    <span class="keyword">const</span> <span class="keywordtype">size_t</span> <a class="code hl_variable" href="class_histogram_widget.html#a3dd78df3ec842e0f266c2a0f500adf08">maxVal</a>;</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno"><a class="line" href="class_histogram_widget.html#ab3a7ad4c376636def5f0b325506a0a44">  139</a></span>    <span class="keyword">const</span> <span class="keywordtype">size_t</span> <a class="code hl_variable" href="class_histogram_widget.html#ab3a7ad4c376636def5f0b325506a0a44">numBins</a>;</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno"><a class="line" href="class_histogram_widget.html#aaa94979873ac26c14e909e6bbf8d30b4">  141</a></span>    <span class="keyword">const</span> <span class="keywordtype">size_t</span> <a class="code hl_variable" href="class_histogram_widget.html#aaa94979873ac26c14e909e6bbf8d30b4">maxCount</a>;</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno"><a class="line" href="class_histogram_widget.html#aa82a095b0b281f0e3266d27b0add936d">  143</a></span>    <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="class_histogram_widget.html#aa82a095b0b281f0e3266d27b0add936d">PADDING</a> = 3;</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno"><a class="line" href="class_histogram_widget.html#a6d5d7bf8844488baf5d67d6a5db44529">  144</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="class_histogram_widget.html#a6d5d7bf8844488baf5d67d6a5db44529">X_GRAPH_OFFSET</a> = 50;</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno"><a class="line" href="class_histogram_widget.html#af24829a5682d554c41403fdbf4a4a8f7">  145</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="class_histogram_widget.html#af24829a5682d554c41403fdbf4a4a8f7">Y_GRAPH_OFFSET</a> = 50;</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>};</div>
+<div class="ttc" id="aclass_histogram_widget_html"><div class="ttname"><a href="class_histogram_widget.html">HistogramWidget</a></div><div class="ttdoc">The HistogramWidget class represents a widget for displaying histograms.</div><div class="ttdef"><b>Definition</b> HistogramWidget.h:23</div></div>
+<div class="ttc" id="aclass_histogram_widget_html_a0783cf7ec2177305b6e197983dd28ba9"><div class="ttname"><a href="class_histogram_widget.html#a0783cf7ec2177305b6e197983dd28ba9">HistogramWidget::xAxisLabel</a></div><div class="ttdeci">std::string xAxisLabel</div><div class="ttdef"><b>Definition</b> HistogramWidget.h:119</div></div>
+<div class="ttc" id="aclass_histogram_widget_html_a2c581be1deca32690e9a4b9b6eadc753"><div class="ttname"><a href="class_histogram_widget.html#a2c581be1deca32690e9a4b9b6eadc753">HistogramWidget::showYAxis</a></div><div class="ttdeci">bool showYAxis</div><div class="ttdef"><b>Definition</b> HistogramWidget.h:117</div></div>
+<div class="ttc" id="aclass_histogram_widget_html_a2f4bda97d068b0bfd40b0cc0b660fd98"><div class="ttname"><a href="class_histogram_widget.html#a2f4bda97d068b0bfd40b0cc0b660fd98">HistogramWidget::setYAxis</a></div><div class="ttdeci">void setYAxis(T start, T step, T stop, std::string label=&quot;&quot;, bool reverse=false)</div><div class="ttdoc">Sets the y-axis for the histogram.</div><div class="ttdef"><b>Definition</b> HistogramWidget.h:86</div></div>
+<div class="ttc" id="aclass_histogram_widget_html_a3360a5562a05a930d01a799de00bc355"><div class="ttname"><a href="class_histogram_widget.html#a3360a5562a05a930d01a799de00bc355">HistogramWidget::showXAxis</a></div><div class="ttdeci">bool showXAxis</div><div class="ttdef"><b>Definition</b> HistogramWidget.h:116</div></div>
+<div class="ttc" id="aclass_histogram_widget_html_a3dd78df3ec842e0f266c2a0f500adf08"><div class="ttname"><a href="class_histogram_widget.html#a3dd78df3ec842e0f266c2a0f500adf08">HistogramWidget::maxVal</a></div><div class="ttdeci">const size_t maxVal</div><div class="ttdef"><b>Definition</b> HistogramWidget.h:138</div></div>
 <div class="ttc" id="aclass_histogram_widget_html_a599bda635a4751bd6c83349eb407ab77"><div class="ttname"><a href="class_histogram_widget.html#a599bda635a4751bd6c83349eb407ab77">HistogramWidget::updateHistogram</a></div><div class="ttdeci">void updateHistogram(const std::vector&lt; uint16_t &gt; &amp;data)</div><div class="ttdoc">Updates the histogram with the provided data.</div><div class="ttdef"><b>Definition</b> HistogramWidget.cpp:23</div></div>
 <div class="ttc" id="aclass_histogram_widget_html_a5a51a999ee9b5d07d809ab8edbb394b4"><div class="ttname"><a href="class_histogram_widget.html#a5a51a999ee9b5d07d809ab8edbb394b4">HistogramWidget::paintEvent</a></div><div class="ttdeci">void paintEvent(QPaintEvent *event) override</div><div class="ttdoc">Overridden method that is called when a paint event occurs.</div><div class="ttdef"><b>Definition</b> HistogramWidget.cpp:35</div></div>
+<div class="ttc" id="aclass_histogram_widget_html_a5c59e05d4470dd99bdbac9b06953a298"><div class="ttname"><a href="class_histogram_widget.html#a5c59e05d4470dd99bdbac9b06953a298">HistogramWidget::setGraphYOffsetForYAxis</a></div><div class="ttdeci">void setGraphYOffsetForYAxis(bool forLabel)</div><div class="ttdef"><b>Definition</b> HistogramWidget.cpp:141</div></div>
+<div class="ttc" id="aclass_histogram_widget_html_a5fced7e474af8777f30602e85d7428f2"><div class="ttname"><a href="class_histogram_widget.html#a5fced7e474af8777f30602e85d7428f2">HistogramWidget::minVal</a></div><div class="ttdeci">const size_t minVal</div><div class="ttdef"><b>Definition</b> HistogramWidget.h:137</div></div>
+<div class="ttc" id="aclass_histogram_widget_html_a6c8b9fb27e8346a8bd788fb7455196b2"><div class="ttname"><a href="class_histogram_widget.html#a6c8b9fb27e8346a8bd788fb7455196b2">HistogramWidget::hs</a></div><div class="ttdeci">HolderOfStaticHistogram hs</div><div class="ttdef"><b>Definition</b> HistogramWidget.h:135</div></div>
+<div class="ttc" id="aclass_histogram_widget_html_a6d5d7bf8844488baf5d67d6a5db44529"><div class="ttname"><a href="class_histogram_widget.html#a6d5d7bf8844488baf5d67d6a5db44529">HistogramWidget::X_GRAPH_OFFSET</a></div><div class="ttdeci">int X_GRAPH_OFFSET</div><div class="ttdef"><b>Definition</b> HistogramWidget.h:144</div></div>
 <div class="ttc" id="aclass_histogram_widget_html_a76c7278ed776d108368d2a2dbaeab3d5"><div class="ttname"><a href="class_histogram_widget.html#a76c7278ed776d108368d2a2dbaeab3d5">HistogramWidget::~HistogramWidget</a></div><div class="ttdeci">~HistogramWidget()</div><div class="ttdoc">Destructor for the HistogramWidget class.</div><div class="ttdef"><b>Definition</b> HistogramWidget.cpp:19</div></div>
-<div class="ttc" id="aclass_histogram_widget_html_a85c75518f7fdfcd017763f62058b3097"><div class="ttname"><a href="class_histogram_widget.html#a85c75518f7fdfcd017763f62058b3097">HistogramWidget::setXAxis</a></div><div class="ttdeci">void setXAxis(T start, T step, T stop, std::string label=&quot;&quot;, bool reverse=false)</div><div class="ttdoc">Sets the x-axis for the histogram.</div><div class="ttdef"><b>Definition</b> HistogramWidget.h:52</div></div>
+<div class="ttc" id="aclass_histogram_widget_html_a83c3752527900e5ba4a9682acdfafbc9"><div class="ttname"><a href="class_histogram_widget.html#a83c3752527900e5ba4a9682acdfafbc9">HistogramWidget::setGraphXOffsetForXAxis</a></div><div class="ttdeci">void setGraphXOffsetForXAxis(bool forLabel)</div><div class="ttdef"><b>Definition</b> HistogramWidget.cpp:133</div></div>
+<div class="ttc" id="aclass_histogram_widget_html_a85c75518f7fdfcd017763f62058b3097"><div class="ttname"><a href="class_histogram_widget.html#a85c75518f7fdfcd017763f62058b3097">HistogramWidget::setXAxis</a></div><div class="ttdeci">void setXAxis(T start, T step, T stop, std::string label=&quot;&quot;, bool reverse=false)</div><div class="ttdoc">Sets the x-axis for the histogram.</div><div class="ttdef"><b>Definition</b> HistogramWidget.h:60</div></div>
+<div class="ttc" id="aclass_histogram_widget_html_a9230f76ab8004bef7abb2f230cc2ee6e"><div class="ttname"><a href="class_histogram_widget.html#a9230f76ab8004bef7abb2f230cc2ee6e">HistogramWidget::yAxis</a></div><div class="ttdeci">std::vector&lt; double &gt; yAxis</div><div class="ttdef"><b>Definition</b> HistogramWidget.h:126</div></div>
+<div class="ttc" id="aclass_histogram_widget_html_aa82a095b0b281f0e3266d27b0add936d"><div class="ttname"><a href="class_histogram_widget.html#aa82a095b0b281f0e3266d27b0add936d">HistogramWidget::PADDING</a></div><div class="ttdeci">const int PADDING</div><div class="ttdef"><b>Definition</b> HistogramWidget.h:143</div></div>
+<div class="ttc" id="aclass_histogram_widget_html_aaa94979873ac26c14e909e6bbf8d30b4"><div class="ttname"><a href="class_histogram_widget.html#aaa94979873ac26c14e909e6bbf8d30b4">HistogramWidget::maxCount</a></div><div class="ttdeci">const size_t maxCount</div><div class="ttdef"><b>Definition</b> HistogramWidget.h:141</div></div>
 <div class="ttc" id="aclass_histogram_widget_html_aac7b32878f96181aecd84d4c04ba3e68"><div class="ttname"><a href="class_histogram_widget.html#aac7b32878f96181aecd84d4c04ba3e68">HistogramWidget::contextMenuEvent</a></div><div class="ttdeci">void contextMenuEvent(QContextMenuEvent *event) override</div><div class="ttdoc">Overridden method that is called when a context menu event occurs.</div><div class="ttdef"><b>Definition</b> HistogramWidget.cpp:112</div></div>
+<div class="ttc" id="aclass_histogram_widget_html_ab3a7ad4c376636def5f0b325506a0a44"><div class="ttname"><a href="class_histogram_widget.html#ab3a7ad4c376636def5f0b325506a0a44">HistogramWidget::numBins</a></div><div class="ttdeci">const size_t numBins</div><div class="ttdef"><b>Definition</b> HistogramWidget.h:139</div></div>
+<div class="ttc" id="aclass_histogram_widget_html_abc9ae08e44bd5740b70de5090e3de03e"><div class="ttname"><a href="class_histogram_widget.html#abc9ae08e44bd5740b70de5090e3de03e">HistogramWidget::xAxis</a></div><div class="ttdeci">std::vector&lt; double &gt; xAxis</div><div class="ttdef"><b>Definition</b> HistogramWidget.h:125</div></div>
+<div class="ttc" id="aclass_histogram_widget_html_ae09d26d9e46010769aeb8ec31a7eb6bf"><div class="ttname"><a href="class_histogram_widget.html#ae09d26d9e46010769aeb8ec31a7eb6bf">HistogramWidget::yAxisLabel</a></div><div class="ttdeci">std::string yAxisLabel</div><div class="ttdef"><b>Definition</b> HistogramWidget.h:120</div></div>
+<div class="ttc" id="aclass_histogram_widget_html_af24829a5682d554c41403fdbf4a4a8f7"><div class="ttname"><a href="class_histogram_widget.html#af24829a5682d554c41403fdbf4a4a8f7">HistogramWidget::Y_GRAPH_OFFSET</a></div><div class="ttdeci">int Y_GRAPH_OFFSET</div><div class="ttdef"><b>Definition</b> HistogramWidget.h:145</div></div>
+<div class="ttc" id="astruct_histogram_widget_1_1_holder_of_static_histogram_html"><div class="ttname"><a href="struct_histogram_widget_1_1_holder_of_static_histogram.html">HistogramWidget::HolderOfStaticHistogram</a></div><div class="ttdef"><b>Definition</b> HistogramWidget.h:129</div></div>
+<div class="ttc" id="astruct_histogram_widget_1_1_holder_of_static_histogram_html_a0d11168b67dec23ee7b54d419459a5f1"><div class="ttname"><a href="struct_histogram_widget_1_1_holder_of_static_histogram.html#a0d11168b67dec23ee7b54d419459a5f1">HistogramWidget::HolderOfStaticHistogram::histogram</a></div><div class="ttdeci">hist_t histogram</div><div class="ttdef"><b>Definition</b> HistogramWidget.h:132</div></div>
+<div class="ttc" id="astruct_histogram_widget_1_1_holder_of_static_histogram_html_abe143eaebe7a4e2488890cd4a0528114"><div class="ttname"><a href="struct_histogram_widget_1_1_holder_of_static_histogram.html#abe143eaebe7a4e2488890cd4a0528114">HistogramWidget::HolderOfStaticHistogram::hist_t</a></div><div class="ttdeci">boost::histogram::histogram&lt; axes_t &gt; hist_t</div><div class="ttdef"><b>Definition</b> HistogramWidget.h:131</div></div>
+<div class="ttc" id="astruct_histogram_widget_1_1_holder_of_static_histogram_html_ae1c2fbb843d59c6c28198ab05914fe60"><div class="ttname"><a href="struct_histogram_widget_1_1_holder_of_static_histogram.html#ae1c2fbb843d59c6c28198ab05914fe60">HistogramWidget::HolderOfStaticHistogram::axes_t</a></div><div class="ttdeci">std::tuple&lt; boost::histogram::axis::regular&lt;&gt; &gt; axes_t</div><div class="ttdef"><b>Definition</b> HistogramWidget.h:130</div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_fc86ce11cfb5284f2928e718eeab9679.html">widgets</a></li><li class="navelem"><a class="el" href="_histogram_widget_8h.html">HistogramWidget.h</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+  </ul>
+</div>
 </body>
 </html>

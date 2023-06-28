@@ -9,9 +9,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -46,6 +51,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('struct_t_s7_protection.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,7 +89,6 @@ $(function() {
 </div>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-attribs">Public Attributes</a> &#124;
@@ -75,32 +96,104 @@ $(function() {
   <div class="headertitle"><div class="title">TS7Protection Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="snap7_8h_source.html">snap7.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:ae73ae08696c2fee2a7840de3fb971200"><td class="memItemLeft" align="right" valign="top"><a id="ae73ae08696c2fee2a7840de3fb971200" name="ae73ae08696c2fee2a7840de3fb971200"></a>
-word&#160;</td><td class="memItemRight" valign="bottom"><b>sch_schal</b></td></tr>
+<tr class="memitem:ae73ae08696c2fee2a7840de3fb971200"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#aacc262b7acb8ef2b1d38df8b855bc0f6">word</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_t_s7_protection.html#ae73ae08696c2fee2a7840de3fb971200">sch_schal</a></td></tr>
 <tr class="separator:ae73ae08696c2fee2a7840de3fb971200"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a70d4e8b9d87b738147637068083f3133"><td class="memItemLeft" align="right" valign="top"><a id="a70d4e8b9d87b738147637068083f3133" name="a70d4e8b9d87b738147637068083f3133"></a>
-word&#160;</td><td class="memItemRight" valign="bottom"><b>sch_par</b></td></tr>
+<tr class="memitem:a70d4e8b9d87b738147637068083f3133"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#aacc262b7acb8ef2b1d38df8b855bc0f6">word</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_t_s7_protection.html#a70d4e8b9d87b738147637068083f3133">sch_par</a></td></tr>
 <tr class="separator:a70d4e8b9d87b738147637068083f3133"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae12b33ad64d706598bc549c85fdf1b2e"><td class="memItemLeft" align="right" valign="top"><a id="ae12b33ad64d706598bc549c85fdf1b2e" name="ae12b33ad64d706598bc549c85fdf1b2e"></a>
-word&#160;</td><td class="memItemRight" valign="bottom"><b>sch_rel</b></td></tr>
+<tr class="memitem:ae12b33ad64d706598bc549c85fdf1b2e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#aacc262b7acb8ef2b1d38df8b855bc0f6">word</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_t_s7_protection.html#ae12b33ad64d706598bc549c85fdf1b2e">sch_rel</a></td></tr>
 <tr class="separator:ae12b33ad64d706598bc549c85fdf1b2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef2bf118becbddae3c56e29d28b99767"><td class="memItemLeft" align="right" valign="top"><a id="aef2bf118becbddae3c56e29d28b99767" name="aef2bf118becbddae3c56e29d28b99767"></a>
-word&#160;</td><td class="memItemRight" valign="bottom"><b>bart_sch</b></td></tr>
+<tr class="memitem:aef2bf118becbddae3c56e29d28b99767"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#aacc262b7acb8ef2b1d38df8b855bc0f6">word</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_t_s7_protection.html#aef2bf118becbddae3c56e29d28b99767">bart_sch</a></td></tr>
 <tr class="separator:aef2bf118becbddae3c56e29d28b99767"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0109bbc9e10e2fb86665af41a7b2fc40"><td class="memItemLeft" align="right" valign="top"><a id="a0109bbc9e10e2fb86665af41a7b2fc40" name="a0109bbc9e10e2fb86665af41a7b2fc40"></a>
-word&#160;</td><td class="memItemRight" valign="bottom"><b>anl_sch</b></td></tr>
+<tr class="memitem:a0109bbc9e10e2fb86665af41a7b2fc40"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#aacc262b7acb8ef2b1d38df8b855bc0f6">word</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_t_s7_protection.html#a0109bbc9e10e2fb86665af41a7b2fc40">anl_sch</a></td></tr>
 <tr class="separator:a0109bbc9e10e2fb86665af41a7b2fc40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a0109bbc9e10e2fb86665af41a7b2fc40" name="a0109bbc9e10e2fb86665af41a7b2fc40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0109bbc9e10e2fb86665af41a7b2fc40">&#9670;&#160;</a></span>anl_sch</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="snap7_8h.html#aacc262b7acb8ef2b1d38df8b855bc0f6">word</a> TS7Protection::anl_sch</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aef2bf118becbddae3c56e29d28b99767" name="aef2bf118becbddae3c56e29d28b99767"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef2bf118becbddae3c56e29d28b99767">&#9670;&#160;</a></span>bart_sch</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="snap7_8h.html#aacc262b7acb8ef2b1d38df8b855bc0f6">word</a> TS7Protection::bart_sch</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a70d4e8b9d87b738147637068083f3133" name="a70d4e8b9d87b738147637068083f3133"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70d4e8b9d87b738147637068083f3133">&#9670;&#160;</a></span>sch_par</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="snap7_8h.html#aacc262b7acb8ef2b1d38df8b855bc0f6">word</a> TS7Protection::sch_par</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae12b33ad64d706598bc549c85fdf1b2e" name="ae12b33ad64d706598bc549c85fdf1b2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae12b33ad64d706598bc549c85fdf1b2e">&#9670;&#160;</a></span>sch_rel</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="snap7_8h.html#aacc262b7acb8ef2b1d38df8b855bc0f6">word</a> TS7Protection::sch_rel</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae73ae08696c2fee2a7840de3fb971200" name="ae73ae08696c2fee2a7840de3fb971200"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae73ae08696c2fee2a7840de3fb971200">&#9670;&#160;</a></span>sch_schal</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="snap7_8h.html#aacc262b7acb8ef2b1d38df8b855bc0f6">word</a> TS7Protection::sch_schal</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li>snap7/<a class="el" href="snap7_8h_source.html">snap7.h</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="struct_t_s7_protection.html">TS7Protection</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+  </ul>
+</div>
 </body>
 </html>

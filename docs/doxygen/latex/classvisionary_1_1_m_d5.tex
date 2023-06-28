@@ -27,6 +27,82 @@ std\+::string {\bfseries hexdigest} () const
 \Hypertarget{classvisionary_1_1_m_d5_a1679417587e308493939f5a7720e5f71}\label{classvisionary_1_1_m_d5_a1679417587e308493939f5a7720e5f71} 
 const unsigned char \texorpdfstring{$\ast$}{*} {\bfseries get\+Digest} () const
 \end{DoxyCompactItemize}
+\doxysubsubsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvisionary_1_1_m_d5_a1856fda08777e369ad8832aa08e35808}\label{classvisionary_1_1_m_d5_a1856fda08777e369ad8832aa08e35808} 
+enum \{ {\bfseries blocksize} = 64
+ \}
+\item 
+\Hypertarget{classvisionary_1_1_m_d5_a6e8d9564ab969082ab1bc016ddc6a753}\label{classvisionary_1_1_m_d5_a6e8d9564ab969082ab1bc016ddc6a753} 
+typedef unsigned char {\bfseries uint1}
+\item 
+\Hypertarget{classvisionary_1_1_m_d5_a1b7250517ba66c04ec2bef8155241b14}\label{classvisionary_1_1_m_d5_a1b7250517ba66c04ec2bef8155241b14} 
+typedef unsigned int {\bfseries uint4}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvisionary_1_1_m_d5_a648c671363efa004d8fad9161afa782c}\label{classvisionary_1_1_m_d5_a648c671363efa004d8fad9161afa782c} 
+void {\bfseries init} ()
+\item 
+\Hypertarget{classvisionary_1_1_m_d5_aa42ea0a0d3fdcfa9c05f7a0eba167e68}\label{classvisionary_1_1_m_d5_aa42ea0a0d3fdcfa9c05f7a0eba167e68} 
+void {\bfseries transform} (const uint1 block\mbox{[}blocksize\mbox{]})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvisionary_1_1_m_d5_a50a2332aa8fbb406c6458876133835bd}\label{classvisionary_1_1_m_d5_a50a2332aa8fbb406c6458876133835bd} 
+static void {\bfseries decode} (uint4 output\mbox{[}$\,$\mbox{]}, const uint1 input\mbox{[}$\,$\mbox{]}, size\+\_\+type len)
+\item 
+\Hypertarget{classvisionary_1_1_m_d5_ace3166aa5545af0ac32c72b5b008379c}\label{classvisionary_1_1_m_d5_ace3166aa5545af0ac32c72b5b008379c} 
+static void {\bfseries encode} (uint1 output\mbox{[}$\,$\mbox{]}, const uint4 input\mbox{[}$\,$\mbox{]}, size\+\_\+type len)
+\item 
+\Hypertarget{classvisionary_1_1_m_d5_ad4e8d0ed29c7bb3ce45663583fa9d96c}\label{classvisionary_1_1_m_d5_ad4e8d0ed29c7bb3ce45663583fa9d96c} 
+static uint4 {\bfseries F} (uint4 x, uint4 y, uint4 z)
+\item 
+\Hypertarget{classvisionary_1_1_m_d5_addec0fa778dd6faf861888c4d6a15595}\label{classvisionary_1_1_m_d5_addec0fa778dd6faf861888c4d6a15595} 
+static uint4 {\bfseries G} (uint4 x, uint4 y, uint4 z)
+\item 
+\Hypertarget{classvisionary_1_1_m_d5_aae2931d2ac14f64824fffea5b9324b16}\label{classvisionary_1_1_m_d5_aae2931d2ac14f64824fffea5b9324b16} 
+static uint4 {\bfseries H} (uint4 x, uint4 y, uint4 z)
+\item 
+\Hypertarget{classvisionary_1_1_m_d5_a6a8c4fe8d71c4d1e8fe5d1833d2721b7}\label{classvisionary_1_1_m_d5_a6a8c4fe8d71c4d1e8fe5d1833d2721b7} 
+static uint4 {\bfseries I} (uint4 x, uint4 y, uint4 z)
+\item 
+\Hypertarget{classvisionary_1_1_m_d5_ac1127795602662ce3edb11b55ddde9f3}\label{classvisionary_1_1_m_d5_ac1127795602662ce3edb11b55ddde9f3} 
+static uint4 {\bfseries rotate\+\_\+left} (uint4 x, int n)
+\item 
+\Hypertarget{classvisionary_1_1_m_d5_acff15c45c691aafcfcf852edb8dd542c}\label{classvisionary_1_1_m_d5_acff15c45c691aafcfcf852edb8dd542c} 
+static void {\bfseries FF} (uint4 \&a, uint4 b, uint4 c, uint4 d, uint4 x, uint4 s, uint4 ac)
+\item 
+\Hypertarget{classvisionary_1_1_m_d5_ab8aabd0b01190fa0457884f4b5de5b13}\label{classvisionary_1_1_m_d5_ab8aabd0b01190fa0457884f4b5de5b13} 
+static void {\bfseries GG} (uint4 \&a, uint4 b, uint4 c, uint4 d, uint4 x, uint4 s, uint4 ac)
+\item 
+\Hypertarget{classvisionary_1_1_m_d5_a3e0d40ecd2cc82137f042d7379d1d6f1}\label{classvisionary_1_1_m_d5_a3e0d40ecd2cc82137f042d7379d1d6f1} 
+static void {\bfseries HH} (uint4 \&a, uint4 b, uint4 c, uint4 d, uint4 x, uint4 s, uint4 ac)
+\item 
+\Hypertarget{classvisionary_1_1_m_d5_acd487d003a5f37b519ae2b7ea4b94d60}\label{classvisionary_1_1_m_d5_acd487d003a5f37b519ae2b7ea4b94d60} 
+static void {\bfseries II} (uint4 \&a, uint4 b, uint4 c, uint4 d, uint4 x, uint4 s, uint4 ac)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvisionary_1_1_m_d5_aa1c6f1808e12cc73f98c7baa0ff0ecd1}\label{classvisionary_1_1_m_d5_aa1c6f1808e12cc73f98c7baa0ff0ecd1} 
+bool {\bfseries finalized}
+\item 
+\Hypertarget{classvisionary_1_1_m_d5_a56c398baa99c40250a94fc1055262fe7}\label{classvisionary_1_1_m_d5_a56c398baa99c40250a94fc1055262fe7} 
+uint1 {\bfseries buffer} \mbox{[}blocksize\mbox{]}
+\item 
+\Hypertarget{classvisionary_1_1_m_d5_a0a5480824e9f9466c413c2a7c53c05c6}\label{classvisionary_1_1_m_d5_a0a5480824e9f9466c413c2a7c53c05c6} 
+uint4 {\bfseries count} \mbox{[}2\mbox{]}
+\item 
+\Hypertarget{classvisionary_1_1_m_d5_a92eb359850edbd7e0d9546e8fd61b2f1}\label{classvisionary_1_1_m_d5_a92eb359850edbd7e0d9546e8fd61b2f1} 
+uint4 {\bfseries state} \mbox{[}4\mbox{]}
+\item 
+\Hypertarget{classvisionary_1_1_m_d5_af7f022dda5a3f8dc263b33c53107e9ec}\label{classvisionary_1_1_m_d5_af7f022dda5a3f8dc263b33c53107e9ec} 
+uint1 {\bfseries digest} \mbox{[}16\mbox{]}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['protocoltype_0',['ProtocolType',['../classvisionary_1_1_visionary_control.html#ad48d462fa9f65368bb9be70191372395',1,'visionary::VisionaryControl']]]
+  ['enum_0',['Enum',['../namespacevisionary_1_1_co_la_command_type.html#ac6a07ccab53586bbf1b77bb2bd94bde6',1,'visionary::CoLaCommandType::Enum'],['../namespacevisionary_1_1_co_la_error.html#a4e410cc8da3d2a084c58ed78e89c3454',1,'visionary::CoLaError::Enum']]]
 ];

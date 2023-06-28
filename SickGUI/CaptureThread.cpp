@@ -2,7 +2,6 @@
 
 #include "Camera.h"
 
-
 bool CaptureThread::startCapture(Camera* camera)
 {
 	if (isRunning())

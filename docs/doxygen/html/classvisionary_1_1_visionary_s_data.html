@@ -9,9 +9,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -46,6 +51,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classvisionary_1_1_visionary_s_data.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,19 +89,17 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="namespacevisionary.html">visionary</a></li><li class="navelem"><a class="el" href="classvisionary_1_1_visionary_s_data.html">VisionarySData</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classvisionary_1_1_visionary_s_data-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">visionary::VisionarySData Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_visionary_s_data_8h_source.html">VisionarySData.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for visionary::VisionarySData:</div>
 <div class="dyncontent">
@@ -92,98 +112,143 @@ Inheritance diagram for visionary::VisionarySData:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad9068e23b2a411322a3b82f6395fadb3"><td class="memItemLeft" align="right" valign="top"><a id="ad9068e23b2a411322a3b82f6395fadb3" name="ad9068e23b2a411322a3b82f6395fadb3"></a>
-const std::vector&lt; uint16_t &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getZMap</b> () const</td></tr>
+<tr class="memitem:ab1fd5f6cbe8c800a0fba09ca929c7065"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_s_data.html#ab1fd5f6cbe8c800a0fba09ca929c7065">VisionarySData</a> ()</td></tr>
+<tr class="separator:ab1fd5f6cbe8c800a0fba09ca929c7065"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3c60b7c0e17aa0ec3e67a7584049543"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_s_data.html#ab3c60b7c0e17aa0ec3e67a7584049543">~VisionarySData</a> () override</td></tr>
+<tr class="separator:ab3c60b7c0e17aa0ec3e67a7584049543"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9068e23b2a411322a3b82f6395fadb3"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; uint16_t &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_s_data.html#ad9068e23b2a411322a3b82f6395fadb3">getZMap</a> () const</td></tr>
 <tr class="separator:ad9068e23b2a411322a3b82f6395fadb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5936649b22a8b7a8178714d827c16c90"><td class="memItemLeft" align="right" valign="top"><a id="a5936649b22a8b7a8178714d827c16c90" name="a5936649b22a8b7a8178714d827c16c90"></a>
-const std::vector&lt; uint32_t &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getRGBAMap</b> () const</td></tr>
+<tr class="memitem:a5936649b22a8b7a8178714d827c16c90"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; uint32_t &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_s_data.html#a5936649b22a8b7a8178714d827c16c90">getRGBAMap</a> () const</td></tr>
 <tr class="separator:a5936649b22a8b7a8178714d827c16c90"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a812321b727d027ad905a2196796eb55a"><td class="memItemLeft" align="right" valign="top"><a id="a812321b727d027ad905a2196796eb55a" name="a812321b727d027ad905a2196796eb55a"></a>
-const std::vector&lt; uint16_t &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getConfidenceMap</b> () const</td></tr>
+<tr class="memitem:a812321b727d027ad905a2196796eb55a"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; uint16_t &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_s_data.html#a812321b727d027ad905a2196796eb55a">getConfidenceMap</a> () const</td></tr>
 <tr class="separator:a812321b727d027ad905a2196796eb55a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b122aee7d79d385c8520e2160a169db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_s_data.html#a5b122aee7d79d385c8520e2160a169db">generatePointCloud</a> (std::vector&lt; <a class="el" href="structvisionary_1_1_point_x_y_z.html">PointXYZ</a> &gt; &amp;pointCloud) override</td></tr>
 <tr class="separator:a5b122aee7d79d385c8520e2160a169db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classvisionary_1_1_visionary_data"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classvisionary_1_1_visionary_data')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classvisionary_1_1_visionary_data.html">visionary::VisionaryData</a></td></tr>
-<tr class="memitem:acc13524ebe878dde099cfbde179c4c8d inherit pub_methods_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>generatePointCloud</b> (std::vector&lt; <a class="el" href="structvisionary_1_1_point_x_y_z.html">PointXYZ</a> &gt; &amp;pointCloud)=0</td></tr>
+<tr class="memitem:a01cab51a4c920142659c7b6fb8d0ec84 inherit pub_methods_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_data.html#a01cab51a4c920142659c7b6fb8d0ec84">VisionaryData</a> ()</td></tr>
+<tr class="separator:a01cab51a4c920142659c7b6fb8d0ec84 inherit pub_methods_classvisionary_1_1_visionary_data"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6427bd4a9e2014c1b7cbde3ee8e775d7 inherit pub_methods_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_data.html#a6427bd4a9e2014c1b7cbde3ee8e775d7">~VisionaryData</a> ()</td></tr>
+<tr class="separator:a6427bd4a9e2014c1b7cbde3ee8e775d7 inherit pub_methods_classvisionary_1_1_visionary_data"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc13524ebe878dde099cfbde179c4c8d inherit pub_methods_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_data.html#acc13524ebe878dde099cfbde179c4c8d">generatePointCloud</a> (std::vector&lt; <a class="el" href="structvisionary_1_1_point_x_y_z.html">PointXYZ</a> &gt; &amp;pointCloud)=0</td></tr>
 <tr class="separator:acc13524ebe878dde099cfbde179c4c8d inherit pub_methods_classvisionary_1_1_visionary_data"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a987fc90b4d16151d40ffd017c9f652f6 inherit pub_methods_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">
-void&#160;</td><td class="memItemRight" valign="bottom"><b>transformPointCloud</b> (std::vector&lt; <a class="el" href="structvisionary_1_1_point_x_y_z.html">PointXYZ</a> &gt; &amp;pointCloud) const</td></tr>
+<tr class="memitem:a987fc90b4d16151d40ffd017c9f652f6 inherit pub_methods_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_data.html#a987fc90b4d16151d40ffd017c9f652f6">transformPointCloud</a> (std::vector&lt; <a class="el" href="structvisionary_1_1_point_x_y_z.html">PointXYZ</a> &gt; &amp;pointCloud) const</td></tr>
 <tr class="separator:a987fc90b4d16151d40ffd017c9f652f6 inherit pub_methods_classvisionary_1_1_visionary_data"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa6c842722c2aaacf7eb7df3b73fe96b2 inherit pub_methods_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getHeight</b> () const</td></tr>
+<tr class="memitem:aa6c842722c2aaacf7eb7df3b73fe96b2 inherit pub_methods_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_data.html#aa6c842722c2aaacf7eb7df3b73fe96b2">getHeight</a> () const</td></tr>
 <tr class="separator:aa6c842722c2aaacf7eb7df3b73fe96b2 inherit pub_methods_classvisionary_1_1_visionary_data"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1729608235379b2ffcc39fe504327bd inherit pub_methods_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getWidth</b> () const</td></tr>
+<tr class="memitem:af1729608235379b2ffcc39fe504327bd inherit pub_methods_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_data.html#af1729608235379b2ffcc39fe504327bd">getWidth</a> () const</td></tr>
 <tr class="separator:af1729608235379b2ffcc39fe504327bd inherit pub_methods_classvisionary_1_1_visionary_data"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acbbdc05cdeb62e5f94dac4c3a1e6dfa8 inherit pub_methods_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>getFrameNum</b> () const</td></tr>
+<tr class="memitem:acbbdc05cdeb62e5f94dac4c3a1e6dfa8 inherit pub_methods_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_data.html#acbbdc05cdeb62e5f94dac4c3a1e6dfa8">getFrameNum</a> () const</td></tr>
 <tr class="separator:acbbdc05cdeb62e5f94dac4c3a1e6dfa8 inherit pub_methods_classvisionary_1_1_visionary_data"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4fb23884eac3fb89c00fe4e2311cb135 inherit pub_methods_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">
-uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>getTimestamp</b> () const</td></tr>
+<tr class="memitem:a4fb23884eac3fb89c00fe4e2311cb135 inherit pub_methods_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_data.html#a4fb23884eac3fb89c00fe4e2311cb135">getTimestamp</a> () const</td></tr>
 <tr class="separator:a4fb23884eac3fb89c00fe4e2311cb135 inherit pub_methods_classvisionary_1_1_visionary_data"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac01587a6a00fefceb00b3ff0202739f2 inherit pub_methods_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">
-uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>getTimestampMS</b> () const</td></tr>
+<tr class="memitem:ac01587a6a00fefceb00b3ff0202739f2 inherit pub_methods_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_data.html#ac01587a6a00fefceb00b3ff0202739f2">getTimestampMS</a> () const</td></tr>
 <tr class="separator:ac01587a6a00fefceb00b3ff0202739f2 inherit pub_methods_classvisionary_1_1_visionary_data"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad8697a8d954d164b019e62105ada1546 inherit pub_methods_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">
-const <a class="el" href="structvisionary_1_1_camera_parameters.html">CameraParameters</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getCameraParameters</b> () const</td></tr>
+<tr class="memitem:ad8697a8d954d164b019e62105ada1546 inherit pub_methods_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structvisionary_1_1_camera_parameters.html">CameraParameters</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_data.html#ad8697a8d954d164b019e62105ada1546">getCameraParameters</a> () const</td></tr>
 <tr class="separator:ad8697a8d954d164b019e62105ada1546 inherit pub_methods_classvisionary_1_1_visionary_data"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac677fd73361ec21b78c3997273fa9c2a inherit pub_methods_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">
-virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>parseXML</b> (const std::string &amp;xmlString, uint32_t changeCounter)=0</td></tr>
+<tr class="memitem:ac677fd73361ec21b78c3997273fa9c2a inherit pub_methods_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_data.html#ac677fd73361ec21b78c3997273fa9c2a">parseXML</a> (const std::string &amp;xmlString, uint32_t changeCounter)=0</td></tr>
 <tr class="separator:ac677fd73361ec21b78c3997273fa9c2a inherit pub_methods_classvisionary_1_1_visionary_data"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68438ca476a679b7e7371755bfe00fad inherit pub_methods_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">
-virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>parseBinaryData</b> (std::vector&lt; uint8_t &gt;::iterator inputBuffer, size_t length)=0</td></tr>
+<tr class="memitem:a68438ca476a679b7e7371755bfe00fad inherit pub_methods_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_data.html#a68438ca476a679b7e7371755bfe00fad">parseBinaryData</a> (std::vector&lt; uint8_t &gt;::iterator inputBuffer, size_t length)=0</td></tr>
 <tr class="separator:a68438ca476a679b7e7371755bfe00fad inherit pub_methods_classvisionary_1_1_visionary_data"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:acc551de1b887a9a64a91b798075bef4e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_s_data.html#acc551de1b887a9a64a91b798075bef4e">parseXML</a> (const std::string &amp;xmlString, uint32_t changeCounter) override</td></tr>
+<tr class="memitem:acc551de1b887a9a64a91b798075bef4e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_s_data.html#acc551de1b887a9a64a91b798075bef4e">parseXML</a> (const std::string &amp;xmlString, uint32_t changeCounter) override</td></tr>
 <tr class="separator:acc551de1b887a9a64a91b798075bef4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d05e94b8f9dd4805132b5ce8d068e8e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_s_data.html#a6d05e94b8f9dd4805132b5ce8d068e8e">parseBinaryData</a> (std::vector&lt; uint8_t &gt;::iterator itBuf, size_t size) override</td></tr>
+<tr class="memitem:a6d05e94b8f9dd4805132b5ce8d068e8e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_s_data.html#a6d05e94b8f9dd4805132b5ce8d068e8e">parseBinaryData</a> (std::vector&lt; uint8_t &gt;::iterator itBuf, size_t size) override</td></tr>
 <tr class="separator:a6d05e94b8f9dd4805132b5ce8d068e8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_classvisionary_1_1_visionary_data"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classvisionary_1_1_visionary_data')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classvisionary_1_1_visionary_data.html">visionary::VisionaryData</a></td></tr>
-<tr class="memitem:aa8bbfc5e620bfac2efe2a51cd0347ad2 inherit pro_methods_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getItemLength</b> (std::string dataType)</td></tr>
+<tr class="memitem:aa8bbfc5e620bfac2efe2a51cd0347ad2 inherit pro_methods_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_data.html#aa8bbfc5e620bfac2efe2a51cd0347ad2">getItemLength</a> (std::string dataType)</td></tr>
 <tr class="separator:aa8bbfc5e620bfac2efe2a51cd0347ad2 inherit pro_methods_classvisionary_1_1_visionary_data"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3fe68159de8d43c89a2b210e6c7dd15 inherit pro_methods_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">
-void&#160;</td><td class="memItemRight" valign="bottom"><b>preCalcCamInfo</b> (const ImageType &amp;type)</td></tr>
+<tr class="memitem:ab3fe68159de8d43c89a2b210e6c7dd15 inherit pro_methods_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_data.html#ab3fe68159de8d43c89a2b210e6c7dd15">preCalcCamInfo</a> (const <a class="el" href="classvisionary_1_1_visionary_data.html#afad1ab4faef29334737711aca7009921">ImageType</a> &amp;type)</td></tr>
 <tr class="separator:ab3fe68159de8d43c89a2b210e6c7dd15 inherit pro_methods_classvisionary_1_1_visionary_data"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac580042f7f29cbe001610cdfd29ee9d0 inherit pro_methods_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">
-void&#160;</td><td class="memItemRight" valign="bottom"><b>generatePointCloud</b> (const std::vector&lt; uint16_t &gt; &amp;map, const ImageType &amp;imgType, std::vector&lt; <a class="el" href="structvisionary_1_1_point_x_y_z.html">PointXYZ</a> &gt; &amp;pointCloud)</td></tr>
+<tr class="memitem:ac580042f7f29cbe001610cdfd29ee9d0 inherit pro_methods_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_data.html#ac580042f7f29cbe001610cdfd29ee9d0">generatePointCloud</a> (const std::vector&lt; uint16_t &gt; &amp;map, const <a class="el" href="classvisionary_1_1_visionary_data.html#afad1ab4faef29334737711aca7009921">ImageType</a> &amp;imgType, std::vector&lt; <a class="el" href="structvisionary_1_1_point_x_y_z.html">PointXYZ</a> &gt; &amp;pointCloud)</td></tr>
 <tr class="separator:ac580042f7f29cbe001610cdfd29ee9d0 inherit pro_methods_classvisionary_1_1_visionary_data"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a9f494382825a0ab83c031f4e6992adf2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_s_data.html#a9f494382825a0ab83c031f4e6992adf2">m_zByteDepth</a></td></tr>
+<tr class="memdesc:a9f494382825a0ab83c031f4e6992adf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Byte depth of images.  <br /></td></tr>
+<tr class="separator:a9f494382825a0ab83c031f4e6992adf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e49af4540f85cfa1e9a1fca4be8da3c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_s_data.html#a6e49af4540f85cfa1e9a1fca4be8da3c">m_rgbaByteDepth</a></td></tr>
+<tr class="separator:a6e49af4540f85cfa1e9a1fca4be8da3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a771d964baf65f3ce54f0c32ef37c3d6c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_s_data.html#a771d964baf65f3ce54f0c32ef37c3d6c">m_confidenceByteDepth</a></td></tr>
+<tr class="separator:a771d964baf65f3ce54f0c32ef37c3d6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37a6821a27259effcc4176bff76c7b28"><td class="memItemLeft" align="right" valign="top">std::vector&lt; uint16_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_s_data.html#a37a6821a27259effcc4176bff76c7b28">m_zMap</a></td></tr>
+<tr class="separator:a37a6821a27259effcc4176bff76c7b28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0a6f3c2e2c9fcc2865aa0b9e9e5e192"><td class="memItemLeft" align="right" valign="top">std::vector&lt; uint32_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_s_data.html#aa0a6f3c2e2c9fcc2865aa0b9e9e5e192">m_rgbaMap</a></td></tr>
+<tr class="separator:aa0a6f3c2e2c9fcc2865aa0b9e9e5e192"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81cc764a40c684bcc41aa3fd3767a39c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; uint16_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_s_data.html#a81cc764a40c684bcc41aa3fd3767a39c">m_confidenceMap</a></td></tr>
+<tr class="separator:a81cc764a40c684bcc41aa3fd3767a39c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_types_classvisionary_1_1_visionary_data"><td colspan="2" onclick="javascript:toggleInherit('pro_types_classvisionary_1_1_visionary_data')"><img src="closed.png" alt="-"/>&#160;Protected Types inherited from <a class="el" href="classvisionary_1_1_visionary_data.html">visionary::VisionaryData</a></td></tr>
-<tr class="memitem:afad1ab4faef29334737711aca7009921 inherit pro_types_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top"><a id="afad1ab4faef29334737711aca7009921" name="afad1ab4faef29334737711aca7009921"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>ImageType</b> { <b>UNKNOWN</b>
-, <b>PLANAR</b>
-, <b>RADIAL</b>
+<tr class="memitem:afad1ab4faef29334737711aca7009921 inherit pro_types_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_data.html#afad1ab4faef29334737711aca7009921">ImageType</a> { <a class="el" href="classvisionary_1_1_visionary_data.html#afad1ab4faef29334737711aca7009921a50d51507a51ab9e0134bbfb5caa4ce8b">UNKNOWN</a>
+, <a class="el" href="classvisionary_1_1_visionary_data.html#afad1ab4faef29334737711aca7009921a1afd1f97ea30caa00ddd7e5fcfb11442">PLANAR</a>
+, <a class="el" href="classvisionary_1_1_visionary_data.html#afad1ab4faef29334737711aca7009921a0641450d08d0d36316e577f36ca1f1d8">RADIAL</a>
  }</td></tr>
 <tr class="separator:afad1ab4faef29334737711aca7009921 inherit pro_types_classvisionary_1_1_visionary_data"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classvisionary_1_1_visionary_data"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classvisionary_1_1_visionary_data')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classvisionary_1_1_visionary_data.html">visionary::VisionaryData</a></td></tr>
-<tr class="memitem:a354f56d263aec1ff7aa08cfffd25cb5b inherit pro_attribs_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">
-<a class="el" href="structvisionary_1_1_camera_parameters.html">CameraParameters</a>&#160;</td><td class="memItemRight" valign="bottom"><b>m_cameraParams</b> {}</td></tr>
+<tr class="memitem:a354f56d263aec1ff7aa08cfffd25cb5b inherit pro_attribs_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvisionary_1_1_camera_parameters.html">CameraParameters</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_data.html#a354f56d263aec1ff7aa08cfffd25cb5b">m_cameraParams</a> {}</td></tr>
 <tr class="separator:a354f56d263aec1ff7aa08cfffd25cb5b inherit pro_attribs_classvisionary_1_1_visionary_data"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab1bc40424a7ce980ff27d5c0e7300e45 inherit pro_attribs_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">
-float&#160;</td><td class="memItemRight" valign="bottom"><b>m_scaleZ</b></td></tr>
-<tr class="memdesc:ab1bc40424a7ce980ff27d5c0e7300e45 inherit pro_attribs_classvisionary_1_1_visionary_data"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factor to convert unit of distance image to mm. <br /></td></tr>
+<tr class="memitem:ab1bc40424a7ce980ff27d5c0e7300e45 inherit pro_attribs_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_data.html#ab1bc40424a7ce980ff27d5c0e7300e45">m_scaleZ</a></td></tr>
+<tr class="memdesc:ab1bc40424a7ce980ff27d5c0e7300e45 inherit pro_attribs_classvisionary_1_1_visionary_data"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factor to convert unit of distance image to mm.  <br /></td></tr>
 <tr class="separator:ab1bc40424a7ce980ff27d5c0e7300e45 inherit pro_attribs_classvisionary_1_1_visionary_data"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aabd2504ea82e6c87c1e383f0683af048 inherit pro_attribs_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">
-uint_fast32_t&#160;</td><td class="memItemRight" valign="bottom"><b>m_changeCounter</b></td></tr>
-<tr class="memdesc:aabd2504ea82e6c87c1e383f0683af048 inherit pro_attribs_classvisionary_1_1_visionary_data"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change counter to detect changes in XML. <br /></td></tr>
+<tr class="memitem:aabd2504ea82e6c87c1e383f0683af048 inherit pro_attribs_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">uint_fast32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_data.html#aabd2504ea82e6c87c1e383f0683af048">m_changeCounter</a></td></tr>
+<tr class="memdesc:aabd2504ea82e6c87c1e383f0683af048 inherit pro_attribs_classvisionary_1_1_visionary_data"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change counter to detect changes in XML.  <br /></td></tr>
 <tr class="separator:aabd2504ea82e6c87c1e383f0683af048 inherit pro_attribs_classvisionary_1_1_visionary_data"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4debd809bb153bffdc0c928680d39475 inherit pro_attribs_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">uint_fast32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_data.html#a4debd809bb153bffdc0c928680d39475">m_frameNum</a></td></tr>
 <tr class="separator:a4debd809bb153bffdc0c928680d39475 inherit pro_attribs_classvisionary_1_1_visionary_data"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac99e7704b5a8fe1d412002e2ba8e91f3 inherit pro_attribs_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">
-uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>m_blobTimestamp</b></td></tr>
+<tr class="memitem:ac99e7704b5a8fe1d412002e2ba8e91f3 inherit pro_attribs_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_data.html#ac99e7704b5a8fe1d412002e2ba8e91f3">m_blobTimestamp</a></td></tr>
 <tr class="separator:ac99e7704b5a8fe1d412002e2ba8e91f3 inherit pro_attribs_classvisionary_1_1_visionary_data"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae0d1d8e11c88c99bb7bfef231888d66 inherit pro_attribs_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">
-ImageType&#160;</td><td class="memItemRight" valign="bottom"><b>m_preCalcCamInfoType</b></td></tr>
+<tr class="memitem:aae0d1d8e11c88c99bb7bfef231888d66 inherit pro_attribs_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classvisionary_1_1_visionary_data.html#afad1ab4faef29334737711aca7009921">ImageType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_data.html#aae0d1d8e11c88c99bb7bfef231888d66">m_preCalcCamInfoType</a></td></tr>
 <tr class="separator:aae0d1d8e11c88c99bb7bfef231888d66 inherit pro_attribs_classvisionary_1_1_visionary_data"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad1b24fb1860ce472c457725e99d1acd2 inherit pro_attribs_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">
-std::vector&lt; <a class="el" href="structvisionary_1_1_point_x_y_z.html">PointXYZ</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_preCalcCamInfo</b></td></tr>
+<tr class="memitem:ad1b24fb1860ce472c457725e99d1acd2 inherit pro_attribs_classvisionary_1_1_visionary_data"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structvisionary_1_1_point_x_y_z.html">PointXYZ</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_data.html#ad1b24fb1860ce472c457725e99d1acd2">m_preCalcCamInfo</a></td></tr>
 <tr class="separator:ad1b24fb1860ce472c457725e99d1acd2 inherit pro_attribs_classvisionary_1_1_visionary_data"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ab1fd5f6cbe8c800a0fba09ca929c7065" name="ab1fd5f6cbe8c800a0fba09ca929c7065"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1fd5f6cbe8c800a0fba09ca929c7065">&#9670;&#160;</a></span>VisionarySData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">visionary::VisionarySData::VisionarySData </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab3c60b7c0e17aa0ec3e67a7584049543" name="ab3c60b7c0e17aa0ec3e67a7584049543"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3c60b7c0e17aa0ec3e67a7584049543">&#9670;&#160;</a></span>~VisionarySData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">visionary::VisionarySData::~VisionarySData </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a5b122aee7d79d385c8520e2160a169db" name="a5b122aee7d79d385c8520e2160a169db"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5b122aee7d79d385c8520e2160a169db">&#9670;&#160;</a></span>generatePointCloud()</h2>
@@ -209,7 +274,58 @@ std::vector&lt; <a class="el" href="structvisionary_1_1_point_x_y_z.html">PointX
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="classvisionary_1_1_visionary_data.html">visionary::VisionaryData</a>.</p>
+<p>Implements <a class="el" href="classvisionary_1_1_visionary_data.html#acc13524ebe878dde099cfbde179c4c8d">visionary::VisionaryData</a>.</p>
+
+</div>
+</div>
+<a id="a812321b727d027ad905a2196796eb55a" name="a812321b727d027ad905a2196796eb55a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a812321b727d027ad905a2196796eb55a">&#9670;&#160;</a></span>getConfidenceMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; uint16_t &gt; &amp; visionary::VisionarySData::getConfidenceMap </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5936649b22a8b7a8178714d827c16c90" name="a5936649b22a8b7a8178714d827c16c90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5936649b22a8b7a8178714d827c16c90">&#9670;&#160;</a></span>getRGBAMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; uint32_t &gt; &amp; visionary::VisionarySData::getRGBAMap </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad9068e23b2a411322a3b82f6395fadb3" name="ad9068e23b2a411322a3b82f6395fadb3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9068e23b2a411322a3b82f6395fadb3">&#9670;&#160;</a></span>getZMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; uint16_t &gt; &amp; visionary::VisionarySData::getZMap </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -223,7 +339,7 @@ std::vector&lt; <a class="el" href="structvisionary_1_1_point_x_y_z.html">PointX
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool visionary::VisionarySData::parseBinaryData </td>
+          <td class="memname"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> visionary::VisionarySData::parseBinaryData </td>
           <td>(</td>
           <td class="paramtype">std::vector&lt; uint8_t &gt;::iterator&#160;</td>
           <td class="paramname"><em>itBuf</em>, </td>
@@ -247,7 +363,7 @@ std::vector&lt; <a class="el" href="structvisionary_1_1_point_x_y_z.html">PointX
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="classvisionary_1_1_visionary_data.html">visionary::VisionaryData</a>.</p>
+<p>Implements <a class="el" href="classvisionary_1_1_visionary_data.html#a68438ca476a679b7e7371755bfe00fad">visionary::VisionaryData</a>.</p>
 
 </div>
 </div>
@@ -261,7 +377,7 @@ std::vector&lt; <a class="el" href="structvisionary_1_1_point_x_y_z.html">PointX
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool visionary::VisionarySData::parseXML </td>
+          <td class="memname"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> visionary::VisionarySData::parseXML </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>xmlString</em>, </td>
@@ -285,18 +401,157 @@ std::vector&lt; <a class="el" href="structvisionary_1_1_point_x_y_z.html">PointX
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="classvisionary_1_1_visionary_data.html">visionary::VisionaryData</a>.</p>
+<p>Implements <a class="el" href="classvisionary_1_1_visionary_data.html#ac677fd73361ec21b78c3997273fa9c2a">visionary::VisionaryData</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a771d964baf65f3ce54f0c32ef37c3d6c" name="a771d964baf65f3ce54f0c32ef37c3d6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a771d964baf65f3ce54f0c32ef37c3d6c">&#9670;&#160;</a></span>m_confidenceByteDepth</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int visionary::VisionarySData::m_confidenceByteDepth</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a81cc764a40c684bcc41aa3fd3767a39c" name="a81cc764a40c684bcc41aa3fd3767a39c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81cc764a40c684bcc41aa3fd3767a39c">&#9670;&#160;</a></span>m_confidenceMap</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;uint16_t&gt; visionary::VisionarySData::m_confidenceMap</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6e49af4540f85cfa1e9a1fca4be8da3c" name="a6e49af4540f85cfa1e9a1fca4be8da3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e49af4540f85cfa1e9a1fca4be8da3c">&#9670;&#160;</a></span>m_rgbaByteDepth</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int visionary::VisionarySData::m_rgbaByteDepth</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa0a6f3c2e2c9fcc2865aa0b9e9e5e192" name="aa0a6f3c2e2c9fcc2865aa0b9e9e5e192"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0a6f3c2e2c9fcc2865aa0b9e9e5e192">&#9670;&#160;</a></span>m_rgbaMap</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;uint32_t&gt; visionary::VisionarySData::m_rgbaMap</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9f494382825a0ab83c031f4e6992adf2" name="a9f494382825a0ab83c031f4e6992adf2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f494382825a0ab83c031f4e6992adf2">&#9670;&#160;</a></span>m_zByteDepth</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int visionary::VisionarySData::m_zByteDepth</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Byte depth of images. </p>
+
+</div>
+</div>
+<a id="a37a6821a27259effcc4176bff76c7b28" name="a37a6821a27259effcc4176bff76c7b28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37a6821a27259effcc4176bff76c7b28">&#9670;&#160;</a></span>m_zMap</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;uint16_t&gt; visionary::VisionarySData::m_zMap</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>sickapi/src/<a class="el" href="_visionary_s_data_8h_source.html">VisionarySData.h</a></li>
-<li>sickapi/src/VisionarySData.cpp</li>
+<li>sickapi/src/<a class="el" href="_visionary_s_data_8cpp.html">VisionarySData.cpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacevisionary.html">visionary</a></li><li class="navelem"><a class="el" href="classvisionary_1_1_visionary_s_data.html">VisionarySData</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+  </ul>
+</div>
 </body>
 </html>

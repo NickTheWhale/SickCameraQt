@@ -9,9 +9,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -46,6 +51,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classvisionary_1_1_authentication_secure.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,18 +89,17 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="namespacevisionary.html">visionary</a></li><li class="navelem"><a class="el" href="classvisionary_1_1_authentication_secure.html">AuthenticationSecure</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classvisionary_1_1_authentication_secure-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">visionary::AuthenticationSecure Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_authentication_secure_8h_source.html">AuthenticationSecure.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for visionary::AuthenticationSecure:</div>
 <div class="dyncontent">
@@ -91,36 +112,202 @@ Inheritance diagram for visionary::AuthenticationSecure:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:af1bf334a346d486c74d7ee0689f1f5f6"><td class="memItemLeft" align="right" valign="top"><a id="af1bf334a346d486c74d7ee0689f1f5f6" name="af1bf334a346d486c74d7ee0689f1f5f6"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>AuthenticationSecure</b> (<a class="el" href="classvisionary_1_1_visionary_control.html">VisionaryControl</a> &amp;vctrl)</td></tr>
+<tr class="memitem:af1bf334a346d486c74d7ee0689f1f5f6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_authentication_secure.html#af1bf334a346d486c74d7ee0689f1f5f6">AuthenticationSecure</a> (<a class="el" href="classvisionary_1_1_visionary_control.html">VisionaryControl</a> &amp;vctrl)</td></tr>
 <tr class="separator:af1bf334a346d486c74d7ee0689f1f5f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af58c6bf742b6c873cc175946920d1869"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_authentication_secure.html#af58c6bf742b6c873cc175946920d1869">login</a> (<a class="el" href="classvisionary_1_1_i_authentication.html#a9d9871f50bf25a43e7faa4afb9e92f08">UserLevel</a> userLevel, const std::string &amp;password) override</td></tr>
+<tr class="memitem:a4438d263234fae197d1c19f672050aa7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_authentication_secure.html#a4438d263234fae197d1c19f672050aa7">~AuthenticationSecure</a> () override</td></tr>
+<tr class="separator:a4438d263234fae197d1c19f672050aa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af58c6bf742b6c873cc175946920d1869"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_authentication_secure.html#af58c6bf742b6c873cc175946920d1869">login</a> (<a class="el" href="classvisionary_1_1_i_authentication.html#a9d9871f50bf25a43e7faa4afb9e92f08">UserLevel</a> userLevel, const std::string &amp;password) override</td></tr>
 <tr class="separator:af58c6bf742b6c873cc175946920d1869"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a469bcd5cda1456068d168775fc10334d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_authentication_secure.html#a469bcd5cda1456068d168775fc10334d">logout</a> () override</td></tr>
+<tr class="memitem:a469bcd5cda1456068d168775fc10334d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_authentication_secure.html#a469bcd5cda1456068d168775fc10334d">logout</a> () override</td></tr>
 <tr class="separator:a469bcd5cda1456068d168775fc10334d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7d9fda80c5bb3b7eedf1c4d9cb603ec9"><td class="memItemLeft" align="right" valign="top"><a id="a7d9fda80c5bb3b7eedf1c4d9cb603ec9" name="a7d9fda80c5bb3b7eedf1c4d9cb603ec9"></a>
-virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>login</b> (<a class="el" href="classvisionary_1_1_i_authentication.html#a9d9871f50bf25a43e7faa4afb9e92f08">UserLevel</a> userLevel, const std::string &amp;password)=0</td></tr>
-<tr class="separator:a7d9fda80c5bb3b7eedf1c4d9cb603ec9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5add7577032fe2ee4e6070df44f82cb3"><td class="memItemLeft" align="right" valign="top"><a id="a5add7577032fe2ee4e6070df44f82cb3" name="a5add7577032fe2ee4e6070df44f82cb3"></a>
-virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>logout</b> ()=0</td></tr>
-<tr class="separator:a5add7577032fe2ee4e6070df44f82cb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classvisionary_1_1_i_authentication"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classvisionary_1_1_i_authentication')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classvisionary_1_1_i_authentication.html">visionary::IAuthentication</a></td></tr>
+<tr class="memitem:ab95c69101c7fd566cbd28f310335b4d9 inherit pub_methods_classvisionary_1_1_i_authentication"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_i_authentication.html#ab95c69101c7fd566cbd28f310335b4d9">~IAuthentication</a> ()=default</td></tr>
+<tr class="separator:ab95c69101c7fd566cbd28f310335b4d9 inherit pub_methods_classvisionary_1_1_i_authentication"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d9fda80c5bb3b7eedf1c4d9cb603ec9 inherit pub_methods_classvisionary_1_1_i_authentication"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_i_authentication.html#a7d9fda80c5bb3b7eedf1c4d9cb603ec9">login</a> (<a class="el" href="classvisionary_1_1_i_authentication.html#a9d9871f50bf25a43e7faa4afb9e92f08">UserLevel</a> userLevel, const std::string &amp;password)=0</td></tr>
+<tr class="separator:a7d9fda80c5bb3b7eedf1c4d9cb603ec9 inherit pub_methods_classvisionary_1_1_i_authentication"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5add7577032fe2ee4e6070df44f82cb3 inherit pub_methods_classvisionary_1_1_i_authentication"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_i_authentication.html#a5add7577032fe2ee4e6070df44f82cb3">logout</a> ()=0</td></tr>
+<tr class="separator:a5add7577032fe2ee4e6070df44f82cb3 inherit pub_methods_classvisionary_1_1_i_authentication"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:aebc191af2b10efeab698895e4609c1ea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacevisionary.html#a288962be13c22d9b88d65e151cb5961f">PasswordHash</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_authentication_secure.html#aebc191af2b10efeab698895e4609c1ea">CreatePasswordHash</a> (<a class="el" href="classvisionary_1_1_i_authentication.html#a9d9871f50bf25a43e7faa4afb9e92f08">UserLevel</a> userLevel, const std::string &amp;password, const <a class="el" href="structvisionary_1_1_challenge_request.html">ChallengeRequest</a> &amp;challengeRequest, <a class="el" href="namespacevisionary.html#a557238be3b0c43e9f28b6dc68ecd86c0">ProtocolType</a> protocolType)</td></tr>
+<tr class="separator:aebc191af2b10efeab698895e4609c1ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78d1eb70961f0ad2ce0bf02f60e9c129"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacevisionary.html#a770512c55c2807f05651f1d9cb4a2382">ChallengeResponse</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_authentication_secure.html#a78d1eb70961f0ad2ce0bf02f60e9c129">CreateChallengeResponse</a> (<a class="el" href="classvisionary_1_1_i_authentication.html#a9d9871f50bf25a43e7faa4afb9e92f08">UserLevel</a> userLevel, const std::string &amp;password, const <a class="el" href="structvisionary_1_1_challenge_request.html">ChallengeRequest</a> &amp;challengeRequest, <a class="el" href="namespacevisionary.html#a557238be3b0c43e9f28b6dc68ecd86c0">ProtocolType</a> protocolType)</td></tr>
+<tr class="separator:a78d1eb70961f0ad2ce0bf02f60e9c129"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a979490dccff5402efedb40d60def4e36"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_authentication_secure.html#a979490dccff5402efedb40d60def4e36">loginImpl</a> (<a class="el" href="classvisionary_1_1_i_authentication.html#a9d9871f50bf25a43e7faa4afb9e92f08">UserLevel</a> userLevel, const std::string &amp;password, const <a class="el" href="classvisionary_1_1_co_la_parameter_reader.html">CoLaParameterReader</a> &amp;getChallengeResponse, <a class="el" href="namespacevisionary.html#a557238be3b0c43e9f28b6dc68ecd86c0">ProtocolType</a> protocolType)</td></tr>
+<tr class="separator:a979490dccff5402efedb40d60def4e36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a223227632167325361048aee00157e1f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classvisionary_1_1_visionary_control.html">VisionaryControl</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_authentication_secure.html#a223227632167325361048aee00157e1f">m_VisionaryControl</a></td></tr>
+<tr class="separator:a223227632167325361048aee00157e1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa136f20e489e7fa0a49a14c3ec7b0bb9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacevisionary.html#a557238be3b0c43e9f28b6dc68ecd86c0">ProtocolType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_authentication_secure.html#aa136f20e489e7fa0a49a14c3ec7b0bb9">m_protocolType</a></td></tr>
+<tr class="separator:aa136f20e489e7fa0a49a14c3ec7b0bb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_types_classvisionary_1_1_i_authentication"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classvisionary_1_1_i_authentication')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="classvisionary_1_1_i_authentication.html">visionary::IAuthentication</a></td></tr>
-<tr class="memitem:a9d9871f50bf25a43e7faa4afb9e92f08 inherit pub_types_classvisionary_1_1_i_authentication"><td class="memItemLeft" align="right" valign="top"><a id="a9d9871f50bf25a43e7faa4afb9e92f08" name="a9d9871f50bf25a43e7faa4afb9e92f08"></a>enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_i_authentication.html#a9d9871f50bf25a43e7faa4afb9e92f08">UserLevel</a> : int8_t { <br />
-&#160;&#160;<b>RUN</b> = 0
-, <b>OPERATOR</b> = 1
-, <b>MAINTENANCE</b> = 2
-, <b>AUTHORIZED_CLIENT</b> = 3
+<tr class="memitem:a9d9871f50bf25a43e7faa4afb9e92f08 inherit pub_types_classvisionary_1_1_i_authentication"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_i_authentication.html#a9d9871f50bf25a43e7faa4afb9e92f08">UserLevel</a> : int8_t { <br />
+&#160;&#160;<a class="el" href="classvisionary_1_1_i_authentication.html#a9d9871f50bf25a43e7faa4afb9e92f08a855520d2a5b0b1a64b939e7e30889e2a">RUN</a> = 0
+, <a class="el" href="classvisionary_1_1_i_authentication.html#a9d9871f50bf25a43e7faa4afb9e92f08a986496ca5b23669b8661171566a167c3">OPERATOR</a> = 1
+, <a class="el" href="classvisionary_1_1_i_authentication.html#a9d9871f50bf25a43e7faa4afb9e92f08aa49182544bf417d2e02cae1f35c9c8b8">MAINTENANCE</a> = 2
+, <a class="el" href="classvisionary_1_1_i_authentication.html#a9d9871f50bf25a43e7faa4afb9e92f08ab7877fa4c9005b3a2490e05562310130">AUTHORIZED_CLIENT</a> = 3
 , <br />
-&#160;&#160;<b>SERVICE</b> = 4
+&#160;&#160;<a class="el" href="classvisionary_1_1_i_authentication.html#a9d9871f50bf25a43e7faa4afb9e92f08af9e81a746a286bbac225d69520d1e67a">SERVICE</a> = 4
 <br />
  }</td></tr>
-<tr class="memdesc:a9d9871f50bf25a43e7faa4afb9e92f08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available CoLa user levels. <br /></td></tr>
+<tr class="memdesc:a9d9871f50bf25a43e7faa4afb9e92f08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available CoLa user levels.  <a href="classvisionary_1_1_i_authentication.html#a9d9871f50bf25a43e7faa4afb9e92f08">More...</a><br /></td></tr>
 <tr class="separator:a9d9871f50bf25a43e7faa4afb9e92f08 inherit pub_types_classvisionary_1_1_i_authentication"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="af1bf334a346d486c74d7ee0689f1f5f6" name="af1bf334a346d486c74d7ee0689f1f5f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1bf334a346d486c74d7ee0689f1f5f6">&#9670;&#160;</a></span>AuthenticationSecure()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">visionary::AuthenticationSecure::AuthenticationSecure </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classvisionary_1_1_visionary_control.html">VisionaryControl</a> &amp;&#160;</td>
+          <td class="paramname"><em>vctrl</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4438d263234fae197d1c19f672050aa7" name="a4438d263234fae197d1c19f672050aa7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4438d263234fae197d1c19f672050aa7">&#9670;&#160;</a></span>~AuthenticationSecure()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">visionary::AuthenticationSecure::~AuthenticationSecure </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a78d1eb70961f0ad2ce0bf02f60e9c129" name="a78d1eb70961f0ad2ce0bf02f60e9c129"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78d1eb70961f0ad2ce0bf02f60e9c129">&#9670;&#160;</a></span>CreateChallengeResponse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacevisionary.html#a770512c55c2807f05651f1d9cb4a2382">ChallengeResponse</a> visionary::AuthenticationSecure::CreateChallengeResponse </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classvisionary_1_1_i_authentication.html#a9d9871f50bf25a43e7faa4afb9e92f08">UserLevel</a>&#160;</td>
+          <td class="paramname"><em>userLevel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>password</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structvisionary_1_1_challenge_request.html">ChallengeRequest</a> &amp;&#160;</td>
+          <td class="paramname"><em>challengeRequest</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacevisionary.html#a557238be3b0c43e9f28b6dc68ecd86c0">ProtocolType</a>&#160;</td>
+          <td class="paramname"><em>protocolType</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aebc191af2b10efeab698895e4609c1ea" name="aebc191af2b10efeab698895e4609c1ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebc191af2b10efeab698895e4609c1ea">&#9670;&#160;</a></span>CreatePasswordHash()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacevisionary.html#a288962be13c22d9b88d65e151cb5961f">PasswordHash</a> visionary::AuthenticationSecure::CreatePasswordHash </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classvisionary_1_1_i_authentication.html#a9d9871f50bf25a43e7faa4afb9e92f08">UserLevel</a>&#160;</td>
+          <td class="paramname"><em>userLevel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>password</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structvisionary_1_1_challenge_request.html">ChallengeRequest</a> &amp;&#160;</td>
+          <td class="paramname"><em>challengeRequest</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacevisionary.html#a557238be3b0c43e9f28b6dc68ecd86c0">ProtocolType</a>&#160;</td>
+          <td class="paramname"><em>protocolType</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="af58c6bf742b6c873cc175946920d1869" name="af58c6bf742b6c873cc175946920d1869"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af58c6bf742b6c873cc175946920d1869">&#9670;&#160;</a></span>login()</h2>
 
@@ -131,7 +318,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool visionary::AuthenticationSecure::login </td>
+          <td class="memname"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> visionary::AuthenticationSecure::login </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classvisionary_1_1_i_authentication.html#a9d9871f50bf25a43e7faa4afb9e92f08">UserLevel</a>&#160;</td>
           <td class="paramname"><em>userLevel</em>, </td>
@@ -155,7 +342,55 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="classvisionary_1_1_i_authentication.html">visionary::IAuthentication</a>.</p>
+<p>Implements <a class="el" href="classvisionary_1_1_i_authentication.html#a7d9fda80c5bb3b7eedf1c4d9cb603ec9">visionary::IAuthentication</a>.</p>
+
+</div>
+</div>
+<a id="a979490dccff5402efedb40d60def4e36" name="a979490dccff5402efedb40d60def4e36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a979490dccff5402efedb40d60def4e36">&#9670;&#160;</a></span>loginImpl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> visionary::AuthenticationSecure::loginImpl </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classvisionary_1_1_i_authentication.html#a9d9871f50bf25a43e7faa4afb9e92f08">UserLevel</a>&#160;</td>
+          <td class="paramname"><em>userLevel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>password</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classvisionary_1_1_co_la_parameter_reader.html">CoLaParameterReader</a> &amp;&#160;</td>
+          <td class="paramname"><em>getChallengeResponse</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacevisionary.html#a557238be3b0c43e9f28b6dc68ecd86c0">ProtocolType</a>&#160;</td>
+          <td class="paramname"><em>protocolType</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -169,7 +404,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool visionary::AuthenticationSecure::logout </td>
+          <td class="memname"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> visionary::AuthenticationSecure::logout </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -182,18 +417,67 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="classvisionary_1_1_i_authentication.html">visionary::IAuthentication</a>.</p>
+<p>Implements <a class="el" href="classvisionary_1_1_i_authentication.html#a5add7577032fe2ee4e6070df44f82cb3">visionary::IAuthentication</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="aa136f20e489e7fa0a49a14c3ec7b0bb9" name="aa136f20e489e7fa0a49a14c3ec7b0bb9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa136f20e489e7fa0a49a14c3ec7b0bb9">&#9670;&#160;</a></span>m_protocolType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacevisionary.html#a557238be3b0c43e9f28b6dc68ecd86c0">ProtocolType</a> visionary::AuthenticationSecure::m_protocolType</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a223227632167325361048aee00157e1f" name="a223227632167325361048aee00157e1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a223227632167325361048aee00157e1f">&#9670;&#160;</a></span>m_VisionaryControl</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classvisionary_1_1_visionary_control.html">VisionaryControl</a>&amp; visionary::AuthenticationSecure::m_VisionaryControl</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>sickapi/src/<a class="el" href="_authentication_secure_8h_source.html">AuthenticationSecure.h</a></li>
-<li>sickapi/src/AuthenticationSecure.cpp</li>
+<li>sickapi/src/<a class="el" href="_authentication_secure_8cpp.html">AuthenticationSecure.cpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacevisionary.html">visionary</a></li><li class="navelem"><a class="el" href="classvisionary_1_1_authentication_secure.html">AuthenticationSecure</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+  </ul>
+</div>
 </body>
 </html>

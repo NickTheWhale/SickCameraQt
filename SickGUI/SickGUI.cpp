@@ -3,10 +3,9 @@
 #include <qtimer.h>
 #include <chrono>
 
-#include "VisionaryCamera.h"
+#include "cameraimpl/VisionaryCamera.h"
 #include "VisionaryAutoIPScanCustom.h"
 #include <snap7.h>
-#include "ui_StreamSettingDialog.h"
 #include <qmessagebox.h>
 #include <qfuture.h>
 #include <QtConcurrent/qtconcurrentrun.h>
@@ -17,6 +16,9 @@
 #include <qsizepolicy.h>
 #include "Fingerprint.h"
 
+/**
+ * @brief .
+ */
 #include <qtoolbutton.h>
 #include <qmenu.h>
 #include <qpushbutton.h>
@@ -28,15 +30,17 @@
 
 SickGUI::SickGUI(QWidget* parent) : QMainWindow(parent), framesetBuffer(framesetBufferSize)
 {
+	// create and connect timers to their corresponding update methods
 	displayTimer = new QTimer(this);
 	chartTimer = new QTimer(this);
 	QObject::connect(displayTimer, &QTimer::timeout, this, &SickGUI::updateDisplay);
-	QObject::connect(chartTimer, &QTimer::timeout, this, &SickGUI::updateChart);
+	QObject::connect(chartTimer, &QTimer::timeout, this, &SickGUI::updateCharts);
 
 	ui.setupUi(this);
 
 	initializeWidgets();
 
+	// create and connect future watcher to check thread status
 	threadWatcher = new QFutureWatcher<bool>(this);
 	QObject::connect(threadWatcher, &QFutureWatcher<bool>::finished, this, &SickGUI::checkThreads);
 
@@ -44,6 +48,7 @@ SickGUI::SickGUI(QWidget* parent) : QMainWindow(parent), framesetBuffer(frameset
 
 	threadWatcher->setFuture(future);
 
+	// restore window state and geometry
 	restoreSettings();
 }
 
@@ -67,7 +72,7 @@ SickGUI::~SickGUI()
 	if (captureThread)
 	{
 		captureThread->stopCapture();
-		captureThread->wait(10'000);
+		captureThread->wait(10'000 /*ms*/);
 		delete captureThread;
 		captureThread = nullptr;
 	}
@@ -81,7 +86,7 @@ SickGUI::~SickGUI()
 	if (plcThread)
 	{
 		plcThread->stopPlc();
-		plcThread->wait(10'000);
+		plcThread->wait(10'000 /*ms*/);
 		delete plcThread;
 		plcThread = nullptr;
 	}
@@ -103,20 +108,16 @@ void SickGUI::closeEvent(QCloseEvent* event)
 
 void SickGUI::initializeWidgets()
 {
-
+	// QLabel used to display live camera image
 #pragma region CAMERA_VIEW
 
 	cameraView = new AspectRatioPixmapLabel(ui.centralWidget);
 	cameraView->setMinimumSize(QSize(300, 300));
 	setCentralWidget(cameraView);
-	//QDockWidget* dock = new QDockWidget("Camera", this);
-	//dock->setAllowedAreas(Qt::DockWidgetArea::AllDockWidgetAreas);
-	//dock->setWidget(cameraView);
-	//dock->adjustSize();
-	//addDockWidget(Qt::DockWidgetArea::LeftDockWidgetArea, dock);
 
 #pragma endregion
 
+	// Button with menu to select stream type (depth, intensity, state)
 #pragma region STREAM MENU
 
 	QToolButton* streamButton = new QToolButton(this);
@@ -135,6 +136,8 @@ void SickGUI::initializeWidgets()
 		Stream streamType;
 	};
 
+	// if you need to add more stream types do it here
+	//	note: the first item in the list will be selected by defualt
 	StreamActionInfo streamActions[] =
 	{
 		{"Depth",     Stream::Depth},
@@ -150,6 +153,7 @@ void SickGUI::initializeWidgets()
 		QAction* action = streamMenu->addAction(streamActionInfo.name);
 		action->setCheckable(true);
 		action->setStatusTip("Select " + streamActionInfo.name + " Stream");
+		// check the first item
 		if (firstItem)
 		{
 			firstItem = false;
@@ -157,21 +161,25 @@ void SickGUI::initializeWidgets()
 			streamType = streamActionInfo.streamType;
 			streamButton->setText(streamActionInfo.name);
 		}
+		// when a menu option is triggered, update the stream type
 		streamGroup->addAction(action);
 		QObject::connect(action, &QAction::triggered, [this, streamActionInfo, streamButton]()
 			{
 				streamType = streamActionInfo.streamType;
 				streamButton->setText(streamActionInfo.name);
 			});
+		// keep track of the widest text to set the minimum button width
 		auto currWidth = fontMetrics.boundingRect(streamActionInfo.name).width();
 		if (currWidth > buttonWidth)
 		{
 			buttonWidth = currWidth;
 		}
 	}
+	// make sure the menu doesn't hide when you click an option
 	QObject::connect(streamMenu, &QMenu::aboutToHide, [this, streamMenu]()
 		{
-			if (streamMenu->rect().contains(streamMenu->mapFromGlobal(QCursor::pos()))) {
+			if (streamMenu->rect().contains(streamMenu->mapFromGlobal(QCursor::pos())))
+			{
 				QTimer::singleShot(0, streamMenu, &QMenu::show);
 			}
 		});
@@ -181,6 +189,7 @@ void SickGUI::initializeWidgets()
 
 #pragma endregion
 
+	// Button with menu to select colormap type (gray, jet, turbo, etc.)
 #pragma region COLORMAP MENU
 
 	struct ColorMapActionInfo
@@ -189,6 +198,8 @@ void SickGUI::initializeWidgets()
 		tinycolormap::ColormapType colormapType;
 	};
 
+	// if you need to add more colormap types do it here
+	//	note: the first item will be selected by default
 	ColorMapActionInfo colorActions[] =
 	{
 		{"Gray",      tinycolormap::ColormapType::Gray},
@@ -197,7 +208,7 @@ void SickGUI::initializeWidgets()
 		{"Hot",       tinycolormap::ColormapType::Hot},
 		{"Github",    tinycolormap::ColormapType::Github},
 		{"Turbo",     tinycolormap::ColormapType::Turbo},
-		{"TurboFast",     tinycolormap::ColormapType::TurboFast}
+		{"TurboFast", tinycolormap::ColormapType::TurboFast}
 	};
 
 	QToolButton* colorButton = new QToolButton(this);
@@ -218,6 +229,7 @@ void SickGUI::initializeWidgets()
 		QAction* action = colorMenu->addAction(colorActionInfo.name);
 		action->setCheckable(true);
 		action->setStatusTip("Select " + colorActionInfo.name + " Colormap");
+		// check the first item
 		if (firstItem)
 		{
 			firstItem = false;
@@ -225,18 +237,21 @@ void SickGUI::initializeWidgets()
 			streamColorMapType = colorActionInfo.colormapType;
 			colorButton->setText(colorActionInfo.name);
 		}
+		// when a menu option is triggered, update the colormap type
 		colorGroup->addAction(action);
 		QObject::connect(action, &QAction::triggered, [this, colorActionInfo, colorButton]()
 			{
 				streamColorMapType = colorActionInfo.colormapType;
 				colorButton->setText(colorActionInfo.name);
 			});
+		// keep track of the widest text to set the minumum button width
 		auto currWidth = fontMetrics.boundingRect(colorActionInfo.name).width();
 		if (currWidth > buttonWidth)
 		{
 			buttonWidth = currWidth;
 		}
 	}
+	// make sure the menu doesn't hide when you click an option
 	QObject::connect(colorMenu, &QMenu::aboutToHide, [this, colorMenu]()
 		{
 			if (colorMenu->rect().contains(colorMenu->mapFromGlobal(QCursor::pos()))) {
@@ -245,7 +260,7 @@ void SickGUI::initializeWidgets()
 		});
 
 	colorMenu->addSeparator();
-
+	// add an option to invert the color map
 	invertedColor = false;
 	QAction* action = colorMenu->addAction("Invert");
 	action->setCheckable(true);
@@ -279,14 +294,14 @@ void SickGUI::initializeWidgets()
 
 #pragma endregion
 
-
+	
 #pragma region DEPTH_HISTOGRAM
-
+	// the axis range and step is kinda hacky. Best not to mess with it.
 	depthHistogram = new HistogramWidget(100, 5'000, 100, 20'000, ui.centralWidget);
 	depthHistogram->setXAxis<double>(0, 0.5, 5, "distance (m)");
 	depthHistogram->setYAxis(3'000, 3'000, 23'000, "count");
 	depthHistogram->setMinimumSize(QSize(260, 200));
-	
+
 	auto dock = new CloseDockWidget("Depth Histogram", this);
 	dock->setObjectName("depthHistogramDock");
 	dock->setAllowedAreas(Qt::DockWidgetArea::AllDockWidgetAreas);
@@ -298,12 +313,12 @@ void SickGUI::initializeWidgets()
 
 
 #pragma region INTENSITY_HISTOGRAM
-
+	// the axis range and step is kinda hacky. Best not to mess with it.
 	intensityHistogram = new HistogramWidget(0, 300, 100, 20'000, ui.centralWidget);
 	intensityHistogram->setXAxis<double>(0, 20, 100, "intensity (%)");
 	intensityHistogram->setYAxis(3'000, 3'000, 23'000, "count");
 	intensityHistogram->setMinimumSize(QSize(260, 200));
-	
+
 	dock = new CloseDockWidget("Intensity Histogram", this);
 	dock->setObjectName("intensityHistogramDock");
 	dock->setAllowedAreas(Qt::DockWidgetArea::AllDockWidgetAreas);
@@ -327,9 +342,11 @@ void SickGUI::initializeWidgets()
 
 void SickGUI::updateDisplay()
 {
+	// don't bother is the window is minimized
 	if (this->isMinimized())
 		return;
-
+	
+	// gotta use a mutex since the frameset buffer is accessed by multiple threads
 	if (!framesetMutex.tryLock())
 		return;
 	if (framesetBuffer.empty())
@@ -343,6 +360,7 @@ void SickGUI::updateDisplay()
 
 		QImage qImage;
 
+		// determine what stream we want and then overlay some stats if needed
 		switch (streamType)
 		{
 		case Stream::Depth:
@@ -367,16 +385,19 @@ void SickGUI::updateDisplay()
 		}
 		break;
 		}
-
+		
+		// we use this method for thread safety
 		writeImage(qImage);
 	}
 }
 
-void SickGUI::updateChart()
+void SickGUI::updateCharts()
 {
+	// don't bother if the window is minimized
 	if (this->isMinimized())
 		return;
 
+	// gotta use a mutex since the frameset buffer is accessed by multiple threads
 	if (!framesetMutex.tryLock())
 		return;
 	if (framesetBuffer.empty())
@@ -388,10 +409,13 @@ void SickGUI::updateChart()
 		Frameset::frameset_t fs = framesetBuffer.back();
 		framesetMutex.unlock();
 
+		// we use invokeMethod for thread safety
 		QMetaObject::invokeMethod(this, [this, fs]()
 			{
+				// recalculate the 'grams
 				depthHistogram->updateHistogram(fs.depth);
 				intensityHistogram->updateHistogram(fs.intensity);
+				// force a repaint
 				depthHistogram->update();
 				intensityHistogram->update();
 			}
@@ -401,6 +425,7 @@ void SickGUI::updateChart()
 
 void SickGUI::writeImage(QImage image)
 {
+	// we use invokeMethod for thread safety
 	QMetaObject::invokeMethod(this, [this, image]()
 		{
 			auto pixmap = QPixmap::fromImage(image);
@@ -423,15 +448,6 @@ bool SickGUI::createCamera()
 	camera = new(std::nothrow) VisionaryCamera();
 
 	return camera != nullptr;
-}
-
-void SickGUI::showStatusBarMessage(const QString& text, int timeout)
-{
-	QMetaObject::invokeMethod(this, [this, text, timeout]()
-		{
-			statusBar()->showMessage(text, timeout);
-		}
-	, Qt::ConnectionType::DirectConnection);
 }
 
 void SickGUI::checkThreads()
@@ -458,6 +474,7 @@ void SickGUI::checkThreads()
 	}
 	else
 	{
+		// if both threads are good, show the ip's on the status bar
 		QTimer::singleShot(1000, [this]()
 			{
 				auto camParams = camera->getParameters();
@@ -658,18 +675,10 @@ void SickGUI::pauseVideo()
 	ui.actionPause->setEnabled(false);
 }
 
-void SickGUI::openStreamSettingsDialog()
-{
-	auto* dialog = new QDialog(this);
-
-	Ui::streamSettingDialog ui;
-	ui.setupUi(dialog);
-	dialog->exec();
-	dialog->deleteLater();
-}
-
 void SickGUI::newFrameset(Frameset::frameset_t fs)
 {
+	// keep this method short and sweet for speed.
+	//  if you want to do calculations on the frames, do it somewhere else
 	if (!framesetMutex.tryLock())
 	{
 		return;
@@ -677,4 +686,13 @@ void SickGUI::newFrameset(Frameset::frameset_t fs)
 
 	framesetBuffer.push_back(fs);
 	framesetMutex.unlock();
+}
+
+void SickGUI::showStatusBarMessage(const QString& text, int timeout)
+{
+	QMetaObject::invokeMethod(this, [this, text, timeout]()
+		{
+			statusBar()->showMessage(text, timeout);
+		}
+	, Qt::ConnectionType::DirectConnection);
 }

@@ -15,6 +15,48 @@ bool {\bfseries get\+Next\+Frame} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{cl
 \Hypertarget{classvisionary_1_1_frame_grabber_base_a17e6e4905312908d8d55eac1f3a2a33b}\label{classvisionary_1_1_frame_grabber_base_a17e6e4905312908d8d55eac1f3a2a33b} 
 bool {\bfseries get\+Current\+Frame} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classvisionary_1_1_visionary_data}{Visionary\+Data}} $>$ \&p\+Data\+Handler)
 \end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvisionary_1_1_frame_grabber_base_ae4cfc0a821283aa1e6f63deb288b6a2e}\label{classvisionary_1_1_frame_grabber_base_ae4cfc0a821283aa1e6f63deb288b6a2e} 
+void {\bfseries run} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvisionary_1_1_frame_grabber_base_a8d7aa8d759c418ea11d47d51718ebbbe}\label{classvisionary_1_1_frame_grabber_base_a8d7aa8d759c418ea11d47d51718ebbbe} 
+bool {\bfseries m\+\_\+is\+Running}
+\item 
+\Hypertarget{classvisionary_1_1_frame_grabber_base_aa9919fd1e845e912f8bb029120cb9560}\label{classvisionary_1_1_frame_grabber_base_aa9919fd1e845e912f8bb029120cb9560} 
+bool {\bfseries m\+\_\+\+Frame\+Available}
+\item 
+\Hypertarget{classvisionary_1_1_frame_grabber_base_aa25177b73de78dc4edfc75a692b1d07d}\label{classvisionary_1_1_frame_grabber_base_aa25177b73de78dc4edfc75a692b1d07d} 
+bool {\bfseries m\+\_\+connected}
+\item 
+\Hypertarget{classvisionary_1_1_frame_grabber_base_ac5268d4f9e28e27ffdcae3d1bf945f18}\label{classvisionary_1_1_frame_grabber_base_ac5268d4f9e28e27ffdcae3d1bf945f18} 
+const std\+::string {\bfseries m\+\_\+hostname}
+\item 
+\Hypertarget{classvisionary_1_1_frame_grabber_base_a81e4a12401a6d07ad43f7f07eb4aba8a}\label{classvisionary_1_1_frame_grabber_base_a81e4a12401a6d07ad43f7f07eb4aba8a} 
+const std\+::uint16\+\_\+t {\bfseries m\+\_\+port}
+\item 
+\Hypertarget{classvisionary_1_1_frame_grabber_base_a8a37e24afd5ea744aab35e1fc58b154b}\label{classvisionary_1_1_frame_grabber_base_a8a37e24afd5ea744aab35e1fc58b154b} 
+const std\+::uint64\+\_\+t {\bfseries m\+\_\+timeout\+Ms}
+\item 
+\Hypertarget{classvisionary_1_1_frame_grabber_base_a72aa2f27e3d383d2ffb03135e1ed66d0}\label{classvisionary_1_1_frame_grabber_base_a72aa2f27e3d383d2ffb03135e1ed66d0} 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classvisionary_1_1_visionary_data_stream}{Visionary\+Data\+Stream}} $>$ {\bfseries m\+\_\+p\+Data\+Stream}
+\item 
+\Hypertarget{classvisionary_1_1_frame_grabber_base_a90baf2a1e584007c85a3aa2a8e5c4921}\label{classvisionary_1_1_frame_grabber_base_a90baf2a1e584007c85a3aa2a8e5c4921} 
+std\+::thread {\bfseries m\+\_\+grabber\+Thread}
+\item 
+\Hypertarget{classvisionary_1_1_frame_grabber_base_a7ba75f63c3f03b0c395776dbff9e3928}\label{classvisionary_1_1_frame_grabber_base_a7ba75f63c3f03b0c395776dbff9e3928} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classvisionary_1_1_visionary_data}{Visionary\+Data}} $>$ {\bfseries m\+\_\+p\+Data\+Handler}
+\item 
+\Hypertarget{classvisionary_1_1_frame_grabber_base_a67aa90ed438d0e3293d2662e00363337}\label{classvisionary_1_1_frame_grabber_base_a67aa90ed438d0e3293d2662e00363337} 
+std\+::mutex {\bfseries m\+\_\+data\+Handler\+\_\+mutex}
+\item 
+\Hypertarget{classvisionary_1_1_frame_grabber_base_aa013728ee14f482fc04658d416d78173}\label{classvisionary_1_1_frame_grabber_base_aa013728ee14f482fc04658d416d78173} 
+std\+::condition\+\_\+variable {\bfseries m\+\_\+frame\+Available\+Cv}
+\end{DoxyCompactItemize}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

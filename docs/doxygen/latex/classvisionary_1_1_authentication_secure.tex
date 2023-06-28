@@ -24,6 +24,27 @@ virtual bool {\bfseries login} (\mbox{\hyperlink{classvisionary_1_1_i_authentica
 \Hypertarget{classvisionary_1_1_i_authentication_a5add7577032fe2ee4e6070df44f82cb3}\label{classvisionary_1_1_i_authentication_a5add7577032fe2ee4e6070df44f82cb3} 
 virtual bool {\bfseries logout} ()=0
 \end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvisionary_1_1_authentication_secure_aebc191af2b10efeab698895e4609c1ea}\label{classvisionary_1_1_authentication_secure_aebc191af2b10efeab698895e4609c1ea} 
+Password\+Hash {\bfseries Create\+Password\+Hash} (\mbox{\hyperlink{classvisionary_1_1_i_authentication_a9d9871f50bf25a43e7faa4afb9e92f08}{User\+Level}} user\+Level, const std\+::string \&password, const \mbox{\hyperlink{structvisionary_1_1_challenge_request}{Challenge\+Request}} \&challenge\+Request, Protocol\+Type protocol\+Type)
+\item 
+\Hypertarget{classvisionary_1_1_authentication_secure_a78d1eb70961f0ad2ce0bf02f60e9c129}\label{classvisionary_1_1_authentication_secure_a78d1eb70961f0ad2ce0bf02f60e9c129} 
+Challenge\+Response {\bfseries Create\+Challenge\+Response} (\mbox{\hyperlink{classvisionary_1_1_i_authentication_a9d9871f50bf25a43e7faa4afb9e92f08}{User\+Level}} user\+Level, const std\+::string \&password, const \mbox{\hyperlink{structvisionary_1_1_challenge_request}{Challenge\+Request}} \&challenge\+Request, Protocol\+Type protocol\+Type)
+\item 
+\Hypertarget{classvisionary_1_1_authentication_secure_a979490dccff5402efedb40d60def4e36}\label{classvisionary_1_1_authentication_secure_a979490dccff5402efedb40d60def4e36} 
+bool {\bfseries login\+Impl} (\mbox{\hyperlink{classvisionary_1_1_i_authentication_a9d9871f50bf25a43e7faa4afb9e92f08}{User\+Level}} user\+Level, const std\+::string \&password, const \mbox{\hyperlink{classvisionary_1_1_co_la_parameter_reader}{Co\+La\+Parameter\+Reader}} \&get\+Challenge\+Response, Protocol\+Type protocol\+Type)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvisionary_1_1_authentication_secure_a223227632167325361048aee00157e1f}\label{classvisionary_1_1_authentication_secure_a223227632167325361048aee00157e1f} 
+\mbox{\hyperlink{classvisionary_1_1_visionary_control}{Visionary\+Control}} \& {\bfseries m\+\_\+\+Visionary\+Control}
+\item 
+\Hypertarget{classvisionary_1_1_authentication_secure_aa136f20e489e7fa0a49a14c3ec7b0bb9}\label{classvisionary_1_1_authentication_secure_aa136f20e489e7fa0a49a14c3ec7b0bb9} 
+Protocol\+Type {\bfseries m\+\_\+protocol\+Type}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Public Types inherited from \mbox{\hyperlink{classvisionary_1_1_i_authentication}{visionary\+::\+IAuthentication}}}
 \begin{DoxyCompactItemize}

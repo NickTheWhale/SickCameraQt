@@ -1,51 +1,57 @@
 \doxysection{Visionary\+Camera.\+h}
-\hypertarget{_visionary_camera_8h_source}{}\label{_visionary_camera_8h_source}
+\hypertarget{_visionary_camera_8h_source}{}\label{_visionary_camera_8h_source}\mbox{\hyperlink{_visionary_camera_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}Camera.h"{}}}
-\DoxyCodeLine{00003\ }
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <VisionaryTMiniData.h>}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <VisionaryDataStream.h>}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <VisionaryControl.h>}}
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <string>}}
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <map>}}
-\DoxyCodeLine{00009\ }
-\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_visionary_camera}{VisionaryCamera}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_camera}{Camera}}}
-\DoxyCodeLine{00011\ \{}
-\DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{class_visionary_camera}{VisionaryCamera}}(std::string\ ipAddress\ =\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keywordtype}{short}\ dataPort\ =\ 2114);}
-\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{class_visionary_camera}{\string~VisionaryCamera}}()\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00015\ }
-\DoxyCodeLine{00016\ \ \ \ \ \textcolor{comment}{//\ overridden\ from\ Camera.h}}
-\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_visionary_camera_a60788c016091fdd293cb664822aa1c0f}{open}}()\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_visionary_camera_ae088c2402d1ea9956b06028eb375d924}{close}}()\ \ \textcolor{keyword}{override};}
-\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_visionary_camera_af4ab7f3401b4b522a51af10750e92c0c}{isOpen}}()\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_visionary_camera_a830a20b540edee0a375a709fb654bb87}{startCapture}}()\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_visionary_camera_a2bc1fd6055fc9fa1fae727fc790b0820}{stopCapture}}()\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_visionary_camera_a8bfda3741ab9a0525b1adc837a47391a}{getNextFrameset}}(\mbox{\hyperlink{struct_frameset_1_1frameset__t}{Frameset::frameset\_t}}\ \&fs)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{const}\ std::map<std::string,\ std::string>\ \mbox{\hyperlink{class_visionary_camera_a248b76b210f97ea28890a7bfb1248bde}{getParameters}}()\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00024\ }
-\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{bool}\ available(\textcolor{keywordtype}{int}\ timeout);}
-\DoxyCodeLine{00026\ }
-\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ setIp(std::string\ ipAddress);}
-\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ setDataPort(\textcolor{keywordtype}{short}\ dataPort);}
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00030\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ openTimeout\ =\ 5000;}
-\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{bool}\ connected\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{bool}\ capturing\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00034\ }
-\DoxyCodeLine{00035\ \ \ \ \ std::string\ ipAddress;}
-\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{short}\ dataPort;}
-\DoxyCodeLine{00037\ }
-\DoxyCodeLine{00038\ \ \ \ \ std::map<std::string,\ std::string>\ parameters;}
-\DoxyCodeLine{00039\ }
-\DoxyCodeLine{00040\ \ \ \ \ std::shared\_ptr<visionary::VisionaryTMiniData>\ pDataHandler;}
-\DoxyCodeLine{00041\ \ \ \ \ std::shared\_ptr<visionary::VisionaryDataStream>\ pDataStream;}
-\DoxyCodeLine{00042\ \ \ \ \ std::shared\_ptr<visionary::VisionaryControl>\ pVisionaryControl;}
-\DoxyCodeLine{00043\ }
-\DoxyCodeLine{00044\ \ \ \ \ uint32\_t\ lastFrameNumber;}
-\DoxyCodeLine{00045\ \};}
-\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00001\ \textcolor{comment}{/*****************************************************************/}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_camera_8h}{Camera.h}}"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <VisionaryTMiniData.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <VisionaryDataStream.h>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <VisionaryControl.h>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_visionary_camera}{VisionaryCamera}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_camera}{Camera}}}
+\DoxyCodeLine{00022\ \{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{class_visionary_camera}{VisionaryCamera}}(std::string\ ipAddress\ =\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keywordtype}{short}\ dataPort\ =\ 2114);}
+\DoxyCodeLine{00033\ \ \ \ \ }
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{class_visionary_camera_aadd4d48cc3e8689a19c57cd9b99ae0cb}{\string~VisionaryCamera}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_visionary_camera_a60788c016091fdd293cb664822aa1c0f}{open}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_visionary_camera_ae088c2402d1ea9956b06028eb375d924}{close}}()\ \ \textcolor{keyword}{override};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_visionary_camera_af4ab7f3401b4b522a51af10750e92c0c}{isOpen}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_visionary_camera_a830a20b540edee0a375a709fb654bb87}{startCapture}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_visionary_camera_a2bc1fd6055fc9fa1fae727fc790b0820}{stopCapture}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_visionary_camera_a8bfda3741ab9a0525b1adc837a47391a}{getNextFrameset}}(\mbox{\hyperlink{struct_frameset_1_1frameset__t}{Frameset::frameset\_t}}\ \&fs)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keyword}{const}\ std::map<std::string,\ std::string>\ \mbox{\hyperlink{class_visionary_camera_a248b76b210f97ea28890a7bfb1248bde}{getParameters}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_visionary_camera_a6d3622fbb38c2725a339c44cc46bd9e6}{available}}(\textcolor{keywordtype}{int}\ timeout);}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_visionary_camera_a91c42e96a17e393d77f97d6920ea57d9}{setIp}}(std::string\ ipAddress);}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_visionary_camera_aad6991dbcf7c18c6edffb983dd6b17ec}{setDataPort}}(\textcolor{keywordtype}{short}\ dataPort);}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ openTimeout\ =\ 5000;}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordtype}{bool}\ connected\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordtype}{bool}\ capturing\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ std::string\ ipAddress;}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordtype}{short}\ dataPort;}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \ \ std::map<std::string,\ std::string>\ parameters;}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \ \ \ \ std::shared\_ptr<visionary::VisionaryTMiniData>\ pDataHandler;}
+\DoxyCodeLine{00123\ \ \ \ \ std::shared\_ptr<visionary::VisionaryDataStream>\ pDataStream;}
+\DoxyCodeLine{00124\ \ \ \ \ std::shared\_ptr<visionary::VisionaryControl>\ pVisionaryControl;}
+\DoxyCodeLine{00125\ \};}
+\DoxyCodeLine{00126\ }
 
 \end{DoxyCode}

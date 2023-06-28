@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   CloseDockWidget.h
+ * @brief  QDockWidget subclass to add a closed() signal.
+ * 
+ * @author Nicholas Loehrke
+ * @date   June 2023
+ *********************************************************************/
+
 #pragma once
 
 #include <qdockwidget.h>

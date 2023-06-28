@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['invalidpointpresentation_0',['InvalidPointPresentation',['../namespacevisionary.html#a9361aa279d6b7abd9b7e9107cb1711d1',1,'visionary']]]
+  ['colormaptype_0',['ColormapType',['../namespacetinycolormap.html#a61cc7d7b7c1d4086d2763172baed0551',1,'tinycolormap']]]
 ];

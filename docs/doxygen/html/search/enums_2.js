@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['userlevel_0',['UserLevel',['../classvisionary_1_1_i_authentication.html#a9d9871f50bf25a43e7faa4afb9e92f08',1,'visionary::IAuthentication']]]
+  ['imagetype_0',['ImageType',['../classvisionary_1_1_visionary_data.html#afad1ab4faef29334737711aca7009921',1,'visionary::VisionaryData']]],
+  ['invalidpointpresentation_1',['InvalidPointPresentation',['../namespacevisionary.html#a9361aa279d6b7abd9b7e9107cb1711d1',1,'visionary']]]
 ];

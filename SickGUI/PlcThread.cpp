@@ -17,7 +17,6 @@ void PlcThread::newFrameset(Frameset::frameset_t fs)
 {
 	if (!framesetMutex.tryLock())
 	{
-		//qDebug() << "plc thread could not acquire lock";
 		return;
 	}
 

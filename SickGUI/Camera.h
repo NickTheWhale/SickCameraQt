@@ -1,3 +1,10 @@
+/*****************************************************************//**
+ * @file   Camera.h
+ * @brief  Camera interface
+ * 
+ * @author Nicholas Loehrke
+ * @date   June 2023
+ *********************************************************************/
 #pragma once
 
 #include <qthread.h>
@@ -5,14 +12,6 @@
 
 #include "VisionaryFrameset.h"
 
-/**
- * @brief The Camera class represents a camera device.
- *
- * The Camera class provides an interface for interacting with camera devices.
- * It defines a set of pure virtual functions that must be implemented by derived classes
- * to perform camera-specific operations such as opening, closing, starting and stopping capture,
- * retrieving framesets, and getting camera parameters.
- */
 class Camera : protected QThread
 {
 public:

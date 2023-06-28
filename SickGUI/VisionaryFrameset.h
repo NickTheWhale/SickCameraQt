@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   VisionaryFrameset.h
+ * @brief  Defines a frameset and contains frame to QImage helper functions.
+ * 
+ * @author Nicholas Loehrke
+ * @date   June 2023
+ *********************************************************************/
+
 #pragma once
 #include <qimage.h>
 #include "TinyColormap.hpp"
@@ -12,7 +20,7 @@ namespace Frameset
 {
 	/**
 	 * @brief Defines a frameset.
-	 * 
+	 *
 	 * Each vector (depth, intensity, state) must have a size equal to height * width.
 	*/
 	typedef struct
@@ -34,25 +42,50 @@ namespace Frameset
 		/**
 		 * @brief Linear to logarithmic LUT.
 		 * 
+		 * The table was generated using the following python code:
 		 * \code{.py}
-		 * import time
-		 * print("hello world")
-		 * def MyClass:
-		 *	def __init__(self):
-		 *   pass
+		 * # Import libraries
+		 * import matplotlib.pyplot as plt
+		 * import numpy as np
+		 * 
+		 * # Creating vectors X and Y
+		 * x = np.linspace(0, 1, 1023)
+		 * 
+		 * # Define f = log2(x + 1)
+		 * f = lambda x: np.log2(x + 1)
+		 * 
+		 * # Number of applications of f(x)
+		 * iterations = 10
+		 * 
+		 * y = f(x)
+		 * for i in range(iterations - 1):
+		 *     y = f(y)
+		 * 
+		 * fig = plt.figure(figsize=(10, 5))
+		 * # Create the plot
+		 * plt.plot(x, y)
+		 * 
+		 * # Write 'y' values to file
+		 * with open("lut.txt", "w") as file:
+		 *     for val in y:
+		 *         file.write(f"{val:.4f},\n")
+		 * 
+		 * # Show the plot
+		 * plt.show()
 		 * \endcode
+		 * 
 		 * @param x Linear input within [0.0, 1.0]
 		 * @return Logarithmic map within [0.0, 1.0]
 		*/
 		inline double linToLog(double x)
 		{
 			int index = x * 1023;
-			
+
 			if (index > 1023)
 				index = 1023;
 			else if (index < 0)
 				index = 0;
-			
+
 			constexpr double data[] =
 			{
 				0.0000,
@@ -1085,6 +1118,7 @@ namespace Frameset
 
 		/**
 		 * @brief Converts a grayscale frame to color QImage.
+		 * 
 		 * @param frame Input grayscale frame.
 		 * @param width Frame width.
 		 * @param height Frame height.

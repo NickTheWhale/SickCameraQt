@@ -17,80 +17,80 @@
 \DoxyCodeLine{00013\ }
 \DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}VisionaryData.h"{}}}
 \DoxyCodeLine{00015\ }
-\DoxyCodeLine{00016\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacevisionary}{visionary}}\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacevisionary}{visionary}}}
 \DoxyCodeLine{00017\ \{}
 \DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
-\DoxyCodeLine{00020\ \ \ \textcolor{keywordtype}{float}\ angleFirstScanPoint;}
-\DoxyCodeLine{00021\ \ \ \textcolor{keywordtype}{float}\ angularResolution;}
-\DoxyCodeLine{00022\ \ \ \textcolor{keywordtype}{float}\ polarScale;}
-\DoxyCodeLine{00023\ \ \ \textcolor{keywordtype}{float}\ polarOffset;}
-\DoxyCodeLine{00024\ \}\ \mbox{\hyperlink{structvisionary_1_1_polar_parameters}{PolarParameters}};}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ angleFirstScanPoint;}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ angularResolution;}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ polarScale;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ polarOffset;}
+\DoxyCodeLine{00024\ \ \ \ \ \}\ \mbox{\hyperlink{structvisionary_1_1_polar_parameters}{PolarParameters}};}
 \DoxyCodeLine{00025\ }
-\DoxyCodeLine{00026\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classvisionary_1_1_visionary_t_data}{VisionaryTData}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classvisionary_1_1_visionary_data}{VisionaryData}}}
-\DoxyCodeLine{00027\ \{}
-\DoxyCodeLine{00028\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00029\ \ \ \mbox{\hyperlink{classvisionary_1_1_visionary_t_data}{VisionaryTData}}();}
-\DoxyCodeLine{00030\ \ \ \mbox{\hyperlink{classvisionary_1_1_visionary_t_data}{\string~VisionaryTData}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classvisionary_1_1_visionary_t_data}{VisionaryTData}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classvisionary_1_1_visionary_data}{VisionaryData}}}
+\DoxyCodeLine{00027\ \ \ \ \ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvisionary_1_1_visionary_t_data}{VisionaryTData}}();}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvisionary_1_1_visionary_t_data}{\string~VisionaryTData}}()\ \textcolor{keyword}{override};}
 \DoxyCodeLine{00031\ }
-\DoxyCodeLine{00032\ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{00033\ \ \ \textcolor{comment}{//\ Getter\ Functions}}
-\DoxyCodeLine{00034\ \ \ \textcolor{keyword}{const}\ std::vector<uint16\_t>\&\ getDistanceMap()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00035\ \ \ \textcolor{keyword}{const}\ std::vector<uint16\_t>\&\ getIntensityMap()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00036\ \ \ \textcolor{keyword}{const}\ std::vector<uint16\_t>\&\ getConfidenceMap()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00037\ \ \ \textcolor{comment}{//\ Returns\ Number\ of\ points\ get\ by\ the\ polar\ reduction.}}
-\DoxyCodeLine{00038\ \ \ \textcolor{comment}{//\ 0\ when\ no\ data\ is\ available.}}
-\DoxyCodeLine{00039\ \ \ uint8\_t\ getPolarSize()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00040\ \ \ \textcolor{keywordtype}{float}\ getPolarStartAngle()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00041\ \ \ \textcolor{keywordtype}{float}\ getPolarAngularResolution()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00042\ \ \ \textcolor{keyword}{const}\ std::vector<float>\&\ getPolarDistanceData()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00043\ \ \ \textcolor{keyword}{const}\ std::vector<float>\&\ getPolarConfidenceData()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00044\ \ \ \textcolor{comment}{//\ Returns\ Number\ of\ points\ get\ by\ the\ cartesian\ reduction.}}
-\DoxyCodeLine{00045\ \ \ \textcolor{comment}{//\ 0\ when\ no\ data\ is\ available.}}
-\DoxyCodeLine{00046\ \ \ uint32\_t\ getCartesianSize()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00047\ \ \ \textcolor{keyword}{const}\ std::vector<PointXYZC>\&\ getCartesianData()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00048\ \ }
-\DoxyCodeLine{00049\ \ \ \textcolor{comment}{//\ Calculate\ and\ return\ the\ Point\ Cloud\ in\ the\ camera\ perspective.\ Units\ are\ in\ meters.}}
-\DoxyCodeLine{00050\ \ \ \textcolor{keywordtype}{void}\ generatePointCloud(std::vector<PointXYZ>\ \&pointCloud)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Getter\ Functions}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<uint16\_t>\&\ getDistanceMap()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<uint16\_t>\&\ getIntensityMap()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<uint16\_t>\&\ getConfidenceMap()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Returns\ Number\ of\ points\ get\ by\ the\ polar\ reduction.}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0\ when\ no\ data\ is\ available.}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ uint8\_t\ getPolarSize()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ getPolarStartAngle()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ getPolarAngularResolution()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<float>\&\ getPolarDistanceData()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<float>\&\ getPolarConfidenceData()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Returns\ Number\ of\ points\ get\ by\ the\ cartesian\ reduction.}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0\ when\ no\ data\ is\ available.}}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ uint32\_t\ getCartesianSize()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<PointXYZC>\&\ getCartesianData()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ and\ return\ the\ Point\ Cloud\ in\ the\ camera\ perspective.\ Units\ are\ in\ meters.}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ generatePointCloud(std::vector<PointXYZ>\&\ pointCloud)\ \textcolor{keyword}{override};}
 \DoxyCodeLine{00051\ }
-\DoxyCodeLine{00052\ \textcolor{keyword}{protected}:}
-\DoxyCodeLine{00053\ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{00054\ \ \ \textcolor{comment}{//\ functions\ for\ parsing\ received\ blob}}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ functions\ for\ parsing\ received\ blob}}
 \DoxyCodeLine{00055\ }
-\DoxyCodeLine{00056\ \ \ \textcolor{comment}{//\ Parse\ the\ XML\ Metadata\ part\ to\ get\ information\ about\ the\ sensor\ and\ the\ following\ image\ data.}}
-\DoxyCodeLine{00057\ \ \ \textcolor{comment}{//\ This\ function\ uses\ boost\ library.\ An\ other\ XML\ parser\ is\ needed\ to\ remove\ boost\ from\ source.}}
-\DoxyCodeLine{00058\ \ \ \textcolor{comment}{//\ Returns\ true\ when\ parsing\ was\ successful.}}
-\DoxyCodeLine{00059\ \ \ \textcolor{keywordtype}{bool}\ parseXML(\textcolor{keyword}{const}\ std::string\ \&\ xmlString,\ uint32\_t\ changeCounter)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Parse\ the\ XML\ Metadata\ part\ to\ get\ information\ about\ the\ sensor\ and\ the\ following\ image\ data.}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ This\ function\ uses\ boost\ library.\ An\ other\ XML\ parser\ is\ needed\ to\ remove\ boost\ from\ source.}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Returns\ true\ when\ parsing\ was\ successful.}}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ parseXML(\textcolor{keyword}{const}\ std::string\&\ xmlString,\ uint32\_t\ changeCounter)\ \textcolor{keyword}{override};}
 \DoxyCodeLine{00060\ }
-\DoxyCodeLine{00061\ \ \ \textcolor{comment}{//\ Parse\ the\ Binary\ data\ part\ to\ extract\ the\ image\ data.\ }}
-\DoxyCodeLine{00062\ \ \ \textcolor{comment}{//\ some\ variables\ are\ commented\ out,\ because\ they\ are\ not\ used\ in\ this\ sample.}}
-\DoxyCodeLine{00063\ \ \ \textcolor{comment}{//\ Returns\ true\ when\ parsing\ was\ successful.}}
-\DoxyCodeLine{00064\ \ \ \textcolor{keywordtype}{bool}\ parseBinaryData(std::vector<uint8\_t>::iterator\ itBuf,\ \textcolor{keywordtype}{size\_t}\ size)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Parse\ the\ Binary\ data\ part\ to\ extract\ the\ image\ data.\ }}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ some\ variables\ are\ commented\ out,\ because\ they\ are\ not\ used\ in\ this\ sample.}}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Returns\ true\ when\ parsing\ was\ successful.}}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ parseBinaryData(std::vector<uint8\_t>::iterator\ itBuf,\ \textcolor{keywordtype}{size\_t}\ size)\ \textcolor{keyword}{override};}
 \DoxyCodeLine{00065\ }
-\DoxyCodeLine{00066\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00067\ \ \ \textcolor{comment}{//\ Indicator\ for\ the\ received\ data\ sets}}
-\DoxyCodeLine{00068\ \ \ \mbox{\hyperlink{structvisionary_1_1_data_sets_active}{DataSetsActive}}\ m\_dataSetsActive;}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Indicator\ for\ the\ received\ data\ sets}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structvisionary_1_1_data_sets_active}{DataSetsActive}}\ m\_dataSetsActive;}
 \DoxyCodeLine{00069\ }
-\DoxyCodeLine{00070\ \ \ \textcolor{comment}{//\ Byte\ depth\ of\ images}}
-\DoxyCodeLine{00071\ \ \ \textcolor{keywordtype}{int}\ m\_distanceByteDepth,\ m\_intensityByteDepth,\ m\_confidenceByteDepth;}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Byte\ depth\ of\ images}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ m\_distanceByteDepth,\ m\_intensityByteDepth,\ m\_confidenceByteDepth;}
 \DoxyCodeLine{00072\ }
-\DoxyCodeLine{00073\ \ \ \textcolor{comment}{//\ Angle\ information\ of\ polar\ scan}}
-\DoxyCodeLine{00074\ \ \ \textcolor{keywordtype}{float}\ m\_angleFirstScanPoint;}
-\DoxyCodeLine{00075\ \ \ \textcolor{keywordtype}{float}\ m\_angularResolution;}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Angle\ information\ of\ polar\ scan}}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ m\_angleFirstScanPoint;}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ m\_angularResolution;}
 \DoxyCodeLine{00076\ }
-\DoxyCodeLine{00077\ \ \ \textcolor{comment}{//\ Number\ of\ values\ for\ polar\ data\ reduction}}
-\DoxyCodeLine{00078\ \ \ uint\_fast8\_t\ m\_numPolarValues;}
-\DoxyCodeLine{00079\ \ \ \textcolor{comment}{//\ Number\ of\ values\ for\ cartesian\ data\ reduction}}
-\DoxyCodeLine{00080\ \ \ uint\_fast32\_t\ m\_numCartesianValues;}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Number\ of\ values\ for\ polar\ data\ reduction}}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ uint\_fast8\_t\ m\_numPolarValues;}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Number\ of\ values\ for\ cartesian\ data\ reduction}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ uint\_fast32\_t\ m\_numCartesianValues;}
 \DoxyCodeLine{00081\ }
-\DoxyCodeLine{00082\ \ \ \textcolor{comment}{//\ Pointers\ to\ the\ image\ data}}
-\DoxyCodeLine{00083\ \ \ std::vector<uint16\_t>\ m\_distanceMap;}
-\DoxyCodeLine{00084\ \ \ std::vector<uint16\_t>\ m\_intensityMap;}
-\DoxyCodeLine{00085\ \ \ std::vector<uint16\_t>\ m\_confidenceMap;}
-\DoxyCodeLine{00086\ \ \ std::vector<float>\ m\_polarDistanceData;}
-\DoxyCodeLine{00087\ \ \ std::vector<float>\ m\_polarConfidenceData;}
-\DoxyCodeLine{00088\ \ \ std::vector<PointXYZC>\ m\_cartesianData;}
-\DoxyCodeLine{00089\ \};}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Pointers\ to\ the\ image\ data}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ std::vector<uint16\_t>\ m\_distanceMap;}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ std::vector<uint16\_t>\ m\_intensityMap;}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ std::vector<uint16\_t>\ m\_confidenceMap;}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ std::vector<float>\ m\_polarDistanceData;}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ std::vector<float>\ m\_polarConfidenceData;}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ std::vector<PointXYZC>\ m\_cartesianData;}
+\DoxyCodeLine{00089\ \ \ \ \ \};}
 \DoxyCodeLine{00090\ }
 \DoxyCodeLine{00091\ \}}
 

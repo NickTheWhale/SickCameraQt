@@ -1,0 +1,27 @@
+var class_histogram_widget =
+[
+    [ "HolderOfStaticHistogram", "struct_histogram_widget_1_1_holder_of_static_histogram.html", "struct_histogram_widget_1_1_holder_of_static_histogram" ],
+    [ "HistogramWidget", "class_histogram_widget.html#a7900598d380f8fb47f90b76f29f9273c", null ],
+    [ "~HistogramWidget", "class_histogram_widget.html#a76c7278ed776d108368d2a2dbaeab3d5", null ],
+    [ "contextMenuEvent", "class_histogram_widget.html#aac7b32878f96181aecd84d4c04ba3e68", null ],
+    [ "paintEvent", "class_histogram_widget.html#a5a51a999ee9b5d07d809ab8edbb394b4", null ],
+    [ "setGraphXOffsetForXAxis", "class_histogram_widget.html#a83c3752527900e5ba4a9682acdfafbc9", null ],
+    [ "setGraphYOffsetForYAxis", "class_histogram_widget.html#a5c59e05d4470dd99bdbac9b06953a298", null ],
+    [ "setXAxis", "class_histogram_widget.html#a85c75518f7fdfcd017763f62058b3097", null ],
+    [ "setYAxis", "class_histogram_widget.html#a2f4bda97d068b0bfd40b0cc0b660fd98", null ],
+    [ "updateHistogram", "class_histogram_widget.html#a599bda635a4751bd6c83349eb407ab77", null ],
+    [ "hs", "class_histogram_widget.html#a6c8b9fb27e8346a8bd788fb7455196b2", null ],
+    [ "maxCount", "class_histogram_widget.html#aaa94979873ac26c14e909e6bbf8d30b4", null ],
+    [ "maxVal", "class_histogram_widget.html#a3dd78df3ec842e0f266c2a0f500adf08", null ],
+    [ "minVal", "class_histogram_widget.html#a5fced7e474af8777f30602e85d7428f2", null ],
+    [ "numBins", "class_histogram_widget.html#ab3a7ad4c376636def5f0b325506a0a44", null ],
+    [ "PADDING", "class_histogram_widget.html#aa82a095b0b281f0e3266d27b0add936d", null ],
+    [ "showXAxis", "class_histogram_widget.html#a3360a5562a05a930d01a799de00bc355", null ],
+    [ "showYAxis", "class_histogram_widget.html#a2c581be1deca32690e9a4b9b6eadc753", null ],
+    [ "X_GRAPH_OFFSET", "class_histogram_widget.html#a6d5d7bf8844488baf5d67d6a5db44529", null ],
+    [ "xAxis", "class_histogram_widget.html#abc9ae08e44bd5740b70de5090e3de03e", null ],
+    [ "xAxisLabel", "class_histogram_widget.html#a0783cf7ec2177305b6e197983dd28ba9", null ],
+    [ "Y_GRAPH_OFFSET", "class_histogram_widget.html#af24829a5682d554c41403fdbf4a4a8f7", null ],
+    [ "yAxis", "class_histogram_widget.html#a9230f76ab8004bef7abb2f230cc2ee6e", null ],
+    [ "yAxisLabel", "class_histogram_widget.html#ae09d26d9e46010769aeb8ec31a7eb6bf", null ]
+];

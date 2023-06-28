@@ -9,9 +9,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -46,6 +51,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classvisionary_1_1_i_protocol_handler.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,11 +89,6 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="namespacevisionary.html">visionary</a></li><li class="navelem"><a class="el" href="classvisionary_1_1_i_protocol_handler.html">IProtocolHandler</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -79,6 +96,8 @@ $(function() {
   <div class="headertitle"><div class="title">visionary::IProtocolHandler Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_i_protocol_handler_8h_source.html">IProtocolHandler.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for visionary::IProtocolHandler:</div>
 <div class="dyncontent">
@@ -92,23 +111,136 @@ Inheritance diagram for visionary::IProtocolHandler:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a14ae8bef5eeff27e872130bc8896add2"><td class="memItemLeft" align="right" valign="top"><a id="a14ae8bef5eeff27e872130bc8896add2" name="a14ae8bef5eeff27e872130bc8896add2"></a>
-virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>openSession</b> (uint8_t sessionTimeout)=0</td></tr>
+<tr class="memitem:a3d3c437a31f2a8054a4a45dbd47bdc29"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_i_protocol_handler.html#a3d3c437a31f2a8054a4a45dbd47bdc29">~IProtocolHandler</a> ()=default</td></tr>
+<tr class="separator:a3d3c437a31f2a8054a4a45dbd47bdc29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14ae8bef5eeff27e872130bc8896add2"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_i_protocol_handler.html#a14ae8bef5eeff27e872130bc8896add2">openSession</a> (uint8_t sessionTimeout)=0</td></tr>
 <tr class="separator:a14ae8bef5eeff27e872130bc8896add2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7469cd86c83fa2b876550e8c5718c12a"><td class="memItemLeft" align="right" valign="top"><a id="a7469cd86c83fa2b876550e8c5718c12a" name="a7469cd86c83fa2b876550e8c5718c12a"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>closeSession</b> ()=0</td></tr>
+<tr class="memitem:a7469cd86c83fa2b876550e8c5718c12a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_i_protocol_handler.html#a7469cd86c83fa2b876550e8c5718c12a">closeSession</a> ()=0</td></tr>
 <tr class="separator:a7469cd86c83fa2b876550e8c5718c12a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5f5fab3227139581627a4492ef50a41"><td class="memItemLeft" align="right" valign="top"><a id="ad5f5fab3227139581627a4492ef50a41" name="ad5f5fab3227139581627a4492ef50a41"></a>
-virtual <a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a>&#160;</td><td class="memItemRight" valign="bottom"><b>send</b> (<a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> cmd)=0</td></tr>
+<tr class="memitem:ad5f5fab3227139581627a4492ef50a41"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_i_protocol_handler.html#ad5f5fab3227139581627a4492ef50a41">send</a> (<a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> cmd)=0</td></tr>
 <tr class="separator:ad5f5fab3227139581627a4492ef50a41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a3d3c437a31f2a8054a4a45dbd47bdc29" name="a3d3c437a31f2a8054a4a45dbd47bdc29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d3c437a31f2a8054a4a45dbd47bdc29">&#9670;&#160;</a></span>~IProtocolHandler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual visionary::IProtocolHandler::~IProtocolHandler </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a7469cd86c83fa2b876550e8c5718c12a" name="a7469cd86c83fa2b876550e8c5718c12a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7469cd86c83fa2b876550e8c5718c12a">&#9670;&#160;</a></span>closeSession()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void visionary::IProtocolHandler::closeSession </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classvisionary_1_1_co_la2_protocol_handler.html#ab44946f54959978648997eef848b836c">visionary::CoLa2ProtocolHandler</a>, and <a class="el" href="classvisionary_1_1_co_la_b_protocol_handler.html#a892f1a0009c67d2a34cb93b5c21d9bf1">visionary::CoLaBProtocolHandler</a>.</p>
+
+</div>
+</div>
+<a id="a14ae8bef5eeff27e872130bc8896add2" name="a14ae8bef5eeff27e872130bc8896add2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14ae8bef5eeff27e872130bc8896add2">&#9670;&#160;</a></span>openSession()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> visionary::IProtocolHandler::openSession </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>sessionTimeout</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classvisionary_1_1_co_la2_protocol_handler.html#ae32cad6542d9408000d253a287864863">visionary::CoLa2ProtocolHandler</a>, and <a class="el" href="classvisionary_1_1_co_la_b_protocol_handler.html#a59453cf1243e1214720ba58994c4e4c7">visionary::CoLaBProtocolHandler</a>.</p>
+
+</div>
+</div>
+<a id="ad5f5fab3227139581627a4492ef50a41" name="ad5f5fab3227139581627a4492ef50a41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5f5fab3227139581627a4492ef50a41">&#9670;&#160;</a></span>send()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> visionary::IProtocolHandler::send </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a>&#160;</td>
+          <td class="paramname"><em>cmd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classvisionary_1_1_co_la2_protocol_handler.html#a609bbb04a683631815dd6dc5e8a341b8">visionary::CoLa2ProtocolHandler</a>, and <a class="el" href="classvisionary_1_1_co_la_b_protocol_handler.html#ac174d66e4d962f49261bdc9f5ee729cf">visionary::CoLaBProtocolHandler</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>sickapi/src/<a class="el" href="_i_protocol_handler_8h_source.html">IProtocolHandler.h</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacevisionary.html">visionary</a></li><li class="navelem"><a class="el" href="classvisionary_1_1_i_protocol_handler.html">IProtocolHandler</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+  </ul>
+</div>
 </body>
 </html>

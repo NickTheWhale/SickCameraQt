@@ -9,9 +9,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -46,6 +51,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('struct_t_s7_block_info.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,7 +89,6 @@ $(function() {
 </div>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">TS7BlockInfo Member List</div></div>
 </div><!--header-->
@@ -75,25 +96,28 @@ $(function() {
 
 <p>This is the complete list of members for <a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a>, including all inherited members.</p>
 <table class="directory">
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>Author</b> (defined in <a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a>)</td><td class="entry"><a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>BlkFlags</b> (defined in <a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a>)</td><td class="entry"><a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>BlkLang</b> (defined in <a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a>)</td><td class="entry"><a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>BlkNumber</b> (defined in <a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a>)</td><td class="entry"><a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>BlkType</b> (defined in <a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a>)</td><td class="entry"><a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>CheckSum</b> (defined in <a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a>)</td><td class="entry"><a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>CodeDate</b> (defined in <a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a>)</td><td class="entry"><a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>Family</b> (defined in <a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a>)</td><td class="entry"><a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>Header</b> (defined in <a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a>)</td><td class="entry"><a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>IntfDate</b> (defined in <a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a>)</td><td class="entry"><a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>LoadSize</b> (defined in <a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a>)</td><td class="entry"><a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>LocalData</b> (defined in <a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a>)</td><td class="entry"><a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>MC7Size</b> (defined in <a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a>)</td><td class="entry"><a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>SBBLength</b> (defined in <a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a>)</td><td class="entry"><a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>Version</b> (defined in <a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a>)</td><td class="entry"><a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="struct_t_s7_block_info.html#ab7e0cbde0b9661fe22786a710813dffc">Author</a></td><td class="entry"><a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="struct_t_s7_block_info.html#a9495982e1c92d7c738970af948ceb4d5">BlkFlags</a></td><td class="entry"><a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="struct_t_s7_block_info.html#aa5ce540fec8811555cbc60e68a2ed189">BlkLang</a></td><td class="entry"><a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="struct_t_s7_block_info.html#af48a7906c9dac75cb08fddd3ea795850">BlkNumber</a></td><td class="entry"><a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="struct_t_s7_block_info.html#a85dac376db48c92552fc0621518a027f">BlkType</a></td><td class="entry"><a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="struct_t_s7_block_info.html#a11e0d983eeab2fc3ae471decf7a5cba5">CheckSum</a></td><td class="entry"><a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="struct_t_s7_block_info.html#a50facc9801b67e289c6f021995f665db">CodeDate</a></td><td class="entry"><a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="struct_t_s7_block_info.html#a44dd6737f170aa7259259614e08e11bf">Family</a></td><td class="entry"><a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="struct_t_s7_block_info.html#a617106eec1891d43eb530c6c8921e51e">Header</a></td><td class="entry"><a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="struct_t_s7_block_info.html#a18b9bc8848ec5a00498e3892382afbfc">IntfDate</a></td><td class="entry"><a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="struct_t_s7_block_info.html#a400e033acb427455e1d3983e5a7ead9a">LoadSize</a></td><td class="entry"><a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="struct_t_s7_block_info.html#afa2aad5c3541620a0adb90cf55131812">LocalData</a></td><td class="entry"><a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="struct_t_s7_block_info.html#a599cc8f53723044a00fa1f711c76ba4e">MC7Size</a></td><td class="entry"><a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="struct_t_s7_block_info.html#a860d752c6ea14bf971493e11a5a49fc7">SBBLength</a></td><td class="entry"><a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="struct_t_s7_block_info.html#ace2b3856ccaf1956e0283ba518ed10c7">Version</a></td><td class="entry"><a class="el" href="struct_t_s7_block_info.html">TS7BlockInfo</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+  </ul>
+</div>
 </body>
 </html>

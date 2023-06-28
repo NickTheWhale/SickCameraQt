@@ -1,5 +1,14 @@
 \doxysection{Fingerprint\+::Cell\+Stat Struct Reference}
 \hypertarget{struct_fingerprint_1_1_cell_stat}{}\label{struct_fingerprint_1_1_cell_stat}\index{Fingerprint::CellStat@{Fingerprint::CellStat}}
+
+
+Stores min, max, mean, and stdev.  
+
+
+
+
+{\ttfamily \#include $<$Fingerprint.\+h$>$}
+
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -12,9 +21,8 @@
 \Hypertarget{struct_fingerprint_1_1_cell_stat_ac68391673d6d041c346388e993d800e3}\label{struct_fingerprint_1_1_cell_stat_ac68391673d6d041c346388e993d800e3} 
 \mbox{\hyperlink{struct_fingerprint_1_1_cell_stat}{Cell\+Stat}} \& {\bfseries operator+=} (const \mbox{\hyperlink{struct_fingerprint_1_1_cell_stat}{Cell\+Stat}} \&other)
 \item 
-\Hypertarget{struct_fingerprint_1_1_cell_stat_ae2e2defbfbd1f09ac6d56673905d81e7}\label{struct_fingerprint_1_1_cell_stat_ae2e2defbfbd1f09ac6d56673905d81e7} 
-std\+::string {\bfseries to\+\_\+string} ()
-\end{DoxyCompactItemize}
+std\+::string \mbox{\hyperlink{struct_fingerprint_1_1_cell_stat_ae2e2defbfbd1f09ac6d56673905d81e7}{to\+\_\+string}} ()
+\begin{DoxyCompactList}\small\item\em To string. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -32,6 +40,27 @@ uint16\+\_\+t {\bfseries stdev}
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+Stores min, max, mean, and stdev. 
+
+Struct to store min, max, mean, and stdev. Also has overloaded \textquotesingle{}+\textquotesingle{} and \textquotesingle{}+=\textquotesingle{} operators. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_fingerprint_1_1_cell_stat_ae2e2defbfbd1f09ac6d56673905d81e7}\label{struct_fingerprint_1_1_cell_stat_ae2e2defbfbd1f09ac6d56673905d81e7} 
+\index{Fingerprint::CellStat@{Fingerprint::CellStat}!to\_string@{to\_string}}
+\index{to\_string@{to\_string}!Fingerprint::CellStat@{Fingerprint::CellStat}}
+\doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}}
+{\footnotesize\ttfamily std\+::string Fingerprint\+::\+Cell\+Stat\+::to\+\_\+string (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+To string. 
+
+\begin{DoxyReturn}{Returns}
+\"{}min\+: \{\}, max\+: \{\}, mean\+: \{\}, stdev\+: \{\}\"{}. 
+\end{DoxyReturn}
+
+
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-Fingerprint.\+h\end{DoxyCompactItemize}
+\mbox{\hyperlink{_fingerprint_8h}{Fingerprint.\+h}}\end{DoxyCompactItemize}

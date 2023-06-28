@@ -32,29 +32,29 @@ typedef int SOCKET;
 #define SOCKET_ERROR    (-1)
 #endif
 
-namespace visionary 
+namespace visionary
 {
 
-class UdpSocket :
-  public ITransport
-{
-public:
-  UdpSocket();
+	class UdpSocket :
+		public ITransport
+	{
+	public:
+		UdpSocket();
 
-  int connect(const std::string& hostname, uint16_t port);
-  int shutdown() override;
-  int getLastError() override;
+		int connect(const std::string& hostname, uint16_t port);
+		int shutdown() override;
+		int getLastError() override;
 
-  using ITransport::send;
+		using ITransport::send;
 
-  send_return_t send(const char* pData, size_t size) override;
-  recv_return_t recv(std::vector<std::uint8_t>& buffer, std::size_t maxBytesToReceive) override;
-  recv_return_t read(std::vector<std::uint8_t>& buffer, std::size_t nBytesToReceive) override;
+		send_return_t send(const char* pData, size_t size) override;
+		recv_return_t recv(std::vector<std::uint8_t>& buffer, std::size_t maxBytesToReceive) override;
+		recv_return_t read(std::vector<std::uint8_t>& buffer, std::size_t nBytesToReceive) override;
 
-private:
-  SOCKET m_socket;
+	private:
+		SOCKET m_socket;
 
-  struct sockaddr_in m_udpAddr{};
-};
+		struct sockaddr_in m_udpAddr {};
+	};
 
 }

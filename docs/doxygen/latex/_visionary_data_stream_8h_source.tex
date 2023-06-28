@@ -19,40 +19,40 @@
 \DoxyCodeLine{00015\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacevisionary}{visionary}}}
 \DoxyCodeLine{00016\ \{}
 \DoxyCodeLine{00017\ }
-\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classvisionary_1_1_visionary_data_stream}{VisionaryDataStream}}}
-\DoxyCodeLine{00019\ \{}
-\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00021\ \ \ \mbox{\hyperlink{classvisionary_1_1_visionary_data_stream}{VisionaryDataStream}}(std::shared\_ptr<VisionaryData>\ dataHandler);}
-\DoxyCodeLine{00022\ \ \ \mbox{\hyperlink{classvisionary_1_1_visionary_data_stream}{\string~VisionaryDataStream}}();}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classvisionary_1_1_visionary_data_stream}{VisionaryDataStream}}}
+\DoxyCodeLine{00019\ \ \ \ \ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvisionary_1_1_visionary_data_stream}{VisionaryDataStream}}(std::shared\_ptr<VisionaryData>\ dataHandler);}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvisionary_1_1_visionary_data_stream}{\string~VisionaryDataStream}}();}
 \DoxyCodeLine{00023\ }
-\DoxyCodeLine{00035\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvisionary_1_1_visionary_data_stream_adfc8546156869a2fa55fb3603dcd6c1b}{open}}(\textcolor{keyword}{const}\ std::string\&\ hostname,\ std::uint16\_t\ port,\ std::uint64\_t\ timeoutMs\ =\ 5000);}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvisionary_1_1_visionary_data_stream_adfc8546156869a2fa55fb3603dcd6c1b}{open}}(\textcolor{keyword}{const}\ std::string\&\ hostname,\ std::uint16\_t\ port,\ std::uint64\_t\ timeoutMs\ =\ 5000);}
 \DoxyCodeLine{00036\ }
-\DoxyCodeLine{00043\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvisionary_1_1_visionary_data_stream_adfc8546156869a2fa55fb3603dcd6c1b}{open}}(std::unique\_ptr<ITransport>\&\ pTransport);}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvisionary_1_1_visionary_data_stream_adfc8546156869a2fa55fb3603dcd6c1b}{open}}(std::unique\_ptr<ITransport>\&\ pTransport);}
 \DoxyCodeLine{00044\ }
-\DoxyCodeLine{00049\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvisionary_1_1_visionary_data_stream_a7b2f61745b51638f308a1e34ae669bb1}{close}}();}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvisionary_1_1_visionary_data_stream_a7b2f61745b51638f308a1e34ae669bb1}{close}}();}
 \DoxyCodeLine{00050\ }
-\DoxyCodeLine{00051\ \ \ \textcolor{keywordtype}{bool}\ syncCoLa()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ syncCoLa()\ \textcolor{keyword}{const};}
 \DoxyCodeLine{00052\ }
-\DoxyCodeLine{00053\ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{00054\ \ \ \textcolor{comment}{//\ Receive\ a\ single\ blob\ from\ the\ connected\ device\ and\ store\ it\ in\ buffer.}}
-\DoxyCodeLine{00055\ \ \ \textcolor{comment}{//\ Returns\ true\ when\ valid\ frame\ completely\ received.}}
-\DoxyCodeLine{00056\ \ \ \textcolor{keywordtype}{bool}\ getNextFrame();}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Receive\ a\ single\ blob\ from\ the\ connected\ device\ and\ store\ it\ in\ buffer.}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Returns\ true\ when\ valid\ frame\ completely\ received.}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ getNextFrame();}
 \DoxyCodeLine{00057\ }
-\DoxyCodeLine{00067\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvisionary_1_1_visionary_data_stream_a749e6471d998e22042fa2d98f28c6dff}{isConnected}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvisionary_1_1_visionary_data_stream_a749e6471d998e22042fa2d98f28c6dff}{isConnected}}()\ \textcolor{keyword}{const};}
 \DoxyCodeLine{00068\ }
 \DoxyCodeLine{00069\ }
-\DoxyCodeLine{00073\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvisionary_1_1_visionary_data_stream_a407e2e0d1cf841a70ab63391d26b6223}{setDataHandler}}(std::shared\_ptr<VisionaryData>\ dataHandler);}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvisionary_1_1_visionary_data_stream_a407e2e0d1cf841a70ab63391d26b6223}{setDataHandler}}(std::shared\_ptr<VisionaryData>\ dataHandler);}
 \DoxyCodeLine{00074\ }
-\DoxyCodeLine{00078\ \ \ std::shared\_ptr<VisionaryData>\ \mbox{\hyperlink{classvisionary_1_1_visionary_data_stream_abacfe26c92589b836624bd78f1863cee}{getDataHandler}}();}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ std::shared\_ptr<VisionaryData>\ \mbox{\hyperlink{classvisionary_1_1_visionary_data_stream_abacfe26c92589b836624bd78f1863cee}{getDataHandler}}();}
 \DoxyCodeLine{00079\ }
-\DoxyCodeLine{00080\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00081\ \ \ std::shared\_ptr<VisionaryData>\ \ \ m\_dataHandler;}
-\DoxyCodeLine{00082\ \ \ std::unique\_ptr<ITransport>\ \ \ \ \ \ \ m\_pTransport;}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ std::shared\_ptr<VisionaryData>\ \ \ m\_dataHandler;}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ std::unique\_ptr<ITransport>\ \ \ \ \ \ \ m\_pTransport;}
 \DoxyCodeLine{00083\ }
-\DoxyCodeLine{00084\ \ \ \textcolor{comment}{//\ Parse\ the\ Segment-\/Binary-\/Data\ (Blob\ data\ without\ protocol\ version\ and\ packet\ type).}}
-\DoxyCodeLine{00085\ \ \ \textcolor{comment}{//\ Returns\ true\ when\ parsing\ was\ successful.}}
-\DoxyCodeLine{00086\ \ \ \textcolor{keywordtype}{bool}\ parseSegmentBinaryData(\textcolor{keyword}{const}\ std::vector<uint8\_t>::iterator\ itBuf,\ \textcolor{keywordtype}{size\_t}\ bufferSize);}
-\DoxyCodeLine{00087\ \};}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Parse\ the\ Segment-\/Binary-\/Data\ (Blob\ data\ without\ protocol\ version\ and\ packet\ type).}}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Returns\ true\ when\ parsing\ was\ successful.}}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ parseSegmentBinaryData(\textcolor{keyword}{const}\ std::vector<uint8\_t>::iterator\ itBuf,\ \textcolor{keywordtype}{size\_t}\ bufferSize);}
+\DoxyCodeLine{00087\ \ \ \ \ \};}
 \DoxyCodeLine{00088\ }
 \DoxyCodeLine{00089\ \}}
 

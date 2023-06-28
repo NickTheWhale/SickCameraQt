@@ -9,9 +9,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -46,6 +51,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('_co_la_b_protocol_handler_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,16 +89,11 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_23d3d343015a8bd7e9dbef71a9e03858.html">sickapi</a></li><li class="navelem"><a class="el" href="dir_f9343132e416b1d631e13da8b9569f26.html">src</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">CoLaBProtocolHandler.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//</span></div>
+<a href="_co_la_b_protocol_handler_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">// SPDX-License-Identifier: Unlicense</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">// </span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">// Created: November 2019</span></div>
@@ -85,41 +102,54 @@ $(function() {
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">// email: TechSupport0905@sick.de</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;IProtocolHandler.h&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;ITransport.h&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;CoLaCommand.h&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="_i_protocol_handler_8h.html">IProtocolHandler.h</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="_i_transport_8h.html">ITransport.h</a>&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="_co_la_command_8h.html">CoLaCommand.h</a>&quot;</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacevisionary.html">visionary</a> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacevisionary.html">visionary</a></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="classvisionary_1_1_co_la_b_protocol_handler.html">   17</a></span><span class="keyword">class </span><a class="code hl_class" href="classvisionary_1_1_co_la_b_protocol_handler.html">CoLaBProtocolHandler</a>:</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>  <span class="keyword">public</span> <a class="code hl_class" href="classvisionary_1_1_i_protocol_handler.html">IProtocolHandler</a></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>{</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>  <a class="code hl_class" href="classvisionary_1_1_co_la_b_protocol_handler.html">CoLaBProtocolHandler</a>(<a class="code hl_class" href="classvisionary_1_1_i_transport.html">ITransport</a>&amp; rTransport);</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>  <a class="code hl_class" href="classvisionary_1_1_co_la_b_protocol_handler.html">~CoLaBProtocolHandler</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="classvisionary_1_1_co_la_b_protocol_handler.html">   17</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classvisionary_1_1_co_la_b_protocol_handler.html">CoLaBProtocolHandler</a> :</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <span class="keyword">public</span> <a class="code hl_class" href="classvisionary_1_1_i_protocol_handler.html">IProtocolHandler</a></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    {</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <a class="code hl_class" href="classvisionary_1_1_co_la_b_protocol_handler.html">CoLaBProtocolHandler</a>(<a class="code hl_class" href="classvisionary_1_1_i_transport.html">ITransport</a>&amp; rTransport);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classvisionary_1_1_co_la_b_protocol_handler.html#aa9820c86492539dcbefcd9db78ebe2a9">   22</a></span>        <a class="code hl_function" href="classvisionary_1_1_co_la_b_protocol_handler.html#aa9820c86492539dcbefcd9db78ebe2a9">~CoLaBProtocolHandler</a>() <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>  <span class="keywordtype">bool</span> openSession(uint8_t sessionTimeout <span class="comment">/*secs*/</span>) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  <span class="keywordtype">void</span> closeSession() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classvisionary_1_1_co_la_b_protocol_handler.html#a59453cf1243e1214720ba58994c4e4c7">openSession</a>(uint8_t sessionTimeout <span class="comment">/*secs*/</span>) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classvisionary_1_1_co_la_b_protocol_handler.html#a892f1a0009c67d2a34cb93b5c21d9bf1">closeSession</a>() <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>  <span class="comment">// send cola cmd and receive cola response</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>  <a class="code hl_class" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> send(<a class="code hl_class" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> cmd) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="comment">// send cola cmd and receive cola response</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <a class="code hl_class" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> <a class="code hl_function" href="classvisionary_1_1_co_la_b_protocol_handler.html#ac174d66e4d962f49261bdc9f5ee729cf">send</a>(<a class="code hl_class" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> cmd) <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>  <a class="code hl_class" href="classvisionary_1_1_i_transport.html">ITransport</a>&amp; m_rTransport;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>  uint8_t calculateChecksum(<span class="keyword">const</span> std::vector&lt;uint8_t&gt;&amp; buffer);</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>};</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classvisionary_1_1_co_la_b_protocol_handler.html#a8dc4cb204ee17caa76687396205aebff">   31</a></span>        <a class="code hl_class" href="classvisionary_1_1_i_transport.html">ITransport</a>&amp; <a class="code hl_variable" href="classvisionary_1_1_co_la_b_protocol_handler.html#a8dc4cb204ee17caa76687396205aebff">m_rTransport</a>;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        uint8_t <a class="code hl_function" href="classvisionary_1_1_co_la_b_protocol_handler.html#acbf5aa335d52e7630c92d63d89b09cfa">calculateChecksum</a>(<span class="keyword">const</span> std::vector&lt;uint8_t&gt;&amp; buffer);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    };</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>}</div>
+<div class="ttc" id="a_co_la_command_8h_html"><div class="ttname"><a href="_co_la_command_8h.html">CoLaCommand.h</a></div></div>
+<div class="ttc" id="a_i_protocol_handler_8h_html"><div class="ttname"><a href="_i_protocol_handler_8h.html">IProtocolHandler.h</a></div></div>
+<div class="ttc" id="a_i_transport_8h_html"><div class="ttname"><a href="_i_transport_8h.html">ITransport.h</a></div></div>
 <div class="ttc" id="aclassvisionary_1_1_co_la_b_protocol_handler_html"><div class="ttname"><a href="classvisionary_1_1_co_la_b_protocol_handler.html">visionary::CoLaBProtocolHandler</a></div><div class="ttdef"><b>Definition</b> CoLaBProtocolHandler.h:19</div></div>
+<div class="ttc" id="aclassvisionary_1_1_co_la_b_protocol_handler_html_a59453cf1243e1214720ba58994c4e4c7"><div class="ttname"><a href="classvisionary_1_1_co_la_b_protocol_handler.html#a59453cf1243e1214720ba58994c4e4c7">visionary::CoLaBProtocolHandler::openSession</a></div><div class="ttdeci">bool openSession(uint8_t sessionTimeout) override</div><div class="ttdef"><b>Definition</b> CoLaBProtocolHandler.cpp:26</div></div>
+<div class="ttc" id="aclassvisionary_1_1_co_la_b_protocol_handler_html_a892f1a0009c67d2a34cb93b5c21d9bf1"><div class="ttname"><a href="classvisionary_1_1_co_la_b_protocol_handler.html#a892f1a0009c67d2a34cb93b5c21d9bf1">visionary::CoLaBProtocolHandler::closeSession</a></div><div class="ttdeci">void closeSession() override</div><div class="ttdef"><b>Definition</b> CoLaBProtocolHandler.cpp:32</div></div>
+<div class="ttc" id="aclassvisionary_1_1_co_la_b_protocol_handler_html_a8dc4cb204ee17caa76687396205aebff"><div class="ttname"><a href="classvisionary_1_1_co_la_b_protocol_handler.html#a8dc4cb204ee17caa76687396205aebff">visionary::CoLaBProtocolHandler::m_rTransport</a></div><div class="ttdeci">ITransport &amp; m_rTransport</div><div class="ttdef"><b>Definition</b> CoLaBProtocolHandler.h:31</div></div>
+<div class="ttc" id="aclassvisionary_1_1_co_la_b_protocol_handler_html_aa9820c86492539dcbefcd9db78ebe2a9"><div class="ttname"><a href="classvisionary_1_1_co_la_b_protocol_handler.html#aa9820c86492539dcbefcd9db78ebe2a9">visionary::CoLaBProtocolHandler::~CoLaBProtocolHandler</a></div><div class="ttdeci">~CoLaBProtocolHandler() override</div></div>
+<div class="ttc" id="aclassvisionary_1_1_co_la_b_protocol_handler_html_ac174d66e4d962f49261bdc9f5ee729cf"><div class="ttname"><a href="classvisionary_1_1_co_la_b_protocol_handler.html#ac174d66e4d962f49261bdc9f5ee729cf">visionary::CoLaBProtocolHandler::send</a></div><div class="ttdeci">CoLaCommand send(CoLaCommand cmd) override</div><div class="ttdef"><b>Definition</b> CoLaBProtocolHandler.cpp:37</div></div>
+<div class="ttc" id="aclassvisionary_1_1_co_la_b_protocol_handler_html_acbf5aa335d52e7630c92d63d89b09cfa"><div class="ttname"><a href="classvisionary_1_1_co_la_b_protocol_handler.html#acbf5aa335d52e7630c92d63d89b09cfa">visionary::CoLaBProtocolHandler::calculateChecksum</a></div><div class="ttdeci">uint8_t calculateChecksum(const std::vector&lt; uint8_t &gt; &amp;buffer)</div><div class="ttdef"><b>Definition</b> CoLaBProtocolHandler.cpp:106</div></div>
 <div class="ttc" id="aclassvisionary_1_1_co_la_command_html"><div class="ttname"><a href="classvisionary_1_1_co_la_command.html">visionary::CoLaCommand</a></div><div class="ttdef"><b>Definition</b> CoLaCommand.h:21</div></div>
 <div class="ttc" id="aclassvisionary_1_1_i_protocol_handler_html"><div class="ttname"><a href="classvisionary_1_1_i_protocol_handler.html">visionary::IProtocolHandler</a></div><div class="ttdef"><b>Definition</b> IProtocolHandler.h:18</div></div>
 <div class="ttc" id="aclassvisionary_1_1_i_transport_html"><div class="ttname"><a href="classvisionary_1_1_i_transport.html">visionary::ITransport</a></div><div class="ttdef"><b>Definition</b> ITransport.h:19</div></div>
 <div class="ttc" id="anamespacevisionary_html"><div class="ttname"><a href="namespacevisionary.html">visionary</a></div><div class="ttdef"><b>Definition</b> AuthenticationLegacy.cpp:14</div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_23d3d343015a8bd7e9dbef71a9e03858.html">sickapi</a></li><li class="navelem"><a class="el" href="dir_f9343132e416b1d631e13da8b9569f26.html">src</a></li><li class="navelem"><a class="el" href="_co_la_b_protocol_handler_8h.html">CoLaBProtocolHandler.h</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+  </ul>
+</div>
 </body>
 </html>

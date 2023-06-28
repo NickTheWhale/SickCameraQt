@@ -9,9 +9,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -46,6 +51,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classvisionary_1_1_visionary_auto_i_p_scan_custom.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,39 +89,478 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="namespacevisionary.html">visionary</a></li><li class="navelem"><a class="el" href="classvisionary_1_1_visionary_auto_i_p_scan_custom.html">VisionaryAutoIPScanCustom</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classvisionary_1_1_visionary_auto_i_p_scan_custom-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">visionary::VisionaryAutoIPScanCustom Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_visionary_auto_i_p_scan_custom_8h_source.html">VisionaryAutoIPScanCustom.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvisionary_1_1_visionary_auto_i_p_scan_custom_1_1_com_key__t.html">ComKey_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvisionary_1_1_visionary_auto_i_p_scan_custom_1_1_device_info.html">DeviceInfo</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a33a1e1feed3feb630f4121c1100cf2cf"><td class="memItemLeft" align="right" valign="top"><a id="a33a1e1feed3feb630f4121c1100cf2cf" name="a33a1e1feed3feb630f4121c1100cf2cf"></a>
-std::vector&lt; <a class="el" href="structvisionary_1_1_visionary_auto_i_p_scan_custom_1_1_device_info.html">DeviceInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>doScan</b> (int timeOut, const std::string &amp;broadcastAddress=visionary::DEFAULT_BROADCAST_ADDR, uint16_t port=visionary::DEFAULT_PORT)</td></tr>
+<tr class="memitem:afdc5045ee454eb286589efab956a460b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_auto_i_p_scan_custom.html#afdc5045ee454eb286589efab956a460b">VisionaryAutoIPScanCustom</a> ()</td></tr>
+<tr class="separator:afdc5045ee454eb286589efab956a460b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2ac8e84cc5219fc6aa5bc3c54e60b96"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_auto_i_p_scan_custom.html#aa2ac8e84cc5219fc6aa5bc3c54e60b96">~VisionaryAutoIPScanCustom</a> ()</td></tr>
+<tr class="separator:aa2ac8e84cc5219fc6aa5bc3c54e60b96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33a1e1feed3feb630f4121c1100cf2cf"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structvisionary_1_1_visionary_auto_i_p_scan_custom_1_1_device_info.html">DeviceInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_auto_i_p_scan_custom.html#a33a1e1feed3feb630f4121c1100cf2cf">doScan</a> (int timeOut, const std::string &amp;broadcastAddress=<a class="el" href="namespacevisionary.html#aad5749cc912ebc1b24c6e3d3c5b68eb5">visionary::DEFAULT_BROADCAST_ADDR</a>, uint16_t port=<a class="el" href="namespacevisionary.html#ab941e1054d2148dfa000b3281734387c">visionary::DEFAULT_PORT</a>)</td></tr>
+<tr class="memdesc:a33a1e1feed3feb630f4121c1100cf2cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform network scan.  <br /></td></tr>
 <tr class="separator:a33a1e1feed3feb630f4121c1100cf2cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a7729a1c40258114b4d1e0ebcc946a0ac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvisionary_1_1_visionary_auto_i_p_scan_custom_1_1_device_info.html">DeviceInfo</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_auto_i_p_scan_custom.html#a7729a1c40258114b4d1e0ebcc946a0ac">parseRawBuffer</a> (std::vector&lt; uint8_t &gt; buffer)</td></tr>
+<tr class="separator:a7729a1c40258114b4d1e0ebcc946a0ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44b5a9b5687f9c0d8b336e15acddb22a"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_auto_i_p_scan_custom.html#a44b5a9b5687f9c0d8b336e15acddb22a">readFlexString</a> (const std::vector&lt; uint8_t &gt; buffer, size_t &amp;pos)</td></tr>
+<tr class="separator:a44b5a9b5687f9c0d8b336e15acddb22a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3a13415e5b0183dadf34411e1781e25"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_auto_i_p_scan_custom.html#ab3a13415e5b0183dadf34411e1781e25">readFixString4</a> (const std::vector&lt; uint8_t &gt; buffer, size_t &amp;pos)</td></tr>
+<tr class="separator:ab3a13415e5b0183dadf34411e1781e25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc7b86596dfb6876e3b786cdece6a350"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_auto_i_p_scan_custom.html#adc7b86596dfb6876e3b786cdece6a350">readNetAddress</a> (const std::vector&lt; uint8_t &gt; buffer, size_t &amp;pos)</td></tr>
+<tr class="separator:adc7b86596dfb6876e3b786cdece6a350"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa51ce21acf2c7fdcd929283eeef83692"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_auto_i_p_scan_custom.html#aa51ce21acf2c7fdcd929283eeef83692">readMacAddress</a> (const std::vector&lt; uint8_t &gt; buffer, size_t &amp;pos)</td></tr>
+<tr class="separator:aa51ce21acf2c7fdcd929283eeef83692"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d19c1b75f75536ab305be25449d42ad"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_auto_i_p_scan_custom.html#a5d19c1b75f75536ab305be25449d42ad">read_uint32_t</a> (const std::vector&lt; uint8_t &gt; buffer, size_t &amp;pos)</td></tr>
+<tr class="separator:a5d19c1b75f75536ab305be25449d42ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae68e4c3c224e6d9576f4943fb25e7055"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_auto_i_p_scan_custom.html#ae68e4c3c224e6d9576f4943fb25e7055">read_uint16_t</a> (const std::vector&lt; uint8_t &gt; buffer, size_t &amp;pos)</td></tr>
+<tr class="separator:ae68e4c3c224e6d9576f4943fb25e7055"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6172fd62dfc8a6359938243c9bfca0c8"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_auto_i_p_scan_custom.html#a6172fd62dfc8a6359938243c9bfca0c8">read_uint8_t</a> (const std::vector&lt; uint8_t &gt; buffer, size_t &amp;pos)</td></tr>
+<tr class="separator:a6172fd62dfc8a6359938243c9bfca0c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ab93df98dc57d62f59fe40338ea6b3906"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structvisionary_1_1_visionary_auto_i_p_scan_custom_1_1_com_key__t.html">ComKey_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_auto_i_p_scan_custom.html#ab93df98dc57d62f59fe40338ea6b3906">ComKey</a></td></tr>
+<tr class="separator:ab93df98dc57d62f59fe40338ea6b3906"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae61215a29ba086491e66c8584aa2a04b"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_auto_i_p_scan_custom.html#ae61215a29ba086491e66c8584aa2a04b">PORT_KEY</a> = &quot;DPNo&quot;</td></tr>
+<tr class="separator:ae61215a29ba086491e66c8584aa2a04b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="afdc5045ee454eb286589efab956a460b" name="afdc5045ee454eb286589efab956a460b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdc5045ee454eb286589efab956a460b">&#9670;&#160;</a></span>VisionaryAutoIPScanCustom()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">visionary::VisionaryAutoIPScanCustom::VisionaryAutoIPScanCustom </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa2ac8e84cc5219fc6aa5bc3c54e60b96" name="aa2ac8e84cc5219fc6aa5bc3c54e60b96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2ac8e84cc5219fc6aa5bc3c54e60b96">&#9670;&#160;</a></span>~VisionaryAutoIPScanCustom()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">visionary::VisionaryAutoIPScanCustom::~VisionaryAutoIPScanCustom </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a33a1e1feed3feb630f4121c1100cf2cf" name="a33a1e1feed3feb630f4121c1100cf2cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33a1e1feed3feb630f4121c1100cf2cf">&#9670;&#160;</a></span>doScan()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="structvisionary_1_1_visionary_auto_i_p_scan_custom_1_1_device_info.html">VisionaryAutoIPScanCustom::DeviceInfo</a> &gt; visionary::VisionaryAutoIPScanCustom::doScan </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>timeOut</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>broadcastAddress</em> = <code><a class="el" href="namespacevisionary.html#aad5749cc912ebc1b24c6e3d3c5b68eb5">visionary::DEFAULT_BROADCAST_ADDR</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>port</em> = <code><a class="el" href="namespacevisionary.html#ab941e1054d2148dfa000b3281734387c">visionary::DEFAULT_PORT</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Perform network scan. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timeOut</td><td>Scan timeout in milliseconds. </td></tr>
+    <tr><td class="paramname">broadcastAddress</td><td>Broadcast address in "x.x.x.x" format (optional). </td></tr>
+    <tr><td class="paramname">port</td><td>Port (optional). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>list of found devices. </dd></dl>
+
+</div>
+</div>
+<a id="a7729a1c40258114b4d1e0ebcc946a0ac" name="a7729a1c40258114b4d1e0ebcc946a0ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7729a1c40258114b4d1e0ebcc946a0ac">&#9670;&#160;</a></span>parseRawBuffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structvisionary_1_1_visionary_auto_i_p_scan_custom_1_1_device_info.html">VisionaryAutoIPScanCustom::DeviceInfo</a> visionary::VisionaryAutoIPScanCustom::parseRawBuffer </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; uint8_t &gt;&#160;</td>
+          <td class="paramname"><em>buffer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae68e4c3c224e6d9576f4943fb25e7055" name="ae68e4c3c224e6d9576f4943fb25e7055"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae68e4c3c224e6d9576f4943fb25e7055">&#9670;&#160;</a></span>read_uint16_t()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t visionary::VisionaryAutoIPScanCustom::read_uint16_t </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; uint8_t &gt;&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t &amp;&#160;</td>
+          <td class="paramname"><em>pos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5d19c1b75f75536ab305be25449d42ad" name="a5d19c1b75f75536ab305be25449d42ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d19c1b75f75536ab305be25449d42ad">&#9670;&#160;</a></span>read_uint32_t()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t visionary::VisionaryAutoIPScanCustom::read_uint32_t </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; uint8_t &gt;&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t &amp;&#160;</td>
+          <td class="paramname"><em>pos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6172fd62dfc8a6359938243c9bfca0c8" name="a6172fd62dfc8a6359938243c9bfca0c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6172fd62dfc8a6359938243c9bfca0c8">&#9670;&#160;</a></span>read_uint8_t()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t visionary::VisionaryAutoIPScanCustom::read_uint8_t </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; uint8_t &gt;&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t &amp;&#160;</td>
+          <td class="paramname"><em>pos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab3a13415e5b0183dadf34411e1781e25" name="ab3a13415e5b0183dadf34411e1781e25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3a13415e5b0183dadf34411e1781e25">&#9670;&#160;</a></span>readFixString4()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string visionary::VisionaryAutoIPScanCustom::readFixString4 </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; uint8_t &gt;&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t &amp;&#160;</td>
+          <td class="paramname"><em>pos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a44b5a9b5687f9c0d8b336e15acddb22a" name="a44b5a9b5687f9c0d8b336e15acddb22a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44b5a9b5687f9c0d8b336e15acddb22a">&#9670;&#160;</a></span>readFlexString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string visionary::VisionaryAutoIPScanCustom::readFlexString </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; uint8_t &gt;&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t &amp;&#160;</td>
+          <td class="paramname"><em>pos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa51ce21acf2c7fdcd929283eeef83692" name="aa51ce21acf2c7fdcd929283eeef83692"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa51ce21acf2c7fdcd929283eeef83692">&#9670;&#160;</a></span>readMacAddress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string visionary::VisionaryAutoIPScanCustom::readMacAddress </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; uint8_t &gt;&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t &amp;&#160;</td>
+          <td class="paramname"><em>pos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adc7b86596dfb6876e3b786cdece6a350" name="adc7b86596dfb6876e3b786cdece6a350"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc7b86596dfb6876e3b786cdece6a350">&#9670;&#160;</a></span>readNetAddress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string visionary::VisionaryAutoIPScanCustom::readNetAddress </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; uint8_t &gt;&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t &amp;&#160;</td>
+          <td class="paramname"><em>pos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ab93df98dc57d62f59fe40338ea6b3906" name="ab93df98dc57d62f59fe40338ea6b3906"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab93df98dc57d62f59fe40338ea6b3906">&#9670;&#160;</a></span>ComKey</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structvisionary_1_1_visionary_auto_i_p_scan_custom_1_1_com_key__t.html">ComKey_t</a> visionary::VisionaryAutoIPScanCustom::ComKey</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae61215a29ba086491e66c8584aa2a04b" name="ae61215a29ba086491e66c8584aa2a04b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae61215a29ba086491e66c8584aa2a04b">&#9670;&#160;</a></span>PORT_KEY</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string visionary::VisionaryAutoIPScanCustom::PORT_KEY = &quot;DPNo&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="_visionary_auto_i_p_scan_custom_8h_source.html">VisionaryAutoIPScanCustom.h</a></li>
-<li>VisionaryAutoIPScanCustom.cpp</li>
+<li><a class="el" href="_visionary_auto_i_p_scan_custom_8cpp.html">VisionaryAutoIPScanCustom.cpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacevisionary.html">visionary</a></li><li class="navelem"><a class="el" href="classvisionary_1_1_visionary_auto_i_p_scan_custom.html">VisionaryAutoIPScanCustom</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+  </ul>
+</div>
 </body>
 </html>

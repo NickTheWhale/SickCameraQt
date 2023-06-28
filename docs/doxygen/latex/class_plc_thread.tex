@@ -9,27 +9,97 @@ Inheritance diagram for Plc\+Thread\+:\begin{figure}[H]
 \doxysubsubsection*{Public Slots}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_plc_thread_a1c3c07593f1adc04dca82099e52a4656}\label{class_plc_thread_a1c3c07593f1adc04dca82099e52a4656} 
-void {\bfseries new\+Frameset} (\mbox{\hyperlink{struct_frameset_1_1frameset__t}{Frameset\+::frameset\+\_\+t}} fs)
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{class_plc_thread_a1c3c07593f1adc04dca82099e52a4656}{new\+Frameset}} (\mbox{\hyperlink{struct_frameset_1_1frameset__t}{Frameset\+::frameset\+\_\+t}} fs)
+\begin{DoxyCompactList}\small\item\em Slot to receive new frameset emitted by capture\+Thread. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_plc_thread_a37f5221523c0ccff2658c72e843090b3}\label{class_plc_thread_a37f5221523c0ccff2658c72e843090b3} 
-bool {\bfseries start\+Plc} (TS7\+Client \texorpdfstring{$\ast$}{*}client)
-\item 
-\Hypertarget{class_plc_thread_ae6489b6fa75222070685959b08eb718a}\label{class_plc_thread_ae6489b6fa75222070685959b08eb718a} 
-void {\bfseries stop\+Plc} ()
-\end{DoxyCompactItemize}
+bool \mbox{\hyperlink{class_plc_thread_a37f5221523c0ccff2658c72e843090b3}{start\+Plc}} (TS7\+Client \texorpdfstring{$\ast$}{*}client)
+\begin{DoxyCompactList}\small\item\em Starts the thread. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_plc_thread_ae6489b6fa75222070685959b08eb718a}{stop\+Plc}} ()
+\begin{DoxyCompactList}\small\item\em Stop the thread. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \Hypertarget{class_plc_thread_a3d2bdf5c50e851c1032c25ef0f41ce73}\label{class_plc_thread_a3d2bdf5c50e851c1032c25ef0f41ce73} 
 void {\bfseries run} () override
 \end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_plc_thread_a3689e6ef90cdc5367a083afcb06532d8}\label{class_plc_thread_a3689e6ef90cdc5367a083afcb06532d8} 
+void {\bfseries upload\+DB} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_plc_thread_afe0a214dce053ebc47650c8c1aa8e858}\label{class_plc_thread_afe0a214dce053ebc47650c8c1aa8e858} 
+volatile bool {\bfseries \+\_\+stop} = false
+\item 
+\Hypertarget{class_plc_thread_afaa14ee89bfa0a5daa42c8d14c17ce5c}\label{class_plc_thread_afaa14ee89bfa0a5daa42c8d14c17ce5c} 
+TS7\+Client \texorpdfstring{$\ast$}{*} {\bfseries client}
+\item 
+\Hypertarget{class_plc_thread_ac8f73bfec67d2ac36983557e0b7d64c9}\label{class_plc_thread_ac8f73bfec67d2ac36983557e0b7d64c9} 
+const size\+\_\+t {\bfseries frameset\+Buffer\+Size} = 2
+\item 
+\Hypertarget{class_plc_thread_addafa7edcd889c732f525449f979265b}\label{class_plc_thread_addafa7edcd889c732f525449f979265b} 
+boost\+::circular\+\_\+buffer$<$ \mbox{\hyperlink{struct_frameset_1_1frameset__t}{Frameset\+::frameset\+\_\+t}} $>$ {\bfseries frameset\+Buffer}
+\item 
+\Hypertarget{class_plc_thread_ac8be357de4eda83a626c84eb8a8aa169}\label{class_plc_thread_ac8be357de4eda83a626c84eb8a8aa169} 
+QMutex {\bfseries frameset\+Mutex}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_plc_thread_a1c3c07593f1adc04dca82099e52a4656}\label{class_plc_thread_a1c3c07593f1adc04dca82099e52a4656} 
+\index{PlcThread@{PlcThread}!newFrameset@{newFrameset}}
+\index{newFrameset@{newFrameset}!PlcThread@{PlcThread}}
+\doxysubsubsection{\texorpdfstring{newFrameset}{newFrameset}}
+{\footnotesize\ttfamily void Plc\+Thread\+::new\+Frameset (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_frameset_1_1frameset__t}{Frameset\+::frameset\+\_\+t}}}]{fs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Slot to receive new frameset emitted by capture\+Thread. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fs} & Output frameset. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_plc_thread_a37f5221523c0ccff2658c72e843090b3}\label{class_plc_thread_a37f5221523c0ccff2658c72e843090b3} 
+\index{PlcThread@{PlcThread}!startPlc@{startPlc}}
+\index{startPlc@{startPlc}!PlcThread@{PlcThread}}
+\doxysubsubsection{\texorpdfstring{startPlc()}{startPlc()}}
+{\footnotesize\ttfamily bool Plc\+Thread\+::start\+Plc (\begin{DoxyParamCaption}\item[{TS7\+Client \texorpdfstring{$\ast$}{*}}]{client }\end{DoxyParamCaption})}
+
+
+
+Starts the thread. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em client} & Snap7 client \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+\doxylink{class_plc_thread}{Plc\+Thread} does not take ownership of the client. You must free the resources once the thread has stopped. 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{class_plc_thread_ae6489b6fa75222070685959b08eb718a}\label{class_plc_thread_ae6489b6fa75222070685959b08eb718a} 
+\index{PlcThread@{PlcThread}!stopPlc@{stopPlc}}
+\index{stopPlc@{stopPlc}!PlcThread@{PlcThread}}
+\doxysubsubsection{\texorpdfstring{stopPlc()}{stopPlc()}}
+{\footnotesize\ttfamily void Plc\+Thread\+::stop\+Plc (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Stop the thread. 
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Plc\+Thread.\+h\item 
+\mbox{\hyperlink{_plc_thread_8h}{Plc\+Thread.\+h}}\item 
 Plc\+Thread.\+cpp\end{DoxyCompactItemize}

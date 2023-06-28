@@ -8,13 +8,13 @@
 
 #pragma once
 
-namespace visionary 
+namespace visionary
 {
 
-struct PointXYZ {
-  float x;
-  float y;
-  float z;
-};
+	struct PointXYZ {
+		float x;
+		float y;
+		float z;
+	};
 
 }

@@ -1,37 +1,39 @@
 \doxysection{Plc\+Thread.\+h}
-\hypertarget{_plc_thread_8h_source}{}\label{_plc_thread_8h_source}
+\hypertarget{_plc_thread_8h_source}{}\label{_plc_thread_8h_source}\mbox{\hyperlink{_plc_thread_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <qthread.h>}}
-\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <snap7.h>}}
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}VisionaryFrameset.h"{}}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <boost/circular\_buffer.hpp>}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <qmutex.h>}}
-\DoxyCodeLine{00007\ }
-\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_plc_thread}{PlcThread}}\ :\ \textcolor{keyword}{public}\ QThread}
-\DoxyCodeLine{00009\ \{}
-\DoxyCodeLine{00010\ \ \ \ \ Q\_OBJECT}
-\DoxyCodeLine{00011\ }
-\DoxyCodeLine{00012\ }
-\DoxyCodeLine{00013\ \textcolor{keyword}{public}\ slots:}
-\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{void}\ newFrameset(\mbox{\hyperlink{struct_frameset_1_1frameset__t}{Frameset::frameset\_t}}\ fs);}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*****************************************************************/}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <qthread.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <snap7.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_visionary_frameset_8h}{VisionaryFrameset.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <boost/circular\_buffer.hpp>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <qmutex.h>}}
 \DoxyCodeLine{00015\ }
-\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{bool}\ startPlc(TS7Client*\ client);}
-\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{void}\ stopPlc();}
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_plc_thread}{PlcThread}}\ :\ \textcolor{keyword}{public}\ QThread}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ Q\_OBJECT}
 \DoxyCodeLine{00019\ }
-\DoxyCodeLine{00020\ \textcolor{keyword}{protected}:}
-\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ run()\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00022\ }
-\DoxyCodeLine{00023\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ uploadDB();}
-\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{volatile}\ \textcolor{keywordtype}{bool}\ \_stop\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00026\ \ \ \ \ TS7Client*\ client;}
-\DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ framesetBufferSize\ =\ 2;}
-\DoxyCodeLine{00029\ \ \ \ \ boost::circular\_buffer<Frameset::frameset\_t>\ framesetBuffer;}
-\DoxyCodeLine{00030\ \ \ \ \ QMutex\ framesetMutex;}
-\DoxyCodeLine{00031\ \};}
-\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}\ slots:}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_plc_thread_a1c3c07593f1adc04dca82099e52a4656}{newFrameset}}(\mbox{\hyperlink{struct_frameset_1_1frameset__t}{Frameset::frameset\_t}}\ fs);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_plc_thread_a37f5221523c0ccff2658c72e843090b3}{startPlc}}(TS7Client*\ client);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_plc_thread_ae6489b6fa75222070685959b08eb718a}{stopPlc}}();}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ run()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ uploadDB();}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{volatile}\ \textcolor{keywordtype}{bool}\ \_stop\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00052\ \ \ \ \ TS7Client*\ client;}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ framesetBufferSize\ =\ 2;}
+\DoxyCodeLine{00055\ \ \ \ \ boost::circular\_buffer<Frameset::frameset\_t>\ framesetBuffer;}
+\DoxyCodeLine{00056\ \ \ \ \ QMutex\ framesetMutex;}
+\DoxyCodeLine{00057\ \};}
+\DoxyCodeLine{00058\ }
 
 \end{DoxyCode}

@@ -9,9 +9,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -46,6 +51,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classvisionary_1_1_co_la_parameter_reader.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,14 +89,11 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="namespacevisionary.html">visionary</a></li><li class="navelem"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html">CoLaParameterReader</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classvisionary_1_1_co_la_parameter_reader-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">visionary::CoLaParameterReader Class Reference</div></div>
 </div><!--header-->
@@ -87,64 +106,405 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aaa47210fe84b7eccb4fc7659312ac9e2"><td class="memItemLeft" align="right" valign="top"><a id="aaa47210fe84b7eccb4fc7659312ac9e2" name="aaa47210fe84b7eccb4fc7659312ac9e2"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>CoLaParameterReader</b> (<a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> command)</td></tr>
+<tr class="memitem:aaa47210fe84b7eccb4fc7659312ac9e2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#aaa47210fe84b7eccb4fc7659312ac9e2">CoLaParameterReader</a> (<a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> command)</td></tr>
 <tr class="separator:aaa47210fe84b7eccb4fc7659312ac9e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac06ecea8b9f990d37189f03c872fc21f"><td class="memItemLeft" align="right" valign="top"><a id="ac06ecea8b9f990d37189f03c872fc21f" name="ac06ecea8b9f990d37189f03c872fc21f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>rewind</b> ()</td></tr>
-<tr class="memdesc:ac06ecea8b9f990d37189f03c872fc21f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rewind the position to the first parameter. <br /></td></tr>
+<tr class="memitem:a26ebf15574dd6cc356b789ee56c15545"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#a26ebf15574dd6cc356b789ee56c15545">~CoLaParameterReader</a> ()</td></tr>
+<tr class="separator:a26ebf15574dd6cc356b789ee56c15545"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac06ecea8b9f990d37189f03c872fc21f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#ac06ecea8b9f990d37189f03c872fc21f">rewind</a> ()</td></tr>
+<tr class="memdesc:ac06ecea8b9f990d37189f03c872fc21f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rewind the position to the first parameter.  <br /></td></tr>
 <tr class="separator:ac06ecea8b9f990d37189f03c872fc21f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab13ad2fca215903bed443761ad6dddcf"><td class="memItemLeft" align="right" valign="top"><a id="ab13ad2fca215903bed443761ad6dddcf" name="ab13ad2fca215903bed443761ad6dddcf"></a>
-int8_t&#160;</td><td class="memItemRight" valign="bottom"><b>readSInt</b> ()</td></tr>
-<tr class="memdesc:ab13ad2fca215903bed443761ad6dddcf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a signed short int (8 bit, range [-128, 127]) and advances position by 1 byte. Throws an std::out_of_range exception if <a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> is invalid. <br /></td></tr>
+<tr class="memitem:ab13ad2fca215903bed443761ad6dddcf"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#ab13ad2fca215903bed443761ad6dddcf">readSInt</a> ()</td></tr>
+<tr class="memdesc:ab13ad2fca215903bed443761ad6dddcf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a signed short int (8 bit, range [-128, 127]) and advances position by 1 byte. Throws an std::out_of_range exception if <a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> is invalid.  <br /></td></tr>
 <tr class="separator:ab13ad2fca215903bed443761ad6dddcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f9f517c1edc206af6b83a1b5acccbc3"><td class="memItemLeft" align="right" valign="top"><a id="a1f9f517c1edc206af6b83a1b5acccbc3" name="a1f9f517c1edc206af6b83a1b5acccbc3"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>readUSInt</b> ()</td></tr>
-<tr class="memdesc:a1f9f517c1edc206af6b83a1b5acccbc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a unsigned short int (8 bit, range [0, 255]) and advances position by 1 byte. Throws an std::out_of_range exception if <a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> is invalid. <br /></td></tr>
+<tr class="memitem:a1f9f517c1edc206af6b83a1b5acccbc3"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#a1f9f517c1edc206af6b83a1b5acccbc3">readUSInt</a> ()</td></tr>
+<tr class="memdesc:a1f9f517c1edc206af6b83a1b5acccbc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a unsigned short int (8 bit, range [0, 255]) and advances position by 1 byte. Throws an std::out_of_range exception if <a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> is invalid.  <br /></td></tr>
 <tr class="separator:a1f9f517c1edc206af6b83a1b5acccbc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a001a37985f15225426f8eba1b3620b61"><td class="memItemLeft" align="right" valign="top"><a id="a001a37985f15225426f8eba1b3620b61" name="a001a37985f15225426f8eba1b3620b61"></a>
-int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>readInt</b> ()</td></tr>
-<tr class="memdesc:a001a37985f15225426f8eba1b3620b61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a signed int (16 bit, range [-32768, 32767]) and advances position by 2 bytes. Throws an std::out_of_range exception if <a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> is invalid. <br /></td></tr>
+<tr class="memitem:a001a37985f15225426f8eba1b3620b61"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#a001a37985f15225426f8eba1b3620b61">readInt</a> ()</td></tr>
+<tr class="memdesc:a001a37985f15225426f8eba1b3620b61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a signed int (16 bit, range [-32768, 32767]) and advances position by 2 bytes. Throws an std::out_of_range exception if <a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> is invalid.  <br /></td></tr>
 <tr class="separator:a001a37985f15225426f8eba1b3620b61"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac156218f669cad0724a7817002af6c36"><td class="memItemLeft" align="right" valign="top"><a id="ac156218f669cad0724a7817002af6c36" name="ac156218f669cad0724a7817002af6c36"></a>
-uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>readUInt</b> ()</td></tr>
-<tr class="memdesc:ac156218f669cad0724a7817002af6c36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a unsigned int (16 bit, range [0, 65535]) and advances position by 2 bytes. Throws an std::out_of_range exception if <a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> is invalid. <br /></td></tr>
+<tr class="memitem:ac156218f669cad0724a7817002af6c36"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#ac156218f669cad0724a7817002af6c36">readUInt</a> ()</td></tr>
+<tr class="memdesc:ac156218f669cad0724a7817002af6c36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a unsigned int (16 bit, range [0, 65535]) and advances position by 2 bytes. Throws an std::out_of_range exception if <a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> is invalid.  <br /></td></tr>
 <tr class="separator:ac156218f669cad0724a7817002af6c36"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac246b75598d30bdb48c6c2628df45f58"><td class="memItemLeft" align="right" valign="top"><a id="ac246b75598d30bdb48c6c2628df45f58" name="ac246b75598d30bdb48c6c2628df45f58"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>readDInt</b> ()</td></tr>
-<tr class="memdesc:ac246b75598d30bdb48c6c2628df45f58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a signed double int (32 bit) and advances position by 4 bytes. Throws an std::out_of_range exception if <a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> is invalid. <br /></td></tr>
+<tr class="memitem:ac246b75598d30bdb48c6c2628df45f58"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#ac246b75598d30bdb48c6c2628df45f58">readDInt</a> ()</td></tr>
+<tr class="memdesc:ac246b75598d30bdb48c6c2628df45f58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a signed double int (32 bit) and advances position by 4 bytes. Throws an std::out_of_range exception if <a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> is invalid.  <br /></td></tr>
 <tr class="separator:ac246b75598d30bdb48c6c2628df45f58"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9707c73b913b788adfe9c8cca342ba5c"><td class="memItemLeft" align="right" valign="top"><a id="a9707c73b913b788adfe9c8cca342ba5c" name="a9707c73b913b788adfe9c8cca342ba5c"></a>
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>readUDInt</b> ()</td></tr>
-<tr class="memdesc:a9707c73b913b788adfe9c8cca342ba5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a unsigned int (32 bit) and advances position by 4 bytes. Throws an std::out_of_range exception if <a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> is invalid. <br /></td></tr>
+<tr class="memitem:a9707c73b913b788adfe9c8cca342ba5c"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#a9707c73b913b788adfe9c8cca342ba5c">readUDInt</a> ()</td></tr>
+<tr class="memdesc:a9707c73b913b788adfe9c8cca342ba5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a unsigned int (32 bit) and advances position by 4 bytes. Throws an std::out_of_range exception if <a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> is invalid.  <br /></td></tr>
 <tr class="separator:a9707c73b913b788adfe9c8cca342ba5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a746f81a0a92c65c2edf553cd4b14d23b"><td class="memItemLeft" align="right" valign="top"><a id="a746f81a0a92c65c2edf553cd4b14d23b" name="a746f81a0a92c65c2edf553cd4b14d23b"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>readReal</b> ()</td></tr>
-<tr class="memdesc:a746f81a0a92c65c2edf553cd4b14d23b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a IEEE-754 single precision (32 bit) and advances position by 4 bytes. Throws an std::out_of_range exception if <a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> is invalid. <br /></td></tr>
+<tr class="memitem:a746f81a0a92c65c2edf553cd4b14d23b"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#a746f81a0a92c65c2edf553cd4b14d23b">readReal</a> ()</td></tr>
+<tr class="memdesc:a746f81a0a92c65c2edf553cd4b14d23b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a IEEE-754 single precision (32 bit) and advances position by 4 bytes. Throws an std::out_of_range exception if <a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> is invalid.  <br /></td></tr>
 <tr class="separator:a746f81a0a92c65c2edf553cd4b14d23b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05425d40eba0f33c64d75bf00fa84e46"><td class="memItemLeft" align="right" valign="top"><a id="a05425d40eba0f33c64d75bf00fa84e46" name="a05425d40eba0f33c64d75bf00fa84e46"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>readLReal</b> ()</td></tr>
-<tr class="memdesc:a05425d40eba0f33c64d75bf00fa84e46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a IEEE-754 double precision (64 bit) and advances position by 8 bytes. Throws an std::out_of_range exception if <a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> is invalid. <br /></td></tr>
+<tr class="memitem:a05425d40eba0f33c64d75bf00fa84e46"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#a05425d40eba0f33c64d75bf00fa84e46">readLReal</a> ()</td></tr>
+<tr class="memdesc:a05425d40eba0f33c64d75bf00fa84e46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a IEEE-754 double precision (64 bit) and advances position by 8 bytes. Throws an std::out_of_range exception if <a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> is invalid.  <br /></td></tr>
 <tr class="separator:a05425d40eba0f33c64d75bf00fa84e46"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a59273d4efbea73480da55448696b61b3"><td class="memItemLeft" align="right" valign="top"><a id="a59273d4efbea73480da55448696b61b3" name="a59273d4efbea73480da55448696b61b3"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>readBool</b> ()</td></tr>
-<tr class="memdesc:a59273d4efbea73480da55448696b61b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a boolean and advance the position by 1 byte. Throws an std::out_of_range exception if <a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> is invalid. <br /></td></tr>
+<tr class="memitem:a59273d4efbea73480da55448696b61b3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#a59273d4efbea73480da55448696b61b3">readBool</a> ()</td></tr>
+<tr class="memdesc:a59273d4efbea73480da55448696b61b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a boolean and advance the position by 1 byte. Throws an std::out_of_range exception if <a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> is invalid.  <br /></td></tr>
 <tr class="separator:a59273d4efbea73480da55448696b61b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afbee227a1cb89997c2865e3feaac4b2b"><td class="memItemLeft" align="right" valign="top"><a id="afbee227a1cb89997c2865e3feaac4b2b" name="afbee227a1cb89997c2865e3feaac4b2b"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>readFlexString</b> ()</td></tr>
-<tr class="memdesc:afbee227a1cb89997c2865e3feaac4b2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a flex string, and advance position according to string size. Throws an std::out_of_range exception if <a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> is invalid. <br /></td></tr>
+<tr class="memitem:afbee227a1cb89997c2865e3feaac4b2b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#afbee227a1cb89997c2865e3feaac4b2b">readFlexString</a> ()</td></tr>
+<tr class="memdesc:afbee227a1cb89997c2865e3feaac4b2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a flex string, and advance position according to string size. Throws an std::out_of_range exception if <a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> is invalid.  <br /></td></tr>
 <tr class="separator:afbee227a1cb89997c2865e3feaac4b2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a1def89f99ab46edbe38832763f660509"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#a1def89f99ab46edbe38832763f660509">checkSize</a> (size_t pos, size_t size)</td></tr>
+<tr class="separator:a1def89f99ab46edbe38832763f660509"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ac119309de335a3024a2d15baa625b962"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#ac119309de335a3024a2d15baa625b962">m_command</a></td></tr>
+<tr class="separator:ac119309de335a3024a2d15baa625b962"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13ee9899708e9b9b2aa0dfc80a5bc0d7"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html#a13ee9899708e9b9b2aa0dfc80a5bc0d7">m_currentPosition</a></td></tr>
+<tr class="separator:a13ee9899708e9b9b2aa0dfc80a5bc0d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class for reading data from a <a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a>. </p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="aaa47210fe84b7eccb4fc7659312ac9e2" name="aaa47210fe84b7eccb4fc7659312ac9e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa47210fe84b7eccb4fc7659312ac9e2">&#9670;&#160;</a></span>CoLaParameterReader()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">visionary::CoLaParameterReader::CoLaParameterReader </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a>&#160;</td>
+          <td class="paramname"><em>command</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a26ebf15574dd6cc356b789ee56c15545" name="a26ebf15574dd6cc356b789ee56c15545"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26ebf15574dd6cc356b789ee56c15545">&#9670;&#160;</a></span>~CoLaParameterReader()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">visionary::CoLaParameterReader::~CoLaParameterReader </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a1def89f99ab46edbe38832763f660509" name="a1def89f99ab46edbe38832763f660509"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1def89f99ab46edbe38832763f660509">&#9670;&#160;</a></span>checkSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void visionary::CoLaParameterReader::checkSize </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a59273d4efbea73480da55448696b61b3" name="a59273d4efbea73480da55448696b61b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59273d4efbea73480da55448696b61b3">&#9670;&#160;</a></span>readBool()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> visionary::CoLaParameterReader::readBool </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read a boolean and advance the position by 1 byte. Throws an std::out_of_range exception if <a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> is invalid. </p>
+
+</div>
+</div>
+<a id="ac246b75598d30bdb48c6c2628df45f58" name="ac246b75598d30bdb48c6c2628df45f58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac246b75598d30bdb48c6c2628df45f58">&#9670;&#160;</a></span>readDInt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t visionary::CoLaParameterReader::readDInt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read a signed double int (32 bit) and advances position by 4 bytes. Throws an std::out_of_range exception if <a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> is invalid. </p>
+
+</div>
+</div>
+<a id="afbee227a1cb89997c2865e3feaac4b2b" name="afbee227a1cb89997c2865e3feaac4b2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbee227a1cb89997c2865e3feaac4b2b">&#9670;&#160;</a></span>readFlexString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string visionary::CoLaParameterReader::readFlexString </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read a flex string, and advance position according to string size. Throws an std::out_of_range exception if <a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> is invalid. </p>
+
+</div>
+</div>
+<a id="a001a37985f15225426f8eba1b3620b61" name="a001a37985f15225426f8eba1b3620b61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a001a37985f15225426f8eba1b3620b61">&#9670;&#160;</a></span>readInt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t visionary::CoLaParameterReader::readInt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read a signed int (16 bit, range [-32768, 32767]) and advances position by 2 bytes. Throws an std::out_of_range exception if <a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> is invalid. </p>
+
+</div>
+</div>
+<a id="a05425d40eba0f33c64d75bf00fa84e46" name="a05425d40eba0f33c64d75bf00fa84e46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05425d40eba0f33c64d75bf00fa84e46">&#9670;&#160;</a></span>readLReal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double visionary::CoLaParameterReader::readLReal </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read a IEEE-754 double precision (64 bit) and advances position by 8 bytes. Throws an std::out_of_range exception if <a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> is invalid. </p>
+
+</div>
+</div>
+<a id="a746f81a0a92c65c2edf553cd4b14d23b" name="a746f81a0a92c65c2edf553cd4b14d23b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a746f81a0a92c65c2edf553cd4b14d23b">&#9670;&#160;</a></span>readReal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float visionary::CoLaParameterReader::readReal </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read a IEEE-754 single precision (32 bit) and advances position by 4 bytes. Throws an std::out_of_range exception if <a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> is invalid. </p>
+
+</div>
+</div>
+<a id="ab13ad2fca215903bed443761ad6dddcf" name="ab13ad2fca215903bed443761ad6dddcf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab13ad2fca215903bed443761ad6dddcf">&#9670;&#160;</a></span>readSInt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int8_t visionary::CoLaParameterReader::readSInt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read a signed short int (8 bit, range [-128, 127]) and advances position by 1 byte. Throws an std::out_of_range exception if <a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> is invalid. </p>
+
+</div>
+</div>
+<a id="a9707c73b913b788adfe9c8cca342ba5c" name="a9707c73b913b788adfe9c8cca342ba5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9707c73b913b788adfe9c8cca342ba5c">&#9670;&#160;</a></span>readUDInt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t visionary::CoLaParameterReader::readUDInt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read a unsigned int (32 bit) and advances position by 4 bytes. Throws an std::out_of_range exception if <a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> is invalid. </p>
+
+</div>
+</div>
+<a id="ac156218f669cad0724a7817002af6c36" name="ac156218f669cad0724a7817002af6c36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac156218f669cad0724a7817002af6c36">&#9670;&#160;</a></span>readUInt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t visionary::CoLaParameterReader::readUInt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read a unsigned int (16 bit, range [0, 65535]) and advances position by 2 bytes. Throws an std::out_of_range exception if <a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> is invalid. </p>
+
+</div>
+</div>
+<a id="a1f9f517c1edc206af6b83a1b5acccbc3" name="a1f9f517c1edc206af6b83a1b5acccbc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f9f517c1edc206af6b83a1b5acccbc3">&#9670;&#160;</a></span>readUSInt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t visionary::CoLaParameterReader::readUSInt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read a unsigned short int (8 bit, range [0, 255]) and advances position by 1 byte. Throws an std::out_of_range exception if <a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> is invalid. </p>
+
+</div>
+</div>
+<a id="ac06ecea8b9f990d37189f03c872fc21f" name="ac06ecea8b9f990d37189f03c872fc21f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac06ecea8b9f990d37189f03c872fc21f">&#9670;&#160;</a></span>rewind()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void visionary::CoLaParameterReader::rewind </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Rewind the position to the first parameter. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ac119309de335a3024a2d15baa625b962" name="ac119309de335a3024a2d15baa625b962"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac119309de335a3024a2d15baa625b962">&#9670;&#160;</a></span>m_command</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> visionary::CoLaParameterReader::m_command</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a13ee9899708e9b9b2aa0dfc80a5bc0d7" name="a13ee9899708e9b9b2aa0dfc80a5bc0d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13ee9899708e9b9b2aa0dfc80a5bc0d7">&#9670;&#160;</a></span>m_currentPosition</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t visionary::CoLaParameterReader::m_currentPosition</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>sickapi/src/<a class="el" href="_co_la_parameter_reader_8h_source.html">CoLaParameterReader.h</a></li>
-<li>sickapi/src/CoLaParameterReader.cpp</li>
+<li>sickapi/src/<a class="el" href="_co_la_parameter_reader_8cpp.html">CoLaParameterReader.cpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacevisionary.html">visionary</a></li><li class="navelem"><a class="el" href="classvisionary_1_1_co_la_parameter_reader.html">CoLaParameterReader</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+  </ul>
+</div>
 </body>
 </html>

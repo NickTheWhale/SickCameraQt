@@ -40,62 +40,62 @@
 \DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ <cstring>}}
 \DoxyCodeLine{00037\ \textcolor{preprocessor}{\#include\ <iostream>}}
 \DoxyCodeLine{00038\ }
-\DoxyCodeLine{00039\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacevisionary}{visionary}}\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacevisionary}{visionary}}}
 \DoxyCodeLine{00040\ \{}
 \DoxyCodeLine{00041\ }
-\DoxyCodeLine{00042\ \textcolor{comment}{//\ a\ small\ class\ for\ calculating\ MD5\ hashes\ of\ strings\ or\ byte\ arrays}}
-\DoxyCodeLine{00043\ \textcolor{comment}{//\ it\ is\ not\ meant\ to\ be\ fast\ or\ secure}}
-\DoxyCodeLine{00044\ \textcolor{comment}{//}}
-\DoxyCodeLine{00045\ \textcolor{comment}{//\ usage:\ 1)\ feed\ it\ blocks\ of\ uchars\ with\ update()}}
-\DoxyCodeLine{00046\ \textcolor{comment}{//\ \ \ \ \ \ 2)\ finalize()}}
-\DoxyCodeLine{00047\ \textcolor{comment}{//\ \ \ \ \ \ 3)\ get\ hexdigest()\ string}}
-\DoxyCodeLine{00048\ \textcolor{comment}{//\ \ \ \ \ \ or}}
-\DoxyCodeLine{00049\ \textcolor{comment}{//\ \ \ \ \ \ MD5(std::string).hexdigest()}}
-\DoxyCodeLine{00050\ \textcolor{comment}{//}}
-\DoxyCodeLine{00051\ \textcolor{comment}{//\ assumes\ that\ char\ is\ 8\ bit\ and\ int\ is\ 32\ bit}}
-\DoxyCodeLine{00052\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classvisionary_1_1_m_d5}{MD5}}}
-\DoxyCodeLine{00053\ \{}
-\DoxyCodeLine{00054\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00055\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ size\_type;\ \textcolor{comment}{//\ must\ be\ 32bit}}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{//\ a\ small\ class\ for\ calculating\ MD5\ hashes\ of\ strings\ or\ byte\ arrays}}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{comment}{//\ it\ is\ not\ meant\ to\ be\ fast\ or\ secure}}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{comment}{//\ usage:\ 1)\ feed\ it\ blocks\ of\ uchars\ with\ update()}}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ 2)\ finalize()}}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ 3)\ get\ hexdigest()\ string}}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ or}}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ MD5(std::string).hexdigest()}}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{comment}{//\ assumes\ that\ char\ is\ 8\ bit\ and\ int\ is\ 32\ bit}}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classvisionary_1_1_m_d5}{MD5}}}
+\DoxyCodeLine{00053\ \ \ \ \ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ size\_type;\ \textcolor{comment}{//\ must\ be\ 32bit}}
 \DoxyCodeLine{00056\ }
-\DoxyCodeLine{00057\ \ \ \mbox{\hyperlink{classvisionary_1_1_m_d5}{MD5}}();}
-\DoxyCodeLine{00058\ \ \ \mbox{\hyperlink{classvisionary_1_1_m_d5}{MD5}}(\textcolor{keyword}{const}\ std::string\&\ text);}
-\DoxyCodeLine{00059\ \ \ \textcolor{keywordtype}{void}\ update(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *buf,\ size\_type\ length);}
-\DoxyCodeLine{00060\ \ \ \textcolor{keywordtype}{void}\ update(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *buf,\ size\_type\ length);}
-\DoxyCodeLine{00061\ \ \ \mbox{\hyperlink{classvisionary_1_1_m_d5}{MD5}}\&\ finalize();}
-\DoxyCodeLine{00062\ \ \ std::string\ hexdigest()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00063\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*\ getDigest()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00064\ \ \ \textcolor{keyword}{friend}\ std::ostream\&\ operator<<(std::ostream\&,\ \mbox{\hyperlink{classvisionary_1_1_m_d5}{MD5}}\ md5);}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvisionary_1_1_m_d5}{MD5}}();}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvisionary_1_1_m_d5}{MD5}}(\textcolor{keyword}{const}\ std::string\&\ text);}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ update(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*\ buf,\ size\_type\ length);}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ update(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ buf,\ size\_type\ length);}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvisionary_1_1_m_d5}{MD5}}\&\ finalize();}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ std::string\ hexdigest()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*\ getDigest()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ std::ostream\&\ operator<<(std::ostream\&,\ \mbox{\hyperlink{classvisionary_1_1_m_d5}{MD5}}\ md5);}
 \DoxyCodeLine{00065\ }
-\DoxyCodeLine{00066\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00067\ \ \ \textcolor{keywordtype}{void}\ init();}
-\DoxyCodeLine{00068\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ uint1;\ \textcolor{comment}{//\ \ 8bit}}
-\DoxyCodeLine{00069\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ uint4;\ \ \textcolor{comment}{//\ 32bit}}
-\DoxyCodeLine{00070\ \ \ \textcolor{keyword}{enum}\ \{\ blocksize\ =\ 64\ \};\ \textcolor{comment}{//\ VC6\ won't\ eat\ a\ const\ static\ int\ here}}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ init();}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ uint1;\ \textcolor{comment}{//\ \ 8bit}}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ uint4;\ \ \textcolor{comment}{//\ 32bit}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keyword}{enum}\ \{\ blocksize\ =\ 64\ \};\ \textcolor{comment}{//\ VC6\ won't\ eat\ a\ const\ static\ int\ here}}
 \DoxyCodeLine{00071\ }
-\DoxyCodeLine{00072\ \ \ \textcolor{keywordtype}{void}\ transform(\textcolor{keyword}{const}\ uint1\ block[blocksize]);}
-\DoxyCodeLine{00073\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ decode(uint4\ output[],\ \textcolor{keyword}{const}\ uint1\ input[],\ size\_type\ len);}
-\DoxyCodeLine{00074\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ encode(uint1\ output[],\ \textcolor{keyword}{const}\ uint4\ input[],\ size\_type\ len);}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ transform(\textcolor{keyword}{const}\ uint1\ block[blocksize]);}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ decode(uint4\ output[],\ \textcolor{keyword}{const}\ uint1\ input[],\ size\_type\ len);}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ encode(uint1\ output[],\ \textcolor{keyword}{const}\ uint4\ input[],\ size\_type\ len);}
 \DoxyCodeLine{00075\ }
-\DoxyCodeLine{00076\ \ \ \textcolor{keywordtype}{bool}\ finalized;}
-\DoxyCodeLine{00077\ \ \ uint1\ buffer[blocksize];\ \textcolor{comment}{//\ bytes\ that\ didn't\ fit\ in\ last\ 64\ byte\ chunk}}
-\DoxyCodeLine{00078\ \ \ uint4\ count[2];\ \ \ \textcolor{comment}{//\ 64bit\ counter\ for\ number\ of\ bits\ (lo,\ hi)}}
-\DoxyCodeLine{00079\ \ \ uint4\ state[4];\ \ \ \textcolor{comment}{//\ digest\ so\ far}}
-\DoxyCodeLine{00080\ \ \ uint1\ digest[16];\ \textcolor{comment}{//\ the\ result}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ finalized;}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ uint1\ buffer[blocksize];\ \textcolor{comment}{//\ bytes\ that\ didn't\ fit\ in\ last\ 64\ byte\ chunk}}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ uint4\ count[2];\ \ \ \textcolor{comment}{//\ 64bit\ counter\ for\ number\ of\ bits\ (lo,\ hi)}}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ uint4\ state[4];\ \ \ \textcolor{comment}{//\ digest\ so\ far}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ uint1\ digest[16];\ \textcolor{comment}{//\ the\ result}}
 \DoxyCodeLine{00081\ }
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ low\ level\ logic\ operations}}
-\DoxyCodeLine{00083\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ uint4\ F(uint4\ x,\ uint4\ y,\ uint4\ z);}
-\DoxyCodeLine{00084\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ uint4\ G(uint4\ x,\ uint4\ y,\ uint4\ z);}
-\DoxyCodeLine{00085\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ uint4\ H(uint4\ x,\ uint4\ y,\ uint4\ z);}
-\DoxyCodeLine{00086\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ uint4\ I(uint4\ x,\ uint4\ y,\ uint4\ z);}
-\DoxyCodeLine{00087\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ uint4\ rotate\_left(uint4\ x,\ \textcolor{keywordtype}{int}\ n);}
-\DoxyCodeLine{00088\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ FF(uint4\ \&a,\ uint4\ b,\ uint4\ c,\ uint4\ d,\ uint4\ x,\ uint4\ s,\ uint4\ ac);}
-\DoxyCodeLine{00089\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ GG(uint4\ \&a,\ uint4\ b,\ uint4\ c,\ uint4\ d,\ uint4\ x,\ uint4\ s,\ uint4\ ac);}
-\DoxyCodeLine{00090\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ HH(uint4\ \&a,\ uint4\ b,\ uint4\ c,\ uint4\ d,\ uint4\ x,\ uint4\ s,\ uint4\ ac);}
-\DoxyCodeLine{00091\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ II(uint4\ \&a,\ uint4\ b,\ uint4\ c,\ uint4\ d,\ uint4\ x,\ uint4\ s,\ uint4\ ac);}
-\DoxyCodeLine{00092\ \};}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ low\ level\ logic\ operations}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ uint4\ F(uint4\ x,\ uint4\ y,\ uint4\ z);}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ uint4\ G(uint4\ x,\ uint4\ y,\ uint4\ z);}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ uint4\ H(uint4\ x,\ uint4\ y,\ uint4\ z);}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ uint4\ I(uint4\ x,\ uint4\ y,\ uint4\ z);}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ uint4\ rotate\_left(uint4\ x,\ \textcolor{keywordtype}{int}\ n);}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ FF(uint4\&\ a,\ uint4\ b,\ uint4\ c,\ uint4\ d,\ uint4\ x,\ uint4\ s,\ uint4\ ac);}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ GG(uint4\&\ a,\ uint4\ b,\ uint4\ c,\ uint4\ d,\ uint4\ x,\ uint4\ s,\ uint4\ ac);}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ HH(uint4\&\ a,\ uint4\ b,\ uint4\ c,\ uint4\ d,\ uint4\ x,\ uint4\ s,\ uint4\ ac);}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ II(uint4\&\ a,\ uint4\ b,\ uint4\ c,\ uint4\ d,\ uint4\ x,\ uint4\ s,\ uint4\ ac);}
+\DoxyCodeLine{00092\ \ \ \ \ \};}
 \DoxyCodeLine{00093\ }
-\DoxyCodeLine{00094\ std::string\ md5(\textcolor{keyword}{const}\ std::string\&\ str);}
+\DoxyCodeLine{00094\ \ \ \ \ std::string\ md5(\textcolor{keyword}{const}\ std::string\&\ str);}
 \DoxyCodeLine{00095\ }
 \DoxyCodeLine{00096\ \}}
 \DoxyCodeLine{00097\ }

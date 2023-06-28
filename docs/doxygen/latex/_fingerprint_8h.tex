@@ -1,0 +1,130 @@
+\doxysection{Fingerprint.\+h File Reference}
+\hypertarget{_fingerprint_8h}{}\label{_fingerprint_8h}\index{Fingerprint.h@{Fingerprint.h}}
+
+
+~\newline
+  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$format$>$}\newline
+{\ttfamily \#include $<$qimage.\+h$>$}\newline
+{\ttfamily \#include $<$qpainter.\+h$>$}\newline
+{\ttfamily \#include $<$qpoint.\+h$>$}\newline
+{\ttfamily \#include $<$qstring.\+h$>$}\newline
+{\ttfamily \#include $<$qdebug.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_fingerprint_1_1_cell_stat}{Fingerprint\+::\+Cell\+Stat}}
+\begin{DoxyCompactList}\small\item\em Stores min, max, mean, and stdev. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{struct_fingerprint_1_1_cell_stat}{Cell\+Stat}} \mbox{\hyperlink{_fingerprint_8h_a1636020e34466a6b2d3a236225b596ea}{Fingerprint\+::calculate\+Cell\+Statistics}} (int frame\+Width, int frame\+Height, const std\+::vector$<$ uint16\+\_\+t $>$ \&frame, QPoint top\+Left, QPoint bottom\+Right)
+\begin{DoxyCompactList}\small\item\em Calculates statistics of a cell at a specified top\+Left and bottom\+Right location. \end{DoxyCompactList}\item 
+const unsigned long \mbox{\hyperlink{_fingerprint_8h_abf75cc43defd274389774854191a8d89}{Fingerprint\+::calculate\+Fingerprint}} (int frame\+Width, int frame\+Height, const std\+::vector$<$ uint16\+\_\+t $>$ \&frame)
+\begin{DoxyCompactList}\small\item\em Calculate the \textquotesingle{}fingerprint\textquotesingle{} of a frame. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_fingerprint_8h_a85d452c5607a17cc97158011c6765dea}{Fingerprint\+::overlay\+Stats}} (QImage \&q\+Image, int width, int height, const std\+::vector$<$ uint16\+\_\+t $>$ \&frame)
+\begin{DoxyCompactList}\small\item\em Method to draw cell statistics on a QImage. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_fingerprint_8h_a31efeea759ee6a0d34829546236a01ba}\label{_fingerprint_8h_a31efeea759ee6a0d34829546236a01ba} 
+const size\+\_\+t {\bfseries Fingerprint\+::\+GRID\+\_\+\+ROWS} = 3
+\begin{DoxyCompactList}\small\item\em number of rows used in \doxylink{_fingerprint_8h_abf75cc43defd274389774854191a8d89}{calculate\+Fingerprint()} and \doxylink{_fingerprint_8h_a85d452c5607a17cc97158011c6765dea}{overlay\+Stats()} \end{DoxyCompactList}\item 
+\Hypertarget{_fingerprint_8h_a24e9f4eb551eea5b2fdf8ffa49afb3ca}\label{_fingerprint_8h_a24e9f4eb551eea5b2fdf8ffa49afb3ca} 
+const size\+\_\+t {\bfseries Fingerprint\+::\+GRID\+\_\+\+COLS} = 3
+\begin{DoxyCompactList}\small\item\em number of columns used in \doxylink{_fingerprint_8h_abf75cc43defd274389774854191a8d89}{calculate\+Fingerprint()} and \doxylink{_fingerprint_8h_a85d452c5607a17cc97158011c6765dea}{overlay\+Stats()} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+~\newline
+ 
+
+\begin{DoxyAuthor}{Author}
+Nicholas Loehrke 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+June 2023 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_fingerprint_8h_a1636020e34466a6b2d3a236225b596ea}\label{_fingerprint_8h_a1636020e34466a6b2d3a236225b596ea} 
+\index{Fingerprint.h@{Fingerprint.h}!calculateCellStatistics@{calculateCellStatistics}}
+\index{calculateCellStatistics@{calculateCellStatistics}!Fingerprint.h@{Fingerprint.h}}
+\doxysubsubsection{\texorpdfstring{calculateCellStatistics()}{calculateCellStatistics()}}
+{\footnotesize\ttfamily const Cell\+Stat Fingerprint\+::calculate\+Cell\+Statistics (\begin{DoxyParamCaption}\item[{int}]{frame\+Width,  }\item[{int}]{frame\+Height,  }\item[{const std\+::vector$<$ uint16\+\_\+t $>$ \&}]{frame,  }\item[{QPoint}]{top\+Left,  }\item[{QPoint}]{bottom\+Right }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calculates statistics of a cell at a specified top\+Left and bottom\+Right location. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em frame\+Width} & Width of the total frame (not just the cell). \\
+\hline
+{\em frame\+Height} & Height of the total frame (not just the cell). \\
+\hline
+{\em frame} & Frame. \\
+\hline
+{\em top\+Left} & Location of the top left corner of the cell. \\
+\hline
+{\em bottom\+Right} & Location of the bottom right corner of the cell. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Cell\+Stat with the calculated values, or Cell\+Stat(0, 0, 0, 0) is no valid frame data. 
+\end{DoxyReturn}
+\Hypertarget{_fingerprint_8h_abf75cc43defd274389774854191a8d89}\label{_fingerprint_8h_abf75cc43defd274389774854191a8d89} 
+\index{Fingerprint.h@{Fingerprint.h}!calculateFingerprint@{calculateFingerprint}}
+\index{calculateFingerprint@{calculateFingerprint}!Fingerprint.h@{Fingerprint.h}}
+\doxysubsubsection{\texorpdfstring{calculateFingerprint()}{calculateFingerprint()}}
+{\footnotesize\ttfamily const unsigned long Fingerprint\+::calculate\+Fingerprint (\begin{DoxyParamCaption}\item[{int}]{frame\+Width,  }\item[{int}]{frame\+Height,  }\item[{const std\+::vector$<$ uint16\+\_\+t $>$ \&}]{frame }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calculate the \textquotesingle{}fingerprint\textquotesingle{} of a frame. 
+
+This algorithm works by spliting a frame into a GRID\+\_\+\+ROWS x GRID\+\_\+\+COLS grid and calculating the statistics for each cell within the grid. Once statistics for each cell are calculated, they are summed into a single value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em frame\+Width} & \\
+\hline
+{\em frame\+Height} & \\
+\hline
+{\em frame} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{_fingerprint_8h_a85d452c5607a17cc97158011c6765dea}\label{_fingerprint_8h_a85d452c5607a17cc97158011c6765dea} 
+\index{Fingerprint.h@{Fingerprint.h}!overlayStats@{overlayStats}}
+\index{overlayStats@{overlayStats}!Fingerprint.h@{Fingerprint.h}}
+\doxysubsubsection{\texorpdfstring{overlayStats()}{overlayStats()}}
+{\footnotesize\ttfamily void Fingerprint\+::overlay\+Stats (\begin{DoxyParamCaption}\item[{QImage \&}]{q\+Image,  }\item[{int}]{width,  }\item[{int}]{height,  }\item[{const std\+::vector$<$ uint16\+\_\+t $>$ \&}]{frame }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Method to draw cell statistics on a QImage. 
+
+Draws a grid with dimensions GRID\+\_\+\+ROWS x GRID\+\_\+\+COLS and draws the statistics contained within each grid cell.
+
+
+\begin{DoxyParams}{Parameters}
+{\em q\+Image} & Output image to draw on. \\
+\hline
+{\em width} & Frame width. \\
+\hline
+{\em height} & Frame height. \\
+\hline
+{\em frame} & Frame. \\
+\hline
+\end{DoxyParams}

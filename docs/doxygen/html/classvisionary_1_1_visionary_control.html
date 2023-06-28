@@ -9,9 +9,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -46,6 +51,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classvisionary_1_1_visionary_control.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,56 +89,58 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="namespacevisionary.html">visionary</a></li><li class="navelem"><a class="el" href="classvisionary_1_1_visionary_control.html">VisionaryControl</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classvisionary_1_1_visionary_control-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">visionary::VisionaryControl Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_visionary_control_8h_source.html">VisionaryControl.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:ad48d462fa9f65368bb9be70191372395"><td class="memItemLeft" align="right" valign="top"><a id="ad48d462fa9f65368bb9be70191372395" name="ad48d462fa9f65368bb9be70191372395"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_control.html#ad48d462fa9f65368bb9be70191372395">ProtocolType</a> { <b>INVALID_PROTOCOL</b> = -1
-, <b>COLA_A</b> = 2111
-, <b>COLA_B</b> = 2112
-, <b>COLA_2</b> = 2122
+<tr class="memitem:ad48d462fa9f65368bb9be70191372395"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_control.html#ad48d462fa9f65368bb9be70191372395">ProtocolType</a> { <a class="el" href="classvisionary_1_1_visionary_control.html#ad48d462fa9f65368bb9be70191372395afa31197be7132af7fc1a4b56fc9e8b6d">INVALID_PROTOCOL</a> = -1
+, <a class="el" href="classvisionary_1_1_visionary_control.html#ad48d462fa9f65368bb9be70191372395adb1c595bd56235ce4bddc6647f307b7f">COLA_A</a> = 2111
+, <a class="el" href="classvisionary_1_1_visionary_control.html#ad48d462fa9f65368bb9be70191372395afea7996bbc6aaec57eb498a273abfaa5">COLA_B</a> = 2112
+, <a class="el" href="classvisionary_1_1_visionary_control.html#ad48d462fa9f65368bb9be70191372395aa9b211b49f5b9598111333737dd2d438">COLA_2</a> = 2122
  }</td></tr>
-<tr class="memdesc:ad48d462fa9f65368bb9be70191372395"><td class="mdescLeft">&#160;</td><td class="mdescRight">The numbers used for the protocols are the port numbers. <br /></td></tr>
+<tr class="memdesc:ad48d462fa9f65368bb9be70191372395"><td class="mdescLeft">&#160;</td><td class="mdescRight">The numbers used for the protocols are the port numbers.  <a href="classvisionary_1_1_visionary_control.html#ad48d462fa9f65368bb9be70191372395">More...</a><br /></td></tr>
 <tr class="separator:ad48d462fa9f65368bb9be70191372395"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae297192d83dfae28e24cd3c4afed5307"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_control.html#ae297192d83dfae28e24cd3c4afed5307">open</a> (<a class="el" href="classvisionary_1_1_visionary_control.html#ad48d462fa9f65368bb9be70191372395">ProtocolType</a> type, const std::string &amp;hostname, uint32_t sessionTimeout_ms=<a class="el" href="classvisionary_1_1_visionary_control.html#a3cdb0a16107d7022225cb50b29f2ebd7">kSessionTimeout_ms</a>, bool autoReconnect=true, uint32_t connectTimeout_ms=<a class="el" href="classvisionary_1_1_visionary_control.html#a3cdb0a16107d7022225cb50b29f2ebd7">kSessionTimeout_ms</a>)</td></tr>
+<tr class="memitem:a39afb77e82405e38da3618419ddf2271"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_control.html#a39afb77e82405e38da3618419ddf2271">VisionaryControl</a> ()</td></tr>
+<tr class="separator:a39afb77e82405e38da3618419ddf2271"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7c72486b745eed31e5a35baf19db7e4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_control.html#af7c72486b745eed31e5a35baf19db7e4">~VisionaryControl</a> ()</td></tr>
+<tr class="separator:af7c72486b745eed31e5a35baf19db7e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae297192d83dfae28e24cd3c4afed5307"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_control.html#ae297192d83dfae28e24cd3c4afed5307">open</a> (<a class="el" href="classvisionary_1_1_visionary_control.html#ad48d462fa9f65368bb9be70191372395">ProtocolType</a> type, const std::string &amp;hostname, uint32_t sessionTimeout_ms=<a class="el" href="classvisionary_1_1_visionary_control.html#a3cdb0a16107d7022225cb50b29f2ebd7">kSessionTimeout_ms</a>, <a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> autoReconnect=<a class="el" href="snap7_8h.html#a41f9c5fb8b08eb5dc3edce4dcb37fee7">true</a>, uint32_t connectTimeout_ms=<a class="el" href="classvisionary_1_1_visionary_control.html#a3cdb0a16107d7022225cb50b29f2ebd7">kSessionTimeout_ms</a>)</td></tr>
 <tr class="separator:ae297192d83dfae28e24cd3c4afed5307"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a69ae1a82ccb2c6ecf36619f60c837733"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_control.html#a69ae1a82ccb2c6ecf36619f60c837733">close</a> ()</td></tr>
 <tr class="separator:a69ae1a82ccb2c6ecf36619f60c837733"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8790b4fe299e4337969f7494e824422"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_control.html#ae8790b4fe299e4337969f7494e824422">login</a> (<a class="el" href="classvisionary_1_1_i_authentication.html#a9d9871f50bf25a43e7faa4afb9e92f08">IAuthentication::UserLevel</a> userLevel, const std::string &amp;password)</td></tr>
+<tr class="memitem:ae8790b4fe299e4337969f7494e824422"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_control.html#ae8790b4fe299e4337969f7494e824422">login</a> (<a class="el" href="classvisionary_1_1_i_authentication.html#a9d9871f50bf25a43e7faa4afb9e92f08">IAuthentication::UserLevel</a> userLevel, const std::string &amp;password)</td></tr>
 <tr class="separator:ae8790b4fe299e4337969f7494e824422"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa314c077f5018c70c6658af5451d48ab"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_control.html#aa314c077f5018c70c6658af5451d48ab">logout</a> ()</td></tr>
+<tr class="memitem:aa314c077f5018c70c6658af5451d48ab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_control.html#aa314c077f5018c70c6658af5451d48ab">logout</a> ()</td></tr>
 <tr class="memdesc:aa314c077f5018c70c6658af5451d48ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logout from the device.  <br /></td></tr>
 <tr class="separator:aa314c077f5018c70c6658af5451d48ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b74823466b7fa1434e423753344c75b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_control.html#a7b74823466b7fa1434e423753344c75b">getDeviceIdent</a> ()</td></tr>
 <tr class="memdesc:a7b74823466b7fa1434e423753344c75b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get device information by calling the "DeviceIdent" method on the device.  <br /></td></tr>
 <tr class="separator:a7b74823466b7fa1434e423753344c75b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7ecb32527b4d25ec2225acec71e6641"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_control.html#ae7ecb32527b4d25ec2225acec71e6641">startAcquisition</a> ()</td></tr>
+<tr class="memitem:ae7ecb32527b4d25ec2225acec71e6641"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_control.html#ae7ecb32527b4d25ec2225acec71e6641">startAcquisition</a> ()</td></tr>
 <tr class="memdesc:ae7ecb32527b4d25ec2225acec71e6641"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start streaming the data by calling the "PLAYSTART" method on the device. Works only when acquisition is stopped.  <br /></td></tr>
 <tr class="separator:ae7ecb32527b4d25ec2225acec71e6641"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a33897fd24b290db7210d81902f21eba6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_control.html#a33897fd24b290db7210d81902f21eba6">stepAcquisition</a> ()</td></tr>
+<tr class="memitem:a33897fd24b290db7210d81902f21eba6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_control.html#a33897fd24b290db7210d81902f21eba6">stepAcquisition</a> ()</td></tr>
 <tr class="memdesc:a33897fd24b290db7210d81902f21eba6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Trigger a single image on the device. Works only when acquisition is stopped.  <br /></td></tr>
 <tr class="separator:a33897fd24b290db7210d81902f21eba6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a16fff5119b8369a2a5bf7f051c6bba"><td class="memItemLeft" align="right" valign="top"><a id="a7a16fff5119b8369a2a5bf7f051c6bba" name="a7a16fff5119b8369a2a5bf7f051c6bba"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>stopAcquisition</b> ()</td></tr>
-<tr class="memdesc:a7a16fff5119b8369a2a5bf7f051c6bba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the data stream. Works always, also when acquisition is already stopped before. <br /></td></tr>
+<tr class="memitem:a7a16fff5119b8369a2a5bf7f051c6bba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_control.html#a7a16fff5119b8369a2a5bf7f051c6bba">stopAcquisition</a> ()</td></tr>
+<tr class="memdesc:a7a16fff5119b8369a2a5bf7f051c6bba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the data stream. Works always, also when acquisition is already stopped before.  <br /></td></tr>
 <tr class="separator:a7a16fff5119b8369a2a5bf7f051c6bba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d81896b4a8c75fa88d7189ab2d7e479"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_control.html#a9d81896b4a8c75fa88d7189ab2d7e479">getDataStreamConfig</a> ()</td></tr>
+<tr class="memitem:a9d81896b4a8c75fa88d7189ab2d7e479"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_control.html#a9d81896b4a8c75fa88d7189ab2d7e479">getDataStreamConfig</a> ()</td></tr>
 <tr class="memdesc:a9d81896b4a8c75fa88d7189ab2d7e479"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tells the device that there is a streaming channel by invoking a method named GetBlobClientConfig.  <br /></td></tr>
 <tr class="separator:a9d81896b4a8c75fa88d7189ab2d7e479"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a35e9f9d814181c5649d876d83a35fc8c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_control.html#a35e9f9d814181c5649d876d83a35fc8c">sendCommand</a> (const <a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> &amp;command)</td></tr>
@@ -125,11 +149,104 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>stopAcquisition</b> (
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a3cdb0a16107d7022225cb50b29f2ebd7"><td class="memItemLeft" align="right" valign="top"><a id="a3cdb0a16107d7022225cb50b29f2ebd7" name="a3cdb0a16107d7022225cb50b29f2ebd7"></a>
-static constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>kSessionTimeout_ms</b> = 5000</td></tr>
-<tr class="memdesc:a3cdb0a16107d7022225cb50b29f2ebd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default session timeout. <br /></td></tr>
+<tr class="memitem:a3cdb0a16107d7022225cb50b29f2ebd7"><td class="memItemLeft" align="right" valign="top">static constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_control.html#a3cdb0a16107d7022225cb50b29f2ebd7">kSessionTimeout_ms</a> = 5000</td></tr>
+<tr class="memdesc:a3cdb0a16107d7022225cb50b29f2ebd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default session timeout.  <br /></td></tr>
 <tr class="separator:a3cdb0a16107d7022225cb50b29f2ebd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a60e42b66a49090f5720b270325c3328f"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_control.html#a60e42b66a49090f5720b270325c3328f">receiveCoLaResponse</a> ()</td></tr>
+<tr class="separator:a60e42b66a49090f5720b270325c3328f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee96196d04e6fdf907604ed458c70968"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_control.html#aee96196d04e6fdf907604ed458c70968">receiveCoLaCommand</a> ()</td></tr>
+<tr class="separator:aee96196d04e6fdf907604ed458c70968"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ab62497a6995c5144414a6463047b2dea"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classvisionary_1_1_tcp_socket.html">TcpSocket</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_control.html#ab62497a6995c5144414a6463047b2dea">m_pTransport</a></td></tr>
+<tr class="separator:ab62497a6995c5144414a6463047b2dea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d7a0371848bc96ccaebdef1eecb3ee6"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classvisionary_1_1_i_protocol_handler.html">IProtocolHandler</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_control.html#a0d7a0371848bc96ccaebdef1eecb3ee6">m_pProtocolHandler</a></td></tr>
+<tr class="separator:a0d7a0371848bc96ccaebdef1eecb3ee6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0e0aa76dbd142fe4f64c12cdc9ce648"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classvisionary_1_1_i_authentication.html">IAuthentication</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_control.html#ab0e0aa76dbd142fe4f64c12cdc9ce648">m_pAuthentication</a></td></tr>
+<tr class="separator:ab0e0aa76dbd142fe4f64c12cdc9ce648"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedfc2d9b0313d7adcc622ab2335eae57"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classvisionary_1_1_control_session.html">ControlSession</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_control.html#aedfc2d9b0313d7adcc622ab2335eae57">m_pControlSession</a></td></tr>
+<tr class="separator:aedfc2d9b0313d7adcc622ab2335eae57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95da8bc24c5120e3a266a10774fad97f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classvisionary_1_1_visionary_control.html#ad48d462fa9f65368bb9be70191372395">ProtocolType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_control.html#a95da8bc24c5120e3a266a10774fad97f">m_protocolType</a></td></tr>
+<tr class="separator:a95da8bc24c5120e3a266a10774fad97f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7abacc7a36d9821bb379b37196d2ac38"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_control.html#a7abacc7a36d9821bb379b37196d2ac38">m_hostname</a></td></tr>
+<tr class="separator:a7abacc7a36d9821bb379b37196d2ac38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27921d64e2781c2db8ac88b0d29b7d16"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_control.html#a27921d64e2781c2db8ac88b0d29b7d16">m_sessionTimeout_ms</a></td></tr>
+<tr class="separator:a27921d64e2781c2db8ac88b0d29b7d16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a922bf32cc750cd1d1937f1c2a0cd2682"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_control.html#a922bf32cc750cd1d1937f1c2a0cd2682">m_connectTimeout_ms</a></td></tr>
+<tr class="separator:a922bf32cc750cd1d1937f1c2a0cd2682"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d5be20f9da94b19cf26eb95fa7ab119"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvisionary_1_1_visionary_control.html#a5d5be20f9da94b19cf26eb95fa7ab119">m_autoReconnect</a></td></tr>
+<tr class="separator:a5d5be20f9da94b19cf26eb95fa7ab119"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="ad48d462fa9f65368bb9be70191372395" name="ad48d462fa9f65368bb9be70191372395"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad48d462fa9f65368bb9be70191372395">&#9670;&#160;</a></span>ProtocolType</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="classvisionary_1_1_visionary_control.html#ad48d462fa9f65368bb9be70191372395">visionary::VisionaryControl::ProtocolType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The numbers used for the protocols are the port numbers. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ad48d462fa9f65368bb9be70191372395afa31197be7132af7fc1a4b56fc9e8b6d" name="ad48d462fa9f65368bb9be70191372395afa31197be7132af7fc1a4b56fc9e8b6d"></a>INVALID_PROTOCOL&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad48d462fa9f65368bb9be70191372395adb1c595bd56235ce4bddc6647f307b7f" name="ad48d462fa9f65368bb9be70191372395adb1c595bd56235ce4bddc6647f307b7f"></a>COLA_A&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad48d462fa9f65368bb9be70191372395afea7996bbc6aaec57eb498a273abfaa5" name="ad48d462fa9f65368bb9be70191372395afea7996bbc6aaec57eb498a273abfaa5"></a>COLA_B&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad48d462fa9f65368bb9be70191372395aa9b211b49f5b9598111333737dd2d438" name="ad48d462fa9f65368bb9be70191372395aa9b211b49f5b9598111333737dd2d438"></a>COLA_2&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a39afb77e82405e38da3618419ddf2271" name="a39afb77e82405e38da3618419ddf2271"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39afb77e82405e38da3618419ddf2271">&#9670;&#160;</a></span>VisionaryControl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">visionary::VisionaryControl::VisionaryControl </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af7c72486b745eed31e5a35baf19db7e4" name="af7c72486b745eed31e5a35baf19db7e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7c72486b745eed31e5a35baf19db7e4">&#9670;&#160;</a></span>~VisionaryControl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">visionary::VisionaryControl::~VisionaryControl </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a69ae1a82ccb2c6ecf36619f60c837733" name="a69ae1a82ccb2c6ecf36619f60c837733"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a69ae1a82ccb2c6ecf36619f60c837733">&#9670;&#160;</a></span>close()</h2>
@@ -157,7 +274,7 @@ static constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool visionary::VisionaryControl::getDataStreamConfig </td>
+          <td class="memname"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> visionary::VisionaryControl::getDataStreamConfig </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -197,7 +314,7 @@ static constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool visionary::VisionaryControl::login </td>
+          <td class="memname"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> visionary::VisionaryControl::login </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classvisionary_1_1_i_authentication.html#a9d9871f50bf25a43e7faa4afb9e92f08">IAuthentication::UserLevel</a>&#160;</td>
           <td class="paramname"><em>userLevel</em>, </td>
@@ -234,7 +351,7 @@ static constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool visionary::VisionaryControl::logout </td>
+          <td class="memname"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> visionary::VisionaryControl::logout </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -254,7 +371,7 @@ static constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool visionary::VisionaryControl::open </td>
+          <td class="memname"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> visionary::VisionaryControl::open </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classvisionary_1_1_visionary_control.html#ad48d462fa9f65368bb9be70191372395">ProtocolType</a>&#160;</td>
           <td class="paramname"><em>type</em>, </td>
@@ -274,8 +391,8 @@ static constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>autoReconnect</em> = <code>true</code>, </td>
+          <td class="paramtype"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td>
+          <td class="paramname"><em>autoReconnect</em> = <code><a class="el" href="snap7_8h.html#a41f9c5fb8b08eb5dc3edce4dcb37fee7">true</a></code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -316,6 +433,56 @@ static constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>
 
 </div>
 </div>
+<a id="aee96196d04e6fdf907604ed458c70968" name="aee96196d04e6fdf907604ed458c70968"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee96196d04e6fdf907604ed458c70968">&#9670;&#160;</a></span>receiveCoLaCommand()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classvisionary_1_1_co_la_command.html">CoLaCommand</a> visionary::VisionaryControl::receiveCoLaCommand </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a60e42b66a49090f5720b270325c3328f" name="a60e42b66a49090f5720b270325c3328f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60e42b66a49090f5720b270325c3328f">&#9670;&#160;</a></span>receiveCoLaResponse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string visionary::VisionaryControl::receiveCoLaResponse </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a35e9f9d814181c5649d876d83a35fc8c" name="a35e9f9d814181c5649d876d83a35fc8c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a35e9f9d814181c5649d876d83a35fc8c">&#9670;&#160;</a></span>sendCommand()</h2>
 
@@ -350,7 +517,7 @@ static constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool visionary::VisionaryControl::startAcquisition </td>
+          <td class="memname"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> visionary::VisionaryControl::startAcquisition </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -370,7 +537,7 @@ static constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool visionary::VisionaryControl::stepAcquisition </td>
+          <td class="memname"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> visionary::VisionaryControl::stepAcquisition </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -383,14 +550,260 @@ static constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>
 
 </div>
 </div>
+<a id="a7a16fff5119b8369a2a5bf7f051c6bba" name="a7a16fff5119b8369a2a5bf7f051c6bba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a16fff5119b8369a2a5bf7f051c6bba">&#9670;&#160;</a></span>stopAcquisition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> visionary::VisionaryControl::stopAcquisition </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Stops the data stream. Works always, also when acquisition is already stopped before. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a3cdb0a16107d7022225cb50b29f2ebd7" name="a3cdb0a16107d7022225cb50b29f2ebd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3cdb0a16107d7022225cb50b29f2ebd7">&#9670;&#160;</a></span>kSessionTimeout_ms</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr uint32_t visionary::VisionaryControl::kSessionTimeout_ms = 5000</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Default session timeout. </p>
+
+</div>
+</div>
+<a id="a5d5be20f9da94b19cf26eb95fa7ab119" name="a5d5be20f9da94b19cf26eb95fa7ab119"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d5be20f9da94b19cf26eb95fa7ab119">&#9670;&#160;</a></span>m_autoReconnect</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> visionary::VisionaryControl::m_autoReconnect</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a922bf32cc750cd1d1937f1c2a0cd2682" name="a922bf32cc750cd1d1937f1c2a0cd2682"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a922bf32cc750cd1d1937f1c2a0cd2682">&#9670;&#160;</a></span>m_connectTimeout_ms</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t visionary::VisionaryControl::m_connectTimeout_ms</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7abacc7a36d9821bb379b37196d2ac38" name="a7abacc7a36d9821bb379b37196d2ac38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7abacc7a36d9821bb379b37196d2ac38">&#9670;&#160;</a></span>m_hostname</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string visionary::VisionaryControl::m_hostname</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab0e0aa76dbd142fe4f64c12cdc9ce648" name="ab0e0aa76dbd142fe4f64c12cdc9ce648"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0e0aa76dbd142fe4f64c12cdc9ce648">&#9670;&#160;</a></span>m_pAuthentication</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classvisionary_1_1_i_authentication.html">IAuthentication</a>&gt; visionary::VisionaryControl::m_pAuthentication</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aedfc2d9b0313d7adcc622ab2335eae57" name="aedfc2d9b0313d7adcc622ab2335eae57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedfc2d9b0313d7adcc622ab2335eae57">&#9670;&#160;</a></span>m_pControlSession</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classvisionary_1_1_control_session.html">ControlSession</a>&gt; visionary::VisionaryControl::m_pControlSession</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0d7a0371848bc96ccaebdef1eecb3ee6" name="a0d7a0371848bc96ccaebdef1eecb3ee6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d7a0371848bc96ccaebdef1eecb3ee6">&#9670;&#160;</a></span>m_pProtocolHandler</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classvisionary_1_1_i_protocol_handler.html">IProtocolHandler</a>&gt; visionary::VisionaryControl::m_pProtocolHandler</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a95da8bc24c5120e3a266a10774fad97f" name="a95da8bc24c5120e3a266a10774fad97f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95da8bc24c5120e3a266a10774fad97f">&#9670;&#160;</a></span>m_protocolType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classvisionary_1_1_visionary_control.html#ad48d462fa9f65368bb9be70191372395">ProtocolType</a> visionary::VisionaryControl::m_protocolType</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab62497a6995c5144414a6463047b2dea" name="ab62497a6995c5144414a6463047b2dea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab62497a6995c5144414a6463047b2dea">&#9670;&#160;</a></span>m_pTransport</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classvisionary_1_1_tcp_socket.html">TcpSocket</a>&gt; visionary::VisionaryControl::m_pTransport</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a27921d64e2781c2db8ac88b0d29b7d16" name="a27921d64e2781c2db8ac88b0d29b7d16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27921d64e2781c2db8ac88b0d29b7d16">&#9670;&#160;</a></span>m_sessionTimeout_ms</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t visionary::VisionaryControl::m_sessionTimeout_ms</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>sickapi/src/<a class="el" href="_visionary_control_8h_source.html">VisionaryControl.h</a></li>
-<li>sickapi/src/VisionaryControl.cpp</li>
+<li>sickapi/src/<a class="el" href="_visionary_control_8cpp.html">VisionaryControl.cpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacevisionary.html">visionary</a></li><li class="navelem"><a class="el" href="classvisionary_1_1_visionary_control.html">VisionaryControl</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+  </ul>
+</div>
 </body>
 </html>

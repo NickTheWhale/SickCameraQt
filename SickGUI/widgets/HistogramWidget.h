@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   HistogramWidget.h
+ * @brief  QWidget subclass used to display a histogram
+ * 
+ * @author Nicholas Loehrke
+ * @date   June 2023
+ *********************************************************************/
+
 #pragma once
 
 #include <qwidget.h>

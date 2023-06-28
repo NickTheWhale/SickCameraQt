@@ -9,9 +9,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -46,6 +51,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('_visionary_t_data_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,16 +89,11 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_23d3d343015a8bd7e9dbef71a9e03858.html">sickapi</a></li><li class="navelem"><a class="el" href="dir_f9343132e416b1d631e13da8b9569f26.html">src</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">VisionaryTData.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//</span></div>
+<a href="_visionary_t_data_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">// SPDX-License-Identifier: Unlicense</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">// </span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">// Created: August 2017</span></div>
@@ -89,93 +106,131 @@ $(function() {
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;VisionaryData.h&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="_visionary_data_8h.html">VisionaryData.h</a>&quot;</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacevisionary.html">visionary</a> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacevisionary.html">visionary</a></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>{</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="structvisionary_1_1_polar_parameters.html">   19</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>  <span class="keywordtype">float</span> angleFirstScanPoint;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>  <span class="keywordtype">float</span> angularResolution;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>  <span class="keywordtype">float</span> polarScale;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>  <span class="keywordtype">float</span> polarOffset;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>} <a class="code hl_struct" href="structvisionary_1_1_polar_parameters.html">PolarParameters</a>;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="structvisionary_1_1_polar_parameters.html">   19</a></span>    <span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="structvisionary_1_1_polar_parameters.html#a5f3558079017b8ae54a50142d7faf5e8">   20</a></span>        <span class="keywordtype">float</span> <a class="code hl_variable" href="structvisionary_1_1_polar_parameters.html#a5f3558079017b8ae54a50142d7faf5e8">angleFirstScanPoint</a>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="structvisionary_1_1_polar_parameters.html#ab9f537f5911ead388a76800850049035">   21</a></span>        <span class="keywordtype">float</span> <a class="code hl_variable" href="structvisionary_1_1_polar_parameters.html#ab9f537f5911ead388a76800850049035">angularResolution</a>;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="structvisionary_1_1_polar_parameters.html#ab63e5db9faf72979cae8a1d992385a7d">   22</a></span>        <span class="keywordtype">float</span> <a class="code hl_variable" href="structvisionary_1_1_polar_parameters.html#ab63e5db9faf72979cae8a1d992385a7d">polarScale</a>;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structvisionary_1_1_polar_parameters.html#a6302a12e98a706fa1ff9813318f21811">   23</a></span>        <span class="keywordtype">float</span> <a class="code hl_variable" href="structvisionary_1_1_polar_parameters.html#a6302a12e98a706fa1ff9813318f21811">polarOffset</a>;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    } <a class="code hl_struct" href="structvisionary_1_1_polar_parameters.html">PolarParameters</a>;</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classvisionary_1_1_visionary_t_data.html">   26</a></span><span class="keyword">class </span><a class="code hl_class" href="classvisionary_1_1_visionary_t_data.html">VisionaryTData</a> : <span class="keyword">public</span> <a class="code hl_class" href="classvisionary_1_1_visionary_data.html">VisionaryData</a></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>{</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>  <a class="code hl_class" href="classvisionary_1_1_visionary_t_data.html">VisionaryTData</a>();</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>  <a class="code hl_class" href="classvisionary_1_1_visionary_t_data.html">~VisionaryTData</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classvisionary_1_1_visionary_t_data.html">   26</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classvisionary_1_1_visionary_t_data.html">VisionaryTData</a> : <span class="keyword">public</span> <a class="code hl_class" href="classvisionary_1_1_visionary_data.html">VisionaryData</a></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    {</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <a class="code hl_function" href="classvisionary_1_1_visionary_t_data.html#a793b3fee24f4ffccc51a236f9910a34a">VisionaryTData</a>();</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classvisionary_1_1_visionary_t_data.html#a1f137cbcdf33fa96471d5163786fe208">   30</a></span>        <a class="code hl_function" href="classvisionary_1_1_visionary_t_data.html#a1f137cbcdf33fa96471d5163786fe208">~VisionaryTData</a>() <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>  <span class="comment">//-----------------------------------------------</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>  <span class="comment">// Getter Functions</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>  <span class="keyword">const</span> std::vector&lt;uint16_t&gt;&amp; getDistanceMap() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>  <span class="keyword">const</span> std::vector&lt;uint16_t&gt;&amp; getIntensityMap() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>  <span class="keyword">const</span> std::vector&lt;uint16_t&gt;&amp; getConfidenceMap() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>  <span class="comment">// Returns Number of points get by the polar reduction.</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>  <span class="comment">// 0 when no data is available.</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>  uint8_t getPolarSize() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>  <span class="keywordtype">float</span> getPolarStartAngle() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>  <span class="keywordtype">float</span> getPolarAngularResolution() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>  <span class="keyword">const</span> std::vector&lt;float&gt;&amp; getPolarDistanceData() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>  <span class="keyword">const</span> std::vector&lt;float&gt;&amp; getPolarConfidenceData() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  <span class="comment">// Returns Number of points get by the cartesian reduction.</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>  <span class="comment">// 0 when no data is available.</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  uint32_t getCartesianSize() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  <span class="keyword">const</span> std::vector&lt;PointXYZC&gt;&amp; getCartesianData() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="comment">//-----------------------------------------------</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="comment">// Getter Functions</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="keyword">const</span> std::vector&lt;uint16_t&gt;&amp; <a class="code hl_function" href="classvisionary_1_1_visionary_t_data.html#a279d2cc2a76894662df620e58767bfdc">getDistanceMap</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="keyword">const</span> std::vector&lt;uint16_t&gt;&amp; <a class="code hl_function" href="classvisionary_1_1_visionary_t_data.html#a2f644c38223b4b9a7f675f106c032b2e">getIntensityMap</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keyword">const</span> std::vector&lt;uint16_t&gt;&amp; <a class="code hl_function" href="classvisionary_1_1_visionary_t_data.html#a70bc49389993315f8ea8914b4441557c">getConfidenceMap</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="comment">// Returns Number of points get by the polar reduction.</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="comment">// 0 when no data is available.</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        uint8_t <a class="code hl_function" href="classvisionary_1_1_visionary_t_data.html#aa042cdbd20dc1d29c0419fe9c2454f96">getPolarSize</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordtype">float</span> <a class="code hl_function" href="classvisionary_1_1_visionary_t_data.html#a39c50b7e610f9a289ed5b1db5ef4fcbc">getPolarStartAngle</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keywordtype">float</span> <a class="code hl_function" href="classvisionary_1_1_visionary_t_data.html#afcf62a78f161f584ff3fe6e151572c56">getPolarAngularResolution</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keyword">const</span> std::vector&lt;float&gt;&amp; <a class="code hl_function" href="classvisionary_1_1_visionary_t_data.html#a0cc6a82bc848cca38da2103b61a6d05d">getPolarDistanceData</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keyword">const</span> std::vector&lt;float&gt;&amp; <a class="code hl_function" href="classvisionary_1_1_visionary_t_data.html#a20fa6672bc08396863b9cf8fdf6c2fb0">getPolarConfidenceData</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="comment">// Returns Number of points get by the cartesian reduction.</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="comment">// 0 when no data is available.</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        uint32_t <a class="code hl_function" href="classvisionary_1_1_visionary_t_data.html#a4ba38c2272cbf961baffe6fa9342211a">getCartesianSize</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keyword">const</span> std::vector&lt;PointXYZC&gt;&amp; <a class="code hl_function" href="classvisionary_1_1_visionary_t_data.html#a9127e78f021c796a32e7e2db7f4af3e5">getCartesianData</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>  <span class="comment">// Calculate and return the Point Cloud in the camera perspective. Units are in meters.</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>  <span class="keywordtype">void</span> generatePointCloud(std::vector&lt;PointXYZ&gt; &amp;pointCloud) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="comment">// Calculate and return the Point Cloud in the camera perspective. Units are in meters.</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classvisionary_1_1_visionary_t_data.html#ae78d0169fd943732de997f92cfc62856">generatePointCloud</a>(std::vector&lt;PointXYZ&gt;&amp; pointCloud) <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  <span class="comment">//-----------------------------------------------</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  <span class="comment">// functions for parsing received blob</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="comment">//-----------------------------------------------</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="comment">// functions for parsing received blob</span></div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  <span class="comment">// Parse the XML Metadata part to get information about the sensor and the following image data.</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  <span class="comment">// This function uses boost library. An other XML parser is needed to remove boost from source.</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  <span class="comment">// Returns true when parsing was successful.</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  <span class="keywordtype">bool</span> parseXML(<span class="keyword">const</span> std::string &amp; xmlString, uint32_t changeCounter) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="comment">// Parse the XML Metadata part to get information about the sensor and the following image data.</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="comment">// This function uses boost library. An other XML parser is needed to remove boost from source.</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="comment">// Returns true when parsing was successful.</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classvisionary_1_1_visionary_t_data.html#a3fd6de19ce381249d9413dce90ad2926">parseXML</a>(<span class="keyword">const</span> std::string&amp; xmlString, uint32_t changeCounter) <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  <span class="comment">// Parse the Binary data part to extract the image data. </span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  <span class="comment">// some variables are commented out, because they are not used in this sample.</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  <span class="comment">// Returns true when parsing was successful.</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  <span class="keywordtype">bool</span> parseBinaryData(std::vector&lt;uint8_t&gt;::iterator itBuf, <span class="keywordtype">size_t</span> size) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="comment">// Parse the Binary data part to extract the image data. </span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="comment">// some variables are commented out, because they are not used in this sample.</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <span class="comment">// Returns true when parsing was successful.</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classvisionary_1_1_visionary_t_data.html#afd2d21e2435f0b3fbcc81fdd27e0e081">parseBinaryData</a>(std::vector&lt;uint8_t&gt;::iterator itBuf, <span class="keywordtype">size_t</span> size) <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>  <span class="comment">// Indicator for the received data sets</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>  <a class="code hl_struct" href="structvisionary_1_1_data_sets_active.html">DataSetsActive</a> m_dataSetsActive;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="comment">// Indicator for the received data sets</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="classvisionary_1_1_visionary_t_data.html#a099f3d8e380ffb1153d42ef97a2b84d2">   68</a></span>        <a class="code hl_struct" href="structvisionary_1_1_data_sets_active.html">DataSetsActive</a> <a class="code hl_variable" href="classvisionary_1_1_visionary_t_data.html#a099f3d8e380ffb1153d42ef97a2b84d2">m_dataSetsActive</a>;</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  <span class="comment">// Byte depth of images</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>  <span class="keywordtype">int</span> m_distanceByteDepth, m_intensityByteDepth, m_confidenceByteDepth;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="comment">// Byte depth of images</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="classvisionary_1_1_visionary_t_data.html#ad553356fe8a94ff3b42a5aa938a77731">   71</a></span>        <span class="keywordtype">int</span> <a class="code hl_variable" href="classvisionary_1_1_visionary_t_data.html#a535da7f5239b0e0fcc224a1d31b60c14">m_distanceByteDepth</a>, <a class="code hl_variable" href="classvisionary_1_1_visionary_t_data.html#a188a5431d2136c2bf4b327c4171830dd">m_intensityByteDepth</a>, <a class="code hl_variable" href="classvisionary_1_1_visionary_t_data.html#ad553356fe8a94ff3b42a5aa938a77731">m_confidenceByteDepth</a>;</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>  <span class="comment">// Angle information of polar scan</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>  <span class="keywordtype">float</span> m_angleFirstScanPoint;</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>  <span class="keywordtype">float</span> m_angularResolution;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="comment">// Angle information of polar scan</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="classvisionary_1_1_visionary_t_data.html#a57d060ef98064a39241f890e38e7466e">   74</a></span>        <span class="keywordtype">float</span> <a class="code hl_variable" href="classvisionary_1_1_visionary_t_data.html#a57d060ef98064a39241f890e38e7466e">m_angleFirstScanPoint</a>;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="classvisionary_1_1_visionary_t_data.html#aba211859b8a1ff5e7dc95ddbd8afb398">   75</a></span>        <span class="keywordtype">float</span> <a class="code hl_variable" href="classvisionary_1_1_visionary_t_data.html#aba211859b8a1ff5e7dc95ddbd8afb398">m_angularResolution</a>;</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>  <span class="comment">// Number of values for polar data reduction</span></div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>  uint_fast8_t m_numPolarValues;</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>  <span class="comment">// Number of values for cartesian data reduction</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>  uint_fast32_t m_numCartesianValues;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="comment">// Number of values for polar data reduction</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="classvisionary_1_1_visionary_t_data.html#a75234c77a1bbc66dd6fa5c8c4dbeb051">   78</a></span>        uint_fast8_t <a class="code hl_variable" href="classvisionary_1_1_visionary_t_data.html#a75234c77a1bbc66dd6fa5c8c4dbeb051">m_numPolarValues</a>;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="comment">// Number of values for cartesian data reduction</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="classvisionary_1_1_visionary_t_data.html#af9badc1eb34e07f34772b66b1a294122">   80</a></span>        uint_fast32_t <a class="code hl_variable" href="classvisionary_1_1_visionary_t_data.html#af9badc1eb34e07f34772b66b1a294122">m_numCartesianValues</a>;</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>  <span class="comment">// Pointers to the image data</span></div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>  std::vector&lt;uint16_t&gt; m_distanceMap;</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>  std::vector&lt;uint16_t&gt; m_intensityMap;</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>  std::vector&lt;uint16_t&gt; m_confidenceMap;</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>  std::vector&lt;float&gt; m_polarDistanceData;</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>  std::vector&lt;float&gt; m_polarConfidenceData;</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>  std::vector&lt;PointXYZC&gt; m_cartesianData;</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>};</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="comment">// Pointers to the image data</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="classvisionary_1_1_visionary_t_data.html#a41ac811535c0408174698c5a365d2a8d">   83</a></span>        std::vector&lt;uint16_t&gt; <a class="code hl_variable" href="classvisionary_1_1_visionary_t_data.html#a41ac811535c0408174698c5a365d2a8d">m_distanceMap</a>;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="classvisionary_1_1_visionary_t_data.html#a7c224c1ea66083817bd1ae663385d943">   84</a></span>        std::vector&lt;uint16_t&gt; <a class="code hl_variable" href="classvisionary_1_1_visionary_t_data.html#a7c224c1ea66083817bd1ae663385d943">m_intensityMap</a>;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="classvisionary_1_1_visionary_t_data.html#aa626cda30b5f053d6dbdb9292edbb71b">   85</a></span>        std::vector&lt;uint16_t&gt; <a class="code hl_variable" href="classvisionary_1_1_visionary_t_data.html#aa626cda30b5f053d6dbdb9292edbb71b">m_confidenceMap</a>;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="classvisionary_1_1_visionary_t_data.html#ae1649b2e940e78963849c9fb036a1376">   86</a></span>        std::vector&lt;float&gt; <a class="code hl_variable" href="classvisionary_1_1_visionary_t_data.html#ae1649b2e940e78963849c9fb036a1376">m_polarDistanceData</a>;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="classvisionary_1_1_visionary_t_data.html#ae66455182ffb8dd0e3e5e8456db1d23c">   87</a></span>        std::vector&lt;float&gt; <a class="code hl_variable" href="classvisionary_1_1_visionary_t_data.html#ae66455182ffb8dd0e3e5e8456db1d23c">m_polarConfidenceData</a>;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="classvisionary_1_1_visionary_t_data.html#af928bca457b0b22e2baa11bc6ab70497">   88</a></span>        std::vector&lt;PointXYZC&gt; <a class="code hl_variable" href="classvisionary_1_1_visionary_t_data.html#af928bca457b0b22e2baa11bc6ab70497">m_cartesianData</a>;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    };</div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>}</div>
+<div class="ttc" id="a_visionary_data_8h_html"><div class="ttname"><a href="_visionary_data_8h.html">VisionaryData.h</a></div></div>
 <div class="ttc" id="aclassvisionary_1_1_visionary_data_html"><div class="ttname"><a href="classvisionary_1_1_visionary_data.html">visionary::VisionaryData</a></div><div class="ttdef"><b>Definition</b> VisionaryData.h:50</div></div>
 <div class="ttc" id="aclassvisionary_1_1_visionary_t_data_html"><div class="ttname"><a href="classvisionary_1_1_visionary_t_data.html">visionary::VisionaryTData</a></div><div class="ttdef"><b>Definition</b> VisionaryTData.h:27</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_t_data_html_a099f3d8e380ffb1153d42ef97a2b84d2"><div class="ttname"><a href="classvisionary_1_1_visionary_t_data.html#a099f3d8e380ffb1153d42ef97a2b84d2">visionary::VisionaryTData::m_dataSetsActive</a></div><div class="ttdeci">DataSetsActive m_dataSetsActive</div><div class="ttdef"><b>Definition</b> VisionaryTData.h:68</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_t_data_html_a0cc6a82bc848cca38da2103b61a6d05d"><div class="ttname"><a href="classvisionary_1_1_visionary_t_data.html#a0cc6a82bc848cca38da2103b61a6d05d">visionary::VisionaryTData::getPolarDistanceData</a></div><div class="ttdeci">const std::vector&lt; float &gt; &amp; getPolarDistanceData() const</div><div class="ttdef"><b>Definition</b> VisionaryTData.cpp:416</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_t_data_html_a188a5431d2136c2bf4b327c4171830dd"><div class="ttname"><a href="classvisionary_1_1_visionary_t_data.html#a188a5431d2136c2bf4b327c4171830dd">visionary::VisionaryTData::m_intensityByteDepth</a></div><div class="ttdeci">int m_intensityByteDepth</div><div class="ttdef"><b>Definition</b> VisionaryTData.h:71</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_t_data_html_a1f137cbcdf33fa96471d5163786fe208"><div class="ttname"><a href="classvisionary_1_1_visionary_t_data.html#a1f137cbcdf33fa96471d5163786fe208">visionary::VisionaryTData::~VisionaryTData</a></div><div class="ttdeci">~VisionaryTData() override</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_t_data_html_a20fa6672bc08396863b9cf8fdf6c2fb0"><div class="ttname"><a href="classvisionary_1_1_visionary_t_data.html#a20fa6672bc08396863b9cf8fdf6c2fb0">visionary::VisionaryTData::getPolarConfidenceData</a></div><div class="ttdeci">const std::vector&lt; float &gt; &amp; getPolarConfidenceData() const</div><div class="ttdef"><b>Definition</b> VisionaryTData.cpp:421</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_t_data_html_a279d2cc2a76894662df620e58767bfdc"><div class="ttname"><a href="classvisionary_1_1_visionary_t_data.html#a279d2cc2a76894662df620e58767bfdc">visionary::VisionaryTData::getDistanceMap</a></div><div class="ttdeci">const std::vector&lt; uint16_t &gt; &amp; getDistanceMap() const</div><div class="ttdef"><b>Definition</b> VisionaryTData.cpp:386</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_t_data_html_a2f644c38223b4b9a7f675f106c032b2e"><div class="ttname"><a href="classvisionary_1_1_visionary_t_data.html#a2f644c38223b4b9a7f675f106c032b2e">visionary::VisionaryTData::getIntensityMap</a></div><div class="ttdeci">const std::vector&lt; uint16_t &gt; &amp; getIntensityMap() const</div><div class="ttdef"><b>Definition</b> VisionaryTData.cpp:391</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_t_data_html_a39c50b7e610f9a289ed5b1db5ef4fcbc"><div class="ttname"><a href="classvisionary_1_1_visionary_t_data.html#a39c50b7e610f9a289ed5b1db5ef4fcbc">visionary::VisionaryTData::getPolarStartAngle</a></div><div class="ttdeci">float getPolarStartAngle() const</div><div class="ttdef"><b>Definition</b> VisionaryTData.cpp:406</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_t_data_html_a3fd6de19ce381249d9413dce90ad2926"><div class="ttname"><a href="classvisionary_1_1_visionary_t_data.html#a3fd6de19ce381249d9413dce90ad2926">visionary::VisionaryTData::parseXML</a></div><div class="ttdeci">bool parseXML(const std::string &amp;xmlString, uint32_t changeCounter) override</div><div class="ttdef"><b>Definition</b> VisionaryTData.cpp:55</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_t_data_html_a41ac811535c0408174698c5a365d2a8d"><div class="ttname"><a href="classvisionary_1_1_visionary_t_data.html#a41ac811535c0408174698c5a365d2a8d">visionary::VisionaryTData::m_distanceMap</a></div><div class="ttdeci">std::vector&lt; uint16_t &gt; m_distanceMap</div><div class="ttdef"><b>Definition</b> VisionaryTData.h:83</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_t_data_html_a4ba38c2272cbf961baffe6fa9342211a"><div class="ttname"><a href="classvisionary_1_1_visionary_t_data.html#a4ba38c2272cbf961baffe6fa9342211a">visionary::VisionaryTData::getCartesianSize</a></div><div class="ttdeci">uint32_t getCartesianSize() const</div><div class="ttdef"><b>Definition</b> VisionaryTData.cpp:426</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_t_data_html_a535da7f5239b0e0fcc224a1d31b60c14"><div class="ttname"><a href="classvisionary_1_1_visionary_t_data.html#a535da7f5239b0e0fcc224a1d31b60c14">visionary::VisionaryTData::m_distanceByteDepth</a></div><div class="ttdeci">int m_distanceByteDepth</div><div class="ttdef"><b>Definition</b> VisionaryTData.h:71</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_t_data_html_a57d060ef98064a39241f890e38e7466e"><div class="ttname"><a href="classvisionary_1_1_visionary_t_data.html#a57d060ef98064a39241f890e38e7466e">visionary::VisionaryTData::m_angleFirstScanPoint</a></div><div class="ttdeci">float m_angleFirstScanPoint</div><div class="ttdef"><b>Definition</b> VisionaryTData.h:74</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_t_data_html_a70bc49389993315f8ea8914b4441557c"><div class="ttname"><a href="classvisionary_1_1_visionary_t_data.html#a70bc49389993315f8ea8914b4441557c">visionary::VisionaryTData::getConfidenceMap</a></div><div class="ttdeci">const std::vector&lt; uint16_t &gt; &amp; getConfidenceMap() const</div><div class="ttdef"><b>Definition</b> VisionaryTData.cpp:396</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_t_data_html_a75234c77a1bbc66dd6fa5c8c4dbeb051"><div class="ttname"><a href="classvisionary_1_1_visionary_t_data.html#a75234c77a1bbc66dd6fa5c8c4dbeb051">visionary::VisionaryTData::m_numPolarValues</a></div><div class="ttdeci">uint_fast8_t m_numPolarValues</div><div class="ttdef"><b>Definition</b> VisionaryTData.h:78</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_t_data_html_a793b3fee24f4ffccc51a236f9910a34a"><div class="ttname"><a href="classvisionary_1_1_visionary_t_data.html#a793b3fee24f4ffccc51a236f9910a34a">visionary::VisionaryTData::VisionaryTData</a></div><div class="ttdeci">VisionaryTData()</div><div class="ttdef"><b>Definition</b> VisionaryTData.cpp:39</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_t_data_html_a7c224c1ea66083817bd1ae663385d943"><div class="ttname"><a href="classvisionary_1_1_visionary_t_data.html#a7c224c1ea66083817bd1ae663385d943">visionary::VisionaryTData::m_intensityMap</a></div><div class="ttdeci">std::vector&lt; uint16_t &gt; m_intensityMap</div><div class="ttdef"><b>Definition</b> VisionaryTData.h:84</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_t_data_html_a9127e78f021c796a32e7e2db7f4af3e5"><div class="ttname"><a href="classvisionary_1_1_visionary_t_data.html#a9127e78f021c796a32e7e2db7f4af3e5">visionary::VisionaryTData::getCartesianData</a></div><div class="ttdeci">const std::vector&lt; PointXYZC &gt; &amp; getCartesianData() const</div><div class="ttdef"><b>Definition</b> VisionaryTData.cpp:431</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_t_data_html_aa042cdbd20dc1d29c0419fe9c2454f96"><div class="ttname"><a href="classvisionary_1_1_visionary_t_data.html#aa042cdbd20dc1d29c0419fe9c2454f96">visionary::VisionaryTData::getPolarSize</a></div><div class="ttdeci">uint8_t getPolarSize() const</div><div class="ttdef"><b>Definition</b> VisionaryTData.cpp:401</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_t_data_html_aa626cda30b5f053d6dbdb9292edbb71b"><div class="ttname"><a href="classvisionary_1_1_visionary_t_data.html#aa626cda30b5f053d6dbdb9292edbb71b">visionary::VisionaryTData::m_confidenceMap</a></div><div class="ttdeci">std::vector&lt; uint16_t &gt; m_confidenceMap</div><div class="ttdef"><b>Definition</b> VisionaryTData.h:85</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_t_data_html_aba211859b8a1ff5e7dc95ddbd8afb398"><div class="ttname"><a href="classvisionary_1_1_visionary_t_data.html#aba211859b8a1ff5e7dc95ddbd8afb398">visionary::VisionaryTData::m_angularResolution</a></div><div class="ttdeci">float m_angularResolution</div><div class="ttdef"><b>Definition</b> VisionaryTData.h:75</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_t_data_html_ad553356fe8a94ff3b42a5aa938a77731"><div class="ttname"><a href="classvisionary_1_1_visionary_t_data.html#ad553356fe8a94ff3b42a5aa938a77731">visionary::VisionaryTData::m_confidenceByteDepth</a></div><div class="ttdeci">int m_confidenceByteDepth</div><div class="ttdef"><b>Definition</b> VisionaryTData.h:71</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_t_data_html_ae1649b2e940e78963849c9fb036a1376"><div class="ttname"><a href="classvisionary_1_1_visionary_t_data.html#ae1649b2e940e78963849c9fb036a1376">visionary::VisionaryTData::m_polarDistanceData</a></div><div class="ttdeci">std::vector&lt; float &gt; m_polarDistanceData</div><div class="ttdef"><b>Definition</b> VisionaryTData.h:86</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_t_data_html_ae66455182ffb8dd0e3e5e8456db1d23c"><div class="ttname"><a href="classvisionary_1_1_visionary_t_data.html#ae66455182ffb8dd0e3e5e8456db1d23c">visionary::VisionaryTData::m_polarConfidenceData</a></div><div class="ttdeci">std::vector&lt; float &gt; m_polarConfidenceData</div><div class="ttdef"><b>Definition</b> VisionaryTData.h:87</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_t_data_html_ae78d0169fd943732de997f92cfc62856"><div class="ttname"><a href="classvisionary_1_1_visionary_t_data.html#ae78d0169fd943732de997f92cfc62856">visionary::VisionaryTData::generatePointCloud</a></div><div class="ttdeci">void generatePointCloud(std::vector&lt; PointXYZ &gt; &amp;pointCloud) override</div><div class="ttdef"><b>Definition</b> VisionaryTData.cpp:381</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_t_data_html_af928bca457b0b22e2baa11bc6ab70497"><div class="ttname"><a href="classvisionary_1_1_visionary_t_data.html#af928bca457b0b22e2baa11bc6ab70497">visionary::VisionaryTData::m_cartesianData</a></div><div class="ttdeci">std::vector&lt; PointXYZC &gt; m_cartesianData</div><div class="ttdef"><b>Definition</b> VisionaryTData.h:88</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_t_data_html_af9badc1eb34e07f34772b66b1a294122"><div class="ttname"><a href="classvisionary_1_1_visionary_t_data.html#af9badc1eb34e07f34772b66b1a294122">visionary::VisionaryTData::m_numCartesianValues</a></div><div class="ttdeci">uint_fast32_t m_numCartesianValues</div><div class="ttdef"><b>Definition</b> VisionaryTData.h:80</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_t_data_html_afcf62a78f161f584ff3fe6e151572c56"><div class="ttname"><a href="classvisionary_1_1_visionary_t_data.html#afcf62a78f161f584ff3fe6e151572c56">visionary::VisionaryTData::getPolarAngularResolution</a></div><div class="ttdeci">float getPolarAngularResolution() const</div><div class="ttdef"><b>Definition</b> VisionaryTData.cpp:411</div></div>
+<div class="ttc" id="aclassvisionary_1_1_visionary_t_data_html_afd2d21e2435f0b3fbcc81fdd27e0e081"><div class="ttname"><a href="classvisionary_1_1_visionary_t_data.html#afd2d21e2435f0b3fbcc81fdd27e0e081">visionary::VisionaryTData::parseBinaryData</a></div><div class="ttdeci">bool parseBinaryData(std::vector&lt; uint8_t &gt;::iterator itBuf, size_t size) override</div><div class="ttdef"><b>Definition</b> VisionaryTData.cpp:149</div></div>
 <div class="ttc" id="anamespacevisionary_html"><div class="ttname"><a href="namespacevisionary.html">visionary</a></div><div class="ttdef"><b>Definition</b> AuthenticationLegacy.cpp:14</div></div>
 <div class="ttc" id="astructvisionary_1_1_data_sets_active_html"><div class="ttname"><a href="structvisionary_1_1_data_sets_active.html">visionary::DataSetsActive</a></div><div class="ttdef"><b>Definition</b> VisionaryData.h:36</div></div>
 <div class="ttc" id="astructvisionary_1_1_polar_parameters_html"><div class="ttname"><a href="structvisionary_1_1_polar_parameters.html">visionary::PolarParameters</a></div><div class="ttdef"><b>Definition</b> VisionaryTData.h:19</div></div>
+<div class="ttc" id="astructvisionary_1_1_polar_parameters_html_a5f3558079017b8ae54a50142d7faf5e8"><div class="ttname"><a href="structvisionary_1_1_polar_parameters.html#a5f3558079017b8ae54a50142d7faf5e8">visionary::PolarParameters::angleFirstScanPoint</a></div><div class="ttdeci">float angleFirstScanPoint</div><div class="ttdef"><b>Definition</b> VisionaryTData.h:20</div></div>
+<div class="ttc" id="astructvisionary_1_1_polar_parameters_html_a6302a12e98a706fa1ff9813318f21811"><div class="ttname"><a href="structvisionary_1_1_polar_parameters.html#a6302a12e98a706fa1ff9813318f21811">visionary::PolarParameters::polarOffset</a></div><div class="ttdeci">float polarOffset</div><div class="ttdef"><b>Definition</b> VisionaryTData.h:23</div></div>
+<div class="ttc" id="astructvisionary_1_1_polar_parameters_html_ab63e5db9faf72979cae8a1d992385a7d"><div class="ttname"><a href="structvisionary_1_1_polar_parameters.html#ab63e5db9faf72979cae8a1d992385a7d">visionary::PolarParameters::polarScale</a></div><div class="ttdeci">float polarScale</div><div class="ttdef"><b>Definition</b> VisionaryTData.h:22</div></div>
+<div class="ttc" id="astructvisionary_1_1_polar_parameters_html_ab9f537f5911ead388a76800850049035"><div class="ttname"><a href="structvisionary_1_1_polar_parameters.html#ab9f537f5911ead388a76800850049035">visionary::PolarParameters::angularResolution</a></div><div class="ttdeci">float angularResolution</div><div class="ttdef"><b>Definition</b> VisionaryTData.h:21</div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_23d3d343015a8bd7e9dbef71a9e03858.html">sickapi</a></li><li class="navelem"><a class="el" href="dir_f9343132e416b1d631e13da8b9569f26.html">src</a></li><li class="navelem"><a class="el" href="_visionary_t_data_8h.html">VisionaryTData.h</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+  </ul>
+</div>
 </body>
 </html>

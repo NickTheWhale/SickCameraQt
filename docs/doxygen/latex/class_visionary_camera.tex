@@ -1,5 +1,14 @@
 \doxysection{Visionary\+Camera Class Reference}
 \hypertarget{class_visionary_camera}{}\label{class_visionary_camera}\index{VisionaryCamera@{VisionaryCamera}}
+
+
+Implementation of \doxylink{class_camera}{Camera} interface for Sick Visionary-\/T Mini.  
+
+
+
+
+{\ttfamily \#include $<$Visionary\+Camera.\+h$>$}
+
 Inheritance diagram for Visionary\+Camera\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -9,32 +18,31 @@ Inheritance diagram for Visionary\+Camera\+:\begin{figure}[H]
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_visionary_camera_a75f30ae4583f8751c8d2304914ee5040}\label{class_visionary_camera_a75f30ae4583f8751c8d2304914ee5040} 
-{\bfseries Visionary\+Camera} (std\+::string ip\+Address=\"{}\"{}, short data\+Port=2114)
-\item 
+\mbox{\hyperlink{class_visionary_camera_a75f30ae4583f8751c8d2304914ee5040}{Visionary\+Camera}} (std\+::string ip\+Address=\"{}\"{}, short data\+Port=2114)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_visionary_camera}{Visionary\+Camera} constructor. \end{DoxyCompactList}\item 
+\Hypertarget{class_visionary_camera_aadd4d48cc3e8689a19c57cd9b99ae0cb}\label{class_visionary_camera_aadd4d48cc3e8689a19c57cd9b99ae0cb} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Visionary\+Camera} () override
+\begin{DoxyCompactList}\small\item\em \doxylink{class_camera}{Camera} destructor. Calls \doxylink{class_visionary_camera_ae088c2402d1ea9956b06028eb375d924}{close()}. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_visionary_camera_a60788c016091fdd293cb664822aa1c0f}{open}} () override
-\begin{DoxyCompactList}\small\item\em Opens the camera device. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Opens data and control streams to the camera. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_visionary_camera_ae088c2402d1ea9956b06028eb375d924}{close}} () override
-\begin{DoxyCompactList}\small\item\em Closes the camera device. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Closes data and control streams to the camera. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_visionary_camera_af4ab7f3401b4b522a51af10750e92c0c}{is\+Open}} () override
-\begin{DoxyCompactList}\small\item\em Checks if the camera device is open. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Gets connection status. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_visionary_camera_a830a20b540edee0a375a709fb654bb87}{start\+Capture}} () override
-\begin{DoxyCompactList}\small\item\em Starts capturing frames from the camera device. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Starts continuous mode acquisition. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_visionary_camera_a2bc1fd6055fc9fa1fae727fc790b0820}{stop\+Capture}} () override
-\begin{DoxyCompactList}\small\item\em Stops capturing frames from the camera device. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Stops acquisition. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_visionary_camera_a8bfda3741ab9a0525b1adc837a47391a}{get\+Next\+Frameset}} (\mbox{\hyperlink{struct_frameset_1_1frameset__t}{Frameset\+::frameset\+\_\+t}} \&fs) override
-\begin{DoxyCompactList}\small\item\em Retrieves the next frameset from the camera device. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Polls camera for the latest frameset. \end{DoxyCompactList}\item 
 const std\+::map$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{class_visionary_camera_a248b76b210f97ea28890a7bfb1248bde}{get\+Parameters}} () override
-\begin{DoxyCompactList}\small\item\em Retrieves the parameters of the camera device. \end{DoxyCompactList}\item 
-\Hypertarget{class_visionary_camera_a6d3622fbb38c2725a339c44cc46bd9e6}\label{class_visionary_camera_a6d3622fbb38c2725a339c44cc46bd9e6} 
-bool {\bfseries available} (int timeout)
-\item 
-\Hypertarget{class_visionary_camera_a91c42e96a17e393d77f97d6920ea57d9}\label{class_visionary_camera_a91c42e96a17e393d77f97d6920ea57d9} 
-void {\bfseries set\+Ip} (std\+::string ip\+Address)
-\item 
-\Hypertarget{class_visionary_camera_aad6991dbcf7c18c6edffb983dd6b17ec}\label{class_visionary_camera_aad6991dbcf7c18c6edffb983dd6b17ec} 
-void {\bfseries set\+Data\+Port} (short data\+Port)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Gets camera parameters. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_visionary_camera_a6d3622fbb38c2725a339c44cc46bd9e6}{available}} (int timeout)
+\begin{DoxyCompactList}\small\item\em Gets camera availability. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_visionary_camera_a91c42e96a17e393d77f97d6920ea57d9}{set\+Ip}} (std\+::string ip\+Address)
+\begin{DoxyCompactList}\small\item\em IP address setter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_visionary_camera_aad6991dbcf7c18c6edffb983dd6b17ec}{set\+Data\+Port}} (short data\+Port)
+\begin{DoxyCompactList}\small\item\em Blob control port setter. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_camera}{Camera}}}
 \begin{DoxyCompactItemize}
 \item 
@@ -56,9 +64,83 @@ virtual bool \mbox{\hyperlink{class_camera_afb93b43b0cca34497d614de8068e6ddf}{ge
 \begin{DoxyCompactList}\small\item\em Retrieves the next frameset from the camera device. \end{DoxyCompactList}\item 
 virtual const std\+::map$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{class_camera_ac0d47627924a42ad2d42354144cd6670}{get\+Parameters}} ()
 \begin{DoxyCompactList}\small\item\em Retrieves the parameters of the camera device. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_visionary_camera_a2fecef2c301eb9b743478d0a18a88acb}\label{class_visionary_camera_a2fecef2c301eb9b743478d0a18a88acb} 
+const unsigned int {\bfseries open\+Timeout} = 5000
+\item 
+\Hypertarget{class_visionary_camera_a1b34378b6aa568bc2db14695cabad9f8}\label{class_visionary_camera_a1b34378b6aa568bc2db14695cabad9f8} 
+bool {\bfseries connected} = false
+\item 
+\Hypertarget{class_visionary_camera_a4b22f8ea7136233f9493ed00d303276f}\label{class_visionary_camera_a4b22f8ea7136233f9493ed00d303276f} 
+bool {\bfseries capturing} = false
+\item 
+\Hypertarget{class_visionary_camera_aa3cd1611be3c6f74f88ea729000913a4}\label{class_visionary_camera_aa3cd1611be3c6f74f88ea729000913a4} 
+std\+::string {\bfseries ip\+Address}
+\item 
+\Hypertarget{class_visionary_camera_adfa4a1f0527921ba5dbb9dfa656eb6ac}\label{class_visionary_camera_adfa4a1f0527921ba5dbb9dfa656eb6ac} 
+short {\bfseries data\+Port}
+\item 
+\Hypertarget{class_visionary_camera_a561b0b19600acd135577cfcce3d15937}\label{class_visionary_camera_a561b0b19600acd135577cfcce3d15937} 
+std\+::map$<$ std\+::string, std\+::string $>$ {\bfseries parameters}
+\item 
+\Hypertarget{class_visionary_camera_a45cde19a45dcae5cf49cb72d7e1f9554}\label{class_visionary_camera_a45cde19a45dcae5cf49cb72d7e1f9554} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classvisionary_1_1_visionary_t_mini_data}{visionary\+::\+Visionary\+TMini\+Data}} $>$ {\bfseries p\+Data\+Handler}
+\item 
+\Hypertarget{class_visionary_camera_aa9614c64144234b5726a49e6b969dace}\label{class_visionary_camera_aa9614c64144234b5726a49e6b969dace} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classvisionary_1_1_visionary_data_stream}{visionary\+::\+Visionary\+Data\+Stream}} $>$ {\bfseries p\+Data\+Stream}
+\item 
+\Hypertarget{class_visionary_camera_a8d62868e0a9b719fc37e96670074f16a}\label{class_visionary_camera_a8d62868e0a9b719fc37e96670074f16a} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classvisionary_1_1_visionary_control}{visionary\+::\+Visionary\+Control}} $>$ {\bfseries p\+Visionary\+Control}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of \doxylink{class_camera}{Camera} interface for Sick Visionary-\/T Mini. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_visionary_camera_a75f30ae4583f8751c8d2304914ee5040}\label{class_visionary_camera_a75f30ae4583f8751c8d2304914ee5040} 
+\index{VisionaryCamera@{VisionaryCamera}!VisionaryCamera@{VisionaryCamera}}
+\index{VisionaryCamera@{VisionaryCamera}!VisionaryCamera@{VisionaryCamera}}
+\doxysubsubsection{\texorpdfstring{VisionaryCamera()}{VisionaryCamera()}}
+{\footnotesize\ttfamily Visionary\+Camera\+::\+Visionary\+Camera (\begin{DoxyParamCaption}\item[{std\+::string}]{ip\+Address = {\ttfamily \"{}\"{}},  }\item[{short}]{data\+Port = {\ttfamily 2114} }\end{DoxyParamCaption})}
+
+
+
+\doxylink{class_visionary_camera}{Visionary\+Camera} constructor. 
+
+\begin{DoxyNote}{Note}
+Construction does not ensure the camera is accessible. Construction only creates the necessary handlers to interface with a camera. 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em ip\+Address} & IP address of the camera (optional). ex. \"{}192.\+168.\+0.\+1\"{}. \\
+\hline
+{\em data\+Port} & Blob control port (optional). \\
+\hline
+\end{DoxyParams}
 
 
 \doxysubsection{Member Function Documentation}
+\Hypertarget{class_visionary_camera_a6d3622fbb38c2725a339c44cc46bd9e6}\label{class_visionary_camera_a6d3622fbb38c2725a339c44cc46bd9e6} 
+\index{VisionaryCamera@{VisionaryCamera}!available@{available}}
+\index{available@{available}!VisionaryCamera@{VisionaryCamera}}
+\doxysubsubsection{\texorpdfstring{available()}{available()}}
+{\footnotesize\ttfamily bool Visionary\+Camera\+::available (\begin{DoxyParamCaption}\item[{int}]{timeout }\end{DoxyParamCaption})}
+
+
+
+Gets camera availability. 
+
+This method runs a network scan to get a list of all available cameras and then checks if the current camera\textquotesingle{}s ip address matches any camera in the list. 
+\begin{DoxyParams}{Parameters}
+{\em timeout} & Scan timeout in milliseconds. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if available, false otherwise. 
+\end{DoxyReturn}
 \Hypertarget{class_visionary_camera_ae088c2402d1ea9956b06028eb375d924}\label{class_visionary_camera_ae088c2402d1ea9956b06028eb375d924} 
 \index{VisionaryCamera@{VisionaryCamera}!close@{close}}
 \index{close@{close}!VisionaryCamera@{VisionaryCamera}}
@@ -67,13 +149,10 @@ virtual const std\+::map$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{cl
 
 
 
-Closes the camera device. 
+Closes data and control streams to the camera. 
 
-\begin{DoxyNote}{Note}
-Implementation must support repeated calls, even if already closed. 
-\end{DoxyNote}
 \begin{DoxyReturn}{Returns}
-true if the camera device is successfully closed, false otherwise. 
+true 
 \end{DoxyReturn}
 
 
@@ -87,15 +166,15 @@ Implements \mbox{\hyperlink{class_camera_a56cb2dfa677ed0c1bed120b4d4a769a1}{Came
 
 
 
-Retrieves the next frameset from the camera device. 
+Polls camera for the latest frameset. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em fs} & Reference to a frameset object to store the captured frames. \\
+{\em fs} & Output frameset. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-true if a frameset is successfully retrieved, false otherwise. 
+true if frameset was received, false otherwise. 
 \end{DoxyReturn}
 
 
@@ -109,13 +188,10 @@ Implements \mbox{\hyperlink{class_camera_afb93b43b0cca34497d614de8068e6ddf}{Came
 
 
 
-Retrieves the parameters of the camera device. 
+Gets camera parameters. 
 
-The parameters are stored in a std\+::map$<$std\+::string, std\+::string$>$ with no required format. This is useful if instantiating a subclass as \doxylink{class_camera}{Camera} and needing to retrieve model-\/specific information, such as an ip address or usb port. \begin{DoxyNote}{Note}
-the subclass is not required to implement. 
-\end{DoxyNote}
 \begin{DoxyReturn}{Returns}
-A map containing the camera parameters, where the keys are parameter names and the values are parameter values. 
+camera parameters. 
 \end{DoxyReturn}
 
 
@@ -129,10 +205,10 @@ Reimplemented from \mbox{\hyperlink{class_camera_ac0d47627924a42ad2d42354144cd66
 
 
 
-Checks if the camera device is open. 
+Gets connection status. 
 
 \begin{DoxyReturn}{Returns}
-true if the camera device is open, false otherwise. 
+true is open, false otherwise. 
 \end{DoxyReturn}
 
 
@@ -146,18 +222,51 @@ Implements \mbox{\hyperlink{class_camera_a70c5abd6bd16f5c91fc3768d6d76f49c}{Came
 
 
 
-Opens the camera device. 
+Opens data and control streams to the camera. 
 
-\begin{DoxyNote}{Note}
-Implementation must support repeated calls, even if already opened. 
-\end{DoxyNote}
-\begin{DoxyReturn}{Returns}
-true if the camera device is successfully opened, false otherwise. 
+Opens data and control streams to the camera with the specified ip address. If the ip address is empty (\"{}\"{}), an attempt is made to scan the network and find the first available camera. \begin{DoxyReturn}{Returns}
+true if opened, false otherwise. 
 \end{DoxyReturn}
 
 
 Implements \mbox{\hyperlink{class_camera_a86b0b93c14ef5e0bc3736bfaaf343b7f}{Camera}}.
 
+\Hypertarget{class_visionary_camera_aad6991dbcf7c18c6edffb983dd6b17ec}\label{class_visionary_camera_aad6991dbcf7c18c6edffb983dd6b17ec} 
+\index{VisionaryCamera@{VisionaryCamera}!setDataPort@{setDataPort}}
+\index{setDataPort@{setDataPort}!VisionaryCamera@{VisionaryCamera}}
+\doxysubsubsection{\texorpdfstring{setDataPort()}{setDataPort()}}
+{\footnotesize\ttfamily void Visionary\+Camera\+::set\+Data\+Port (\begin{DoxyParamCaption}\item[{short}]{data\+Port }\end{DoxyParamCaption})}
+
+
+
+Blob control port setter. 
+
+\begin{DoxyNote}{Note}
+Setting the port only affects subsequent calls \doxylink{class_visionary_camera_a60788c016091fdd293cb664822aa1c0f}{open()}. Setting the port will not affect the current connection. 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em data\+Port} & Data port. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_visionary_camera_a91c42e96a17e393d77f97d6920ea57d9}\label{class_visionary_camera_a91c42e96a17e393d77f97d6920ea57d9} 
+\index{VisionaryCamera@{VisionaryCamera}!setIp@{setIp}}
+\index{setIp@{setIp}!VisionaryCamera@{VisionaryCamera}}
+\doxysubsubsection{\texorpdfstring{setIp()}{setIp()}}
+{\footnotesize\ttfamily void Visionary\+Camera\+::set\+Ip (\begin{DoxyParamCaption}\item[{std\+::string}]{ip\+Address }\end{DoxyParamCaption})}
+
+
+
+IP address setter. 
+
+\begin{DoxyNote}{Note}
+Setting the IP address only affects subsequent calls \doxylink{class_visionary_camera_a60788c016091fdd293cb664822aa1c0f}{open()}. Setting the IP address will not affect the current connection. 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em ip\+Address} & IP address in \"{}x.\+x.\+x.\+x\"{} format. \\
+\hline
+\end{DoxyParams}
 \Hypertarget{class_visionary_camera_a830a20b540edee0a375a709fb654bb87}\label{class_visionary_camera_a830a20b540edee0a375a709fb654bb87} 
 \index{VisionaryCamera@{VisionaryCamera}!startCapture@{startCapture}}
 \index{startCapture@{startCapture}!VisionaryCamera@{VisionaryCamera}}
@@ -166,13 +275,10 @@ Implements \mbox{\hyperlink{class_camera_a86b0b93c14ef5e0bc3736bfaaf343b7f}{Came
 
 
 
-Starts capturing frames from the camera device. 
+Starts continuous mode acquisition. 
 
-\begin{DoxyNote}{Note}
-Implementation must support repeated calls, even if already capturing. 
-\end{DoxyNote}
 \begin{DoxyReturn}{Returns}
-true if the capture is started successfully, false otherwise. 
+true if capture started, false otherwise. 
 \end{DoxyReturn}
 
 
@@ -186,18 +292,12 @@ Implements \mbox{\hyperlink{class_camera_acdb890f53f359f4a1c3c72a8772228f0}{Came
 
 
 
-Stops capturing frames from the camera device. 
+Stops acquisition. 
 
-
-\begin{DoxyItemize}
-\item \begin{DoxyNote}{Note}
-Implementation must support repeated calls, even if already stopped. 
-\end{DoxyNote}
 \begin{DoxyReturn}{Returns}
-true if the capture is stopped successfully, false otherwise. 
+true if capture stopped, false otherwise. 
 \end{DoxyReturn}
 
-\end{DoxyItemize}
 
 Implements \mbox{\hyperlink{class_camera_a0701c1d212f7c236e13f8980d2b2e566}{Camera}}.
 
@@ -205,5 +305,5 @@ Implements \mbox{\hyperlink{class_camera_a0701c1d212f7c236e13f8980d2b2e566}{Came
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Visionary\+Camera.\+h\item 
+\mbox{\hyperlink{_visionary_camera_8h}{Visionary\+Camera.\+h}}\item 
 Visionary\+Camera.\+cpp\end{DoxyCompactItemize}

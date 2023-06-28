@@ -9,9 +9,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -46,6 +51,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('struct_t_s7_tag.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,7 +89,6 @@ $(function() {
 </div>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-attribs">Public Attributes</a> &#124;
@@ -75,32 +96,104 @@ $(function() {
   <div class="headertitle"><div class="title">TS7Tag Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="snap7_8h_source.html">snap7.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:ab66e2915bd113536a49f1fb5f3297928"><td class="memItemLeft" align="right" valign="top"><a id="ab66e2915bd113536a49f1fb5f3297928" name="ab66e2915bd113536a49f1fb5f3297928"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>Area</b></td></tr>
+<tr class="memitem:ab66e2915bd113536a49f1fb5f3297928"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_t_s7_tag.html#ab66e2915bd113536a49f1fb5f3297928">Area</a></td></tr>
 <tr class="separator:ab66e2915bd113536a49f1fb5f3297928"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0d2ab2df88d5489f2c5061326a7b706"><td class="memItemLeft" align="right" valign="top"><a id="ac0d2ab2df88d5489f2c5061326a7b706" name="ac0d2ab2df88d5489f2c5061326a7b706"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>DBNumber</b></td></tr>
+<tr class="memitem:ac0d2ab2df88d5489f2c5061326a7b706"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_t_s7_tag.html#ac0d2ab2df88d5489f2c5061326a7b706">DBNumber</a></td></tr>
 <tr class="separator:ac0d2ab2df88d5489f2c5061326a7b706"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0110b8522e3ddbd2d3718f2f4f3fd51a"><td class="memItemLeft" align="right" valign="top"><a id="a0110b8522e3ddbd2d3718f2f4f3fd51a" name="a0110b8522e3ddbd2d3718f2f4f3fd51a"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>Start</b></td></tr>
+<tr class="memitem:a0110b8522e3ddbd2d3718f2f4f3fd51a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_t_s7_tag.html#a0110b8522e3ddbd2d3718f2f4f3fd51a">Start</a></td></tr>
 <tr class="separator:a0110b8522e3ddbd2d3718f2f4f3fd51a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae640d883c110e0249245da3b60bc1e63"><td class="memItemLeft" align="right" valign="top"><a id="ae640d883c110e0249245da3b60bc1e63" name="ae640d883c110e0249245da3b60bc1e63"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>Size</b></td></tr>
+<tr class="memitem:ae640d883c110e0249245da3b60bc1e63"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_t_s7_tag.html#ae640d883c110e0249245da3b60bc1e63">Size</a></td></tr>
 <tr class="separator:ae640d883c110e0249245da3b60bc1e63"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72dde9ec1accae51096b581bc6a9caec"><td class="memItemLeft" align="right" valign="top"><a id="a72dde9ec1accae51096b581bc6a9caec" name="a72dde9ec1accae51096b581bc6a9caec"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>WordLen</b></td></tr>
+<tr class="memitem:a72dde9ec1accae51096b581bc6a9caec"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_t_s7_tag.html#a72dde9ec1accae51096b581bc6a9caec">WordLen</a></td></tr>
 <tr class="separator:a72dde9ec1accae51096b581bc6a9caec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ab66e2915bd113536a49f1fb5f3297928" name="ab66e2915bd113536a49f1fb5f3297928"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab66e2915bd113536a49f1fb5f3297928">&#9670;&#160;</a></span>Area</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int TS7Tag::Area</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac0d2ab2df88d5489f2c5061326a7b706" name="ac0d2ab2df88d5489f2c5061326a7b706"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0d2ab2df88d5489f2c5061326a7b706">&#9670;&#160;</a></span>DBNumber</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int TS7Tag::DBNumber</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae640d883c110e0249245da3b60bc1e63" name="ae640d883c110e0249245da3b60bc1e63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae640d883c110e0249245da3b60bc1e63">&#9670;&#160;</a></span>Size</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int TS7Tag::Size</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0110b8522e3ddbd2d3718f2f4f3fd51a" name="a0110b8522e3ddbd2d3718f2f4f3fd51a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0110b8522e3ddbd2d3718f2f4f3fd51a">&#9670;&#160;</a></span>Start</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int TS7Tag::Start</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a72dde9ec1accae51096b581bc6a9caec" name="a72dde9ec1accae51096b581bc6a9caec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72dde9ec1accae51096b581bc6a9caec">&#9670;&#160;</a></span>WordLen</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int TS7Tag::WordLen</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li>snap7/<a class="el" href="snap7_8h_source.html">snap7.h</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="struct_t_s7_tag.html">TS7Tag</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+  </ul>
+</div>
 </body>
 </html>

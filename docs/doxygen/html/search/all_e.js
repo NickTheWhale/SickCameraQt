@@ -1,11 +1,11 @@
 var searchData=
 [
-  ['qt_5fmeta_5fstringdata_5fclassaspectratiopixmaplabelendclass_5ft_0',['qt_meta_stringdata_CLASSAspectRatioPixmapLabelENDCLASS_t',['../struct_q_t___w_a_r_n_i_n_g___d_i_s_a_b_l_e___d_e_p_r_e_c_a_t_e_d_1_1qt__meta__stringdata___c_l_a8d4ea75d55d1aaa08f856a355c7fc4a2.html',1,'QT_WARNING_DISABLE_DEPRECATED']]],
-  ['qt_5fmeta_5fstringdata_5fclasscapturethreadendclass_5ft_1',['qt_meta_stringdata_CLASSCaptureThreadENDCLASS_t',['../struct_q_t___w_a_r_n_i_n_g___d_i_s_a_b_l_e___d_e_p_r_e_c_a_t_e_d_1_1qt__meta__stringdata___c_l_a3e820ee764f09bcad0ad37ab0e5aaeb5.html',1,'QT_WARNING_DISABLE_DEPRECATED']]],
-  ['qt_5fmeta_5fstringdata_5fclassclosedockwidgetendclass_5ft_2',['qt_meta_stringdata_CLASSCloseDockWidgetENDCLASS_t',['../struct_q_t___w_a_r_n_i_n_g___d_i_s_a_b_l_e___d_e_p_r_e_c_a_t_e_d_1_1qt__meta__stringdata___c_l_ad94e1e6f727f8cfbc972c03e96c52f7d.html',1,'QT_WARNING_DISABLE_DEPRECATED']]],
-  ['qt_5fmeta_5fstringdata_5fclasshistogramwidgetendclass_5ft_3',['qt_meta_stringdata_CLASSHistogramWidgetENDCLASS_t',['../struct_q_t___w_a_r_n_i_n_g___d_i_s_a_b_l_e___d_e_p_r_e_c_a_t_e_d_1_1qt__meta__stringdata___c_l_a756798288b7a262ace9ab689aea963be.html',1,'QT_WARNING_DISABLE_DEPRECATED']]],
-  ['qt_5fmeta_5fstringdata_5fclassplcthreadendclass_5ft_4',['qt_meta_stringdata_CLASSPlcThreadENDCLASS_t',['../struct_q_t___w_a_r_n_i_n_g___d_i_s_a_b_l_e___d_e_p_r_e_c_a_t_e_d_1_1qt__meta__stringdata___c_l_ad45d2a357415a51dd6b719458ea2a53b.html',1,'QT_WARNING_DISABLE_DEPRECATED']]],
-  ['qt_5fmeta_5fstringdata_5fclassqtoolmenubuttonendclass_5ft_5',['qt_meta_stringdata_CLASSQToolMenuButtonENDCLASS_t',['../struct_q_t___w_a_r_n_i_n_g___d_i_s_a_b_l_e___d_e_p_r_e_c_a_t_e_d_1_1qt__meta__stringdata___c_l_a60fe83d42943925b908241a6dbb52041.html',1,'QT_WARNING_DISABLE_DEPRECATED']]],
-  ['qt_5fmeta_5fstringdata_5fclasssickguiendclass_5ft_6',['qt_meta_stringdata_CLASSSickGUIENDCLASS_t',['../struct_q_t___w_a_r_n_i_n_g___d_i_s_a_b_l_e___d_e_p_r_e_c_a_t_e_d_1_1qt__meta__stringdata___c_l_a6309f8e8fbfc4193b36bf524b3e59d1a.html',1,'QT_WARNING_DISABLE_DEPRECATED']]],
-  ['qtoolmenubutton_7',['QToolMenuButton',['../class_q_tool_menu_button.html',1,'']]]
+  ['n_5fdr_0',['N_DR',['../struct_s_z_l___h_e_a_d_e_r.html#a995120b7cd9281108a8e0b5985768f5e',1,'SZL_HEADER']]],
+  ['nativetobigendian_1',['nativeToBigEndian',['../namespacevisionary.html#ae17300f7f57385088f6ce1f4d1d0ee1a',1,'visionary']]],
+  ['nativetolittleendian_2',['nativeToLittleEndian',['../namespacevisionary.html#a5fea97411549492f7eacf2edaa525213',1,'visionary']]],
+  ['network_5ferror_3',['NETWORK_ERROR',['../namespacevisionary_1_1_co_la_command_type.html#ac6a07ccab53586bbf1b77bb2bd94bde6a5d1aa1045bdf65067751192d0f5d7ced',1,'visionary::CoLaCommandType::NETWORK_ERROR'],['../namespacevisionary_1_1_co_la_error.html#a4e410cc8da3d2a084c58ed78e89c3454a7378af1017bc09a58f5c704464f55196',1,'visionary::CoLaError::NETWORK_ERROR']]],
+  ['networkerrorcommand_4',['networkErrorCommand',['../classvisionary_1_1_co_la_command.html#a414a39d91212cc2179e5e425b74dee19',1,'visionary::CoLaCommand']]],
+  ['newframeset_5',['newFrameset',['../class_capture_thread.html#abe68c8ea1844de605784b48d3202aac5',1,'CaptureThread::newFrameset()'],['../class_plc_thread.html#a1c3c07593f1adc04dca82099e52a4656',1,'PlcThread::newFrameset()'],['../class_sick_g_u_i.html#ad92ec970e9e45866ec7f7554ab1b13f7',1,'SickGUI::newFrameset()']]],
+  ['number_6',['number',['../struct_frameset_1_1frameset__t.html#a68b2f6fb4ffec64ce9172c85e9e7906d',1,'Frameset::frameset_t']]],
+  ['numbins_7',['numBins',['../class_histogram_widget.html#ab3a7ad4c376636def5f0b325506a0a44',1,'HistogramWidget']]]
 ];

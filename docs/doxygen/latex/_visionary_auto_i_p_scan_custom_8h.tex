@@ -1,0 +1,62 @@
+\doxysection{Visionary\+Auto\+IPScan\+Custom.\+h File Reference}
+\hypertarget{_visionary_auto_i_p_scan_custom_8h}{}\label{_visionary_auto_i_p_scan_custom_8h}\index{VisionaryAutoIPScanCustom.h@{VisionaryAutoIPScanCustom.h}}
+
+
+Class to find cameras on the network.  
+
+
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structvisionary_1_1_endpoint}{visionary\+::\+Endpoint}}
+\item 
+class \mbox{\hyperlink{classvisionary_1_1_visionary_auto_i_p_scan_custom}{visionary\+::\+Visionary\+Auto\+IPScan\+Custom}}
+\item 
+struct \mbox{\hyperlink{structvisionary_1_1_visionary_auto_i_p_scan_custom_1_1_device_info}{visionary\+::\+Visionary\+Auto\+IPScan\+Custom\+::\+Device\+Info}}
+\item 
+struct \mbox{\hyperlink{structvisionary_1_1_visionary_auto_i_p_scan_custom_1_1_com_key__t}{visionary\+::\+Visionary\+Auto\+IPScan\+Custom\+::\+Com\+Key\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacevisionary}{visionary}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{namespacevisionary_a7ef1d3a98ca68cb810ab2c7312c9e363}\label{namespacevisionary_a7ef1d3a98ca68cb810ab2c7312c9e363} 
+enum class {\bfseries Protocol} \+: uint8\+\_\+t \{ \newline
+{\bfseries COLA\+\_\+B} = 0
+, {\bfseries COLA\+\_\+2\+\_\+0} = 1
+, {\bfseries COLA\+\_\+2\+\_\+1} = 2
+, {\bfseries COLA\+\_\+A} = 3
+, \newline
+{\bfseries HTTP} = 4
+, {\bfseries HTTPS} = 5
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{namespacevisionary_a2a53cf18c11e6f36c34e8363ec7d2550}\label{namespacevisionary_a2a53cf18c11e6f36c34e8363ec7d2550} 
+static const uint16\+\_\+t {\bfseries visionary\+::\+DEFAULT\+\_\+\+PORT} = 30718
+\item 
+\Hypertarget{namespacevisionary_aad5749cc912ebc1b24c6e3d3c5b68eb5}\label{namespacevisionary_aad5749cc912ebc1b24c6e3d3c5b68eb5} 
+static const std\+::string {\bfseries visionary\+::\+DEFAULT\+\_\+\+BROADCAST\+\_\+\+ADDR} = \"{}255.\+255.\+255.\+255\"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class to find cameras on the network. 
+
+\begin{DoxyNote}{Note}
+This class was NOT written by Sick and is not guaranteed to work. Much of the code was written by analyzing packets with Wireshark and may not properly support cameras or the Co\+La 2 spec. For more information refer to the Co\+La 2 protocol specification found in .\textbackslash{}docs\textbackslash{}sick\textbackslash{}\+Integration\textbackslash{}\+Interface\+Description\textbackslash{}\+Co\+La-\/2-\/Protocol-\/\+Specification.
+\end{DoxyNote}
+\begin{DoxyAuthor}{Author}
+Nicholas Loehrke 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+June 2023 
+\end{DoxyDate}

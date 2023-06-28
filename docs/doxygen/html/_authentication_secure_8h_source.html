@@ -9,9 +9,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -46,6 +51,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('_authentication_secure_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,16 +89,11 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_23d3d343015a8bd7e9dbef71a9e03858.html">sickapi</a></li><li class="navelem"><a class="el" href="dir_f9343132e416b1d631e13da8b9569f26.html">src</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">AuthenticationSecure.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//</span></div>
+<a href="_authentication_secure_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">// Copyright note: Redistribution and use in source, with or without modification, are permitted.</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">// </span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">// Created: December 2019</span></div>
@@ -87,59 +104,81 @@ $(function() {
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;array&gt;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;CoLaParameterReader.h&quot;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;VisionaryControl.h&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="_co_la_parameter_reader_8h.html">CoLaParameterReader.h</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="_visionary_control_8h.html">VisionaryControl.h</a>&quot;</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacevisionary.html">visionary</a> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacevisionary.html">visionary</a></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">enum</span> ProtocolType</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    UNKNOWN,</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    SUL1,</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    SUL2</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>};</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structvisionary_1_1_challenge_request.html">   23</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structvisionary_1_1_challenge_request.html">ChallengeRequest</a></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>{</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  std::array&lt;std::uint8_t, 16&gt; challenge;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>  std::array&lt;std::uint8_t, 16&gt; salt;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>};</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="namespacevisionary.html#a557238be3b0c43e9f28b6dc68ecd86c0">   17</a></span>    <span class="keyword">enum</span> <a class="code hl_enumeration" href="namespacevisionary.html#a557238be3b0c43e9f28b6dc68ecd86c0">ProtocolType</a></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    {</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="namespacevisionary.html#a557238be3b0c43e9f28b6dc68ecd86c0ac65541ca6ae3fa7ef69edc1804a7de12">   19</a></span>        <a class="code hl_enumvalue" href="namespacevisionary.html#a557238be3b0c43e9f28b6dc68ecd86c0ac65541ca6ae3fa7ef69edc1804a7de12">UNKNOWN</a>,</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="namespacevisionary.html#a557238be3b0c43e9f28b6dc68ecd86c0aa80c8c8738c41978c04a8c180e60f69e">   20</a></span>        <a class="code hl_enumvalue" href="namespacevisionary.html#a557238be3b0c43e9f28b6dc68ecd86c0aa80c8c8738c41978c04a8c180e60f69e">SUL1</a>,</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <a class="code hl_enumvalue" href="namespacevisionary.html#a557238be3b0c43e9f28b6dc68ecd86c0ac816ac5587719e3cc59da98593d9dfbe">SUL2</a></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="namespacevisionary.html#a557238be3b0c43e9f28b6dc68ecd86c0ac816ac5587719e3cc59da98593d9dfbe">   22</a></span>    };</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structvisionary_1_1_challenge_request.html">   23</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structvisionary_1_1_challenge_request.html">ChallengeRequest</a></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    {</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="structvisionary_1_1_challenge_request.html#a5158e9a3494ecf7e0bc0c3a84e537c82">   25</a></span>        std::array&lt;std::uint8_t, 16&gt; <a class="code hl_variable" href="structvisionary_1_1_challenge_request.html#a5158e9a3494ecf7e0bc0c3a84e537c82">challenge</a>;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="structvisionary_1_1_challenge_request.html#a254598a51daf80fa54c11a764541e45f">   26</a></span>        std::array&lt;std::uint8_t, 16&gt; <a class="code hl_variable" href="structvisionary_1_1_challenge_request.html#a254598a51daf80fa54c11a764541e45f">salt</a>;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    };</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">typedef</span> std::array&lt;std::uint8_t, 32&gt; PasswordHash;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keyword">typedef</span> std::array&lt;std::uint8_t, 32&gt; ChallengeResponse;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="namespacevisionary.html#a288962be13c22d9b88d65e151cb5961f">   29</a></span>    <span class="keyword">typedef</span> std::array&lt;std::uint8_t, 32&gt; <a class="code hl_typedef" href="namespacevisionary.html#a288962be13c22d9b88d65e151cb5961f">PasswordHash</a>;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="namespacevisionary.html#a770512c55c2807f05651f1d9cb4a2382">   30</a></span>    <span class="keyword">typedef</span> std::array&lt;std::uint8_t, 32&gt; <a class="code hl_typedef" href="namespacevisionary.html#a770512c55c2807f05651f1d9cb4a2382">ChallengeResponse</a>;</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="classvisionary_1_1_authentication_secure.html">   33</a></span><span class="keyword">class </span><a class="code hl_class" href="classvisionary_1_1_authentication_secure.html">AuthenticationSecure</a>:</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>  <span class="keyword">public</span> <a class="code hl_class" href="classvisionary_1_1_i_authentication.html">IAuthentication</a></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>{</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>  <span class="keyword">explicit</span> <a class="code hl_class" href="classvisionary_1_1_authentication_secure.html">AuthenticationSecure</a>(<a class="code hl_class" href="classvisionary_1_1_visionary_control.html">VisionaryControl</a>&amp; vctrl);</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>  <a class="code hl_class" href="classvisionary_1_1_authentication_secure.html">~AuthenticationSecure</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="classvisionary_1_1_authentication_secure.html">   33</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classvisionary_1_1_authentication_secure.html">AuthenticationSecure</a> :</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="keyword">public</span> <a class="code hl_class" href="classvisionary_1_1_i_authentication.html">IAuthentication</a></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    {</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keyword">explicit</span> <a class="code hl_class" href="classvisionary_1_1_authentication_secure.html">AuthenticationSecure</a>(<a class="code hl_class" href="classvisionary_1_1_visionary_control.html">VisionaryControl</a>&amp; vctrl);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classvisionary_1_1_authentication_secure.html#a4438d263234fae197d1c19f672050aa7">   38</a></span>        <a class="code hl_function" href="classvisionary_1_1_authentication_secure.html#a4438d263234fae197d1c19f672050aa7">~AuthenticationSecure</a>() <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>  <span class="keywordtype">bool</span> login(<a class="code hl_enumeration" href="classvisionary_1_1_i_authentication.html#a9d9871f50bf25a43e7faa4afb9e92f08">UserLevel</a> userLevel, <span class="keyword">const</span> std::string&amp; password) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>  <span class="keywordtype">bool</span> logout() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classvisionary_1_1_authentication_secure.html#af58c6bf742b6c873cc175946920d1869">login</a>(<a class="code hl_enumeration" href="classvisionary_1_1_i_authentication.html#a9d9871f50bf25a43e7faa4afb9e92f08">UserLevel</a> userLevel, <span class="keyword">const</span> std::string&amp; password) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classvisionary_1_1_authentication_secure.html#a469bcd5cda1456068d168775fc10334d">logout</a>() <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  <a class="code hl_class" href="classvisionary_1_1_visionary_control.html">VisionaryControl</a>&amp; m_VisionaryControl;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>  ProtocolType m_protocolType;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="classvisionary_1_1_authentication_secure.html#a223227632167325361048aee00157e1f">   44</a></span>        <a class="code hl_class" href="classvisionary_1_1_visionary_control.html">VisionaryControl</a>&amp; <a class="code hl_variable" href="classvisionary_1_1_authentication_secure.html#a223227632167325361048aee00157e1f">m_VisionaryControl</a>;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="classvisionary_1_1_authentication_secure.html#aa136f20e489e7fa0a49a14c3ec7b0bb9">   45</a></span>        <a class="code hl_enumeration" href="namespacevisionary.html#a557238be3b0c43e9f28b6dc68ecd86c0">ProtocolType</a> <a class="code hl_variable" href="classvisionary_1_1_authentication_secure.html#aa136f20e489e7fa0a49a14c3ec7b0bb9">m_protocolType</a>;</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  PasswordHash CreatePasswordHash(<a class="code hl_enumeration" href="classvisionary_1_1_i_authentication.html#a9d9871f50bf25a43e7faa4afb9e92f08">UserLevel</a> userLevel, <span class="keyword">const</span> std::string&amp; password, <span class="keyword">const</span> <a class="code hl_struct" href="structvisionary_1_1_challenge_request.html">ChallengeRequest</a>&amp; challengeRequest, ProtocolType protocolType);</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  ChallengeResponse CreateChallengeResponse(<a class="code hl_enumeration" href="classvisionary_1_1_i_authentication.html#a9d9871f50bf25a43e7faa4afb9e92f08">UserLevel</a> userLevel, <span class="keyword">const</span> std::string&amp; password, <span class="keyword">const</span> <a class="code hl_struct" href="structvisionary_1_1_challenge_request.html">ChallengeRequest</a>&amp; challengeRequest, ProtocolType protocolType);</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>  <span class="keywordtype">bool</span> loginImpl(<a class="code hl_enumeration" href="classvisionary_1_1_i_authentication.html#a9d9871f50bf25a43e7faa4afb9e92f08">UserLevel</a> userLevel, <span class="keyword">const</span> std::string&amp; password, <span class="keyword">const</span> <a class="code hl_class" href="classvisionary_1_1_co_la_parameter_reader.html">CoLaParameterReader</a>&amp; getChallengeResponse, ProtocolType protocolType);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <a class="code hl_typedef" href="namespacevisionary.html#a288962be13c22d9b88d65e151cb5961f">PasswordHash</a> <a class="code hl_function" href="classvisionary_1_1_authentication_secure.html#aebc191af2b10efeab698895e4609c1ea">CreatePasswordHash</a>(<a class="code hl_enumeration" href="classvisionary_1_1_i_authentication.html#a9d9871f50bf25a43e7faa4afb9e92f08">UserLevel</a> userLevel, <span class="keyword">const</span> std::string&amp; password, <span class="keyword">const</span> <a class="code hl_struct" href="structvisionary_1_1_challenge_request.html">ChallengeRequest</a>&amp; challengeRequest, <a class="code hl_enumeration" href="namespacevisionary.html#a557238be3b0c43e9f28b6dc68ecd86c0">ProtocolType</a> protocolType);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <a class="code hl_typedef" href="namespacevisionary.html#a770512c55c2807f05651f1d9cb4a2382">ChallengeResponse</a> <a class="code hl_function" href="classvisionary_1_1_authentication_secure.html#a78d1eb70961f0ad2ce0bf02f60e9c129">CreateChallengeResponse</a>(<a class="code hl_enumeration" href="classvisionary_1_1_i_authentication.html#a9d9871f50bf25a43e7faa4afb9e92f08">UserLevel</a> userLevel, <span class="keyword">const</span> std::string&amp; password, <span class="keyword">const</span> <a class="code hl_struct" href="structvisionary_1_1_challenge_request.html">ChallengeRequest</a>&amp; challengeRequest, <a class="code hl_enumeration" href="namespacevisionary.html#a557238be3b0c43e9f28b6dc68ecd86c0">ProtocolType</a> protocolType);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classvisionary_1_1_authentication_secure.html#a979490dccff5402efedb40d60def4e36">loginImpl</a>(<a class="code hl_enumeration" href="classvisionary_1_1_i_authentication.html#a9d9871f50bf25a43e7faa4afb9e92f08">UserLevel</a> userLevel, <span class="keyword">const</span> std::string&amp; password, <span class="keyword">const</span> <a class="code hl_class" href="classvisionary_1_1_co_la_parameter_reader.html">CoLaParameterReader</a>&amp; getChallengeResponse, <a class="code hl_enumeration" href="namespacevisionary.html#a557238be3b0c43e9f28b6dc68ecd86c0">ProtocolType</a> protocolType);</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>};</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    };</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>}</div>
+<div class="ttc" id="a_co_la_parameter_reader_8h_html"><div class="ttname"><a href="_co_la_parameter_reader_8h.html">CoLaParameterReader.h</a></div></div>
+<div class="ttc" id="a_visionary_control_8h_html"><div class="ttname"><a href="_visionary_control_8h.html">VisionaryControl.h</a></div></div>
 <div class="ttc" id="aclassvisionary_1_1_authentication_secure_html"><div class="ttname"><a href="classvisionary_1_1_authentication_secure.html">visionary::AuthenticationSecure</a></div><div class="ttdef"><b>Definition</b> AuthenticationSecure.h:35</div></div>
+<div class="ttc" id="aclassvisionary_1_1_authentication_secure_html_a223227632167325361048aee00157e1f"><div class="ttname"><a href="classvisionary_1_1_authentication_secure.html#a223227632167325361048aee00157e1f">visionary::AuthenticationSecure::m_VisionaryControl</a></div><div class="ttdeci">VisionaryControl &amp; m_VisionaryControl</div><div class="ttdef"><b>Definition</b> AuthenticationSecure.h:44</div></div>
+<div class="ttc" id="aclassvisionary_1_1_authentication_secure_html_a4438d263234fae197d1c19f672050aa7"><div class="ttname"><a href="classvisionary_1_1_authentication_secure.html#a4438d263234fae197d1c19f672050aa7">visionary::AuthenticationSecure::~AuthenticationSecure</a></div><div class="ttdeci">~AuthenticationSecure() override</div></div>
+<div class="ttc" id="aclassvisionary_1_1_authentication_secure_html_a469bcd5cda1456068d168775fc10334d"><div class="ttname"><a href="classvisionary_1_1_authentication_secure.html#a469bcd5cda1456068d168775fc10334d">visionary::AuthenticationSecure::logout</a></div><div class="ttdeci">bool logout() override</div><div class="ttdef"><b>Definition</b> AuthenticationSecure.cpp:192</div></div>
+<div class="ttc" id="aclassvisionary_1_1_authentication_secure_html_a78d1eb70961f0ad2ce0bf02f60e9c129"><div class="ttname"><a href="classvisionary_1_1_authentication_secure.html#a78d1eb70961f0ad2ce0bf02f60e9c129">visionary::AuthenticationSecure::CreateChallengeResponse</a></div><div class="ttdeci">ChallengeResponse CreateChallengeResponse(UserLevel userLevel, const std::string &amp;password, const ChallengeRequest &amp;challengeRequest, ProtocolType protocolType)</div><div class="ttdef"><b>Definition</b> AuthenticationSecure.cpp:94</div></div>
+<div class="ttc" id="aclassvisionary_1_1_authentication_secure_html_a979490dccff5402efedb40d60def4e36"><div class="ttname"><a href="classvisionary_1_1_authentication_secure.html#a979490dccff5402efedb40d60def4e36">visionary::AuthenticationSecure::loginImpl</a></div><div class="ttdeci">bool loginImpl(UserLevel userLevel, const std::string &amp;password, const CoLaParameterReader &amp;getChallengeResponse, ProtocolType protocolType)</div><div class="ttdef"><b>Definition</b> AuthenticationSecure.cpp:108</div></div>
+<div class="ttc" id="aclassvisionary_1_1_authentication_secure_html_aa136f20e489e7fa0a49a14c3ec7b0bb9"><div class="ttname"><a href="classvisionary_1_1_authentication_secure.html#aa136f20e489e7fa0a49a14c3ec7b0bb9">visionary::AuthenticationSecure::m_protocolType</a></div><div class="ttdeci">ProtocolType m_protocolType</div><div class="ttdef"><b>Definition</b> AuthenticationSecure.h:45</div></div>
+<div class="ttc" id="aclassvisionary_1_1_authentication_secure_html_aebc191af2b10efeab698895e4609c1ea"><div class="ttname"><a href="classvisionary_1_1_authentication_secure.html#aebc191af2b10efeab698895e4609c1ea">visionary::AuthenticationSecure::CreatePasswordHash</a></div><div class="ttdeci">PasswordHash CreatePasswordHash(UserLevel userLevel, const std::string &amp;password, const ChallengeRequest &amp;challengeRequest, ProtocolType protocolType)</div><div class="ttdef"><b>Definition</b> AuthenticationSecure.cpp:38</div></div>
+<div class="ttc" id="aclassvisionary_1_1_authentication_secure_html_af58c6bf742b6c873cc175946920d1869"><div class="ttname"><a href="classvisionary_1_1_authentication_secure.html#af58c6bf742b6c873cc175946920d1869">visionary::AuthenticationSecure::login</a></div><div class="ttdeci">bool login(UserLevel userLevel, const std::string &amp;password) override</div><div class="ttdef"><b>Definition</b> AuthenticationSecure.cpp:155</div></div>
 <div class="ttc" id="aclassvisionary_1_1_co_la_parameter_reader_html"><div class="ttname"><a href="classvisionary_1_1_co_la_parameter_reader.html">visionary::CoLaParameterReader</a></div><div class="ttdoc">Class for reading data from a CoLaCommand.</div><div class="ttdef"><b>Definition</b> CoLaParameterReader.h:22</div></div>
 <div class="ttc" id="aclassvisionary_1_1_i_authentication_html"><div class="ttname"><a href="classvisionary_1_1_i_authentication.html">visionary::IAuthentication</a></div><div class="ttdef"><b>Definition</b> IAuthentication.h:16</div></div>
 <div class="ttc" id="aclassvisionary_1_1_i_authentication_html_a9d9871f50bf25a43e7faa4afb9e92f08"><div class="ttname"><a href="classvisionary_1_1_i_authentication.html#a9d9871f50bf25a43e7faa4afb9e92f08">visionary::IAuthentication::UserLevel</a></div><div class="ttdeci">UserLevel</div><div class="ttdoc">Available CoLa user levels.</div><div class="ttdef"><b>Definition</b> IAuthentication.h:20</div></div>
 <div class="ttc" id="aclassvisionary_1_1_visionary_control_html"><div class="ttname"><a href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a></div><div class="ttdef"><b>Definition</b> VisionaryControl.h:24</div></div>
 <div class="ttc" id="anamespacevisionary_html"><div class="ttname"><a href="namespacevisionary.html">visionary</a></div><div class="ttdef"><b>Definition</b> AuthenticationLegacy.cpp:14</div></div>
+<div class="ttc" id="anamespacevisionary_html_a288962be13c22d9b88d65e151cb5961f"><div class="ttname"><a href="namespacevisionary.html#a288962be13c22d9b88d65e151cb5961f">visionary::PasswordHash</a></div><div class="ttdeci">std::array&lt; std::uint8_t, 32 &gt; PasswordHash</div><div class="ttdef"><b>Definition</b> AuthenticationSecure.h:29</div></div>
+<div class="ttc" id="anamespacevisionary_html_a557238be3b0c43e9f28b6dc68ecd86c0"><div class="ttname"><a href="namespacevisionary.html#a557238be3b0c43e9f28b6dc68ecd86c0">visionary::ProtocolType</a></div><div class="ttdeci">ProtocolType</div><div class="ttdef"><b>Definition</b> AuthenticationSecure.h:18</div></div>
+<div class="ttc" id="anamespacevisionary_html_a557238be3b0c43e9f28b6dc68ecd86c0aa80c8c8738c41978c04a8c180e60f69e"><div class="ttname"><a href="namespacevisionary.html#a557238be3b0c43e9f28b6dc68ecd86c0aa80c8c8738c41978c04a8c180e60f69e">visionary::SUL1</a></div><div class="ttdeci">@ SUL1</div><div class="ttdef"><b>Definition</b> AuthenticationSecure.h:20</div></div>
+<div class="ttc" id="anamespacevisionary_html_a557238be3b0c43e9f28b6dc68ecd86c0ac65541ca6ae3fa7ef69edc1804a7de12"><div class="ttname"><a href="namespacevisionary.html#a557238be3b0c43e9f28b6dc68ecd86c0ac65541ca6ae3fa7ef69edc1804a7de12">visionary::UNKNOWN</a></div><div class="ttdeci">@ UNKNOWN</div><div class="ttdef"><b>Definition</b> AuthenticationSecure.h:19</div></div>
+<div class="ttc" id="anamespacevisionary_html_a557238be3b0c43e9f28b6dc68ecd86c0ac816ac5587719e3cc59da98593d9dfbe"><div class="ttname"><a href="namespacevisionary.html#a557238be3b0c43e9f28b6dc68ecd86c0ac816ac5587719e3cc59da98593d9dfbe">visionary::SUL2</a></div><div class="ttdeci">@ SUL2</div><div class="ttdef"><b>Definition</b> AuthenticationSecure.h:21</div></div>
+<div class="ttc" id="anamespacevisionary_html_a770512c55c2807f05651f1d9cb4a2382"><div class="ttname"><a href="namespacevisionary.html#a770512c55c2807f05651f1d9cb4a2382">visionary::ChallengeResponse</a></div><div class="ttdeci">std::array&lt; std::uint8_t, 32 &gt; ChallengeResponse</div><div class="ttdef"><b>Definition</b> AuthenticationSecure.h:30</div></div>
 <div class="ttc" id="astructvisionary_1_1_challenge_request_html"><div class="ttname"><a href="structvisionary_1_1_challenge_request.html">visionary::ChallengeRequest</a></div><div class="ttdef"><b>Definition</b> AuthenticationSecure.h:24</div></div>
+<div class="ttc" id="astructvisionary_1_1_challenge_request_html_a254598a51daf80fa54c11a764541e45f"><div class="ttname"><a href="structvisionary_1_1_challenge_request.html#a254598a51daf80fa54c11a764541e45f">visionary::ChallengeRequest::salt</a></div><div class="ttdeci">std::array&lt; std::uint8_t, 16 &gt; salt</div><div class="ttdef"><b>Definition</b> AuthenticationSecure.h:26</div></div>
+<div class="ttc" id="astructvisionary_1_1_challenge_request_html_a5158e9a3494ecf7e0bc0c3a84e537c82"><div class="ttname"><a href="structvisionary_1_1_challenge_request.html#a5158e9a3494ecf7e0bc0c3a84e537c82">visionary::ChallengeRequest::challenge</a></div><div class="ttdeci">std::array&lt; std::uint8_t, 16 &gt; challenge</div><div class="ttdef"><b>Definition</b> AuthenticationSecure.h:25</div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_23d3d343015a8bd7e9dbef71a9e03858.html">sickapi</a></li><li class="navelem"><a class="el" href="dir_f9343132e416b1d631e13da8b9569f26.html">src</a></li><li class="navelem"><a class="el" href="_authentication_secure_8h.html">AuthenticationSecure.h</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+  </ul>
+</div>
 </body>
 </html>

@@ -1,11 +1,9 @@
 var searchData=
 [
-  ['camera_0',['Camera',['../class_camera.html#a01f94c3543f56ede7af49dc778f19331',1,'Camera']]],
-  ['close_1',['close',['../class_camera.html#a56cb2dfa677ed0c1bed120b4d4a769a1',1,'Camera::close()'],['../classvisionary_1_1_visionary_control.html#a69ae1a82ccb2c6ecf36619f60c837733',1,'visionary::VisionaryControl::close()'],['../classvisionary_1_1_visionary_data_stream.html#a7b2f61745b51638f308a1e34ae669bb1',1,'visionary::VisionaryDataStream::close()'],['../class_visionary_camera.html#ae088c2402d1ea9956b06028eb375d924',1,'VisionaryCamera::close()']]],
-  ['closed_2',['closed',['../class_close_dock_widget.html#af93b643bee6708be8e9a053dfb958163',1,'CloseDockWidget']]],
-  ['closedockwidget_3',['CloseDockWidget',['../class_close_dock_widget.html#ae6697cdb7b3cb1f384079b2c09ac9298',1,'CloseDockWidget']]],
-  ['closeevent_4',['closeEvent',['../class_close_dock_widget.html#ad8855a028a7aaf80835e6ab255b1ff12',1,'CloseDockWidget']]],
-  ['colacommand_5',['CoLaCommand',['../classvisionary_1_1_co_la_command.html#a3126472f74c655a96e1e266df4c2750a',1,'visionary::CoLaCommand']]],
-  ['colaparameterwriter_6',['CoLaParameterWriter',['../classvisionary_1_1_co_la_parameter_writer.html#a367bffde9f27e6bfabd9ba5625d3bc76',1,'visionary::CoLaParameterWriter']]],
-  ['contextmenuevent_7',['contextMenuEvent',['../class_aspect_ratio_pixmap_label.html#a437a69042ba5aeb5a325a70dc29e783d',1,'AspectRatioPixmapLabel::contextMenuEvent()'],['../class_histogram_widget.html#aac7b32878f96181aecd84d4c04ba3e68',1,'HistogramWidget::contextMenuEvent()']]]
+  ['b_0',['b',['../structtinycolormap_1_1_color.html#a6cff42e3d66fcefcffd51efe5fca8d6c',1,'tinycolormap::Color::b() noexcept'],['../structtinycolormap_1_1_color.html#a4c5511f2a2361baf811d6642d6a62901',1,'tinycolormap::Color::b() const noexcept']]],
+  ['bi_1',['bi',['../structtinycolormap_1_1_color.html#ad9e4bc59903e946c1fbd0b2551fd9811',1,'tinycolormap::Color']]],
+  ['bigendiantonative_2',['bigEndianToNative',['../namespacevisionary.html#ab456419906aa5054acc67b101e3624e1',1,'visionary']]],
+  ['build_3',['build',['../classvisionary_1_1_co_la_parameter_writer.html#a13d8516a375acacd226a46f432e06053',1,'visionary::CoLaParameterWriter']]],
+  ['byteswap_4',['byteswap',['../namespacevisionary.html#a43c800a9eb197bb6fa4bda730142debd',1,'visionary::byteswap(uint8_t val)'],['../namespacevisionary.html#aa2a2ca57776cc64e5a32c0cbd4174fff',1,'visionary::byteswap(int8_t val)'],['../namespacevisionary.html#a333e6c78cd0c1e431daddb82a4ca6e8e',1,'visionary::byteswap(char val)'],['../namespacevisionary.html#a89ac0c4f03981368ee07f6a9624827e0',1,'visionary::byteswap(uint16_t val)'],['../namespacevisionary.html#aab3505f0ce6628bc27cc833a7f404637',1,'visionary::byteswap(int16_t val)'],['../namespacevisionary.html#a873e63d9cec1bea957ee7d10fc69f3c0',1,'visionary::byteswap(wchar_t val)'],['../namespacevisionary.html#aea4ba0dab9459f17c2de662037a6adfa',1,'visionary::byteswap(uint32_t val)'],['../namespacevisionary.html#a56ef606c2511dffcec5197c7f9174e95',1,'visionary::byteswap(int32_t val)'],['../namespacevisionary.html#ab2bab9c0c689789f32a7d5dc792e657d',1,'visionary::byteswap(float val)'],['../namespacevisionary.html#a7131dd8b31bc443101491c0a0df133a5',1,'visionary::byteswap(uint64_t val)'],['../namespacevisionary.html#a06b73bafb7d6d6e3c79ea48413c8e543',1,'visionary::byteswap(int64_t val)'],['../namespacevisionary.html#a907f6a266bfba204d2bafcf1fbc6430d',1,'visionary::byteswap(double val)']]],
+  ['byteswapalias_5',['byteswapAlias',['../namespacevisionary.html#a2efb5d48c9cf16fa491febd346065c2a',1,'visionary']]]
 ];

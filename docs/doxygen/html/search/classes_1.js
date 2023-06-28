@@ -12,5 +12,6 @@ var searchData=
   ['colaparameterreader_9',['CoLaParameterReader',['../classvisionary_1_1_co_la_parameter_reader.html',1,'visionary']]],
   ['colaparameterwriter_10',['CoLaParameterWriter',['../classvisionary_1_1_co_la_parameter_writer.html',1,'visionary']]],
   ['color_11',['Color',['../structtinycolormap_1_1_color.html',1,'tinycolormap']]],
-  ['controlsession_12',['ControlSession',['../classvisionary_1_1_control_session.html',1,'visionary']]]
+  ['comkey_5ft_12',['ComKey_t',['../structvisionary_1_1_visionary_auto_i_p_scan_custom_1_1_com_key__t.html',1,'visionary::VisionaryAutoIPScanCustom']]],
+  ['controlsession_13',['ControlSession',['../classvisionary_1_1_control_session.html',1,'visionary']]]
 ];

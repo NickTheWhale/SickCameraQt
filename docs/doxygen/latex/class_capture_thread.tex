@@ -37,6 +37,27 @@ void {\bfseries stop\+Capture} ()
 \Hypertarget{class_capture_thread_a7b3ce730549a2beea9ae989a4cf44d35}\label{class_capture_thread_a7b3ce730549a2beea9ae989a4cf44d35} 
 void {\bfseries run} () override
 \begin{DoxyCompactList}\small\item\em Overridden method from QThread that runs the capture loop. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_capture_thread_a200d8018a27b33d9d30a0a1ee98ac31b}\label{class_capture_thread_a200d8018a27b33d9d30a0a1ee98ac31b} 
+\mbox{\hyperlink{struct_frameset_1_1frameset__t}{Frameset\+::frameset\+\_\+t}} {\bfseries last\+Frameset}
+\item 
+\Hypertarget{class_capture_thread_ad625e71220121cb3f8d41f56670083aa}\label{class_capture_thread_ad625e71220121cb3f8d41f56670083aa} 
+\mbox{\hyperlink{class_camera}{Camera}} \texorpdfstring{$\ast$}{*} {\bfseries camera}
+\item 
+\Hypertarget{class_capture_thread_a2ed6e4e8d8edb71fcd16c6f4ef6441ea}\label{class_capture_thread_a2ed6e4e8d8edb71fcd16c6f4ef6441ea} 
+volatile bool {\bfseries stop}
+\item 
+\Hypertarget{class_capture_thread_adbbc0a9e0f7a616a1c5af6d216d75194}\label{class_capture_thread_adbbc0a9e0f7a616a1c5af6d216d75194} 
+unsigned int {\bfseries frame\+Retry\+Delay} = 10
+\begin{DoxyCompactList}\small\item\em Delay in milliseconds between frame capture retries. \end{DoxyCompactList}\item 
+\Hypertarget{class_capture_thread_a742b05eb2452c2a570fc342c49994b55}\label{class_capture_thread_a742b05eb2452c2a570fc342c49994b55} 
+unsigned int {\bfseries max\+Retry\+Time} = 2000
+\begin{DoxyCompactList}\small\item\em Maximum time in milliseconds for frame capture retries (must be greater than frame\+Retry\+Delay) \end{DoxyCompactList}\item 
+\Hypertarget{class_capture_thread_ad5acef2470bace8bf696c98c6fbd411c}\label{class_capture_thread_ad5acef2470bace8bf696c98c6fbd411c} 
+uint32\+\_\+t {\bfseries retry\+Counter} = 0
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -82,7 +103,5 @@ true if the capture was started successfully, false otherwise.
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Capture\+Thread.\+h\item 
-Capture\+Thread.\+cpp\item 
-x64/\+Debug/moc/moc\+\_\+\+Capture\+Thread.\+cpp\item 
-x64/\+Release/moc/moc\+\_\+\+Capture\+Thread.\+cpp\end{DoxyCompactItemize}
+\mbox{\hyperlink{_capture_thread_8h}{Capture\+Thread.\+h}}\item 
+Capture\+Thread.\+cpp\end{DoxyCompactItemize}

@@ -24,11 +24,11 @@
 \DoxyCodeLine{00025\ \ \ \ \ \{}
 \DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvisionary_1_1_frame_grabber}{FrameGrabber}}(\textcolor{keyword}{const}\ std::string\&\ hostname,\ std::uint16\_t\ port,\ std::uint64\_t\ timeoutMs)}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ :\ frameGrabberBase(hostname,\ port,\ timeoutMs)\ }
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \{\ \ }
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ frameGrabberBase.start(std::make\_shared<DataType>(),\ std::make\_shared<DataType>());\ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ :\ frameGrabberBase(hostname,\ port,\ timeoutMs)}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ frameGrabberBase.start(std::make\_shared<DataType>(),\ std::make\_shared<DataType>());}
 \DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvisionary_1_1_frame_grabber}{\string~FrameGrabber}}()\{\}}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvisionary_1_1_frame_grabber}{\string~FrameGrabber}}()\ \{\}}
 \DoxyCodeLine{00033\ }
 \DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvisionary_1_1_frame_grabber_abc2ae2b260338fdd1df61989fc58eb65}{getNextFrame}}(std::shared\_ptr<DataType>\&\ pDataHandler,\ std::uint64\_t\ timeoutMs\ =\ 1000)}
 \DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \{}
@@ -42,7 +42,7 @@
 \DoxyCodeLine{00049\ }
 \DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvisionary_1_1_frame_grabber_afd4ffd0efd86f0736ab9b4e4ce359ec1}{getCurrentFrame}}(std::shared\_ptr<DataType>\&\ pDataHandler)}
 \DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(pDataHandler\ ==\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pDataHandler\ ==\ \textcolor{keyword}{nullptr})}
 \DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pDataHandler\ =\ std::make\_shared<DataType>();}
 \DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ pTypedDataHandler\ =\ std::move(std::dynamic\_pointer\_cast<VisionaryData>(pDataHandler));}
 \DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ retVal\ =\ frameGrabberBase.getCurrentFrame(pTypedDataHandler);}

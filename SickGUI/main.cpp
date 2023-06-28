@@ -1,7 +1,7 @@
 #include "SickGUI.h"
 #include <QtWidgets/QApplication>
 #include "Camera.h"
-#include "VisionaryCamera.h"
+#include "camimpl/VisionaryCamera.h"
 #include <qsharedmemory.h>
 #include <qmessagebox.h>
 

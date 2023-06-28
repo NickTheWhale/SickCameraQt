@@ -9,9 +9,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -47,6 +52,22 @@ $(function() {
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('namespacemembers_func.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -69,17 +90,108 @@ $(function() {
 </div>
 
 <div class="contents">
-<div class="textblock">Here is a list of all documented namespace functions with links to the namespaces they belong to:</div><ul>
+<div class="textblock">Here is a list of all namespace functions with links to the namespace documentation for each function:</div>
+
+<h3><a id="index_b" name="index_b"></a>- b -</h3><ul>
+<li>bigEndianToNative()&#160;:&#160;<a class="el" href="namespacevisionary.html#ab456419906aa5054acc67b101e3624e1">visionary</a></li>
+<li>byteswap()&#160;:&#160;<a class="el" href="namespacevisionary.html#a43c800a9eb197bb6fa4bda730142debd">visionary</a></li>
+<li>byteswapAlias()&#160;:&#160;<a class="el" href="namespacevisionary.html#a2efb5d48c9cf16fa491febd346065c2a">visionary</a></li>
+</ul>
+
+
+<h3><a id="index_c" name="index_c"></a>- c -</h3><ul>
+<li>CalcLerp()&#160;:&#160;<a class="el" href="namespacetinycolormap_1_1internal.html#abf381ae90edf760cf909a0604a4de010">tinycolormap::internal</a></li>
+<li>calculateCellStatistics()&#160;:&#160;<a class="el" href="namespace_fingerprint.html#a1636020e34466a6b2d3a236225b596ea">Fingerprint</a></li>
+<li>calculateFingerprint()&#160;:&#160;<a class="el" href="namespace_fingerprint.html#abf75cc43defd274389774854191a8d89">Fingerprint</a></li>
+<li>Clamp01()&#160;:&#160;<a class="el" href="namespacetinycolormap_1_1internal.html#aabb6c73c20106a367c816868044593be">tinycolormap::internal</a></li>
+</ul>
+
+
+<h3><a id="index_d" name="index_d"></a>- d -</h3><ul>
 <li>depthToQImage()&#160;:&#160;<a class="el" href="namespace_frameset.html#acb7903afdaea70f614e22dc96b1ede93">Frameset</a></li>
+</ul>
+
+
+<h3><a id="index_e" name="index_e"></a>- e -</h3><ul>
+<li>empty_ptree()&#160;:&#160;<a class="el" href="namespacevisionary.html#a89f6be4a76497b0bb91d865e3b0d5edc">visionary</a></li>
+</ul>
+
+
+<h3><a id="index_f" name="index_f"></a>- f -</h3><ul>
 <li>frameToQImage()&#160;:&#160;<a class="el" href="namespace_frameset_1_1__internal.html#a4a2d41dbe6535713fb6e531ddcaf5930">Frameset::_internal</a></li>
+</ul>
+
+
+<h3><a id="index_g" name="index_g"></a>- g -</h3><ul>
+<li>GetCividisColor()&#160;:&#160;<a class="el" href="namespacetinycolormap.html#a0bea0c4c25557fef4ffe38572d88cd12">tinycolormap</a></li>
+<li>GetColor()&#160;:&#160;<a class="el" href="namespacetinycolormap.html#a7c60647493e7429f704fa3bacc1adb45">tinycolormap</a></li>
+<li>GetCubehelixColor()&#160;:&#160;<a class="el" href="namespacetinycolormap.html#a99790c341744e365318d3c00e3edda48">tinycolormap</a></li>
+<li>GetGithubColor()&#160;:&#160;<a class="el" href="namespacetinycolormap.html#a80ef8e736b27d3d13996ec7b39aa6ff3">tinycolormap</a></li>
+<li>GetGrayColor()&#160;:&#160;<a class="el" href="namespacetinycolormap.html#afc8b00d812d2418eabce4660e0b11686">tinycolormap</a></li>
+<li>GetHeatColor()&#160;:&#160;<a class="el" href="namespacetinycolormap.html#ac04f3ca27a888dcd5501a8b29be794ac">tinycolormap</a></li>
+<li>GetHotColor()&#160;:&#160;<a class="el" href="namespacetinycolormap.html#ac68e87978008d949f119e1db82a1c242">tinycolormap</a></li>
+<li>GetHSVColor()&#160;:&#160;<a class="el" href="namespacetinycolormap.html#a0ceff49886b7e1c2836013bbb4f7f45d">tinycolormap</a></li>
+<li>GetInfernoColor()&#160;:&#160;<a class="el" href="namespacetinycolormap.html#ace306477c41e0405ac4b05eafca6e476">tinycolormap</a></li>
+<li>GetJetColor()&#160;:&#160;<a class="el" href="namespacetinycolormap.html#ab186228ae79b69e25e8bc99529373444">tinycolormap</a></li>
+<li>GetMagmaColor()&#160;:&#160;<a class="el" href="namespacetinycolormap.html#a24643af125161afe1780e03b9af77d5a">tinycolormap</a></li>
+<li>GetParulaColor()&#160;:&#160;<a class="el" href="namespacetinycolormap.html#af39c0ad31e3c70bb253f7831df89aa52">tinycolormap</a></li>
+<li>GetPlasmaColor()&#160;:&#160;<a class="el" href="namespacetinycolormap.html#a2d99710fd3bd6bbbb64f1ec1b4261ebb">tinycolormap</a></li>
+<li>GetQuantizedColor()&#160;:&#160;<a class="el" href="namespacetinycolormap.html#ae79657ff71e6a829b72426c9efbc2e29">tinycolormap</a></li>
+<li>GetTurboColor()&#160;:&#160;<a class="el" href="namespacetinycolormap.html#ab9bde3fa4718b83a4f457e408fdf1e3e">tinycolormap</a></li>
+<li>GetTurboFastColor()&#160;:&#160;<a class="el" href="namespacetinycolormap.html#a60432d3cd6843be99d80ee2bbefcd309">tinycolormap</a></li>
+<li>GetViridisColor()&#160;:&#160;<a class="el" href="namespacetinycolormap.html#a3b5db471c1ec3c701ff2392d493515fc">tinycolormap</a></li>
+</ul>
+
+
+<h3><a id="index_i" name="index_i"></a>- i -</h3><ul>
 <li>intensityToQImage()&#160;:&#160;<a class="el" href="namespace_frameset.html#a9dd6741a477d79762ff3540b7d40372b">Frameset</a></li>
+</ul>
+
+
+<h3><a id="index_l" name="index_l"></a>- l -</h3><ul>
 <li>linToLog()&#160;:&#160;<a class="el" href="namespace_frameset_1_1__internal.html#ae30a8ca519fbb880805ee091044e427f">Frameset::_internal</a></li>
+<li>littleEndianToNative()&#160;:&#160;<a class="el" href="namespacevisionary.html#a61d449cf36d1741710c7eaa50209c483">visionary</a></li>
+</ul>
+
+
+<h3><a id="index_m" name="index_m"></a>- m -</h3><ul>
+<li>md5()&#160;:&#160;<a class="el" href="namespacevisionary.html#adead39e11a5e5e269c52637ffb6af6f0">visionary</a></li>
+</ul>
+
+
+<h3><a id="index_n" name="index_n"></a>- n -</h3><ul>
+<li>nativeToBigEndian()&#160;:&#160;<a class="el" href="namespacevisionary.html#ae17300f7f57385088f6ce1f4d1d0ee1a">visionary</a></li>
+<li>nativeToLittleEndian()&#160;:&#160;<a class="el" href="namespacevisionary.html#a5fea97411549492f7eacf2edaa525213">visionary</a></li>
+</ul>
+
+
+<h3><a id="index_o" name="index_o"></a>- o -</h3><ul>
+<li>overlayStats()&#160;:&#160;<a class="el" href="namespace_fingerprint.html#a85d452c5607a17cc97158011c6765dea">Fingerprint</a></li>
+</ul>
+
+
+<h3><a id="index_q" name="index_q"></a>- q -</h3><ul>
+<li>QuantizeArgument()&#160;:&#160;<a class="el" href="namespacetinycolormap_1_1internal.html#a47b9cbefd1b1eadf25132db4660a8fdd">tinycolormap::internal</a></li>
+</ul>
+
+
+<h3><a id="index_r" name="index_r"></a>- r -</h3><ul>
+<li>readUnalignBigEndian()&#160;:&#160;<a class="el" href="namespacevisionary.html#adcde9bbe31d6ce4a167c081700a5def1">visionary</a></li>
+<li>readUnaligned()&#160;:&#160;<a class="el" href="namespacevisionary.html#ab1eef2b34e41b5b1b46d6ef9cad9caa7">visionary</a></li>
+<li>readUnalignLittleEndian()&#160;:&#160;<a class="el" href="namespacevisionary.html#a451e7357de40d74240234ad0c53d6c11">visionary</a></li>
+</ul>
+
+
+<h3><a id="index_s" name="index_s"></a>- s -</h3><ul>
 <li>stateToQImage()&#160;:&#160;<a class="el" href="namespace_frameset.html#af957a114394740c82ff79b4ed8c941cd">Frameset</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+  </ul>
+</div>
 </body>
 </html>

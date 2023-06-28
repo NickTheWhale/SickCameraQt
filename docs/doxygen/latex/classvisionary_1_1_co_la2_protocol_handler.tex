@@ -29,6 +29,30 @@ virtual void {\bfseries close\+Session} ()=0
 \Hypertarget{classvisionary_1_1_i_protocol_handler_ad5f5fab3227139581627a4492ef50a41}\label{classvisionary_1_1_i_protocol_handler_ad5f5fab3227139581627a4492ef50a41} 
 virtual \mbox{\hyperlink{classvisionary_1_1_co_la_command}{Co\+La\+Command}} {\bfseries send} (\mbox{\hyperlink{classvisionary_1_1_co_la_command}{Co\+La\+Command}} cmd)=0
 \end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvisionary_1_1_co_la2_protocol_handler_a86b8f151263dc4856621334adc0c3fce}\label{classvisionary_1_1_co_la2_protocol_handler_a86b8f151263dc4856621334adc0c3fce} 
+uint8\+\_\+t {\bfseries calculate\+Checksum} (const std\+::vector$<$ uint8\+\_\+t $>$ \&buffer)
+\item 
+\Hypertarget{classvisionary_1_1_co_la2_protocol_handler_a8dc901f49cffa7fc01d3a6df83d56784}\label{classvisionary_1_1_co_la2_protocol_handler_a8dc901f49cffa7fc01d3a6df83d56784} 
+uint16\+\_\+t {\bfseries get\+Req\+Id} ()
+\item 
+\Hypertarget{classvisionary_1_1_co_la2_protocol_handler_a1d44c9cabd9a571095c36fb7e281d18a}\label{classvisionary_1_1_co_la2_protocol_handler_a1d44c9cabd9a571095c36fb7e281d18a} 
+std\+::vector$<$ std\+::uint8\+\_\+t $>$ {\bfseries create\+Co\+La2\+Header} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvisionary_1_1_co_la2_protocol_handler_a37af68580c96e2319ebed2e90bf306d6}\label{classvisionary_1_1_co_la2_protocol_handler_a37af68580c96e2319ebed2e90bf306d6} 
+\mbox{\hyperlink{classvisionary_1_1_i_transport}{ITransport}} \& {\bfseries m\+\_\+r\+Transport}
+\item 
+\Hypertarget{classvisionary_1_1_co_la2_protocol_handler_afa9233d291a6adeba339fdce5a12a3a6}\label{classvisionary_1_1_co_la2_protocol_handler_afa9233d291a6adeba339fdce5a12a3a6} 
+uint16\+\_\+t {\bfseries m\+\_\+\+Req\+ID}
+\item 
+\Hypertarget{classvisionary_1_1_co_la2_protocol_handler_a5fb1b18263b66b78e9992ab3a845ec13}\label{classvisionary_1_1_co_la2_protocol_handler_a5fb1b18263b66b78e9992ab3a845ec13} 
+uint32\+\_\+t {\bfseries m\+\_\+session\+ID}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Member Function Documentation}
