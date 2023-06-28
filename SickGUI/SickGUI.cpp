@@ -15,10 +15,6 @@
 #include <qpainter.h>
 #include <qsizepolicy.h>
 #include "Fingerprint.h"
-
-/**
- * @brief .
- */
 #include <qtoolbutton.h>
 #include <qmenu.h>
 #include <qpushbutton.h>
