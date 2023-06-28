@@ -1,0 +1,95 @@
+\doxysection{Frameset Namespace Reference}
+\hypertarget{namespace_frameset}{}\label{namespace_frameset}\index{Frameset@{Frameset}}
+
+
+Defines a frameset and contains frame to QImage helper functions.  
+
+
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_frameset_1_1__internal}{\+\_\+internal}}
+\begin{DoxyCompactList}\small\item\em Contains internal helper functions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_frameset_1_1frameset__t}{frameset\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Defines a frameset. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespace_frameset_acb7903afdaea70f614e22dc96b1ede93}{depth\+To\+QImage}} (const \mbox{\hyperlink{struct_frameset_1_1frameset__t}{frameset\+\_\+t}} \&fs, QImage \&q\+Image, tinycolormap\+::\+Colormap\+Type color\+Map=tinycolormap\+::\+Colormap\+Type\+::\+Gray, bool invert=false)
+\begin{DoxyCompactList}\small\item\em Converts a depth frame to a color QImage. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_frameset_a9dd6741a477d79762ff3540b7d40372b}{intensity\+To\+QImage}} (const \mbox{\hyperlink{struct_frameset_1_1frameset__t}{frameset\+\_\+t}} \&fs, QImage \&q\+Image, tinycolormap\+::\+Colormap\+Type color\+Map=tinycolormap\+::\+Colormap\+Type\+::\+Gray, bool invert=false)
+\begin{DoxyCompactList}\small\item\em Converts an intensity frame to a color QImage. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_frameset_af957a114394740c82ff79b4ed8c941cd}{state\+To\+QImage}} (const \mbox{\hyperlink{struct_frameset_1_1frameset__t}{frameset\+\_\+t}} \&fs, QImage \&q\+Image, tinycolormap\+::\+Colormap\+Type color\+Map=tinycolormap\+::\+Colormap\+Type\+::\+Gray, bool invert=false)
+\begin{DoxyCompactList}\small\item\em Converts a state frame to a color QImage. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Defines a frameset and contains frame to QImage helper functions. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespace_frameset_acb7903afdaea70f614e22dc96b1ede93}\label{namespace_frameset_acb7903afdaea70f614e22dc96b1ede93} 
+\index{Frameset@{Frameset}!depthToQImage@{depthToQImage}}
+\index{depthToQImage@{depthToQImage}!Frameset@{Frameset}}
+\doxysubsubsection{\texorpdfstring{depthToQImage()}{depthToQImage()}}
+{\footnotesize\ttfamily void Frameset\+::depth\+To\+QImage (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_frameset_1_1frameset__t}{frameset\+\_\+t}} \&}]{fs,  }\item[{QImage \&}]{q\+Image,  }\item[{tinycolormap\+::\+Colormap\+Type}]{color\+Map = {\ttfamily tinycolormap\+:\+:ColormapType\+:\+:Gray},  }\item[{bool}]{invert = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Converts a depth frame to a color QImage. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fs} & Input frameset containing depth frame, height, and width. \\
+\hline
+{\em q\+Image} & Output QImage. \\
+\hline
+{\em color\+Map} & Color map type (optional). \\
+\hline
+{\em invert} & Invert output QImage (optional). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespace_frameset_a9dd6741a477d79762ff3540b7d40372b}\label{namespace_frameset_a9dd6741a477d79762ff3540b7d40372b} 
+\index{Frameset@{Frameset}!intensityToQImage@{intensityToQImage}}
+\index{intensityToQImage@{intensityToQImage}!Frameset@{Frameset}}
+\doxysubsubsection{\texorpdfstring{intensityToQImage()}{intensityToQImage()}}
+{\footnotesize\ttfamily void Frameset\+::intensity\+To\+QImage (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_frameset_1_1frameset__t}{frameset\+\_\+t}} \&}]{fs,  }\item[{QImage \&}]{q\+Image,  }\item[{tinycolormap\+::\+Colormap\+Type}]{color\+Map = {\ttfamily tinycolormap\+:\+:ColormapType\+:\+:Gray},  }\item[{bool}]{invert = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Converts an intensity frame to a color QImage. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fs} & Input frameset containing intensity frame, height, and width. \\
+\hline
+{\em q\+Image} & Output QImage. \\
+\hline
+{\em color\+Map} & Color map type (optional). \\
+\hline
+{\em invert} & Invert output QImage (optional). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespace_frameset_af957a114394740c82ff79b4ed8c941cd}\label{namespace_frameset_af957a114394740c82ff79b4ed8c941cd} 
+\index{Frameset@{Frameset}!stateToQImage@{stateToQImage}}
+\index{stateToQImage@{stateToQImage}!Frameset@{Frameset}}
+\doxysubsubsection{\texorpdfstring{stateToQImage()}{stateToQImage()}}
+{\footnotesize\ttfamily void Frameset\+::state\+To\+QImage (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_frameset_1_1frameset__t}{frameset\+\_\+t}} \&}]{fs,  }\item[{QImage \&}]{q\+Image,  }\item[{tinycolormap\+::\+Colormap\+Type}]{color\+Map = {\ttfamily tinycolormap\+:\+:ColormapType\+:\+:Gray},  }\item[{bool}]{invert = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Converts a state frame to a color QImage. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fs} & Input frameset containing state frame, height, and width. \\
+\hline
+{\em q\+Image} & Output QImage. \\
+\hline
+{\em color\+Map} & Color map type (optional). \\
+\hline
+{\em invert} & Invert output QImage (optional). \\
+\hline
+\end{DoxyParams}

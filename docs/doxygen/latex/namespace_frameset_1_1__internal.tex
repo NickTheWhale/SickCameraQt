@@ -1,0 +1,74 @@
+\doxysection{Frameset\+::\+\_\+internal Namespace Reference}
+\hypertarget{namespace_frameset_1_1__internal}{}\label{namespace_frameset_1_1__internal}\index{Frameset::\_internal@{Frameset::\_internal}}
+
+
+Contains internal helper functions.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{namespace_frameset_1_1__internal_ae30a8ca519fbb880805ee091044e427f}{lin\+To\+Log}} (double x)
+\begin{DoxyCompactList}\small\item\em Linear to logarithmic LUT. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_frameset_1_1__internal_a4a2d41dbe6535713fb6e531ddcaf5930}{frame\+To\+QImage}} (const std\+::vector$<$ uint16\+\_\+t $>$ \&frame, int width, int height, QImage \&q\+Image, tinycolormap\+::\+Colormap\+Type color\+Map, bool invert, bool log)
+\begin{DoxyCompactList}\small\item\em Converts a grayscale frame to color QImage. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contains internal helper functions. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespace_frameset_1_1__internal_a4a2d41dbe6535713fb6e531ddcaf5930}\label{namespace_frameset_1_1__internal_a4a2d41dbe6535713fb6e531ddcaf5930} 
+\index{Frameset::\_internal@{Frameset::\_internal}!frameToQImage@{frameToQImage}}
+\index{frameToQImage@{frameToQImage}!Frameset::\_internal@{Frameset::\_internal}}
+\doxysubsubsection{\texorpdfstring{frameToQImage()}{frameToQImage()}}
+{\footnotesize\ttfamily void Frameset\+::\+\_\+internal\+::frame\+To\+QImage (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ uint16\+\_\+t $>$ \&}]{frame,  }\item[{int}]{width,  }\item[{int}]{height,  }\item[{QImage \&}]{q\+Image,  }\item[{tinycolormap\+::\+Colormap\+Type}]{color\+Map,  }\item[{bool}]{invert,  }\item[{bool}]{log }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Converts a grayscale frame to color QImage. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em frame} & Input grayscale frame. \\
+\hline
+{\em width} & Frame width. \\
+\hline
+{\em height} & Frame height. \\
+\hline
+{\em q\+Image} & Output QImage. \\
+\hline
+{\em color\+Map} & Type of color map to apply. \\
+\hline
+{\em invert} & Invert output QImage colors. \\
+\hline
+{\em log} & Apply linear -\/\texorpdfstring{$>$}{>} logarithmic map. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespace_frameset_1_1__internal_ae30a8ca519fbb880805ee091044e427f}\label{namespace_frameset_1_1__internal_ae30a8ca519fbb880805ee091044e427f} 
+\index{Frameset::\_internal@{Frameset::\_internal}!linToLog@{linToLog}}
+\index{linToLog@{linToLog}!Frameset::\_internal@{Frameset::\_internal}}
+\doxysubsubsection{\texorpdfstring{linToLog()}{linToLog()}}
+{\footnotesize\ttfamily double Frameset\+::\+\_\+internal\+::lin\+To\+Log (\begin{DoxyParamCaption}\item[{double}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Linear to logarithmic LUT. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{import}\ time}
+\DoxyCodeLine{print(\textcolor{stringliteral}{"{}hello\ world"{}})}
+\DoxyCodeLine{\textcolor{keyword}{def\ }MyClass:}
+\DoxyCodeLine{\ \textcolor{keyword}{def\ }\_\_init\_\_(self):}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{pass}}
+
+\end{DoxyCode}
+ 
+\begin{DoxyParams}{Parameters}
+{\em x} & Linear input within \mbox{[}0.\+0, 1.\+0\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Logarithmic map within \mbox{[}0.\+0, 1.\+0\mbox{]} 
+\end{DoxyReturn}

@@ -1,15 +1,18 @@
 var searchData=
 [
-  ['scaledpixmap_0',['scaledPixmap',['../class_aspect_ratio_pixmap_label.html#afe6bd4b782873923c82d85f27d836a7f',1,'AspectRatioPixmapLabel']]],
-  ['send_1',['send',['../classvisionary_1_1_i_transport.html#a8aa95dafb0bd9662eb5b686b28523e60',1,'visionary::ITransport::send()'],['../classvisionary_1_1_tcp_socket.html#a8aa95dafb0bd9662eb5b686b28523e60',1,'visionary::TcpSocket::send()'],['../classvisionary_1_1_udp_socket.html#a8aa95dafb0bd9662eb5b686b28523e60',1,'visionary::UdpSocket::send()']]],
-  ['sendcommand_2',['sendCommand',['../classvisionary_1_1_visionary_control.html#a35e9f9d814181c5649d876d83a35fc8c',1,'visionary::VisionaryControl']]],
-  ['setdatahandler_3',['setDataHandler',['../classvisionary_1_1_visionary_data_stream.html#a407e2e0d1cf841a70ab63391d26b6223',1,'visionary::VisionaryDataStream']]],
-  ['setpixmap_4',['setPixmap',['../class_aspect_ratio_pixmap_label.html#ae731b8cb4f304432971625db6436126c',1,'AspectRatioPixmapLabel']]],
-  ['setxaxis_5',['setXAxis',['../class_histogram_widget.html#a85c75518f7fdfcd017763f62058b3097',1,'HistogramWidget']]],
-  ['setyaxis_6',['setYAxis',['../class_histogram_widget.html#a2f4bda97d068b0bfd40b0cc0b660fd98',1,'HistogramWidget']]],
-  ['startacquisition_7',['startAcquisition',['../classvisionary_1_1_visionary_control.html#ae7ecb32527b4d25ec2225acec71e6641',1,'visionary::VisionaryControl']]],
-  ['startcapture_8',['startCapture',['../class_camera.html#acdb890f53f359f4a1c3c72a8772228f0',1,'Camera::startCapture()'],['../class_capture_thread.html#af0cef714c6485ba7e0aac3888da18c20',1,'CaptureThread::startCapture()'],['../class_visionary_camera.html#a830a20b540edee0a375a709fb654bb87',1,'VisionaryCamera::startCapture()']]],
-  ['stepacquisition_9',['stepAcquisition',['../classvisionary_1_1_visionary_control.html#a33897fd24b290db7210d81902f21eba6',1,'visionary::VisionaryControl']]],
-  ['stopacquisition_10',['stopAcquisition',['../classvisionary_1_1_visionary_control.html#a7a16fff5119b8369a2a5bf7f051c6bba',1,'visionary::VisionaryControl']]],
-  ['stopcapture_11',['stopCapture',['../class_camera.html#a0701c1d212f7c236e13f8980d2b2e566',1,'Camera::stopCapture()'],['../class_capture_thread.html#a552aad21d7c4c4a8f612c62a9e06bd18',1,'CaptureThread::stopCapture()'],['../class_visionary_camera.html#a2bc1fd6055fc9fa1fae727fc790b0820',1,'VisionaryCamera::stopCapture()']]]
+  ['read_0',['read',['../classvisionary_1_1_i_transport.html#af7d6052b61f9e837cbfdc155389a0308',1,'visionary::ITransport::read()'],['../classvisionary_1_1_tcp_socket.html#a9a4e4b3eba8de7e3809bec59a64910e4',1,'visionary::TcpSocket::read()'],['../classvisionary_1_1_udp_socket.html#af1566df8bd08ca50553d454f107b0634',1,'visionary::UdpSocket::read()']]],
+  ['readbool_1',['readBool',['../classvisionary_1_1_co_la_parameter_reader.html#a59273d4efbea73480da55448696b61b3',1,'visionary::CoLaParameterReader']]],
+  ['readdint_2',['readDInt',['../classvisionary_1_1_co_la_parameter_reader.html#ac246b75598d30bdb48c6c2628df45f58',1,'visionary::CoLaParameterReader']]],
+  ['readflexstring_3',['readFlexString',['../classvisionary_1_1_co_la_parameter_reader.html#afbee227a1cb89997c2865e3feaac4b2b',1,'visionary::CoLaParameterReader']]],
+  ['readint_4',['readInt',['../classvisionary_1_1_co_la_parameter_reader.html#a001a37985f15225426f8eba1b3620b61',1,'visionary::CoLaParameterReader']]],
+  ['readlreal_5',['readLReal',['../classvisionary_1_1_co_la_parameter_reader.html#a05425d40eba0f33c64d75bf00fa84e46',1,'visionary::CoLaParameterReader']]],
+  ['readreal_6',['readReal',['../classvisionary_1_1_co_la_parameter_reader.html#a746f81a0a92c65c2edf553cd4b14d23b',1,'visionary::CoLaParameterReader']]],
+  ['readsint_7',['readSInt',['../classvisionary_1_1_co_la_parameter_reader.html#ab13ad2fca215903bed443761ad6dddcf',1,'visionary::CoLaParameterReader']]],
+  ['readudint_8',['readUDInt',['../classvisionary_1_1_co_la_parameter_reader.html#a9707c73b913b788adfe9c8cca342ba5c',1,'visionary::CoLaParameterReader']]],
+  ['readuint_9',['readUInt',['../classvisionary_1_1_co_la_parameter_reader.html#ac156218f669cad0724a7817002af6c36',1,'visionary::CoLaParameterReader']]],
+  ['readusint_10',['readUSInt',['../classvisionary_1_1_co_la_parameter_reader.html#a1f9f517c1edc206af6b83a1b5acccbc3',1,'visionary::CoLaParameterReader']]],
+  ['recv_11',['recv',['../classvisionary_1_1_i_transport.html#a270896bd4df1f742e6e32f8866f05b5d',1,'visionary::ITransport::recv()'],['../classvisionary_1_1_tcp_socket.html#af522e4c8bd834badbe86c55c5c61976e',1,'visionary::TcpSocket::recv()'],['../classvisionary_1_1_udp_socket.html#a653283a07b9f12fcaa2699599b543d79',1,'visionary::UdpSocket::recv()']]],
+  ['resizeevent_12',['resizeEvent',['../class_aspect_ratio_pixmap_label.html#a5e64fc72f5b25b9cc4a13ed5560eb282',1,'AspectRatioPixmapLabel']]],
+  ['rewind_13',['rewind',['../classvisionary_1_1_co_la_parameter_reader.html#ac06ecea8b9f990d37189f03c872fc21f',1,'visionary::CoLaParameterReader']]],
+  ['run_14',['run',['../class_capture_thread.html#a7b3ce730549a2beea9ae989a4cf44d35',1,'CaptureThread']]]
 ];
