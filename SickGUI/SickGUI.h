@@ -87,6 +87,13 @@ private:
 	void initializeWidgets();
 
 	/**
+	 * @brief Initializes Http Server.
+	 * 
+	 * @return true if successful, false otherwise.
+	 */
+	bool initializeHttpServer();
+
+	/**
 	 * @brief Shows latest camera frame.
 	 * 
 	 * Grabs the latest frameset from the frameset buffer and converts the selected frame type 
