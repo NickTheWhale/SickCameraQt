@@ -290,7 +290,7 @@ void SickGUI::initializeWidgets()
 
 #pragma endregion
 
-	
+
 #pragma region DEPTH_HISTOGRAM
 	// the axis range and step is kinda hacky. Best not to mess with it.
 	depthHistogram = new HistogramWidget(100, 5'000, 100, 20'000, ui.centralWidget);
@@ -341,7 +341,7 @@ void SickGUI::updateDisplay()
 	// don't bother is the window is minimized
 	if (this->isMinimized())
 		return;
-	
+
 	// gotta use a mutex since the frameset buffer is accessed by multiple threads
 	if (!framesetMutex.tryLock())
 		return;
@@ -381,7 +381,7 @@ void SickGUI::updateDisplay()
 		}
 		break;
 		}
-		
+
 		// we use this method for thread safety
 		writeImage(qImage);
 	}
