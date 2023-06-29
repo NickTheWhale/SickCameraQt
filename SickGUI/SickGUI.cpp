@@ -22,7 +22,6 @@
 #include "CloseDockWidget.h"
 
 #include <HistogramWidget.h>
-#include <qhttpserver.h>
 
 
 SickGUI::SickGUI(QWidget* parent) : QMainWindow(parent), framesetBuffer(framesetBufferSize)
@@ -36,7 +35,7 @@ SickGUI::SickGUI(QWidget* parent) : QMainWindow(parent), framesetBuffer(frameset
 	ui.setupUi(this);
 
 	initializeWidgets();
-	//initializeHttpServer();
+	initializeWebSocket();
 
 	// create and connect future watcher to check thread status
 	threadWatcher = new QFutureWatcher<bool>(this);
@@ -338,16 +337,28 @@ void SickGUI::initializeWidgets()
 #pragma endregion
 }
 
-bool SickGUI::initializeHttpServer()
+bool SickGUI::initializeWebSocket()
 {
-	QHttpServer server;
+	server = new QWebSocketServer("My WebSocket Server", QWebSocketServer::NonSecureMode, this);
 
-	server.route("/", []()
-		{
-			return "hello world";
+	QObject::connect(server, &QWebSocketServer::newConnection, [this]() {
+		qDebug() << "New connection";
+
+		QWebSocket* socket = server->nextPendingConnection();
+
+		QObject::connect(socket, &QWebSocket::textMessageReceived, [socket](const QString& message) {
+			qDebug() << "Message received:" << message;
+			// Handle the incoming message from the client
+			});
+
+		QObject::connect(socket, &QWebSocket::disconnected, [socket]() {
+			qDebug() << "Client disconnected";
+			// Clean up resources or handle the client disconnection
+			socket->deleteLater();
+			});
 		});
-	server.listen();
-	return true;
+
+	return server->listen(QHostAddress::Any, 8080);  // Replace with the appropriate port number
 }
 
 void SickGUI::updateDisplay()

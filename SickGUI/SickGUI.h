@@ -24,6 +24,9 @@
 #include "TinyColormap.hpp"
 #include <HistogramWidget.h>
 #include <AspectRatioPixmapLabel.h>
+#include <qwebsocket.h>
+#include <qwebsocketserver.h>
+
 
 class CaptureThread;
 
@@ -87,11 +90,11 @@ private:
 	void initializeWidgets();
 
 	/**
-	 * @brief Initializes Http Server.
+	 * @brief Initializes web socket.
 	 * 
 	 * @return true if successful, false otherwise.
 	 */
-	bool initializeHttpServer();
+	bool initializeWebSocket();
 
 	/**
 	 * @brief Shows latest camera frame.
@@ -208,4 +211,6 @@ private:
 	QLabel* statusBarLabel = nullptr;
 
 	bool overLayStats = false;
+
+	QWebSocketServer* server = nullptr;
 };
