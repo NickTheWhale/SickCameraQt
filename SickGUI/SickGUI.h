@@ -24,8 +24,7 @@
 #include "TinyColormap.hpp"
 #include <HistogramWidget.h>
 #include <AspectRatioPixmapLabel.h>
-#include <qwebsocket.h>
-#include <qwebsocketserver.h>
+#include <qtcpsocket.h>
 
 
 class CaptureThread;
@@ -90,11 +89,11 @@ private:
 	void initializeWidgets();
 
 	/**
-	 * @brief Initializes web socket.
+	 * @brief Initializes web connection.
 	 * 
 	 * @return true if successful, false otherwise.
 	 */
-	bool initializeWebSocket();
+	bool initializeWebServerConnection();
 
 	/**
 	 * @brief Shows latest camera frame.
@@ -112,6 +111,12 @@ private:
 	 * followed by HistogramWidget::update().
 	 */
 	void updateCharts();
+
+	/**
+	 * @brief Updates the web image.
+	 * 
+	 */
+	void updateWeb();
 
 	/**
 	 * @brief Writes QImage to display.
@@ -204,6 +209,9 @@ private:
 	QTimer* chartTimer = nullptr;
 	int chartTimerInterval = 50; /* ms */
 
+	QTimer* webTimer = nullptr;
+	int webTimerInterval = 5000; /* ms */
+
 	Stream streamType;
 	tinycolormap::ColormapType streamColorMapType;
 	volatile bool invertedColor;
@@ -212,5 +220,5 @@ private:
 
 	bool overLayStats = false;
 
-	QWebSocketServer* server = nullptr;
+	QTcpSocket* socket = nullptr;
 };

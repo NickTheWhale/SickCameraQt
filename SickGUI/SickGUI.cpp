@@ -29,13 +29,15 @@ SickGUI::SickGUI(QWidget* parent) : QMainWindow(parent), framesetBuffer(frameset
 	// create and connect timers to their corresponding update methods
 	displayTimer = new QTimer(this);
 	chartTimer = new QTimer(this);
+	webTimer = new QTimer(this);
 	QObject::connect(displayTimer, &QTimer::timeout, this, &SickGUI::updateDisplay);
 	QObject::connect(chartTimer, &QTimer::timeout, this, &SickGUI::updateCharts);
+	QObject::connect(webTimer, &QTimer::timeout, this, &SickGUI::updateWeb);
 
 	ui.setupUi(this);
 
 	initializeWidgets();
-	initializeWebSocket();
+	initializeWebServerConnection();
 
 	// create and connect future watcher to check thread status
 	threadWatcher = new QFutureWatcher<bool>(this);
@@ -59,6 +61,11 @@ SickGUI::~SickGUI()
 	if (chartTimer)
 	{
 		chartTimer->stop();
+	}
+
+	if (webTimer)
+	{
+		webTimer->stop();
 	}
 
 	if (threadWatcher && !threadWatcher->isFinished())
@@ -94,6 +101,11 @@ SickGUI::~SickGUI()
 			s7Client->Disconnect();
 		delete s7Client;
 		s7Client = nullptr;
+	}
+
+	if (socket)
+	{
+		socket->close();
 	}
 }
 
@@ -337,28 +349,16 @@ void SickGUI::initializeWidgets()
 #pragma endregion
 }
 
-bool SickGUI::initializeWebSocket()
+bool SickGUI::initializeWebServerConnection()
 {
-	server = new QWebSocketServer("My WebSocket Server", QWebSocketServer::NonSecureMode, this);
+	socket = new QTcpSocket(this);
+	socket->connectToHost("localhost", 3000);
 
-	QObject::connect(server, &QWebSocketServer::newConnection, [this]() {
-		qDebug() << "New connection";
+	socket->write("init");
+	webTimer->setInterval(webTimerInterval);
+	webTimer->start();
 
-		QWebSocket* socket = server->nextPendingConnection();
-
-		QObject::connect(socket, &QWebSocket::textMessageReceived, [socket](const QString& message) {
-			qDebug() << "Message received:" << message;
-			// Handle the incoming message from the client
-			});
-
-		QObject::connect(socket, &QWebSocket::disconnected, [socket]() {
-			qDebug() << "Client disconnected";
-			// Clean up resources or handle the client disconnection
-			socket->deleteLater();
-			});
-		});
-
-	return server->listen(QHostAddress::Any, 8080);  // Replace with the appropriate port number
+	return true;
 }
 
 void SickGUI::updateDisplay()
@@ -441,6 +441,67 @@ void SickGUI::updateCharts()
 				intensityHistogram->update();
 			}
 		, Qt::QueuedConnection);
+	}
+}
+
+void SickGUI::updateWeb()
+{
+	// gotta use a mutex since the frameset buffer is accessed by multiple threads
+	if (!framesetMutex.tryLock())
+		return;
+	if (framesetBuffer.empty())
+	{
+		framesetMutex.unlock();
+	}
+	else
+	{
+		Frameset::frameset_t fs = framesetBuffer.back();
+		framesetMutex.unlock();
+		
+		QImage qImage;
+		Frameset::depthToQImage(fs, qImage);
+
+		QByteArray bytes;
+		// packet start
+		for (int i = 0; i < 4; ++i)
+		{
+			bytes.append(static_cast<char>(0));
+			bytes.append(static_cast<char>(255));
+		}
+
+		// height
+		for (int i = 0; i < 4; ++i)
+		{
+			bytes.append(static_cast<uint8_t>((fs.height >> 8 * i) & 0xff));
+		}
+		
+		// width
+		for (int i = 0; i < 4; ++i)
+		{
+			bytes.append(static_cast<uint8_t>((fs.width >> 8 * i) & 0xff));
+		}
+
+		// frame number
+		for (int i = 0; i < 4; ++i)
+		{
+			bytes.append(static_cast<uint8_t>((fs.number >> 8 * i) & 0xff));
+		}
+
+		// frame time
+		for (int i = 0; i < 8; ++i)
+		{
+			bytes.append(static_cast<uint8_t>((fs.time >> 8 * i) & 0xff));
+		}
+
+		// image size (in bytes)
+		for (int i = 0; i < 8; ++i)
+		{
+			bytes.append(static_cast<uint8_t>((qImage.sizeInBytes() >> 8 * i) & 0xff));
+		}
+
+		// image data
+		bytes.append(reinterpret_cast<const char*>(qImage.constBits()), qImage.sizeInBytes());
+		socket->write(bytes);
 	}
 }
 
