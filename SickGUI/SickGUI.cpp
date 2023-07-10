@@ -20,7 +20,7 @@
 #include <qpushbutton.h>
 #include <qsettings.h>
 #include "CloseDockWidget.h"
-
+#include <qbuffer.h>
 #include <HistogramWidget.h>
 
 
@@ -101,11 +101,6 @@ SickGUI::~SickGUI()
 			s7Client->Disconnect();
 		delete s7Client;
 		s7Client = nullptr;
-	}
-
-	if (socket)
-	{
-		socket->close();
 	}
 }
 
@@ -351,10 +346,9 @@ void SickGUI::initializeWidgets()
 
 bool SickGUI::initializeWebServerConnection()
 {
-	socket = new QTcpSocket(this);
-	socket->connectToHost("localhost", 3000);
+	tcpClient = new TcpClient("localhost", 3000, this);
+	tcpClient->start();
 
-	socket->write("init");
 	webTimer->setInterval(webTimerInterval);
 	webTimer->start();
 
@@ -493,15 +487,21 @@ void SickGUI::updateWeb()
 			bytes.append(static_cast<uint8_t>((fs.time >> 8 * i) & 0xff));
 		}
 
+		// image data (as png)
+		QByteArray imageBytes;
+		QBuffer buffer(&imageBytes);
+		buffer.open(QIODevice::WriteOnly);
+		qImage.save(&buffer, "PNG");
+
 		// image size (in bytes)
 		for (int i = 0; i < 8; ++i)
 		{
-			bytes.append(static_cast<uint8_t>((qImage.sizeInBytes() >> 8 * i) & 0xff));
+			bytes.append(static_cast<uint8_t>((imageBytes.size() >> 8 * i) & 0xff));
 		}
 
-		// image data
-		bytes.append(reinterpret_cast<const char*>(qImage.constBits()), qImage.sizeInBytes());
-		socket->write(bytes);
+		bytes.append(imageBytes);
+		qint64 bytesWritten = tcpClient->write(bytes);
+		qDebug() << "Wrote" << bytesWritten << "bytes";
 	}
 }
 

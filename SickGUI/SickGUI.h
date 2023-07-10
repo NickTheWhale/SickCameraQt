@@ -24,7 +24,7 @@
 #include "TinyColormap.hpp"
 #include <HistogramWidget.h>
 #include <AspectRatioPixmapLabel.h>
-#include <qtcpsocket.h>
+#include "TcpClient.h"
 
 
 class CaptureThread;
@@ -210,7 +210,7 @@ private:
 	int chartTimerInterval = 50; /* ms */
 
 	QTimer* webTimer = nullptr;
-	int webTimerInterval = 5000; /* ms */
+	int webTimerInterval = 100; /* ms */
 
 	Stream streamType;
 	tinycolormap::ColormapType streamColorMapType;
@@ -220,5 +220,5 @@ private:
 
 	bool overLayStats = false;
 
-	QTcpSocket* socket = nullptr;
+	TcpClient* tcpClient = nullptr;
 };
