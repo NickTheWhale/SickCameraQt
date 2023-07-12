@@ -103,6 +103,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AutoWebSocket.cpp" />
+    <ClCompile Include="WebThread.cpp" />
     <ClCompile Include="widgets\LoggingWidget.cpp" />
     <ClCompile Include="TcpClient.cpp" />
     <ClCompile Include="widgets\CloseDockWidget.cpp" />
@@ -158,8 +160,10 @@
     <QtMoc Include="widgets\AspectRatioPixmapLabel.h" />
     <QtMoc Include="widgets\HistogramWidget.h" />
     <QtMoc Include="widgets\CloseDockWidget.h" />
+    <QtMoc Include="AutoWebSocket.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Fingerprint.h" />
+    <QtMoc Include="WebThread.h" />
     <ClInclude Include="widgets\LoggingWidget.h" />
     <ClInclude Include="sickapi\src\AuthenticationLegacy.h" />
     <ClInclude Include="sickapi\src\AuthenticationSecure.h" />

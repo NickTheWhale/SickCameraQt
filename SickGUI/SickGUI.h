@@ -24,8 +24,8 @@
 #include "TinyColormap.hpp"
 #include <HistogramWidget.h>
 #include <AspectRatioPixmapLabel.h>
-#include "TcpClient.h"
 #include <LoggingWidget.h>
+#include "AutoWebSocket.h"	
 
 
 class CaptureThread;
@@ -222,5 +222,5 @@ private:
 
 	bool overLayStats = false;
 
-	TcpClient* tcpClient = nullptr;
+	AutoWebSocket* webSocket = nullptr;
 };

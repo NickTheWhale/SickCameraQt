@@ -334,10 +334,10 @@ void SickGUI::initializeWidgets()
 
 
 #pragma region LOGGING_WINDOW
-	
+
 	loggingWidget = new LoggingWidget(this);
 	loggingWidget->setMaxLineCount(500);
-	
+
 	dock = new CloseDockWidget("Log", this);
 	dock->setObjectName("loggingWidgetDock");
 	dock->setAllowedAreas(Qt::DockWidgetArea::AllDockWidgetAreas);
@@ -361,8 +361,8 @@ void SickGUI::initializeWidgets()
 
 bool SickGUI::initializeWebServerConnection()
 {
-	tcpClient = new TcpClient("localhost", 3000, this);
-	tcpClient->start();
+	webSocket = new AutoWebSocket(QUrl("ws://localhost:3000"), QWebSocketProtocol::VersionLatest, this);
+	webSocket->start();
 
 	webTimer->setInterval(webTimerInterval);
 	webTimer->start();
@@ -466,7 +466,7 @@ void SickGUI::updateWeb()
 	{
 		Frameset::frameset_t fs = framesetBuffer.back();
 		framesetMutex.unlock();
-		
+
 		QImage qImage;
 		Frameset::depthToQImage(fs, qImage);
 
@@ -481,13 +481,13 @@ void SickGUI::updateWeb()
 		// height
 		for (int i = 0; i < 4; ++i)
 		{
-			bytes.append(static_cast<uint8_t>((fs.height >> 8 * i) & 0xff));
+			bytes.append(static_cast<uint8_t>((qImage.height() >> 8 * i) & 0xff));
 		}
-		
+
 		// width
 		for (int i = 0; i < 4; ++i)
 		{
-			bytes.append(static_cast<uint8_t>((fs.width >> 8 * i) & 0xff));
+			bytes.append(static_cast<uint8_t>((qImage.width() >> 8 * i) & 0xff));
 		}
 
 		// frame number
@@ -515,9 +515,10 @@ void SickGUI::updateWeb()
 		}
 
 		bytes.append(imageBytes);
-		qint64 bytesWritten = tcpClient->write(bytes);
+
+		qint64 bytesWritten = webSocket->sendBinaryMessage(bytes);
+
 		qDebug() << "Wrote" << bytesWritten << "bytes";
-		loggingWidget->logInfo(std::format("Wrote {} bytes", bytesWritten).c_str());
 	}
 }
 
