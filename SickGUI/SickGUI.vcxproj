@@ -103,6 +103,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="widgets\LoggingWidget.cpp" />
     <ClCompile Include="TcpClient.cpp" />
     <ClCompile Include="widgets\CloseDockWidget.cpp" />
     <ClCompile Include="CaptureThread.cpp">
@@ -159,6 +160,7 @@
     <QtMoc Include="widgets\CloseDockWidget.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Fingerprint.h" />
+    <ClInclude Include="widgets\LoggingWidget.h" />
     <ClInclude Include="sickapi\src\AuthenticationLegacy.h" />
     <ClInclude Include="sickapi\src\AuthenticationSecure.h" />
     <ClInclude Include="sickapi\src\CoLa2ProtocolHandler.h" />

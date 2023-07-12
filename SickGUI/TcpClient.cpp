@@ -35,21 +35,30 @@ void TcpClient::stop()
 qint64 TcpClient::write(const char* data, qint64 maxSize)
 {
 	if (socket && socket->state() == QAbstractSocket::ConnectedState)
-		return socket->write(data, maxSize);
+	{
+		qint64 bytesWritten = socket->write(data, maxSize);
+		return bytesWritten;
+	}
 	return -1;
 }
 
 qint64 TcpClient::write(const char* data)
 {
 	if (socket && socket->state() == QAbstractSocket::ConnectedState)
-		return socket->write(data);
+	{
+		qint64 bytesWritten = socket->write(data);
+		return bytesWritten;
+	}
 	return -1;
 }
 
 qint64 TcpClient::write(const QByteArray& data)
 {
 	if (socket && socket->state() == QAbstractSocket::ConnectedState)
-		return socket->write(data);
+	{
+		qint64 bytesWritten = socket->write(data);
+		return bytesWritten;
+	}
 	return -1;
 }
 

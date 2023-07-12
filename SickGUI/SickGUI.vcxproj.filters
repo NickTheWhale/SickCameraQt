@@ -142,6 +142,9 @@
     <ClCompile Include="TcpClient.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="widgets\LoggingWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h">
@@ -253,6 +256,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="sickapi\src\VisionaryTMiniData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="widgets\LoggingWidget.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

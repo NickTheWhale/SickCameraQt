@@ -333,6 +333,21 @@ void SickGUI::initializeWidgets()
 #pragma endregion
 
 
+#pragma region LOGGING_WINDOW
+	
+	loggingWidget = new LoggingWidget(this);
+	loggingWidget->setMaxLineCount(500);
+	
+	dock = new CloseDockWidget("Log", this);
+	dock->setObjectName("loggingWidgetDock");
+	dock->setAllowedAreas(Qt::DockWidgetArea::AllDockWidgetAreas);
+	dock->setWidget(loggingWidget);
+	dock->adjustSize();
+	addDockWidget(Qt::DockWidgetArea::RightDockWidgetArea, dock);
+
+#pragma endregion
+
+
 #pragma region MISC
 
 	ui.actionPlay->setEnabled(true);
@@ -491,7 +506,7 @@ void SickGUI::updateWeb()
 		QByteArray imageBytes;
 		QBuffer buffer(&imageBytes);
 		buffer.open(QIODevice::WriteOnly);
-		qImage.save(&buffer, "PNG");
+		qImage.save(&buffer, "PNG", -1);
 
 		// image size (in bytes)
 		for (int i = 0; i < 8; ++i)
@@ -502,6 +517,7 @@ void SickGUI::updateWeb()
 		bytes.append(imageBytes);
 		qint64 bytesWritten = tcpClient->write(bytes);
 		qDebug() << "Wrote" << bytesWritten << "bytes";
+		loggingWidget->logInfo(std::format("Wrote {} bytes", bytesWritten).c_str());
 	}
 }
 

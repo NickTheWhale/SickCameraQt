@@ -25,6 +25,7 @@
 #include <HistogramWidget.h>
 #include <AspectRatioPixmapLabel.h>
 #include "TcpClient.h"
+#include <LoggingWidget.h>
 
 
 class CaptureThread;
@@ -202,6 +203,7 @@ private:
 	AspectRatioPixmapLabel* cameraView = nullptr;
 	HistogramWidget* depthHistogram = nullptr;
 	HistogramWidget* intensityHistogram = nullptr;
+	LoggingWidget* loggingWidget = nullptr;
 
 	QTimer* displayTimer = nullptr;
 	int displayTimerInterval = 50; /* ms */
