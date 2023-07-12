@@ -527,7 +527,7 @@ bool SickGUI::createCamera()
 		camera = nullptr;
 	}
 
-	camera = new(std::nothrow) VisionaryCamera();
+	camera = new(std::nothrow) VisionaryCamera("169.254.10.67");
 
 	return camera != nullptr;
 }
