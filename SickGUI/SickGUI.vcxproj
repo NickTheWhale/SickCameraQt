@@ -32,13 +32,13 @@
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
     <QtInstall>6.5.1_msvc2019_64</QtInstall>
-    <QtModules>core;gui;widgets;charts</QtModules>
+    <QtModules>core;gui;widgets;charts;websockets</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
     <QtDeploy>true</QtDeploy>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
     <QtInstall>6.5.1_msvc2019_64</QtInstall>
-    <QtModules>core;gui;widgets;charts</QtModules>
+    <QtModules>core;gui;widgets;charts;websockets</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
     <QtDeploy>true</QtDeploy>
   </PropertyGroup>
@@ -103,6 +103,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="TcpClient.cpp" />
     <ClCompile Include="widgets\CloseDockWidget.cpp" />
     <ClCompile Include="CaptureThread.cpp">
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
@@ -188,6 +189,7 @@
     <ClInclude Include="sickapi\src\VisionaryTData.h" />
     <ClInclude Include="sickapi\src\VisionaryTMiniData.h" />
     <ClInclude Include="Stream.h" />
+    <QtMoc Include="TcpClient.h" />
     <ClInclude Include="TinyColormap.hpp" />
     <ClInclude Include="VisionaryFrameset.h" />
     <QtMoc Include="CaptureThread.h" />

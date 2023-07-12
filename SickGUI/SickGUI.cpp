@@ -20,7 +20,7 @@
 #include <qpushbutton.h>
 #include <qsettings.h>
 #include "CloseDockWidget.h"
-
+#include <qbuffer.h>
 #include <HistogramWidget.h>
 
 
@@ -29,12 +29,15 @@ SickGUI::SickGUI(QWidget* parent) : QMainWindow(parent), framesetBuffer(frameset
 	// create and connect timers to their corresponding update methods
 	displayTimer = new QTimer(this);
 	chartTimer = new QTimer(this);
+	webTimer = new QTimer(this);
 	QObject::connect(displayTimer, &QTimer::timeout, this, &SickGUI::updateDisplay);
 	QObject::connect(chartTimer, &QTimer::timeout, this, &SickGUI::updateCharts);
+	QObject::connect(webTimer, &QTimer::timeout, this, &SickGUI::updateWeb);
 
 	ui.setupUi(this);
 
 	initializeWidgets();
+	initializeWebServerConnection();
 
 	// create and connect future watcher to check thread status
 	threadWatcher = new QFutureWatcher<bool>(this);
@@ -58,6 +61,11 @@ SickGUI::~SickGUI()
 	if (chartTimer)
 	{
 		chartTimer->stop();
+	}
+
+	if (webTimer)
+	{
+		webTimer->stop();
 	}
 
 	if (threadWatcher && !threadWatcher->isFinished())
@@ -336,6 +344,17 @@ void SickGUI::initializeWidgets()
 #pragma endregion
 }
 
+bool SickGUI::initializeWebServerConnection()
+{
+	tcpClient = new TcpClient("localhost", 3000, this);
+	tcpClient->start();
+
+	webTimer->setInterval(webTimerInterval);
+	webTimer->start();
+
+	return true;
+}
+
 void SickGUI::updateDisplay()
 {
 	// don't bother is the window is minimized
@@ -419,6 +438,73 @@ void SickGUI::updateCharts()
 	}
 }
 
+void SickGUI::updateWeb()
+{
+	// gotta use a mutex since the frameset buffer is accessed by multiple threads
+	if (!framesetMutex.tryLock())
+		return;
+	if (framesetBuffer.empty())
+	{
+		framesetMutex.unlock();
+	}
+	else
+	{
+		Frameset::frameset_t fs = framesetBuffer.back();
+		framesetMutex.unlock();
+		
+		QImage qImage;
+		Frameset::depthToQImage(fs, qImage);
+
+		QByteArray bytes;
+		// packet start
+		for (int i = 0; i < 4; ++i)
+		{
+			bytes.append(static_cast<char>(0));
+			bytes.append(static_cast<char>(255));
+		}
+
+		// height
+		for (int i = 0; i < 4; ++i)
+		{
+			bytes.append(static_cast<uint8_t>((fs.height >> 8 * i) & 0xff));
+		}
+		
+		// width
+		for (int i = 0; i < 4; ++i)
+		{
+			bytes.append(static_cast<uint8_t>((fs.width >> 8 * i) & 0xff));
+		}
+
+		// frame number
+		for (int i = 0; i < 4; ++i)
+		{
+			bytes.append(static_cast<uint8_t>((fs.number >> 8 * i) & 0xff));
+		}
+
+		// frame time
+		for (int i = 0; i < 8; ++i)
+		{
+			bytes.append(static_cast<uint8_t>((fs.time >> 8 * i) & 0xff));
+		}
+
+		// image data (as png)
+		QByteArray imageBytes;
+		QBuffer buffer(&imageBytes);
+		buffer.open(QIODevice::WriteOnly);
+		qImage.save(&buffer, "PNG");
+
+		// image size (in bytes)
+		for (int i = 0; i < 8; ++i)
+		{
+			bytes.append(static_cast<uint8_t>((imageBytes.size() >> 8 * i) & 0xff));
+		}
+
+		bytes.append(imageBytes);
+		qint64 bytesWritten = tcpClient->write(bytes);
+		qDebug() << "Wrote" << bytesWritten << "bytes";
+	}
+}
+
 void SickGUI::writeImage(QImage image)
 {
 	// we use invokeMethod for thread safety
@@ -441,7 +527,7 @@ bool SickGUI::createCamera()
 		camera = nullptr;
 	}
 
-	camera = new(std::nothrow) VisionaryCamera();
+	camera = new(std::nothrow) VisionaryCamera("169.254.10.67");
 
 	return camera != nullptr;
 }

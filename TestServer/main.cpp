@@ -90,10 +90,8 @@ int main(int argc, char* argv[])
     Server->SetEventsCallback(EventCallBack, NULL);
     // Set the Read Callback
     Server->SetReadEventsCallback(ReadEventCallBack, NULL);
-    // Start the server onto the default adapter.
     // To select an adapter we have to use Server->StartTo("192.168.x.y").
-    // Start() is the same of StartTo("0.0.0.0");
-    Error = Server->Start();
+    Error = Server->StartTo("127.0.0.1");
     if (Error == 0)
     {
         // Now the server is running ... wait a key to terminate

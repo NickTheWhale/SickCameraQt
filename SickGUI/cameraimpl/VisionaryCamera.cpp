@@ -33,8 +33,8 @@ bool VisionaryCamera::open()
 	// base case
 	if (connected) { return true; }
 
-	// find ip address if invalid
-	if (ipAddress == "")
+	// try specified ip address first, then auto scan if failed
+	if (!pDataStream->open(ipAddress, htons(dataPort)))
 	{
 		VisionaryAutoIPScanCustom scanner;
 		auto devices = scanner.doScan(5000);
@@ -46,12 +46,11 @@ bool VisionaryCamera::open()
 		{
 			auto dev = devices.front();
 			setIp(dev.IpAddress);
+			if (!pDataStream->open(ipAddress, htons(dataPort)))
+			{
+				return false;
+			}
 		}
-	}
-
-	if (!pDataStream->open(ipAddress, htons(dataPort)))
-	{
-		return false;
 	}
 
 	if (!pVisionaryControl->open(VisionaryControl::ProtocolType::COLA_2, ipAddress, openTimeout/*ms*/))

@@ -139,6 +139,9 @@
     <ClCompile Include="sickapi\src\VisionaryTMiniData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TcpClient.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h">
@@ -267,6 +270,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="widgets\CloseDockWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="TcpClient.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
