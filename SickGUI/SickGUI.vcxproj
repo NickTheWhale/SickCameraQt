@@ -65,17 +65,19 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <PreprocessorDefinitions>NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NOMINMAX</PreprocessorDefinitions>
+      <UndefinePreprocessorDefinitions>%(UndefinePreprocessorDefinitions)</UndefinePreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <PreprocessorDefinitions>NOMINMAX;QT_NO_DEBUG_OUTPUT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NOMINMAX</PreprocessorDefinitions>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <WholeProgramOptimization>true</WholeProgramOptimization>
+      <UndefinePreprocessorDefinitions>%(UndefinePreprocessorDefinitions)</UndefinePreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
@@ -104,9 +106,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AutoWebSocket.cpp" />
-    <ClCompile Include="WebThread.cpp" />
     <ClCompile Include="widgets\LoggingWidget.cpp" />
-    <ClCompile Include="TcpClient.cpp" />
     <ClCompile Include="widgets\CloseDockWidget.cpp" />
     <ClCompile Include="CaptureThread.cpp">
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
@@ -163,7 +163,6 @@
     <QtMoc Include="AutoWebSocket.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Fingerprint.h" />
-    <QtMoc Include="WebThread.h" />
     <ClInclude Include="widgets\LoggingWidget.h" />
     <ClInclude Include="sickapi\src\AuthenticationLegacy.h" />
     <ClInclude Include="sickapi\src\AuthenticationSecure.h" />
@@ -195,7 +194,6 @@
     <ClInclude Include="sickapi\src\VisionaryTData.h" />
     <ClInclude Include="sickapi\src\VisionaryTMiniData.h" />
     <ClInclude Include="Stream.h" />
-    <QtMoc Include="TcpClient.h" />
     <ClInclude Include="TinyColormap.hpp" />
     <ClInclude Include="VisionaryFrameset.h" />
     <QtMoc Include="CaptureThread.h" />

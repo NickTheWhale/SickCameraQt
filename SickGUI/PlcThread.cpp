@@ -32,27 +32,48 @@ void PlcThread::stopPlc()
 void PlcThread::run()
 {
 	Frameset::frameset_t fs;
+	uint32_t lastNumber = 0;
+	QElapsedTimer timer;
 	while (!_stop)
 	{
-		if (!framesetMutex.tryLock())
+		timer.start();
+		if (tryGetFrameset(fs))
 		{
-			continue;
+			if (fs.number > lastNumber)
+			{
+				lastNumber = fs.number;
+#pragma region LOOP
+
+				auto fp = Fingerprint::calculateFingerprint(fs.width, fs.height, fs.depth);
+				//qDebug() << "Fingerprint:" << fp << "frame #:" << fs.number;
+
+#pragma endregion
+
+				qint64 elapsedNs = timer.nsecsElapsed();
+				double elapsedMs = elapsedNs / static_cast<double>(1'000'000);
+				qDebug() << "elapsed time:" << elapsedMs << "number:" << fs.number;
+			}
 		}
-		if (framesetBuffer.empty())
-		{
-			framesetMutex.unlock();
-			continue;
-		}
-
-		fs = framesetBuffer.back();
-
-		framesetMutex.unlock();
-
-		auto fp = Fingerprint::calculateFingerprint(fs.width, fs.height, fs.depth);
-		//qDebug() << "Fingerprint:" << fp << "frame #:" << fs.number;
-
-		msleep(1000);
 	}
+}
+
+bool PlcThread::tryGetFrameset(Frameset::frameset_t& fs)
+{
+	if (!framesetMutex.tryLock())
+	{
+		return false;
+	}
+
+	if (framesetBuffer.empty())
+	{
+		framesetMutex.unlock();
+		return false;
+	}
+
+	fs = framesetBuffer.back();
+
+	framesetMutex.unlock();
+	return true;
 }
 
 void PlcThread::uploadDB()

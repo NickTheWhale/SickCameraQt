@@ -1,7 +1,7 @@
 /*****************************************************************//**
  * @file   Camera.h
  * @brief  Camera interface
- * 
+ *
  * @author Nicholas Loehrke
  * @date   June 2023
  *********************************************************************/
@@ -11,6 +11,31 @@
 #include <map>
 
 #include "VisionaryFrameset.h"
+
+enum ErrorCode
+{
+	NONE_ERROR = 0,
+	CAMERA_NOT_FOUND,
+	PERMISSION_DENIED,
+	INVALID_IP,
+	UNREACHABLE_ADDRESS,
+	LOGIN_ERROR,
+	UNKNOWN
+};
+
+struct OpenResult
+{
+	ErrorCode error;
+	//std::string message;
+	QString message;
+	
+	OpenResult() : error(NONE_ERROR), message("") {};
+
+	explicit operator bool() const
+	{
+		return error == NONE_ERROR;
+	}
+};
 
 class Camera : protected QThread
 {
@@ -28,9 +53,9 @@ public:
 	/**
 	 * @brief Opens the camera device.
 	 * @note Implementation must support repeated calls, even if already opened.
-	 * @return true if the camera device is successfully opened, false otherwise.
+	 * @return OpenResult
 	 */
-	virtual bool open() = 0;
+	virtual OpenResult open() = 0;
 
 	/**
 	 * @brief Closes the camera device.
@@ -68,10 +93,10 @@ public:
 
 	/**
 	 * @brief Retrieves the parameters of the camera device.
-	 * 
-	 * The parameters are stored in a std::map<std::string, std::string> with no required format. 
+	 *
+	 * The parameters are stored in a std::map<std::string, std::string> with no required format.
 	 * This is useful if instantiating a subclass as Camera and needing to retrieve model-specific information,
-	 * such as an ip address or usb port. 
+	 * such as an ip address or usb port.
 	 * @note the subclass is not required to implement.
 	 * @return A map containing the camera parameters, where the keys are parameter names
 	 * and the values are parameter values.

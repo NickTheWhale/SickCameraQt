@@ -12,6 +12,7 @@
 #include "VisionaryFrameset.h"
 #include <boost/circular_buffer.hpp>
 #include <qmutex.h>
+#include <qtimer.h>
 
 class PlcThread : public QThread
 {
@@ -47,6 +48,7 @@ protected:
 	void run() override;
 
 private:
+	bool tryGetFrameset(Frameset::frameset_t& fs);
 	void uploadDB();
 	volatile bool _stop = false;
 	TS7Client* client;

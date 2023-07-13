@@ -28,10 +28,11 @@ VisionaryCamera::~VisionaryCamera()
 	close();
 }
 
-bool VisionaryCamera::open()
+OpenResult VisionaryCamera::open()
 {
 	// base case
-	if (connected) { return true; }
+	OpenResult ret;
+	if (connected) { return ret; }
 
 	// try specified ip address first, then auto scan if failed
 	if (!pDataStream->open(ipAddress, htons(dataPort)))
@@ -40,7 +41,9 @@ bool VisionaryCamera::open()
 		auto devices = scanner.doScan(5000);
 		if (devices.empty())
 		{
-			return false;
+			ret.error = ErrorCode::CAMERA_NOT_FOUND;
+			ret.message = "could not find camera with specified ip address and failed to auto scan";
+			return ret;
 		}
 		else
 		{
@@ -48,24 +51,31 @@ bool VisionaryCamera::open()
 			setIp(dev.IpAddress);
 			if (!pDataStream->open(ipAddress, htons(dataPort)))
 			{
-				return false;
+				ret.error = ErrorCode::UNREACHABLE_ADDRESS;
+				ret.message = "auto scan found a camera but the address is unreachable from the current network";
+				return ret;
 			}
 		}
 	}
 
 	if (!pVisionaryControl->open(VisionaryControl::ProtocolType::COLA_2, ipAddress, openTimeout/*ms*/))
 	{
-		return false;
+		ret.error = ErrorCode::UNKNOWN;
+		ret.message = "unable to open control stream with cola_2 protocol";
+		return ret;
 	}
 
 	if (!pVisionaryControl->login(IAuthentication::UserLevel::AUTHORIZED_CLIENT, "PASSWORD"))
 	{
-		return false;
+		ret.error = ErrorCode::LOGIN_ERROR;
+		ret.message = "unable to login as authorized client";
+		return ret;
 	}
 
 	connected = true;
-
-	return connected;
+	ret.error = ErrorCode::NONE_ERROR;
+	ret.message = "successfully opened";
+	return ret;
 }
 
 bool VisionaryCamera::close()

@@ -6,18 +6,20 @@ AutoWebSocket::AutoWebSocket(const QUrl& url, const QWebSocketProtocol::Version&
 	reconnectTimer = new QTimer(this);
 	reconnectTimer->setInterval(reconnectTimerInterval);
 
-	socket = new QWebSocket("", version, parent);
+	_socket = new QWebSocket("", version, parent);
 
 	connect(this, &AutoWebSocket::connectSocket, this, &AutoWebSocket::doConnectSocket);
 	connect(this, &AutoWebSocket::disconnectSocket, this, &AutoWebSocket::doDisconnectSocket);
 	connect(reconnectTimer, &QTimer::timeout, this, &AutoWebSocket::onTimer);
 
-	connect(socket, &QWebSocket::connected, this, &AutoWebSocket::onSocketConnected);
-	connect(socket, &QWebSocket::disconnected, this, &AutoWebSocket::onSocketDisconnected);
+	connect(_socket, &QWebSocket::connected, this, &AutoWebSocket::onSocketConnected);
+	connect(_socket, &QWebSocket::disconnected, this, &AutoWebSocket::onSocketDisconnected);
 }
 
 AutoWebSocket::~AutoWebSocket()
 {
+	this->stop();
+	_socket->close();
 }
 
 void AutoWebSocket::start()
@@ -29,44 +31,31 @@ void AutoWebSocket::start()
 void AutoWebSocket::stop()
 {
 	if (reconnectTimer->isActive())
-		reconnectTimer->start();
+		reconnectTimer->stop();
 }
 
-qint64 AutoWebSocket::sendBinaryMessage(const QByteArray& data)
+QWebSocket* AutoWebSocket::socket()
 {
-	if (socket && socket->state() == QAbstractSocket::ConnectedState)
-	{
-		return socket->sendBinaryMessage(data);
-	}
-	return -1;
-}
-
-qint64 AutoWebSocket::sendTextMessage(const QString& message)
-{
-	if (socket && socket->state() == QAbstractSocket::ConnectedState)
-	{
-		return socket->sendTextMessage(message);
-	}
-	return -1;
+	return _socket;
 }
 
 void AutoWebSocket::doConnectSocket()
 {
 	qDebug() << "doConnectSocket";
-	if (socket->state() == QAbstractSocket::UnconnectedState)
+	if (_socket->state() == QAbstractSocket::UnconnectedState)
 	{
 		qDebug() << "connecting to websocket";
-		socket->open(url);
+		_socket->open(url);
 	}
 }
 
 void AutoWebSocket::doDisconnectSocket()
 {
 	qDebug() << "doDisconnectSocket";
-	if (socket->state() == QAbstractSocket::ConnectedState)
+	if (_socket->state() == QAbstractSocket::ConnectedState)
 	{
 		qDebug() << "disconnecting from websocket";
-		socket->close();
+		_socket->close();
 	}
 }
 

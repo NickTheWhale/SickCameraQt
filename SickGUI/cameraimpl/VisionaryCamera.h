@@ -42,9 +42,9 @@ public:
 	 * Opens data and control streams to the camera with the specified ip address. If the
 	 * ip address is empty (""), an attempt is made to scan the network and find the first
 	 * available camera.
-	 * @return true if opened, false otherwise.
+	 * @return OpenResult.
 	*/
-	bool open() override;
+	OpenResult open() override;
 
 	/**
 	 * @brief Closes data and control streams to the camera.

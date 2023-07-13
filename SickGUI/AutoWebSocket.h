@@ -13,8 +13,7 @@ public:
 
 	void start();
 	void stop();
-	qint64 sendBinaryMessage(const QByteArray& data);
-	qint64 sendTextMessage(const QString& message);
+	QWebSocket* socket();
 
 signals:
 	void connectSocket();
@@ -28,7 +27,7 @@ private slots:
 	void onTimer();
 
 private:
-	QWebSocket* socket = nullptr;
+	QWebSocket* _socket = nullptr;
 	QTimer* reconnectTimer = nullptr;
 
 	const QUrl url;

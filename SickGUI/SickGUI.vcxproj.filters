@@ -139,13 +139,7 @@
     <ClCompile Include="sickapi\src\VisionaryTMiniData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TcpClient.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="widgets\LoggingWidget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="WebThread.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AutoWebSocket.cpp">
@@ -282,12 +276,6 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="widgets\CloseDockWidget.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="TcpClient.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="WebThread.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="AutoWebSocket.h">
