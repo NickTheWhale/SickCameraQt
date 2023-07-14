@@ -106,6 +106,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AutoWebSocket.cpp" />
+    <ClCompile Include="MutexTryLocker.cpp" />
     <ClCompile Include="widgets\LoggingWidget.cpp" />
     <ClCompile Include="widgets\CloseDockWidget.cpp" />
     <ClCompile Include="CaptureThread.cpp">
@@ -163,6 +164,7 @@
     <QtMoc Include="AutoWebSocket.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Fingerprint.h" />
+    <ClInclude Include="MutexTryLocker.h" />
     <ClInclude Include="widgets\LoggingWidget.h" />
     <ClInclude Include="sickapi\src\AuthenticationLegacy.h" />
     <ClInclude Include="sickapi\src\AuthenticationSecure.h" />

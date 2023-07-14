@@ -1,7 +1,7 @@
 /*****************************************************************//**
  * @file   CaptureThread.h
  * @brief  QThread subclass used to retrieve frames from the Camera
- * 
+ *
  * @author Nicholas Loehrke
  * @date   June 2023
  *********************************************************************/
@@ -10,6 +10,7 @@
 
 #include <qthread.h>
 #include "SickGUI.h"
+#include <qmutex.h>
 
 #include "VisionaryFrameset.h"
 
@@ -57,13 +58,10 @@ protected:
 	void run() override;
 
 private:
-	Frameset::frameset_t lastFrameset;
 	Camera* camera;
-	volatile bool stop;
+	volatile bool _stop;
+	QMutex framesetMutex;
 
 	//! Delay in milliseconds between frame capture retries
-	unsigned int frameRetryDelay = 10; 
-	//! Maximum time in milliseconds for frame capture retries (must be greater than frameRetryDelay)
-	unsigned int maxRetryTime = 2000;
-	uint32_t retryCounter = 0;
+	unsigned int frameRetryDelay = 1;
 };

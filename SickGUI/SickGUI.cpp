@@ -23,6 +23,7 @@
 #include <qbuffer.h>
 #include <HistogramWidget.h>
 #include <qimage.h>
+#include "MutexTryLocker.h"
 
 
 SickGUI::SickGUI(QWidget* parent) : QMainWindow(parent), framesetBuffer(framesetBufferSize)
@@ -550,8 +551,6 @@ void SickGUI::updateWeb()
 		bytes.append(imageBytes);
 
 		qint64 bytesWritten = webSocket->socket()->sendBinaryMessage(bytes);
-
-		//qDebug() << "Wrote" << bytesWritten << "bytes";
 	}
 }
 
@@ -831,13 +830,15 @@ void SickGUI::newFrameset(Frameset::frameset_t fs)
 {
 	// keep this method short and sweet for speed.
 	//  if you want to do calculations on the frames, do it somewhere else
-	if (!framesetMutex.tryLock())
+	MutexTryLocker locker(&framesetMutex);
+
+	if (!locker.isLocked())
 	{
+		qDebug() << "GUI THREAD NEW FRAMESET NO LOCK";
 		return;
 	}
 
 	framesetBuffer.push_back(fs);
-	framesetMutex.unlock();
 }
 
 void SickGUI::showStatusBarMessage(const QString& text, int timeout)

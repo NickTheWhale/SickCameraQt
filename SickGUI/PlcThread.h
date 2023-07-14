@@ -48,13 +48,11 @@ protected:
 	void run() override;
 
 private:
-	bool tryGetFrameset(Frameset::frameset_t& fs);
 	void uploadDB();
 	volatile bool _stop = false;
 	TS7Client* client;
 
-	const size_t framesetBufferSize = 2;
-	boost::circular_buffer<Frameset::frameset_t> framesetBuffer;
+	Frameset::frameset_t fsBuff;
 	QMutex framesetMutex;
 };
 

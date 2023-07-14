@@ -41,20 +41,16 @@ QWebSocket* AutoWebSocket::socket()
 
 void AutoWebSocket::doConnectSocket()
 {
-	qDebug() << "doConnectSocket";
 	if (_socket->state() == QAbstractSocket::UnconnectedState)
 	{
-		qDebug() << "connecting to websocket";
 		_socket->open(url);
 	}
 }
 
 void AutoWebSocket::doDisconnectSocket()
 {
-	qDebug() << "doDisconnectSocket";
 	if (_socket->state() == QAbstractSocket::ConnectedState)
 	{
-		qDebug() << "disconnecting from websocket";
 		_socket->close();
 	}
 }

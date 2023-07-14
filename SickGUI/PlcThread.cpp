@@ -3,25 +3,25 @@
 #include <algorithm>
 #include <snap7.h>
 #include "Fingerprint.h"
+#include "MutexTryLocker.h"
 
 bool PlcThread::startPlc(TS7Client* client)
 {
 	this->client = client;
-	framesetBuffer = boost::circular_buffer<Frameset::frameset_t>(framesetBufferSize);
 
-	start(QThread::Priority::TimeCriticalPriority);
+	start(QThread::Priority::HighPriority);
 	return true;
 }
 
 void PlcThread::newFrameset(Frameset::frameset_t fs)
 {
-	if (!framesetMutex.tryLock())
+	MutexTryLocker locker(&framesetMutex);
+	if (!locker.isLocked())
 	{
+		qDebug() << "PLC THREAD NEW FRAMESET NO LOCK";
 		return;
 	}
-
-	framesetBuffer.push_back(fs);
-	framesetMutex.unlock();
+	fsBuff = fs;
 }
 
 void PlcThread::stopPlc()
@@ -31,49 +31,22 @@ void PlcThread::stopPlc()
 
 void PlcThread::run()
 {
-	Frameset::frameset_t fs;
 	uint32_t lastNumber = 0;
-	QElapsedTimer timer;
 	while (!_stop)
 	{
-		timer.start();
-		if (tryGetFrameset(fs))
+		MutexTryLocker locker(&framesetMutex);
+		if (!locker.isLocked())
 		{
-			if (fs.number > lastNumber)
-			{
-				lastNumber = fs.number;
-#pragma region LOOP
-
-				auto fp = Fingerprint::calculateFingerprint(fs.width, fs.height, fs.depth);
-				//qDebug() << "Fingerprint:" << fp << "frame #:" << fs.number;
-
-#pragma endregion
-
-				qint64 elapsedNs = timer.nsecsElapsed();
-				double elapsedMs = elapsedNs / static_cast<double>(1'000'000);
-				qDebug() << "elapsed time:" << elapsedMs << "number:" << fs.number;
-			}
+			qDebug() << "PLC THREAD RUN NO LOCK";
+			msleep(1);
+			continue;
 		}
+		Frameset::frameset_t fs = fsBuff;
+		locker.unlock();
+		uploadDB();
+
+		msleep(2000);
 	}
-}
-
-bool PlcThread::tryGetFrameset(Frameset::frameset_t& fs)
-{
-	if (!framesetMutex.tryLock())
-	{
-		return false;
-	}
-
-	if (framesetBuffer.empty())
-	{
-		framesetMutex.unlock();
-		return false;
-	}
-
-	fs = framesetBuffer.back();
-
-	framesetMutex.unlock();
-	return true;
 }
 
 void PlcThread::uploadDB()

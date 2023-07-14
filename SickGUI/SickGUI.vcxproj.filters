@@ -145,6 +145,9 @@
     <ClCompile Include="AutoWebSocket.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MutexTryLocker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h">
@@ -259,6 +262,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="widgets\LoggingWidget.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MutexTryLocker.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

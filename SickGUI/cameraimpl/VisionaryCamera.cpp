@@ -119,9 +119,7 @@ bool VisionaryCamera::getNextFrameset(Frameset::frameset_t& fs)
 		return false;
 
 	if (!pDataStream->getNextFrame())
-	{
 		return false;
-	}
 
 	fs.depth = pDataHandler->getDistanceMap();
 	fs.intensity = pDataHandler->getIntensityMap();

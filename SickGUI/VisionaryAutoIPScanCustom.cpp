@@ -6,8 +6,6 @@
 #include <algorithm>
 #include <UdpSocket.h>
 
-#include <qdebug.h>
-
 namespace visionary
 {
 
@@ -74,7 +72,6 @@ namespace visionary
 
 		// Replace telegram id in packet
 		unsigned int curTelegramID = teleIdCounter++;
-		qDebug() << curTelegramID;
 		memcpy(&autoIpPacket.data()[10], &curTelegramID, 4u);
 
 		// Send Packet

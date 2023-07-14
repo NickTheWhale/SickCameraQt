@@ -214,7 +214,7 @@ private:
 	int displayTimerInterval = 50; /* ms */
 
 	QTimer* chartTimer = nullptr;
-	int chartTimerInterval = 50; /* ms */
+	int chartTimerInterval = 100; /* ms */
 
 	QTimer* webTimer = nullptr;
 	int webTimerInterval = 100; /* ms */
