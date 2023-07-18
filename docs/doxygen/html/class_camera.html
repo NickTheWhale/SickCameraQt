@@ -116,9 +116,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac9ed2a1433c5afdfb9cdf5b282fbc350"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#ac9ed2a1433c5afdfb9cdf5b282fbc350">~Camera</a> ()</td></tr>
 <tr class="memdesc:ac9ed2a1433c5afdfb9cdf5b282fbc350"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for the <a class="el" href="class_camera.html">Camera</a> class.  <br /></td></tr>
 <tr class="separator:ac9ed2a1433c5afdfb9cdf5b282fbc350"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a86b0b93c14ef5e0bc3736bfaaf343b7f"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a86b0b93c14ef5e0bc3736bfaaf343b7f">open</a> ()=0</td></tr>
-<tr class="memdesc:a86b0b93c14ef5e0bc3736bfaaf343b7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens the camera device.  <br /></td></tr>
-<tr class="separator:a86b0b93c14ef5e0bc3736bfaaf343b7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a036fbd17384082fef82fbd9a3c5232f7"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="struct_open_result.html">OpenResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a036fbd17384082fef82fbd9a3c5232f7">open</a> ()=0</td></tr>
+<tr class="memdesc:a036fbd17384082fef82fbd9a3c5232f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens the camera device.  <br /></td></tr>
+<tr class="separator:a036fbd17384082fef82fbd9a3c5232f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a56cb2dfa677ed0c1bed120b4d4a769a1"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a56cb2dfa677ed0c1bed120b4d4a769a1">close</a> ()=0</td></tr>
 <tr class="memdesc:a56cb2dfa677ed0c1bed120b4d4a769a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes the camera device.  <br /></td></tr>
 <tr class="separator:a56cb2dfa677ed0c1bed120b4d4a769a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -323,8 +323,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a86b0b93c14ef5e0bc3736bfaaf343b7f" name="a86b0b93c14ef5e0bc3736bfaaf343b7f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a86b0b93c14ef5e0bc3736bfaaf343b7f">&#9670;&#160;</a></span>open()</h2>
+<a id="a036fbd17384082fef82fbd9a3c5232f7" name="a036fbd17384082fef82fbd9a3c5232f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a036fbd17384082fef82fbd9a3c5232f7">&#9670;&#160;</a></span>open()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -333,7 +333,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual <a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> Camera::open </td>
+          <td class="memname">virtual <a class="el" href="struct_open_result.html">OpenResult</a> Camera::open </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -348,9 +348,9 @@ Public Member Functions</h2></td></tr>
 
 <p>Opens the camera device. </p>
 <dl class="section note"><dt>Note</dt><dd>Implementation must support repeated calls, even if already opened. </dd></dl>
-<dl class="section return"><dt>Returns</dt><dd>true if the camera device is successfully opened, false otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_open_result.html">OpenResult</a> </dd></dl>
 
-<p>Implemented in <a class="el" href="class_visionary_camera.html#a60788c016091fdd293cb664822aa1c0f">VisionaryCamera</a>.</p>
+<p>Implemented in <a class="el" href="class_visionary_camera.html#a0117c3ad75bfb00c746aeeba3802ee37">VisionaryCamera</a>.</p>
 
 </div>
 </div>

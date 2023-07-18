@@ -9,5 +9,12 @@
         <file>icons/info_FILL0_wght400_GRAD0_opsz40.png</file>
         <file>icons/equalizer_FILL0_wght400_GRAD0_opsz40.png</file>
         <file>icons/lan_FILL0_wght400_GRAD0_opsz40.png</file>
+        <file>icons/close_FILL0_wght400_GRAD0_opsz40.png</file>
+        <file>icons/minimize_FILL0_wght400_GRAD0_opsz40.png</file>
+        <file>icons/open_in_new_FILL0_wght400_GRAD0_opsz40.png</file>
+        <file>icons/close_FILL0_wght400_GRAD0_opsz20.png</file>
+        <file>icons/minimize_FILL0_wght400_GRAD0_opsz20.png</file>
+        <file>icons/open_in_new_FILL0_wght400_GRAD0_opsz20.png</file>
+        <file>icons/restart_alt_FILL0_wght400_GRAD0_opsz20.png</file>
     </qresource>
 </RCC>

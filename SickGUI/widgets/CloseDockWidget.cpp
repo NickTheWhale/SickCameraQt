@@ -1,4 +1,5 @@
 #include "CloseDockWidget.h"
+#include "qtoolbar.h"
 
 CloseDockWidget::CloseDockWidget(const QString& title, QWidget* parent) : QDockWidget(title, parent)
 {

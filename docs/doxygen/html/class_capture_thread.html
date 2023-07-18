@@ -137,20 +137,15 @@ Protected Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a200d8018a27b33d9d30a0a1ee98ac31b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_frameset_1_1frameset__t.html">Frameset::frameset_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_capture_thread.html#a200d8018a27b33d9d30a0a1ee98ac31b">lastFrameset</a></td></tr>
-<tr class="separator:a200d8018a27b33d9d30a0a1ee98ac31b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad625e71220121cb3f8d41f56670083aa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_camera.html">Camera</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_capture_thread.html#ad625e71220121cb3f8d41f56670083aa">camera</a></td></tr>
 <tr class="separator:ad625e71220121cb3f8d41f56670083aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ed6e4e8d8edb71fcd16c6f4ef6441ea"><td class="memItemLeft" align="right" valign="top">volatile <a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_capture_thread.html#a2ed6e4e8d8edb71fcd16c6f4ef6441ea">stop</a></td></tr>
-<tr class="separator:a2ed6e4e8d8edb71fcd16c6f4ef6441ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adbbc0a9e0f7a616a1c5af6d216d75194"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_capture_thread.html#adbbc0a9e0f7a616a1c5af6d216d75194">frameRetryDelay</a> = 10</td></tr>
+<tr class="memitem:aa632c97665e03b3f8c4e0382badec60d"><td class="memItemLeft" align="right" valign="top">volatile <a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_capture_thread.html#aa632c97665e03b3f8c4e0382badec60d">_stop</a></td></tr>
+<tr class="separator:aa632c97665e03b3f8c4e0382badec60d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad842715a288de315fd23c8deadb30a93"><td class="memItemLeft" align="right" valign="top">QMutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_capture_thread.html#ad842715a288de315fd23c8deadb30a93">framesetMutex</a></td></tr>
+<tr class="separator:ad842715a288de315fd23c8deadb30a93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbbc0a9e0f7a616a1c5af6d216d75194"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_capture_thread.html#adbbc0a9e0f7a616a1c5af6d216d75194">frameRetryDelay</a> = 1</td></tr>
 <tr class="memdesc:adbbc0a9e0f7a616a1c5af6d216d75194"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delay in milliseconds between frame capture retries.  <br /></td></tr>
 <tr class="separator:adbbc0a9e0f7a616a1c5af6d216d75194"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a742b05eb2452c2a570fc342c49994b55"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_capture_thread.html#a742b05eb2452c2a570fc342c49994b55">maxRetryTime</a> = 2000</td></tr>
-<tr class="memdesc:a742b05eb2452c2a570fc342c49994b55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum time in milliseconds for frame capture retries (must be greater than frameRetryDelay)  <br /></td></tr>
-<tr class="separator:a742b05eb2452c2a570fc342c49994b55"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5acef2470bace8bf696c98c6fbd411c"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_capture_thread.html#ad5acef2470bace8bf696c98c6fbd411c">retryCounter</a> = 0</td></tr>
-<tr class="separator:ad5acef2470bace8bf696c98c6fbd411c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <a class="el" href="class_capture_thread.html" title="The CaptureThread class handles the capture of frames from a camera.">CaptureThread</a> class handles the capture of frames from a camera. </p>
@@ -291,6 +286,28 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="aa632c97665e03b3f8c4e0382badec60d" name="aa632c97665e03b3f8c4e0382badec60d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa632c97665e03b3f8c4e0382badec60d">&#9670;&#160;</a></span>_stop</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile <a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> CaptureThread::_stop</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ad625e71220121cb3f8d41f56670083aa" name="ad625e71220121cb3f8d41f56670083aa"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad625e71220121cb3f8d41f56670083aa">&#9670;&#160;</a></span>camera</h2>
 
@@ -323,7 +340,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int CaptureThread::frameRetryDelay = 10</td>
+          <td class="memname">unsigned int CaptureThread::frameRetryDelay = 1</td>
         </tr>
       </table>
   </td>
@@ -337,8 +354,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a200d8018a27b33d9d30a0a1ee98ac31b" name="a200d8018a27b33d9d30a0a1ee98ac31b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a200d8018a27b33d9d30a0a1ee98ac31b">&#9670;&#160;</a></span>lastFrameset</h2>
+<a id="ad842715a288de315fd23c8deadb30a93" name="ad842715a288de315fd23c8deadb30a93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad842715a288de315fd23c8deadb30a93">&#9670;&#160;</a></span>framesetMutex</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -347,75 +364,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_frameset_1_1frameset__t.html">Frameset::frameset_t</a> CaptureThread::lastFrameset</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a742b05eb2452c2a570fc342c49994b55" name="a742b05eb2452c2a570fc342c49994b55"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a742b05eb2452c2a570fc342c49994b55">&#9670;&#160;</a></span>maxRetryTime</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned int CaptureThread::maxRetryTime = 2000</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Maximum time in milliseconds for frame capture retries (must be greater than frameRetryDelay) </p>
-
-</div>
-</div>
-<a id="ad5acef2470bace8bf696c98c6fbd411c" name="ad5acef2470bace8bf696c98c6fbd411c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad5acef2470bace8bf696c98c6fbd411c">&#9670;&#160;</a></span>retryCounter</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint32_t CaptureThread::retryCounter = 0</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a2ed6e4e8d8edb71fcd16c6f4ef6441ea" name="a2ed6e4e8d8edb71fcd16c6f4ef6441ea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2ed6e4e8d8edb71fcd16c6f4ef6441ea">&#9670;&#160;</a></span>stop</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">volatile <a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> CaptureThread::stop</td>
+          <td class="memname">QMutex CaptureThread::framesetMutex</td>
         </tr>
       </table>
   </td>

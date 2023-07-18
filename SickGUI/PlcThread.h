@@ -18,6 +18,8 @@ class PlcThread : public QThread
 {
 	Q_OBJECT
 
+signals:
+	void addPlcTime(const int time);
 
 public slots:
 	/**

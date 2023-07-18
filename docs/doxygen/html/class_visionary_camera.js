@@ -7,7 +7,7 @@ var class_visionary_camera =
     [ "getNextFrameset", "class_visionary_camera.html#a8bfda3741ab9a0525b1adc837a47391a", null ],
     [ "getParameters", "class_visionary_camera.html#a248b76b210f97ea28890a7bfb1248bde", null ],
     [ "isOpen", "class_visionary_camera.html#af4ab7f3401b4b522a51af10750e92c0c", null ],
-    [ "open", "class_visionary_camera.html#a60788c016091fdd293cb664822aa1c0f", null ],
+    [ "open", "class_visionary_camera.html#a0117c3ad75bfb00c746aeeba3802ee37", null ],
     [ "setDataPort", "class_visionary_camera.html#aad6991dbcf7c18c6edffb983dd6b17ec", null ],
     [ "setIp", "class_visionary_camera.html#a91c42e96a17e393d77f97d6920ea57d9", null ],
     [ "startCapture", "class_visionary_camera.html#a830a20b540edee0a375a709fb654bb87", null ],

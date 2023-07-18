@@ -26,6 +26,8 @@
 #include <AspectRatioPixmapLabel.h>
 #include <LoggingWidget.h>
 #include "AutoWebSocket.h"
+#include "CustomMessageHandler.h"
+#include <CycleTimeWidget.h>
 
 class CaptureThread;
 
@@ -79,7 +81,7 @@ public slots:
 	void showStatusBarMessage(const QString& msg, int timeout = 0);
 
 public:
-	SickGUI(QWidget* parent = nullptr);
+	SickGUI(CustomMessageHandler* messageHandler, QWidget* parent = nullptr);
 	~SickGUI();
 
 private:
@@ -207,7 +209,7 @@ private:
 
 	AspectRatioPixmapLabel* cameraView = nullptr;
 	HistogramWidget* depthHistogram = nullptr;
-	HistogramWidget* intensityHistogram = nullptr;
+	CycleTimeWidget* cycleTimeWidget = nullptr;
 	LoggingWidget* loggingWidget = nullptr;
 
 	QTimer* displayTimer = nullptr;
@@ -226,4 +228,6 @@ private:
 	QLabel* statusBarLabel = nullptr;
 
 	bool overLayStats = false;
+
+	CustomMessageHandler* messageHandler = nullptr;
 };

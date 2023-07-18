@@ -2,31 +2,23 @@
 #include <qwidget.h>
 #include <qtextedit.h>
 #include <qgridlayout.h>
+#include "LogTextEdit.h"
 
 class LoggingWidget : public QWidget
 {
-public:
-	enum Level 
-	{
-		Info,
-		Warning,
-		Error
-	};
+	Q_OBJECT
 
+public slots:
+	void showMessage(const QtMsgType level, const QString& message);
+
+public:
 	explicit LoggingWidget(QWidget* parent = nullptr);
 	~LoggingWidget();
-
-	void logInfo(const QString& message);
-	void logWarning(const QString& message);
-	void logError(const QString& message);
 
 	void setMaxLineCount(unsigned int maxLineCount);
 
 private:
-	unsigned int maxLineCount = 1000;
-	QTextEdit* textEdit = nullptr;
+	LogTextEdit* textEdit = nullptr;
 	QGridLayout* grid = nullptr;
-
-	void log(Level level, const QString& message);
 };
 

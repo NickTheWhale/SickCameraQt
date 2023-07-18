@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['data_0',['Data',['../struct_t_s7_s_z_l.html#a03aa82eb89ac215a12a64c77f2f72adc',1,'TS7SZL']]],
-  ['data_1',['data',['../union_hash__state.html#a936b335f7aa23b39f89ee6aa3bb3ff17',1,'Hash_state::data'],['../structtinycolormap_1_1_color.html#a53cb11070fe0ef22fd86bac09bb178fe',1,'tinycolormap::Color::data']]],
+  ['data_0',['data',['../union_hash__state.html#a936b335f7aa23b39f89ee6aa3bb3ff17',1,'Hash_state::data'],['../structtinycolormap_1_1_color.html#a53cb11070fe0ef22fd86bac09bb178fe',1,'tinycolormap::Color::data']]],
+  ['data_1',['Data',['../struct_t_s7_s_z_l.html#a03aa82eb89ac215a12a64c77f2f72adc',1,'TS7SZL']]],
   ['dataport_2',['dataPort',['../class_visionary_camera.html#adfa4a1f0527921ba5dbb9dfa656eb6ac',1,'VisionaryCamera']]],
   ['dbcount_3',['DBCount',['../struct_t_s7_blocks_list.html#a0188c117b565fe68f4b961037418235a',1,'TS7BlocksList']]],
   ['dbnumber_4',['DBNumber',['../struct_t_s7_tag.html#ac0d2ab2df88d5489f2c5061326a7b706',1,'TS7Tag::DBNumber'],['../struct_t_s7_data_item.html#af72b96d23f8c37a9a04a158a8b0a78a3',1,'TS7DataItem::DBNumber']]],

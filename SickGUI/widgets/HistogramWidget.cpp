@@ -51,14 +51,6 @@ void HistogramWidget::paintEvent(QPaintEvent* event)
 	{
 		painter.drawText(QPoint(width() / 2 - 20, height() - 5), xAxisLabel.c_str());
 
-		//for (auto i = 0; i < numBins; ++i)
-		//{
-		//	if (i % 10 == 0)
-		//	{
-		//		auto depth = minVal + (i * (maxVal - minVal) / numBins);
-		//		painter.drawText(i * barWidth + X_GRAPH_OFFSET + (barWidth * 10 / 2.0f), height() - 25, QString::number(depth));
-		//	}
-		//}
 
 		for (auto i = 0; i < xAxis.size(); ++i)
 		{
@@ -106,7 +98,6 @@ void HistogramWidget::paintEvent(QPaintEvent* event)
 		painter.fillRect(barRect, Qt::GlobalColor::darkGray);
 		++barOffset;
 	}
-
 }
 
 void HistogramWidget::contextMenuEvent(QContextMenuEvent* event)

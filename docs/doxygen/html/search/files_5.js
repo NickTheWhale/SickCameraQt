@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['main_2ecpp_0',['main.cpp',['../main_8cpp.html',1,'']]],
-  ['md5_2ecpp_1',['MD5.cpp',['../_m_d5_8cpp.html',1,'']]],
-  ['md5_2eh_2',['MD5.h',['../_m_d5_8h.html',1,'']]]
+  ['loggingwidget_2ecpp_0',['LoggingWidget.cpp',['../_logging_widget_8cpp.html',1,'']]],
+  ['loggingwidget_2eh_1',['LoggingWidget.h',['../_logging_widget_8h.html',1,'']]],
+  ['logtextedit_2ecpp_2',['LogTextEdit.cpp',['../_log_text_edit_8cpp.html',1,'']]],
+  ['logtextedit_2eh_3',['LogTextEdit.h',['../_log_text_edit_8h.html',1,'']]]
 ];

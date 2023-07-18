@@ -1,10 +1,20 @@
 #include "SickGUI.h"
-#include <QtWidgets/QApplication>
+#include <qapplication.h>
 #include <qsharedmemory.h>
 #include <qmessagebox.h>
+#include "CustomMessageHandler.h"
+
+CustomMessageHandler messageHandler;
+
+void msgHandler(QtMsgType type, const QMessageLogContext& context, const QString& message)
+{
+	messageHandler.handle(type, context, message);
+}
 
 int main(int argc, char* argv[])
 {
+	qInstallMessageHandler(msgHandler);
+
 	QApplication a(argc, argv);
 
 	// this prevents having multiple instances
@@ -17,7 +27,7 @@ int main(int argc, char* argv[])
 		return -1;
 	}
 
-	SickGUI w;
+	SickGUI w(&messageHandler);
 
 	w.show();
 	return a.exec();

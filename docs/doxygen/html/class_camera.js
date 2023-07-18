@@ -6,7 +6,7 @@ var class_camera =
     [ "getNextFrameset", "class_camera.html#afb93b43b0cca34497d614de8068e6ddf", null ],
     [ "getParameters", "class_camera.html#ac0d47627924a42ad2d42354144cd6670", null ],
     [ "isOpen", "class_camera.html#a70c5abd6bd16f5c91fc3768d6d76f49c", null ],
-    [ "open", "class_camera.html#a86b0b93c14ef5e0bc3736bfaaf343b7f", null ],
+    [ "open", "class_camera.html#a036fbd17384082fef82fbd9a3c5232f7", null ],
     [ "startCapture", "class_camera.html#acdb890f53f359f4a1c3c72a8772228f0", null ],
     [ "stopCapture", "class_camera.html#a0701c1d212f7c236e13f8980d2b2e566", null ]
 ];

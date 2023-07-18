@@ -4,6 +4,8 @@
 #include <snap7.h>
 #include "Fingerprint.h"
 #include "MutexTryLocker.h"
+#include <qelapsedtimer.h>
+#include <qrandom.h>
 
 bool PlcThread::startPlc(TS7Client* client)
 {
@@ -32,6 +34,8 @@ void PlcThread::stopPlc()
 void PlcThread::run()
 {
 	uint32_t lastNumber = 0;
+	QElapsedTimer timer;
+	timer.start();
 	while (!_stop)
 	{
 		MutexTryLocker locker(&framesetMutex);
@@ -45,7 +49,9 @@ void PlcThread::run()
 		locker.unlock();
 		uploadDB();
 
-		msleep(2000);
+		msleep(QRandomGenerator::global()->bounded(10, 50));
+		qint64 time = timer.restart();
+		emit addPlcTime(static_cast<int>(time));
 	}
 }
 
