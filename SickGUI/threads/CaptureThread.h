@@ -9,10 +9,8 @@
 #pragma once
 
 #include <qthread.h>
-#include "SickGUI.h"
-#include <qmutex.h>
 
-#include "VisionaryFrameset.h"
+#include "..\VisionaryFrameset.h"
 
 class Camera;
 
@@ -31,7 +29,7 @@ signals:
 	 * @brief Signal emitted when a new frameset is available.
 	 * @param fs The frameset object containing the captured frames.
 	 */
-	void newFrameset(Frameset::frameset_t fs);
+	void newFrameset(const Frameset::frameset_t& fs);
 
 	/**
 	 * @brief Signal emitted when the connection to the camera is lost.
@@ -63,5 +61,4 @@ private:
 	Camera* camera;
 	volatile bool _stop;
 	volatile bool sendTime = false; 
-	QMutex framesetMutex;
 };

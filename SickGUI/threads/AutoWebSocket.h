@@ -27,7 +27,7 @@ private slots:
 	void onTimer();
 
 private:
-	QWebSocket* _socket = nullptr;
+	QWebSocket _socket;
 	QTimer* reconnectTimer = nullptr;
 
 	const QUrl url;

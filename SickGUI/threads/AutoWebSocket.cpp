@@ -1,25 +1,23 @@
 #include "AutoWebSocket.h"
 
 AutoWebSocket::AutoWebSocket(const QUrl& url, const QWebSocketProtocol::Version& version, QObject* parent)
-	: url(url), QObject(parent)
+	: url(url), _socket("", version), QObject(parent)
 {
 	reconnectTimer = new QTimer(this);
 	reconnectTimer->setInterval(reconnectTimerInterval);
-
-	_socket = new QWebSocket("", version, parent);
 
 	connect(this, &AutoWebSocket::connectSocket, this, &AutoWebSocket::doConnectSocket);
 	connect(this, &AutoWebSocket::disconnectSocket, this, &AutoWebSocket::doDisconnectSocket);
 	connect(reconnectTimer, &QTimer::timeout, this, &AutoWebSocket::onTimer);
 
-	connect(_socket, &QWebSocket::connected, this, &AutoWebSocket::onSocketConnected);
-	connect(_socket, &QWebSocket::disconnected, this, &AutoWebSocket::onSocketDisconnected);
+	connect(&_socket, &QWebSocket::connected, this, &AutoWebSocket::onSocketConnected);
+	connect(&_socket, &QWebSocket::disconnected, this, &AutoWebSocket::onSocketDisconnected);
 }
 
 AutoWebSocket::~AutoWebSocket()
 {
 	this->stop();
-	_socket->close();
+	_socket.close();
 }
 
 void AutoWebSocket::start()
@@ -36,22 +34,22 @@ void AutoWebSocket::stop()
 
 QWebSocket* AutoWebSocket::socket()
 {
-	return _socket;
+	return &_socket;
 }
 
 void AutoWebSocket::doConnectSocket()
 {
-	if (_socket->state() == QAbstractSocket::UnconnectedState)
+	if (_socket.state() == QAbstractSocket::UnconnectedState)
 	{
-		_socket->open(url);
+		_socket.open(url);
 	}
 }
 
 void AutoWebSocket::doDisconnectSocket()
 {
-	if (_socket->state() == QAbstractSocket::ConnectedState)
+	if (_socket.state() == QAbstractSocket::ConnectedState)
 	{
-		_socket->close();
+		_socket.close();
 	}
 }
 
@@ -62,7 +60,7 @@ void AutoWebSocket::onSocketConnected()
 
 void AutoWebSocket::onSocketDisconnected()
 {
-	//qDebug() << "websocket disconnected";
+	qDebug() << "websocket disconnected";
 }
 
 void AutoWebSocket::onTimer()

@@ -9,9 +9,8 @@
 #pragma once
 #include <qthread.h>
 #include <snap7.h>
-#include "VisionaryFrameset.h"
+#include "..\VisionaryFrameset.h"
 #include <boost/circular_buffer.hpp>
-#include <qmutex.h>
 #include <qtimer.h>
 
 class PlcThread : public QThread
@@ -27,7 +26,7 @@ public slots:
 	 * 
 	 * @param fs Output frameset.
 	 */
-	void newFrameset(Frameset::frameset_t fs);
+	void newFrameset(const Frameset::frameset_t& fs);
 
 public:
 	/**
@@ -56,6 +55,5 @@ private:
 	TS7Client* client;
 
 	Frameset::frameset_t fsBuff;
-	QMutex framesetMutex;
 };
 

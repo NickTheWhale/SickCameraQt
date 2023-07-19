@@ -40,10 +40,10 @@
     <ClCompile Include="cameraimpl\VisionaryCamera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CaptureThread.cpp">
+    <ClCompile Include="threads\CaptureThread.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PlcThread.cpp">
+    <ClCompile Include="threads\PlcThread.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="snap7\snap7.cpp">
@@ -142,10 +142,7 @@
     <ClCompile Include="widgets\LoggingWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AutoWebSocket.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MutexTryLocker.cpp">
+    <ClCompile Include="threads\AutoWebSocket.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CustomMessageHandler.cpp">
@@ -161,6 +158,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="App.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="threads\WebThread.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -276,18 +276,15 @@
     <ClInclude Include="sickapi\src\VisionaryTMiniData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MutexTryLocker.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="App.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="CaptureThread.h">
+    <QtMoc Include="threads\CaptureThread.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="PlcThread.h">
+    <QtMoc Include="threads\PlcThread.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="widgets\AspectRatioPixmapLabel.h">
@@ -299,7 +296,7 @@
     <QtMoc Include="widgets\CloseDockWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="AutoWebSocket.h">
+    <QtMoc Include="threads\AutoWebSocket.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="CustomMessageHandler.h">
@@ -315,6 +312,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="widgets\LogTextEdit.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="threads\WebThread.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

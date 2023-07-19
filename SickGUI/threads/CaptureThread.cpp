@@ -1,6 +1,6 @@
 #include "CaptureThread.h"
 
-#include "Camera.h"
+#include "..\Camera.h"
 #include <qelapsedtimer.h>
 
 bool CaptureThread::startCapture(Camera* camera)
@@ -55,15 +55,7 @@ void CaptureThread::run()
 			}
 
 			prevNumber = fs.number;
-
-			QMutexLocker locker(&framesetMutex);
-
 			emit newFrameset(fs);
-
-			if (locker.isLocked())
-			{
-				locker.unlock();
-			}
 		}
 		qint64 time = timer.restart();
 		emit addTime(static_cast<int>(time));

@@ -66,10 +66,6 @@ const Times CycleTime::times() const
 
 void CycleTime::add(const int time)
 {
-	if (isNulled)
-	{
-		unNullTimes();
-	}
 	if (time > 0)
 	{
 		buffer.push_back(time);
@@ -113,11 +109,20 @@ void CycleTime::update()
 	_times.p75 = sortedBuffer[static_cast<int>(p75Index)];
 	_times.p95 = sortedBuffer[static_cast<int>(p95Index)];
 
+	if (isNulled)
+	{
+		unNullTimes();
+	}
+
+	if (buffer.full())
+	{
+		averageLabel->setText(QString::number(_times.average));
+		p75Label->setText(QString::number(_times.p75));
+		p95Label->setText(QString::number(_times.p95));
+	}
+
 	currentLabel->setText(QString::number(_times.current));
-	averageLabel->setText(QString::number(_times.average));
 	worstLabel->setText(QString::number(_times.worst));
-	p75Label->setText(QString::number(_times.p75));
-	p95Label->setText(QString::number(_times.p95));
 }
 
 void CycleTime::unNullTimes()

@@ -15,8 +15,9 @@
 #include <qmutex.h>
 #include <chrono>
 #include <boost/circular_buffer.hpp>
-#include "CaptureThread.h"
-#include "PlcThread.h"
+#include <CaptureThread.h>
+#include <PlcThread.h>
+#include <WebThread.h>
 #include "VisionaryFrameset.h"
 #include "Stream.h"
 #include <qpromise.h>
@@ -68,7 +69,7 @@ public slots:
 	 *
 	 * @param fs Output frameset.
 	 */
-	void newFrameset(Frameset::frameset_t fs);
+	void newFrameset(const Frameset::frameset_t& fs);
 
 	/**
 	 * @brief Slot to show a message on the status bar.
@@ -99,13 +100,6 @@ private:
 	void initializeWidgets();
 
 	/**
-	 * @brief Initializes web connection.
-	 *
-	 * @return true if successful, false otherwise.
-	 */
-	bool initializeWebServerConnection();
-
-	/**
 	 * @brief Shows latest camera frame.
 	 *
 	 * Grabs the latest frameset from the frameset buffer and converts the selected frame type
@@ -121,8 +115,6 @@ private:
 	 * followed by HistogramWidget::update().
 	 */
 	void updateCharts();
-
-	void updateWeb();
 
 	/**
 	 * @brief Writes QImage to display.
@@ -161,7 +153,7 @@ private:
 	 *
 	 * @return true if started, false otherwise.
 	 */
-	ThreadResult startCameraThread();
+	ThreadResult startCamThread();
 
 	/**
 	 * @brief Starts plc thread.
@@ -169,11 +161,13 @@ private:
 	 * Creates snap7 client, connects to plc, and starts PlcThread.
 	 * Also connects the CaptureThread's newFrameset signal to PlcThread::newFrameset slot.
 	 *
-	 * @note This method cannot be called unless startCameraThread() was called and returned true.
+	 * @note This method cannot be called unless startCamThread() was called and returned true.
 	 *
 	 * @return true if started, false otherwise.
 	 */
 	ThreadResult startPlcThread();
+
+	ThreadResult startWebThread();
 
 	/**
 	 * @brief Saves window state and geometry.
@@ -204,6 +198,7 @@ private:
 	PlcThread* plcThread = nullptr;
 
 	AutoWebSocket* webSocket = nullptr;
+	WebThread* webThread = nullptr;
 
 	QFutureWatcher<ThreadResult>* threadWatcher;
 
@@ -217,9 +212,6 @@ private:
 
 	QTimer* chartTimer = nullptr;
 	int chartTimerInterval = 100; /* ms */
-
-	QTimer* webTimer = nullptr;
-	int webTimerInterval = 100; /* ms */
 
 	Stream streamType;
 	tinycolormap::ColormapType streamColorMapType;
