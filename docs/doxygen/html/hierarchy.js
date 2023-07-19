@@ -32,6 +32,8 @@ var hierarchy =
     ] ],
     [ "visionary::UdpSocket::m_udpAddr", "structvisionary_1_1_udp_socket_1_1m__udp_addr.html", null ],
     [ "visionary::MD5", "classvisionary_1_1_m_d5.html", null ],
+    [ "MutexTryLocker", "class_mutex_try_locker.html", null ],
+    [ "OpenResult", "struct_open_result.html", null ],
     [ "visionary::PointCloudPlyWriter", "classvisionary_1_1_point_cloud_ply_writer.html", null ],
     [ "visionary::PointXYZ", "structvisionary_1_1_point_x_y_z.html", null ],
     [ "visionary::PointXYZC", "structvisionary_1_1_point_x_y_z_c.html", null ],
@@ -45,18 +47,29 @@ var hierarchy =
     [ "QMainWindow", null, [
       [ "SickGUI", "class_sick_g_u_i.html", null ]
     ] ],
+    [ "QObject", null, [
+      [ "AutoWebSocket", "class_auto_web_socket.html", null ],
+      [ "CustomMessageHandler", "class_custom_message_handler.html", null ],
+      [ "TcpClient", "class_tcp_client.html", null ]
+    ] ],
+    [ "QTextEdit", null, [
+      [ "LogTextEdit", "class_log_text_edit.html", null ]
+    ] ],
     [ "QThread", null, [
       [ "Camera", "class_camera.html", [
         [ "VisionaryCamera", "class_visionary_camera.html", null ]
       ] ],
       [ "CaptureThread", "class_capture_thread.html", null ],
-      [ "PlcThread", "class_plc_thread.html", null ]
+      [ "PlcThread", "class_plc_thread.html", null ],
+      [ "WebThread", "class_web_thread.html", null ]
     ] ],
     [ "QWidget", null, [
-      [ "HistogramWidget", "class_histogram_widget.html", null ]
+      [ "HistogramWidget", "class_histogram_widget.html", null ],
+      [ "LoggingWidget", "class_logging_widget.html", null ]
     ] ],
     [ "sha256_state", "structsha256__state.html", null ],
     [ "SZL_HEADER", "struct_s_z_l___h_e_a_d_e_r.html", null ],
+    [ "ThreadResult", "struct_thread_result.html", null ],
     [ "tm", "structtm.html", null ],
     [ "TS7BlockInfo", "struct_t_s7_block_info.html", null ],
     [ "TS7BlocksList", "struct_t_s7_blocks_list.html", null ],

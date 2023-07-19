@@ -24,10 +24,11 @@ var searchData=
   ['receivecolacommand_21',['receiveCoLaCommand',['../classvisionary_1_1_visionary_control.html#aee96196d04e6fdf907604ed458c70968',1,'visionary::VisionaryControl']]],
   ['receivecolaresponse_22',['receiveCoLaResponse',['../classvisionary_1_1_visionary_control.html#a60e42b66a49090f5720b270325c3328f',1,'visionary::VisionaryControl']]],
   ['recv_23',['recv',['../classvisionary_1_1_i_transport.html#a270896bd4df1f742e6e32f8866f05b5d',1,'visionary::ITransport::recv()'],['../classvisionary_1_1_tcp_socket.html#af522e4c8bd834badbe86c55c5c61976e',1,'visionary::TcpSocket::recv()'],['../classvisionary_1_1_udp_socket.html#a653283a07b9f12fcaa2699599b543d79',1,'visionary::UdpSocket::recv()']]],
-  ['resizeevent_24',['resizeEvent',['../class_aspect_ratio_pixmap_label.html#a5e64fc72f5b25b9cc4a13ed5560eb282',1,'AspectRatioPixmapLabel']]],
-  ['restoresettings_25',['restoreSettings',['../class_sick_g_u_i.html#a805420ecff9d15222ef5dbb1ec7672e4',1,'SickGUI']]],
-  ['rewind_26',['rewind',['../classvisionary_1_1_co_la_parameter_reader.html#ac06ecea8b9f990d37189f03c872fc21f',1,'visionary::CoLaParameterReader']]],
-  ['ri_27',['ri',['../structtinycolormap_1_1_color.html#a2b3765e29b370b07ca8515cab9b6c8bb',1,'tinycolormap::Color']]],
-  ['rotate_5fleft_28',['rotate_left',['../classvisionary_1_1_m_d5.html#ac1127795602662ce3edb11b55ddde9f3',1,'visionary::MD5']]],
-  ['run_29',['run',['../class_capture_thread.html#a7b3ce730549a2beea9ae989a4cf44d35',1,'CaptureThread::run()'],['../class_plc_thread.html#a3d2bdf5c50e851c1032c25ef0f41ce73',1,'PlcThread::run()'],['../classvisionary_1_1_frame_grabber_base.html#ae4cfc0a821283aa1e6f63deb288b6a2e',1,'visionary::FrameGrabberBase::run()']]]
+  ['removelines_24',['removeLines',['../class_log_text_edit.html#a120d354390bae59a1d3ffc8a09670e0b',1,'LogTextEdit']]],
+  ['resizeevent_25',['resizeEvent',['../class_aspect_ratio_pixmap_label.html#a5e64fc72f5b25b9cc4a13ed5560eb282',1,'AspectRatioPixmapLabel']]],
+  ['restoresettings_26',['restoreSettings',['../class_sick_g_u_i.html#a805420ecff9d15222ef5dbb1ec7672e4',1,'SickGUI']]],
+  ['rewind_27',['rewind',['../classvisionary_1_1_co_la_parameter_reader.html#ac06ecea8b9f990d37189f03c872fc21f',1,'visionary::CoLaParameterReader']]],
+  ['ri_28',['ri',['../structtinycolormap_1_1_color.html#a2b3765e29b370b07ca8515cab9b6c8bb',1,'tinycolormap::Color']]],
+  ['rotate_5fleft_29',['rotate_left',['../classvisionary_1_1_m_d5.html#ac1127795602662ce3edb11b55ddde9f3',1,'visionary::MD5']]],
+  ['run_30',['run',['../class_capture_thread.html#a7b3ce730549a2beea9ae989a4cf44d35',1,'CaptureThread::run()'],['../class_plc_thread.html#a3d2bdf5c50e851c1032c25ef0f41ce73',1,'PlcThread::run()'],['../classvisionary_1_1_frame_grabber_base.html#ae4cfc0a821283aa1e6f63deb288b6a2e',1,'visionary::FrameGrabberBase::run()'],['../class_web_thread.html#abfaa9a721904ce823ee343c3e485b17a',1,'WebThread::run()']]]
 ];

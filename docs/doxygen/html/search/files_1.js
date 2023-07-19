@@ -18,5 +18,7 @@ var searchData=
   ['colaparameterwriter_2ecpp_15',['CoLaParameterWriter.cpp',['../_co_la_parameter_writer_8cpp.html',1,'']]],
   ['colaparameterwriter_2eh_16',['CoLaParameterWriter.h',['../_co_la_parameter_writer_8h.html',1,'']]],
   ['controlsession_2ecpp_17',['ControlSession.cpp',['../_control_session_8cpp.html',1,'']]],
-  ['controlsession_2eh_18',['ControlSession.h',['../_control_session_8h.html',1,'']]]
+  ['controlsession_2eh_18',['ControlSession.h',['../_control_session_8h.html',1,'']]],
+  ['custommessagehandler_2ecpp_19',['CustomMessageHandler.cpp',['../_custom_message_handler_8cpp.html',1,'']]],
+  ['custommessagehandler_2eh_20',['CustomMessageHandler.h',['../_custom_message_handler_8h.html',1,'']]]
 ];

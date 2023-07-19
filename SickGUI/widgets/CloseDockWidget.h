@@ -11,7 +11,6 @@
 #include <qdockwidget.h>
 #include <qstring.h>
 #include <qwidget.h>
-
 /**
  * @brief The CloseDockWidget class represents a dockable widget with a public closed() signal.
  *

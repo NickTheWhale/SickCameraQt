@@ -44,15 +44,23 @@ var annotated_dup =
       [ "VisionaryTMiniData", "classvisionary_1_1_visionary_t_mini_data.html", "classvisionary_1_1_visionary_t_mini_data" ]
     ] ],
     [ "AspectRatioPixmapLabel", "class_aspect_ratio_pixmap_label.html", "class_aspect_ratio_pixmap_label" ],
+    [ "AutoWebSocket", "class_auto_web_socket.html", "class_auto_web_socket" ],
     [ "Camera", "class_camera.html", "class_camera" ],
     [ "CaptureThread", "class_capture_thread.html", "class_capture_thread" ],
     [ "CloseDockWidget", "class_close_dock_widget.html", "class_close_dock_widget" ],
+    [ "CustomMessageHandler", "class_custom_message_handler.html", "class_custom_message_handler" ],
     [ "Hash_state", "union_hash__state.html", "union_hash__state" ],
     [ "HistogramWidget", "class_histogram_widget.html", "class_histogram_widget" ],
+    [ "LoggingWidget", "class_logging_widget.html", "class_logging_widget" ],
+    [ "LogTextEdit", "class_log_text_edit.html", "class_log_text_edit" ],
+    [ "MutexTryLocker", "class_mutex_try_locker.html", "class_mutex_try_locker" ],
+    [ "OpenResult", "struct_open_result.html", "struct_open_result" ],
     [ "PlcThread", "class_plc_thread.html", "class_plc_thread" ],
     [ "sha256_state", "structsha256__state.html", "structsha256__state" ],
     [ "SickGUI", "class_sick_g_u_i.html", "class_sick_g_u_i" ],
     [ "SZL_HEADER", "struct_s_z_l___h_e_a_d_e_r.html", "struct_s_z_l___h_e_a_d_e_r" ],
+    [ "TcpClient", "class_tcp_client.html", "class_tcp_client" ],
+    [ "ThreadResult", "struct_thread_result.html", "struct_thread_result" ],
     [ "tm", "structtm.html", "structtm" ],
     [ "TS7BlockInfo", "struct_t_s7_block_info.html", "struct_t_s7_block_info" ],
     [ "TS7BlocksList", "struct_t_s7_blocks_list.html", "struct_t_s7_blocks_list" ],
@@ -65,5 +73,6 @@ var annotated_dup =
     [ "TS7SZLList", "struct_t_s7_s_z_l_list.html", "struct_t_s7_s_z_l_list" ],
     [ "TS7Tag", "struct_t_s7_tag.html", "struct_t_s7_tag" ],
     [ "TSrvEvent", "struct_t_srv_event.html", "struct_t_srv_event" ],
-    [ "VisionaryCamera", "class_visionary_camera.html", "class_visionary_camera" ]
+    [ "VisionaryCamera", "class_visionary_camera.html", "class_visionary_camera" ],
+    [ "WebThread", "class_web_thread.html", "class_web_thread" ]
 ];

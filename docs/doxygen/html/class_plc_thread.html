@@ -140,10 +140,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:afe0a214dce053ebc47650c8c1aa8e858"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afaa14ee89bfa0a5daa42c8d14c17ce5c"><td class="memItemLeft" align="right" valign="top">TS7Client *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plc_thread.html#afaa14ee89bfa0a5daa42c8d14c17ce5c">client</a></td></tr>
 <tr class="separator:afaa14ee89bfa0a5daa42c8d14c17ce5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac8f73bfec67d2ac36983557e0b7d64c9"><td class="memItemLeft" align="right" valign="top">const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plc_thread.html#ac8f73bfec67d2ac36983557e0b7d64c9">framesetBufferSize</a> = 2</td></tr>
-<tr class="separator:ac8f73bfec67d2ac36983557e0b7d64c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:addafa7edcd889c732f525449f979265b"><td class="memItemLeft" align="right" valign="top">boost::circular_buffer&lt; <a class="el" href="struct_frameset_1_1frameset__t.html">Frameset::frameset_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plc_thread.html#addafa7edcd889c732f525449f979265b">framesetBuffer</a></td></tr>
-<tr class="separator:addafa7edcd889c732f525449f979265b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade54841de8028a7346fbf06f9b8f7e75"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_frameset_1_1frameset__t.html">Frameset::frameset_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plc_thread.html#ade54841de8028a7346fbf06f9b8f7e75">fsBuff</a></td></tr>
+<tr class="separator:ade54841de8028a7346fbf06f9b8f7e75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8be357de4eda83a626c84eb8a8aa169"><td class="memItemLeft" align="right" valign="top">QMutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plc_thread.html#ac8be357de4eda83a626c84eb8a8aa169">framesetMutex</a></td></tr>
 <tr class="separator:ac8be357de4eda83a626c84eb8a8aa169"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -324,50 +322,6 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="addafa7edcd889c732f525449f979265b" name="addafa7edcd889c732f525449f979265b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#addafa7edcd889c732f525449f979265b">&#9670;&#160;</a></span>framesetBuffer</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">boost::circular_buffer&lt;<a class="el" href="struct_frameset_1_1frameset__t.html">Frameset::frameset_t</a>&gt; PlcThread::framesetBuffer</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ac8f73bfec67d2ac36983557e0b7d64c9" name="ac8f73bfec67d2ac36983557e0b7d64c9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac8f73bfec67d2ac36983557e0b7d64c9">&#9670;&#160;</a></span>framesetBufferSize</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const size_t PlcThread::framesetBufferSize = 2</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="ac8be357de4eda83a626c84eb8a8aa169" name="ac8be357de4eda83a626c84eb8a8aa169"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac8be357de4eda83a626c84eb8a8aa169">&#9670;&#160;</a></span>framesetMutex</h2>
 
@@ -379,6 +333,28 @@ Private Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">QMutex PlcThread::framesetMutex</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ade54841de8028a7346fbf06f9b8f7e75" name="ade54841de8028a7346fbf06f9b8f7e75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade54841de8028a7346fbf06f9b8f7e75">&#9670;&#160;</a></span>fsBuff</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_frameset_1_1frameset__t.html">Frameset::frameset_t</a> PlcThread::fsBuff</td>
         </tr>
       </table>
   </td>

@@ -12,11 +12,14 @@
 #include "VisionaryFrameset.h"
 #include <boost/circular_buffer.hpp>
 #include <qmutex.h>
+#include <qtimer.h>
 
 class PlcThread : public QThread
 {
 	Q_OBJECT
 
+signals:
+	void addTime(const int time);
 
 public slots:
 	/**
@@ -49,10 +52,10 @@ protected:
 private:
 	void uploadDB();
 	volatile bool _stop = false;
+	volatile bool sendTime = false;
 	TS7Client* client;
 
-	const size_t framesetBufferSize = 2;
-	boost::circular_buffer<Frameset::frameset_t> framesetBuffer;
+	Frameset::frameset_t fsBuff;
 	QMutex framesetMutex;
 };
 

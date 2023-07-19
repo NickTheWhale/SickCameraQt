@@ -3,25 +3,26 @@
 #include <algorithm>
 #include <snap7.h>
 #include "Fingerprint.h"
+#include "MutexTryLocker.h"
+#include <qelapsedtimer.h>
+#include <qrandom.h>
 
 bool PlcThread::startPlc(TS7Client* client)
 {
 	this->client = client;
-	framesetBuffer = boost::circular_buffer<Frameset::frameset_t>(framesetBufferSize);
 
-	start(QThread::Priority::TimeCriticalPriority);
+	start(QThread::Priority::HighPriority);
 	return true;
 }
 
 void PlcThread::newFrameset(Frameset::frameset_t fs)
 {
-	if (!framesetMutex.tryLock())
+	MutexTryLocker locker(&framesetMutex);
+	if (!locker.isLocked())
 	{
 		return;
 	}
-
-	framesetBuffer.push_back(fs);
-	framesetMutex.unlock();
+	fsBuff = fs;
 }
 
 void PlcThread::stopPlc()
@@ -31,27 +32,25 @@ void PlcThread::stopPlc()
 
 void PlcThread::run()
 {
-	Frameset::frameset_t fs;
+	uint32_t lastNumber = 0;
+	QElapsedTimer timer;
+	timer.start();
 	while (!_stop)
 	{
-		if (!framesetMutex.tryLock())
+		MutexTryLocker locker(&framesetMutex);
+		if (!locker.isLocked())
 		{
-			continue;
-		}
-		if (framesetBuffer.empty())
-		{
-			framesetMutex.unlock();
+			msleep(1);
 			continue;
 		}
 
-		fs = framesetBuffer.back();
+		Frameset::frameset_t fs = fsBuff;
+		locker.unlock();
+		uploadDB();
 
-		framesetMutex.unlock();
-
-		auto fp = Fingerprint::calculateFingerprint(fs.width, fs.height, fs.depth);
-		//qDebug() << "Fingerprint:" << fp << "frame #:" << fs.number;
-
-		msleep(1000);
+		msleep(QRandomGenerator::global()->bounded(1, 100));
+		qint64 time = timer.restart();
+		emit addTime(static_cast<int>(time));
 	}
 }
 

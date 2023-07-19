@@ -18,6 +18,9 @@ var searchData=
   ['authenticationsecure_2eh_15',['AuthenticationSecure.h',['../_authentication_secure_8h.html',1,'']]],
   ['author_16',['Author',['../struct_t_s7_block_info.html#ab7e0cbde0b9661fe22786a710813dffc',1,'TS7BlockInfo']]],
   ['authorized_5fclient_17',['AUTHORIZED_CLIENT',['../classvisionary_1_1_i_authentication.html#a9d9871f50bf25a43e7faa4afb9e92f08ab7877fa4c9005b3a2490e05562310130',1,'visionary::IAuthentication']]],
-  ['available_18',['available',['../class_visionary_camera.html#a6d3622fbb38c2725a339c44cc46bd9e6',1,'VisionaryCamera']]],
-  ['axes_5ft_19',['axes_t',['../struct_histogram_widget_1_1_holder_of_static_histogram.html#ae1c2fbb843d59c6c28198ab05914fe60',1,'HistogramWidget::HolderOfStaticHistogram']]]
+  ['autowebsocket_18',['AutoWebSocket',['../class_auto_web_socket.html',1,'AutoWebSocket'],['../class_auto_web_socket.html#a3e36cfcfa604072193242564917e003c',1,'AutoWebSocket::AutoWebSocket()']]],
+  ['autowebsocket_2ecpp_19',['AutoWebSocket.cpp',['../_auto_web_socket_8cpp.html',1,'']]],
+  ['autowebsocket_2eh_20',['AutoWebSocket.h',['../_auto_web_socket_8h.html',1,'']]],
+  ['available_21',['available',['../class_visionary_camera.html#a6d3622fbb38c2725a339c44cc46bd9e6',1,'VisionaryCamera']]],
+  ['axes_5ft_22',['axes_t',['../struct_histogram_widget_1_1_holder_of_static_histogram.html#ae1c2fbb843d59c6c28198ab05914fe60',1,'HistogramWidget::HolderOfStaticHistogram']]]
 ];
