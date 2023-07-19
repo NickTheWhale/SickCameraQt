@@ -38,6 +38,8 @@ signals:
 	 */
 	void lostConnection();
 
+	void addTime(const int time);
+
 public:
 	/**
 	 * @brief Starts capturing frames from the specified camera.
@@ -60,8 +62,6 @@ protected:
 private:
 	Camera* camera;
 	volatile bool _stop;
+	volatile bool sendTime = false; 
 	QMutex framesetMutex;
-
-	//! Delay in milliseconds between frame capture retries
-	unsigned int frameRetryDelay = 1;
 };

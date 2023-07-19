@@ -1,5 +1,5 @@
 #include "SickGUI.h"
-#include <qapplication.h>
+#include "App.h"
 #include <qsharedmemory.h>
 #include <qmessagebox.h>
 #include "CustomMessageHandler.h"
@@ -15,7 +15,7 @@ int main(int argc, char* argv[])
 {
 	qInstallMessageHandler(msgHandler);
 
-	QApplication a(argc, argv);
+	App app(argc, argv);
 
 	// this prevents having multiple instances
 	QSharedMemory sharedMemory;
@@ -23,12 +23,12 @@ int main(int argc, char* argv[])
 	if (sharedMemory.create(1) == false)
 	{
 		QMessageBox::warning(nullptr, "Warning", "Another instance is already running");
-		a.exit();
+		app.exit();
 		return -1;
 	}
 
-	SickGUI w(&messageHandler);
+	SickGUI window(&messageHandler);
 
-	w.show();
-	return a.exec();
+	window.show();
+	return app.exec();
 }

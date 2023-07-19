@@ -30,9 +30,10 @@ SickGUI::SickGUI(CustomMessageHandler* messageHandler, QWidget* parent)
 	: QMainWindow(parent), framesetBuffer(framesetBufferSize), messageHandler(messageHandler)
 {
 	// create and connect timers to their corresponding update methods
-	displayTimer = new QTimer(this);
-	chartTimer = new QTimer(this);
-	webTimer = new QTimer(this);
+	displayTimer = new QTimer(this); displayTimer->setObjectName("displayTimer");
+	chartTimer = new QTimer(this); chartTimer->setObjectName("chartTimer");
+	webTimer = new QTimer(this); webTimer->setObjectName("webTimer");
+
 	QObject::connect(displayTimer, &QTimer::timeout, this, &SickGUI::updateDisplay);
 	QObject::connect(chartTimer, &QTimer::timeout, this, &SickGUI::updateCharts);
 	QObject::connect(webTimer, &QTimer::timeout, this, &SickGUI::updateWeb);
@@ -347,8 +348,8 @@ void SickGUI::initializeWidgets()
 	dock->adjustSize();
 	addDockWidget(Qt::DockWidgetArea::RightDockWidgetArea, dock);
 
-#pragma endregion
 
+#pragma endregion
 
 
 #pragma region WEB_SERVER_BUTTON
@@ -485,7 +486,8 @@ void SickGUI::updateCharts()
 
 void SickGUI::updateWeb()
 {
-	// gotta use a mutex since the frameset buffer is accessed by multiple threads
+	QElapsedTimer timer;
+	timer.start();
 	if (!framesetMutex.tryLock())
 	{
 		return;
@@ -504,12 +506,6 @@ void SickGUI::updateWeb()
 		Frameset::depthToQImage(fs, qImage);
 
 		QByteArray bytes;
-		// packet start
-		for (int i = 0; i < 4; ++i)
-		{
-			bytes.append(static_cast<char>(0));
-			bytes.append(static_cast<char>(255));
-		}
 
 		// height
 		for (int i = 0; i < 4; ++i)
@@ -550,6 +546,8 @@ void SickGUI::updateWeb()
 		bytes.append(imageBytes);
 
 		qint64 bytesWritten = webSocket->socket()->sendBinaryMessage(bytes);
+		qint64 elapsed = timer.restart();
+		cycleTimeWidget->addWebTime(elapsed);
 	}
 }
 
@@ -575,7 +573,7 @@ bool SickGUI::createCamera()
 		camera = nullptr;
 	}
 
-	camera = new(std::nothrow) VisionaryCamera("168.254.43.104");
+	camera = new(std::nothrow) VisionaryCamera("192.168.1.213");
 
 	return camera != nullptr;
 }
@@ -606,7 +604,7 @@ void SickGUI::checkThreads()
 	}
 	else
 	{
-		// if both threads are good, show the ip's on the status bar
+		// if both threads are good, show the ip's on the status bar and reset the cycle times
 		QTimer::singleShot(1000, [this]()
 			{
 				auto camParams = camera->getParameters();
@@ -621,6 +619,9 @@ void SickGUI::checkThreads()
 					msg = "plc: " + PLC_IP_ADDRESS;
 				}
 				statusBarLabel->setText(msg.c_str());
+				
+				QMetaObject::invokeMethod(this, [this]() { cycleTimeWidget->resetPlcTimes(); });
+				QMetaObject::invokeMethod(this, [this]() { cycleTimeWidget->resetCamTimes(); });
 			});
 	}
 }
@@ -681,14 +682,13 @@ ThreadResult SickGUI::startCameraThread()
 			}
 		}
 
-		QObject::connect(captureThread, &CaptureThread::newFrameset, this, &SickGUI::newFrameset, Qt::DirectConnection);
-
 		ret.error = !captureThread->startCapture(camera);
-
 		if (!ret.error)
 		{
 			showStatusBarMessage("camera thread success");
 			qInfo() << "camera thread success";
+			QObject::connect(captureThread, &CaptureThread::newFrameset, this, &SickGUI::newFrameset, Qt::DirectConnection);
+			QObject::connect(captureThread, &CaptureThread::addTime, cycleTimeWidget, &CycleTimeWidget::addCamTime);
 		}
 		else
 		{
@@ -755,16 +755,13 @@ ThreadResult SickGUI::startPlcThread()
 			}
 		}
 
-		//QObject::connect(captureThread, SIGNAL(newFrameset(Frameset::frameset_t)), plcThread, SLOT(newFrameset(Frameset::frameset_t)), Qt::DirectConnection);
-
-		QObject::connect(captureThread, &CaptureThread::newFrameset, plcThread, &PlcThread::newFrameset, Qt::DirectConnection);
-		QObject::connect(plcThread, &PlcThread::addPlcTime, cycleTimeWidget, &CycleTimeWidget::addPlcTime);
-
 		ret.error = !plcThread->startPlc(s7Client);
 		if (!ret.error)
 		{
 			showStatusBarMessage("plc thread success");
 			qInfo() << "plc thread success";
+			QObject::connect(captureThread, &CaptureThread::newFrameset, plcThread, &PlcThread::newFrameset, Qt::DirectConnection);
+			QObject::connect(plcThread, &PlcThread::addTime, cycleTimeWidget, &CycleTimeWidget::addPlcTime);
 		}
 		else
 		{
@@ -856,7 +853,6 @@ void SickGUI::newFrameset(Frameset::frameset_t fs)
 
 	if (!locker.isLocked())
 	{
-		qDebug() << "GUI THREAD NEW FRAMESET NO LOCK";
 		return;
 	}
 

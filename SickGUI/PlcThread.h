@@ -19,7 +19,7 @@ class PlcThread : public QThread
 	Q_OBJECT
 
 signals:
-	void addPlcTime(const int time);
+	void addTime(const int time);
 
 public slots:
 	/**
@@ -52,6 +52,7 @@ protected:
 private:
 	void uploadDB();
 	volatile bool _stop = false;
+	volatile bool sendTime = false;
 	TS7Client* client;
 
 	Frameset::frameset_t fsBuff;

@@ -57,12 +57,12 @@ void AutoWebSocket::doDisconnectSocket()
 
 void AutoWebSocket::onSocketConnected()
 {
-	qDebug() << "websocket connected";
+	qInfo() << "websocket connected";
 }
 
 void AutoWebSocket::onSocketDisconnected()
 {
-	qDebug() << "websocket disconnected";
+	//qDebug() << "websocket disconnected";
 }
 
 void AutoWebSocket::onTimer()

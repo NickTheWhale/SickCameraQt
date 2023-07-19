@@ -20,7 +20,6 @@ void PlcThread::newFrameset(Frameset::frameset_t fs)
 	MutexTryLocker locker(&framesetMutex);
 	if (!locker.isLocked())
 	{
-		qDebug() << "PLC THREAD NEW FRAMESET NO LOCK";
 		return;
 	}
 	fsBuff = fs;
@@ -41,17 +40,17 @@ void PlcThread::run()
 		MutexTryLocker locker(&framesetMutex);
 		if (!locker.isLocked())
 		{
-			qDebug() << "PLC THREAD RUN NO LOCK";
 			msleep(1);
 			continue;
 		}
+
 		Frameset::frameset_t fs = fsBuff;
 		locker.unlock();
 		uploadDB();
 
-		msleep(QRandomGenerator::global()->bounded(10, 50));
+		msleep(QRandomGenerator::global()->bounded(1, 100));
 		qint64 time = timer.restart();
-		emit addPlcTime(static_cast<int>(time));
+		emit addTime(static_cast<int>(time));
 	}
 }
 

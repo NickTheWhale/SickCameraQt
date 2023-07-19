@@ -105,6 +105,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="App.cpp" />
     <ClCompile Include="AutoWebSocket.cpp" />
     <ClCompile Include="CustomMessageHandler.cpp">
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
@@ -171,6 +172,7 @@
     <QtMoc Include="widgets\HistogramWidget.h" />
     <QtMoc Include="widgets\CloseDockWidget.h" />
     <QtMoc Include="AutoWebSocket.h" />
+    <ClInclude Include="App.h" />
     <ClInclude Include="Camera.h" />
     <QtMoc Include="CustomMessageHandler.h" />
     <QtMoc Include="widgets\CycleTime.h" />

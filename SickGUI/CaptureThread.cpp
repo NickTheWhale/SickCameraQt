@@ -1,6 +1,7 @@
 #include "CaptureThread.h"
 
 #include "Camera.h"
+#include <qelapsedtimer.h>
 
 bool CaptureThread::startCapture(Camera* camera)
 {
@@ -30,13 +31,14 @@ void CaptureThread::run()
 	uint32_t prevNumber = 0;
 	uint64_t totalFrames = 0;
 	uint64_t missedFrames = 0;
+	QElapsedTimer timer;
+	timer.start();
 	while (!_stop)
 	{
 		Frameset::frameset_t fs;
 		if (!camera->getNextFrameset(fs))
 		{
-			qDebug() << "FAILED TO GET NEW FRAMSET";
-			QThread::msleep(frameRetryDelay);
+			QThread::msleep(1);
 			continue;
 		}
 
@@ -49,7 +51,7 @@ void CaptureThread::run()
 			if (fs.number > prevNumber + 1 && prevNumber != 0)
 			{
 				missedFrames += fs.number - prevNumber;
-				qDebug() << "CAPTURE THREAD MISSED" << fs.number - prevNumber << "FRAME(S)" << "fs.number:" << fs.number << "prevNumber:" << prevNumber;
+				//qDebug() << "CAPTURE THREAD MISSED" << fs.number - prevNumber << "FRAME(S)" << "fs.number:" << fs.number << "prevNumber:" << prevNumber;
 			}
 
 			prevNumber = fs.number;
@@ -63,6 +65,8 @@ void CaptureThread::run()
 				locker.unlock();
 			}
 		}
+		qint64 time = timer.restart();
+		emit addTime(static_cast<int>(time));
 	}
 
 	qDebug() << "MISSED FRAME PERCENTAGE:" << (missedFrames / static_cast<double>(totalFrames)) * 100.0f;
