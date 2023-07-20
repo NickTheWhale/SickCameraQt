@@ -1,10 +1,8 @@
 #include "SickGUI.h"
 
 #include <qtimer.h>
-#include <chrono>
 
 #include "cameraimpl/VisionaryCamera.h"
-#include "VisionaryAutoIPScanCustom.h"
 #include <snap7.h>
 #include <qmessagebox.h>
 #include <qfuture.h>
@@ -26,18 +24,16 @@
 
 
 SickGUI::SickGUI(CustomMessageHandler* messageHandler, QWidget* parent)
-	: QMainWindow(parent), framesetBuffer(framesetBufferSize), messageHandler(messageHandler)
+	: QMainWindow(parent), messageHandler(messageHandler), bufferManager(BufferManager::instance())
 {
 	// create and connect timers to their corresponding update methods
 	displayTimer = new QTimer(this); displayTimer->setObjectName("displayTimer");
 	chartTimer = new QTimer(this); chartTimer->setObjectName("chartTimer");
 
-	QObject::connect(displayTimer, &QTimer::timeout, this, &SickGUI::updateDisplay);
-	QObject::connect(chartTimer, &QTimer::timeout, this, &SickGUI::updateCharts);
-
 	ui.setupUi(this);
 
 	initializeWidgets();
+	initializeWeb();
 
 	// create and connect future watcher to check thread status
 	threadWatcher = new QFutureWatcher<ThreadResult>(this);
@@ -96,21 +92,6 @@ SickGUI::~SickGUI()
 			s7Client->Disconnect();
 		delete s7Client;
 		s7Client = nullptr;
-	}
-
-	if (webThread)
-	{
-		webThread->stopWeb();
-		webThread->wait(10'000 /*ms*/);
-		delete webThread;
-		webThread = nullptr;
-	}
-
-	if (webSocket)
-	{
-		webSocket->stop();
-		delete webSocket;
-		webSocket = nullptr;
 	}
 }
 
@@ -369,55 +350,52 @@ void SickGUI::initializeWidgets()
 #pragma endregion
 }
 
+void SickGUI::initializeWeb()
+{
+	webSocket = new QAutoWebSocket(QUrl("ws://127.0.0.1:3000"), this);
+	webSocket->start();
+}
+
 void SickGUI::updateDisplay()
 {
 	// don't bother is the window is minimized
 	if (this->isMinimized())
 		return;
 
-	// gotta use a mutex since the frameset buffer is accessed by multiple threads
-	if (!framesetMutex.tryLock())
+	Frameset::frameset_t fs = bufferManager.popGuiFrame();
+	if (fs.isNull())
 		return;
-	if (framesetBuffer.empty())
+
+	QImage qImage;
+
+	// determine what stream we want and then overlay some stats if needed
+	switch (streamType)
 	{
-		framesetMutex.unlock();
-	}
-	else
+	case Stream::Depth:
 	{
-		Frameset::frameset_t fs = framesetBuffer.back();
-		framesetMutex.unlock();
-
-		QImage qImage;
-
-		// determine what stream we want and then overlay some stats if needed
-		switch (streamType)
-		{
-		case Stream::Depth:
-		{
-			Frameset::depthToQImage(fs, qImage, streamColorMapType, invertedColor);
-			if (overLayStats)
-				Fingerprint::overlayStats(qImage, fs.width, fs.height, fs.depth);
-		}
-		break;
-		case Stream::Intensity:
-		{
-			Frameset::intensityToQImage(fs, qImage, streamColorMapType, invertedColor);
-			if (overLayStats)
-				Fingerprint::overlayStats(qImage, fs.width, fs.height, fs.intensity);
-		}
-		break;
-		case Stream::State:
-		{
-			Frameset::stateToQImage(fs, qImage, streamColorMapType, invertedColor);
-			if (overLayStats)
-				Fingerprint::overlayStats(qImage, fs.width, fs.height, fs.state);
-		}
-		break;
-		}
-
-		// we use this method for thread safety
-		writeImage(qImage);
+		Frameset::depthToQImage(fs, qImage, streamColorMapType, invertedColor);
+		if (overLayStats)
+			Fingerprint::overlayStats(qImage, fs.width, fs.height, fs.depth);
 	}
+	break;
+	case Stream::Intensity:
+	{
+		Frameset::intensityToQImage(fs, qImage, streamColorMapType, invertedColor);
+		if (overLayStats)
+			Fingerprint::overlayStats(qImage, fs.width, fs.height, fs.intensity);
+	}
+	break;
+	case Stream::State:
+	{
+		Frameset::stateToQImage(fs, qImage, streamColorMapType, invertedColor);
+		if (overLayStats)
+			Fingerprint::overlayStats(qImage, fs.width, fs.height, fs.state);
+	}
+	break;
+	}
+
+	// we use this method for thread safety
+	writeImage(qImage);
 }
 
 void SickGUI::updateCharts()
@@ -425,29 +403,20 @@ void SickGUI::updateCharts()
 	// don't bother if the window is minimized
 	if (this->isMinimized())
 		return;
-
-	// gotta use a mutex since the frameset buffer is accessed by multiple threads
-	if (!framesetMutex.tryLock())
+	
+	Frameset::frameset_t fs = bufferManager.popGuiFrame();
+	if (fs.isNull())
 		return;
-	if (framesetBuffer.empty())
-	{
-		framesetMutex.unlock();
-	}
-	else
-	{
-		Frameset::frameset_t fs = framesetBuffer.back();
-		framesetMutex.unlock();
 
-		// we use invokeMethod for thread safety
-		QMetaObject::invokeMethod(this, [this, fs]()
-			{
-				// recalculate the 'gram
-				depthHistogram->updateHistogram(fs.depth);
-				// force a repaint
-				depthHistogram->update();
-			}
-		, Qt::QueuedConnection);
-	}
+	// we use invokeMethod for thread safety
+	QMetaObject::invokeMethod(this, [this, fs]()
+		{
+			// recalculate the 'gram
+			depthHistogram->updateHistogram(fs.depth);
+			// force a repaint
+			depthHistogram->update();
+		}
+	, Qt::QueuedConnection);
 }
 
 void SickGUI::writeImage(QImage image)
@@ -486,7 +455,7 @@ void SickGUI::checkThreads()
 	if (camThreadResult.error && plcThreadResult.error)
 	{
 		//std::string msg = std::format("Failed to connect to camera and plc.\nCamera error: {}\nPlc error: {}", camThreadResult.message, plcThreadResult.message);
-		std::string msg = "idk";
+		std::string msg = "Failed to connect to camera and plc";
 		QMessageBox::critical(this, "Error", msg.c_str());
 	}
 	else if (camThreadResult.error)
@@ -504,6 +473,7 @@ void SickGUI::checkThreads()
 	}
 	else
 	{
+		makeConnections();
 		// if both threads are good, show the ip's on the status bar and reset the cycle times
 		QTimer::singleShot(1000, [this]()
 			{
@@ -526,11 +496,46 @@ void SickGUI::checkThreads()
 	}
 }
 
+void SickGUI::makeConnections()
+{
+	QObject::connect(displayTimer, &QTimer::timeout, this, &SickGUI::updateDisplay);
+	QObject::connect(chartTimer, &QTimer::timeout, this, &SickGUI::updateCharts);
+	QObject::connect(captureThread, &CaptureThread::addTime, cycleTimeWidget, &CycleTimeWidget::addCamTime);
+	QObject::connect(plcThread, &PlcThread::addTime, cycleTimeWidget, &CycleTimeWidget::addPlcTime);
+
+	//QObject::connect(captureThread, &CaptureThread::newFrameset, webSocket, [this]()
+	//	{
+	//		QtConcurrent::run([this]()
+	//			{
+	//				QElapsedTimer cycleTimer;
+	//				cycleTimer.start();
+
+
+
+	//				QMetaObject::invokeMethod(this, [=]()
+	//					{
+	//						QByteArray bytes;
+	//						for (int i = 0; i < 255; ++i)
+	//							bytes.append(i);
+	//						webSocket->sendBinaryMessage(bytes);
+	//					});
+
+	//				QThread::msleep(5000);
+
+
+	//				qint64 elapsed = cycleTimer.elapsed();
+	//				QMetaObject::invokeMethod(this, [=]()
+	//					{
+	//						cycleTimeWidget->addWebTime(elapsed);
+	//					});
+	//			});
+	//	});
+}
+
 void SickGUI::startThreads(QPromise<ThreadResult>& promise)
 {
 	promise.addResult(startCamThread());
 	promise.addResult(startPlcThread());
-	promise.addResult(startWebThread());
 }
 
 ThreadResult SickGUI::startCamThread()
@@ -579,8 +584,8 @@ ThreadResult SickGUI::startCamThread()
 		if (!ret.error)
 		{
 			qInfo() << "camera thread success";
-			QObject::connect(captureThread, &CaptureThread::newFrameset, this, &SickGUI::newFrameset, Qt::DirectConnection);
-			QObject::connect(captureThread, &CaptureThread::addTime, cycleTimeWidget, &CycleTimeWidget::addCamTime);
+			//QObject::connect(captureThread, &CaptureThread::newFrameset, this, &SickGUI::newFrameset, Qt::DirectConnection);
+			//QObject::connect(captureThread, &CaptureThread::addTime, cycleTimeWidget, &CycleTimeWidget::addCamTime);
 		}
 		else
 		{
@@ -642,8 +647,8 @@ ThreadResult SickGUI::startPlcThread()
 		if (!ret.error)
 		{
 			qInfo() << "plc thread success";
-			QObject::connect(captureThread, &CaptureThread::newFrameset, plcThread, &PlcThread::newFrameset, Qt::DirectConnection);
-			QObject::connect(plcThread, &PlcThread::addTime, cycleTimeWidget, &CycleTimeWidget::addPlcTime);
+			//QObject::connect(captureThread, &CaptureThread::newFrameset, plcThread, &PlcThread::newFrameset, Qt::DirectConnection);
+			//QObject::connect(plcThread, &PlcThread::addTime, cycleTimeWidget, &CycleTimeWidget::addPlcTime);
 		}
 		else
 		{
@@ -657,63 +662,6 @@ ThreadResult SickGUI::startPlcThread()
 		qCritical() << "exception while starting plc thread: " << e.what();
 		ret.error = true;
 		ret.message = "failed to start plc thread";
-		return ret;
-	}
-}
-
-ThreadResult SickGUI::startWebThread()
-{
-	ThreadResult ret;
-	try {
-		qInfo() << "starting web thread";
-		if (webSocket)
-		{
-			webSocket->stop();
-			delete webSocket;
-			webSocket = nullptr;
-		}
-
-		qInfo() << "creating websocket";
-		webSocket = new AutoWebSocket(QUrl("ws://127.0.0.1:3000"), QWebSocketProtocol::VersionLatest);
-
-		qInfo() << "starting websocket";
-		webSocket->start();
-
-		if (!webThread)
-		{
-			qInfo() << "creating underlying web thread handler";
-			webThread = new(std::nothrow) WebThread();
-			if (!webThread)
-			{
-				qCritical() << "failed to create underlying web thread handler";
-				ret.error = true;
-				ret.message = "failed to create underlying web thread handler";
-				return ret;
-			}
-		}
-
-		webSocket->moveToThread(webThread->currentThread());
-		webSocket->setParent(webThread);
-
-		ret.error = !webThread->startWeb(webSocket);
-		if (!ret.error)
-		{
-			qInfo() << "web thread success";
-			QObject::connect(captureThread, &CaptureThread::newFrameset, webThread, &WebThread::newFrameset, Qt::DirectConnection);
-			QObject::connect(webThread, &WebThread::addTime, cycleTimeWidget, &CycleTimeWidget::addWebTime);
-		}
-		else
-		{
-			qCritical() << "web thread failed";
-			ret.message = "web thread failed";
-		}
-		return ret;
-	}
-	catch (std::exception e)
-	{
-		qCritical() << "exception while starting web thread: " << e.what();
-		ret.error = true;
-		ret.message = "failed to start web thread";
 		return ret;
 	}
 }
@@ -781,16 +729,10 @@ void SickGUI::pauseVideo()
 	ui.actionPause->setEnabled(false);
 }
 
-void SickGUI::newFrameset(const Frameset::frameset_t& fs)
-{
-	framesetBuffer.push_back(fs);
-}
-
 void SickGUI::showStatusBarMessage(const QString& text, int timeout)
 {
 	QMetaObject::invokeMethod(this, [this, text, timeout]()
 		{
 			statusBar()->showMessage(text, timeout);
-		}
-	, Qt::ConnectionType::DirectConnection);
+		});
 }

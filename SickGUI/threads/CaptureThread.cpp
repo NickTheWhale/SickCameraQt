@@ -2,6 +2,7 @@
 
 #include "..\Camera.h"
 #include <qelapsedtimer.h>
+#include <BufferManager.h>
 
 bool CaptureThread::startCapture(Camera* camera)
 {
@@ -28,6 +29,7 @@ void CaptureThread::stopCapture()
 
 void CaptureThread::run()
 {
+	BufferManager& bufferManager = BufferManager::instance();
 	uint32_t prevNumber = 0;
 	uint64_t totalFrames = 0;
 	uint64_t missedFrames = 0;
@@ -55,7 +57,9 @@ void CaptureThread::run()
 			}
 
 			prevNumber = fs.number;
-			emit newFrameset(fs);
+			bufferManager.pushPlcFrame(fs);
+			bufferManager.pushGuiFrame(fs);
+			bufferManager.pushWebFrame(fs);
 		}
 		qint64 time = cycleTimer.restart();
 		emit addTime(static_cast<int>(time));

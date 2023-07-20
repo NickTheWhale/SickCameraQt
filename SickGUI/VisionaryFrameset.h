@@ -23,7 +23,18 @@ namespace Frameset
 	 *
 	 * Each vector (depth, intensity, state) must have a size equal to height * width.
 	*/
-	typedef struct
+	//typedef struct
+	//{
+	//	std::vector<uint16_t> depth;
+	//	std::vector<uint16_t> intensity;
+	//	std::vector<uint16_t> state;
+	//	uint32_t height;
+	//	uint32_t width;
+	//	uint32_t number;
+	//	uint64_t time;
+	//} frameset_t;
+
+	struct frameset_t
 	{
 		std::vector<uint16_t> depth;
 		std::vector<uint16_t> intensity;
@@ -32,7 +43,26 @@ namespace Frameset
 		uint32_t width;
 		uint32_t number;
 		uint64_t time;
-	} frameset_t;
+
+		frameset_t()
+			: depth(0), intensity(0), state(0), height(0), width(0), number(0), time(0)
+		{
+		}
+
+		const bool isNull() const
+		{
+			if (height <= 0 || width <= 0)
+				return true;
+
+			if (depth.empty() || intensity.empty() || state.empty())
+				return true;
+
+			if (height * width != depth.size() || height * width != intensity.size() || height * width != state.size())
+				return true;
+
+			return false;
+		}
+	};
 
 	/**
 	 * @brief Contains internal helper functions.
@@ -1129,6 +1159,9 @@ namespace Frameset
 		*/
 		inline void frameToQImage(const std::vector<uint16_t>& frame, int width, int height, QImage& qImage, tinycolormap::ColormapType colorMap, bool invert, bool log)
 		{
+			if (frame.empty())
+				return;
+
 			qImage = QImage(width, height, QImage::Format_ARGB32_Premultiplied);
 
 			// auto exposure

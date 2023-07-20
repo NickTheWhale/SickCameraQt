@@ -11,13 +11,8 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_SickGUI.h"
-#include <qstack.h>
-#include <qmutex.h>
-#include <chrono>
-#include <boost/circular_buffer.hpp>
 #include <CaptureThread.h>
 #include <PlcThread.h>
-#include <WebThread.h>
 #include "VisionaryFrameset.h"
 #include "Stream.h"
 #include <qpromise.h>
@@ -26,9 +21,10 @@
 #include <HistogramWidget.h>
 #include <AspectRatioPixmapLabel.h>
 #include <LoggingWidget.h>
-#include "AutoWebSocket.h"
 #include "CustomMessageHandler.h"
 #include <CycleTimeWidget.h>
+#include <QAutoWebSocket.h>
+#include <BufferManager.h>
 
 class CaptureThread;
 
@@ -65,13 +61,6 @@ public slots:
 	void pauseVideo();
 
 	/**
-	 * @brief Slot to receive new frameset emitted by captureThread.
-	 *
-	 * @param fs Output frameset.
-	 */
-	void newFrameset(const Frameset::frameset_t& fs);
-
-	/**
 	 * @brief Slot to show a message on the status bar.
 	 * @note  *Messages shown with this method are not required to be persistent even
 	 *        with a timeout of 0.
@@ -98,6 +87,8 @@ private:
 	 *
 	 */
 	void initializeWidgets();
+
+	void initializeWeb();
 
 	/**
 	 * @brief Shows latest camera frame.
@@ -138,6 +129,8 @@ private:
 	 */
 	void checkThreads();
 
+	void makeConnections();
+
 	/**
 	 * @brief Method to start camera and plc threads.
 	 *
@@ -167,8 +160,6 @@ private:
 	 */
 	ThreadResult startPlcThread();
 
-	ThreadResult startWebThread();
-
 	/**
 	 * @brief Saves window state and geometry.
 	 *
@@ -187,9 +178,7 @@ private:
 
 	Ui::SickGUIClass ui;
 
-	const size_t framesetBufferSize = 2;
-	boost::circular_buffer<Frameset::frameset_t> framesetBuffer;
-	QMutex framesetMutex;
+	BufferManager& bufferManager;
 
 	Camera* camera = nullptr;
 	CaptureThread* captureThread = nullptr;
@@ -197,8 +186,7 @@ private:
 	TS7Client* s7Client = nullptr;
 	PlcThread* plcThread = nullptr;
 
-	AutoWebSocket* webSocket = nullptr;
-	WebThread* webThread = nullptr;
+	QAutoWebSocket* webSocket = nullptr;
 
 	QFutureWatcher<ThreadResult>* threadWatcher;
 

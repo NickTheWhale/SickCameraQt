@@ -20,15 +20,15 @@ public:
 	explicit CycleTimeWidget(QWidget* parent = nullptr);
 
 private:
-	int watchDogDuration = 1000; /* ms */
+	const int minWatchDogDuration = 1000; /* ms */
 
 	CycleTime* plcTimes;
 	CycleTime* camTimes;
 	CycleTime* webTimes;
 
-	QTimer* plcWatchDog;
-	QTimer* camWatchDog;
-	QTimer* webWatchDog;
+	QTimer* plcWatchDog = nullptr;
+	QTimer* camWatchDog = nullptr;
+	QTimer* webWatchDog = nullptr;
 
 	void nullPlcTimes();
 	void nullCamTimes();

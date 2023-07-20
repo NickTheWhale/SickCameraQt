@@ -5,6 +5,7 @@
 #include "..\Fingerprint.h"
 #include <qelapsedtimer.h>
 #include <qrandom.h>
+#include <BufferManager.h>
 
 bool PlcThread::startPlc(TS7Client* client)
 {
@@ -13,12 +14,6 @@ bool PlcThread::startPlc(TS7Client* client)
 	start(QThread::Priority::HighPriority);
 	return true;
 }
-
-void PlcThread::newFrameset(const Frameset::frameset_t& fs)
-{
-	fsBuff = fs;
-}
-
 void PlcThread::stopPlc()
 {
 	_stop = true;
@@ -26,15 +21,25 @@ void PlcThread::stopPlc()
 
 void PlcThread::run()
 {
+	BufferManager& bufferManager = BufferManager::instance();
 	uint32_t lastNumber = 0;
 	QElapsedTimer cycleTimer;
 	cycleTimer.start();
 	while (!_stop)
 	{
-		Frameset::frameset_t fs = fsBuff;
-		uploadDB();
+		Frameset::frameset_t fs = bufferManager.popPlcFrame();
+		
+		if (!fs.isNull())
+		{
+			uploadDB();
+		}
 
-		msleep(QRandomGenerator::global()->bounded(1, 100));
+		const qint64 timeLeft = minimumTargetCycleTime - cycleTimer.elapsed();
+		if (timeLeft > 0)
+		{
+			msleep(timeLeft);
+		}
+
 		qint64 time = cycleTimer.restart();
 		emit addTime(static_cast<int>(time));
 	}

@@ -15,23 +15,6 @@ CycleTimeWidget::CycleTimeWidget(QWidget* parent) : QWidget(parent)
 	grid->addWidget(webTimes, 2, 0, 1, 1);
 
 	setLayout(grid);
-
-
-	plcWatchDog = new QTimer(this);
-	camWatchDog = new QTimer(this);
-	webWatchDog = new QTimer(this);
-
-	plcWatchDog->setInterval(watchDogDuration);
-	camWatchDog->setInterval(watchDogDuration);
-	webWatchDog->setInterval(watchDogDuration);
-
-	plcWatchDog->callOnTimeout(this, &CycleTimeWidget::nullPlcTimes);
-	camWatchDog->callOnTimeout(this, &CycleTimeWidget::nullCamTimes);
-	webWatchDog->callOnTimeout(this, &CycleTimeWidget::nullWebTimes);
-
-	plcWatchDog->start();
-	camWatchDog->start();
-	webWatchDog->start();
 }
 
 void CycleTimeWidget::nullPlcTimes()
@@ -52,21 +35,40 @@ void CycleTimeWidget::nullWebTimes()
 void CycleTimeWidget::addPlcTime(const int time)
 {
 	plcTimes->add(time);
-	plcWatchDog->stop();
-	plcWatchDog->start(plcTimes->times().p75 * 5);
+
+	if (!plcWatchDog)
+	{
+		plcWatchDog = new QTimer(this);
+		plcWatchDog->callOnTimeout(this, &CycleTimeWidget::nullPlcTimes);
+	}
+	int timeOut = plcTimes->times().p75 > 0 ? std::max(plcTimes->times().p75 * 5, minWatchDogDuration) : minWatchDogDuration;
+	plcWatchDog->start(timeOut);
 }
 
 void CycleTimeWidget::addCamTime(const int time)
 {
 	camTimes->add(time);
-	camWatchDog->stop();
-	camWatchDog->start(camTimes->times().p75 * 5);
+
+	if (!camWatchDog)
+	{
+		camWatchDog = new QTimer(this);
+		camWatchDog->callOnTimeout(this, &CycleTimeWidget::nullCamTimes);
+	}
+	int timeOut = camTimes->times().p75 > 0 ? std::max(camTimes->times().p75 * 5, minWatchDogDuration) : minWatchDogDuration;
+	camWatchDog->start(timeOut);
 }
+
 void CycleTimeWidget::addWebTime(const int time)
 {
 	webTimes->add(time);
-	webWatchDog->stop();
-	webWatchDog->start(webTimes->times().p75 * 5);
+
+	if (!webWatchDog)
+	{
+		webWatchDog = new QTimer(this);
+		webWatchDog->callOnTimeout(this, &CycleTimeWidget::nullWebTimes);
+	}
+	int timeOut = webTimes->times().p75 > 0 ? std::max(webTimes->times().p75 * 5, minWatchDogDuration) : minWatchDogDuration;
+	webWatchDog->start(timeOut);
 }
 
 void CycleTimeWidget::resetPlcTimes()

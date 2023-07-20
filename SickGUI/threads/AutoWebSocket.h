@@ -8,15 +8,13 @@ class AutoWebSocket : public QObject
 	Q_OBJECT
 
 public:
-	explicit AutoWebSocket(const QUrl& url, const QWebSocketProtocol::Version& version, QObject* parent = nullptr);
+	explicit AutoWebSocket(const QUrl& url, const QWebSocketProtocol::Version& version = QWebSocketProtocol::VersionLatest, QObject* parent = nullptr);
+	explicit AutoWebSocket(const QUrl& url, QObject* parent = nullptr);
 	~AutoWebSocket();
 
 	void start();
 	void stop();
 	QWebSocket* socket();
-
-	qint64 remainingTime();
-	QTimer* timer();
 
 signals:
 	void connectSocket();
@@ -31,7 +29,7 @@ private slots:
 
 private:
 	QWebSocket _socket;
-	QTimer* reconnectTimer = nullptr;
+	QTimer reconnectTimer;
 
 	const QUrl url;
 	const int reconnectTimerInterval = 5000; /* ms */

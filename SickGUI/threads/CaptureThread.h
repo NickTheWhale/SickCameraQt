@@ -26,12 +26,6 @@ class CaptureThread : public QThread
 
 signals:
 	/**
-	 * @brief Signal emitted when a new frameset is available.
-	 * @param fs The frameset object containing the captured frames.
-	 */
-	void newFrameset(const Frameset::frameset_t& fs);
-
-	/**
 	 * @brief Signal emitted when the connection to the camera is lost.
 	 */
 	void lostConnection();

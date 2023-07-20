@@ -142,9 +142,6 @@
     <ClCompile Include="widgets\LoggingWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="threads\AutoWebSocket.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CustomMessageHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -160,7 +157,10 @@
     <ClCompile Include="App.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="threads\WebThread.cpp">
+    <ClCompile Include="threads\QAutoWebSocket.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="threads\BufferManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -279,6 +279,9 @@
     <ClInclude Include="App.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="threads\BufferManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="threads\CaptureThread.h">
@@ -296,9 +299,6 @@
     <QtMoc Include="widgets\CloseDockWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="threads\AutoWebSocket.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="CustomMessageHandler.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -314,7 +314,7 @@
     <QtMoc Include="widgets\LogTextEdit.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="threads\WebThread.h">
+    <QtMoc Include="threads\QAutoWebSocket.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

@@ -20,14 +20,6 @@ class PlcThread : public QThread
 signals:
 	void addTime(const int time);
 
-public slots:
-	/**
-	 * @brief Slot to receive new frameset emitted by captureThread.
-	 * 
-	 * @param fs Output frameset.
-	 */
-	void newFrameset(const Frameset::frameset_t& fs);
-
 public:
 	/**
 	 * @brief Starts the thread.
@@ -51,9 +43,8 @@ protected:
 private:
 	void uploadDB();
 	volatile bool _stop = false;
-	volatile bool sendTime = false;
-	TS7Client* client;
+	const qint64 minimumTargetCycleTime = 10;
 
-	Frameset::frameset_t fsBuff;
+	TS7Client* client;
 };
 

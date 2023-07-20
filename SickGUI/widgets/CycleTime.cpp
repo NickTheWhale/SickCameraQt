@@ -66,7 +66,7 @@ const Times CycleTime::times() const
 
 void CycleTime::add(const int time)
 {
-	if (time > 0)
+	if (time >= 0)
 	{
 		buffer.push_back(time);
 		update();

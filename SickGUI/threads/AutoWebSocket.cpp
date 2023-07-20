@@ -1,13 +1,26 @@
 #include "AutoWebSocket.h"
 
 AutoWebSocket::AutoWebSocket(const QUrl& url, const QWebSocketProtocol::Version& version, QObject* parent)
-	: url(url), _socket(QWebSocket("", version)), reconnectTimer(new QTimer(parent)), QObject(parent)
+	: url(url), _socket(QWebSocket("", version)), reconnectTimer(QTimer()), QObject(parent)
 {
-	reconnectTimer->setInterval(reconnectTimerInterval);
+	reconnectTimer.setInterval(reconnectTimerInterval);
 
 	connect(this, &AutoWebSocket::connectSocket, this, &AutoWebSocket::doConnectSocket);
 	connect(this, &AutoWebSocket::disconnectSocket, this, &AutoWebSocket::doDisconnectSocket);
-	connect(reconnectTimer, &QTimer::timeout, this, &AutoWebSocket::onTimer);
+	connect(&reconnectTimer, &QTimer::timeout, this, &AutoWebSocket::onTimer);
+
+	connect(&_socket, &QWebSocket::connected, this, &AutoWebSocket::onSocketConnected);
+	connect(&_socket, &QWebSocket::disconnected, this, &AutoWebSocket::onSocketDisconnected);
+}
+
+AutoWebSocket::AutoWebSocket(const QUrl& url, QObject* parent)
+	: url(url), _socket(QWebSocket("", QWebSocketProtocol::VersionLatest)), reconnectTimer(QTimer()), QObject(parent)
+{
+	reconnectTimer.setInterval(reconnectTimerInterval);
+
+	connect(this, &AutoWebSocket::connectSocket, this, &AutoWebSocket::doConnectSocket);
+	connect(this, &AutoWebSocket::disconnectSocket, this, &AutoWebSocket::doDisconnectSocket);
+	connect(&reconnectTimer, &QTimer::timeout, this, &AutoWebSocket::onTimer);
 
 	connect(&_socket, &QWebSocket::connected, this, &AutoWebSocket::onSocketConnected);
 	connect(&_socket, &QWebSocket::disconnected, this, &AutoWebSocket::onSocketDisconnected);
@@ -22,31 +35,20 @@ AutoWebSocket::~AutoWebSocket()
 void AutoWebSocket::start()
 {
 	qDebug() << "start";
-	if (!reconnectTimer->isActive())
-		reconnectTimer->start();
+	if (!reconnectTimer.isActive())
+		reconnectTimer.start();
 }
 
 void AutoWebSocket::stop()
 {
 	qDebug() << "stop";
-	if (reconnectTimer->isActive())
-		reconnectTimer->stop();
+	if (reconnectTimer.isActive())
+		reconnectTimer.stop();
 }
 
 QWebSocket* AutoWebSocket::socket()
 {
 	return &_socket;
-}
-
-QTimer* AutoWebSocket::timer()
-{
-	return reconnectTimer;
-}
-
-
-qint64 AutoWebSocket::remainingTime()
-{
-	return reconnectTimer->remainingTime();
 }
 
 void AutoWebSocket::doConnectSocket()
