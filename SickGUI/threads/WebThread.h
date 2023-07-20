@@ -23,9 +23,10 @@ protected:
 	void run() override;
 
 private:
-	AutoWebSocket* socket = nullptr;
 	volatile bool _stop = false;
 	Frameset::frameset_t fsBuff;
+	qint64 minCycleTime = 100;
+	AutoWebSocket* socket = nullptr;
 
 	const QByteArray buildImagePacket(const Frameset::frameset_t& fs);
 };

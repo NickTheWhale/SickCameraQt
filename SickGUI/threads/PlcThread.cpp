@@ -27,15 +27,15 @@ void PlcThread::stopPlc()
 void PlcThread::run()
 {
 	uint32_t lastNumber = 0;
-	QElapsedTimer timer;
-	timer.start();
+	QElapsedTimer cycleTimer;
+	cycleTimer.start();
 	while (!_stop)
 	{
 		Frameset::frameset_t fs = fsBuff;
 		uploadDB();
 
 		msleep(QRandomGenerator::global()->bounded(1, 100));
-		qint64 time = timer.restart();
+		qint64 time = cycleTimer.restart();
 		emit addTime(static_cast<int>(time));
 	}
 }

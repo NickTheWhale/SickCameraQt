@@ -37,7 +37,7 @@ struct OpenResult
 	}
 };
 
-class Camera : protected QThread
+class Camera/* : protected QThread*/
 {
 public:
 	/**

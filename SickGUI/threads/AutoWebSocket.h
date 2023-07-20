@@ -15,6 +15,9 @@ public:
 	void stop();
 	QWebSocket* socket();
 
+	qint64 remainingTime();
+	QTimer* timer();
+
 signals:
 	void connectSocket();
 	void disconnectSocket();

@@ -31,8 +31,8 @@ void CaptureThread::run()
 	uint32_t prevNumber = 0;
 	uint64_t totalFrames = 0;
 	uint64_t missedFrames = 0;
-	QElapsedTimer timer;
-	timer.start();
+	QElapsedTimer cycleTimer;
+	cycleTimer.start();
 	while (!_stop)
 	{
 		Frameset::frameset_t fs;
@@ -57,7 +57,7 @@ void CaptureThread::run()
 			prevNumber = fs.number;
 			emit newFrameset(fs);
 		}
-		qint64 time = timer.restart();
+		qint64 time = cycleTimer.restart();
 		emit addTime(static_cast<int>(time));
 	}
 

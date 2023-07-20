@@ -2,11 +2,14 @@
 #include <qbuffer.h>
 #include <qtimer.h>
 #include <qrandom.h>
+#include <AutoWebSocket.h>
 
 bool WebThread::startWeb(AutoWebSocket* socket)
 {
+	if (isRunning())
+		return false;
 	this->socket = socket;
-	this->socket->start();
+	//this->socket->start();
 	start(QThread::Priority::NormalPriority);
 	return true;
 }
@@ -18,8 +21,9 @@ void WebThread::stopWeb()
 
 void WebThread::run()
 {
-	QElapsedTimer timer;
-	timer.start();
+	uint32_t lastFsNumber = 0;
+	QElapsedTimer cycleTimer;
+	cycleTimer.start();
 	while (!_stop)
 	{
 		QByteArray bytes;
@@ -29,14 +33,20 @@ void WebThread::run()
 
 		qint64 bytesWritten = socket->socket()->sendBinaryMessage(bytes);
 
-		qDebug() << "wrote" << bytesWritten << "bytes";
-
-		if (timer.elapsed() < 10)
+		if (bytesWritten > 0)
 		{
-			msleep(10);
+			qDebug() << "wrote" << bytesWritten << "bytes";
 		}
 
-		qint64 elapsed = timer.restart();
+		qint64 sleepTime = minCycleTime - cycleTimer.elapsed();
+		if (sleepTime > 0)
+		{
+			msleep(sleepTime);
+		}
+
+		qDebug() << "socket remaining time" << socket->remainingTime() << "timer" << socket->timer() << "isnull" << (bool)(socket->timer() == nullptr) << "isactive" << socket->timer()->isActive();;
+
+		qint64 elapsed = cycleTimer.restart();
 		emit addTime(elapsed);
 	}
 }

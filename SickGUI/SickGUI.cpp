@@ -481,7 +481,7 @@ void SickGUI::checkThreads()
 {
 	ThreadResult camThreadResult = threadWatcher->resultAt(0);
 	ThreadResult plcThreadResult = threadWatcher->resultAt(1);
-	ThreadResult webThreadResult = threadWatcher->resultAt(2);
+	//ThreadResult webThreadResult = threadWatcher->resultAt(2);
 
 	if (camThreadResult.error && plcThreadResult.error)
 	{
@@ -674,7 +674,7 @@ ThreadResult SickGUI::startWebThread()
 		}
 
 		qInfo() << "creating websocket";
-		webSocket = new AutoWebSocket(QUrl("ws://localhost:3000"), QWebSocketProtocol::VersionLatest);
+		webSocket = new AutoWebSocket(QUrl("ws://127.0.0.1:3000"), QWebSocketProtocol::VersionLatest);
 
 		qInfo() << "starting websocket";
 		webSocket->start();
@@ -691,6 +691,9 @@ ThreadResult SickGUI::startWebThread()
 				return ret;
 			}
 		}
+
+		webSocket->moveToThread(webThread->currentThread());
+		webSocket->setParent(webThread);
 
 		ret.error = !webThread->startWeb(webSocket);
 		if (!ret.error)
