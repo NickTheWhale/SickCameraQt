@@ -3,6 +3,7 @@
 #include <qtextedit.h>
 #include <qgridlayout.h>
 #include "LogTextEdit.h"
+#include <boost/circular_buffer.hpp>
 
 class LoggingWidget : public QWidget
 {
@@ -17,8 +18,14 @@ public:
 
 	void setMaxLineCount(unsigned int maxLineCount);
 
+private slots:
+	void processMessageBuffer();
+
 private:
 	LogTextEdit* textEdit = nullptr;
 	QGridLayout* grid = nullptr;
+	const unsigned int bufferSize = 25;
+	boost::circular_buffer<std::pair<QtMsgType, QString>> buffer;
+	const int processTimeout = 10;
 };
 

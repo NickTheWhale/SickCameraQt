@@ -135,7 +135,7 @@ namespace Fingerprint
 	 * @param frame
 	 * @return 
 	 */
-	const inline unsigned long calculateFingerprint(int frameWidth, int frameHeight, const std::vector<uint16_t>& frame)
+	const inline uint32_t calculateFingerprint(int frameWidth, int frameHeight, const std::vector<uint16_t>& frame)
 	{
 		auto cStat = CellStat(0, 0, 0, 0);
 		for (auto row = 0; row < GRID_ROWS; ++row)

@@ -41,10 +41,12 @@ protected:
 	void run() override;
 
 private:
-	void uploadDB();
 	volatile bool _stop = false;
 	const qint64 minimumTargetCycleTime = 10;
 
 	TS7Client* client;
+	
+	void readDB2();
+	void writeDB2(const uint32_t& fp);
 };
 

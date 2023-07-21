@@ -37,10 +37,10 @@ void CaptureThread::run()
 	cycleTimer.start();
 	while (!_stop)
 	{
+		QThread::msleep(1);
 		Frameset::frameset_t fs;
 		if (!camera->getNextFrameset(fs))
 		{
-			QThread::msleep(1);
 			continue;
 		}
 

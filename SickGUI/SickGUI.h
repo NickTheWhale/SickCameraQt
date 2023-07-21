@@ -172,9 +172,9 @@ private:
 	 */
 	void restoreSettings();
 
-	const std::string PLC_IP_ADDRESS = "127.0.0.1";
+	const std::string PLC_IP_ADDRESS = "192.168.1.10";
 	const int PLC_RACK = 0;
-	const int PLC_SLOT = 2;
+	const int PLC_SLOT = 1;
 
 	Ui::SickGUIClass ui;
 

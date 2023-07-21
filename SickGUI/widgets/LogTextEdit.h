@@ -9,9 +9,9 @@ public:
 
 	void showMessage(const QtMsgType level, const QString& message);
 	void setMaxLineCount(unsigned int maxLineCount);
-	void wheelEvent(QWheelEvent* event) override;
 
 private:
+	void wheelEvent(QWheelEvent* event) override;
 	bool paused = false;
 	unsigned int maxLineCount = 1000;
 

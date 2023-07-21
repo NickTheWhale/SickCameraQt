@@ -20,7 +20,7 @@ private:
 	explicit BufferManager();
 	~BufferManager();
 
-	const int bufferSize = 1;
+	const int bufferSize = 2;
 	boost::circular_buffer<Frameset::frameset_t> plcBuffer;
 	boost::circular_buffer<Frameset::frameset_t> guiBuffer;
 	boost::circular_buffer<Frameset::frameset_t> webBuffer;
