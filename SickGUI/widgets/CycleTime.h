@@ -36,6 +36,7 @@ private:
 	QLabel* p75Label;
 	QLabel* p95Label;
 
+	const QString title;
 	bool isNulled = true;
 
 	void update();

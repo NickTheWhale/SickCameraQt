@@ -23,17 +23,17 @@
 #include <qimage.h>
 
 
-SickGUI::SickGUI(CustomMessageHandler* messageHandler, QWidget* parent)
-	: QMainWindow(parent), messageHandler(messageHandler), bufferManager(BufferManager::instance())
+SickGUI::SickGUI(CustomMessageHandler* messageHandler, QWidget* parent) :
+	renderThread(RenderThread()),
+	messageHandler(messageHandler),
+	bufferManager(BufferManager::instance()),
+	QMainWindow(parent)
 {
-	// create and connect timers to their corresponding update methods
-	displayTimer = new QTimer(this); displayTimer->setObjectName("displayTimer");
-	chartTimer = new QTimer(this); chartTimer->setObjectName("chartTimer");
+	loadConfiguration();
 
 	ui.setupUi(this);
 
 	initializeWidgets();
-	initializeWeb();
 
 	// create and connect future watcher to check thread status
 	threadWatcher = new QFutureWatcher<ThreadResult>(this);
@@ -44,21 +44,11 @@ SickGUI::SickGUI(CustomMessageHandler* messageHandler, QWidget* parent)
 	threadWatcher->setFuture(future);
 
 	// restore window state and geometry
-	restoreSettings();
+	restoreLayout();
 }
 
 SickGUI::~SickGUI()
 {
-	if (displayTimer)
-	{
-		displayTimer->stop();
-	}
-
-	if (chartTimer)
-	{
-		chartTimer->stop();
-	}
-
 	if (threadWatcher && !threadWatcher->isFinished())
 	{
 		threadWatcher->waitForFinished();
@@ -97,7 +87,7 @@ SickGUI::~SickGUI()
 
 void SickGUI::closeEvent(QCloseEvent* event)
 {
-	saveSettings();
+	saveLayout();
 	QMainWindow::closeEvent(event);
 }
 
@@ -153,14 +143,17 @@ void SickGUI::initializeWidgets()
 		{
 			firstItem = false;
 			action->setChecked(true);
-			streamType = streamActionInfo.streamType;
+			//streamType = streamActionInfo.streamType;
+			renderThread.setStreamType(streamActionInfo.streamType);
 			streamButton->setText(streamActionInfo.name);
 		}
 		// when a menu option is triggered, update the stream type
 		streamGroup->addAction(action);
 		QObject::connect(action, &QAction::triggered, [this, streamActionInfo, streamButton]()
 			{
-				streamType = streamActionInfo.streamType;
+				//streamType = streamActionInfo.streamType;
+				renderThread.setStreamType(streamActionInfo.streamType);
+
 				streamButton->setText(streamActionInfo.name);
 			});
 		// keep track of the widest text to set the minimum button width
@@ -229,14 +222,16 @@ void SickGUI::initializeWidgets()
 		{
 			firstItem = false;
 			action->setChecked(true);
-			streamColorMapType = colorActionInfo.colormapType;
+			//streamColorMapType = colorActionInfo.colormapType;
+			renderThread.setStreamColorMapType(colorActionInfo.colormapType);
 			colorButton->setText(colorActionInfo.name);
 		}
 		// when a menu option is triggered, update the colormap type
 		colorGroup->addAction(action);
 		QObject::connect(action, &QAction::triggered, [this, colorActionInfo, colorButton]()
 			{
-				streamColorMapType = colorActionInfo.colormapType;
+				//streamColorMapType = colorActionInfo.colormapType;
+				renderThread.setStreamColorMapType(colorActionInfo.colormapType);
 				colorButton->setText(colorActionInfo.name);
 			});
 		// keep track of the widest text to set the minumum button width
@@ -256,13 +251,15 @@ void SickGUI::initializeWidgets()
 
 	colorMenu->addSeparator();
 	// add an option to invert the color map
-	invertedColor = false;
+	//invertedColor = false;
+	renderThread.setInvertedColor(false);
 	QAction* action = colorMenu->addAction("Invert");
 	action->setCheckable(true);
 	action->setStatusTip("Select To Invert Colormap");
 	QObject::connect(action, &QAction::changed, [this, action]()
 		{
-			invertedColor = action->isChecked();
+			//invertedColor = action->isChecked();
+			renderThread.setInvertedColor(action->isChecked());
 		});
 
 	buttonWidth += colorButton->iconSize().width() + 30;
@@ -276,14 +273,16 @@ void SickGUI::initializeWidgets()
 
 	QToolButton* statsButton = new QToolButton(this);
 	statsButton->setCheckable(true);
-	statsButton->setChecked(overLayStats);
+	renderThread.setOverLayStats(false);
+	statsButton->setChecked(renderThread.getOverLayStats());
 	statsButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
 	statsButton->setText("Stats");
 	statsButton->setStatusTip("Toggle Statistics Overlay");
 	statsButton->setIcon(QIcon(":/SickGUI/icons/info_FILL0_wght400_GRAD0_opsz40.png"));
 	QObject::connect(statsButton, &QToolButton::toggled, [this, statsButton]()
 		{
-			overLayStats = statsButton->isChecked();
+			//overLayStats = statsButton->isChecked();
+			renderThread.setOverLayStats(statsButton->isChecked());
 		});
 	ui.toolBar->addWidget(statsButton);
 
@@ -356,55 +355,13 @@ void SickGUI::initializeWeb()
 	webSocket->start();
 }
 
-void SickGUI::updateDisplay()
-{
-	// don't bother is the window is minimized
-	if (this->isMinimized())
-		return;
-
-	Frameset::frameset_t fs = bufferManager.popGuiFrame();
-	if (fs.isNull())
-		return;
-
-	QImage qImage;
-
-	// determine what stream we want and then overlay some stats if needed
-	switch (streamType)
-	{
-	case Stream::Depth:
-	{
-		Frameset::depthToQImage(fs, qImage, streamColorMapType, invertedColor);
-		if (overLayStats)
-			Fingerprint::overlayStats(qImage, fs.width, fs.height, fs.depth);
-	}
-	break;
-	case Stream::Intensity:
-	{
-		Frameset::intensityToQImage(fs, qImage, streamColorMapType, invertedColor);
-		if (overLayStats)
-			Fingerprint::overlayStats(qImage, fs.width, fs.height, fs.intensity);
-	}
-	break;
-	case Stream::State:
-	{
-		Frameset::stateToQImage(fs, qImage, streamColorMapType, invertedColor);
-		if (overLayStats)
-			Fingerprint::overlayStats(qImage, fs.width, fs.height, fs.state);
-	}
-	break;
-	}
-
-	// we use this method for thread safety
-	writeImage(qImage);
-}
-
 void SickGUI::updateCharts()
 {
 	// don't bother if the window is minimized
 	if (this->isMinimized())
 		return;
-	
-	Frameset::frameset_t fs = bufferManager.popGuiFrame();
+
+	Frameset::frameset_t fs = bufferManager.peekGuiFrame();
 	if (fs.isNull())
 		return;
 
@@ -415,17 +372,6 @@ void SickGUI::updateCharts()
 			depthHistogram->updateHistogram(fs.depth);
 			// force a repaint
 			depthHistogram->update();
-		}
-	, Qt::QueuedConnection);
-}
-
-void SickGUI::writeImage(QImage image)
-{
-	// we use invokeMethod for thread safety
-	QMetaObject::invokeMethod(this, [this, image]()
-		{
-			auto pixmap = QPixmap::fromImage(image);
-			cameraView->setPixmap(pixmap);
 		}
 	, Qt::QueuedConnection);
 }
@@ -441,7 +387,7 @@ bool SickGUI::createCamera()
 		camera = nullptr;
 	}
 
-	camera = new(std::nothrow) VisionaryCamera("192.168.1.213");
+	camera = new(std::nothrow) VisionaryCamera(cameraIpAddress);
 
 	return camera != nullptr;
 }
@@ -482,11 +428,11 @@ void SickGUI::checkThreads()
 				if (camParams.count("ipAddress") != 0)
 				{
 					std::string cameraIpAddress = camParams.at("ipAddress");
-					msg = "camera: " + cameraIpAddress + "  |  plc: " + PLC_IP_ADDRESS;
+					msg = "camera: " + cameraIpAddress + "  |  plc: " + plcIpAddress;
 				}
 				else
 				{
-					msg = "plc: " + PLC_IP_ADDRESS;
+					msg = "plc: " + plcIpAddress;
 				}
 				statusBarLabel->setText(msg.c_str());
 
@@ -498,44 +444,16 @@ void SickGUI::checkThreads()
 
 void SickGUI::makeConnections()
 {
-	QObject::connect(displayTimer, &QTimer::timeout, this, &SickGUI::updateDisplay);
-	QObject::connect(chartTimer, &QTimer::timeout, this, &SickGUI::updateCharts);
+	QObject::connect(&renderThread, &RenderThread::renderedImage, this, &SickGUI::updateDisplay);
 	QObject::connect(captureThread, &CaptureThread::addTime, cycleTimeWidget, &CycleTimeWidget::addCamTime);
 	QObject::connect(plcThread, &PlcThread::addTime, cycleTimeWidget, &CycleTimeWidget::addPlcTime);
-
-	//QObject::connect(captureThread, &CaptureThread::newFrameset, webSocket, [this]()
-	//	{
-	//		QtConcurrent::run([this]()
-	//			{
-	//				QElapsedTimer cycleTimer;
-	//				cycleTimer.start();
-
-
-
-	//				QMetaObject::invokeMethod(this, [=]()
-	//					{
-	//						QByteArray bytes;
-	//						for (int i = 0; i < 255; ++i)
-	//							bytes.append(i);
-	//						webSocket->sendBinaryMessage(bytes);
-	//					});
-
-	//				QThread::msleep(5000);
-
-
-	//				qint64 elapsed = cycleTimer.elapsed();
-	//				QMetaObject::invokeMethod(this, [=]()
-	//					{
-	//						cycleTimeWidget->addWebTime(elapsed);
-	//					});
-	//			});
-	//	});
 }
 
 void SickGUI::startThreads(QPromise<ThreadResult>& promise)
 {
 	promise.addResult(startCamThread());
 	promise.addResult(startPlcThread());
+	renderThread.start();
 }
 
 ThreadResult SickGUI::startCamThread()
@@ -584,8 +502,6 @@ ThreadResult SickGUI::startCamThread()
 		if (!ret.error)
 		{
 			qInfo() << "camera thread success";
-			//QObject::connect(captureThread, &CaptureThread::newFrameset, this, &SickGUI::newFrameset, Qt::DirectConnection);
-			//QObject::connect(captureThread, &CaptureThread::addTime, cycleTimeWidget, &CycleTimeWidget::addCamTime);
 		}
 		else
 		{
@@ -621,7 +537,7 @@ ThreadResult SickGUI::startPlcThread()
 		s7Client = new TS7Client();
 
 		qInfo() << "connecting plc client";
-		int connectRet = s7Client->ConnectTo(PLC_IP_ADDRESS.c_str(), PLC_RACK, PLC_SLOT);
+		int connectRet = s7Client->ConnectTo(plcIpAddress.c_str(), plcRack, plcSlot);
 		if (0 != connectRet)
 		{
 			qCritical() << "failed to connect plc client. code:	" << static_cast<int>(connectRet);
@@ -643,12 +559,11 @@ ThreadResult SickGUI::startPlcThread()
 			}
 		}
 
+		plcThread->setCycleTimeTarget(plcCycleTimeTarget);
 		ret.error = !plcThread->startPlc(s7Client);
 		if (!ret.error)
 		{
 			qInfo() << "plc thread success";
-			//QObject::connect(captureThread, &CaptureThread::newFrameset, plcThread, &PlcThread::newFrameset, Qt::DirectConnection);
-			//QObject::connect(plcThread, &PlcThread::addTime, cycleTimeWidget, &CycleTimeWidget::addPlcTime);
 		}
 		else
 		{
@@ -666,7 +581,7 @@ ThreadResult SickGUI::startPlcThread()
 	}
 }
 
-void SickGUI::saveSettings()
+void SickGUI::saveLayout()
 {
 	QSettings settings("WF", "SickGUI");
 	settings.setValue("windowState", this->saveState());
@@ -675,11 +590,28 @@ void SickGUI::saveSettings()
 	settings.sync();
 }
 
-void SickGUI::restoreSettings()
+void SickGUI::restoreLayout()
 {
 	QSettings settings("WF", "SickGUI");
 	this->restoreState(settings.value("windowState").toByteArray());
 	this->restoreGeometry(settings.value("geometry").toByteArray());
+}
+
+void SickGUI::loadConfiguration()
+{
+	QSettings settings(CONFIG_PATH, QSettings::Format::IniFormat);
+
+	// plc
+	plcIpAddress = settings.value("plc/ip", "").value<QString>().toStdString();
+	plcRack = settings.value("plc/rack", 0).value<qint16>();
+	plcSlot = settings.value("plc/slot", 0).value<qint16>();
+	plcCycleTimeTarget = settings.value("plc/cycle_time_target_ms", 10).value<qint64>();
+
+	// camera
+	cameraIpAddress = settings.value("camera/ip", "").value<QString>().toStdString();
+
+	// ui
+	renderThread.setCycleTimeTarget(settings.value("ui/render_refresh_interval_ms", 100).value<qint16>());
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
@@ -688,43 +620,14 @@ void SickGUI::restoreSettings()
 
 void SickGUI::playVideo()
 {
-	if (chartTimer && !chartTimer->isActive())
-	{
-		if (chartTimer->interval() != chartTimerInterval)
-		{
-			chartTimer->setInterval(chartTimerInterval);
-		}
-		chartTimer->start();
-	}
-
-
-	if (displayTimer && !displayTimer->isActive())
-	{
-		if (displayTimer->interval() != displayTimerInterval)
-		{
-			displayTimer->setInterval(displayTimerInterval);
-		}
-		displayTimer->start();
-	}
-
+	renderThread.setPaused(false);
 	ui.actionPlay->setEnabled(false);
 	ui.actionPause->setEnabled(true);
-
-	displayTimer->start();
 }
 
 void SickGUI::pauseVideo()
 {
-	if (displayTimer)
-	{
-		displayTimer->stop();
-	}
-
-	if (chartTimer)
-	{
-		chartTimer->stop();
-	}
-
+	renderThread.setPaused(true);
 	ui.actionPlay->setEnabled(true);
 	ui.actionPause->setEnabled(false);
 }
@@ -735,4 +638,27 @@ void SickGUI::showStatusBarMessage(const QString& text, int timeout)
 		{
 			statusBar()->showMessage(text, timeout);
 		});
+}
+
+void SickGUI::updateDisplay(const QImage& image)
+{
+	if (this->isMinimized())
+		return;
+
+	QMetaObject::invokeMethod(this, [this, image]()
+		{
+			auto pixmap = QPixmap::fromImage(image);
+			cameraView->setPixmap(pixmap);
+		});
+
+	Frameset::frameset_t fs = bufferManager.peekGuiFrame();
+	if (fs.isNull())
+		return;
+
+	QMetaObject::invokeMethod(this, [this, fs]()
+		{
+			depthHistogram->updateHistogram(fs.depth);
+			depthHistogram->update();
+		}
+	, Qt::QueuedConnection);
 }

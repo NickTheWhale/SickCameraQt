@@ -9,7 +9,8 @@
 #include <qlabel.h>
 #include <qsizepolicy.h>
 
-CycleTime::CycleTime(const QString title, const size_t bufferSize, QWidget* parent) : QWidget(parent), buffer(bufferSize)
+CycleTime::CycleTime(const QString title, const size_t bufferSize, QWidget* parent) 
+	: buffer(bufferSize), title(title), QWidget(parent)
 {
 	QGridLayout* mainGrid = new QGridLayout(this);
 	QGridLayout* groupGrid = new QGridLayout();
@@ -95,7 +96,9 @@ void CycleTime::update()
 	for (const int& value : buffer)
 	{
 		if (value > _times.worst)
+		{
 			_times.worst = value;
+		}
 
 		accum += value;
 	}

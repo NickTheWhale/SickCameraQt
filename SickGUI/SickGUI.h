@@ -25,6 +25,7 @@
 #include <CycleTimeWidget.h>
 #include <QAutoWebSocket.h>
 #include <BufferManager.h>
+#include <RenderThread.h>
 
 class CaptureThread;
 
@@ -74,6 +75,9 @@ public:
 	SickGUI(CustomMessageHandler* messageHandler, QWidget* parent = nullptr);
 	~SickGUI();
 
+private slots:
+	void updateDisplay(const QImage& image);
+
 private:
 	/**
 	 * @brief Called when the main window is closing. Used to save dock layout.
@@ -91,15 +95,6 @@ private:
 	void initializeWeb();
 
 	/**
-	 * @brief Shows latest camera frame.
-	 *
-	 * Grabs the latest frameset from the frameset buffer and converts the selected frame type
-	 * to a QImage. Optionally overlays statistics. Uses SickGUI::writeImage() to display
-	 * the image
-	 */
-	void updateDisplay();
-
-	/**
 	 * @brief Updates depth and intensity histograms.
 	 *
 	 * Grabs the latest frameset from the frameset buffer and calls HistogramWidget::updateHistogram
@@ -112,7 +107,7 @@ private:
 	 *
 	 * @param image Image to write.
 	 */
-	void writeImage(QImage image);
+	//void writeImage(QImage image);
 
 	/**
 	 * @brief Creates a new Camera.
@@ -164,27 +159,33 @@ private:
 	 * @brief Saves window state and geometry.
 	 *
 	 */
-	void saveSettings();
+	void saveLayout();
 
 	/**
 	 * @brief Restores window state and geometry.
 	 *
 	 */
-	void restoreSettings();
+	void restoreLayout();
 
-	const std::string PLC_IP_ADDRESS = "192.168.1.10";
-	const int PLC_RACK = 0;
-	const int PLC_SLOT = 1;
+	void loadConfiguration();
+
+	const QString CONFIG_PATH = "configuration/configuration.ini";
+
+	std::string plcIpAddress = "";
+	qint16 plcRack = 0;
+	qint16 plcSlot = 0;
 
 	Ui::SickGUIClass ui;
 
 	BufferManager& bufferManager;
 
+	std::string cameraIpAddress = "";
 	Camera* camera = nullptr;
 	CaptureThread* captureThread = nullptr;
 
 	TS7Client* s7Client = nullptr;
 	PlcThread* plcThread = nullptr;
+	qint64 plcCycleTimeTarget = 0;
 
 	QAutoWebSocket* webSocket = nullptr;
 
@@ -195,19 +196,7 @@ private:
 	CycleTimeWidget* cycleTimeWidget = nullptr;
 	LoggingWidget* loggingWidget = nullptr;
 
-	QTimer* displayTimer = nullptr;
-	int displayTimerInterval = 50; /* ms */
-
-	QTimer* chartTimer = nullptr;
-	int chartTimerInterval = 100; /* ms */
-
-	Stream streamType;
-	tinycolormap::ColormapType streamColorMapType;
-	volatile bool invertedColor;
-
+	RenderThread renderThread;
 	QLabel* statusBarLabel = nullptr;
-
-	bool overLayStats = false;
-
 	CustomMessageHandler* messageHandler = nullptr;
 };

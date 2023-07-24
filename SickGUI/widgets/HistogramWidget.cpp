@@ -31,7 +31,6 @@ void HistogramWidget::updateHistogram(const std::vector<uint16_t>& data)
 	hs.histogram.fill(dataCopy);
 }
 
-
 void HistogramWidget::paintEvent(QPaintEvent* event)
 {
 	Q_UNUSED(event);

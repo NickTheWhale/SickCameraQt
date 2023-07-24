@@ -12,6 +12,10 @@ public:
 	void pushGuiFrame(const Frameset::frameset_t& fs);
 	void pushWebFrame(const Frameset::frameset_t& fs);
 
+	const Frameset::frameset_t peekPlcFrame();
+	const Frameset::frameset_t peekGuiFrame();
+	const Frameset::frameset_t peekWebFrame();
+
 	const Frameset::frameset_t popPlcFrame();
 	const Frameset::frameset_t popGuiFrame();
 	const Frameset::frameset_t popWebFrame();

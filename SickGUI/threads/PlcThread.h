@@ -37,16 +37,20 @@ public:
 	 */
 	void stopPlc();
 
+	void setCycleTimeTarget(const qint64 cycleTime);
+	const qint64 getCycleTimeTarget() const;
+
 protected:
 	void run() override;
 
 private:
 	volatile bool _stop = false;
-	const qint64 minimumTargetCycleTime = 10;
+	qint64 cycleTimeTarget = 10;
 
 	TS7Client* client;
 	
 	void readDB2();
-	void writeDB2(const uint32_t& fp);
+#define WRITE_BUFFER_SIZE (10)
+	void writeDB2(const std::array<uint32_t, WRITE_BUFFER_SIZE>& data);
 };
 

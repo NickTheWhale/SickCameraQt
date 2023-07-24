@@ -106,6 +106,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
+    <ClCompile Include="threads\RenderThread.cpp" />
     <ClCompile Include="threads\BufferManager.cpp" />
     <ClCompile Include="threads\QAutoWebSocket.cpp" />
     <ClCompile Include="CustomMessageHandler.cpp">
@@ -172,6 +173,7 @@
     <QtMoc Include="widgets\HistogramWidget.h" />
     <QtMoc Include="widgets\CloseDockWidget.h" />
     <ClInclude Include="App.h" />
+    <QtMoc Include="threads\RenderThread.h" />
     <ClInclude Include="threads\BufferManager.h" />
     <ClInclude Include="Camera.h" />
     <QtMoc Include="CustomMessageHandler.h" />
