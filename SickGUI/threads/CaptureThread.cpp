@@ -13,7 +13,6 @@ bool CaptureThread::startCapture(Camera* camera)
 		return false;
 
 	this->camera = camera;
-	this->_stop = false;
 
 	if (!this->camera->startCapture())
 		return false;
@@ -41,6 +40,7 @@ void CaptureThread::run()
 		Frameset::frameset_t fs;
 		if (!camera->getNextFrameset(fs))
 		{
+			qWarning() << "capture thread: failed to get frameset";
 			continue;
 		}
 

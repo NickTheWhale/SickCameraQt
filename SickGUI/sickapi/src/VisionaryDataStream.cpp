@@ -220,6 +220,8 @@ namespace visionary
 	bool VisionaryDataStream::isConnected() const
 	{
 		const std::vector<char> data{'B', 'l', 'b', 'R', 'q', 's', 't' };
+		if (m_pTransport == nullptr)
+			return false;
 		const auto ret = m_pTransport->send(data);
 		// getLastError does not return an error code on windows if send fails
 #ifdef _WIN32

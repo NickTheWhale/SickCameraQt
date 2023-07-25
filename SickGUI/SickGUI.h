@@ -77,6 +77,13 @@ public:
 
 private slots:
 	void updateDisplay(const QImage& image);
+	/**
+	 * @brief QFutureWatcher callback to check camera and plc thread start status.
+	 *
+	 * @note If startThreads is not successful, a popup will show which thread(s) errored
+	 *       and then the application will close.
+	 */
+	void checkThreads();
 
 private:
 	/**
@@ -116,13 +123,6 @@ private:
 	 */
 	bool createCamera();
 
-	/**
-	 * @brief QFutureWatcher callback to check camera and plc thread start status.
-	 *
-	 * @note If startThreads is not successful, a popup will show which thread(s) errored
-	 *       and then the application will close.
-	 */
-	void checkThreads();
 
 	void makeConnections();
 

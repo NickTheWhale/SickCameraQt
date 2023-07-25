@@ -58,6 +58,8 @@ public:
 	*/
 	bool isOpen() override;
 
+	bool isAvailable() override;
+
 	/**
 	 * @brief Starts continuous mode acquisition.
 	 * @return true if capture started, false otherwise.
@@ -111,8 +113,8 @@ public:
 
 private:
 	const unsigned int openTimeout = 5000;
-	bool connected = false;
-	bool capturing = false;
+	//bool connected = false;
+	//bool capturing = false;
 
 	std::string ipAddress;
 	short dataPort;
@@ -122,5 +124,7 @@ private:
 	std::shared_ptr<visionary::VisionaryTMiniData> pDataHandler;
 	std::shared_ptr<visionary::VisionaryDataStream> pDataStream;
 	std::shared_ptr<visionary::VisionaryControl> pVisionaryControl;
+
+	const bool ping(const std::string ip);
 };
 

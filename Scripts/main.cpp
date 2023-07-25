@@ -1,70 +1,74 @@
-#include <algorithm>           // std::for_each
-#include <boost/format.hpp>    // only needed for printing
-#include <boost/histogram.hpp> // make_histogram, regular, weight, indexed
-#include <cassert>             // assert (used to test this example for correctness)
-#include <functional>          // std::ref
-#include <iostream>            // std::cout, std::flush
-#include <sstream>             // std::ostringstream
+#include <winsock2.h>
+#include <iphlpapi.h>
+#include <icmpapi.h>
+#include <stdio.h>
 
+#pragma comment(lib, "iphlpapi.lib")
+#pragma comment(lib, "ws2_32.lib")
 
-int main() {
-    using namespace boost::histogram; // strip the boost::histogram prefix
+int __cdecl main(int argc, char** argv) {
 
-    /*
-      Create a 1d-histogram with a regular axis that has 6 equidistant bins on
-      the real line from -1.0 to 2.0, and label it as "x". A family of overloaded
-      factory functions called `make_histogram` makes creating histograms easy.
+    // Declare and initialize variables
 
-      A regular axis is a sequence of semi-open bins. Extra under- and overflow
-      bins extend the axis by default (this can be turned off).
+    HANDLE hIcmpFile;
+    unsigned long ipaddr = INADDR_NONE;
+    DWORD dwRetVal = 0;
+    char SendData[32] = "Data Buffer";
+    LPVOID ReplyBuffer = NULL;
+    DWORD ReplySize = 0;
 
-      index    :      -1  |  0  |  1  |  2  |  3  |  4  |  5  |  6
-      bin edges:  -inf  -1.0  -0.5   0.0   0.5   1.0   1.5   2.0   inf
-    */
-    auto h = make_histogram(axis::regular<>(6, 0, 40000, "x"));
-
-    /*
-      Let's fill a histogram with data, typically this happens in a loop.
-
-      STL algorithms are supported. std::for_each is very convenient to fill a
-      histogram from an iterator range. Use std::ref in the call, if you don't
-      want std::for_each to make a copy of your histogram.
-    */
-    for (int i = 0; i < 1'000'000; ++i)
-    {
-        h(rand());
+    // Validate the parameters
+    if (argc != 2) {
+        printf("usage: %s IP address\n", argv[0]);
+        return 1;
     }
 
-    /*
-      This does a weighted fill using the `weight` function as an additional
-      argument. It may appear at the beginning or end of the argument list. C++
-      doesn't have keyword arguments like Python, this is the next-best thing.
-    */
-    h(0.1, weight(1.0));
-
-    /*
-      Iterate over bins with the `indexed` range generator, which provides a
-      special accessor object, that can be used to obtain the current bin index,
-      and the current bin value by dereferncing (it acts like a pointer to the
-      value). Using `indexed` is convenient and gives you better performance than
-      looping over the histogram cells with hand-written for loops. By default,
-      under- and overflow bins are skipped. Passing `coverage::all` as the
-      optional second argument iterates over all bins.
-
-      - Access the value with the dereference operator.
-      - Access the current index with `index(d)` method of the accessor.
-      - Access the corresponding bin interval view with `bin(d)`.
-
-      The return type of `bin(d)` depends on the axis type (see the axis reference
-      for details). It usually is a class that represents a semi-open interval.
-      Edges can be accessed with methods `lower()` and `upper()`.
-    */
-
-    std::ostringstream os;
-    for (auto&& x : indexed(h, coverage::all)) {
-        os << boost::format("bin %2i [%4.1f, %4.1f): %i\n")
-            % x.index() % x.bin().lower() % x.bin().upper() % *x;
+    ipaddr = inet_addr(argv[1]);
+    if (ipaddr == INADDR_NONE) {
+        printf("usage: %s IP address\n", argv[0]);
+        return 1;
     }
 
-    std::cout << os.str() << std::flush;
+    hIcmpFile = IcmpCreateFile();
+    if (hIcmpFile == INVALID_HANDLE_VALUE) {
+        printf("\tUnable to open handle.\n");
+        printf("IcmpCreatefile returned error: %ld\n", GetLastError());
+        return 1;
+    }
+
+    ReplySize = sizeof(ICMP_ECHO_REPLY) + sizeof(SendData);
+    ReplyBuffer = (VOID*)malloc(ReplySize);
+    if (ReplyBuffer == NULL) {
+        printf("\tUnable to allocate memory\n");
+        return 1;
+    }
+
+
+    dwRetVal = IcmpSendEcho(hIcmpFile, ipaddr, SendData, sizeof(SendData),
+        NULL, ReplyBuffer, ReplySize, 1000);
+    if (dwRetVal != 0) {
+        PICMP_ECHO_REPLY pEchoReply = (PICMP_ECHO_REPLY)ReplyBuffer;
+        struct in_addr ReplyAddr;
+        ReplyAddr.S_un.S_addr = pEchoReply->Address;
+        printf("\tSent icmp message to %s\n", argv[1]);
+        if (dwRetVal > 1) {
+            printf("\tReceived %ld icmp message responses\n", dwRetVal);
+            printf("\tInformation from the first response:\n");
+        }
+        else {
+            printf("\tReceived %ld icmp message response\n", dwRetVal);
+            printf("\tInformation from this response:\n");
+        }
+        printf("\t  Received from %s\n", inet_ntoa(ReplyAddr));
+        printf("\t  Status = %ld\n",
+            pEchoReply->Status);
+        printf("\t  Roundtrip time = %ld milliseconds\n",
+            pEchoReply->RoundTripTime);
+    }
+    else {
+        printf("\tCall to IcmpSendEcho failed.\n");
+        printf("\tIcmpSendEcho returned error: %ld\n", GetLastError());
+        return 1;
+    }
+    return 0;
 }

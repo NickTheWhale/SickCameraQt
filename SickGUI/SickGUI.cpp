@@ -451,8 +451,8 @@ void SickGUI::makeConnections()
 
 void SickGUI::startThreads(QPromise<ThreadResult>& promise)
 {
-	promise.addResult(startCamThread());
-	promise.addResult(startPlcThread());
+	promise.addResult(startCamThread(), 0);
+	promise.addResult(startPlcThread(), 1);
 	renderThread.start();
 }
 
@@ -518,6 +518,13 @@ ThreadResult SickGUI::startCamThread()
 		ret.message = "failed to start camera thread";
 		return ret;
 	}
+	catch (...)
+	{
+		qCritical() << "exception while starting camera thread";
+		ret.error = true;
+		ret.message = "failed to start camera thread";
+		return ret;
+	}
 }
 
 ThreadResult SickGUI::startPlcThread()
@@ -575,6 +582,13 @@ ThreadResult SickGUI::startPlcThread()
 	catch (std::exception e)
 	{
 		qCritical() << "exception while starting plc thread: " << e.what();
+		ret.error = true;
+		ret.message = "failed to start plc thread";
+		return ret;
+	}
+	catch (...)
+	{
+		qCritical() << "exception while starting plc thread:";
 		ret.error = true;
 		ret.message = "failed to start plc thread";
 		return ret;

@@ -71,6 +71,12 @@ public:
 	virtual bool isOpen() = 0;
 
 	/**
+	 * @brief Check if the camera device is available.
+	 * @return true if the camera is available, false otherwise.
+	 */
+	virtual bool isAvailable() = 0;
+
+	/**
 	 * @brief Starts capturing frames from the camera device.
 	 * @note Implementation must support repeated calls, even if already capturing.
 	 * @return true if the capture is started successfully, false otherwise.

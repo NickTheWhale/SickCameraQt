@@ -53,6 +53,6 @@ protected:
 
 private:
 	Camera* camera;
-	volatile bool _stop;
+	volatile bool _stop = false;
 	volatile bool sendTime = false; 
 };

@@ -7,6 +7,15 @@
 #include <qdebug.h>
 #include <vector>
 
+
+// ping test
+#include <WinSock2.h>
+#include <iphlpapi.h>
+#include <IcmpAPI.h>
+
+#pragma comment(lib, "iphlpapi.lib")
+#pragma comment(lib, "ws2_32.lib")
+
 using namespace visionary;
 
 VisionaryCamera::VisionaryCamera(std::string ipAddress, short dataPort)
@@ -32,7 +41,7 @@ OpenResult VisionaryCamera::open()
 {
 	// base case
 	OpenResult ret;
-	if (connected) { return ret; }
+	if (pDataStream->isConnected()) { return ret; }
 
 	// try specified ip address first, then auto scan if failed
 	if (!pDataStream->open(ipAddress, htons(dataPort)))
@@ -72,7 +81,7 @@ OpenResult VisionaryCamera::open()
 		return ret;
 	}
 
-	connected = true;
+	//connected = true;
 	ret.error = ErrorCode::NONE_ERROR;
 	ret.message = "successfully opened";
 	return ret;
@@ -82,41 +91,48 @@ bool VisionaryCamera::close()
 {
 	if (pVisionaryControl)
 	{
-		if (capturing)
+		//if (capturing)
 			pVisionaryControl->stopAcquisition();
 		//pVisionaryControl->logout();
 		pVisionaryControl->close();
 	}
 	if (pDataStream)
 		pDataStream->close();
-	connected = false;
+	//connected = false;
 	return true;
 }
 
 bool VisionaryCamera::isOpen()
 {
-	return connected;
+	return pDataStream->isConnected();
+}
+
+bool VisionaryCamera::isAvailable()
+{
+	return ping(ipAddress);
 }
 
 bool VisionaryCamera::startCapture()
 {
-	if (!connected) { return false; }
-	if (capturing) { return true; }
-	capturing = pVisionaryControl->startAcquisition();
-	return capturing;
+	//if (!connected) { return false; }
+	//if (capturing) { return true; }
+	pVisionaryControl->stopAcquisition();
+	//capturing = pVisionaryControl->startAcquisition();
+	//return capturing;
+	return pVisionaryControl->startAcquisition();
 }
 
 bool VisionaryCamera::stopCapture()
 {
-	if (!capturing) { return true; }
-	capturing = false;
+	//if (!capturing) { return true; }
+	//capturing = false;
 	return pVisionaryControl->stopAcquisition();
 }
 
 bool VisionaryCamera::getNextFrameset(Frameset::frameset_t& fs)
 {
-	if (!capturing)
-		return false;
+	//if (!capturing)
+	//	return false;
 
 	if (!pDataStream->getNextFrame())
 		return false;
@@ -169,5 +185,66 @@ void VisionaryCamera::setDataPort(short dataPort)
 	this->dataPort = dataPort;
 
 	parameters.insert_or_assign("dataPort", std::to_string(this->dataPort));
+}
+
+const bool VisionaryCamera::ping(const std::string ip)
+{
+	HANDLE hIcmpFile;
+	unsigned long ipaddr = INADDR_NONE;
+	DWORD dwRetVal = 0;
+	char SendData[32] = "Data Buffer";
+	LPVOID ReplyBuffer = NULL;
+	DWORD ReplySize = 0;
+
+	ipaddr = inet_addr(ipAddress.c_str());
+	if (ipaddr == INADDR_NONE)
+	{
+		qDebug() << "ping: ip address cannot be 'none'";
+		return false;
+	}
+
+	hIcmpFile = IcmpCreateFile();
+	if (hIcmpFile == INVALID_HANDLE_VALUE)
+	{
+		qDebug() << "ping: unable to open handle. last error:" << GetLastError();
+		return false;
+	}
+
+	ReplySize = sizeof(ICMP_ECHO_REPLY) + sizeof(SendData);
+	ReplyBuffer = (VOID*)malloc(ReplySize);
+	if (ReplyBuffer == NULL)
+	{
+		qDebug() << "ping: unable to allocate memory";
+		return false;
+	}
+
+	dwRetVal = IcmpSendEcho(hIcmpFile, ipaddr, SendData, sizeof(SendData), NULL, ReplyBuffer, ReplySize, 1000);
+	if (dwRetVal != 0)
+	{
+		PICMP_ECHO_REPLY pEchoReply = (PICMP_ECHO_REPLY)ReplyBuffer;
+		struct in_addr ReplyAddr;
+		ReplyAddr.S_un.S_addr = pEchoReply->Address;
+		qDebug() << "ping: send icmp message to" << ip;
+		if (dwRetVal > 1)
+		{
+			qDebug() << "ping: received" << dwRetVal << "icmp message responses";
+			qDebug() << "ping: information from the first response:";
+		}
+		else
+		{
+			qDebug() << "ping: received" << dwRetVal << "icmp message response";
+			qDebug() << "ping: information from this response:";
+		}
+		qDebug() << "ping: received from" << inet_ntoa(ReplyAddr);
+		qDebug() << "ping: status =" << pEchoReply->Status;
+		qDebug() << "ping: roundtrip time =" << pEchoReply->RoundTripTime << "ms";
+	}
+	else
+	{
+		qDebug() << "ping: call to IcmpSendEcho failed";
+		qDebug() << "ping: IcmpSendEcho returned error:" << GetLastError();
+		return false;
+	}
+	return true;
 }
 
