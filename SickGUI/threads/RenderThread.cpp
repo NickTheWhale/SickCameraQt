@@ -73,6 +73,8 @@ void RenderThread::run()
 		}
 
 		emit renderedImage(qImage);
+		const uint32_t fp = Fingerprint::calculateFingerprint(fs.width, fs.height, fs.depth);
+		emit fingerprint(fp);
 
 		const qint64 timeLeft = cycleTimeTarget - cycleTimer.elapsed();
 		if (timeLeft > 0)

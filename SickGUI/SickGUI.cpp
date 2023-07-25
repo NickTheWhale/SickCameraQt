@@ -21,6 +21,7 @@
 #include <qbuffer.h>
 #include <HistogramWidget.h>
 #include <qimage.h>
+#include "VisionaryAutoIPScanCustom.h"
 
 
 SickGUI::SickGUI(CustomMessageHandler* messageHandler, QWidget* parent) :
@@ -338,6 +339,21 @@ void SickGUI::initializeWidgets()
 #pragma endregion
 
 
+#pragma region PLOT
+
+	plotWidget = new PlotWidget(this);
+
+	dock = new CloseDockWidget("Fingerprint", this);
+	dock->setObjectName("plotWidgetDock");
+	dock->setAllowedAreas(Qt::DockWidgetArea::AllDockWidgetAreas);
+	dock->setWidget(plotWidget);
+	dock->adjustSize();
+	addDockWidget(Qt::DockWidgetArea::RightDockWidgetArea, dock);
+
+#pragma endregion
+
+
+
 #pragma region MISC
 
 	ui.actionPlay->setEnabled(true);
@@ -355,27 +371,6 @@ void SickGUI::initializeWeb()
 	webSocket->start();
 }
 
-void SickGUI::updateCharts()
-{
-	// don't bother if the window is minimized
-	if (this->isMinimized())
-		return;
-
-	Frameset::frameset_t fs = bufferManager.peekGuiFrame();
-	if (fs.isNull())
-		return;
-
-	// we use invokeMethod for thread safety
-	QMetaObject::invokeMethod(this, [this, fs]()
-		{
-			// recalculate the 'gram
-			depthHistogram->updateHistogram(fs.depth);
-			// force a repaint
-			depthHistogram->update();
-		}
-	, Qt::QueuedConnection);
-}
-
 bool SickGUI::createCamera()
 {
 	if (captureThread && captureThread->isRunning())
@@ -385,6 +380,16 @@ bool SickGUI::createCamera()
 	{
 		delete camera;
 		camera = nullptr;
+	}
+
+	if (cameraIpAddress == "")
+	{
+		visionary::VisionaryAutoIPScanCustom scanner;
+		auto devices = scanner.doScan(10000);
+		if (devices.empty())
+			return false;
+		else
+			cameraIpAddress = devices.front().IpAddress;
 	}
 
 	camera = new(std::nothrow) VisionaryCamera(cameraIpAddress);
@@ -444,6 +449,7 @@ void SickGUI::checkThreads()
 
 void SickGUI::makeConnections()
 {
+	QObject::connect(&renderThread, &RenderThread::fingerprint, this, &SickGUI::pushFingerprint);
 	QObject::connect(&renderThread, &RenderThread::renderedImage, this, &SickGUI::updateDisplay);
 	QObject::connect(captureThread, &CaptureThread::addTime, cycleTimeWidget, &CycleTimeWidget::addCamTime);
 	QObject::connect(plcThread, &PlcThread::addTime, cycleTimeWidget, &CycleTimeWidget::addPlcTime);
@@ -473,6 +479,7 @@ ThreadResult SickGUI::startCamThread()
 				return ret;
 			}
 		}
+		
 		qInfo() << "opening camera";
 		OpenResult openRet = camera->open();
 		if (openRet.error != ErrorCode::NONE_ERROR)
@@ -484,6 +491,7 @@ ThreadResult SickGUI::startCamThread()
 			ret.message = "failed to open camera: " + openRet.message;
 			return ret;
 		}
+		
 		qInfo() << "starting underlying camera thread handler";
 		if (!captureThread)
 		{
@@ -547,9 +555,9 @@ ThreadResult SickGUI::startPlcThread()
 		int connectRet = s7Client->ConnectTo(plcIpAddress.c_str(), plcRack, plcSlot);
 		if (0 != connectRet)
 		{
-			qCritical() << "failed to connect plc client. code:	" << static_cast<int>(connectRet);
+			qCritical() << "failed to connect plc client: " << CliErrorText(connectRet);
 			ret.error = true;
-			ret.message = "failed to connect plc client";
+			ret.message = QString("failed to connect plc client: ") + QString(CliErrorText(connectRet).c_str());
 			return ret;
 		}
 
@@ -659,7 +667,7 @@ void SickGUI::updateDisplay(const QImage& image)
 	if (this->isMinimized())
 		return;
 
-	QMetaObject::invokeMethod(this, [this, image]()
+	QMetaObject::invokeMethod(this, [=]()
 		{
 			auto pixmap = QPixmap::fromImage(image);
 			cameraView->setPixmap(pixmap);
@@ -669,10 +677,17 @@ void SickGUI::updateDisplay(const QImage& image)
 	if (fs.isNull())
 		return;
 
-	QMetaObject::invokeMethod(this, [this, fs]()
+	QMetaObject::invokeMethod(this, [=]()
 		{
 			depthHistogram->updateHistogram(fs.depth);
 			depthHistogram->update();
-		}
-	, Qt::QueuedConnection);
+		});
+}
+
+void SickGUI::pushFingerprint(const uint32_t fp)
+{
+	QMetaObject::invokeMethod(this, [=]()
+		{
+			plotWidget->pushData(fp);
+		});
 }

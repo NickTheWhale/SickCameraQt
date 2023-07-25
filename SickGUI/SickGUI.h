@@ -26,6 +26,7 @@
 #include <QAutoWebSocket.h>
 #include <BufferManager.h>
 #include <RenderThread.h>
+#include "PlotWidget.h"
 
 class CaptureThread;
 
@@ -85,6 +86,8 @@ private slots:
 	 */
 	void checkThreads();
 
+	void pushFingerprint(const uint32_t fp);
+
 private:
 	/**
 	 * @brief Called when the main window is closing. Used to save dock layout.
@@ -102,27 +105,11 @@ private:
 	void initializeWeb();
 
 	/**
-	 * @brief Updates depth and intensity histograms.
-	 *
-	 * Grabs the latest frameset from the frameset buffer and calls HistogramWidget::updateHistogram
-	 * followed by HistogramWidget::update().
-	 */
-	void updateCharts();
-
-	/**
-	 * @brief Writes QImage to display.
-	 *
-	 * @param image Image to write.
-	 */
-	//void writeImage(QImage image);
-
-	/**
 	 * @brief Creates a new Camera.
 	 *
 	 * @return true if created, false otherwise.
 	 */
 	bool createCamera();
-
 
 	void makeConnections();
 
@@ -195,6 +182,7 @@ private:
 	HistogramWidget* depthHistogram = nullptr;
 	CycleTimeWidget* cycleTimeWidget = nullptr;
 	LoggingWidget* loggingWidget = nullptr;
+	PlotWidget* plotWidget = nullptr;
 
 	RenderThread renderThread;
 	QLabel* statusBarLabel = nullptr;

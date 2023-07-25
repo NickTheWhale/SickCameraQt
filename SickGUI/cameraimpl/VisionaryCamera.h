@@ -10,8 +10,9 @@
 #include "../Camera.h"
 
 #include <VisionaryTMiniData.h>
-#include <VisionaryDataStream.h>
+//#include <VisionaryDataStream.h>
 #include <VisionaryControl.h>
+#include <Framegrabber.h>
 #include <string>
 #include <map>
 
@@ -95,34 +96,18 @@ public:
 	*/
 	bool available(int timeout);
 
-	/**
-	 * @brief IP address setter.
-	 * @note Setting the IP address only affects subsequent calls open(). Setting the IP address
-	 * will not affect the current connection.
-	 * @param ipAddress IP address in "x.x.x.x" format.
-	*/
-	void setIp(std::string ipAddress);
-
-	/**
-	 * @brief Blob control port setter.
-	 * @note Setting the port only affects subsequent calls open(). Setting the port
-	 * will not affect the current connection.
-	 * @param dataPort Data port.
-	*/
-	void setDataPort(short dataPort);
-
 private:
 	const unsigned int openTimeout = 5000;
-	//bool connected = false;
-	//bool capturing = false;
+	const unsigned int grabberTimeout = 5000;
 
-	std::string ipAddress;
-	short dataPort;
+	const std::string ipAddress;
+	const short dataPort;
 
 	std::map<std::string, std::string> parameters;
 
+	visionary::FrameGrabber<visionary::VisionaryTMiniData> frameGrabber;
 	std::shared_ptr<visionary::VisionaryTMiniData> pDataHandler;
-	std::shared_ptr<visionary::VisionaryDataStream> pDataStream;
+	//std::shared_ptr<visionary::VisionaryDataStream> pDataStream;
 	std::shared_ptr<visionary::VisionaryControl> pVisionaryControl;
 
 	const bool ping(const std::string ip);

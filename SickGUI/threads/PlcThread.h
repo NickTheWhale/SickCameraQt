@@ -49,8 +49,8 @@ private:
 
 	TS7Client* client;
 	
-	void readDB2();
+	bool readDB2();
 #define WRITE_BUFFER_SIZE (10)
-	void writeDB2(const std::array<uint32_t, WRITE_BUFFER_SIZE>& data);
+	bool writeDB2(const std::array<uint32_t, WRITE_BUFFER_SIZE>& data);
 };
 

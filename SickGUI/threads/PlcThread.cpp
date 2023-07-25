@@ -34,33 +34,27 @@ void PlcThread::run()
 
 		if (!fs.isNull())
 		{
-			if (client->Connected())
+			std::array<uint32_t, WRITE_BUFFER_SIZE> data;
+			int offset = 0;
+			data[offset++] = Fingerprint::calculateFingerprint(fs.width, fs.height, fs.depth);
+			data[offset++] = fs.number;
+			data[offset++] = fs.width;
+			data[offset++] = fs.height;
+			data[offset++] = fs.time;
+			data[offset++] = fs.isNull();
+			static uint32_t loopCount = 0;
+			data[offset++] = ++loopCount;
+			data[offset++] = QRandomGenerator::global()->bounded(0, (qint64)std::numeric_limits<qint64>::max());
+			data[offset++] = QRandomGenerator::global()->bounded(0, (qint64)std::numeric_limits<qint64>::max());
+			data[offset++] = QRandomGenerator::global()->bounded(0, (qint64)std::numeric_limits<qint64>::max());
+
+			if (!writeDB2(data))
 			{
-#pragma region LOOP
-				std::array<uint32_t, WRITE_BUFFER_SIZE> data;
-				int offset = 0;
-				data[offset++] = Fingerprint::calculateFingerprint(fs.width, fs.height, fs.depth);
-				data[offset++] = fs.number;
-				data[offset++] = fs.width;
-				data[offset++] = fs.height;
-				data[offset++] = fs.time;
-				data[offset++] = fs.isNull();
-				static uint32_t loopCount = 0;
-				data[offset++] = ++loopCount;
-				data[offset++] = QRandomGenerator::global()->bounded(0, (qint64)std::numeric_limits<qint64>::max());
-				data[offset++] = QRandomGenerator::global()->bounded(0, (qint64)std::numeric_limits<qint64>::max());
-				data[offset++] = QRandomGenerator::global()->bounded(0, (qint64)std::numeric_limits<qint64>::max());
-				writeDB2(data);
-#pragma endregion
-			}
-			else
-			{
-				qWarning() << "retrying plc connection...";
-				bool success = !client->Connect();
-				if (success)
-					qInfo() << "plc reconnected";
+				if (client->Connect() != 0)
+					qWarning() << "plc failed to reconnect";
 				else
-					qWarning() << "failed to reconnect plc";
+					qInfo() << "plc reconnected";
+				msleep(100);
 			}
 		}
 
@@ -74,22 +68,23 @@ void PlcThread::run()
 	}
 }
 
-void PlcThread::readDB2()
+bool PlcThread::readDB2()
 {
 	byte buffer[4];
 	if (client->DBRead(2, 0, 4, &buffer) != 0)
 	{
 		qWarning() << "failed to read DB2";
-		return;
+		return false;
 	}
 
 	for (const auto& _byte : buffer)
 	{
 		qDebug() << "byte:" << _byte;
 	}
+	return true;
 }
 
-void PlcThread::writeDB2(const std::array<uint32_t, WRITE_BUFFER_SIZE>& data)
+bool PlcThread::writeDB2(const std::array<uint32_t, WRITE_BUFFER_SIZE>& data)
 {
 	const int area = S7AreaDB;
 	const int DBNumber = 3;
@@ -106,7 +101,9 @@ void PlcThread::writeDB2(const std::array<uint32_t, WRITE_BUFFER_SIZE>& data)
 	if (ret != 0)
 	{
 		qWarning() << "failed to write DB2: " << CliErrorText(ret);
+		return false;
 	}
+	return true;
 }
 
 void PlcThread::setCycleTimeTarget(const qint64 cycleTime)

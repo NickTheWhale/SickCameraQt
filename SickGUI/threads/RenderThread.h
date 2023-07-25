@@ -11,6 +11,7 @@ class RenderThread : public QThread
 
 signals:
 	void renderedImage(const QImage& image);
+	void fingerprint(const uint32_t fp);
 
 public:
 	explicit RenderThread(QObject* parent = nullptr);
