@@ -2,7 +2,6 @@
 
 #include <qtimer.h>
 
-#include "cameraimpl/VisionaryCamera.h"
 #include <snap7.h>
 #include <qmessagebox.h>
 #include <qfuture.h>
@@ -97,7 +96,7 @@ void SickGUI::initializeWidgets()
 	// QLabel used to display live camera image
 #pragma region CAMERA_VIEW
 
-	cameraView = new AspectRatioPixmapLabel(ui.centralWidget);
+	cameraView = new CameraViewWidget(ui.centralWidget);
 	cameraView->setMinimumSize(QSize(300, 300));
 	setCentralWidget(cameraView);
 
@@ -453,6 +452,9 @@ void SickGUI::makeConnections()
 	QObject::connect(&renderThread, &RenderThread::renderedImage, this, &SickGUI::updateDisplay);
 	QObject::connect(captureThread, &CaptureThread::addTime, cycleTimeWidget, &CycleTimeWidget::addCamTime);
 	QObject::connect(plcThread, &PlcThread::addTime, cycleTimeWidget, &CycleTimeWidget::addPlcTime);
+	QObject::connect(cameraView, &CameraViewWidget::setDepthFilterEnable, camera, &VisionaryCamera::setDepthFilterEnable, Qt::DirectConnection);
+	QObject::connect(cameraView, &CameraViewWidget::setDepthMaskEnable, camera, &VisionaryCamera::setDepthMaskEnable, Qt::DirectConnection);
+	QObject::connect(cameraView, &CameraViewWidget::setDepthFilterRange, camera, &VisionaryCamera::setDepthFilterRange, Qt::DirectConnection);
 }
 
 void SickGUI::startThreads(QPromise<ThreadResult>& promise)
@@ -555,9 +557,9 @@ ThreadResult SickGUI::startPlcThread()
 		int connectRet = s7Client->ConnectTo(plcIpAddress.c_str(), plcRack, plcSlot);
 		if (0 != connectRet)
 		{
-			qCritical() << "failed to connect plc client: " << CliErrorText(connectRet);
+			qCritical() << "failed to connect plc " << plcIpAddress << ": " << CliErrorText(connectRet);
 			ret.error = true;
-			ret.message = QString("failed to connect plc client: ") + QString(CliErrorText(connectRet).c_str());
+			ret.message = "failed to connect plc " + QString(plcIpAddress.c_str()) + ": " + QString(CliErrorText(connectRet).c_str());
 			return ret;
 		}
 

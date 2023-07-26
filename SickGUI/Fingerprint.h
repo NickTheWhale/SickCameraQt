@@ -137,18 +137,24 @@ namespace Fingerprint
 	 */
 	const inline uint32_t calculateFingerprint(int frameWidth, int frameHeight, const std::vector<uint16_t>& frame)
 	{
-		auto cStat = CellStat(0, 0, 0, 0);
-		for (auto row = 0; row < GRID_ROWS; ++row)
-		{
-			for (auto col = 0; col < GRID_COLS; ++col)
-			{
-				const auto topLeft = QPoint(col * (frameWidth / GRID_COLS), row * (frameHeight / GRID_ROWS));
-				const auto bottomRight = topLeft + QPoint(frameWidth / GRID_COLS, frameHeight / GRID_ROWS);
-				const auto stat = calculateCellStatistics(frameWidth, frameHeight, frame, topLeft, bottomRight);
-				cStat += stat;
-			}
-		}
-		return cStat.min + cStat.max + cStat.mean + cStat.stdev;
+		//auto cStat = CellStat(0, 0, 0, 0);
+		//for (auto row = 0; row < GRID_ROWS; ++row)
+		//{
+		//	for (auto col = 0; col < GRID_COLS; ++col)
+		//	{
+		//		const auto topLeft = QPoint(col * (frameWidth / GRID_COLS), row * (frameHeight / GRID_ROWS));
+		//		const auto bottomRight = topLeft + QPoint(frameWidth / GRID_COLS, frameHeight / GRID_ROWS);
+		//		const auto stat = calculateCellStatistics(frameWidth, frameHeight, frame, topLeft, bottomRight);
+		//		cStat += stat;
+		//	}
+		//}
+		//return cStat.min + cStat.max + cStat.mean + cStat.stdev;
+
+		size_t sum = 0;
+		for (const auto& val : frame)
+			sum += val;
+
+		return sum / frame.size();
 	}
 
 	/**

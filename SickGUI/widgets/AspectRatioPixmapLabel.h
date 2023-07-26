@@ -41,7 +41,7 @@ public slots:
 	 * @brief Sets the pixmap to be displayed by the label.
 	 * @param pixmap The pixmap to be displayed.
 	 */
-	void setPixmap(const QPixmap&);
+	void setPixmap(const QPixmap& p);
 
 protected:
 	/**

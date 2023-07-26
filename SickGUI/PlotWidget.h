@@ -16,10 +16,12 @@ public:
 private:
 	const int bufferSize = 100;
 	uint64_t xPos = 0;
-	QLineSeries* series = nullptr;
+	QLineSeries* seriesRaw = nullptr;
+	QLineSeries* seriesAverage = nullptr;
 	QValueAxis* axisX = nullptr;
 	QValueAxis* axisY = nullptr;
-	uint32_t maxY = 0;
-	uint32_t minY = std::numeric_limits<uint32_t>::max();
+
+	const std::pair<qreal, qreal> minMaxYValues(const QList<QPointF>& points);
+	const qreal smoothYValues(const QList<QPointF>& points, const qreal alpha);
 };
 

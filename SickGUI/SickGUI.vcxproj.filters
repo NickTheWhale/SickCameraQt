@@ -37,7 +37,7 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cameraimpl\VisionaryCamera.cpp">
+    <ClCompile Include="VisionaryCamera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="threads\CaptureThread.cpp">
@@ -169,14 +169,14 @@
     <ClCompile Include="PlotWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="widgets\CameraViewWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="widgets\RangeSlider.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Camera.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="cameraimpl\VisionaryCamera.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="snap7\snap7.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -329,10 +329,20 @@
     <QtMoc Include="PlotWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="widgets\CameraViewWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="widgets\RangeSlider.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="VisionaryCamera.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="snap7\snap7.dll" />
     <CopyFileToFolders Include="snap7\snap7.exp" />
+    <CopyFileToFolders Include="configuration\configuration.ini" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="snap7\snap7.lib" />

@@ -19,7 +19,6 @@
 #include <qfuturewatcher.h>
 #include "TinyColormap.hpp"
 #include <HistogramWidget.h>
-#include <AspectRatioPixmapLabel.h>
 #include <LoggingWidget.h>
 #include "CustomMessageHandler.h"
 #include <CycleTimeWidget.h>
@@ -27,10 +26,10 @@
 #include <BufferManager.h>
 #include <RenderThread.h>
 #include "PlotWidget.h"
+#include <CameraViewWidget.h>
+#include "VisionaryCamera.h"
 
 class CaptureThread;
-
-class Camera;
 
 class TS7Client;
 
@@ -167,7 +166,7 @@ private:
 	BufferManager& bufferManager;
 
 	std::string cameraIpAddress = "";
-	Camera* camera = nullptr;
+	VisionaryCamera* camera = nullptr;
 	CaptureThread* captureThread = nullptr;
 
 	TS7Client* s7Client = nullptr;
@@ -178,7 +177,7 @@ private:
 
 	QFutureWatcher<ThreadResult>* threadWatcher;
 
-	AspectRatioPixmapLabel* cameraView = nullptr;
+	CameraViewWidget* cameraView = nullptr;
 	HistogramWidget* depthHistogram = nullptr;
 	CycleTimeWidget* cycleTimeWidget = nullptr;
 	LoggingWidget* loggingWidget = nullptr;

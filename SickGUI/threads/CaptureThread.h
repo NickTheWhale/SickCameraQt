@@ -11,8 +11,7 @@
 #include <qthread.h>
 
 #include "..\VisionaryFrameset.h"
-
-class Camera;
+#include "..\VisionaryCamera.h"
 
 /**
  * @brief The CaptureThread class handles the capture of frames from a camera.
@@ -38,7 +37,7 @@ public:
 	 * @param camera Pointer to the Camera object to capture frames from.
 	 * @return true if the capture was started successfully, false otherwise.
 	 */
-	bool startCapture(Camera* camera);
+	bool startCapture(VisionaryCamera* camera);
 
 	/**
 	 * @brief Stops capturing frames.
@@ -52,7 +51,7 @@ protected:
 	void run() override;
 
 private:
-	Camera* camera;
+	VisionaryCamera* camera;
 	volatile bool _stop = false;
 	volatile bool sendTime = false; 
 };

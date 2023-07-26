@@ -106,6 +106,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
+    <ClCompile Include="widgets\RangeSlider.cpp" />
+    <ClCompile Include="widgets\CameraViewWidget.cpp" />
     <ClCompile Include="PlotWidget.cpp" />
     <ClCompile Include="threads\RenderThread.cpp" />
     <ClCompile Include="threads\BufferManager.cpp" />
@@ -155,7 +157,7 @@
     <ClCompile Include="sickapi\src\VisionaryTMiniData.cpp" />
     <ClCompile Include="snap7\snap7.cpp" />
     <ClCompile Include="VisionaryAutoIPScanCustom.cpp" />
-    <ClCompile Include="cameraimpl\VisionaryCamera.cpp" />
+    <ClCompile Include="VisionaryCamera.cpp" />
     <ClCompile Include="widgets\AspectRatioPixmapLabel.cpp" />
     <ClCompile Include="widgets\HistogramWidget.cpp" />
     <QtRcc Include="SickGUI.qrc" />
@@ -176,8 +178,9 @@
     <ClInclude Include="App.h" />
     <QtMoc Include="threads\RenderThread.h" />
     <QtMoc Include="PlotWidget.h" />
+    <QtMoc Include="widgets\CameraViewWidget.h" />
+    <QtMoc Include="widgets\RangeSlider.h" />
     <ClInclude Include="threads\BufferManager.h" />
-    <ClInclude Include="Camera.h" />
     <QtMoc Include="CustomMessageHandler.h" />
     <QtMoc Include="widgets\CycleTime.h" />
     <QtMoc Include="widgets\CycleTimeWidget.h" />
@@ -221,7 +224,7 @@
     <QtMoc Include="threads\PlcThread.h" />
     <ClInclude Include="snap7\snap7.h" />
     <ClInclude Include="VisionaryAutoIPScanCustom.h" />
-    <ClInclude Include="cameraimpl\VisionaryCamera.h" />
+    <QtMoc Include="VisionaryCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="snap7\snap7.dll">
@@ -235,6 +238,9 @@
     <Library Include="snap7\snap7.lib" />
   </ItemGroup>
   <ItemGroup>
+    <CopyFileToFolders Include="configuration\configuration.ini">
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
     <None Include="Doxyfile" />
     <None Include="packages.config" />
   </ItemGroup>

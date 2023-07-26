@@ -1,10 +1,9 @@
 #include "CaptureThread.h"
 
-#include "..\Camera.h"
 #include <qelapsedtimer.h>
 #include <BufferManager.h>
 
-bool CaptureThread::startCapture(Camera* camera)
+bool CaptureThread::startCapture(VisionaryCamera* camera)
 {
 	if (isRunning())
 		return true;
