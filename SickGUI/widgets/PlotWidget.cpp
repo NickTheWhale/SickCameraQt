@@ -5,16 +5,16 @@ PlotWidget::PlotWidget(QWidget* parent) :
 	axisX(new QValueAxis(this)),
 	axisY(new QValueAxis(this)),
 	seriesRaw(new QLineSeries(this)),
-	seriesAverage(new QLineSeries(this)),
+	//seriesAverage(new QLineSeries(this)),
 	QChartView(new QChart(), parent)
 {
 	chart()->addSeries(seriesRaw);
 	chart()->setAxisX(axisX, seriesRaw);
 	chart()->setAxisY(axisY, seriesRaw);
 	
-	chart()->addSeries(seriesAverage);
-	chart()->setAxisX(axisX, seriesAverage);
-	chart()->setAxisY(axisY, seriesAverage);
+	//chart()->addSeries(seriesAverage);
+	//chart()->setAxisX(axisX, seriesAverage);
+	//chart()->setAxisY(axisY, seriesAverage);
 
 	chart()->setDropShadowEnabled(false);
 	chart()->legend()->hide();
@@ -31,11 +31,11 @@ void PlotWidget::pushData(const uint32_t val)
 	while (seriesRaw->count() > bufferSize)
 		seriesRaw->remove(0);
 
-	// add average value
-	const qreal averageY = smoothYValues(seriesRaw->points(), 0.5);
-	seriesAverage->append(xPos, averageY);
-	while (seriesAverage->count() > bufferSize)
-		seriesAverage->remove(0);
+	//// add average value
+	//const qreal averageY = smoothYValues(seriesRaw->points(), 0.5);
+	//seriesAverage->append(xPos, averageY);
+	//while (seriesAverage->count() > bufferSize)
+	//	seriesAverage->remove(0);
 
 	// set x range
 	qreal lowerX = std::max(static_cast<qreal>(xPos - bufferSize), static_cast<qreal>(0));
@@ -68,31 +68,31 @@ const std::pair<qreal, qreal> PlotWidget::minMaxYValues(const QList<QPointF>& po
 	return std::make_pair(minY, maxY);
 }
 
-const qreal PlotWidget::smoothYValues(const QList<QPointF>& points, const qreal alpha)
-{
-	//qreal accum = 0;
-	//const int depth_ = std::max(1, std::min(depth, bufferSize));
-	//const qsizetype count = points.count();
-	//
-	//int i;
-	//for (i = count - 1; i > depth_; --i)
-	//{
-	//	accum += points.at(i).y();
-	//}
-
-	//const qreal average = accum / (count - i);
-	//return average;
-
-
-	// Calculate the average value of seriesRaw (simple average)
-	qreal sum = 0;
-	for (const auto& point : seriesRaw->points())
-	{
-		sum += point.y();
-	}
-	qreal average = sum / seriesRaw->count();
-
-	// Return the smoothed average (you can adjust the smoothing factor as needed)
-	const qreal alpha_ = std::min(std::max(alpha, 0.0), 1.0);
-	return (1.0 - alpha) * average + alpha * seriesRaw->at(seriesRaw->count() - 1).y();
-}
+//const qreal PlotWidget::smoothYValues(const QList<QPointF>& points, const qreal alpha)
+//{
+//	//qreal accum = 0;
+//	//const int depth_ = std::max(1, std::min(depth, bufferSize));
+//	//const qsizetype count = points.count();
+//	//
+//	//int i;
+//	//for (i = count - 1; i > depth_; --i)
+//	//{
+//	//	accum += points.at(i).y();
+//	//}
+//
+//	//const qreal average = accum / (count - i);
+//	//return average;
+//
+//
+//	// Calculate the average value of seriesRaw (simple average)
+//	qreal sum = 0;
+//	for (const auto& point : seriesRaw->points())
+//	{
+//		sum += point.y();
+//	}
+//	qreal average = sum / seriesRaw->count();
+//
+//	// Return the smoothed average (you can adjust the smoothing factor as needed)
+//	const qreal alpha_ = std::min(std::max(alpha, 0.0), 1.0);
+//	return (1.0 - alpha) * average + alpha * seriesRaw->at(seriesRaw->count() - 1).y();
+//}

@@ -101,9 +101,6 @@ void HistogramWidget::paintEvent(QPaintEvent* event)
 
 void HistogramWidget::contextMenuEvent(QContextMenuEvent* event)
 {
-	QPainter painter(this);
-	painter.end();
-
 	QMenu menu(this);
 	QAction* saveAction = menu.addAction("Save as Image");
 	QAction* selectedAction = menu.exec(event->globalPos());

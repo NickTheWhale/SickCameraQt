@@ -50,10 +50,10 @@ OpenResult VisionaryCamera::open()
 		return ret;
 	}
 
-	if (!pVisionaryControl->login(IAuthentication::UserLevel::AUTHORIZED_CLIENT, "PASSWORD"))
+	if (!pVisionaryControl->login(IAuthentication::UserLevel::SERVICE, "CUST_SERV"))
 	{
 		ret.error = ErrorCode::LOGIN_ERROR;
-		ret.message = "failed to login as authorized client";
+		ret.message = "failed to login with SERVICE level";
 		return ret;
 	}
 
@@ -199,11 +199,6 @@ const bool VisionaryCamera::ping(const std::string ip)
 void VisionaryCamera::setDepthFilterRange(const uint16_t low, const uint16_t high)
 {
 	qDebug() << __FUNCTION__ << "called";
-	if (!pVisionaryControl->login(IAuthentication::UserLevel::AUTHORIZED_CLIENT, "PASSWORD"))
-	{
-		qDebug() << __FUNCTION__ << "failed to login";
-		return;
-	}
 	CoLaCommand minCmd = CoLaParameterWriter(CoLaCommandType::WRITE_VARIABLE, "minDistThresh").parameterUInt(low).build();
 	CoLaCommand minResponse = pVisionaryControl->sendCommand(minCmd);
 
@@ -214,39 +209,26 @@ void VisionaryCamera::setDepthFilterRange(const uint16_t low, const uint16_t hig
 		qDebug() << __FUNCTION__ << "failed:" << minResponse.getError() << maxResponse.getError();
 	else 
 		qDebug() << __FUNCTION__ << "success";
-	pVisionaryControl->logout();
 }
 
 void VisionaryCamera::setDepthFilterEnable(const bool enable)
 {
 	qDebug() << __FUNCTION__ << "called";
-	if (!pVisionaryControl->login(IAuthentication::UserLevel::AUTHORIZED_CLIENT, "PASSWORD"))
-	{
-		qDebug() << __FUNCTION__ << "failed to login";
-		return;
-	}
 	CoLaCommand cmd = CoLaParameterWriter(CoLaCommandType::WRITE_VARIABLE, "enDistFilter").parameterBool(enable).build();
 	CoLaCommand response = pVisionaryControl->sendCommand(cmd);
 	if (response.getError() != CoLaError::OK)
 		qDebug() << __FUNCTION__ << "failed:" << response.getError();
 	else 
 		qDebug() << __FUNCTION__ << "success";
-	pVisionaryControl->logout();
 }
 
 void VisionaryCamera::setDepthMaskEnable(const bool enable)
 {
 	qDebug() << __FUNCTION__ << "called";
-	if (!pVisionaryControl->login(IAuthentication::UserLevel::AUTHORIZED_CLIENT, "PASSWORD"))
-	{
-		qDebug() << __FUNCTION__ << "failed to login";
-		return;
-	}
 	CoLaCommand cmd = CoLaParameterWriter(CoLaCommandType::WRITE_VARIABLE, "enDepthMask").parameterBool(enable).build();
 	CoLaCommand response = pVisionaryControl->sendCommand(cmd);
 	if (response.getError() != CoLaError::OK)
 		qDebug() << __FUNCTION__ << "failed:" << response.getError();
 	else
 		qDebug() << __FUNCTION__ << "success";
-	pVisionaryControl->logout();
 }

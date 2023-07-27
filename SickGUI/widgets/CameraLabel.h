@@ -1,5 +1,5 @@
 /*****************************************************************//**
- * @file   AspectRatioPixmapLabel.h
+ * @file   CameraViewLabel.h
  * @brief  QLabel subclass used to auto-scale a pixmap.
  * 
  * @author Nicholas Loehrke
@@ -11,24 +11,25 @@
 #include <qlabel>
 #include <qpixmap>
 #include <qresizeevent>
+#include <vector>
 
 /**
- * @brief The AspectRatioPixmapLabel class is a QLabel subclass that displays a resizable pixmap while maintaining aspect ratio.
+ * @brief The CameraViewLabel class is a QLabel subclass that displays a resizable pixmap while maintaining aspect ratio.
  *
- * The AspectRatioPixmapLabel class provides a QLabel with additional functionality to display a pixmap while preserving its aspect ratio.
+ * The CameraViewLabel class provides a QLabel with additional functionality to display a pixmap while preserving its aspect ratio.
  * It automatically scales the pixmap to fit within the label's size, maintaining the original aspect ratio of the pixmap.
  * It also overrides certain event handling methods to customize the behavior of the label.
  */
-class AspectRatioPixmapLabel : public QLabel
+class CameraLabel : public QLabel
 {
 	Q_OBJECT
 
 public:
 	/**
-	 * @brief Constructs an AspectRatioPixmapLabel object with the specified parent widget.
+	 * @brief Constructs an CameraViewLabel object with the specified parent widget.
 	 * @param parent The parent widget of the label (optional).
 	 */
-	explicit AspectRatioPixmapLabel(QWidget* parent = nullptr);
+	explicit CameraLabel(QWidget* parent = nullptr);
 
 	/**
 	 * @brief Returns the scaled pixmap currently displayed by the label.
@@ -36,12 +37,19 @@ public:
 	 */
 	QPixmap scaledPixmap() const;
 
+	QSize minimumSizeHint() const override;
+	QSize sizeHint() const override;
+
 public slots:
 	/**
 	 * @brief Sets the pixmap to be displayed by the label.
 	 * @param pixmap The pixmap to be displayed.
 	 */
 	void setPixmap(const QPixmap& p);
+	void clearMask();
+
+signals:
+	void newMask(const QPointF& pos);
 
 protected:
 	/**
@@ -56,6 +64,9 @@ protected:
 	 */
 	void contextMenuEvent(QContextMenuEvent* event) override;
 
+	void mousePressEvent(QMouseEvent* event) override;
+
 private:
 	QPixmap pix; /**< The original pixmap. */
+	QPolygon maskPolygon;
 };

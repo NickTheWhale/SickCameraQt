@@ -1184,6 +1184,10 @@ namespace Frameset
 			if (min > max)
 				min = max;
 
+
+			//qDebug() << "min:" << min << "max:" << max;
+
+
 			// get pointer to image data (for really fast iteration)
 			QRgb* qImageData = reinterpret_cast<QRgb*>(qImage.bits());
 			for (auto y = 0; y < height; ++y)

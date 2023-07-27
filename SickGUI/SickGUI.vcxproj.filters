@@ -55,7 +55,7 @@
     <ClCompile Include="SickGUI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="widgets\AspectRatioPixmapLabel.cpp">
+    <ClCompile Include="widgets\CameraLabel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="widgets\HistogramWidget.cpp">
@@ -166,13 +166,13 @@
     <ClCompile Include="threads\RenderThread.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PlotWidget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="widgets\CameraViewWidget.cpp">
+    <ClCompile Include="widgets\PlotWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="widgets\RangeSlider.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="widgets\CameraViewWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -296,7 +296,7 @@
     <QtMoc Include="threads\PlcThread.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="widgets\AspectRatioPixmapLabel.h">
+    <QtMoc Include="widgets\CameraLabel.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="widgets\HistogramWidget.h">
@@ -326,16 +326,16 @@
     <QtMoc Include="threads\RenderThread.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="PlotWidget.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="widgets\CameraViewWidget.h">
+    <QtMoc Include="widgets\PlotWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="widgets\RangeSlider.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="VisionaryCamera.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="widgets\CameraViewWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

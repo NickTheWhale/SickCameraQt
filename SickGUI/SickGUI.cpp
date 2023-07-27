@@ -452,9 +452,9 @@ void SickGUI::makeConnections()
 	QObject::connect(&renderThread, &RenderThread::renderedImage, this, &SickGUI::updateDisplay);
 	QObject::connect(captureThread, &CaptureThread::addTime, cycleTimeWidget, &CycleTimeWidget::addCamTime);
 	QObject::connect(plcThread, &PlcThread::addTime, cycleTimeWidget, &CycleTimeWidget::addPlcTime);
-	QObject::connect(cameraView, &CameraViewWidget::setDepthFilterEnable, camera, &VisionaryCamera::setDepthFilterEnable, Qt::DirectConnection);
-	QObject::connect(cameraView, &CameraViewWidget::setDepthMaskEnable, camera, &VisionaryCamera::setDepthMaskEnable, Qt::DirectConnection);
-	QObject::connect(cameraView, &CameraViewWidget::setDepthFilterRange, camera, &VisionaryCamera::setDepthFilterRange, Qt::DirectConnection);
+	//QObject::connect(cameraView, &CameraViewWidget::setDepthFilterEnable, camera, &VisionaryCamera::setDepthFilterEnable, Qt::DirectConnection);
+	//QObject::connect(cameraView, &CameraViewWidget::setDepthMaskEnable, camera, &VisionaryCamera::setDepthMaskEnable, Qt::DirectConnection);
+	//QObject::connect(cameraView, &CameraViewWidget::setDepthFilterRange, camera, &VisionaryCamera::setDepthFilterRange, Qt::DirectConnection);
 }
 
 void SickGUI::startThreads(QPromise<ThreadResult>& promise)

@@ -10,7 +10,6 @@
 
 #include <qobject.h>
 #include <VisionaryTMiniData.h>
- //#include <VisionaryDataStream.h>
 #include <VisionaryControl.h>
 #include <Framegrabber.h>
 #include <string>
@@ -31,7 +30,6 @@ enum ErrorCode
 struct OpenResult
 {
 	ErrorCode error;
-	//std::string message;
 	QString message;
 
 	OpenResult() : error(NONE_ERROR), message("") {};
@@ -140,7 +138,6 @@ private:
 
 	visionary::FrameGrabber<visionary::VisionaryTMiniData> frameGrabber;
 	std::shared_ptr<visionary::VisionaryTMiniData> pDataHandler;
-	//std::shared_ptr<visionary::VisionaryDataStream> pDataStream;
 	std::shared_ptr<visionary::VisionaryControl> pVisionaryControl;
 
 	const bool ping(const std::string ip);
