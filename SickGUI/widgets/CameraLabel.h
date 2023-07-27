@@ -49,7 +49,7 @@ public slots:
 	void clearMask();
 
 signals:
-	void newMask(const QPointF& pos);
+	void newMask(const std::vector<QPointF>& mask);
 
 protected:
 	/**
@@ -69,4 +69,5 @@ protected:
 private:
 	QPixmap pix; /**< The original pixmap. */
 	QPolygon maskPolygon;
+	std::vector<QPointF> maskVector;
 };

@@ -30,6 +30,7 @@ QPixmap CameraLabel::scaledPixmap() const
 void CameraLabel::clearMask()
 {
 	maskPolygon.clear();
+	maskVector.clear();
 }
 
 void CameraLabel::resizeEvent(QResizeEvent* e)
@@ -86,7 +87,8 @@ void CameraLabel::mousePressEvent(QMouseEvent* event)
 		const qreal scaleFactor = pix.size().width() / static_cast<qreal>(scaledPixSize.width());
 		const QPoint rawPixPos = scaledPixPos * scaleFactor;
 		maskPolygon.push_back(rawPixPos);
-		emit newMask(normPos);
+		maskVector.push_back(normPos);
+		emit newMask(maskVector);
 	}
 
 	QWidget::mousePressEvent(event);
