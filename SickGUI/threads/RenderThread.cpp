@@ -1,5 +1,5 @@
 #include "RenderThread.h"
-#include <BufferManager.h>
+#include <ThreadInterface.h>
 #include <qtimer.h>
 #include "..\VisionaryFrameset.h"
 #include "..\Fingerprint.h"
@@ -27,7 +27,7 @@ RenderThread::~RenderThread()
 
 void RenderThread::run()
 {
-	BufferManager& bufferManager = BufferManager::instance();
+	ThreadInterface& threadInterface = ThreadInterface::instance();
 	QElapsedTimer cycleTimer;
 	cycleTimer.start();
 	while (!_stop)
@@ -39,7 +39,7 @@ void RenderThread::run()
 		}
 
 		msleep(1);
-		Frameset::frameset_t fs = bufferManager.peekGuiFrame();
+		Frameset::frameset_t fs = threadInterface.peekGuiFrame();
 
 		if (fs.isNull())
 			continue;

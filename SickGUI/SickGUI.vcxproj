@@ -110,7 +110,7 @@
     <ClCompile Include="widgets\RangeSlider.cpp" />
     <ClCompile Include="widgets\PlotWidget.cpp" />
     <ClCompile Include="threads\RenderThread.cpp" />
-    <ClCompile Include="threads\BufferManager.cpp" />
+    <ClCompile Include="threads\ThreadInterface.cpp" />
     <ClCompile Include="threads\QAutoWebSocket.cpp" />
     <ClCompile Include="CustomMessageHandler.cpp">
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
@@ -180,7 +180,7 @@
     <QtMoc Include="threads\RenderThread.h" />
     <QtMoc Include="widgets\PlotWidget.h" />
     <QtMoc Include="widgets\RangeSlider.h" />
-    <ClInclude Include="threads\BufferManager.h" />
+    <ClInclude Include="threads\ThreadInterface.h" />
     <QtMoc Include="CustomMessageHandler.h" />
     <QtMoc Include="widgets\CycleTime.h" />
     <QtMoc Include="widgets\CycleTimeWidget.h" />

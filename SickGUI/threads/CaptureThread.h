@@ -9,6 +9,8 @@
 #pragma once
 
 #include <qthread.h>
+#include <qrect.h>
+#include <qmutex.h>
 
 #include "..\VisionaryFrameset.h"
 #include "..\VisionaryCamera.h"
@@ -44,6 +46,9 @@ public:
 	 */
 	void stopCapture();
 
+	void setMask(const QRectF& maskNorm);
+	void setEnableMask(const bool enable);
+
 protected:
 	/**
 	 * @brief Overridden method from QThread that runs the capture loop.
@@ -53,5 +58,11 @@ protected:
 private:
 	VisionaryCamera* camera;
 	volatile bool _stop = false;
-	volatile bool sendTime = false; 
+
+	QMutex maskMutex;
+	QRectF maskNorm;
+	QMutex maskEnabledMutex;
+	volatile bool maskEnabled = false;
+
+	void applyMask(Frameset::frameset_t& fs, const QRectF& maskNorm);
 };

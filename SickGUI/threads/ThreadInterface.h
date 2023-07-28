@@ -3,10 +3,10 @@
 #include <boost/circular_buffer.hpp>
 #include <qmutex.h>
 
-class BufferManager
+class ThreadInterface
 {
 public:
-	static BufferManager& instance();
+	static ThreadInterface& instance();
 
 	void pushPlcFrame(const Frameset::frameset_t& fs);
 	void pushGuiFrame(const Frameset::frameset_t& fs);
@@ -21,8 +21,8 @@ public:
 	const Frameset::frameset_t popWebFrame();
 	
 private:
-	explicit BufferManager();
-	~BufferManager();
+	explicit ThreadInterface();
+	~ThreadInterface();
 
 	const int bufferSize = 2;
 	boost::circular_buffer<Frameset::frameset_t> plcBuffer;

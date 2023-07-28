@@ -82,9 +82,9 @@ namespace visionary
 
 			for (int col = 0; col < m_cameraParams.width; col++)
 			{
-				// we map from image coordinates with origin top left and x
+				// we map from image coordinates with rubberBandOrigin top left and x
 				// horizontal (right) and y vertical
-				// (downwards) to camera coordinates with origin in center and x
+				// (downwards) to camera coordinates with rubberBandOrigin in center and x
 				// to the left and y upwards (seen
 				// from the sensor position)
 				const double xp = (m_cameraParams.cx - col) / m_cameraParams.fx;

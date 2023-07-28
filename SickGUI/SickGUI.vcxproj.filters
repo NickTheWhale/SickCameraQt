@@ -160,7 +160,7 @@
     <ClCompile Include="threads\QAutoWebSocket.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="threads\BufferManager.cpp">
+    <ClCompile Include="threads\ThreadInterface.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="threads\RenderThread.cpp">
@@ -285,7 +285,7 @@
     <ClInclude Include="App.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="threads\BufferManager.h">
+    <ClInclude Include="threads\ThreadInterface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -8,6 +8,7 @@ CameraLabel::CameraLabel(QWidget* parent) : QLabel(parent)
 	this->setMargin(0);
 	this->setMinimumSize(1, 1);
 	setScaledContents(false);
+	this->cursor().setShape(Qt::CrossCursor);
 }
 
 void CameraLabel::setPixmap(const QPixmap& p)
@@ -15,8 +16,8 @@ void CameraLabel::setPixmap(const QPixmap& p)
 	pix = p;
 
 	QPainter painter(&pix);
-	if (!maskPolygon.empty())
-		painter.drawPolygon(maskPolygon, Qt::WindingFill);
+	if (!mouseDown)
+		painter.drawRect(rubberBandDrawRect);
 
 	QLabel::setPixmap(scaledPixmap());
 	QLabel::setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
@@ -29,8 +30,6 @@ QPixmap CameraLabel::scaledPixmap() const
 
 void CameraLabel::clearMask()
 {
-	maskPolygon.clear();
-	maskVector.clear();
 }
 
 void CameraLabel::resizeEvent(QResizeEvent* e)
@@ -62,8 +61,55 @@ void CameraLabel::contextMenuEvent(QContextMenuEvent* event)
 
 void CameraLabel::mousePressEvent(QMouseEvent* event)
 {
-	if (pix.isNull())
+	QWidget::mousePressEvent(event);
+	if (event->button() != Qt::LeftButton)
 		return;
+
+	mouseDown = true;
+	const QSize scaledPixSize = scaledPixmap().size();
+	if (scaledPixSize.isEmpty())
+		return;
+
+	const QSize thisSize = this->size();
+	if (thisSize.isEmpty())
+		return;
+
+	const QPoint pos = event->pos();
+	const QSize offsetSize = (thisSize - scaledPixSize) / 2;
+	const QPoint offset = QPoint(offsetSize.width(), offsetSize.height());
+	const QPoint scaledPixPos = pos - offset;
+	const QPointF normPos = QPointF(scaledPixPos.x() / static_cast<qreal>(scaledPixSize.width()), scaledPixPos.y() / static_cast<qreal>(scaledPixSize.height()));
+	maskNorm.setTopLeft(normPos);
+	const qreal scaleFactor = pix.size().width() / static_cast<qreal>(scaledPixSize.width());
+	const QPoint rawPixPos = scaledPixPos * scaleFactor;
+	rubberBandDrawRect.setTopLeft(rawPixPos);
+	rubberBandOrigin = pos;
+	if (!rubberBand)
+		rubberBand = new QRubberBand(QRubberBand::Rectangle, this);
+	rubberBand->setGeometry(QRect(rubberBandOrigin, QSize()));
+	rubberBand->show();
+}
+
+void CameraLabel::mouseMoveEvent(QMouseEvent* event)
+{
+	QWidget::mouseMoveEvent(event);
+	if (!rubberBand)
+		return;
+	rubberBand->setGeometry(QRect(rubberBandOrigin, event->pos()).normalized());
+}
+
+void CameraLabel::mouseReleaseEvent(QMouseEvent* event)
+{
+	QWidget::mouseReleaseEvent(event);
+	
+	if (event->button() != Qt::LeftButton)
+		return;
+
+	mouseDown = false;
+	if (!rubberBand)
+		return;
+
+	rubberBand->hide();
 
 	const QSize scaledPixSize = scaledPixmap().size();
 	if (scaledPixSize.isEmpty())
@@ -73,25 +119,27 @@ void CameraLabel::mousePressEvent(QMouseEvent* event)
 	if (thisSize.isEmpty())
 		return;
 
-	const QPoint rawPos = event->pos();
+	const QPoint pos = event->pos();
 	const QSize offsetSize = (thisSize - scaledPixSize) / 2;
 	const QPoint offset = QPoint(offsetSize.width(), offsetSize.height());
 
-	const QPoint scaledPixPos = rawPos - offset;
+	const QPoint scaledPixPos = pos - offset;
 
 	const QPointF normPos = QPointF(scaledPixPos.x() / static_cast<qreal>(scaledPixSize.width()), scaledPixPos.y() / static_cast<qreal>(scaledPixSize.height()));
 	constexpr QRectF bounds(0.0, 0.0, 1.0, 1.0);
 
 	if (bounds.contains(normPos))
 	{
+		maskNorm.setBottomRight(normPos);
+		maskNorm = maskNorm.normalized();
 		const qreal scaleFactor = pix.size().width() / static_cast<qreal>(scaledPixSize.width());
 		const QPoint rawPixPos = scaledPixPos * scaleFactor;
-		maskPolygon.push_back(rawPixPos);
-		maskVector.push_back(normPos);
-		emit newMask(maskVector);
+		rubberBandDrawRect.setBottomRight(rawPixPos);
+		rubberBandDrawRect = rubberBandDrawRect.normalized();
+		rubberBandDrawRect.translate(-1, -1);
+		qDebug() << rubberBandDrawRect;
+		emit newMask(maskNorm);
 	}
-
-	QWidget::mousePressEvent(event);
 }
 
 QSize CameraLabel::minimumSizeHint() const
@@ -101,5 +149,5 @@ QSize CameraLabel::minimumSizeHint() const
 
 QSize CameraLabel::sizeHint() const
 {
-	return pix.size() + pix.size();
+	return pix.size();
 }

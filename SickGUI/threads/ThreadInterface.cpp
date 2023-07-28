@@ -1,30 +1,30 @@
-#include "BufferManager.h"
+#include "ThreadInterface.h"
 
-BufferManager& BufferManager::instance()
+ThreadInterface& ThreadInterface::instance()
 {
-	static BufferManager _instance;
+	static ThreadInterface _instance;
 	return _instance;
 }
 
-void BufferManager::pushPlcFrame(const Frameset::frameset_t& fs)
+void ThreadInterface::pushPlcFrame(const Frameset::frameset_t& fs)
 {
 	QMutexLocker locker(&plcMutex);
 	plcBuffer.push_back(fs);
 }
 
-void BufferManager::pushGuiFrame(const Frameset::frameset_t& fs)
+void ThreadInterface::pushGuiFrame(const Frameset::frameset_t& fs)
 {
 	QMutexLocker locker(&guiMutex);
 	guiBuffer.push_back(fs);
 }
 
-void BufferManager::pushWebFrame(const Frameset::frameset_t& fs)
+void ThreadInterface::pushWebFrame(const Frameset::frameset_t& fs)
 {
 	QMutexLocker locker(&webMutex);
 	webBuffer.push_back(fs);
 }
 
-const Frameset::frameset_t BufferManager::peekPlcFrame()
+const Frameset::frameset_t ThreadInterface::peekPlcFrame()
 {
 	Frameset::frameset_t fs;
 	QMutexLocker locker(&plcMutex);
@@ -35,7 +35,7 @@ const Frameset::frameset_t BufferManager::peekPlcFrame()
 	return fs;
 }
 
-const Frameset::frameset_t BufferManager::peekGuiFrame()
+const Frameset::frameset_t ThreadInterface::peekGuiFrame()
 {
 	Frameset::frameset_t fs;
 	QMutexLocker locker(&guiMutex);
@@ -46,7 +46,7 @@ const Frameset::frameset_t BufferManager::peekGuiFrame()
 	return fs;
 }
 
-const Frameset::frameset_t BufferManager::peekWebFrame()
+const Frameset::frameset_t ThreadInterface::peekWebFrame()
 {
 	Frameset::frameset_t fs;
 	QMutexLocker locker(&webMutex);
@@ -57,7 +57,7 @@ const Frameset::frameset_t BufferManager::peekWebFrame()
 	return fs;
 }
 
-const Frameset::frameset_t BufferManager::popPlcFrame()
+const Frameset::frameset_t ThreadInterface::popPlcFrame()
 {
 	Frameset::frameset_t fs;
 	QMutexLocker locker(&plcMutex);
@@ -69,7 +69,7 @@ const Frameset::frameset_t BufferManager::popPlcFrame()
 	return fs;
 }
 
-const Frameset::frameset_t BufferManager::popGuiFrame()
+const Frameset::frameset_t ThreadInterface::popGuiFrame()
 {
 	Frameset::frameset_t fs;
 	QMutexLocker locker(&guiMutex);
@@ -81,7 +81,7 @@ const Frameset::frameset_t BufferManager::popGuiFrame()
 	return fs;
 }
 
-const Frameset::frameset_t BufferManager::popWebFrame()
+const Frameset::frameset_t ThreadInterface::popWebFrame()
 {
 	Frameset::frameset_t fs;
 	QMutexLocker locker(&webMutex);
@@ -93,7 +93,7 @@ const Frameset::frameset_t BufferManager::popWebFrame()
 	return fs;
 }
 
-BufferManager::BufferManager() :
+ThreadInterface::ThreadInterface() :
 	plcBuffer(bufferSize),
 	guiBuffer(bufferSize),
 	webBuffer(bufferSize)
@@ -101,7 +101,7 @@ BufferManager::BufferManager() :
 
 }
 
-BufferManager::~BufferManager()
+ThreadInterface::~ThreadInterface()
 {
 
 }

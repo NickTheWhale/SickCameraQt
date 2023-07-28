@@ -1,7 +1,7 @@
 #include "CaptureThread.h"
 
 #include <qelapsedtimer.h>
-#include <BufferManager.h>
+#include <ThreadInterface.h>
 
 bool CaptureThread::startCapture(VisionaryCamera* camera)
 {
@@ -27,10 +27,8 @@ void CaptureThread::stopCapture()
 
 void CaptureThread::run()
 {
-	BufferManager& bufferManager = BufferManager::instance();
+	ThreadInterface& threadInterface = ThreadInterface::instance();
 	uint32_t prevNumber = 0;
-	uint64_t totalFrames = 0;
-	uint64_t missedFrames = 0;
 	QElapsedTimer cycleTimer;
 	cycleTimer.start();
 	while (!_stop)
@@ -45,26 +43,50 @@ void CaptureThread::run()
 
 		if (fs.number > prevNumber)
 		{
-			if (prevNumber != 0)
-			{
-				totalFrames += fs.number - prevNumber;
-			}
-			if (fs.number > prevNumber + 1 && prevNumber != 0)
-			{
-				missedFrames += fs.number - prevNumber;
-				//qDebug() << "CAPTURE THREAD MISSED" << fs.number - prevNumber << "FRAME(S)" << "fs.number:" << fs.number << "prevNumber:" << prevNumber;
-			}
-
 			prevNumber = fs.number;
-			bufferManager.pushPlcFrame(fs);
-			bufferManager.pushGuiFrame(fs);
-			bufferManager.pushWebFrame(fs);
+
+			if (maskEnabled)
+				applyMask(fs, maskNorm);
+
+			threadInterface.pushPlcFrame(fs);
+			threadInterface.pushGuiFrame(fs);
+			threadInterface.pushWebFrame(fs);
 		}
 		qint64 time = cycleTimer.restart();
 		emit addTime(static_cast<int>(time));
 	}
 
-	qDebug() << "MISSED FRAME PERCENTAGE:" << (missedFrames / static_cast<double>(totalFrames)) * 100.0f;
-
 	camera->stopCapture();
+}
+
+void CaptureThread::applyMask(Frameset::frameset_t& fs, const QRectF& maskNorm)
+{
+	if (maskNorm.isEmpty())
+		return;
+
+	// un-normalize the mask
+	QPoint topLeft = QPoint(maskNorm.topLeft().x() * fs.width, maskNorm.topLeft().y() * fs.height);
+	QPoint bottomRight = QPoint(maskNorm.bottomRight().x() * fs.width, maskNorm.bottomRight().y() * fs.height);
+
+	QRect mask(topLeft, bottomRight);
+
+	// apply mask
+	for (int x = 0; x < fs.width; ++x)
+		for (int y = 0; y < fs.height; ++y)
+			if (!mask.contains(x, y))
+				fs.depth[y * fs.width + x] = 0;
+}
+
+void CaptureThread::setMask(const QRectF& maskNorm)
+{
+	QMutexLocker locker(&maskMutex);
+	this->maskNorm = maskNorm;
+	qDebug() << __FUNCTION__ << "new mask:" << this->maskNorm;
+}
+
+void CaptureThread::setEnableMask(const bool enable)
+{
+	QMutexLocker locker(&maskEnabledMutex);
+	maskEnabled = enable;
+	qDebug() << __FUNCTION__ << "setting mask:" << enable;
 }

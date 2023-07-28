@@ -5,7 +5,7 @@
 #include "..\Fingerprint.h"
 #include <qelapsedtimer.h>
 #include <qrandom.h>
-#include <BufferManager.h>
+#include <ThreadInterface.h>
 #include <qdebug.h>
 #include <array>
 
@@ -23,14 +23,14 @@ void PlcThread::stopPlc()
 
 void PlcThread::run()
 {
-	BufferManager& bufferManager = BufferManager::instance();
+	ThreadInterface& threadInterface = ThreadInterface::instance();
 	uint32_t lastNumber = 0;
 	QElapsedTimer cycleTimer;
 	cycleTimer.start();
 	while (!_stop)
 	{
 		msleep(1);
-		Frameset::frameset_t fs = bufferManager.peekPlcFrame();
+		Frameset::frameset_t fs = threadInterface.peekPlcFrame();
 
 		if (!fs.isNull())
 		{

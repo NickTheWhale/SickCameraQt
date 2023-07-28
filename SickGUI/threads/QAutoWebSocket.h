@@ -11,7 +11,7 @@ signals:
 	void disconnectSocket();
 
 public:
-	explicit QAutoWebSocket(const QUrl& url, const QString& origin, const QWebSocketProtocol::Version& version = QWebSocketProtocol::VersionLatest, QObject* parent = nullptr);
+	explicit QAutoWebSocket(const QUrl& url, const QString& rubberBandOrigin, const QWebSocketProtocol::Version& version = QWebSocketProtocol::VersionLatest, QObject* parent = nullptr);
 	explicit QAutoWebSocket(const QUrl& url, const QWebSocketProtocol::Version& version = QWebSocketProtocol::VersionLatest, QObject* parent = nullptr);
 	explicit QAutoWebSocket(const QUrl& url, QObject* parent = nullptr);
 	~QAutoWebSocket();

@@ -1184,9 +1184,7 @@ namespace Frameset
 			if (min > max)
 				min = max;
 
-
-			//qDebug() << "min:" << min << "max:" << max;
-
+			double delta = max - min;
 
 			// get pointer to image data (for really fast iteration)
 			QRgb* qImageData = reinterpret_cast<QRgb*>(qImage.bits());
@@ -1195,20 +1193,16 @@ namespace Frameset
 				for (auto x = 0; x < width; ++x)
 				{
 					auto val = frame[y * width + x];
-					double valNorm;
+					double valNorm = 0;
 					// normalize to [0.0, 1.0]
-					if (max != 0)
+					if (delta > 0 && val > 0)
 					{
-						valNorm = (val - min) / static_cast<double>(max);
+						valNorm = (val - min) / delta;
 						if (log)
 							valNorm = linToLog(valNorm);
 					}
-					else
-					{
-						valNorm = 1.0;
-					}
 					// get color and assign to pixel
-					tinycolormap::Color color = tinycolormap::GetColor(valNorm, colorMap);
+					tinycolormap::Color color = valNorm > 0 ? tinycolormap::GetColor(valNorm, colorMap) : tinycolormap::Color(0, 0, 0);
 					if (!invert)
 						qImageData[y * width + x] = qRgba(color.ri(), color.gi(), color.bi(), 255);
 					else

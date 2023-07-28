@@ -23,7 +23,7 @@
 #include "CustomMessageHandler.h"
 #include <CycleTimeWidget.h>
 #include <QAutoWebSocket.h>
-#include <BufferManager.h>
+#include <ThreadInterface.h>
 #include <RenderThread.h>
 #include "PlotWidget.h"
 #include <CameraViewWidget.h>
@@ -163,7 +163,7 @@ private:
 
 	Ui::SickGUIClass ui;
 
-	BufferManager& bufferManager;
+	ThreadInterface& threadInterface;
 
 	std::string cameraIpAddress = "";
 	VisionaryCamera* camera = nullptr;

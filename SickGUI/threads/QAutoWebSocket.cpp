@@ -1,7 +1,7 @@
 #include "QAutoWebSocket.h"
 
-QAutoWebSocket::QAutoWebSocket(const QUrl& url, const QString& origin, const QWebSocketProtocol::Version& version, QObject* parent)
-	: url(url), reconnectTimer(QTimer()), QWebSocket(origin, version, parent)
+QAutoWebSocket::QAutoWebSocket(const QUrl& url, const QString& rubberBandOrigin, const QWebSocketProtocol::Version& version, QObject* parent)
+	: url(url), reconnectTimer(QTimer()), QWebSocket(rubberBandOrigin, version, parent)
 {
 	reconnectTimer.setInterval(reconnectTimerInterval);
 	makeConnections();

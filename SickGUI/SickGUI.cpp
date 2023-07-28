@@ -26,7 +26,7 @@
 SickGUI::SickGUI(CustomMessageHandler* messageHandler, QWidget* parent) :
 	renderThread(RenderThread()),
 	messageHandler(messageHandler),
-	bufferManager(BufferManager::instance()),
+	threadInterface(ThreadInterface::instance()),
 	QMainWindow(parent)
 {
 	loadConfiguration();
@@ -292,6 +292,7 @@ void SickGUI::initializeWidgets()
 #pragma region DEPTH_HISTOGRAM
 	// the axis range and step is kinda hacky. Best not to mess with it.
 	depthHistogram = new HistogramWidget(100, 5'000, 100, 20'000, ui.centralWidget);
+	depthHistogram->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	depthHistogram->setXAxis<double>(0, 0.5, 5, "distance (m)");
 	depthHistogram->setYAxis(3'000, 3'000, 23'000, "count");
 	depthHistogram->setMinimumSize(QSize(260, 200));
@@ -309,6 +310,7 @@ void SickGUI::initializeWidgets()
 #pragma region LOGGING_WINDOW
 
 	loggingWidget = new LoggingWidget(this);
+	loggingWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	loggingWidget->setMaxLineCount(250);
 
 	connect(messageHandler, &CustomMessageHandler::newMessage, loggingWidget, &LoggingWidget::showMessage);
@@ -326,7 +328,7 @@ void SickGUI::initializeWidgets()
 #pragma region CYCLE_TIME
 
 	cycleTimeWidget = new CycleTimeWidget(this);
-
+	cycleTimeWidget->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
 	dock = new CloseDockWidget("Cycle Time", this);
 	dock->setObjectName("cycleTimeWidgetDock");
 	dock->setAllowedAreas(Qt::DockWidgetArea::AllDockWidgetAreas);
@@ -341,7 +343,7 @@ void SickGUI::initializeWidgets()
 #pragma region PLOT
 
 	plotWidget = new PlotWidget(this);
-
+	plotWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	dock = new CloseDockWidget("Fingerprint", this);
 	dock->setObjectName("plotWidgetDock");
 	dock->setAllowedAreas(Qt::DockWidgetArea::AllDockWidgetAreas);
@@ -452,9 +454,8 @@ void SickGUI::makeConnections()
 	QObject::connect(&renderThread, &RenderThread::renderedImage, this, &SickGUI::updateDisplay);
 	QObject::connect(captureThread, &CaptureThread::addTime, cycleTimeWidget, &CycleTimeWidget::addCamTime);
 	QObject::connect(plcThread, &PlcThread::addTime, cycleTimeWidget, &CycleTimeWidget::addPlcTime);
-	//QObject::connect(cameraView, &CameraViewWidget::setDepthFilterEnable, camera, &VisionaryCamera::setDepthFilterEnable, Qt::DirectConnection);
-	//QObject::connect(cameraView, &CameraViewWidget::setDepthMaskEnable, camera, &VisionaryCamera::setDepthMaskEnable, Qt::DirectConnection);
-	//QObject::connect(cameraView, &CameraViewWidget::setDepthFilterRange, camera, &VisionaryCamera::setDepthFilterRange, Qt::DirectConnection);
+	QObject::connect(cameraView, &CameraViewWidget::newMask, this, [=](const QRectF& mask) { captureThread->setMask(mask); });
+	QObject::connect(cameraView, &CameraViewWidget::setEnableMask, this, [=](const bool enable) { captureThread->setEnableMask(enable); });
 }
 
 void SickGUI::startThreads(QPromise<ThreadResult>& promise)
@@ -675,7 +676,7 @@ void SickGUI::updateDisplay(const QImage& image)
 			cameraView->setPixmap(pixmap);
 		});
 
-	Frameset::frameset_t fs = bufferManager.peekGuiFrame();
+	Frameset::frameset_t fs = threadInterface.peekGuiFrame();
 	if (fs.isNull())
 		return;
 
