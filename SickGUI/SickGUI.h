@@ -28,6 +28,7 @@
 #include "PlotWidget.h"
 #include <CameraViewWidget.h>
 #include "VisionaryCamera.h"
+#include <FrameCompareWidget.h>
 
 class CaptureThread;
 
@@ -182,6 +183,7 @@ private:
 	CycleTimeWidget* cycleTimeWidget = nullptr;
 	LoggingWidget* loggingWidget = nullptr;
 	PlotWidget* plotWidget = nullptr;
+	FrameCompareWidget* frameCompareWidget = nullptr;
 
 	RenderThread renderThread;
 	QLabel* statusBarLabel = nullptr;

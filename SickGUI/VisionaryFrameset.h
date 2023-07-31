@@ -107,7 +107,7 @@ namespace Frameset
 		 * @param x Linear input within [0.0, 1.0]
 		 * @return Logarithmic map within [0.0, 1.0]
 		*/
-		inline double linToLog(double x)
+		constexpr double linToLog(double x)
 		{
 			int index = x * 1023;
 
@@ -1180,6 +1180,9 @@ namespace Frameset
 
 			min += (currMin - min) >> 2;
 
+			max = currMax;
+			min = currMin;
+
 			// sanity check
 			if (min > max)
 				min = max;
@@ -1195,18 +1198,22 @@ namespace Frameset
 					auto val = frame[y * width + x];
 					double valNorm = 0;
 					// normalize to [0.0, 1.0]
-					if (delta > 0 && val > 0)
+					if (delta != 0)
 					{
 						valNorm = (val - min) / delta;
 						if (log)
 							valNorm = linToLog(valNorm);
 					}
 					// get color and assign to pixel
-					tinycolormap::Color color = valNorm > 0 ? tinycolormap::GetColor(valNorm, colorMap) : tinycolormap::Color(0, 0, 0);
-					if (!invert)
-						qImageData[y * width + x] = qRgba(color.ri(), color.gi(), color.bi(), 255);
-					else
-						qImageData[y * width + x] = qRgba(255 - color.ri(), 255 - color.gi(), 255 - color.bi(), 255);
+					tinycolormap::Color color = invert ? tinycolormap::Color(255, 255, 255) - tinycolormap::GetColor(valNorm, colorMap) : tinycolormap::GetColor(valNorm, colorMap);
+					qImageData[y * width + x] = qRgba((valNorm > 0) * color.ri(), (valNorm > 0) * color.gi(), (valNorm > 0) * color.bi(), (valNorm > 0) * 255);
+					//if (valNorm > 0)
+					//	if (!invert)
+					//		qImageData[y * width + x] = qRgba(color.ri(), color.gi(), color.bi(), 255);
+					//	else
+					//		qImageData[y * width + x] = qRgba(255 - color.ri(), 255 - color.gi(), 255 - color.bi(), 255);
+					//else
+					//	qImageData[y * width + x] = qRgba(color.ri(), color.gi(), color.bi(), 100);
 				}
 			}
 		}

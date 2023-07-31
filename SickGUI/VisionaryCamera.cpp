@@ -108,10 +108,10 @@ bool VisionaryCamera::getNextFrameset(Frameset::frameset_t& fs)
 	fs.time = pDataHandler->getTimestampMS();
 
 	// divide depth data by 4 to convert to millimeters
-	//for (auto&& val : fs.depth)
-	//{
-	//	val >>= 2;
-	//}
+	for (auto&& val : fs.depth)
+	{
+		val >>= 2;
+	}
 
 	return true;
 }

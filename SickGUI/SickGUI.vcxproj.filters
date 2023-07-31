@@ -21,6 +21,9 @@
       <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
       <Extensions>ts</Extensions>
     </Filter>
+    <Filter Include="Configuration">
+      <UniqueIdentifier>{7154a17e-55d3-493c-a4e2-6b7f1d162418}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="SickGUI.qrc">
@@ -55,7 +58,7 @@
     <ClCompile Include="SickGUI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="widgets\CameraLabel.cpp">
+    <ClCompile Include="widgets\ImageLabel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="widgets\HistogramWidget.cpp">
@@ -173,6 +176,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="widgets\CameraViewWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="widgets\FrameCompareWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -296,7 +302,7 @@
     <QtMoc Include="threads\PlcThread.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="widgets\CameraLabel.h">
+    <QtMoc Include="widgets\ImageLabel.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="widgets\HistogramWidget.h">
@@ -338,11 +344,16 @@
     <QtMoc Include="widgets\CameraViewWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="widgets\FrameCompareWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="snap7\snap7.dll" />
     <CopyFileToFolders Include="snap7\snap7.exp" />
-    <CopyFileToFolders Include="configuration\configuration.ini" />
+    <CopyFileToFolders Include="configuration\configuration.ini">
+      <Filter>Configuration</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <Library Include="snap7\snap7.lib" />

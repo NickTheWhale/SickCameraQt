@@ -42,7 +42,10 @@ void RenderThread::run()
 		Frameset::frameset_t fs = threadInterface.peekGuiFrame();
 
 		if (fs.isNull())
+		{
+			qWarning() << __FUNCTION__ << "frameset is null";
 			continue;
+		}
 
 		QImage qImage;
 

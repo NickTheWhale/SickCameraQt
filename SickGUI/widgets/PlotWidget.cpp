@@ -1,25 +1,79 @@
 #include "PlotWidget.h"
 #include <algorithm>
+#include <qvalidator.h>
+#include <qlabel.h>
+#include <qfontmetrics.h>
+#include <qlayout.h>
+#include <qpushbutton.h>
 
-PlotWidget::PlotWidget(QWidget* parent) : 
+PlotWidget::PlotWidget(QWidget* parent) :
 	axisX(new QValueAxis(this)),
 	axisY(new QValueAxis(this)),
 	seriesRaw(new QLineSeries(this)),
-	QChartView(new QChart(), parent)
+	chartView(new QChartView(this)),
+	autoScaleBtn(new QRadioButton(this)),
+	lowerSpinBox(new QSpinBox(this)),
+	upperSpinBox(new QSpinBox(this)),
+	QWidget(parent)
 {
-	chart()->addSeries(seriesRaw);
-	chart()->setAxisX(axisX, seriesRaw);
-	chart()->setAxisY(axisY, seriesRaw);
 
-	chart()->setDropShadowEnabled(false);
-	chart()->legend()->hide();
+	chartView->chart()->addSeries(seriesRaw);
+	chartView->chart()->setAxisX(axisX, seriesRaw);
+	chartView->chart()->setAxisY(axisY, seriesRaw);
+
+	chartView->chart()->setDropShadowEnabled(false);
+	chartView->chart()->legend()->hide();
+
+	autoScaleBtn->setText("Auto Scale");
+	autoScaleBtn->setChecked(true);
+
+	constexpr uint32_t min = std::numeric_limits<uint16_t>::min();
+	constexpr uint32_t max = std::numeric_limits<uint16_t>::max();
+
+	lowerSpinBox->setRange(min, max);
+	lowerSpinBox->setValue(min);
+
+	upperSpinBox->setRange(min, max);
+	upperSpinBox->setValue(max);
+
+	QPushButton* transferLimitsBtn = new QPushButton("Transfer Limits", this);
+	connect(transferLimitsBtn, &QPushButton::pressed, this, [=]()
+		{
+			lowerSpinBox->setValue(axisY->min());
+			upperSpinBox->setValue(axisY->max());
+		});
+
+	connect(lowerSpinBox, &QSpinBox::valueChanged, this, [=](int value)
+		{
+			if (upperSpinBox->value() < lowerSpinBox->value() + 1)
+				upperSpinBox->setValue(value + 1);
+		});
+
+	connect(upperSpinBox, &QSpinBox::valueChanged, this, [=](int value)
+		{
+			if (lowerSpinBox->value() > upperSpinBox->value() - 1)
+				lowerSpinBox->setValue(value - 1);
+		});
+
+	QHBoxLayout* hbox = new QHBoxLayout();
+
+	hbox->addWidget(autoScaleBtn, 0, Qt::AlignmentFlag::AlignHCenter);
+	hbox->addWidget(transferLimitsBtn);
+	hbox->addWidget(lowerSpinBox);
+	hbox->addWidget(upperSpinBox);
+
+	QVBoxLayout* vbox = new QVBoxLayout(this);
+	vbox->addWidget(chartView);
+	vbox->addLayout(hbox);
+
+	setLayout(vbox);
 }
 
 PlotWidget::~PlotWidget()
 {
 }
 
-void PlotWidget::pushData(const uint32_t val)
+void PlotWidget::pushData(const uint16_t val)
 {
 	// inc. x pos.
 	++xPos;
@@ -33,17 +87,24 @@ void PlotWidget::pushData(const uint32_t val)
 	axisX->setRange(lowerX, xPos);
 
 	// set y range
-	const auto minMaxY = minMaxYValues(seriesRaw->points());
-	const qreal lowerY = std::floor(minMaxY.first * 0.99);
-	const qreal upperY = std::floor(minMaxY.second * 1.01);
-	axisY->setRange(lowerY, upperY);
+	if (autoScaleBtn->isChecked())
+	{
+		const auto minMaxY = minMaxYValues(seriesRaw->points());
+		const qreal lowerY = std::floor(minMaxY.first * 0.999);
+		const qreal upperY = std::floor(minMaxY.second * 1.001);
+		axisY->setRange(lowerY, upperY);
+	}
+	else
+	{
+		axisY->setRange(lowerSpinBox->value(), upperSpinBox->value());
+	}
 }
 
 const std::pair<qreal, qreal> PlotWidget::minMaxYValues(const QList<QPointF>& points)
 {
 	qreal minY = std::numeric_limits<qreal>::max();
 	qreal maxY = std::numeric_limits<qreal>::min();
-	
+
 	for (const auto& point : points)
 	{
 		const qreal y = point.y();

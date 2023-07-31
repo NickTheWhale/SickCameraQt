@@ -354,6 +354,19 @@ void SickGUI::initializeWidgets()
 #pragma endregion
 
 
+#pragma region FRAME_COMPARE_WIDGET
+
+	frameCompareWidget = new FrameCompareWidget(this);
+	frameCompareWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	dock = new CloseDockWidget("Compare", this);
+	dock->setObjectName("frameCompareWidgetDock");
+	dock->setAllowedAreas(Qt::DockWidgetArea::AllDockWidgetAreas);
+	dock->setWidget(frameCompareWidget);
+	dock->adjustSize();
+	addDockWidget(Qt::DockWidgetArea::RightDockWidgetArea, dock);
+
+#pragma endregion
+
 
 #pragma region MISC
 

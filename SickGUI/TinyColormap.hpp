@@ -123,6 +123,11 @@ namespace tinycolormap
 			return { c0.r() + c1.r(), c0.g() + c1.g(), c0.b() + c1.b() };
 		}
 
+		friend constexpr Color operator-(const Color& c0, const Color& c1) noexcept
+		{
+			return { c0.r() - c1.r(), c0.g() - c1.g(), c0.b() - c1.b() };
+		}
+
 		friend constexpr Color operator*(double s, const Color& c) noexcept
 		{
 			return { s * c.r(), s * c.g(), s * c.b() };

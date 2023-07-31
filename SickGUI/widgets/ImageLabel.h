@@ -21,7 +21,7 @@
  * It automatically scales the pixmap to fit within the label's size, maintaining the original aspect ratio of the pixmap.
  * It also overrides certain event handling methods to customize the behavior of the label.
  */
-class CameraLabel : public QLabel
+class ImageLabel : public QLabel
 {
 	Q_OBJECT
 
@@ -30,7 +30,7 @@ public:
 	 * @brief Constructs an CameraViewLabel object with the specified parent widget.
 	 * @param parent The parent widget of the label (optional).
 	 */
-	explicit CameraLabel(QWidget* parent = nullptr);
+	explicit ImageLabel(QWidget* parent = nullptr);
 
 	/**
 	 * @brief Returns the scaled pixmap currently displayed by the label.
@@ -72,9 +72,6 @@ protected:
 private:
 	QPixmap pix; /**< The original pixmap. */
 	QRubberBand* rubberBand = nullptr;
-	QRect rubberBandDrawRect;
 	QPoint rubberBandOrigin;
-	QPoint rubberBandPixOrigin;
 	QRectF maskNorm;
-	bool mouseDown = false;
 };

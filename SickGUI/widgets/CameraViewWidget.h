@@ -1,6 +1,6 @@
 #pragma once
 #include <qwidget.h>
-#include <CameraLabel.h>
+#include <ImageLabel.h>
 #include <qgridlayout.h>
 #include <qrect.h>
 
@@ -23,6 +23,6 @@ signals:
 
 private:
 	QGridLayout* grid = nullptr;
-	CameraLabel* label = nullptr;
+	ImageLabel* label = nullptr;
 };
 
