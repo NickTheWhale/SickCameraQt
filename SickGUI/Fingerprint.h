@@ -23,9 +23,9 @@
 namespace Fingerprint
 {
 	//! number of rows used in calculateFingerprint() and overlayStats()
-	const size_t GRID_ROWS = 5;
+	const size_t GRID_ROWS = 3;
 	//! number of columns used in calculateFingerprint() and overlayStats()
-	const size_t GRID_COLS = 5;
+	const size_t GRID_COLS = 3;
 
 	/**
 	 * @brief Stores min, max, mean, and stdev.

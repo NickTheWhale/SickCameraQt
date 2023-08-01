@@ -62,6 +62,19 @@ namespace Frameset
 
 			return false;
 		}
+
+		//friend std::ostream& operator<<(std::ostream& os, const frameset_t& fs)
+		//{
+		//	os << "Frameset Information:\n";
+		//	os << "Number: " << frameset.number << '\n';
+		//	os << "Time: " << frameset.time << '\n';
+		//	os << "Height: " << frameset.height << '\n';
+		//	os << "Width: " << frameset.width << '\n';
+
+		//	os << "Number: " <<
+
+		//	return os;
+		//}
 	};
 
 	/**
@@ -1157,37 +1170,69 @@ namespace Frameset
 		 * @param invert Invert output QImage colors.
 		 * @param log Apply linear -> logarithmic map.
 		*/
-		inline void frameToQImage(const std::vector<uint16_t>& frame, int width, int height, QImage& qImage, tinycolormap::ColormapType colorMap, bool invert, bool log)
+		inline void frameToQImage(const std::vector<uint16_t>& frame, const int width, const int height, QImage& qImage, const tinycolormap::ColormapType colorMap, const bool autoExposure, const uint16_t autoExposureLow, const uint16_t autoExposureHigh, const bool invert, const bool log)
 		{
 			if (frame.empty())
+			{
+				qWarning() << __FUNCTION__ << "frame is empty";
 				return;
-
+			}
+			if (frame.size() != width * height)
+			{
+				qWarning() << __FUNCTION__ << "frame dimension mismatch. Frame size:" << frame.size() << "width * height" << width * height;
+				return;
+			}
 			qImage = QImage(width, height, QImage::Format_ARGB32_Premultiplied);
 
-			// auto exposure
-			//   apply exponential smoothing to min and max to reduce flickering
-			static uint16_t max = *std::max_element(frame.begin(), frame.end());
-			auto currMax = *std::max_element(frame.begin(), frame.end());
-			max += (currMax - max) >> 2;
+#pragma region OLD_AUTO_EXPOSURE
+			//// auto exposure
+			////   apply exponential smoothing to min and max to reduce flickering
+			//static uint16_t max = *std::max_element(frame.begin(), frame.end());
+			//auto currMax = *std::max_element(frame.begin(), frame.end());
+			//max += (currMax - max) >> 2;
 
-			static uint16_t min = 0;
-			auto currMin = currMax;
-			for (const auto& val : frame)
+			//static uint16_t min = 0;
+			//auto currMin = currMax;
+			//for (const auto& val : frame)
+			//{
+			//	if (val > 0 && val < currMin)
+			//		currMin = val;
+			//}
+
+			//min += (currMin - min) >> 2;
+
+			//max = currMax;
+			//min = currMin;
+
+			//// sanity check
+			//if (min > max)
+			//	min = max;
+
+			//double delta = max - min;
+#pragma endregion
+
+#pragma region NEW_AUTO_EXPOSURE
+			uint16_t min;
+			uint16_t max;
+			if (autoExposure)
 			{
-				if (val > 0 && val < currMin)
-					currMin = val;
+				max = std::numeric_limits<uint16_t>::min();
+				min = std::numeric_limits<uint16_t>::max();
+				for (const uint16_t& val : frame)
+				{
+					if (val > 0 && val < min)
+						min = val;
+					if (val > max)
+						max = val;
+				}
 			}
-
-			min += (currMin - min) >> 2;
-
-			max = currMax;
-			min = currMin;
-
-			// sanity check
-			if (min > max)
-				min = max;
-
+			else
+			{
+				min = autoExposureLow;
+				max = autoExposureHigh;
+			}
 			double delta = max - min;
+#pragma endregion
 
 			// get pointer to image data (for really fast iteration)
 			QRgb* qImageData = reinterpret_cast<QRgb*>(qImage.bits());
@@ -1207,13 +1252,6 @@ namespace Frameset
 					// get color and assign to pixel
 					tinycolormap::Color color = invert ? tinycolormap::Color(255, 255, 255) - tinycolormap::GetColor(valNorm, colorMap) : tinycolormap::GetColor(valNorm, colorMap);
 					qImageData[y * width + x] = qRgba((valNorm > 0) * color.ri(), (valNorm > 0) * color.gi(), (valNorm > 0) * color.bi(), (valNorm > 0) * 255);
-					//if (valNorm > 0)
-					//	if (!invert)
-					//		qImageData[y * width + x] = qRgba(color.ri(), color.gi(), color.bi(), 255);
-					//	else
-					//		qImageData[y * width + x] = qRgba(255 - color.ri(), 255 - color.gi(), 255 - color.bi(), 255);
-					//else
-					//	qImageData[y * width + x] = qRgba(color.ri(), color.gi(), color.bi(), 100);
 				}
 			}
 		}
@@ -1226,9 +1264,16 @@ namespace Frameset
 	 * @param colorMap Color map type (optional).
 	 * @param invert Invert output QImage (optional).
 	*/
-	inline void depthToQImage(const frameset_t& fs, QImage& qImage, tinycolormap::ColormapType colorMap = tinycolormap::ColormapType::Gray, bool invert = false)
+	inline void depthToQImage(
+		const frameset_t& fs,
+		QImage& qImage, 
+		const tinycolormap::ColormapType colorMap = tinycolormap::ColormapType::Gray, 
+		const bool autoExposure = true,
+		const uint16_t autoExposureLow = std::numeric_limits<uint16_t>::min(), 
+		const uint16_t autoExposureHigh = std::numeric_limits<uint16_t>::max(), 
+		const bool invert = false)
 	{
-		_internal::frameToQImage(fs.depth, fs.width, fs.height, qImage, colorMap, invert, false);
+		_internal::frameToQImage(fs.depth, fs.width, fs.height, qImage, colorMap, autoExposure, autoExposureLow, autoExposureHigh, invert, false);
 	}
 
 	/**
@@ -1238,9 +1283,16 @@ namespace Frameset
 	 * @param colorMap Color map type (optional).
 	 * @param invert Invert output QImage (optional).
 	*/
-	inline void intensityToQImage(const frameset_t& fs, QImage& qImage, tinycolormap::ColormapType colorMap = tinycolormap::ColormapType::Gray, bool invert = false)
+	inline void intensityToQImage(
+		const frameset_t& fs,
+		QImage& qImage,
+		const tinycolormap::ColormapType colorMap = tinycolormap::ColormapType::Gray,
+		const bool autoExposure = true,
+		const uint16_t autoExposureLow = std::numeric_limits<uint16_t>::min(), 
+		const uint16_t autoExposureHigh = std::numeric_limits<uint16_t>::max(), 
+		const bool invert = false)
 	{
-		_internal::frameToQImage(fs.intensity, fs.width, fs.height, qImage, colorMap, !invert, true);
+		_internal::frameToQImage(fs.depth, fs.width, fs.height, qImage, colorMap, autoExposure, autoExposureLow, autoExposureHigh, !invert, true);
 	}
 
 	/**
@@ -1250,8 +1302,30 @@ namespace Frameset
 	 * @param colorMap Color map type (optional).
 	 * @param invert Invert output QImage (optional).
 	*/
-	inline void stateToQImage(const frameset_t& fs, QImage& qImage, tinycolormap::ColormapType colorMap = tinycolormap::ColormapType::Gray, bool invert = false)
+	inline void stateToQImage(
+		const frameset_t& fs,
+		QImage& qImage,
+		const tinycolormap::ColormapType colorMap = tinycolormap::ColormapType::Gray,
+		const bool autoExposure = true,
+		const uint16_t autoExposureLow = std::numeric_limits<uint16_t>::min(),
+		const uint16_t autoExposureHigh = std::numeric_limits<uint16_t>::max(),
+		const bool invert = false)
 	{
-		_internal::frameToQImage(fs.state, fs.width, fs.height, qImage, colorMap, invert, false);
+		_internal::frameToQImage(fs.depth, fs.width, fs.height, qImage, colorMap, autoExposure, autoExposureLow, autoExposureHigh, invert, false);
+	}
+
+	inline void frameToQImage(
+		const std::vector<uint16_t>& frame,
+		const int width,
+		const int height,
+		QImage& qImage,
+		const tinycolormap::ColormapType colorMap = tinycolormap::ColormapType::Gray,
+		const bool autoExposure = true,
+		const uint16_t autoExposureLow = std::numeric_limits<uint16_t>::min(),
+		const uint16_t autoExposureHigh = std::numeric_limits<uint16_t>::max(),
+		const bool invert = false,
+		const bool log = false)
+	{
+		_internal::frameToQImage(frame, width, height, qImage, colorMap, autoExposure, autoExposureLow, autoExposureHigh, invert, log);
 	}
 }

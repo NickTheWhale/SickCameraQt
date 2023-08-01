@@ -4,28 +4,33 @@
 #include <ImageLabel.h>
 #include "..\TinyColormap.hpp"
 #include <qspinbox.h>
+#include <ThreadInterface.h>
 
-class FrameCompareWidget :
-    public QWidget
+class ImageCompareWidget;
+
+class FrameCompareWidget : public QWidget
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    explicit FrameCompareWidget(QWidget* parent = nullptr);
-    ~FrameCompareWidget();
+	explicit FrameCompareWidget(QWidget* parent = nullptr);
+	~FrameCompareWidget();
 
 private:
-    Frameset::frameset_t fs1;
-    Frameset::frameset_t fs2;
-    ImageLabel* imageLabel1 = nullptr;
-    ImageLabel* imageLabel2 = nullptr;
-    ImageLabel* imageLabel3 = nullptr;
-    QSpinBox* thresholdSpinBox = nullptr;
+	const int continuousModeInterval = 100; /* ms */
+	const uint16_t upperThreshold = 1000; /* mm */
+	Frameset::frameset_t refFs;
+	Frameset::frameset_t curFs;
+	ImageLabel* refImageLabel = nullptr;
+	ImageLabel* difImageLabel = nullptr;
 
-    tinycolormap::ColormapType colorMap = tinycolormap::ColormapType::Turbo;
+	bool gridCompare = false;
 
-    void snapshot1();
-    void snapshot2();
-    void compare();
+	QSpinBox* thresholdSpinBox = nullptr;
+	tinycolormap::ColormapType colorMap = tinycolormap::ColormapType::Turbo;
+	ThreadInterface& threadInterface;
+
+	void getReferenceSnapshot();
+	void getCurrentSnapshot();
+	void compare();
 };
-

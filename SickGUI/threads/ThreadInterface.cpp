@@ -26,8 +26,8 @@ void ThreadInterface::pushWebFrame(const Frameset::frameset_t& fs)
 
 const Frameset::frameset_t ThreadInterface::peekPlcFrame()
 {
-	Frameset::frameset_t fs;
 	QMutexLocker locker(&plcMutex);
+	Frameset::frameset_t fs;
 	if (!plcBuffer.empty())
 	{
 		fs = plcBuffer.front();
@@ -37,8 +37,8 @@ const Frameset::frameset_t ThreadInterface::peekPlcFrame()
 
 const Frameset::frameset_t ThreadInterface::peekGuiFrame()
 {
-	Frameset::frameset_t fs;
 	QMutexLocker locker(&guiMutex);
+	Frameset::frameset_t fs;
 	if (!guiBuffer.empty())
 	{
 		fs = guiBuffer.front();
@@ -48,8 +48,8 @@ const Frameset::frameset_t ThreadInterface::peekGuiFrame()
 
 const Frameset::frameset_t ThreadInterface::peekWebFrame()
 {
-	Frameset::frameset_t fs;
 	QMutexLocker locker(&webMutex);
+	Frameset::frameset_t fs;
 	if (!webBuffer.empty())
 	{
 		fs = webBuffer.front();
@@ -59,8 +59,8 @@ const Frameset::frameset_t ThreadInterface::peekWebFrame()
 
 const Frameset::frameset_t ThreadInterface::popPlcFrame()
 {
-	Frameset::frameset_t fs;
 	QMutexLocker locker(&plcMutex);
+	Frameset::frameset_t fs;
 	if (!plcBuffer.empty())
 	{
 		fs = plcBuffer.front();
@@ -71,8 +71,8 @@ const Frameset::frameset_t ThreadInterface::popPlcFrame()
 
 const Frameset::frameset_t ThreadInterface::popGuiFrame()
 {
-	Frameset::frameset_t fs;
 	QMutexLocker locker(&guiMutex);
+	Frameset::frameset_t fs;
 	if (!guiBuffer.empty())
 	{
 		fs = guiBuffer.front();
@@ -83,8 +83,8 @@ const Frameset::frameset_t ThreadInterface::popGuiFrame()
 
 const Frameset::frameset_t ThreadInterface::popWebFrame()
 {
-	Frameset::frameset_t fs;
 	QMutexLocker locker(&webMutex);
+	Frameset::frameset_t fs;
 	if (!webBuffer.empty())
 	{
 		fs = webBuffer.front();

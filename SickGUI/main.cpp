@@ -28,7 +28,7 @@ int main(int argc, char* argv[])
 	}
 
 	SickGUI window(&messageHandler);
-
+	app.setWindowIcon(QIcon(":/SickGUI/icons/baseline_linked_camera_white_48dp.png"));
 	window.show();
 	return app.exec();
 }

@@ -61,73 +61,56 @@ void CaptureThread::run()
 
 void CaptureThread::applyMask(Frameset::frameset_t& fs, const QRectF& maskNorm)
 {
-	//if (maskNorm.isEmpty())
-	//	return;
-
-	//// Calculate the dimensions of the masked region
-	//int maskedWidth = static_cast<int>(maskNorm.width() * fs.width);
-	//int maskedHeight = static_cast<int>(maskNorm.height() * fs.height);
-
-	//// Allocate a new vector to store the masked depth values
-	//std::vector<uint16_t> maskedDepth(maskedWidth * maskedHeight, 0);
-	//std::vector<uint16_t> maskedIntensity(maskedWidth * maskedHeight, 0);
-	//std::vector<uint16_t> maskedState(maskedWidth * maskedHeight, 0);
-
-	//// Copy the depth values from the original frameset to the new maskedDepth vector
-	//for (int y = 0; y < maskedHeight; ++y)
-	//{
-	//	for (int x = 0; x < maskedWidth; ++x)
-	//	{
-	//		// Calculate the normalized coordinates of the masked region
-	//		double maskX = x / static_cast<double>(maskedWidth);
-	//		double maskY = y / static_cast<double>(maskedHeight);
-
-	//		// Calculate the corresponding coordinates in the original frameset
-	//		int originalX = static_cast<int>(maskX * fs.width + maskNorm.topLeft().x() * fs.width);
-	//		int originalY = static_cast<int>(maskY * fs.height + maskNorm.topLeft().y() * fs.height);
-
-	//		// Calculate the corresponding index in the masked depth vector
-	//		int maskedIndex = y * maskedWidth + x;
-
-	//		// Copy the depth value if it's within the mask, otherwise, set it to 0
-	//		if (originalX >= 0 && originalX < fs.width &&
-	//			originalY >= 0 && originalY < fs.height &&
-	//			maskNorm.contains(maskX, maskY))
-	//		{
-	//			maskedDepth[maskedIndex] = fs.depth[originalY * fs.width + originalX];
-	//			maskedIntensity[maskedIndex] = fs.depth[originalY * fs.width + originalX];
-	//			maskedState[maskedIndex] = fs.depth[originalY * fs.width + originalX];
-	//		}
-	//	}
-	//}
-
-	//// Update the frameset's depth vector to the new masked depth vector
-	//fs.depth = maskedDepth;
-	//fs.intensity = maskedIntensity;
-	//fs.state = maskedState;
-	//fs.width = maskedWidth;
-	//fs.height = maskedHeight;
-
-
-
-
-
-
-
 	if (maskNorm.isEmpty())
 		return;
 
-	// un-normalize the mask
-	QPoint topLeft = QPoint(maskNorm.topLeft().x() * fs.width, maskNorm.topLeft().y() * fs.height);
-	QPoint bottomRight = QPoint(maskNorm.bottomRight().x() * fs.width, maskNorm.bottomRight().y() * fs.height);
+	const QPoint maskTopLeft = QPoint(maskNorm.topLeft().x() * fs.width, maskNorm.topLeft().y() * fs.height);
+	const QPoint maskBottomRight = QPoint(maskNorm.bottomRight().x() * fs.width, maskNorm.bottomRight().y() * fs.height);
 
-	QRect mask(topLeft, bottomRight);
+	const QRect mask = QRect(maskTopLeft, maskBottomRight);
+	const size_t maskedWidth = mask.width();
+	const size_t maskedHeight = mask.height();
 
-	// apply mask
-	for (int x = 0; x < fs.width; ++x)
-		for (int y = 0; y < fs.height; ++y)
-			if (!mask.contains(x, y))
-				fs.depth[y * fs.width + x] = 0;
+	std::vector<uint16_t> maskedDepth;
+	std::vector<uint16_t> maskedIntensity;
+	std::vector<uint16_t> maskedState;
+
+	//maskedDepth.reserve(maskedWidth * maskedHeight);
+	//maskedIntensity.reserve(maskedWidth * maskedHeight);
+	//maskedState.reserve(maskedWidth * maskedHeight);
+
+	for (size_t y = maskTopLeft.y(); y < maskTopLeft.y() + maskedHeight; ++y)
+	{
+		for (size_t x = maskTopLeft.x(); x < maskTopLeft.x() + maskedWidth; ++x)
+		{
+			const int index = y * fs.width + x;
+			maskedDepth.push_back(fs.depth[index]);
+			maskedIntensity.push_back(fs.intensity[index]);
+			maskedState.push_back(fs.state[index]);
+		}
+	}
+	fs.height = maskedHeight;
+	fs.width = maskedWidth;
+	fs.depth = maskedDepth;
+	fs.intensity = maskedIntensity;
+	fs.state = maskedState;
+
+#pragma region OLD_MASKING_ALGORITHM
+	//if (maskNorm.isEmpty())
+	//	return;
+
+	//// un-normalize the mask
+	//QPoint maskTopLeft = QPoint(maskNorm.maskTopLeft().x() * fs.width, maskNorm.maskTopLeft().y() * fs.height);
+	//QPoint maskBottomRight = QPoint(maskNorm.maskBottomRight().x() * fs.width, maskNorm.maskBottomRight().y() * fs.height);
+
+	//QRect mask(maskTopLeft, maskBottomRight);
+
+	//// apply mask
+	//for (int x = 0; x < fs.width; ++x)
+	//	for (int y = 0; y < fs.height; ++y)
+	//		if (!mask.contains(x, y))
+	//			fs.depth[y * fs.width + x] = 0;
+#pragma endregion
 }
 
 void CaptureThread::setMask(const QRectF& maskNorm)

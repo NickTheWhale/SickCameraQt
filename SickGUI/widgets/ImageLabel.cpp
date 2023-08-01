@@ -9,6 +9,8 @@ ImageLabel::ImageLabel(QWidget* parent) : QLabel(parent)
 	this->setMinimumSize(1, 1);
 	setScaledContents(false);
 	this->cursor().setShape(Qt::CrossCursor);
+	// this can be nice for debugging layout issues
+	//this->setFrameStyle(2);
 }
 
 void ImageLabel::setPixmap(const QPixmap& p)

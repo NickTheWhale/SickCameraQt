@@ -54,21 +54,21 @@ void RenderThread::run()
 		{
 		case Stream::Depth:
 		{
-			Frameset::depthToQImage(fs, qImage, streamColorMapType, invertedColor);
+			Frameset::depthToQImage(fs, qImage, streamColorMapType, true, 0, 0, invertedColor);
 			if (overLayStats)
 				Fingerprint::overlayStats(qImage, fs.width, fs.height, fs.depth);
 		}
 		break;
 		case Stream::Intensity:
 		{
-			Frameset::intensityToQImage(fs, qImage, streamColorMapType, invertedColor);
+			Frameset::intensityToQImage(fs, qImage, streamColorMapType, true, 0, 0, invertedColor);
 			if (overLayStats)
 				Fingerprint::overlayStats(qImage, fs.width, fs.height, fs.intensity);
 		}
 		break;
 		case Stream::State:
 		{
-			Frameset::stateToQImage(fs, qImage, streamColorMapType, invertedColor);
+			Frameset::stateToQImage(fs, qImage, streamColorMapType, true, 0, 0, invertedColor);
 			if (overLayStats)
 				Fingerprint::overlayStats(qImage, fs.width, fs.height, fs.state);
 		}

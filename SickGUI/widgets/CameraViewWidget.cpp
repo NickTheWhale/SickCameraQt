@@ -1,5 +1,5 @@
 #include "CameraViewWidget.h"
-#include <qpushbutton.h>
+#include <qcheckbox.h>
 
 CameraViewWidget::CameraViewWidget(QWidget* parent) :
 	QWidget(parent),
@@ -7,10 +7,10 @@ CameraViewWidget::CameraViewWidget(QWidget* parent) :
 	grid(new QGridLayout(this))
 
 {
-	QPushButton* enableMaskBtn = new QPushButton("Enable Mask", this);
+	QCheckBox* enableMaskBtn = new QCheckBox("Enable Mask", this);
 	enableMaskBtn->setCheckable(true);
 	enableMaskBtn->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-	connect(enableMaskBtn, &QPushButton::toggled, this, [=]()
+	connect(enableMaskBtn, &QCheckBox::stateChanged, this, [=]()
 		{
 			bool enable = enableMaskBtn->isChecked();
 			emit setEnableMask(enable);
