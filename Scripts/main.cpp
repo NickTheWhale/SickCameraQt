@@ -9,14 +9,14 @@ int main() {
     std::mt19937 mt(rd());
     std::uniform_real_distribution<double> dist(0, std::numeric_limits<uint16_t>::max());
 
-    // fill frame with data that may contain 0
-    std::vector<uint16_t> frame;
+    // fill FrameType with data that may contain 0
+    std::vector<uint16_t> FrameType;
     for (int i = 0; i < FRAME_SIZE; ++i)
     {
         auto rand = static_cast<uint16_t>(dist(mt));
         if (rand < std::numeric_limits<uint16_t>::max() / 5)
             rand = 0;
-        frame.push_back(rand);
+        FrameType.push_back(rand);
     }
 
     // fill mask 
@@ -36,15 +36,15 @@ int main() {
     {
         uint16_t val;
         if (mask[i])
-            val = frame[i];
+            val = FrameType[i];
         else
             val = 0;
         maskedFrame.push_back(val);
     }
 
-    std::cout << "frame\t\|\tmask\t|\tmaskedFrame\n";
+    std::cout << "FrameType\t\|\tmask\t|\tmaskedFrame\n";
     for (int i = 0; i < FRAME_SIZE; ++i)
     {
-        std::cout << frame[i] << "\t|\t" << mask[i] << "\t|\t" << maskedFrame[i] << "\n";
+        std::cout << FrameType[i] << "\t|\t" << mask[i] << "\t|\t" << maskedFrame[i] << "\n";
     }
 }

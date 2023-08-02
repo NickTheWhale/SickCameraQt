@@ -73,49 +73,56 @@ FrameCompareWidget::~FrameCompareWidget()
 void FrameCompareWidget::getReferenceSnapshot()
 {
 	refFs = threadInterface.peekGuiFrame();
-	QImage image;
-	Frameset::depthToQImage(refFs, image, colorMap);
-	refImageLabel->setPixmap(QPixmap::fromImage(image));
+	QImage lastImage;
+	Frameset::depthToQImage(refFs, lastImage, colorMap);
+	refImageLabel->setPixmap(QPixmap::fromImage(lastImage));
 }
 
 void FrameCompareWidget::getCurrentSnapshot()
 {
 	curFs = threadInterface.peekGuiFrame();
-	if (!refFs.isNull() && !curFs.isNull())
+	if (refFs.isValid() && curFs.isValid())
 		compare();
 }
 
 void FrameCompareWidget::compare()
 {
-	if (refFs.depth.size() != curFs.depth.size())
+	if (refFs.depth.data.size() != curFs.depth.data.size())
 		return;
 
-	if (refFs.depth.size() <= 0)
+	if (refFs.depth.data.size() <= 0)
 		return;
+
+	Frameset::FrameType frameDiff;
 	if (gridCompare)
 	{
-
+		constexpr int rows = 10;
+		constexpr int cols = 10;
+		auto refAve = Frameset::average(refFs.depth, rows, cols);
+		auto curAve = Frameset::average(curFs.depth, rows, cols);
+		auto frameDiff = Frameset::difference(refAve, curAve);
 	}
+
 	else
 	{
-		Frameset::frameset_t difFs = refFs;
-		difFs.depth.clear();
-
-		const size_t size = refFs.depth.size();
+		const size_t size = refFs.depth.data.size();
 		for (size_t i = 0; i < size; ++i)
 		{
-			const uint16_t delta = std::abs(refFs.depth[i] - curFs.depth[i]);
+			const uint16_t delta = std::abs(refFs.depth.data[i] - curFs.depth.data[i]);
 			if (delta > thresholdSpinBox->value() && delta < upperThreshold)
 			{
-				difFs.depth.push_back(delta);
+				frameDiff.data.push_back(delta);
 			}
 			else
 			{
-				difFs.depth.push_back(0);
+				frameDiff.data.push_back(0);
 			}
 		}
-		QImage image;
-		Frameset::depthToQImage(difFs, image, colorMap);
-		difImageLabel->setPixmap(QPixmap::fromImage(image));
+		frameDiff.width = refFs.depth.width;
+		frameDiff.height = refFs.depth.height;
 	}
+
+	QImage lastImage;
+	Frameset::frameToQImage(frameDiff, lastImage, colorMap);
+	difImageLabel->setPixmap(QPixmap::fromImage(lastImage));
 }

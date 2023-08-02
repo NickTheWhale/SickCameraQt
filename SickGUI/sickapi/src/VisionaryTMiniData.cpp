@@ -127,7 +127,7 @@ namespace visionary
 	{
 		if (m_cameraParams.height < 1 || m_cameraParams.width < 1)
 		{
-			std::cout << __FUNCTION__ << ": Invalid image size" << std::endl;
+			std::cout << __FUNCTION__ << ": Invalid lastImage size" << std::endl;
 			return false;
 		}
 		size_t dataSetslength = 0;
@@ -176,7 +176,7 @@ namespace visionary
 					return false;
 				}
 				remainingSize -= extendedHeaderSize;
-				// more frame information follows in this case: frame number, data quality, device status
+				// more FrameType information follows in this case: FrameType number, data quality, device status
 				m_frameNum = readUnalignLittleEndian<uint32_t>(&*itBuf);
 				itBuf += sizeof(uint32_t);
 

@@ -2,7 +2,6 @@
 #include "qdebug.h"
 #include <algorithm>
 #include <snap7.h>
-#include "..\Fingerprint.h"
 #include <qelapsedtimer.h>
 #include <qrandom.h>
 #include <ThreadInterface.h>
@@ -30,18 +29,19 @@ void PlcThread::run()
 	while (!_stop)
 	{
 		msleep(1);
-		Frameset::frameset_t fs = threadInterface.peekPlcFrame();
+		Frameset::FramesetType fs = threadInterface.peekPlcFrame();
 
-		if (!fs.isNull())
+		if (fs.isValid())
 		{
 			std::array<uint32_t, WRITE_BUFFER_SIZE> data;
 			int offset = 0;
-			data[offset++] = Fingerprint::calculateFingerprint(fs.width, fs.height, fs.depth);
+			//data[offset++] = Fingerprint::average(fs.depth);
+			data[offset++] = 1;
 			data[offset++] = fs.number;
-			data[offset++] = fs.width;
-			data[offset++] = fs.height;
+			data[offset++] = fs.depth.width;
+			data[offset++] = fs.depth.height;
 			data[offset++] = fs.time;
-			data[offset++] = fs.isNull();
+			data[offset++] = fs.isValid();
 			static uint32_t loopCount = 0;
 			data[offset++] = ++loopCount;
 			data[offset++] = QRandomGenerator::global()->bounded(0, (qint64)std::numeric_limits<qint64>::max());

@@ -57,10 +57,10 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <IncludePath>$(ProjectDir)\threads;$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(ProjectDir)\widgets;$(ProjectDir)\sickapi\include;$(ProjectDir)\sickapi\src;$(ProjectDir)\sickapi\3pp;$(ProjectDir)\sickapi\camimpl;$(ProjectDir)\qcustomplot;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)\threads;$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(ProjectDir)\widgets;$(ProjectDir)\sickapi\include;$(ProjectDir)\sickapi\src;$(ProjectDir)\sickapi\3pp;$(ProjectDir)\sickapi\camimpl;$(ProjectDir)\qcustomplot;$(ProjectDir)\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <IncludePath>$(ProjectDir)\threads;$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(ProjectDir)\widgets;$(ProjectDir)\sickapi\include;$(ProjectDir)\sickapi\src;$(ProjectDir)\sickapi\3pp;$(ProjectDir)\sickapi\camimpl;$(ProjectDir)\qcustomplot;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)\threads;$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(ProjectDir)\widgets;$(ProjectDir)\sickapi\include;$(ProjectDir)\sickapi\src;$(ProjectDir)\sickapi\3pp;$(ProjectDir)\sickapi\camimpl;$(ProjectDir)\qcustomplot;$(ProjectDir)\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -106,6 +106,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
+    <ClCompile Include="Frame.cpp" />
+    <ClCompile Include="Frameset.cpp" />
     <ClCompile Include="widgets\FrameCompareWidget.cpp" />
     <ClCompile Include="widgets\CameraViewWidget.cpp" />
     <ClCompile Include="widgets\RangeSlider.cpp" />
@@ -182,11 +184,12 @@
     <QtMoc Include="widgets\PlotWidget.h" />
     <QtMoc Include="widgets\RangeSlider.h" />
     <QtMoc Include="widgets\FrameCompareWidget.h" />
+    <ClInclude Include="Frame.h" />
+    <ClInclude Include="Frameset.h" />
     <ClInclude Include="threads\ThreadInterface.h" />
     <QtMoc Include="CustomMessageHandler.h" />
     <QtMoc Include="widgets\CycleTime.h" />
     <QtMoc Include="widgets\CycleTimeWidget.h" />
-    <ClInclude Include="Fingerprint.h" />
     <QtMoc Include="widgets\LogTextEdit.h" />
     <QtMoc Include="widgets\LoggingWidget.h" />
     <QtMoc Include="threads\QAutoWebSocket.h" />
@@ -221,7 +224,6 @@
     <ClInclude Include="sickapi\src\VisionaryTMiniData.h" />
     <ClInclude Include="Stream.h" />
     <ClInclude Include="TinyColormap.hpp" />
-    <ClInclude Include="VisionaryFrameset.h" />
     <QtMoc Include="threads\CaptureThread.h" />
     <QtMoc Include="threads\PlcThread.h" />
     <ClInclude Include="snap7\snap7.h" />

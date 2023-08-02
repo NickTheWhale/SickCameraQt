@@ -19,9 +19,9 @@ namespace visionary
 
 	// Parameters to be extracted from the XML metadata part
 	struct CameraParameters {
-		/// The height of the frame in pixels
+		/// The height of the FrameType in pixels
 		int height;
-		/// The width of the frame in pixels
+		/// The width of the FrameType in pixels
 		int width;
 		/// Camera to world transformation matrix
 		double cam2worldMatrix[4 * 4];
@@ -78,16 +78,16 @@ namespace visionary
 		//-----------------------------------------------
 		// functions for parsing received blob
 
-		// Parse the XML Metadata part to get information about the sensor and the following image data.
+		// Parse the XML Metadata part to get information about the sensor and the following lastImage data.
 		// Returns true when parsing was successful.
 		virtual bool parseXML(const std::string& xmlString, uint32_t changeCounter) = 0;
 
-		// Parse the Binary data part to extract the image data. 
+		// Parse the Binary data part to extract the lastImage data. 
 		// Returns true when parsing was successful.
 		virtual bool parseBinaryData(std::vector<uint8_t>::iterator inputBuffer, size_t length) = 0;
 
 	protected:
-		// Device specific image types
+		// Device specific lastImage types
 		enum ImageType { UNKNOWN, PLANAR, RADIAL };
 
 		// Returns the Byte length compared to data type given as String
@@ -99,7 +99,7 @@ namespace visionary
 
 		// Calculate and return the Point Cloud in the camera perspective. Units are in meters.
 		// IN  map         - Image to be transformed
-		// IN  imgType     - Type of the image (needed for correct transformation)
+		// IN  imgType     - Type of the lastImage (needed for correct transformation)
 		// OUT pointCloud  - Reference to pass back the point cloud. Will be resized and only contain new point cloud.
 		void generatePointCloud(const std::vector<uint16_t>& map, const ImageType& imgType, std::vector<PointXYZ>& pointCloud);
 
@@ -108,14 +108,14 @@ namespace visionary
 		CameraParameters m_cameraParams{};
 
 
-		/// Factor to convert unit of distance image to mm
+		/// Factor to convert unit of distance lastImage to mm
 		float m_scaleZ;
 
 		/// Change counter to detect changes in XML
 		uint_fast32_t m_changeCounter;
 
-		// Framenumber of the frame
-		/// Dataset Version 1: incremented on each received image
+		// Framenumber of the FrameType
+		/// Dataset Version 1: incremented on each received lastImage
 		/// Dataset Version 2: framenumber received with dataset
 		uint_fast32_t m_frameNum;
 

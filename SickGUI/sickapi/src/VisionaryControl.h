@@ -87,7 +87,7 @@ namespace visionary
 		bool startAcquisition();
 
 		/// <summary>
-		/// Trigger a single image on the device. Works only when acquisition is stopped.
+		/// Trigger a single lastImage on the device. Works only when acquisition is stopped.
 		/// </summary>
 		/// <returns>True if successful, false otherwise.</returns>
 		bool stepAcquisition();

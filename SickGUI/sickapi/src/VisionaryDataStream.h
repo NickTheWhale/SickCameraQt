@@ -52,7 +52,7 @@ namespace visionary
 
 		//-----------------------------------------------
 		// Receive a single blob from the connected device and store it in buffer.
-		// Returns true when valid frame completely received.
+		// Returns true when valid FrameType completely received.
 		bool getNextFrame();
 
 		/// Checks if connection is established

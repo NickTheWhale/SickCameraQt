@@ -1,6 +1,6 @@
 #pragma once
 #include <qwidget.h>
-#include "..\VisionaryFrameset.h"
+#include <Frameset.h>
 #include <ImageLabel.h>
 #include "..\TinyColormap.hpp"
 #include <qspinbox.h>
@@ -19,8 +19,8 @@ public:
 private:
 	const int continuousModeInterval = 100; /* ms */
 	const uint16_t upperThreshold = 1000; /* mm */
-	Frameset::frameset_t refFs;
-	Frameset::frameset_t curFs;
+	Frameset::FramesetType refFs;
+	Frameset::FramesetType curFs;
 	ImageLabel* refImageLabel = nullptr;
 	ImageLabel* difImageLabel = nullptr;
 

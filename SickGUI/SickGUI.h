@@ -13,7 +13,7 @@
 #include "ui_SickGUI.h"
 #include <CaptureThread.h>
 #include <PlcThread.h>
-#include "VisionaryFrameset.h"
+#include <Frameset.h>
 #include "Stream.h"
 #include <qpromise.h>
 #include <qfuturewatcher.h>
@@ -57,7 +57,7 @@ public slots:
 	/**
 	 * @brief Slot to pause live video stream and histograms.
 	 * @note  This slot has no effect on the plcThread and
-	 *		  will not pause the plcThread's frame capture.
+	 *		  will not pause the plcThread's FrameType capture.
 	 *
 	 */
 	void pauseVideo();
@@ -77,7 +77,7 @@ public:
 	~SickGUI();
 
 private slots:
-	void updateDisplay(const QImage& image);
+	void updateDisplay(const QImage& lastImage);
 	/**
 	 * @brief QFutureWatcher callback to check camera and plc thread start status.
 	 *

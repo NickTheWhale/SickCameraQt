@@ -1,8 +1,7 @@
 #include "RenderThread.h"
 #include <ThreadInterface.h>
 #include <qtimer.h>
-#include "..\VisionaryFrameset.h"
-#include "..\Fingerprint.h"
+#include <Frameset.h>
 
 RenderThread::RenderThread(QObject* parent) :
 	cycleTimeTarget(100),
@@ -39,11 +38,11 @@ void RenderThread::run()
 		}
 
 		msleep(1);
-		Frameset::frameset_t fs = threadInterface.peekGuiFrame();
+		Frameset::FramesetType fs = threadInterface.peekGuiFrame();
 
-		if (fs.isNull())
+		if (!fs.isValid())
 		{
-			qWarning() << __FUNCTION__ << "frameset is null";
+			qWarning() << __FUNCTION__ << "FramesetType is invalid";
 			continue;
 		}
 
@@ -56,27 +55,28 @@ void RenderThread::run()
 		{
 			Frameset::depthToQImage(fs, qImage, streamColorMapType, true, 0, 0, invertedColor);
 			if (overLayStats)
-				Fingerprint::overlayStats(qImage, fs.width, fs.height, fs.depth);
+				//Fingerprint::overlayStats(qImage, fs.depth);
 		}
 		break;
 		case Stream::Intensity:
 		{
 			Frameset::intensityToQImage(fs, qImage, streamColorMapType, true, 0, 0, invertedColor);
 			if (overLayStats)
-				Fingerprint::overlayStats(qImage, fs.width, fs.height, fs.intensity);
+				//Fingerprint::overlayStats(qImage, fs.intensity);
 		}
 		break;
 		case Stream::State:
 		{
 			Frameset::stateToQImage(fs, qImage, streamColorMapType, true, 0, 0, invertedColor);
 			if (overLayStats)
-				Fingerprint::overlayStats(qImage, fs.width, fs.height, fs.state);
+				//Fingerprint::overlayStats(qImage, fs.state);
 		}
 		break;
 		}
 
 		emit renderedImage(qImage);
-		const uint32_t fp = Fingerprint::calculateFingerprint(fs.width, fs.height, fs.depth);
+		//const uint32_t fp = Fingerprint::average(fs.depth);
+		const uint32_t fp = 0;
 		emit fingerprint(fp);
 
 		const qint64 timeLeft = cycleTimeTarget - cycleTimer.elapsed();

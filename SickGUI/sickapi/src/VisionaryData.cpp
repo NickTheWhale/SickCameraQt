@@ -62,7 +62,7 @@ namespace visionary
 
 	void VisionaryData::preCalcCamInfo(const ImageType& imgType)
 	{
-		assert(imgType != UNKNOWN);     // Unknown image type for the point cloud transformation
+		assert(imgType != UNKNOWN);     // Unknown lastImage type for the point cloud transformation
 		if (m_cameraParams.height < 1 || m_cameraParams.width < 1)
 		{
 			std::cout << __FUNCTION__ << ": Invalid Image size" << std::endl;
@@ -82,7 +82,7 @@ namespace visionary
 
 			for (int col = 0; col < m_cameraParams.width; col++)
 			{
-				// we map from image coordinates with rubberBandOrigin top left and x
+				// we map from lastImage coordinates with rubberBandOrigin top left and x
 				// horizontal (right) and y vertical
 				// (downwards) to camera coordinates with rubberBandOrigin in center and x
 				// to the left and y upwards (seen
@@ -109,7 +109,7 @@ namespace visionary
 				}
 				else
 				{
-					std::cout << "Unknown image type for the point cloud transformation" << std::endl;
+					std::cout << "Unknown lastImage type for the point cloud transformation" << std::endl;
 					assert(false);
 				}
 				PointXYZ point{};

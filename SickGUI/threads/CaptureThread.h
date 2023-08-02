@@ -12,14 +12,14 @@
 #include <qrect.h>
 #include <qmutex.h>
 
-#include "..\VisionaryFrameset.h"
+#include <Frameset.h>
 #include "..\VisionaryCamera.h"
 
 /**
  * @brief The CaptureThread class handles the capture of frames from a camera.
  *
  * The CaptureThread class is a QThread subclass that captures frames from a camera and emits signals
- * whenever a new frameset is available or the connection to the camera is lost.
+ * whenever a new FramesetType is available or the connection to the camera is lost.
  */
 class CaptureThread : public QThread
 {
@@ -64,5 +64,5 @@ private:
 	QMutex maskEnabledMutex;
 	volatile bool maskEnabled = false;
 
-	void applyMask(Frameset::frameset_t& fs, const QRectF& maskNorm);
+	void applyMask(Frameset::FramesetType& fs, const QRectF& maskNorm);
 };

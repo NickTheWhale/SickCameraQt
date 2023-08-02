@@ -181,6 +181,12 @@
     <ClCompile Include="widgets\FrameCompareWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Frame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Frameset.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="snap7\snap7.h">
@@ -189,16 +195,10 @@
     <ClInclude Include="VisionaryAutoIPScanCustom.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="VisionaryFrameset.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Stream.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TinyColormap.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Fingerprint.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="sickapi\src\AuthenticationLegacy.h">
@@ -292,6 +292,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="threads\ThreadInterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Frame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Frameset.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -34,10 +34,16 @@ void CaptureThread::run()
 	while (!_stop)
 	{
 		QThread::msleep(1);
-		Frameset::frameset_t fs;
+		Frameset::FramesetType fs;
 		if (!camera->getNextFrameset(fs))
 		{
-			qWarning() << "capture thread: failed to get frameset";
+			qWarning() << "capture thread: failed to get FramesetType";
+			continue;
+		}
+
+		if (!fs.isValid())
+		{
+			qWarning() << "capture thread: got invalid FramesetType";
 			continue;
 		}
 
@@ -48,9 +54,12 @@ void CaptureThread::run()
 			if (maskEnabled)
 				applyMask(fs, maskNorm);
 
-			threadInterface.pushPlcFrame(fs);
-			threadInterface.pushGuiFrame(fs);
-			threadInterface.pushWebFrame(fs);
+			if (fs.isUniform())
+			{
+				threadInterface.pushPlcFrame(fs);
+				threadInterface.pushGuiFrame(fs);
+				threadInterface.pushWebFrame(fs);
+			}
 		}
 		qint64 time = cycleTimer.restart();
 		emit addTime(static_cast<int>(time));
@@ -59,13 +68,16 @@ void CaptureThread::run()
 	camera->stopCapture();
 }
 
-void CaptureThread::applyMask(Frameset::frameset_t& fs, const QRectF& maskNorm)
+void CaptureThread::applyMask(Frameset::FramesetType& fs, const QRectF& maskNorm)
 {
 	if (maskNorm.isEmpty())
 		return;
 
-	const QPoint maskTopLeft = QPoint(maskNorm.topLeft().x() * fs.width, maskNorm.topLeft().y() * fs.height);
-	const QPoint maskBottomRight = QPoint(maskNorm.bottomRight().x() * fs.width, maskNorm.bottomRight().y() * fs.height);
+	if (!fs.isUniform())
+		return;
+
+	const QPoint maskTopLeft = QPoint(maskNorm.topLeft().x() * fs.depth.width, maskNorm.topLeft().y() * fs.depth.height);
+	const QPoint maskBottomRight = QPoint(maskNorm.bottomRight().x() * fs.depth.width, maskNorm.bottomRight().y() * fs.depth.height);
 
 	const QRect mask = QRect(maskTopLeft, maskBottomRight);
 	const size_t maskedWidth = mask.width();
@@ -75,25 +87,22 @@ void CaptureThread::applyMask(Frameset::frameset_t& fs, const QRectF& maskNorm)
 	std::vector<uint16_t> maskedIntensity;
 	std::vector<uint16_t> maskedState;
 
-	//maskedDepth.reserve(maskedWidth * maskedHeight);
-	//maskedIntensity.reserve(maskedWidth * maskedHeight);
-	//maskedState.reserve(maskedWidth * maskedHeight);
-
 	for (size_t y = maskTopLeft.y(); y < maskTopLeft.y() + maskedHeight; ++y)
 	{
 		for (size_t x = maskTopLeft.x(); x < maskTopLeft.x() + maskedWidth; ++x)
 		{
-			const int index = y * fs.width + x;
-			maskedDepth.push_back(fs.depth[index]);
-			maskedIntensity.push_back(fs.intensity[index]);
-			maskedState.push_back(fs.state[index]);
+			const int index = y * fs.depth.width + x;
+			maskedDepth.push_back(fs.depth.data[index]);
+			maskedIntensity.push_back(fs.intensity.data[index]);
+			maskedState.push_back(fs.state.data[index]);
 		}
 	}
-	fs.height = maskedHeight;
-	fs.width = maskedWidth;
-	fs.depth = maskedDepth;
-	fs.intensity = maskedIntensity;
-	fs.state = maskedState;
+
+	const Frameset::FrameType depthFrame(maskedDepth, maskedHeight, maskedWidth);
+	const Frameset::FrameType intensityFrame(maskedIntensity, maskedHeight, maskedWidth);
+	const Frameset::FrameType stateFrame(maskedState, maskedHeight, maskedWidth);
+
+	fs = Frameset::FramesetType(depthFrame, intensityFrame, stateFrame, fs.number, fs.time);
 
 #pragma region OLD_MASKING_ALGORITHM
 	//if (maskNorm.isEmpty())

@@ -14,7 +14,7 @@
 #include <Framegrabber.h>
 #include <string>
 #include <map>
-#include "VisionaryFrameset.h"
+#include <Frameset.h>
 
 enum ErrorCode
 {
@@ -105,11 +105,11 @@ public:
 	bool stopCapture();
 
 	/**
-	 * @brief Polls camera for the latest frameset.
-	 * @param fs Output frameset.
-	 * @return true if frameset was received, false otherwise.
+	 * @brief Polls camera for the latest FramesetType.
+	 * @param fs Output FramesetType.
+	 * @return true if FramesetType was received, false otherwise.
 	*/
-	bool getNextFrameset(Frameset::frameset_t& fs);
+	bool getNextFrameset(frameset::Frameset& fs);
 
 	/**
 	 * @brief Gets camera parameters.

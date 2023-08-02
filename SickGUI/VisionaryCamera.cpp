@@ -1,6 +1,6 @@
 #include "VisionaryCamera.h"
 #include "../VisionaryAutoIPScanCustom.h"
-#include "../VisionaryFrameset.h"
+#include <Frameset.h>
 #include <CoLaParameterWriter.h>
 #include <CoLaCommand.h>
 #include <CoLaCommandType.h>
@@ -94,25 +94,26 @@ bool VisionaryCamera::stopCapture()
 	return pVisionaryControl->stopAcquisition();
 }
 
-bool VisionaryCamera::getNextFrameset(Frameset::frameset_t& fs)
+bool VisionaryCamera::getNextFrameset(frameset::Frameset& fs)
 {
 	if (!frameGrabber.getNextFrame(pDataHandler))
 		return false;
 
-	fs.depth = pDataHandler->getDistanceMap();
-	fs.intensity = pDataHandler->getIntensityMap();
-	fs.state = pDataHandler->getStateMap();
-	fs.height = pDataHandler->getHeight();
-	fs.width = pDataHandler->getWidth();
-	fs.number = pDataHandler->getFrameNum();
-	fs.time = pDataHandler->getTimestampMS();
-
-	// divide depth data by 4 to convert to millimeters
-	for (auto&& val : fs.depth)
-	{
+	std::vector<uint16_t> depthData = pDataHandler->getDistanceMap();
+	for (uint16_t& val : depthData)
 		val >>= 2;
-	}
 
+	const uint32_t height = pDataHandler->getHeight();
+	const uint32_t width = pDataHandler->getWidth();
+	const uint32_t number = pDataHandler->getFrameNum();
+	const uint64_t time = pDataHandler->getTimestampMS();
+
+
+	const frameset::Frame depthFrame(depthData, height, width, number, time);
+	const frameset::Frame intensityFrame(pDataHandler->getIntensityMap(), height, width, number, time);
+	const frameset::Frame stateFrame(pDataHandler->getStateMap(), height, width, number, time);
+
+	fs = frameset::Frameset(depthFrame, intensityFrame, stateFrame);
 	return true;
 }
 

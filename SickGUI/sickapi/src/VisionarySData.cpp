@@ -154,7 +154,7 @@ namespace visionary
 				return false;
 			}
 			remainingSize -= extendedHeaderSize;
-			// more frame information follows in this case: frame number, data quality, device status
+			// more FrameType information follows in this case: FrameType number, data quality, device status
 			m_frameNum = readUnalignLittleEndian<uint32_t>(&*itBuf);
 			itBuf += sizeof(uint32_t);
 

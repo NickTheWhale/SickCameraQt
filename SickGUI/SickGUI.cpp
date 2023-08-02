@@ -11,7 +11,6 @@
 #include <qfontmetrics.h>
 #include <qpainter.h>
 #include <qsizepolicy.h>
-#include "Fingerprint.h"
 #include <qtoolbutton.h>
 #include <qmenu.h>
 #include <qpushbutton.h>
@@ -93,7 +92,7 @@ void SickGUI::closeEvent(QCloseEvent* event)
 
 void SickGUI::initializeWidgets()
 {
-	// QLabel used to display live camera image
+	// QLabel used to display live camera lastImage
 #pragma region CAMERA_VIEW
 
 	cameraView = new CameraViewWidget(ui.centralWidget);
@@ -678,24 +677,24 @@ void SickGUI::showStatusBarMessage(const QString& text, int timeout)
 		});
 }
 
-void SickGUI::updateDisplay(const QImage& image)
+void SickGUI::updateDisplay(const QImage& lastImage)
 {
 	if (this->isMinimized())
 		return;
 
 	QMetaObject::invokeMethod(this, [=]()
 		{
-			auto pixmap = QPixmap::fromImage(image);
+			auto pixmap = QPixmap::fromImage(lastImage);
 			cameraView->setPixmap(pixmap);
 		});
 
-	Frameset::frameset_t fs = threadInterface.peekGuiFrame();
-	if (fs.isNull())
+	Frameset::FramesetType fs = threadInterface.peekGuiFrame();
+	if (!fs.isValid())
 		return;
 
 	QMetaObject::invokeMethod(this, [=]()
 		{
-			depthHistogram->updateHistogram(fs.depth);
+			depthHistogram->updateHistogram(fs.depth.data);
 			depthHistogram->update();
 		});
 }

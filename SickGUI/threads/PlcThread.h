@@ -9,7 +9,7 @@
 #pragma once
 #include <qthread.h>
 #include <snap7.h>
-#include "..\VisionaryFrameset.h"
+#include <Frameset.h>
 #include <boost/circular_buffer.hpp>
 #include <qtimer.h>
 

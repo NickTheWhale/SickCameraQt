@@ -34,12 +34,12 @@ namespace visionary
 		//-----------------------------------------------
 		// functions for parsing received blob
 
-		// Parse the XML Metadata part to get information about the sensor and the following image data.
+		// Parse the XML Metadata part to get information about the sensor and the following lastImage data.
 		// This function uses boost library. An other XML parser is needed to remove boost from source.
 		// Returns true when parsing was successful.
 		bool parseXML(const std::string& xmlString, uint32_t changeCounter) override;
 
-		// Parse the Binary data part to extract the image data. 
+		// Parse the Binary data part to extract the lastImage data. 
 		// Returns true when parsing was successful.
 		bool parseBinaryData(std::vector<uint8_t>::iterator itBuf, size_t size) override;
 
@@ -47,7 +47,7 @@ namespace visionary
 		/// Byte depth of images
 		int m_zByteDepth, m_rgbaByteDepth, m_confidenceByteDepth;
 
-		// Pointers to the image data
+		// Pointers to the lastImage data
 		std::vector<uint16_t> m_zMap;
 		std::vector<uint32_t> m_rgbaMap;
 		std::vector<uint16_t> m_confidenceMap;

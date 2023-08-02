@@ -106,7 +106,7 @@ namespace visionary
 			return false;
 		}
 
-		// Receive the frame data
+		// Receive the FrameType data
 		size_t remainingBytesToReceive = packageLength;
 		if (m_pTransport->read(buffer, remainingBytesToReceive) < static_cast<ITransport::recv_return_t>(remainingBytesToReceive))
 		{

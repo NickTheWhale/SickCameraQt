@@ -10,7 +10,7 @@ class RenderThread : public QThread
 	Q_OBJECT
 
 signals:
-	void renderedImage(const QImage& image);
+	void renderedImage(const QImage& lastImage);
 	void fingerprint(const uint32_t fp);
 
 public:
