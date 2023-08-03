@@ -1,4 +1,5 @@
 #include "ThreadInterface.h"
+#include <qdebug.h>
 
 ThreadInterface& ThreadInterface::instance()
 {
@@ -24,7 +25,7 @@ void ThreadInterface::pushWebFrame(const frameset::Frameset& fs)
 	webBuffer.push_back(fs);
 }
 
-const frameset::Frameset& ThreadInterface::peekPlcFrame()
+const frameset::Frameset ThreadInterface::peekPlcFrame()
 {
 	QMutexLocker locker(&plcMutex);
 	frameset::Frameset fs;
@@ -35,7 +36,7 @@ const frameset::Frameset& ThreadInterface::peekPlcFrame()
 	return fs;
 }
 
-const frameset::Frameset& ThreadInterface::peekGuiFrame()
+const frameset::Frameset ThreadInterface::peekGuiFrame()
 {
 	QMutexLocker locker(&guiMutex);
 	frameset::Frameset fs;
@@ -46,7 +47,7 @@ const frameset::Frameset& ThreadInterface::peekGuiFrame()
 	return fs;
 }
 
-const frameset::Frameset& ThreadInterface::peekWebFrame()
+const frameset::Frameset ThreadInterface::peekWebFrame()
 {
 	QMutexLocker locker(&webMutex);
 	frameset::Frameset fs;
@@ -57,7 +58,7 @@ const frameset::Frameset& ThreadInterface::peekWebFrame()
 	return fs;
 }
 
-const frameset::Frameset& ThreadInterface::popPlcFrame()
+const frameset::Frameset ThreadInterface::popPlcFrame()
 {
 	QMutexLocker locker(&plcMutex);
 	frameset::Frameset fs;
@@ -69,7 +70,7 @@ const frameset::Frameset& ThreadInterface::popPlcFrame()
 	return fs;
 }
 
-const frameset::Frameset& ThreadInterface::popGuiFrame()
+const frameset::Frameset ThreadInterface::popGuiFrame()
 {
 	QMutexLocker locker(&guiMutex);
 	frameset::Frameset fs;
@@ -81,7 +82,7 @@ const frameset::Frameset& ThreadInterface::popGuiFrame()
 	return fs;
 }
 
-const frameset::Frameset& ThreadInterface::popWebFrame()
+const frameset::Frameset ThreadInterface::popWebFrame()
 {
 	QMutexLocker locker(&webMutex);
 	frameset::Frameset fs;

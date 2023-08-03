@@ -13,6 +13,9 @@
 #include <boost/circular_buffer.hpp>
 #include <qtimer.h>
 
+
+constexpr size_t WRITE_BUFFER_SIZE = 10;
+
 class PlcThread : public QThread
 {
 	Q_OBJECT
@@ -50,7 +53,6 @@ private:
 	TS7Client* client;
 	
 	bool readDB2();
-#define WRITE_BUFFER_SIZE (10)
 	bool writeDB2(const std::array<uint32_t, WRITE_BUFFER_SIZE>& data);
 };
 

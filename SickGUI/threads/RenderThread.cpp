@@ -2,6 +2,7 @@
 #include <ThreadInterface.h>
 #include <qtimer.h>
 #include <Frameset.h>
+#include <qdebug.h>
 
 RenderThread::RenderThread(QObject* parent) :
 	cycleTimeTarget(100),
@@ -38,38 +39,34 @@ void RenderThread::run()
 		}
 
 		msleep(1);
-		Frameset::FramesetType fs = threadInterface.peekGuiFrame();
+		frameset::Frameset fs = threadInterface.peekGuiFrame();
 
-		if (!fs.isValid())
+		if (!frameset::isValid(fs))
 		{
-			qWarning() << __FUNCTION__ << "FramesetType is invalid";
+			qWarning() << __FUNCTION__ << "frameset is invalid";
 			continue;
 		}
 
 		QImage qImage;
-
 		// determine what stream we want and then overlay some stats if needed
 		switch (streamType)
 		{
 		case Stream::Depth:
 		{
-			Frameset::depthToQImage(fs, qImage, streamColorMapType, true, 0, 0, invertedColor);
-			if (overLayStats)
-				//Fingerprint::overlayStats(qImage, fs.depth);
+			frameset::ImageOptions imageOptions(streamColorMapType, true, 0, 0, invertedColor, false);
+			qImage = frameset::toQImage(fs.depth, imageOptions);
 		}
 		break;
 		case Stream::Intensity:
 		{
-			Frameset::intensityToQImage(fs, qImage, streamColorMapType, true, 0, 0, invertedColor);
-			if (overLayStats)
-				//Fingerprint::overlayStats(qImage, fs.intensity);
+			frameset::ImageOptions imageOptions(streamColorMapType, true, 0, 0, invertedColor, true);
+			qImage = frameset::toQImage(fs.intensity, imageOptions);
 		}
 		break;
 		case Stream::State:
 		{
-			Frameset::stateToQImage(fs, qImage, streamColorMapType, true, 0, 0, invertedColor);
-			if (overLayStats)
-				//Fingerprint::overlayStats(qImage, fs.state);
+			frameset::ImageOptions imageOptions(streamColorMapType, true, 0, 0, invertedColor, false);
+			qImage = frameset::toQImage(fs.state, imageOptions);
 		}
 		break;
 		}

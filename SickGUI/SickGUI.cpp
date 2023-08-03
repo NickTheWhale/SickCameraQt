@@ -688,8 +688,8 @@ void SickGUI::updateDisplay(const QImage& lastImage)
 			cameraView->setPixmap(pixmap);
 		});
 
-	Frameset::FramesetType fs = threadInterface.peekGuiFrame();
-	if (!fs.isValid())
+	frameset::Frameset fs = threadInterface.peekGuiFrame();
+	if (frameset::isValid(fs.depth))
 		return;
 
 	QMetaObject::invokeMethod(this, [=]()

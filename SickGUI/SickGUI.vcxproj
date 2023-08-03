@@ -106,7 +106,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
-    <ClCompile Include="Frame.cpp" />
     <ClCompile Include="Frameset.cpp" />
     <ClCompile Include="widgets\FrameCompareWidget.cpp" />
     <ClCompile Include="widgets\CameraViewWidget.cpp" />
@@ -184,7 +183,6 @@
     <QtMoc Include="widgets\PlotWidget.h" />
     <QtMoc Include="widgets\RangeSlider.h" />
     <QtMoc Include="widgets\FrameCompareWidget.h" />
-    <ClInclude Include="Frame.h" />
     <ClInclude Include="Frameset.h" />
     <ClInclude Include="threads\ThreadInterface.h" />
     <QtMoc Include="CustomMessageHandler.h" />

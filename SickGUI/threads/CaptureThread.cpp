@@ -2,6 +2,7 @@
 
 #include <qelapsedtimer.h>
 #include <ThreadInterface.h>
+#include <qdebug.h>
 
 bool CaptureThread::startCapture(VisionaryCamera* camera)
 {
@@ -34,92 +35,41 @@ void CaptureThread::run()
 	while (!_stop)
 	{
 		QThread::msleep(1);
-		Frameset::FramesetType fs;
+		frameset::Frameset fs;
 		if (!camera->getNextFrameset(fs))
 		{
-			qWarning() << "capture thread: failed to get FramesetType";
+			qWarning() << "capture thread: failed to get frameset";
 			continue;
 		}
 
-		if (!fs.isValid())
+		if (!frameset::isValid(fs))
 		{
-			qWarning() << "capture thread: got invalid FramesetType";
+			qWarning() << "capture thread: invalid frameset";
 			continue;
 		}
 
-		if (fs.number > prevNumber)
+		if (fs.depth.number > prevNumber)
 		{
-			prevNumber = fs.number;
+			prevNumber = fs.depth.number;
 
 			if (maskEnabled)
-				applyMask(fs, maskNorm);
-
-			if (fs.isUniform())
 			{
-				threadInterface.pushPlcFrame(fs);
-				threadInterface.pushGuiFrame(fs);
-				threadInterface.pushWebFrame(fs);
+				frameset::mask(fs, maskNorm);
 			}
+
+			threadInterface.pushPlcFrame(fs);
+			threadInterface.pushGuiFrame(fs);
+			threadInterface.pushWebFrame(fs);
+		}
+		else
+		{
+			qDebug() << "capture thread: received old frameset";
 		}
 		qint64 time = cycleTimer.restart();
 		emit addTime(static_cast<int>(time));
 	}
 
 	camera->stopCapture();
-}
-
-void CaptureThread::applyMask(Frameset::FramesetType& fs, const QRectF& maskNorm)
-{
-	if (maskNorm.isEmpty())
-		return;
-
-	if (!fs.isUniform())
-		return;
-
-	const QPoint maskTopLeft = QPoint(maskNorm.topLeft().x() * fs.depth.width, maskNorm.topLeft().y() * fs.depth.height);
-	const QPoint maskBottomRight = QPoint(maskNorm.bottomRight().x() * fs.depth.width, maskNorm.bottomRight().y() * fs.depth.height);
-
-	const QRect mask = QRect(maskTopLeft, maskBottomRight);
-	const size_t maskedWidth = mask.width();
-	const size_t maskedHeight = mask.height();
-
-	std::vector<uint16_t> maskedDepth;
-	std::vector<uint16_t> maskedIntensity;
-	std::vector<uint16_t> maskedState;
-
-	for (size_t y = maskTopLeft.y(); y < maskTopLeft.y() + maskedHeight; ++y)
-	{
-		for (size_t x = maskTopLeft.x(); x < maskTopLeft.x() + maskedWidth; ++x)
-		{
-			const int index = y * fs.depth.width + x;
-			maskedDepth.push_back(fs.depth.data[index]);
-			maskedIntensity.push_back(fs.intensity.data[index]);
-			maskedState.push_back(fs.state.data[index]);
-		}
-	}
-
-	const Frameset::FrameType depthFrame(maskedDepth, maskedHeight, maskedWidth);
-	const Frameset::FrameType intensityFrame(maskedIntensity, maskedHeight, maskedWidth);
-	const Frameset::FrameType stateFrame(maskedState, maskedHeight, maskedWidth);
-
-	fs = Frameset::FramesetType(depthFrame, intensityFrame, stateFrame, fs.number, fs.time);
-
-#pragma region OLD_MASKING_ALGORITHM
-	//if (maskNorm.isEmpty())
-	//	return;
-
-	//// un-normalize the mask
-	//QPoint maskTopLeft = QPoint(maskNorm.maskTopLeft().x() * fs.width, maskNorm.maskTopLeft().y() * fs.height);
-	//QPoint maskBottomRight = QPoint(maskNorm.maskBottomRight().x() * fs.width, maskNorm.maskBottomRight().y() * fs.height);
-
-	//QRect mask(maskTopLeft, maskBottomRight);
-
-	//// apply mask
-	//for (int x = 0; x < fs.width; ++x)
-	//	for (int y = 0; y < fs.height; ++y)
-	//		if (!mask.contains(x, y))
-	//			fs.depth[y * fs.width + x] = 0;
-#pragma endregion
 }
 
 void CaptureThread::setMask(const QRectF& maskNorm)

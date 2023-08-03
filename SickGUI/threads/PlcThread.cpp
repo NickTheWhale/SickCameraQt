@@ -29,19 +29,21 @@ void PlcThread::run()
 	while (!_stop)
 	{
 		msleep(1);
-		Frameset::FramesetType fs = threadInterface.peekPlcFrame();
+		frameset::Frameset fs = threadInterface.peekPlcFrame();
 
-		if (fs.isValid())
+		if (frameset::isValid(fs))
 		{
+			frameset::downsample(fs.depth, 10, 10);
+			msleep(1000);
 			std::array<uint32_t, WRITE_BUFFER_SIZE> data;
 			int offset = 0;
 			//data[offset++] = Fingerprint::average(fs.depth);
 			data[offset++] = 1;
-			data[offset++] = fs.number;
+			data[offset++] = fs.depth.number;
 			data[offset++] = fs.depth.width;
 			data[offset++] = fs.depth.height;
-			data[offset++] = fs.time;
-			data[offset++] = fs.isValid();
+			data[offset++] = fs.depth.time;
+			data[offset++] = frameset::isEmpty(fs);
 			static uint32_t loopCount = 0;
 			data[offset++] = ++loopCount;
 			data[offset++] = QRandomGenerator::global()->bounded(0, (qint64)std::numeric_limits<qint64>::max());

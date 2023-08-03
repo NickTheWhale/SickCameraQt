@@ -2,11 +2,13 @@
 #include <qwidget.h>
 #include <Frameset.h>
 #include <ImageLabel.h>
-#include "..\TinyColormap.hpp"
+#include <TinyColormap.hpp>
 #include <qspinbox.h>
 #include <ThreadInterface.h>
+#include <qcheckbox.h>
 
-class ImageCompareWidget;
+constexpr uint32_t downsampleHeight = 50;
+constexpr uint32_t downsampleWidth = 100;
 
 class FrameCompareWidget : public QWidget
 {
@@ -18,15 +20,25 @@ public:
 
 private:
 	const int continuousModeInterval = 100; /* ms */
-	const uint16_t upperThreshold = 1000; /* mm */
-	Frameset::FramesetType refFs;
-	Frameset::FramesetType curFs;
+	frameset::Frameset refFs;
+	frameset::Frameset curFs;
 	ImageLabel* refImageLabel = nullptr;
 	ImageLabel* difImageLabel = nullptr;
 
-	bool gridCompare = false;
+	QCheckBox* continuousModeCheckBox = nullptr;
+	QSpinBox*  lowerThresholdSpinBox = nullptr;
+	QSpinBox*  upperThresholdSpinBox = nullptr;
+	QCheckBox* autoExposureCheckBox = nullptr;
+	QSpinBox*  lowerExposureSpinBox = nullptr;
+	QSpinBox*  upperExposureSpinBox = nullptr;
 
-	QSpinBox* thresholdSpinBox = nullptr;
+	uint16_t lowerThreshold;
+	uint16_t upperThreshold;
+	uint16_t lowerExposure;
+	uint16_t upperExposure;
+
+	const uint16_t maxUpper = std::numeric_limits<uint16_t>::max();
+
 	tinycolormap::ColormapType colorMap = tinycolormap::ColormapType::Turbo;
 	ThreadInterface& threadInterface;
 

@@ -64,5 +64,5 @@ private:
 	QMutex maskEnabledMutex;
 	volatile bool maskEnabled = false;
 
-	void applyMask(Frameset::FramesetType& fs, const QRectF& maskNorm);
+	//void applyMask(frameset::Frameset& fs, const QRectF& maskNorm);
 };
