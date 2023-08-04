@@ -33,6 +33,11 @@ FrameCompareWidget::FrameCompareWidget(QWidget* parent) :
 	QPushButton* currentSnapshotButton = new QPushButton("Snapshot", this);
 	QTimer* timer = new QTimer(this);
 
+	lowerThresholdSpinBox->setRange(0, std::numeric_limits<uint16_t>::max());
+	upperThresholdSpinBox->setRange(0, std::numeric_limits<uint16_t>::max());
+	lowerExposureSpinBox->setRange(0, std::numeric_limits<uint16_t>::max());
+	upperExposureSpinBox->setRange(0, std::numeric_limits<uint16_t>::max());
+
 	// connect stuff
 	connect(referenceSnapshotButton, &QPushButton::pressed, this, &FrameCompareWidget::getReferenceSnapshot);
 	connect(currentSnapshotButton, &QPushButton::pressed, this, &FrameCompareWidget::getCurrentSnapshot);
@@ -68,6 +73,8 @@ FrameCompareWidget::FrameCompareWidget(QWidget* parent) :
 	formSettings->addRow("Auto Exposure", autoExposureCheckBox);
 	formSettings->addRow("Lower Exposure (mm)", lowerExposureSpinBox);
 	formSettings->addRow("Upper Exposure (mm)", upperExposureSpinBox);
+
+	formSettings->setFieldGrowthPolicy(QFormLayout::FieldGrowthPolicy::ExpandingFieldsGrow);
 
 	QWidget* vboxLeftWidget = new QWidget(this);
 	vboxLeftWidget->setLayout(vboxReference);

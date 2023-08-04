@@ -1,5 +1,6 @@
 #include "Frameset.h"
 #include <TinyColormap.hpp>
+#include <qdebug.h>
 
 namespace
 {
@@ -1104,7 +1105,12 @@ const bool frameset::isValid(const Frame& frame)
 
 void frameset::clip(Frame& frame, uint16_t lower, uint16_t upper)
 {
-	Q_ASSERT_X(upper > lower, __FUNCTION__, "upper must be greater lower");
+	//Q_ASSERT_X(upper > lower, __FUNCTION__, "upper must be greater lower");
+	if (upper < lower)
+	{	
+		qDebug() << __FUNCTION__ << "upper < lower";
+		std::swap(upper, lower);
+	}
 	for (uint16_t& val : frame.data)
 	{
 		if (val > upper)
@@ -1116,7 +1122,12 @@ void frameset::clip(Frame& frame, uint16_t lower, uint16_t upper)
 
 void frameset::clamp(Frame& frame, uint16_t lower, uint16_t upper)
 {
-	Q_ASSERT_X(upper > lower, __FUNCTION__, "upper must be greater lower");
+	//Q_ASSERT_X(upper > lower, __FUNCTION__, "upper must be greater lower");
+	if (upper < lower)
+	{
+		qDebug() << __FUNCTION__ << "upper < lower";
+		std::swap(upper, lower);
+	}
 	for (uint16_t& val : frame.data)
 	{
 		if (val > upper)
