@@ -25,7 +25,6 @@
 #include <QAutoWebSocket.h>
 #include <ThreadInterface.h>
 #include <RenderThread.h>
-#include "PlotWidget.h"
 #include <CameraViewWidget.h>
 #include "VisionaryCamera.h"
 #include <FrameCompareWidget.h>
@@ -85,8 +84,6 @@ private slots:
 	 *       and then the application will close.
 	 */
 	void checkThreads();
-
-	void pushFingerprint(const uint32_t fp);
 
 private:
 	/**
@@ -182,7 +179,6 @@ private:
 	HistogramWidget* depthHistogram = nullptr;
 	CycleTimeWidget* cycleTimeWidget = nullptr;
 	LoggingWidget* loggingWidget = nullptr;
-	PlotWidget* plotWidget = nullptr;
 	FrameCompareWidget* frameCompareWidget = nullptr;
 
 	RenderThread renderThread;

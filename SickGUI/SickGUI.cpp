@@ -339,20 +339,6 @@ void SickGUI::initializeWidgets()
 #pragma endregion
 
 
-#pragma region PLOT
-
-	plotWidget = new PlotWidget(this);
-	plotWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-	dock = new CloseDockWidget("Fingerprint", this);
-	dock->setObjectName("plotWidgetDock");
-	dock->setAllowedAreas(Qt::DockWidgetArea::AllDockWidgetAreas);
-	dock->setWidget(plotWidget);
-	dock->adjustSize();
-	addDockWidget(Qt::DockWidgetArea::RightDockWidgetArea, dock);
-
-#pragma endregion
-
-
 #pragma region FRAME_COMPARE_WIDGET
 
 	frameCompareWidget = new FrameCompareWidget(this);
@@ -462,7 +448,6 @@ void SickGUI::checkThreads()
 
 void SickGUI::makeConnections()
 {
-	QObject::connect(&renderThread, &RenderThread::fingerprint, this, &SickGUI::pushFingerprint);
 	QObject::connect(&renderThread, &RenderThread::renderedImage, this, &SickGUI::updateDisplay);
 	QObject::connect(captureThread, &CaptureThread::addTime, cycleTimeWidget, &CycleTimeWidget::addCamTime);
 	QObject::connect(plcThread, &PlcThread::addTime, cycleTimeWidget, &CycleTimeWidget::addPlcTime);
@@ -696,13 +681,5 @@ void SickGUI::updateDisplay(const QImage& lastImage)
 		{
 			depthHistogram->updateHistogram(fs.depth.data);
 			depthHistogram->update();
-		});
-}
-
-void SickGUI::pushFingerprint(const uint32_t fp)
-{
-	QMetaObject::invokeMethod(this, [=]()
-		{
-			plotWidget->pushData(fp);
 		});
 }

@@ -120,7 +120,6 @@ void FrameCompareWidget::compare()
 		return;
 
 	frameset::Frame difference = frameset::difference(curFs.depth, refFs.depth);
-	frameset::downsample(difference, downsampleHeight, downsampleWidth);
 	frameset::clip(difference, lowerThresholdSpinBox->value(), upperThresholdSpinBox->value());
 	frameset::ImageOptions options(
 		colorMap, 

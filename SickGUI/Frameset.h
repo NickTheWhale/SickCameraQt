@@ -61,12 +61,10 @@ namespace frameset
 	void mask(Frame& frame, const QRectF& maskNorm);
 	const QImage toQImage(const Frame& frame, const ImageOptions& options);
 	const Frame difference(const Frame& lhs, const Frame& rhs);
-	void downsample(Frame& frame, const uint32_t targetHeight, const uint32_t targetWidth);
 
 	// frameset functions
 	const bool isUniform(const Frameset& fs);
 	const bool isEmpty(const Frameset& fs);
 	const bool isValid(const Frameset& fs);
 	void mask(Frameset& fs, const QRectF& maskNorm);
-	void downsample(Frameset& fs, const uint32_t targetHeight, const uint32_t targetWidth);
 }

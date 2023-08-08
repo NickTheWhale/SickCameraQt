@@ -33,7 +33,6 @@ void PlcThread::run()
 
 		if (frameset::isValid(fs))
 		{
-			frameset::downsample(fs.depth, 10, 10);
 			msleep(1000);
 			std::array<uint32_t, WRITE_BUFFER_SIZE> data;
 			int offset = 0;

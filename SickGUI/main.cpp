@@ -4,6 +4,9 @@
 #include <qmessagebox.h>
 #include "CustomMessageHandler.h"
 
+#include <pcl/point_types.h>
+#include <pcl/point_cloud.h>
+
 CustomMessageHandler messageHandler;
 
 void msgHandler(QtMsgType type, const QMessageLogContext& context, const QString& message)
@@ -30,5 +33,14 @@ int main(int argc, char* argv[])
 	SickGUI window(&messageHandler);
 	app.setWindowIcon(QIcon(":/SickGUI/icons/baseline_linked_camera_white_48dp.png"));
 	window.show();
+
+	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>());
+
+	for (int i = 0; i < 100; ++i)
+		cloud->push_back(pcl::PointXYZ(1, 2, 3));
+
+	for (const auto& point : *cloud)
+		qDebug() << point.x;
+
 	return app.exec();
 }

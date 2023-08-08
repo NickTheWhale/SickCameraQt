@@ -1235,29 +1235,6 @@ const frameset::Frame frameset::difference(const Frame& lhs, const Frame& rhs)
 	return diff;
 }
 
-void frameset::downsample(Frame& frame, const uint32_t targetHeight, const uint32_t targetWidth)
-{
-	std::vector<uint16_t> newData(targetHeight * targetWidth);
-
-	double heightScale = static_cast<double>(frame.height) / targetHeight;
-	double widthScale = static_cast<double>(frame.width) / targetWidth;
-
-	for (uint32_t y = 0; y < targetHeight; y++)
-	{
-		for (uint32_t x = 0; x < targetWidth; x++)
-		{
-			uint32_t src_y = static_cast<uint32_t>(y * heightScale);
-			uint32_t src_x = static_cast<uint32_t>(x * widthScale);
-
-			newData[y * targetWidth + x] = frame.data[src_y * frame.width + src_x];
-		}
-	}
-
-	frame.data = newData;
-	frame.height = targetHeight;
-	frame.width = targetWidth;
-}
-
 const bool frameset::isUniform(const Frameset& fs)
 {
 	return size(fs.depth) == size(fs.intensity) && size(fs.intensity) == size(fs.state);
@@ -1278,11 +1255,4 @@ void frameset::mask(Frameset& fs, const QRectF& maskNorm)
 	mask(fs.depth, maskNorm);
 	mask(fs.intensity, maskNorm);
 	mask(fs.state, maskNorm);
-}
-
-void frameset::downsample(Frameset& fs, const uint32_t targetHeight, const uint32_t targetWidth)
-{
-	downsample(fs.depth, targetHeight, targetWidth);
-	downsample(fs.intensity, targetHeight, targetWidth);
-	downsample(fs.state, targetHeight, targetWidth);
 }
