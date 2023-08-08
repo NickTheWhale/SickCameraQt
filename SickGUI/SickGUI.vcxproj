@@ -57,22 +57,24 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <IncludePath>$(ProjectDir)\threads;$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(ProjectDir)\widgets;$(ProjectDir)\sickapi\include;$(ProjectDir)\sickapi\src;$(ProjectDir)\sickapi\3pp;$(ProjectDir)\sickapi\camimpl;$(ProjectDir)\qcustomplot;$(ProjectDir)\;$(ProjectDir)\pointcloudlibrary\3rdParty\Eigen\eigen3;$(ProjectDir)\pointcloudlibrary\include\pcl-1.13;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)\threads;$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(ProjectDir)\widgets;$(ProjectDir)\sickapi\include;$(ProjectDir)\sickapi\src;$(ProjectDir)\sickapi\3pp;$(ProjectDir)\sickapi\camimpl;$(ProjectDir)\qcustomplot;$(ProjectDir)\;$(ProjectDir)\pointcloudlibrary\3rdParty\Eigen\eigen3;$(ProjectDir)\pointcloudlibrary\include\pcl-1.13;$(ProjectDir)\nodeeditor\include\;$(ProjectDir)\nodeeditor\include\QtNodes\;$(ProjectDir)\nodeeditor\include\QtNodes\internal\;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)$(Platform)\$(ProjectName)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <IncludePath>$(ProjectDir)\threads;$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(ProjectDir)\widgets;$(ProjectDir)\sickapi\include;$(ProjectDir)\sickapi\src;$(ProjectDir)\sickapi\3pp;$(ProjectDir)\sickapi\camimpl;$(ProjectDir)\qcustomplot;$(ProjectDir)\;$(ProjectDir)\pointcloudlibrary\3rdParty\Eigen\eigen3;$(ProjectDir)\pointcloudlibrary\include\pcl-1.13;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)\threads;$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(ProjectDir)\widgets;$(ProjectDir)\sickapi\include;$(ProjectDir)\sickapi\src;$(ProjectDir)\sickapi\3pp;$(ProjectDir)\sickapi\camimpl;$(ProjectDir)\qcustomplot;$(ProjectDir)\;$(ProjectDir)\pointcloudlibrary\3rdParty\Eigen\eigen3;$(ProjectDir)\pointcloudlibrary\include\pcl-1.13;$(ProjectDir)\nodeeditor\include\;$(ProjectDir)\nodeeditor\include\QtNodes\;$(ProjectDir)\nodeeditor\include\QtNodes\internal\;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)$(Platform)\$(ProjectName)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <PreprocessorDefinitions>NOMINMAX</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NOMINMAX;NODE_EDITOR_STATIC</PreprocessorDefinitions>
       <UndefinePreprocessorDefinitions>%(UndefinePreprocessorDefinitions)</UndefinePreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <PreprocessorDefinitions>NOMINMAX</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NOMINMAX;NODE_EDITOR_STATIC</PreprocessorDefinitions>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
@@ -106,7 +108,32 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
+    <ClCompile Include="FilterEditorWidget.cpp" />
     <ClCompile Include="Frameset.cpp" />
+    <ClCompile Include="nodeeditor\src\AbstractGraphModel.cpp" />
+    <ClCompile Include="nodeeditor\src\AbstractNodeGeometry.cpp" />
+    <ClCompile Include="nodeeditor\src\BasicGraphicsScene.cpp" />
+    <ClCompile Include="nodeeditor\src\ConnectionGraphicsObject.cpp" />
+    <ClCompile Include="nodeeditor\src\ConnectionPainter.cpp" />
+    <ClCompile Include="nodeeditor\src\ConnectionState.cpp" />
+    <ClCompile Include="nodeeditor\src\ConnectionStyle.cpp" />
+    <ClCompile Include="nodeeditor\src\DataFlowGraphicsScene.cpp" />
+    <ClCompile Include="nodeeditor\src\DataFlowGraphModel.cpp" />
+    <ClCompile Include="nodeeditor\src\DefaultHorizontalNodeGeometry.cpp" />
+    <ClCompile Include="nodeeditor\src\DefaultNodePainter.cpp" />
+    <ClCompile Include="nodeeditor\src\DefaultVerticalNodeGeometry.cpp" />
+    <ClCompile Include="nodeeditor\src\Definitions.cpp" />
+    <ClCompile Include="nodeeditor\src\GraphicsView.cpp" />
+    <ClCompile Include="nodeeditor\src\GraphicsViewStyle.cpp" />
+    <ClCompile Include="nodeeditor\src\locateNode.cpp" />
+    <ClCompile Include="nodeeditor\src\NodeConnectionInteraction.cpp" />
+    <ClCompile Include="nodeeditor\src\NodeDelegateModel.cpp" />
+    <ClCompile Include="nodeeditor\src\NodeDelegateModelRegistry.cpp" />
+    <ClCompile Include="nodeeditor\src\NodeGraphicsObject.cpp" />
+    <ClCompile Include="nodeeditor\src\NodeState.cpp" />
+    <ClCompile Include="nodeeditor\src\NodeStyle.cpp" />
+    <ClCompile Include="nodeeditor\src\StyleCollection.cpp" />
+    <ClCompile Include="nodeeditor\src\UndoCommands.cpp" />
     <ClCompile Include="widgets\FrameCompareWidget.cpp" />
     <ClCompile Include="widgets\CameraViewWidget.cpp" />
     <ClCompile Include="widgets\RangeSlider.cpp" />
@@ -181,7 +208,43 @@
     <QtMoc Include="threads\RenderThread.h" />
     <QtMoc Include="widgets\RangeSlider.h" />
     <QtMoc Include="widgets\FrameCompareWidget.h" />
+    <ClInclude Include="FilterEditorWidget.h" />
     <ClInclude Include="Frameset.h" />
+    <QtMoc Include="nodeeditor\include\QtNodes\internal\AbstractGraphModel.hpp" />
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\AbstractNodeGeometry.hpp" />
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\AbstractNodePainter.hpp" />
+    <QtMoc Include="nodeeditor\include\QtNodes\internal\BasicGraphicsScene.hpp" />
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\Compiler.hpp" />
+    <QtMoc Include="nodeeditor\include\QtNodes\internal\ConnectionGraphicsObject.hpp" />
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\ConnectionIdHash.hpp" />
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\ConnectionIdUtils.hpp" />
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\ConnectionState.hpp" />
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\ConnectionStyle.hpp" />
+    <QtMoc Include="nodeeditor\include\QtNodes\internal\DataFlowGraphicsScene.hpp" />
+    <QtMoc Include="nodeeditor\include\QtNodes\internal\DataFlowGraphModel.hpp" />
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\DefaultNodePainter.hpp" />
+    <QtMoc Include="nodeeditor\include\QtNodes\internal\Definitions.hpp" />
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\Export.hpp" />
+    <QtMoc Include="nodeeditor\include\QtNodes\internal\GraphicsView.hpp" />
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\GraphicsViewStyle.hpp" />
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\locateNode.hpp" />
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\NodeData.hpp" />
+    <QtMoc Include="nodeeditor\include\QtNodes\internal\NodeDelegateModel.hpp" />
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\NodeDelegateModelRegistry.hpp" />
+    <QtMoc Include="nodeeditor\include\QtNodes\internal\NodeGraphicsObject.hpp" />
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\NodeState.hpp" />
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\NodeStyle.hpp" />
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\OperatingSystem.hpp" />
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\QStringStdHash.hpp" />
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\QUuidStdHash.hpp" />
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\Serializable.hpp" />
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\Style.hpp" />
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\StyleCollection.hpp" />
+    <ClInclude Include="nodeeditor\src\ConnectionPainter.hpp" />
+    <ClInclude Include="nodeeditor\src\DefaultHorizontalNodeGeometry.hpp" />
+    <ClInclude Include="nodeeditor\src\DefaultVerticalNodeGeometry.hpp" />
+    <ClInclude Include="nodeeditor\src\NodeConnectionInteraction.hpp" />
+    <ClInclude Include="nodeeditor\src\UndoCommands.hpp" />
     <ClInclude Include="threads\ThreadInterface.h" />
     <QtMoc Include="CustomMessageHandler.h" />
     <QtMoc Include="widgets\CycleTime.h" />

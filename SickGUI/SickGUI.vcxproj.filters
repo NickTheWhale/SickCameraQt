@@ -181,6 +181,81 @@
     <ClCompile Include="Frameset.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="nodeeditor\src\AbstractGraphModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nodeeditor\src\AbstractNodeGeometry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nodeeditor\src\BasicGraphicsScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nodeeditor\src\ConnectionGraphicsObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nodeeditor\src\ConnectionPainter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nodeeditor\src\ConnectionState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nodeeditor\src\ConnectionStyle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nodeeditor\src\DataFlowGraphicsScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nodeeditor\src\DataFlowGraphModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nodeeditor\src\DefaultHorizontalNodeGeometry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nodeeditor\src\DefaultNodePainter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nodeeditor\src\DefaultVerticalNodeGeometry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nodeeditor\src\Definitions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nodeeditor\src\GraphicsView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nodeeditor\src\GraphicsViewStyle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nodeeditor\src\locateNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nodeeditor\src\NodeConnectionInteraction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nodeeditor\src\NodeDelegateModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nodeeditor\src\NodeDelegateModelRegistry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nodeeditor\src\NodeGraphicsObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nodeeditor\src\NodeState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nodeeditor\src\NodeStyle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nodeeditor\src\StyleCollection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nodeeditor\src\UndoCommands.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FilterEditorWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="snap7\snap7.h">
@@ -291,6 +366,87 @@
     <ClInclude Include="Frameset.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="nodeeditor\src\ConnectionPainter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nodeeditor\src\DefaultHorizontalNodeGeometry.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nodeeditor\src\DefaultVerticalNodeGeometry.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nodeeditor\src\NodeConnectionInteraction.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nodeeditor\src\UndoCommands.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\AbstractNodeGeometry.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\AbstractNodePainter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\Compiler.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\ConnectionIdHash.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\ConnectionIdUtils.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\ConnectionState.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\ConnectionStyle.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\DefaultNodePainter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\Export.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\GraphicsViewStyle.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\locateNode.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\NodeData.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\NodeDelegateModelRegistry.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\NodeState.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\NodeStyle.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\OperatingSystem.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\QStringStdHash.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\QUuidStdHash.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\Serializable.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\Style.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\StyleCollection.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FilterEditorWidget.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="threads\CaptureThread.h">
@@ -339,6 +495,33 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="widgets\FrameCompareWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nodeeditor\include\QtNodes\internal\AbstractGraphModel.hpp">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nodeeditor\include\QtNodes\internal\BasicGraphicsScene.hpp">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nodeeditor\include\QtNodes\internal\ConnectionGraphicsObject.hpp">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nodeeditor\include\QtNodes\internal\DataFlowGraphicsScene.hpp">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nodeeditor\include\QtNodes\internal\DataFlowGraphModel.hpp">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nodeeditor\include\QtNodes\internal\Definitions.hpp">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nodeeditor\include\QtNodes\internal\GraphicsView.hpp">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nodeeditor\include\QtNodes\internal\NodeDelegateModel.hpp">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nodeeditor\include\QtNodes\internal\NodeGraphicsObject.hpp">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
