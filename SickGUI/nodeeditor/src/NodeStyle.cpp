@@ -24,7 +24,7 @@ NodeStyle::NodeStyle()
     //initResources();
 
     // This configuration is stored inside the compiled unit and is loaded statically
-    loadJsonFile(":DefaultStyle.json");
+    loadJsonFile(":/SickGUI/DefaultStyle.json");
 }
 
 NodeStyle::NodeStyle(QString jsonText)

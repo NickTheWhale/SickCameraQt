@@ -57,11 +57,11 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <IncludePath>$(ProjectDir)\threads;$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(ProjectDir)\widgets;$(ProjectDir)\sickapi\include;$(ProjectDir)\sickapi\src;$(ProjectDir)\sickapi\3pp;$(ProjectDir)\sickapi\camimpl;$(ProjectDir)\qcustomplot;$(ProjectDir)\;$(ProjectDir)\pointcloudlibrary\3rdParty\Eigen\eigen3;$(ProjectDir)\pointcloudlibrary\include\pcl-1.13;$(ProjectDir)\nodeeditor\include\;$(ProjectDir)\nodeeditor\include\QtNodes\;$(ProjectDir)\nodeeditor\include\QtNodes\internal\;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)\threads;$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(ProjectDir)\widgets;$(ProjectDir)\sickapi\include;$(ProjectDir)\sickapi\src;$(ProjectDir)\sickapi\3pp;$(ProjectDir)\sickapi\camimpl;$(ProjectDir)\qcustomplot;$(ProjectDir)\;$(ProjectDir)\pointcloudlibrary\3rdParty\Eigen\eigen3;$(ProjectDir)\pointcloudlibrary\include\pcl-1.13;$(ProjectDir)\nodeeditor\include\;$(ProjectDir)\nodeeditor\include\QtNodes\;$(ProjectDir)\nodeeditor\include\QtNodes\internal\;$(ProjectDir)\nodes;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)$(Platform)\$(ProjectName)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <IncludePath>$(ProjectDir)\threads;$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(ProjectDir)\widgets;$(ProjectDir)\sickapi\include;$(ProjectDir)\sickapi\src;$(ProjectDir)\sickapi\3pp;$(ProjectDir)\sickapi\camimpl;$(ProjectDir)\qcustomplot;$(ProjectDir)\;$(ProjectDir)\pointcloudlibrary\3rdParty\Eigen\eigen3;$(ProjectDir)\pointcloudlibrary\include\pcl-1.13;$(ProjectDir)\nodeeditor\include\;$(ProjectDir)\nodeeditor\include\QtNodes\;$(ProjectDir)\nodeeditor\include\QtNodes\internal\;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)\threads;$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(ProjectDir)\widgets;$(ProjectDir)\sickapi\include;$(ProjectDir)\sickapi\src;$(ProjectDir)\sickapi\3pp;$(ProjectDir)\sickapi\camimpl;$(ProjectDir)\qcustomplot;$(ProjectDir)\;$(ProjectDir)\pointcloudlibrary\3rdParty\Eigen\eigen3;$(ProjectDir)\pointcloudlibrary\include\pcl-1.13;$(ProjectDir)\nodeeditor\include\;$(ProjectDir)\nodeeditor\include\QtNodes\;$(ProjectDir)\nodeeditor\include\QtNodes\internal\;$(ProjectDir)\nodes;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)$(Platform)\$(ProjectName)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -108,7 +108,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
-    <ClCompile Include="FilterEditorWidget.cpp" />
+    <ClCompile Include="nodes\FrameViewerModel.cpp" />
+    <ClCompile Include="nodes\FrameSourceModel.cpp" />
+    <ClCompile Include="nodes\PassthroughFilterModel.cpp" />
+    <ClCompile Include="nodes\VoxelFilterModel.cpp" />
+    <ClCompile Include="widgets\FilterEditorWidget.cpp" />
     <ClCompile Include="Frameset.cpp" />
     <ClCompile Include="nodeeditor\src\AbstractGraphModel.cpp" />
     <ClCompile Include="nodeeditor\src\AbstractNodeGeometry.cpp" />
@@ -208,7 +212,12 @@
     <QtMoc Include="threads\RenderThread.h" />
     <QtMoc Include="widgets\RangeSlider.h" />
     <QtMoc Include="widgets\FrameCompareWidget.h" />
-    <ClInclude Include="FilterEditorWidget.h" />
+    <QtMoc Include="nodes\PassthroughFilterModel.h" />
+    <QtMoc Include="nodes\FrameSourceModel.h" />
+    <QtMoc Include="nodes\FrameViewerModel.h" />
+    <ClInclude Include="nodes\FrameNodeData.h" />
+    <QtMoc Include="nodes\VoxelFilterModel.h" />
+    <ClInclude Include="widgets\FilterEditorWidget.h" />
     <ClInclude Include="Frameset.h" />
     <QtMoc Include="nodeeditor\include\QtNodes\internal\AbstractGraphModel.hpp" />
     <ClInclude Include="nodeeditor\include\QtNodes\internal\AbstractNodeGeometry.hpp" />

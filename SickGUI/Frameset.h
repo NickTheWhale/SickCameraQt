@@ -3,6 +3,10 @@
 #include <qrect.h>
 #include <qimage.h>
 #include <TinyColormap.hpp>
+#include <qmetatype.h>
+#include <pcl/point_cloud.h>
+#include <pcl/point_types.h>
+
 
 namespace frameset
 {
@@ -60,7 +64,9 @@ namespace frameset
 	void clamp(Frame& frame, uint16_t lower, uint16_t upper);
 	void mask(Frame& frame, const QRectF& maskNorm);
 	const QImage toQImage(const Frame& frame, const ImageOptions& options);
+	const pcl::PointCloud<pcl::PointXYZ>::Ptr toCloud(const Frame& frame);
 	const Frame difference(const Frame& lhs, const Frame& rhs);
+	const Frame fromCloud(const pcl::PointCloud<pcl::PointXYZ>::Ptr& cloud);
 
 	// frameset functions
 	const bool isUniform(const Frameset& fs);
@@ -68,3 +74,6 @@ namespace frameset
 	const bool isValid(const Frameset& fs);
 	void mask(Frameset& fs, const QRectF& maskNorm);
 }
+
+Q_DECLARE_METATYPE(frameset::Frame);
+Q_DECLARE_METATYPE(frameset::Frameset);

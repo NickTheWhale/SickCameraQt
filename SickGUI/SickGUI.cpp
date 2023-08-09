@@ -353,6 +353,20 @@ void SickGUI::initializeWidgets()
 #pragma endregion
 
 
+#pragma region FILTER_EDITOR_WIDGET
+
+	filterEditorWidget = new FilterEditorWidget(this);
+	filterEditorWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	dock = new CloseDockWidget("Filter Editor", this);
+	dock->setObjectName("filterEditorWidgetDock");
+	dock->setAllowedAreas(Qt::DockWidgetArea::AllDockWidgetAreas);
+	dock->setWidget(filterEditorWidget);
+	dock->adjustSize();
+	addDockWidget(Qt::DockWidgetArea::RightDockWidgetArea, dock);
+
+#pragma endregion
+
+
 #pragma region MISC
 
 	ui.actionPlay->setEnabled(true);

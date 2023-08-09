@@ -253,7 +253,19 @@
     <ClCompile Include="nodeeditor\src\UndoCommands.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FilterEditorWidget.cpp">
+    <ClCompile Include="widgets\FilterEditorWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nodes\PassthroughFilterModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nodes\FrameSourceModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nodes\FrameViewerModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nodes\VoxelFilterModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -444,7 +456,10 @@
     <ClInclude Include="nodeeditor\include\QtNodes\internal\StyleCollection.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FilterEditorWidget.h">
+    <ClInclude Include="widgets\FilterEditorWidget.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nodes\FrameNodeData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -522,6 +537,18 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="nodeeditor\include\QtNodes\internal\NodeGraphicsObject.hpp">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nodes\PassthroughFilterModel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nodes\FrameSourceModel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nodes\FrameViewerModel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nodes\VoxelFilterModel.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

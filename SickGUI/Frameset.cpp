@@ -1108,7 +1108,6 @@ void frameset::clip(Frame& frame, uint16_t lower, uint16_t upper)
 	//Q_ASSERT_X(upper > lower, __FUNCTION__, "upper must be greater lower");
 	if (upper < lower)
 	{	
-		qDebug() << __FUNCTION__ << "upper < lower";
 		std::swap(upper, lower);
 	}
 	for (uint16_t& val : frame.data)
@@ -1125,7 +1124,6 @@ void frameset::clamp(Frame& frame, uint16_t lower, uint16_t upper)
 	//Q_ASSERT_X(upper > lower, __FUNCTION__, "upper must be greater lower");
 	if (upper < lower)
 	{
-		qDebug() << __FUNCTION__ << "upper < lower";
 		std::swap(upper, lower);
 	}
 	for (uint16_t& val : frame.data)
@@ -1177,6 +1175,10 @@ void frameset::mask(Frame& frame, const QRectF& maskNorm)
 const QImage frameset::toQImage(const Frame& frame, const ImageOptions& options)
 {
 	QImage image = QImage(frame.width, frame.height, QImage::Format_ARGB32_Premultiplied);
+	
+	if (frame.data.empty())
+		return image;
+
 	// exposure limits
 	uint16_t min;
 	uint16_t max;
@@ -1219,6 +1221,34 @@ const QImage frameset::toQImage(const Frame& frame, const ImageOptions& options)
 	return image;
 }
 
+const pcl::PointCloud<pcl::PointXYZ>::Ptr frameset::toCloud(const Frame& frame)
+{
+	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
+	
+	if (frame.data.empty())
+		return cloud;
+
+	cloud->width = frame.width;
+	cloud->height = frame.height;
+	cloud->is_dense = false;
+	cloud->points.resize(frame.data.size());
+	
+	for (uint32_t y = 0; y < frame.height; ++y)
+	{
+		for (uint32_t x = 0; x < frame.width; ++x)
+		{
+			const uint16_t depth = frameset::at(frame, x, y);
+			pcl::PointXYZ& point = cloud->at(x, y);
+
+			point.z = static_cast<float>(depth);
+			point.x = static_cast<float>(x);
+			point.y = static_cast<float>(y);
+		}
+	}
+
+	return cloud;
+}
+
 const frameset::Frame frameset::difference(const Frame& lhs, const Frame& rhs)
 {
 	Q_ASSERT_X(lhs.data.size() == rhs.data.size(), __FUNCTION__, "frames must have same sizes");
@@ -1233,6 +1263,32 @@ const frameset::Frame frameset::difference(const Frame& lhs, const Frame& rhs)
 	diff.width = lhs.width;
 	Q_ASSERT_X(isValid(diff), __FUNCTION__, "return frame is invalid after difference calculation");
 	return diff;
+}
+
+const frameset::Frame frameset::fromCloud(const pcl::PointCloud<pcl::PointXYZ>::Ptr& cloud)
+{
+	frameset::Frame frame;
+
+	if (!cloud || cloud->empty())
+		return frame;
+
+	frame.width = cloud->width;
+	frame.height = cloud->height;
+	frame.data.resize(cloud->size());
+
+	for (uint32_t y = 0; y < frame.height; ++y)
+	{
+		for (uint32_t x = 0; x < frame.width; ++x)
+		{
+			const pcl::PointXYZ& point = cloud->at(x, y);
+
+			uint16_t depth = static_cast<uint16_t>(point.z);
+
+			frame.data[y * frame.width + x] = depth;
+		}
+	}
+
+	return frame;
 }
 
 const bool frameset::isUniform(const Frameset& fs)
