@@ -3,11 +3,11 @@
 #include <FrameNodeData.h>
 #include <qlayout.h>
 #include <qpushbutton.h>
+#include <qapplication.h>
 
 FrameViewerModel::FrameViewerModel() :
     _widget(new QWidget()),
-    _image(new ImageLabel()),
-    threadInterface(ThreadInterface::instance())
+    _image(new ImageLabel())
 {
     QVBoxLayout* vbox = new QVBoxLayout();
     vbox->addWidget(_image);
@@ -16,34 +16,9 @@ FrameViewerModel::FrameViewerModel() :
     _widget->setLayout(vbox);
 }
 
-unsigned int FrameViewerModel::nPorts(QtNodes::PortType const portType) const
-{
-    unsigned int result = 1;
-    switch (portType)
-    {
-    case QtNodes::PortType::In:
-        result = 1;
-        break;
-
-    case QtNodes::PortType::Out:
-        result = 0;
-        break;
-
-    default:
-        break;
-    }
-
-    return result;
-}
-
 QtNodes::NodeDataType FrameViewerModel::dataType(QtNodes::PortType const portType, QtNodes::PortIndex const portIndex) const
 {
     return FrameNodeData().type();
-}
-
-std::shared_ptr<QtNodes::NodeData> FrameViewerModel::outData(QtNodes::PortIndex const port)
-{
-    return _currentNodeData;
 }
 
 void FrameViewerModel::setInData(std::shared_ptr<QtNodes::NodeData> nodeData, QtNodes::PortIndex const portIndex)
@@ -52,9 +27,18 @@ void FrameViewerModel::setInData(std::shared_ptr<QtNodes::NodeData> nodeData, Qt
 
     if (_currentNodeData)
     {
-        auto d = std::dynamic_pointer_cast<FrameNodeData>(_currentNodeData);
-
-        _image->setPixmap(QPixmap::fromImage(frameset::toQImage(d->frame(), frameset::ImageOptions())));
+        const auto d = std::dynamic_pointer_cast<FrameNodeData>(_currentNodeData);
+        if (d && !frameset::isEmpty(d->frame()))
+        {
+            const frameset::Frame frame = std::dynamic_pointer_cast<FrameNodeData>(_currentNodeData)->frame();
+            auto options = frameset::ImageOptions();
+            options.colormap = tinycolormap::ColormapType::Jet;
+            _image->setPixmap(QPixmap::fromImage(frameset::toQImage(frame, options)));
+        }
+    }
+    else
+    {
+        _image->setPixmap(QPixmap());
     }
 
     emit dataUpdated(0);

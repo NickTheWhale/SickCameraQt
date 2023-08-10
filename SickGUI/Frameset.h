@@ -1,12 +1,13 @@
 #pragma once
 #include <vector>
+
+#include <TinyColormap.hpp>
+
 #include <qrect.h>
 #include <qimage.h>
-#include <TinyColormap.hpp>
 #include <qmetatype.h>
-#include <pcl/point_cloud.h>
-#include <pcl/point_types.h>
 
+#include <opencv2/core.hpp>
 
 namespace frameset
 {
@@ -46,6 +47,16 @@ namespace frameset
 		uint32_t width;
 		uint32_t number;
 		uint64_t time;
+
+		Frame()
+			: height(0), width(0), number(0), time(0)
+		{
+		}
+
+		Frame(const std::vector<uint16_t>& data, const uint32_t height, const uint32_t width, const uint32_t number, const uint64_t time)
+			: data(data), height(height), width(width), number(number), time(time)
+		{
+		}
 	};
 
 	struct Frameset
@@ -64,9 +75,9 @@ namespace frameset
 	void clamp(Frame& frame, uint16_t lower, uint16_t upper);
 	void mask(Frame& frame, const QRectF& maskNorm);
 	const QImage toQImage(const Frame& frame, const ImageOptions& options);
-	const pcl::PointCloud<pcl::PointXYZ>::Ptr toCloud(const Frame& frame);
+	const Frame toFrame(const cv::Mat& mat);
+	const cv::Mat toMat(const Frame& frame);
 	const Frame difference(const Frame& lhs, const Frame& rhs);
-	const Frame fromCloud(const pcl::PointCloud<pcl::PointXYZ>::Ptr& cloud);
 
 	// frameset functions
 	const bool isUniform(const Frameset& fs);

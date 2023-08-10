@@ -256,7 +256,7 @@
     <ClCompile Include="widgets\FilterEditorWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="nodes\PassthroughFilterModel.cpp">
+    <ClCompile Include="nodes\ThresholdFilterModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="nodes\FrameSourceModel.cpp">
@@ -265,7 +265,16 @@
     <ClCompile Include="nodes\FrameViewerModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="nodes\VoxelFilterModel.cpp">
+    <ClCompile Include="nodes\StackBlurFilterModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nodes\ResizeFilterModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nodes\SubtractFilterModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nodes\BilateralFilterModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -539,7 +548,7 @@
     <QtMoc Include="nodeeditor\include\QtNodes\internal\NodeGraphicsObject.hpp">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="nodes\PassthroughFilterModel.h">
+    <QtMoc Include="nodes\ThresholdFilterModel.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="nodes\FrameSourceModel.h">
@@ -548,7 +557,16 @@
     <QtMoc Include="nodes\FrameViewerModel.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="nodes\VoxelFilterModel.h">
+    <QtMoc Include="nodes\StackBlurFilterModel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nodes\ResizeFilterModel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nodes\SubtractFilterModel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nodes\BilateralFilterModel.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -558,89 +576,9 @@
     <CopyFileToFolders Include="configuration\configuration.ini">
       <Filter>Configuration</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_common.dll" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_commond.dll" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_features.dll" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_featuresd.dll" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_filters.dll" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_filtersd.dll" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_io.dll" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_io_ply.dll" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_io_plyd.dll" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_iod.dll" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_kdtree.dll" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_kdtreed.dll" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_keypoints.dll" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_keypointsd.dll" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_ml.dll" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_mld.dll" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_octree.dll" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_octreed.dll" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_outofcore.dll" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_outofcored.dll" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_people.dll" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_peopled.dll" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_recognition.dll" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_recognitiond.dll" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_registration.dll" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_registrationd.dll" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_sample_consensus.dll" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_sample_consensusd.dll" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_search.dll" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_searchd.dll" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_segmentation.dll" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_segmentationd.dll" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_stereo.dll" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_stereod.dll" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_surface.dll" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_surfaced.dll" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_tracking.dll" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_trackingd.dll" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_visualization.dll" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_visualizationd.dll" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="snap7\snap7.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_common.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_commond.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_features.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_featuresd.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_filters.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_filtersd.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_io.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_io_ply.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_io_plyd.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_iod.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_kdtree.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_kdtreed.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_keypoints.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_keypointsd.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_ml.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_mld.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_octree.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_octreed.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_outofcore.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_outofcored.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_people.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_peopled.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_recognition.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_recognitiond.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_registration.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_registrationd.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_sample_consensus.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_sample_consensusd.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_search.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_searchd.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_segmentation.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_segmentationd.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_stereo.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_stereod.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_surface.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_surfaced.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_tracking.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_trackingd.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_visualization.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_visualizationd.lib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

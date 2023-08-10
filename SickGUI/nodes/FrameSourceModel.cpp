@@ -3,6 +3,8 @@
 #include <FrameNodeData.h>
 #include <qlayout.h>
 #include <qpushbutton.h>
+#include <qcheckbox.h>
+#include <qtimer.h>
 
 FrameSourceModel::FrameSourceModel() :
     _widget(new QWidget()),
@@ -16,12 +18,28 @@ FrameSourceModel::FrameSourceModel() :
             _image->setPixmap(QPixmap::fromImage(frameset::toQImage(_frame, frameset::ImageOptions())));
             emit dataUpdated(0);
         });
+    auto continuousCheckBox = new QCheckBox("Continuous");
+    auto timer = new QTimer(_widget);
+    connect(continuousCheckBox, &QCheckBox::stateChanged, this, [=]()
+        {
+            bool enabled = continuousCheckBox->isChecked();
+            snapshotButton->setEnabled(!enabled);
+            enabled ? timer->start(100) : timer->stop();
+        });
+    connect(timer, &QTimer::timeout, this, [=]()
+        {
+            _frame = threadInterface.peekGuiFrame().depth;
+            _image->setPixmap(QPixmap::fromImage(frameset::toQImage(_frame, frameset::ImageOptions())));
+            emit dataUpdated(0);
+        });
+    auto hbox = new QHBoxLayout();
+    hbox->addWidget(continuousCheckBox);
+    hbox->addWidget(snapshotButton);
     
-    QVBoxLayout* vbox = new QVBoxLayout();
-    
+    auto vbox = new QVBoxLayout();
     vbox->addWidget(_image);
-    vbox->addWidget(snapshotButton);
-    
+    vbox->addLayout(hbox);
+
     _image->setMinimumSize(100, 100);
     _widget->setLayout(vbox);
 }

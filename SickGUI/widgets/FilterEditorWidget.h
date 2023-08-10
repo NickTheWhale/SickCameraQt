@@ -6,8 +6,6 @@
 #include <DataFlowGraphModel.hpp>
 #include <DataFlowGraphicsScene.hpp>
 
-#include <PassthroughFilterModel.h>
-
 static std::shared_ptr<QtNodes::NodeDelegateModelRegistry> registerDataModels();
 
 class FilterEditorWidget : public QtNodes::GraphicsView

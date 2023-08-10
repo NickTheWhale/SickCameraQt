@@ -1107,7 +1107,7 @@ void frameset::clip(Frame& frame, uint16_t lower, uint16_t upper)
 {
 	//Q_ASSERT_X(upper > lower, __FUNCTION__, "upper must be greater lower");
 	if (upper < lower)
-	{	
+	{
 		std::swap(upper, lower);
 	}
 	for (uint16_t& val : frame.data)
@@ -1156,9 +1156,9 @@ void frameset::mask(Frame& frame, const QRectF& maskNorm)
 	const std::vector<uint16_t> bufferCopy(frame.data);
 	frame.data.clear();
 
-	for (size_t y = maskTopLeft.y(); y < maskTopLeft.y() + maskedHeight ; ++y)
+	for (size_t y = maskTopLeft.y(); y < maskTopLeft.y() + maskedHeight; ++y)
 	{
-		for (size_t x = maskTopLeft.x(); x < maskTopLeft.x() + maskedWidth ; ++x)
+		for (size_t x = maskTopLeft.x(); x < maskTopLeft.x() + maskedWidth; ++x)
 		{
 			const int index = y * frame.width + x;
 			Q_ASSERT_X(index < bufferCopy.size(), __FUNCTION__, "index out of range of buffer");
@@ -1175,7 +1175,7 @@ void frameset::mask(Frame& frame, const QRectF& maskNorm)
 const QImage frameset::toQImage(const Frame& frame, const ImageOptions& options)
 {
 	QImage image = QImage(frame.width, frame.height, QImage::Format_ARGB32_Premultiplied);
-	
+
 	if (frame.data.empty())
 		return image;
 
@@ -1221,32 +1221,39 @@ const QImage frameset::toQImage(const Frame& frame, const ImageOptions& options)
 	return image;
 }
 
-const pcl::PointCloud<pcl::PointXYZ>::Ptr frameset::toCloud(const Frame& frame)
+const frameset::Frame frameset::toFrame(const cv::Mat& mat)
 {
-	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
-	
-	if (frame.data.empty())
-		return cloud;
+	Frame frame;
+	if (mat.channels() != 1 || mat.depth() != CV_16U)
+		return frame;
 
-	cloud->width = frame.width;
-	cloud->height = frame.height;
-	cloud->is_dense = false;
-	cloud->points.resize(frame.data.size());
-	
+	frame.width = mat.cols;
+	frame.height = mat.rows;
+	frame.data.resize(frame.width * frame.height);
+
 	for (uint32_t y = 0; y < frame.height; ++y)
 	{
 		for (uint32_t x = 0; x < frame.width; ++x)
 		{
-			const uint16_t depth = frameset::at(frame, x, y);
-			pcl::PointXYZ& point = cloud->at(x, y);
-
-			point.z = static_cast<float>(depth) / 1000.0f;
-			point.x = static_cast<float>(x);
-			point.y = static_cast<float>(y);
+			frame.data[y * frame.width + x] = mat.at<uint16_t>(cv::Point(x, y));
 		}
 	}
 
-	return cloud;
+	return frame;
+}
+
+const cv::Mat frameset::toMat(const Frame& frame)
+{
+	cv::Mat mat(frame.height, frame.width, CV_16U);
+	for (uint32_t y = 0; y < frame.height; ++y)
+	{
+		for (uint32_t x = 0; x < frame.width; ++x)
+		{
+			mat.at<uint16_t>(cv::Point(x, y)) = frame.data[y * frame.width + x];
+		}
+	}
+
+	return mat;
 }
 
 const frameset::Frame frameset::difference(const Frame& lhs, const Frame& rhs)
@@ -1261,34 +1268,7 @@ const frameset::Frame frameset::difference(const Frame& lhs, const Frame& rhs)
 	}
 	diff.height = lhs.height;
 	diff.width = lhs.width;
-	Q_ASSERT_X(isValid(diff), __FUNCTION__, "return frame is invalid after difference calculation");
 	return diff;
-}
-
-const frameset::Frame frameset::fromCloud(const pcl::PointCloud<pcl::PointXYZ>::Ptr& cloud)
-{
-	frameset::Frame frame;
-
-	if (!cloud || cloud->empty())
-		return frame;
-
-	frame.width = cloud->width;
-	frame.height = cloud->height;
-	frame.data.resize(cloud->size());
-
-	for (uint32_t y = 0; y < frame.height; ++y)
-	{
-		for (uint32_t x = 0; x < frame.width; ++x)
-		{
-			const pcl::PointXYZ& point = cloud->at(x, y);
-
-			uint16_t depth = static_cast<uint16_t>(point.z * 1000.0f);
-
-			frame.data[y * frame.width + x] = depth;
-		}
-	}
-
-	return frame;
 }
 
 const bool frameset::isUniform(const Frameset& fs)

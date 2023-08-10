@@ -57,12 +57,14 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <IncludePath>$(ProjectDir)\threads;$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(ProjectDir)\widgets;$(ProjectDir)\sickapi\include;$(ProjectDir)\sickapi\src;$(ProjectDir)\sickapi\3pp;$(ProjectDir)\sickapi\camimpl;$(ProjectDir)\qcustomplot;$(ProjectDir)\;$(ProjectDir)\pointcloudlibrary\3rdParty\Eigen\eigen3;$(ProjectDir)\pointcloudlibrary\include\pcl-1.13;$(ProjectDir)\nodeeditor\include\;$(ProjectDir)\nodeeditor\include\QtNodes\;$(ProjectDir)\nodeeditor\include\QtNodes\internal\;$(ProjectDir)\nodes;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)\threads;$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(ProjectDir)\widgets;$(ProjectDir)\sickapi\include;$(ProjectDir)\sickapi\src;$(ProjectDir)\sickapi\3pp;$(ProjectDir)\sickapi\camimpl;$(ProjectDir)\qcustomplot;$(ProjectDir)\;$(ProjectDir)\pointcloudlibrary\3rdParty\Eigen\eigen3;$(ProjectDir)\pointcloudlibrary\include\pcl-1.13;$(ProjectDir)\nodeeditor\include\;$(ProjectDir)\nodeeditor\include\QtNodes\;$(ProjectDir)\nodeeditor\include\QtNodes\internal\;$(ProjectDir)\nodes;C:\opencv\build\include;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)$(Platform)\$(ProjectName)\$(Configuration)\</OutDir>
+    <LibraryPath>C:\opencv\build\x64\vc16\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <IncludePath>$(ProjectDir)\threads;$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(ProjectDir)\widgets;$(ProjectDir)\sickapi\include;$(ProjectDir)\sickapi\src;$(ProjectDir)\sickapi\3pp;$(ProjectDir)\sickapi\camimpl;$(ProjectDir)\qcustomplot;$(ProjectDir)\;$(ProjectDir)\pointcloudlibrary\3rdParty\Eigen\eigen3;$(ProjectDir)\pointcloudlibrary\include\pcl-1.13;$(ProjectDir)\nodeeditor\include\;$(ProjectDir)\nodeeditor\include\QtNodes\;$(ProjectDir)\nodeeditor\include\QtNodes\internal\;$(ProjectDir)\nodes;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)\threads;$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(ProjectDir)\widgets;$(ProjectDir)\sickapi\include;$(ProjectDir)\sickapi\src;$(ProjectDir)\sickapi\3pp;$(ProjectDir)\sickapi\camimpl;$(ProjectDir)\qcustomplot;$(ProjectDir)\;$(ProjectDir)\pointcloudlibrary\3rdParty\Eigen\eigen3;$(ProjectDir)\pointcloudlibrary\include\pcl-1.13;$(ProjectDir)\nodeeditor\include\;$(ProjectDir)\nodeeditor\include\QtNodes\;$(ProjectDir)\nodeeditor\include\QtNodes\internal\;$(ProjectDir)\nodes;C:\opencv\build\include;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)$(Platform)\$(ProjectName)\$(Configuration)\</OutDir>
+    <LibraryPath>C:\opencv\build\x64\vc16\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -70,6 +72,14 @@
       <PreprocessorDefinitions>NOMINMAX;NODE_EDITOR_STATIC</PreprocessorDefinitions>
       <UndefinePreprocessorDefinitions>%(UndefinePreprocessorDefinitions)</UndefinePreprocessorDefinitions>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>opencv_world480d.lib;opencv_world480.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)\opencv\bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y /d /f "C:\opencv\build\x64\vc16\bin\opencv_world480.dll" "$(OutDir)"
+xcopy /y /d /f "C:\opencv\build\x64\vc16\bin\opencv_world480d.dll" "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -81,6 +91,14 @@
       <WholeProgramOptimization>true</WholeProgramOptimization>
       <UndefinePreprocessorDefinitions>%(UndefinePreprocessorDefinitions)</UndefinePreprocessorDefinitions>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>opencv_world480d.lib;opencv_world480.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)\opencv\bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y /d /f "C:\opencv\build\x64\vc16\bin\opencv_world480.dll" "$(OutDir)"
+xcopy /y /d /f "C:\opencv\build\x64\vc16\bin\opencv_world480d.dll" "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ClCompile>
@@ -108,10 +126,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
+    <ClCompile Include="nodes\BilateralFilterModel.cpp" />
     <ClCompile Include="nodes\FrameViewerModel.cpp" />
     <ClCompile Include="nodes\FrameSourceModel.cpp" />
-    <ClCompile Include="nodes\PassthroughFilterModel.cpp" />
-    <ClCompile Include="nodes\VoxelFilterModel.cpp" />
+    <ClCompile Include="nodes\ThresholdFilterModel.cpp" />
+    <ClCompile Include="nodes\StackBlurFilterModel.cpp" />
+    <ClCompile Include="nodes\ResizeFilterModel.cpp" />
+    <ClCompile Include="nodes\SubtractFilterModel.cpp" />
     <ClCompile Include="widgets\FilterEditorWidget.cpp" />
     <ClCompile Include="Frameset.cpp" />
     <ClCompile Include="nodeeditor\src\AbstractGraphModel.cpp" />
@@ -212,11 +233,14 @@
     <QtMoc Include="threads\RenderThread.h" />
     <QtMoc Include="widgets\RangeSlider.h" />
     <QtMoc Include="widgets\FrameCompareWidget.h" />
-    <QtMoc Include="nodes\PassthroughFilterModel.h" />
+    <QtMoc Include="nodes\ThresholdFilterModel.h" />
     <QtMoc Include="nodes\FrameSourceModel.h" />
     <QtMoc Include="nodes\FrameViewerModel.h" />
+    <QtMoc Include="nodes\BilateralFilterModel.h" />
     <ClInclude Include="nodes\FrameNodeData.h" />
-    <QtMoc Include="nodes\VoxelFilterModel.h" />
+    <QtMoc Include="nodes\StackBlurFilterModel.h" />
+    <QtMoc Include="nodes\ResizeFilterModel.h" />
+    <QtMoc Include="nodes\SubtractFilterModel.h" />
     <ClInclude Include="widgets\FilterEditorWidget.h" />
     <ClInclude Include="Frameset.h" />
     <QtMoc Include="nodeeditor\include\QtNodes\internal\AbstractGraphModel.hpp" />
@@ -307,46 +331,6 @@
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
-    <Library Include="pointcloudlibrary\lib\pcl_common.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_commond.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_features.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_featuresd.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_filters.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_filtersd.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_io.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_iod.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_io_ply.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_io_plyd.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_kdtree.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_kdtreed.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_keypoints.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_keypointsd.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_ml.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_mld.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_octree.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_octreed.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_outofcore.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_outofcored.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_people.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_peopled.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_recognition.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_recognitiond.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_registration.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_registrationd.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_sample_consensus.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_sample_consensusd.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_search.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_searchd.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_segmentation.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_segmentationd.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_stereo.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_stereod.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_surface.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_surfaced.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_tracking.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_trackingd.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_visualization.lib" />
-    <Library Include="pointcloudlibrary\lib\pcl_visualizationd.lib" />
     <Library Include="snap7\snap7.lib" />
   </ItemGroup>
   <ItemGroup>
@@ -357,126 +341,6 @@
     </CopyFileToFolders>
     <None Include="Doxyfile" />
     <None Include="packages.config" />
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_common.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_commond.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_features.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_featuresd.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_filters.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_filtersd.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_io.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_iod.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_io_ply.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_io_plyd.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_kdtree.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_kdtreed.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_keypoints.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_keypointsd.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_ml.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_mld.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_octree.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_octreed.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_outofcore.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_outofcored.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_people.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_peopled.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_recognition.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_recognitiond.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_registration.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_registrationd.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_sample_consensus.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_sample_consensusd.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_search.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_searchd.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_segmentation.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_segmentationd.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_stereo.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_stereod.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_surface.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_surfaced.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_tracking.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_trackingd.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_visualization.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="pointcloudlibrary\bin\pcl_visualizationd.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
