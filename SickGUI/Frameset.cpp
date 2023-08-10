@@ -1240,7 +1240,7 @@ const pcl::PointCloud<pcl::PointXYZ>::Ptr frameset::toCloud(const Frame& frame)
 			const uint16_t depth = frameset::at(frame, x, y);
 			pcl::PointXYZ& point = cloud->at(x, y);
 
-			point.z = static_cast<float>(depth);
+			point.z = static_cast<float>(depth) / 1000.0f;
 			point.x = static_cast<float>(x);
 			point.y = static_cast<float>(y);
 		}
@@ -1282,7 +1282,7 @@ const frameset::Frame frameset::fromCloud(const pcl::PointCloud<pcl::PointXYZ>::
 		{
 			const pcl::PointXYZ& point = cloud->at(x, y);
 
-			uint16_t depth = static_cast<uint16_t>(point.z);
+			uint16_t depth = static_cast<uint16_t>(point.z * 1000.0f);
 
 			frame.data[y * frame.width + x] = depth;
 		}

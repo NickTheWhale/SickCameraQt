@@ -137,7 +137,8 @@ namespace pcl
           output.header = input_->header;
           output.sensor_origin_ = input_->sensor_origin_;
           output.sensor_orientation_ = input_->sensor_orientation_;
-          applyFilter (output);
+
+          applyFilter(output);
         }
 
         deinitCompute ();
