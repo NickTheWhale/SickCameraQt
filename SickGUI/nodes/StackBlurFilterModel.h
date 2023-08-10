@@ -38,8 +38,8 @@ private:
 	std::shared_ptr<QtNodes::NodeData> _currentNodeData;
 	std::shared_ptr<QtNodes::NodeData> _originalNodeData;
 
-	QSpinBox* sb1;
-	QSpinBox* sb2;
+	QSpinBox* sb_sizeX;
+	QSpinBox* sb_sizeY;
 
 	void applyFilter();
 	const int makeOdd(const int number) const;

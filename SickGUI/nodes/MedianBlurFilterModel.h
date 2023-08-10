@@ -3,23 +3,23 @@
 
 #include <FrameNodeData.h>
 
-#include <qspinbox.h>
+#include <qradiobutton.h>
 
-class ResizeFilterModel : public QtNodes::NodeDelegateModel
+class MedianBlurFilterModel : public QtNodes::NodeDelegateModel
 {
 	Q_OBJECT
 
 public:
-	ResizeFilterModel();
-	~ResizeFilterModel() = default;
+	MedianBlurFilterModel();
+	~MedianBlurFilterModel() = default;
 
 public:
-	QString caption() const override { return QString("Resize"); }
+	QString caption() const override { return QString("Median Blur"); }
 
-	QString name() const override { return QString("Resize"); }
+	QString name() const override { return QString("Median Blur"); }
 
 public:
-	virtual QString modelName() const { return QString("Resize"); }
+	virtual QString modelName() const { return QString("Median Blur"); }
 
 	unsigned int nPorts(QtNodes::PortType const portType) const override { return 1; }
 
@@ -38,8 +38,8 @@ private:
 	std::shared_ptr<QtNodes::NodeData> _currentNodeData;
 	std::shared_ptr<QtNodes::NodeData> _originalNodeData;
 
-	QSpinBox* sb_sizeX;
-	QSpinBox* sb_sizeY;
+	QRadioButton* size3 = nullptr;
+	QRadioButton* size5 = nullptr;
 
 	void applyFilter();
 };

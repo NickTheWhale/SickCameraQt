@@ -277,6 +277,18 @@
     <ClCompile Include="nodes\BilateralFilterModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="nodes\BlurFilterModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nodes\GaussianBlurFilterModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nodes\MedianBlurFilterModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nodes\FastNIMeansDenoisingFilterModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="snap7\snap7.h">
@@ -567,6 +579,18 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="nodes\BilateralFilterModel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nodes\BlurFilterModel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nodes\GaussianBlurFilterModel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nodes\MedianBlurFilterModel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nodes\FastNIMeansDenoisingFilterModel.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

@@ -5,21 +5,21 @@
 
 #include <qspinbox.h>
 
-class ResizeFilterModel : public QtNodes::NodeDelegateModel
+class BlurFilterModel : public QtNodes::NodeDelegateModel
 {
 	Q_OBJECT
 
 public:
-	ResizeFilterModel();
-	~ResizeFilterModel() = default;
+	BlurFilterModel();
+	~BlurFilterModel() = default;
 
 public:
-	QString caption() const override { return QString("Resize"); }
+	QString caption() const override { return QString("Blur"); }
 
-	QString name() const override { return QString("Resize"); }
+	QString name() const override { return QString("Blur"); }
 
 public:
-	virtual QString modelName() const { return QString("Resize"); }
+	virtual QString modelName() const { return QString("Blur"); }
 
 	unsigned int nPorts(QtNodes::PortType const portType) const override { return 1; }
 
@@ -38,8 +38,8 @@ private:
 	std::shared_ptr<QtNodes::NodeData> _currentNodeData;
 	std::shared_ptr<QtNodes::NodeData> _originalNodeData;
 
-	QSpinBox* sb_sizeX;
-	QSpinBox* sb_sizeY;
+	QSpinBox* sb_sizeX = nullptr;
+	QSpinBox* sb_sizeY = nullptr;
 
 	void applyFilter();
 };

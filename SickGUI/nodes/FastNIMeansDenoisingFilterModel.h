@@ -5,21 +5,21 @@
 
 #include <qspinbox.h>
 
-class ResizeFilterModel : public QtNodes::NodeDelegateModel
+class FastNIMeansDenoisingFilterModel : public QtNodes::NodeDelegateModel
 {
 	Q_OBJECT
 
 public:
-	ResizeFilterModel();
-	~ResizeFilterModel() = default;
+	FastNIMeansDenoisingFilterModel();
+	~FastNIMeansDenoisingFilterModel() = default;
 
 public:
-	QString caption() const override { return QString("Resize"); }
+	QString caption() const override { return QString("Non-Local Means Denoising"); }
 
-	QString name() const override { return QString("Resize"); }
+	QString name() const override { return QString("Non-Local Means Denoising"); }
 
 public:
-	virtual QString modelName() const { return QString("Resize"); }
+	virtual QString modelName() const { return QString("Non-Local Means Denoising"); }
 
 	unsigned int nPorts(QtNodes::PortType const portType) const override { return 1; }
 
@@ -38,8 +38,7 @@ private:
 	std::shared_ptr<QtNodes::NodeData> _currentNodeData;
 	std::shared_ptr<QtNodes::NodeData> _originalNodeData;
 
-	QSpinBox* sb_sizeX;
-	QSpinBox* sb_sizeY;
+	QDoubleSpinBox* sb_h;
 
 	void applyFilter();
 };

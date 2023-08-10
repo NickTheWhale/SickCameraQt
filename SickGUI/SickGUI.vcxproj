@@ -126,6 +126,10 @@ xcopy /y /d /f "C:\opencv\build\x64\vc16\bin\opencv_world480d.dll" "$(OutDir)"</
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
+    <ClCompile Include="nodes\BlurFilterModel.cpp" />
+    <ClCompile Include="nodes\FastNIMeansDenoisingFilterModel.cpp" />
+    <ClCompile Include="nodes\GaussianBlurFilterModel.cpp" />
+    <ClCompile Include="nodes\MedianBlurFilterModel.cpp" />
     <ClCompile Include="nodes\BilateralFilterModel.cpp" />
     <ClCompile Include="nodes\FrameViewerModel.cpp" />
     <ClCompile Include="nodes\FrameSourceModel.cpp" />
@@ -237,6 +241,10 @@ xcopy /y /d /f "C:\opencv\build\x64\vc16\bin\opencv_world480d.dll" "$(OutDir)"</
     <QtMoc Include="nodes\FrameSourceModel.h" />
     <QtMoc Include="nodes\FrameViewerModel.h" />
     <QtMoc Include="nodes\BilateralFilterModel.h" />
+    <QtMoc Include="nodes\BlurFilterModel.h" />
+    <QtMoc Include="nodes\FastNIMeansDenoisingFilterModel.h" />
+    <QtMoc Include="nodes\GaussianBlurFilterModel.h" />
+    <QtMoc Include="nodes\MedianBlurFilterModel.h" />
     <ClInclude Include="nodes\FrameNodeData.h" />
     <QtMoc Include="nodes\StackBlurFilterModel.h" />
     <QtMoc Include="nodes\ResizeFilterModel.h" />

@@ -1,24 +1,24 @@
-#include "ResizeFilterModel.h"
-
-#include <opencv2/imgproc.hpp>
+#include "BlurFilterModel.h"
 
 #include <qlayout.h>
 #include <qlabel.h>
 
-ResizeFilterModel::ResizeFilterModel() :
+#include <opencv2/imgproc.hpp>
+
+BlurFilterModel::BlurFilterModel() :
 	_widget(new QWidget()),
 	sb_sizeX(new QSpinBox()),
 	sb_sizeY(new QSpinBox())
 {
-	sb_sizeX->setRange(1, 600);
-	sb_sizeY->setRange(1, 600);
+	sb_sizeX->setRange(1, 99);
+	sb_sizeY->setRange(1, 99);
 
 	connect(sb_sizeX, &QSpinBox::valueChanged, this, [=]() { applyFilter(); });
 	connect(sb_sizeY, &QSpinBox::valueChanged, this, [=]() { applyFilter(); });
 
 	auto hboxTop = new QHBoxLayout();
 	auto hboxBottom = new QHBoxLayout();
-	hboxTop->addWidget(new QLabel("Size (px)"));
+	hboxTop->addWidget(new QLabel("Kernal Size (px)"));
 	hboxBottom->addWidget(sb_sizeX);
 	hboxBottom->addWidget(new QLabel("x"));
 	hboxBottom->addWidget(sb_sizeY);
@@ -30,7 +30,7 @@ ResizeFilterModel::ResizeFilterModel() :
 	_widget->setLayout(vbox);
 }
 
-void ResizeFilterModel::setInData(std::shared_ptr<QtNodes::NodeData> nodeData, QtNodes::PortIndex const portIndex)
+void BlurFilterModel::setInData(std::shared_ptr<QtNodes::NodeData> nodeData, QtNodes::PortIndex const portIndex)
 {
 	_originalNodeData = nodeData;
 	_currentNodeData = nodeData;
@@ -38,7 +38,7 @@ void ResizeFilterModel::setInData(std::shared_ptr<QtNodes::NodeData> nodeData, Q
 	applyFilter();
 }
 
-void ResizeFilterModel::applyFilter()
+void BlurFilterModel::applyFilter()
 {
 	if (_originalNodeData)
 	{
@@ -46,15 +46,16 @@ void ResizeFilterModel::applyFilter()
 		if (d && !frameset::isEmpty(d->frame()))
 		{
 			const frameset::Frame inputFrame = std::dynamic_pointer_cast<FrameNodeData>(_originalNodeData)->frame();
+			
 			const cv::Mat inputMat = frameset::toMat(inputFrame);
 			cv::Mat outputMat;
 			cv::Size size(sb_sizeX->value(), sb_sizeY->value());
-			cv::resize(inputMat, outputMat, size, 0.0f, 0.0f, cv::InterpolationFlags::INTER_AREA);
-
+			cv::blur(inputMat, outputMat, size);
 			const frameset::Frame outputFrame = frameset::toFrame(outputMat);
 
 			_currentNodeData = std::make_shared<FrameNodeData>(outputFrame);
 		}
 	}
+
 	emit dataUpdated(0);
 }
