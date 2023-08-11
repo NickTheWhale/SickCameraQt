@@ -34,6 +34,28 @@ void BilateralFilterModel::setInData(std::shared_ptr<QtNodes::NodeData> nodeData
 	applyFilter();
 }
 
+QJsonObject BilateralFilterModel::save() const
+{
+	QJsonObject parameters;
+	parameters["diameter"] = sb_diameter->value();
+	parameters["sigma-color"] = sb_sigmaColor->value();
+	parameters["sigma-space"] = sb_sigmaSpace->value();
+
+	QJsonObject root;
+	root["model-name"] = modelName();
+	root["filter-parameters"] = parameters;
+
+	return root;
+}
+
+void BilateralFilterModel::load(QJsonObject const& p)
+{
+	QJsonObject parameters = p["filter-parameters"].toObject();
+	sb_diameter->setValue(parameters["diameter"].toInt(sb_diameter->value()));
+	sb_sigmaColor->setValue(parameters["sigma-color"].toDouble(sb_sigmaColor->value()));
+	sb_sigmaSpace->setValue(parameters["sigma-space"].toDouble(sb_sigmaSpace->value()));
+}
+
 void BilateralFilterModel::applyFilter()
 {
 	if (_originalNodeData)

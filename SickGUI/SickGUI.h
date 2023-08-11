@@ -9,26 +9,26 @@
  *********************************************************************/
 #pragma once
 
-#include <QtWidgets/QMainWindow>
-#include "ui_SickGUI.h"
+#include <qpromise.h>
+#include <qmainwindow.h>
+#include <qfuturewatcher.h>
+
+#include "VisionaryCamera.h"
 #include <CaptureThread.h>
 #include <PlcThread.h>
-#include <Frameset.h>
-#include "Stream.h"
-#include <qpromise.h>
-#include <qfuturewatcher.h>
-#include "TinyColormap.hpp"
+
 #include <HistogramWidget.h>
-#include <LoggingWidget.h>
-#include "CustomMessageHandler.h"
 #include <CycleTimeWidget.h>
-#include <QAutoWebSocket.h>
-#include <ThreadInterface.h>
-#include <RenderThread.h>
+#include <LoggingWidget.h>
 #include <CameraViewWidget.h>
-#include "VisionaryCamera.h"
 #include <FrameCompareWidget.h>
 #include <FilterEditorWidget.h>
+
+#include <Frameset.h>
+#include "Stream.h"
+#include "TinyColormap.hpp"
+#include <ThreadInterface.h>
+#include "CustomMessageHandler.h"
 
 class CaptureThread;
 
@@ -46,38 +46,11 @@ class SickGUI : public QMainWindow
 {
 	Q_OBJECT
 
-public slots:
-	/**
-	 * @brief Slot to start live video stream and histograms.
-	 * @note  This slot has no effect on the plcThread and
-	 *        will not effect the plcThread's ability to receive new frames.
-	 */
-	void playVideo();
-
-	/**
-	 * @brief Slot to pause live video stream and histograms.
-	 * @note  This slot has no effect on the plcThread and
-	 *		  will not pause the plcThread's FrameType capture.
-	 *
-	 */
-	void pauseVideo();
-
-	/**
-	 * @brief Slot to show a message on the status bar.
-	 * @note  *Messages shown with this method are not required to be persistent even
-	 *        with a timeout of 0.
-	 * @param msg Message to show.
-	 * @param timeout How long to display the message in milliseconds.
-	 *        Use timeout = 0 for a persistent* message.
-	 */
-	void showStatusBarMessage(const QString& msg, int timeout = 0);
-
 public:
 	SickGUI(CustomMessageHandler* messageHandler, QWidget* parent = nullptr);
 	~SickGUI();
 
 private slots:
-	void updateDisplay(const QImage& lastImage);
 	/**
 	 * @brief QFutureWatcher callback to check camera and plc thread start status.
 	 *
@@ -99,8 +72,6 @@ private:
 	 *
 	 */
 	void initializeWidgets();
-
-	void initializeWeb();
 
 	/**
 	 * @brief Creates a new Camera.
@@ -160,8 +131,6 @@ private:
 	qint16 plcRack = 0;
 	qint16 plcSlot = 0;
 
-	Ui::SickGUIClass ui;
-
 	ThreadInterface& threadInterface;
 
 	std::string cameraIpAddress = "";
@@ -172,18 +141,11 @@ private:
 	PlcThread* plcThread = nullptr;
 	qint64 plcCycleTimeTarget = 0;
 
-	QAutoWebSocket* webSocket = nullptr;
-
 	QFutureWatcher<ThreadResult>* threadWatcher;
 
-	CameraViewWidget* cameraView = nullptr;
-	HistogramWidget* depthHistogram = nullptr;
+	FilterEditorWidget* filterEditorWidget = nullptr;
 	CycleTimeWidget* cycleTimeWidget = nullptr;
 	LoggingWidget* loggingWidget = nullptr;
-	FrameCompareWidget* frameCompareWidget = nullptr;
-	FilterEditorWidget* filterEditorWidget = nullptr;
 
-	RenderThread renderThread;
-	QLabel* statusBarLabel = nullptr;
 	CustomMessageHandler* messageHandler = nullptr;
 };

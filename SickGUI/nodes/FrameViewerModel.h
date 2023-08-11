@@ -4,6 +4,27 @@
 #include <Frameset.h>
 #include <NodeData.hpp>
 
+#include <qcombobox.h>
+
+namespace 
+{
+	struct ColorMapActionInfo
+	{
+		QString name;
+		tinycolormap::ColormapType colormapType;
+	};
+
+	ColorMapActionInfo colorActions[] =
+	{
+		{"Gray",      tinycolormap::ColormapType::Gray},
+		{"Jet",	      tinycolormap::ColormapType::Jet},
+		{"Heat",      tinycolormap::ColormapType::Heat},
+		{"Hot",       tinycolormap::ColormapType::Hot},
+		{"Github",    tinycolormap::ColormapType::Github},
+		{"Turbo",     tinycolormap::ColormapType::Turbo},
+		{"TurboFast", tinycolormap::ColormapType::TurboFast}
+	};
+}
 
 class FrameViewerModel : public QtNodes::NodeDelegateModel
 {
@@ -16,7 +37,7 @@ public:
 public:
 	QString caption() const override { return QString("Frame Viewer"); }
 
-	QString name() const override { return QString("Viewer"); }
+	QString name() const override { return QString("Frame Viewer"); }
 
 public:
 	virtual QString modelName() const { return QString("Frame Viewer"); }
@@ -33,9 +54,15 @@ public:
 
 	bool resizable() const override { return true; }
 
+	QJsonObject save() const override;
+
+	void load(QJsonObject const& p) override;
+
 private:
-	QWidget* _widget;
-	ImageLabel* _image;
+	QWidget* _widget = nullptr;
+	ImageLabel* _image = nullptr;
+	QComboBox* _colorBox = nullptr;
+
 	frameset::Frame _frame;
 
 	std::shared_ptr<QtNodes::NodeData> _currentNodeData;

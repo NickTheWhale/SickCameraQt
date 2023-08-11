@@ -29,9 +29,6 @@
     <QtRcc Include="SickGUI.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
-    <QtUic Include="SickGUI.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
     <QtMoc Include="SickGUI.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -164,9 +161,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="threads\ThreadInterface.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="threads\RenderThread.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="widgets\RangeSlider.cpp">
@@ -516,9 +510,6 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="threads\QAutoWebSocket.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="threads\RenderThread.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="widgets\RangeSlider.h">

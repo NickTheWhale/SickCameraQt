@@ -11,8 +11,6 @@ MedianBlurFilterModel::MedianBlurFilterModel() :
 	size5(new QRadioButton("5"))
 {
 	size3->setChecked(true);
-	size5->setChecked(false);
-
 	connect(size3, &QRadioButton::toggled, this, [=]() { applyFilter(); });
 	connect(size5, &QRadioButton::toggled, this, [=]() { applyFilter(); });
 
@@ -33,6 +31,28 @@ void MedianBlurFilterModel::setInData(std::shared_ptr<QtNodes::NodeData> nodeDat
 	_currentNodeData = nodeData;
 
 	applyFilter();
+}
+
+QJsonObject MedianBlurFilterModel::save() const
+{
+	QJsonObject parameters;
+	parameters["kernel-size"] = size3->isChecked() ? 3 : 5;
+
+	QJsonObject root;
+	root["model-name"] = modelName();
+	root["filter-parameters"] = parameters;
+
+	return root;
+}
+
+void MedianBlurFilterModel::load(QJsonObject const& p)
+{
+	QJsonObject parameters = p["filter-parameters"].toObject();
+	const int size = parameters["kernel-size"].toInt(0);
+	if (size == 5)
+		size5->setChecked(true);
+	else
+		size3->setChecked(true);
 }
 
 void MedianBlurFilterModel::applyFilter()

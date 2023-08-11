@@ -15,7 +15,7 @@ public:
 public:
 	QString caption() const override { return QString("Frame Source"); }
 
-	QString name() const override { return QString("Source"); }
+	QString name() const override { return QString("Frame Source"); }
 
 public:
 	virtual QString modelName() const { return QString("Frame Source"); }
@@ -30,11 +30,14 @@ public:
 
 	QWidget* embeddedWidget() override { return _widget; }
 
-	bool resizable() const override { return true; }
+	bool resizable() const override { return false; }
+
+	QJsonObject save() const override;
+
+	void load(QJsonObject const& p) override;
 
 private:
 	QWidget* _widget;
-	ImageLabel* _image;
 
 	ThreadInterface& threadInterface;
 

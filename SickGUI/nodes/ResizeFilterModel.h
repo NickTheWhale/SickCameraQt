@@ -33,6 +33,10 @@ public:
 
 	bool resizable() const override { return false; }
 
+	QJsonObject save() const override;
+
+	void load(QJsonObject const& p) override;
+
 private:
 	QWidget* _widget;
 	std::shared_ptr<QtNodes::NodeData> _currentNodeData;

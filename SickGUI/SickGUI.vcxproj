@@ -166,7 +166,6 @@ xcopy /y /d /f "C:\opencv\build\x64\vc16\bin\opencv_world480d.dll" "$(OutDir)"</
     <ClCompile Include="widgets\FrameCompareWidget.cpp" />
     <ClCompile Include="widgets\CameraViewWidget.cpp" />
     <ClCompile Include="widgets\RangeSlider.cpp" />
-    <ClCompile Include="threads\RenderThread.cpp" />
     <ClCompile Include="threads\ThreadInterface.cpp" />
     <ClCompile Include="threads\QAutoWebSocket.cpp" />
     <ClCompile Include="CustomMessageHandler.cpp">
@@ -218,7 +217,6 @@ xcopy /y /d /f "C:\opencv\build\x64\vc16\bin\opencv_world480d.dll" "$(OutDir)"</
     <ClCompile Include="widgets\ImageLabel.cpp" />
     <ClCompile Include="widgets\HistogramWidget.cpp" />
     <QtRcc Include="SickGUI.qrc" />
-    <QtUic Include="SickGUI.ui" />
     <QtMoc Include="SickGUI.h" />
     <ClCompile Include="SickGUI.cpp">
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
@@ -234,7 +232,6 @@ xcopy /y /d /f "C:\opencv\build\x64\vc16\bin\opencv_world480d.dll" "$(OutDir)"</
     <QtMoc Include="widgets\HistogramWidget.h" />
     <QtMoc Include="widgets\CloseDockWidget.h" />
     <ClInclude Include="App.h" />
-    <QtMoc Include="threads\RenderThread.h" />
     <QtMoc Include="widgets\RangeSlider.h" />
     <QtMoc Include="widgets\FrameCompareWidget.h" />
     <QtMoc Include="nodes\ThresholdFilterModel.h" />

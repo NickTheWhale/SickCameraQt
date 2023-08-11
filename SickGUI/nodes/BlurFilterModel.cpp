@@ -38,6 +38,31 @@ void BlurFilterModel::setInData(std::shared_ptr<QtNodes::NodeData> nodeData, QtN
 	applyFilter();
 }
 
+QJsonObject BlurFilterModel::save() const
+{
+	QJsonObject size;
+	size["x"] = sb_sizeX->value();
+	size["y"] = sb_sizeY->value();
+
+	QJsonObject parameters;
+	parameters["kernel-size"] = size;
+
+	QJsonObject root;
+	root["model-name"] = modelName();
+	root["filter-parameters"] = parameters;
+
+	return root;
+}
+
+void BlurFilterModel::load(QJsonObject const& p)
+{
+	QJsonObject parameters = p["filter-parameters"].toObject();
+	QJsonObject size = parameters["kernel-size"].toObject();
+
+	sb_sizeX->setValue(size["x"].toInt(sb_sizeX->value()));
+	sb_sizeY->setValue(size["y"].toInt(sb_sizeX->value()));
+}
+
 void BlurFilterModel::applyFilter()
 {
 	if (_originalNodeData)

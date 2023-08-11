@@ -8,7 +8,7 @@ FastNIMeansDenoisingFilterModel::FastNIMeansDenoisingFilterModel() :
 	_widget(new QWidget()),
 	sb_h(new QDoubleSpinBox())
 {
-	sb_h->setRange(3.0, 1000.0);
+	sb_h->setRange(0.0, 100.0);
 	connect(sb_h, &QDoubleSpinBox::valueChanged, this, [=]() { applyFilter(); });
 
 	auto form = new QFormLayout();
@@ -23,6 +23,24 @@ void FastNIMeansDenoisingFilterModel::setInData(std::shared_ptr<QtNodes::NodeDat
 	_currentNodeData = nodeData;
 
 	applyFilter();
+}
+
+QJsonObject FastNIMeansDenoisingFilterModel::save() const
+{
+	QJsonObject parameters;
+	parameters["h"] = sb_h->value();
+
+	QJsonObject root;
+	root["model-name"] = modelName();
+	root["filter-parameters"] = parameters;
+
+	return root;
+}
+
+void FastNIMeansDenoisingFilterModel::load(QJsonObject const& p)
+{
+	QJsonObject parameters = p["filter-parameters"].toObject();
+	sb_h->setValue(parameters["h"].toDouble(sb_h->value()));
 }
 
 void FastNIMeansDenoisingFilterModel::applyFilter()

@@ -50,6 +50,40 @@ void GaussianBlurFilterModel::setInData(std::shared_ptr<QtNodes::NodeData> nodeD
 	applyFilter();
 }
 
+QJsonObject GaussianBlurFilterModel::save() const
+{
+	QJsonObject size;
+	size["x"] = sb_sizeX->value();
+	size["y"] = sb_sizeY->value();
+
+	QJsonObject sigma;
+	sigma["x"] = sb_sigmaX->value();
+	sigma["y"] = sb_sigmaY->value();
+
+	QJsonObject parameters;
+	parameters["kernel-size"] = size;
+	parameters["sigma"] = sigma;
+
+	QJsonObject root;
+	root["model-name"] = modelName();
+	root["filter-parameters"] = parameters;
+
+	return root;
+}
+
+void GaussianBlurFilterModel::load(QJsonObject const& p)
+{
+	QJsonObject parameters = p["filter-parameters"].toObject();
+	QJsonObject size = parameters["kernel-size"].toObject();
+	QJsonObject sigma = parameters["sigma"].toObject();
+
+	sb_sizeX->setValue(size["x"].toInt(sb_sizeX->value()));
+	sb_sizeY->setValue(size["y"].toInt(sb_sizeY->value()));
+
+	sb_sigmaX->setValue(sigma["x"].toDouble(sb_sigmaX->value()));
+	sb_sigmaY->setValue(sigma["y"].toDouble(sb_sigmaY->value()));
+}
+
 void GaussianBlurFilterModel::applyFilter()
 {
 	if (_originalNodeData)

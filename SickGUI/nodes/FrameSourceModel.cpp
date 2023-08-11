@@ -8,14 +8,12 @@
 
 FrameSourceModel::FrameSourceModel() :
     _widget(new QWidget()),
-    _image(new ImageLabel()),
     threadInterface(ThreadInterface::instance())
 {
     auto snapshotButton = new QPushButton("Snapshot");
     connect(snapshotButton, &QPushButton::pressed, this, [=]() 
         { 
             _frame = threadInterface.peekGuiFrame().depth;
-            _image->setPixmap(QPixmap::fromImage(frameset::toQImage(_frame, frameset::ImageOptions())));
             emit dataUpdated(0);
         });
     auto continuousCheckBox = new QCheckBox("Continuous");
@@ -29,18 +27,13 @@ FrameSourceModel::FrameSourceModel() :
     connect(timer, &QTimer::timeout, this, [=]()
         {
             _frame = threadInterface.peekGuiFrame().depth;
-            _image->setPixmap(QPixmap::fromImage(frameset::toQImage(_frame, frameset::ImageOptions())));
             emit dataUpdated(0);
         });
-    auto hbox = new QHBoxLayout();
-    hbox->addWidget(continuousCheckBox);
-    hbox->addWidget(snapshotButton);
     
     auto vbox = new QVBoxLayout();
-    vbox->addWidget(_image);
-    vbox->addLayout(hbox);
+    vbox->addWidget(continuousCheckBox);
+    vbox->addWidget(snapshotButton);
 
-    _image->setMinimumSize(100, 100);
     _widget->setLayout(vbox);
 }
 
@@ -74,3 +67,14 @@ std::shared_ptr<QtNodes::NodeData> FrameSourceModel::outData(QtNodes::PortIndex 
     return std::make_shared<FrameNodeData>(_frame);
 }
 
+QJsonObject FrameSourceModel::save() const
+{
+    QJsonObject root;
+    root["model-name"] = modelName();
+
+    return root;
+}
+
+void FrameSourceModel::load(QJsonObject const& p)
+{
+}

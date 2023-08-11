@@ -3,6 +3,8 @@
 
 #include <FrameNodeData.h>
 
+#include <qspinbox.h>
+
 class ThresholdFilterModel : public QtNodes::NodeDelegateModel
 {
 	Q_OBJECT
@@ -31,13 +33,17 @@ public:
 
 	bool resizable() const override { return true; }
 
+	QJsonObject save() const override;
+
+	void load(QJsonObject const& p) override;
+
 private:
 	QWidget* _widget;
 	std::shared_ptr<QtNodes::NodeData> _currentNodeData;
 	std::shared_ptr<QtNodes::NodeData> _originalNodeData;
 	
-	uint16_t lower;
-	uint16_t upper;
+	QSpinBox* sb_lower;
+	QSpinBox* sb_upper;
 
 	void applyFilter();
 };

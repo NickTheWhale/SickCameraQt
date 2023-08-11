@@ -40,6 +40,17 @@ void SubtractFilterModel::setInData(std::shared_ptr<QtNodes::NodeData> nodeData,
 	applyFilter();
 }
 
+QJsonObject SubtractFilterModel::save() const
+{
+	QJsonObject json;
+	json["model-name"] = modelName();
+	return json;
+}
+
+void SubtractFilterModel::load(QJsonObject const& p)
+{
+}
+
 void SubtractFilterModel::applyFilter()
 {
 	if (_portNodeData0 && _portNodeData1)

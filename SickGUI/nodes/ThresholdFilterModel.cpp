@@ -5,53 +5,64 @@
 
 ThresholdFilterModel::ThresholdFilterModel() :
 	_widget(new QWidget()),
-    lower(0),
-    upper(std::numeric_limits<uint16_t>::max())
+	sb_lower(new QSpinBox()),
+	sb_upper(new QSpinBox())
 {
-    auto lowerSpinBox = new QSpinBox();
-    auto upperSpinBox = new QSpinBox();
-    lowerSpinBox->setRange(0, std::numeric_limits<uint16_t>::max());
-    upperSpinBox->setRange(0, std::numeric_limits<uint16_t>::max());
-    lowerSpinBox->setValue(lower);
-    upperSpinBox->setValue(upper);
-    connect(lowerSpinBox, &QSpinBox::valueChanged, this, [=]()
-        {
-            lower = lowerSpinBox->value();
-            upper = upperSpinBox->value();
-            applyFilter();
-        });
-    connect(upperSpinBox, &QSpinBox::valueChanged, this, [=]()
-        {
-            lower = lowerSpinBox->value();
-            upper = upperSpinBox->value();
-            applyFilter();
-        });
+	sb_lower->setRange(0, std::numeric_limits<uint16_t>::max());
+	sb_upper->setRange(0, std::numeric_limits<uint16_t>::max());
+	connect(sb_lower, &QSpinBox::valueChanged, this, [=]() { applyFilter(); });
+	connect(sb_upper, &QSpinBox::valueChanged, this, [=]() { applyFilter(); });
 
-    auto form = new QFormLayout();
+	auto form = new QFormLayout();
 
-    form->addRow("Lower", lowerSpinBox);
-    form->addRow("Upper", upperSpinBox);
+	form->addRow("Lower", sb_lower);
+	form->addRow("Upper", sb_upper);
 
-    _widget->setLayout(form);
+	_widget->setLayout(form);
 }
 
 void ThresholdFilterModel::setInData(std::shared_ptr<QtNodes::NodeData> nodeData, QtNodes::PortIndex const portIndex)
 {
-    _originalNodeData = nodeData;
-    _currentNodeData = nodeData;
+	_originalNodeData = nodeData;
+	_currentNodeData = nodeData;
 
-    applyFilter();
+	applyFilter();
+}
+
+QJsonObject ThresholdFilterModel::save() const
+{
+	QJsonObject range;
+	range["lower"] = sb_lower->value();
+	range["upper"] = sb_upper->value();
+
+	QJsonObject parameters;
+	parameters["range"] = range;
+
+	QJsonObject root;
+	root["model-name"] = modelName();
+	root["filter-parameters"] = parameters;
+
+	return root;
+}
+
+void ThresholdFilterModel::load(QJsonObject const& p)
+{
+	QJsonObject parameters = p["filter-parameters"].toObject();
+	QJsonObject range = parameters["range"].toObject();
+
+	sb_lower->setValue(range["lower"].toInt(sb_lower->value()));
+	sb_upper->setValue(range["upper"].toInt(sb_upper->value()));
 }
 
 void ThresholdFilterModel::applyFilter()
 {
-    if (_originalNodeData)
-    {
-        auto d = std::dynamic_pointer_cast<FrameNodeData>(_originalNodeData);
-        frameset::Frame clipped(d->frame());
-        frameset::clip(clipped, lower, upper);
-        _currentNodeData = std::make_shared<FrameNodeData>(clipped);
-    }
+	if (_originalNodeData)
+	{
+		auto d = std::dynamic_pointer_cast<FrameNodeData>(_originalNodeData);
+		frameset::Frame clipped(d->frame());
+		frameset::clip(clipped, sb_lower->value(), sb_upper->value());
+		_currentNodeData = std::make_shared<FrameNodeData>(clipped);
+	}
 
-    emit dataUpdated(0);
+	emit dataUpdated(0);
 }

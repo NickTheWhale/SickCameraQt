@@ -45,6 +45,31 @@ void StackBlurFilterModel::setInData(std::shared_ptr<QtNodes::NodeData> nodeData
 	applyFilter();
 }
 
+QJsonObject StackBlurFilterModel::save() const
+{
+	QJsonObject size;
+	size["x"] = sb_sizeX->value();
+	size["y"] = sb_sizeY->value();
+
+	QJsonObject parameters;
+	parameters["kernel-size"] = size;
+
+	QJsonObject root;
+	root["model-name"] = modelName();
+	root["filter-parameters"] = parameters;
+
+	return root;
+}
+
+void StackBlurFilterModel::load(QJsonObject const& p)
+{
+	QJsonObject parameters = p["filter-parameters"].toObject();
+	QJsonObject size = parameters["kernel-size"].toObject();
+
+	sb_sizeX->setValue(makeOdd(size["x"].toInt(sb_sizeX->value())));
+	sb_sizeY->setValue(makeOdd(size["y"].toInt(sb_sizeX->value())));
+}
+
 void StackBlurFilterModel::applyFilter()
 {
 	if (_originalNodeData)
