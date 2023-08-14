@@ -283,6 +283,15 @@
     <ClCompile Include="nodes\FastNIMeansDenoisingFilterModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="nodes\PlcStartModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nodes\PlcEndModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FilterFlowGraphModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="snap7\snap7.h">
@@ -582,6 +591,15 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="nodes\FastNIMeansDenoisingFilterModel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nodes\PlcStartModel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nodes\PlcEndModel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="FilterFlowGraphModel.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

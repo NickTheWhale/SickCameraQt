@@ -70,7 +70,8 @@ std::shared_ptr<QtNodes::NodeData> FrameSourceModel::outData(QtNodes::PortIndex 
 QJsonObject FrameSourceModel::save() const
 {
     QJsonObject root;
-    root["model-name"] = modelName();
+    root["model-name"] = name();
+    root["filterable"] = false;
 
     return root;
 }

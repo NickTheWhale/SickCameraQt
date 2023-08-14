@@ -55,8 +55,9 @@ QJsonObject FrameViewerModel::save() const
 {
 
     QJsonObject root;
-    root["model-name"] = modelName();
+    root["model-name"] = name();
     root["colormap"] = _colorBox->currentIndex();
+    root["filterable"] = true;
 
     return root;
 }

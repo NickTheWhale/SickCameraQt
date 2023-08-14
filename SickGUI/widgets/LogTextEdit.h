@@ -10,6 +10,9 @@ public:
 	void showMessage(const QtMsgType level, const QString& message);
 	void setMaxLineCount(unsigned int maxLineCount);
 
+protected:
+	void contextMenuEvent(QContextMenuEvent* event) override;
+
 private:
 	void wheelEvent(QWheelEvent* event) override;
 	bool paused = false;
@@ -20,5 +23,6 @@ private:
 	void clearExcessBlocks();
 	const bool full() const;
 	void writeMessage(const QtMsgType level, const QString& message);
+	void clear();
 };
 

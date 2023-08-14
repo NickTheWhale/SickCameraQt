@@ -1,5 +1,7 @@
 #include "FilterEditorWidget.h"
 
+#include <PlcStartModel.h>
+#include <PlcEndModel.h>
 #include <BilateralFilterModel.h>
 #include <BlurFilterModel.h>
 #include <FastNIMeansDenoisingFilterModel.h>
@@ -19,8 +21,8 @@ FilterEditorWidget::FilterEditorWidget(QWidget* parent) :
 	GraphicsView(parent),
 	graph(registerDataModels()),
 	scene(new QtNodes::DataFlowGraphicsScene(graph, this)),
-	validateButton(new QPushButton("Validate Flow", this)),
-	applyButton(new QPushButton("Apply Flow", this))
+	validateButton(new QPushButton("Validate PLC Flow", this)),
+	applyButton(new QPushButton("Apply Flow To PLC", this))
 {
 	connect(validateButton, &QPushButton::pressed, this, &FilterEditorWidget::validateFlow);
 	connect(applyButton, &QPushButton::pressed, this, &FilterEditorWidget::applyFlow);
@@ -54,16 +56,72 @@ void FilterEditorWidget::setButtonGeometry()
 	applyButton->move(applyPos);
 }
 
-const bool FilterEditorWidget::validateFlow() const
+const bool FilterEditorWidget::validateFlow()
 {
 	// what does it mean to be valid?
 	//   1. ONE plc start node
 	//   2. ONE plc end node
 	//   3. plc start connected to plc end
+	//      a. unique connection
+	//      b. only through "filterable" nodes
 
-	for (const auto& id : graph.allNodeIds())
-		qDebug() << id;
+	QtNodes::NodeId startId;
+	QtNodes::NodeId endId;
+	if (!validatePlcFlags(startId, endId))
+	{
+		qDebug() << "invalid plc flags";
+		return false;
+	}
+
+	auto getName = [this](QtNodes::NodeId id) { return graph.nodeData(id, QtNodes::NodeRole::Type).toString(); };
+	auto chain = graph.computeFilterChain(startId, endId);
+
+	QJsonObject filters;
+	for (const auto& id : chain)
+	{
+		auto name = getName(id);
+		filters[name] = graph.saveNode(id);
+	}
+
+	qDebug() << filters;
+
+	return true;
 }
+
+const bool FilterEditorWidget::validatePlcFlags(QtNodes::NodeId& startNodeId, QtNodes::NodeId& endNodeId) const
+{
+	int startCount = 0;
+	int endCount = 0;
+	QString startName = PlcStartModel().name();
+	QString endName = PlcEndModel().name();
+	for (const auto& id : graph.allNodeIds())
+	{
+		auto name = graph.nodeData(id, QtNodes::NodeRole::Type);
+		if (name == startName)
+		{
+			startNodeId = id;
+			++startCount;
+		}
+		else if (name == endName)
+		{
+			endNodeId = id;
+			++endCount;
+		}
+
+		if (startCount > 1 || endCount > 1)
+		{
+			break;
+		}
+	}
+
+	if (startCount != 1 || endCount != 1)
+	{
+		return false;
+	}
+
+	return true;
+}
+
 
 const bool FilterEditorWidget::applyFlow() const
 {
@@ -73,6 +131,8 @@ const bool FilterEditorWidget::applyFlow() const
 std::shared_ptr<QtNodes::NodeDelegateModelRegistry> registerDataModels()
 {
 	auto ret = std::make_shared<QtNodes::NodeDelegateModelRegistry>();
+	ret->registerModel<PlcStartModel>("Plc");
+	ret->registerModel<PlcEndModel>("Plc");
 	ret->registerModel<BilateralFilterModel>("Filters");
 	ret->registerModel<BlurFilterModel>("Filters");
 	ret->registerModel<FastNIMeansDenoisingFilterModel>("Filters");
@@ -97,10 +157,14 @@ void FilterEditorWidget::load()
 {
 	try
 	{
-	    scene->load();
+		scene->load();
+	}
+	catch (const std::logic_error& e)
+	{
+		qWarning() << "Filaed to load node." << e.what();
 	}
 	catch (...)
 	{
-	    qWarning() << "Failed to load filters, most likely due to invalid file format";
+		qWarning() << "Failed to load node(s). This may be due to invalid json format or outdated flow file";
 	}
 }

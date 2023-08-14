@@ -39,8 +39,9 @@ QJsonObject MedianBlurFilterModel::save() const
 	parameters["kernel-size"] = size3->isChecked() ? 3 : 5;
 
 	QJsonObject root;
-	root["model-name"] = modelName();
+	root["model-name"] = name();
 	root["filter-parameters"] = parameters;
+	root["filterable"] = true;
 
 	return root;
 }

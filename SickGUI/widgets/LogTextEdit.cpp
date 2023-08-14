@@ -2,6 +2,7 @@
 #include <qevent.h>
 #include <qscrollbar.h>
 #include <qdatetime.h>
+#include <qmenu.h>
 
 LogTextEdit::LogTextEdit(QWidget* parent) : QTextEdit(parent)
 {
@@ -13,6 +14,17 @@ LogTextEdit::LogTextEdit(QWidget* parent) : QTextEdit(parent)
 void LogTextEdit::setMaxLineCount(unsigned int maxLineCount)
 {
 	this->maxLineCount = maxLineCount;
+}
+
+void LogTextEdit::contextMenuEvent(QContextMenuEvent* event)
+{
+	QMenu menu(this);
+	QAction* clearAction = menu.addAction("Clear");
+	QAction* selectedAction = menu.exec(event->globalPos());
+	if (selectedAction == clearAction)
+	{
+		this->clear();
+	}
 }
 
 void LogTextEdit::wheelEvent(QWheelEvent* event)
@@ -125,6 +137,12 @@ void LogTextEdit::writeMessage(const QtMsgType level, const QString& message)
 	// message (black)
 	setTextColor(Qt::black);
 	insertPlainText("] " + message + "\n");
+}
+
+void LogTextEdit::clear()
+{
+	QTextEdit::clear();
+	paused = false;
 }
 
 void LogTextEdit::showMessage(const QtMsgType level, const QString& message)

@@ -55,8 +55,9 @@ QJsonObject StackBlurFilterModel::save() const
 	parameters["kernel-size"] = size;
 
 	QJsonObject root;
-	root["model-name"] = modelName();
+	root["model-name"] = name();
 	root["filter-parameters"] = parameters;
+	root["filterable"] = true;
 
 	return root;
 }

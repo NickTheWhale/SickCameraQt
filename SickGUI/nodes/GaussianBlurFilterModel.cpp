@@ -65,8 +65,9 @@ QJsonObject GaussianBlurFilterModel::save() const
 	parameters["sigma"] = sigma;
 
 	QJsonObject root;
-	root["model-name"] = modelName();
+	root["model-name"] = name();
 	root["filter-parameters"] = parameters;
+	root["filterable"] = true;
 
 	return root;
 }

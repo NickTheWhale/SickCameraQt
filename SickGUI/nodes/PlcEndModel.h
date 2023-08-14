@@ -3,31 +3,29 @@
 
 #include <FrameNodeData.h>
 
-#include <qspinbox.h>
-
-class ThresholdFilterModel : public QtNodes::NodeDelegateModel
+class PlcEndModel : public QtNodes::NodeDelegateModel
 {
 	Q_OBJECT
 
 public:
-	ThresholdFilterModel();
-	~ThresholdFilterModel() = default;
+	PlcEndModel();
+	~PlcEndModel() = default;
 
 public:
-	QString caption() const override { return QString("Threshold Filter"); }
+	QString caption() const override { return QString("Plc End"); }
 
-	QString name() const override { return QString("Threshold Filter"); }
+	QString name() const override { return QString("Plc End Flag"); }
 
 public:
-	virtual QString modelName() const { return QString("Threshold Filter"); }
+	virtual QString modelName() const { return QString("PlcEndModel"); }
 
-	unsigned int nPorts(QtNodes::PortType const portType) const override { return 1; }
+	unsigned int nPorts(QtNodes::PortType const portType) const override;
 
 	QtNodes::NodeDataType dataType(QtNodes::PortType const portType, QtNodes::PortIndex const portIndex) const override { return FrameNodeData().type(); }
 
 	std::shared_ptr<QtNodes::NodeData> outData(QtNodes::PortIndex const port) override { return _currentNodeData; }
 
-	void setInData(std::shared_ptr<QtNodes::NodeData> nodeData, QtNodes::PortIndex const portIndex) override;
+	void setInData(std::shared_ptr<QtNodes::NodeData> nodeData, QtNodes::PortIndex const portIndex) override {};
 
 	QWidget* embeddedWidget() override { return _widget; }
 
@@ -41,10 +39,5 @@ private:
 	QWidget* _widget;
 	std::shared_ptr<QtNodes::NodeData> _currentNodeData;
 	std::shared_ptr<QtNodes::NodeData> _originalNodeData;
-	
-	QSpinBox* sb_lower;
-	QSpinBox* sb_upper;
-
-	void applyFilter();
 };
 

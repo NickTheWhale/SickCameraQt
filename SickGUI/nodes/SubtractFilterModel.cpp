@@ -42,9 +42,10 @@ void SubtractFilterModel::setInData(std::shared_ptr<QtNodes::NodeData> nodeData,
 
 QJsonObject SubtractFilterModel::save() const
 {
-	QJsonObject json;
-	json["model-name"] = modelName();
-	return json;
+	QJsonObject root;
+	root["model-name"] = modelName();
+	root["filterable"] = false;
+	return root;
 }
 
 void SubtractFilterModel::load(QJsonObject const& p)

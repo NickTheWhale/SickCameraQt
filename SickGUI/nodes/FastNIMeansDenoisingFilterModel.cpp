@@ -31,8 +31,9 @@ QJsonObject FastNIMeansDenoisingFilterModel::save() const
 	parameters["h"] = sb_h->value();
 
 	QJsonObject root;
-	root["model-name"] = modelName();
+	root["model-name"] = name();
 	root["filter-parameters"] = parameters;
+	root["filterable"] = true;
 
 	return root;
 }

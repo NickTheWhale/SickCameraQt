@@ -42,8 +42,9 @@ QJsonObject BilateralFilterModel::save() const
 	parameters["sigma-space"] = sb_sigmaSpace->value();
 
 	QJsonObject root;
-	root["model-name"] = modelName();
+	root["model-name"] = name();
 	root["filter-parameters"] = parameters;
+	root["filterable"] = true;
 
 	return root;
 }

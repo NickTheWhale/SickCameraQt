@@ -3,7 +3,7 @@
 
 #include <GraphicsView.hpp>
 #include <NodeDelegateModelRegistry.hpp>
-#include <DataFlowGraphModel.hpp>
+#include <FilterFlowGraphModel.h>
 #include <DataFlowGraphicsScene.hpp>
 
 #include <qpushbutton.h>
@@ -24,7 +24,7 @@ protected:
 	void resizeEvent(QResizeEvent* event) override;
 
 private:
-	QtNodes::DataFlowGraphModel graph;
+	FilterFlowGraphModel graph;
 	QtNodes::DataFlowGraphicsScene* scene = nullptr;
 	std::shared_ptr<QtNodes::NodeDelegateModelRegistry> registry;
 
@@ -32,7 +32,8 @@ private:
 	QPushButton* applyButton = nullptr;
 
 	void setButtonGeometry();
-	const bool validateFlow() const;
+	const bool validateFlow();
+	const bool validatePlcFlags(QtNodes::NodeId& startNodeId, QtNodes::NodeId& endNodeId) const;
 	const bool applyFlow() const;
 };
 
