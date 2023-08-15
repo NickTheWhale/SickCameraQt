@@ -1,7 +1,5 @@
 #include "FrameViewerModel.h"
 
-#include <FrameNodeData.h>
-
 #include <qlayout.h>
 #include <qpushbutton.h>
 #include <qapplication.h>
@@ -23,21 +21,16 @@ FrameViewerModel::FrameViewerModel() :
     _widget->setLayout(vbox);
 }
 
-QtNodes::NodeDataType FrameViewerModel::dataType(QtNodes::PortType const portType, QtNodes::PortIndex const portIndex) const
-{
-    return FrameNodeData().type();
-}
-
 void FrameViewerModel::setInData(std::shared_ptr<QtNodes::NodeData> nodeData, QtNodes::PortIndex const portIndex)
 {
     _currentNodeData = nodeData;
 
     if (_currentNodeData)
     {
-        const auto d = std::dynamic_pointer_cast<FrameNodeData>(_currentNodeData);
-        if (d && !frameset::isEmpty(d->frame()))
+        const auto d = std::dynamic_pointer_cast<MatNodeData>(_currentNodeData);
+        if (d && !d->mat().empty())
         {
-            const frameset::Frame frame = std::dynamic_pointer_cast<FrameNodeData>(_currentNodeData)->frame();
+            const frameset::Frame frame = frameset::toFrame(d->mat());
             auto options = frameset::ImageOptions();
             options.colormap = colorActions[_colorBox->currentIndex()].colormapType;
             _image->setPixmap(QPixmap::fromImage(frameset::toQImage(frame, options)));
@@ -57,7 +50,6 @@ QJsonObject FrameViewerModel::save() const
     QJsonObject root;
     root["model-name"] = name();
     root["colormap"] = _colorBox->currentIndex();
-    root["filterable"] = true;
 
     return root;
 }

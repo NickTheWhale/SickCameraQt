@@ -8,11 +8,12 @@
 MedianBlurFilterModel::MedianBlurFilterModel() :
 	_widget(new QWidget()),
 	size3(new QRadioButton("3")),
-	size5(new QRadioButton("5"))
+	size5(new QRadioButton("5")),
+	_filter(std::make_unique<MedianBlurFilter>())
 {
 	size3->setChecked(true);
-	connect(size3, &QRadioButton::toggled, this, [=]() { applyFilter(); });
-	connect(size5, &QRadioButton::toggled, this, [=]() { applyFilter(); });
+	connect(size3, &QRadioButton::toggled, this, [=]() { syncFilterParameters(); applyFilter(); });
+	connect(size5, &QRadioButton::toggled, this, [=]() { syncFilterParameters(); applyFilter(); });
 
 	auto hbox = new QHBoxLayout();
 	hbox->addWidget(size3);
@@ -23,6 +24,7 @@ MedianBlurFilterModel::MedianBlurFilterModel() :
 	vbox->addLayout(hbox);
 
 	_widget->setLayout(vbox);
+	syncFilterParameters();
 }
 
 void MedianBlurFilterModel::setInData(std::shared_ptr<QtNodes::NodeData> nodeData, QtNodes::PortIndex const portIndex)
@@ -35,50 +37,50 @@ void MedianBlurFilterModel::setInData(std::shared_ptr<QtNodes::NodeData> nodeDat
 
 QJsonObject MedianBlurFilterModel::save() const
 {
-	QJsonObject parameters;
-	parameters["kernel-size"] = size3->isChecked() ? 3 : 5;
-
+	syncFilterParameters();
 	QJsonObject root;
 	root["model-name"] = name();
-	root["filter-parameters"] = parameters;
-	root["filterable"] = true;
+	root["filter"] = _filter->save();
 
 	return root;
 }
 
 void MedianBlurFilterModel::load(QJsonObject const& p)
 {
-	QJsonObject parameters = p["filter-parameters"].toObject();
-	const int size = parameters["kernel-size"].toInt(0);
+	QJsonObject filterJson = p["filter"].toObject();
+	_filter->load(filterJson);
+
+	QJsonObject filterParameters = _filter->save()["parameters"].toObject();
+	const int size = filterParameters["kernel-size"].toInt(0);
 	if (size == 5)
 		size5->setChecked(true);
 	else
 		size3->setChecked(true);
 }
 
+void MedianBlurFilterModel::syncFilterParameters() const
+{
+	QJsonObject parameters;
+	parameters["kernel-size"] = size3->isChecked() ? 3 : 5;
+
+	QJsonObject root;
+	root["parameters"] = parameters;
+
+	_filter->load(root);
+}
+
 void MedianBlurFilterModel::applyFilter()
 {
 	if (_originalNodeData)
 	{
-		const auto d = std::dynamic_pointer_cast<FrameNodeData>(_originalNodeData);
-		if (d && !frameset::isEmpty(d->frame()))
+		auto d = std::dynamic_pointer_cast<MatNodeData>(_originalNodeData);
+		if (d && !d->mat().empty())
 		{
-			const frameset::Frame inputFrame = std::dynamic_pointer_cast<FrameNodeData>(_originalNodeData)->frame();
+			cv::Mat mat = d->mat();
+			_filter->apply(mat);
 
-			const cv::Mat inputMat = frameset::toMat(inputFrame);
-			cv::Mat outputMat;
-
-			int size = 3;
-			if (size5->isChecked())
-				size = 5;
-
-			cv::medianBlur(inputMat, outputMat, size);
-
-			const frameset::Frame outputFrame = frameset::toFrame(outputMat);
-
-			_currentNodeData = std::make_shared<FrameNodeData>(outputFrame);
+			_currentNodeData = std::make_shared<MatNodeData>(mat);
 		}
 	}
-
 	emit dataUpdated(0);
 }

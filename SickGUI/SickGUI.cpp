@@ -97,7 +97,7 @@ void SickGUI::initializeWidgets()
 #pragma region LOGGING_DOCK
 	loggingWidget = new LoggingWidget(this);
 	loggingWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-	loggingWidget->setMaxLineCount(250);
+	loggingWidget->setMaxLineCount(500);
 
 	connect(messageHandler, &CustomMessageHandler::newMessage, loggingWidget, &LoggingWidget::showMessage);
 
@@ -193,7 +193,7 @@ void SickGUI::checkThreads()
 	if (camThreadResult.error || plcThreadResult.error)
 	{
 		QMessageBox::information(this, "Info", "Application will close now");
-		QCoreApplication::quit();
+		//QCoreApplication::quit();
 	}
 	else
 	{

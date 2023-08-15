@@ -154,7 +154,7 @@ void LogTextEdit::showMessage(const QtMsgType level, const QString& message)
 
 	if (paused && full())				//  Paused  |  Full  |  Action
 	{									// ----------------------------
-		// do nothing					//   True   |  True  |  do nothing
+		               					//   True   |  True  |  do nothing
 		return;							//   True   |  False |  add text, keep scroll position
 	}									//   False  |  True  |  add text, remove excess blocks
 										//   False  |  False |  add text

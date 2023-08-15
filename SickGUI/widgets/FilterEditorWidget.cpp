@@ -21,10 +21,10 @@ FilterEditorWidget::FilterEditorWidget(QWidget* parent) :
 	GraphicsView(parent),
 	graph(registerDataModels()),
 	scene(new QtNodes::DataFlowGraphicsScene(graph, this)),
-	validateButton(new QPushButton("Validate PLC Flow", this)),
-	applyButton(new QPushButton("Apply Flow To PLC", this))
+	//validateButton(new QPushButton("Validate PLC Flow", this)),
+	applyButton(new QPushButton("Apply Flow To PLC Stream", this))
 {
-	connect(validateButton, &QPushButton::pressed, this, &FilterEditorWidget::validateFlow);
+	//connect(validateButton, &QPushButton::pressed, this, &FilterEditorWidget::validateFlow);
 	connect(applyButton, &QPushButton::pressed, this, &FilterEditorWidget::applyFlow);
 
 	this->setScene(scene);
@@ -45,47 +45,15 @@ void FilterEditorWidget::setButtonGeometry()
 {
 	const QPoint bottomRight(size().width(), size().height());
 	const QPoint pad(5, 5);
-	const QPoint padx(5, 0);
+	//const QPoint padx(5, 0);
 	const QPoint applyButtonSize(applyButton->size().width(), applyButton->size().height());
-	const QPoint validateButtonSize(validateButton->size().width(), validateButton->size().height());
-	const QPoint validateButtonSizeX(validateButtonSize.x(), 0);
+	//const QPoint validateButtonSize(validateButton->size().width(), validateButton->size().height());
+	//const QPoint validateButtonSizeX(validateButtonSize.x(), 0);
 	const QPoint applyPos = bottomRight - pad - applyButtonSize;
-	const QPoint validatePos = applyPos - validateButtonSizeX - padx;
+	//const QPoint validatePos = applyPos - validateButtonSizeX - padx;
 
-	validateButton->move(validatePos);
+	//validateButton->move(validatePos);
 	applyButton->move(applyPos);
-}
-
-const bool FilterEditorWidget::validateFlow()
-{
-	// what does it mean to be valid?
-	//   1. ONE plc start node
-	//   2. ONE plc end node
-	//   3. plc start connected to plc end
-	//      a. unique connection
-	//      b. only through "filterable" nodes
-
-	QtNodes::NodeId startId;
-	QtNodes::NodeId endId;
-	if (!validatePlcFlags(startId, endId))
-	{
-		qDebug() << "invalid plc flags";
-		return false;
-	}
-
-	auto getName = [this](QtNodes::NodeId id) { return graph.nodeData(id, QtNodes::NodeRole::Type).toString(); };
-	auto chain = graph.computeFilterChain(startId, endId);
-
-	QJsonObject filters;
-	for (const auto& id : chain)
-	{
-		auto name = getName(id);
-		filters[name] = graph.saveNode(id);
-	}
-
-	qDebug() << filters;
-
-	return true;
 }
 
 const bool FilterEditorWidget::validatePlcFlags(QtNodes::NodeId& startNodeId, QtNodes::NodeId& endNodeId) const
@@ -123,14 +91,32 @@ const bool FilterEditorWidget::validatePlcFlags(QtNodes::NodeId& startNodeId, Qt
 }
 
 
-const bool FilterEditorWidget::applyFlow() const
+const void FilterEditorWidget::applyFlow()
 {
-	return false;
+	QJsonArray json;
+	
+
+	QtNodes::NodeId startNodeId, endNodeId;
+	if (!validatePlcFlags(startNodeId, endNodeId))
+	{
+		qDebug() << "invalid plc flags";
+		return;
+	}
+
+	json = graph.computeFilterJson(startNodeId, endNodeId);
+	if (json.isEmpty())
+	{
+		qDebug() << "filter json is empty";
+		return;
+	}
+
+	//emit updatedFilters(json);
 }
 
 std::shared_ptr<QtNodes::NodeDelegateModelRegistry> registerDataModels()
 {
 	auto ret = std::make_shared<QtNodes::NodeDelegateModelRegistry>();
+
 	ret->registerModel<PlcStartModel>("Plc");
 	ret->registerModel<PlcEndModel>("Plc");
 	ret->registerModel<BilateralFilterModel>("Filters");
@@ -161,7 +147,7 @@ void FilterEditorWidget::load()
 	}
 	catch (const std::logic_error& e)
 	{
-		qWarning() << "Filaed to load node." << e.what();
+		qWarning() << "Failed to load node." << e.what();
 	}
 	catch (...)
 	{

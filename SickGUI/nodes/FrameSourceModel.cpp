@@ -1,6 +1,5 @@
 #include "FrameSourceModel.h"
 
-#include <FrameNodeData.h>
 #include <qlayout.h>
 #include <qpushbutton.h>
 #include <qcheckbox.h>
@@ -57,21 +56,16 @@ unsigned int FrameSourceModel::nPorts(QtNodes::PortType const portType) const
     return result;
 }
 
-QtNodes::NodeDataType FrameSourceModel::dataType(QtNodes::PortType const portType, QtNodes::PortIndex const portIndex) const
-{
-    return FrameNodeData().type();
-}
-
 std::shared_ptr<QtNodes::NodeData> FrameSourceModel::outData(QtNodes::PortIndex const port)
 {
-    return std::make_shared<FrameNodeData>(_frame);
+    cv::Mat mat = frameset::toMat(_frame);
+    return std::make_shared<MatNodeData>(mat);
 }
 
 QJsonObject FrameSourceModel::save() const
 {
     QJsonObject root;
     root["model-name"] = name();
-    root["filterable"] = false;
 
     return root;
 }

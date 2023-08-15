@@ -57,12 +57,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <IncludePath>$(ProjectDir)\threads;$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(ProjectDir)\widgets;$(ProjectDir)\sickapi\include;$(ProjectDir)\sickapi\src;$(ProjectDir)\sickapi\3pp;$(ProjectDir)\sickapi\camimpl;$(ProjectDir)\qcustomplot;$(ProjectDir)\;$(ProjectDir)\pointcloudlibrary\3rdParty\Eigen\eigen3;$(ProjectDir)\pointcloudlibrary\include\pcl-1.13;$(ProjectDir)\nodeeditor\include\;$(ProjectDir)\nodeeditor\include\QtNodes\;$(ProjectDir)\nodeeditor\include\QtNodes\internal\;$(ProjectDir)\nodes;C:\opencv\build\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)\filters;$(ProjectDir)\threads;$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(ProjectDir)\widgets;$(ProjectDir)\sickapi\include;$(ProjectDir)\sickapi\src;$(ProjectDir)\sickapi\3pp;$(ProjectDir)\sickapi\camimpl;$(ProjectDir)\qcustomplot;$(ProjectDir)\;$(ProjectDir)\pointcloudlibrary\3rdParty\Eigen\eigen3;$(ProjectDir)\pointcloudlibrary\include\pcl-1.13;$(ProjectDir)\nodeeditor\include\;$(ProjectDir)\nodeeditor\include\QtNodes\;$(ProjectDir)\nodeeditor\include\QtNodes\internal\;$(ProjectDir)\nodes;C:\opencv\build\include;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)$(Platform)\$(ProjectName)\$(Configuration)\</OutDir>
     <LibraryPath>C:\opencv\build\x64\vc16\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <IncludePath>$(ProjectDir)\threads;$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(ProjectDir)\widgets;$(ProjectDir)\sickapi\include;$(ProjectDir)\sickapi\src;$(ProjectDir)\sickapi\3pp;$(ProjectDir)\sickapi\camimpl;$(ProjectDir)\qcustomplot;$(ProjectDir)\;$(ProjectDir)\pointcloudlibrary\3rdParty\Eigen\eigen3;$(ProjectDir)\pointcloudlibrary\include\pcl-1.13;$(ProjectDir)\nodeeditor\include\;$(ProjectDir)\nodeeditor\include\QtNodes\;$(ProjectDir)\nodeeditor\include\QtNodes\internal\;$(ProjectDir)\nodes;C:\opencv\build\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)\filters;$(ProjectDir)\threads;$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(ProjectDir)\widgets;$(ProjectDir)\sickapi\include;$(ProjectDir)\sickapi\src;$(ProjectDir)\sickapi\3pp;$(ProjectDir)\sickapi\camimpl;$(ProjectDir)\qcustomplot;$(ProjectDir)\;$(ProjectDir)\pointcloudlibrary\3rdParty\Eigen\eigen3;$(ProjectDir)\pointcloudlibrary\include\pcl-1.13;$(ProjectDir)\nodeeditor\include\;$(ProjectDir)\nodeeditor\include\QtNodes\;$(ProjectDir)\nodeeditor\include\QtNodes\internal\;$(ProjectDir)\nodes;C:\opencv\build\include;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)$(Platform)\$(ProjectName)\$(Configuration)\</OutDir>
     <LibraryPath>C:\opencv\build\x64\vc16\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
@@ -126,10 +126,17 @@ xcopy /y /d /f "C:\opencv\build\x64\vc16\bin\opencv_world480d.dll" "$(OutDir)"</
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
+    <ClCompile Include="filters\BilateralFilter.cpp" />
+    <ClCompile Include="filters\BlurFilter.cpp" />
+    <ClCompile Include="filters\FastNIMeansDenoisingFilter.cpp" />
     <ClCompile Include="FilterFlowGraphModel.cpp" />
+    <ClCompile Include="filters\FilterManager.cpp" />
+    <ClCompile Include="filters\GaussianBlurFilter.cpp" />
+    <ClCompile Include="filters\MedianBlurFilter.cpp" />
     <ClCompile Include="nodes\BlurFilterModel.cpp" />
     <ClCompile Include="nodes\FastNIMeansDenoisingFilterModel.cpp" />
     <ClCompile Include="nodes\GaussianBlurFilterModel.cpp" />
+    <ClCompile Include="nodes\MatNodeData.h" />
     <ClCompile Include="nodes\MedianBlurFilterModel.cpp" />
     <ClCompile Include="nodes\BilateralFilterModel.cpp" />
     <ClCompile Include="nodes\FrameViewerModel.cpp" />
@@ -140,6 +147,9 @@ xcopy /y /d /f "C:\opencv\build\x64\vc16\bin\opencv_world480d.dll" "$(OutDir)"</
     <ClCompile Include="nodes\SubtractFilterModel.cpp" />
     <ClCompile Include="nodes\PlcStartModel.cpp" />
     <ClCompile Include="nodes\PlcEndModel.cpp" />
+    <ClCompile Include="filters\ResizeFilter.cpp" />
+    <ClCompile Include="filters\StackBlurFilter.cpp" />
+    <ClCompile Include="filters\ThresholdFilter.cpp" />
     <ClCompile Include="widgets\FilterEditorWidget.cpp" />
     <ClCompile Include="Frameset.cpp" />
     <ClCompile Include="nodeeditor\src\AbstractGraphModel.cpp" />
@@ -246,12 +256,21 @@ xcopy /y /d /f "C:\opencv\build\x64\vc16\bin\opencv_world480d.dll" "$(OutDir)"</
     <QtMoc Include="nodes\GaussianBlurFilterModel.h" />
     <QtMoc Include="nodes\MedianBlurFilterModel.h" />
     <QtMoc Include="FilterFlowGraphModel.h" />
-    <ClInclude Include="nodes\FrameNodeData.h" />
+    <ClInclude Include="filters\BilateralFilter.h" />
+    <ClInclude Include="filters\BlurFilter.h" />
+    <ClInclude Include="filters\FastNIMeansDenoisingFilter.h" />
+    <ClInclude Include="filters\FilterBase.h" />
+    <ClInclude Include="filters\FilterManager.h" />
+    <ClInclude Include="filters\GaussianBlurFilter.h" />
+    <ClInclude Include="filters\MedianBlurFilter.h" />
     <QtMoc Include="nodes\StackBlurFilterModel.h" />
     <QtMoc Include="nodes\ResizeFilterModel.h" />
     <QtMoc Include="nodes\SubtractFilterModel.h" />
     <QtMoc Include="nodes\PlcStartModel.h" />
     <QtMoc Include="nodes\PlcEndModel.h" />
+    <ClInclude Include="filters\ResizeFilter.h" />
+    <ClInclude Include="filters\StackBlurFilter.h" />
+    <ClInclude Include="filters\ThresholdFilter.h" />
     <ClInclude Include="widgets\FilterEditorWidget.h" />
     <ClInclude Include="Frameset.h" />
     <QtMoc Include="nodeeditor\include\QtNodes\internal\AbstractGraphModel.hpp" />

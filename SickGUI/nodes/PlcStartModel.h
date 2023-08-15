@@ -1,7 +1,7 @@
 #pragma once
 #include <NodeDelegateModel.hpp>
 
-#include <FrameNodeData.h>
+#include <MatNodeData.h>
 
 class PlcStartModel : public QtNodes::NodeDelegateModel
 {
@@ -21,7 +21,7 @@ public:
 
 	unsigned int nPorts(QtNodes::PortType const portType) const override;
 
-	QtNodes::NodeDataType dataType(QtNodes::PortType const portType, QtNodes::PortIndex const portIndex) const override { return FrameNodeData().type(); }
+	QtNodes::NodeDataType dataType(QtNodes::PortType const portType, QtNodes::PortIndex const portIndex) const override { return MatNodeData().type(); }
 
 	std::shared_ptr<QtNodes::NodeData> outData(QtNodes::PortIndex const port) override { return _currentNodeData; }
 

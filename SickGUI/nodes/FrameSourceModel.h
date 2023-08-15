@@ -4,10 +4,12 @@
 #include <Frameset.h>
 #include <ThreadInterface.h>
 
+#include <MatNodeData.h>
+
 class FrameSourceModel : public QtNodes::NodeDelegateModel
 {
 	Q_OBJECT
-		
+
 public:
 	FrameSourceModel();
 	~FrameSourceModel() = default;
@@ -22,7 +24,7 @@ public:
 
 	unsigned int nPorts(QtNodes::PortType const portType) const override;
 
-	QtNodes::NodeDataType dataType(QtNodes::PortType const portType, QtNodes::PortIndex const portIndex) const override;
+	QtNodes::NodeDataType dataType(QtNodes::PortType const portType, QtNodes::PortIndex const portIndex) const override { return MatNodeData().type(); }
 
 	std::shared_ptr<QtNodes::NodeData> outData(QtNodes::PortIndex const port) override;
 

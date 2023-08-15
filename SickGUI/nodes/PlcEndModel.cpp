@@ -28,7 +28,6 @@ QJsonObject PlcEndModel::save() const
 {
 	QJsonObject root;
 	root["model-name"] = name();
-	root["filterable"] = false;
 	return root;
 }
 

@@ -4,6 +4,8 @@
 #include <Frameset.h>
 #include <NodeData.hpp>
 
+#include <MatNodeData.h>
+
 #include <qcombobox.h>
 
 namespace 
@@ -44,7 +46,7 @@ public:
 
 	unsigned int nPorts(QtNodes::PortType const portType) const override { return 1; }
 
-	QtNodes::NodeDataType dataType(QtNodes::PortType const portType, QtNodes::PortIndex const portIndex) const override;
+	QtNodes::NodeDataType dataType(QtNodes::PortType const portType, QtNodes::PortIndex const portIndex) const override { return MatNodeData().type(); }
 
 	std::shared_ptr<QtNodes::NodeData> outData(QtNodes::PortIndex const port) override { return _currentNodeData; }
 

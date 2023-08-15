@@ -16,8 +16,11 @@ public slots:
 	void save();
 	void load();
 
+signals:
+	void updatedFilters(const QJsonArray& filters);
+
 public:
-	FilterEditorWidget(QWidget* parent = nullptr);
+	FilterEditorWidget(QWidget* parent = nullptr);                     
 	~FilterEditorWidget();
 
 protected:
@@ -28,12 +31,11 @@ private:
 	QtNodes::DataFlowGraphicsScene* scene = nullptr;
 	std::shared_ptr<QtNodes::NodeDelegateModelRegistry> registry;
 
-	QPushButton* validateButton = nullptr;
+	//QPushButton* validateButton = nullptr;
 	QPushButton* applyButton = nullptr;
 
 	void setButtonGeometry();
-	const bool validateFlow();
 	const bool validatePlcFlags(QtNodes::NodeId& startNodeId, QtNodes::NodeId& endNodeId) const;
-	const bool applyFlow() const;
+	const void applyFlow();
 };
 

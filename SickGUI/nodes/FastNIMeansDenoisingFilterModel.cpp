@@ -2,19 +2,19 @@
 
 #include <qformlayout.h>
 
-#include <opencv2/photo.hpp>
-
 FastNIMeansDenoisingFilterModel::FastNIMeansDenoisingFilterModel() :
 	_widget(new QWidget()),
-	sb_h(new QDoubleSpinBox())
+	sb_h(new QDoubleSpinBox()),
+	_filter(std::make_unique<FastNIMeansDenoisingFilter>())
 {
 	sb_h->setRange(0.0, 100.0);
-	connect(sb_h, &QDoubleSpinBox::valueChanged, this, [=]() { applyFilter(); });
+	connect(sb_h, &QDoubleSpinBox::valueChanged, this, [=]() { syncFilterParameters(); applyFilter(); });
 
 	auto form = new QFormLayout();
 	form->addRow("H", sb_h);
 
 	_widget->setLayout(form);
+	syncFilterParameters();
 }
 
 void FastNIMeansDenoisingFilterModel::setInData(std::shared_ptr<QtNodes::NodeData> nodeData, QtNodes::PortIndex const portIndex)
@@ -27,44 +27,46 @@ void FastNIMeansDenoisingFilterModel::setInData(std::shared_ptr<QtNodes::NodeDat
 
 QJsonObject FastNIMeansDenoisingFilterModel::save() const
 {
-	QJsonObject parameters;
-	parameters["h"] = sb_h->value();
-
+	syncFilterParameters();
 	QJsonObject root;
 	root["model-name"] = name();
-	root["filter-parameters"] = parameters;
-	root["filterable"] = true;
+	root["filter"] = _filter->save();
 
 	return root;
 }
 
 void FastNIMeansDenoisingFilterModel::load(QJsonObject const& p)
 {
-	QJsonObject parameters = p["filter-parameters"].toObject();
-	sb_h->setValue(parameters["h"].toDouble(sb_h->value()));
+	QJsonObject filterJson = p["filter"].toObject();
+	_filter->load(filterJson);
+
+	QJsonObject filterParameters = _filter->save()["parameters"].toObject();
+	sb_h->setValue(filterParameters["h"].toDouble(sb_h->value()));
+}
+
+void FastNIMeansDenoisingFilterModel::syncFilterParameters() const
+{
+	QJsonObject parameters;
+	parameters["h"] = sb_h->value();
+
+	QJsonObject root;
+	root["parameters"] = parameters;
+
+	_filter->load(root);
 }
 
 void FastNIMeansDenoisingFilterModel::applyFilter()
 {
 	if (_originalNodeData)
 	{
-		const auto d = std::dynamic_pointer_cast<FrameNodeData>(_originalNodeData);
-		if (d && !frameset::isEmpty(d->frame()))
+		auto d = std::dynamic_pointer_cast<MatNodeData>(_originalNodeData);
+		if (d && !d->mat().empty())
 		{
-			const frameset::Frame inputFrame = std::dynamic_pointer_cast<FrameNodeData>(_originalNodeData)->frame();
-			
-			const cv::Mat inputMat = frameset::toMat(inputFrame);
-			cv::Mat outputMat;
-			
-			std::vector<float> hVals;
-			hVals.push_back(sb_h->value());
-			cv::fastNlMeansDenoising(inputMat, outputMat, hVals, 7, 21, cv::NORM_L1);
+			cv::Mat mat = d->mat();
+			_filter->apply(mat);
 
-			const frameset::Frame outputFrame = frameset::toFrame(outputMat);
-
-			_currentNodeData = std::make_shared<FrameNodeData>(outputFrame);
+			_currentNodeData = std::make_shared<MatNodeData>(mat);
 		}
 	}
-
 	emit dataUpdated(0);
 }

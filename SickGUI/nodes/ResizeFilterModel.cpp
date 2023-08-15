@@ -1,6 +1,7 @@
 #include "ResizeFilterModel.h"
 
 #include <opencv2/imgproc.hpp>
+#include <ResizeFilter.h>
 
 #include <qlayout.h>
 #include <qlabel.h>
@@ -8,13 +9,14 @@
 ResizeFilterModel::ResizeFilterModel() :
 	_widget(new QWidget()),
 	sb_sizeX(new QSpinBox()),
-	sb_sizeY(new QSpinBox())
+	sb_sizeY(new QSpinBox()),
+	_filter(std::make_unique<ResizeFilter>())
 {
 	sb_sizeX->setRange(1, 600);
 	sb_sizeY->setRange(1, 600);
 
-	connect(sb_sizeX, &QSpinBox::valueChanged, this, [=]() { applyFilter(); });
-	connect(sb_sizeY, &QSpinBox::valueChanged, this, [=]() { applyFilter(); });
+	connect(sb_sizeX, &QSpinBox::valueChanged, this, [=]() { syncFilterParameters(); applyFilter(); });
+	connect(sb_sizeY, &QSpinBox::valueChanged, this, [=]() { syncFilterParameters(); applyFilter(); });
 
 	auto hboxTop = new QHBoxLayout();
 	auto hboxBottom = new QHBoxLayout();
@@ -28,6 +30,7 @@ ResizeFilterModel::ResizeFilterModel() :
 	vbox->addLayout(hboxBottom);
 
 	_widget->setLayout(vbox);
+	syncFilterParameters();
 }
 
 void ResizeFilterModel::setInData(std::shared_ptr<QtNodes::NodeData> nodeData, QtNodes::PortIndex const portIndex)
@@ -40,46 +43,52 @@ void ResizeFilterModel::setInData(std::shared_ptr<QtNodes::NodeData> nodeData, Q
 
 QJsonObject ResizeFilterModel::save() const
 {
-	QJsonObject size;
-	size["x"] = sb_sizeX->value();
-	size["y"] = sb_sizeY->value();
-
-	QJsonObject parameters;
-	parameters["kernel-size"] = size;
-
+	syncFilterParameters();
 	QJsonObject root;
 	root["model-name"] = name();
-	root["filter-parameters"] = parameters;
-	root["filterable"] = true;
+	root["filter"] = _filter->save();
 
 	return root;
 }
 
 void ResizeFilterModel::load(QJsonObject const& p)
 {
-	QJsonObject parameters = p["filter-parameters"].toObject();
-	QJsonObject size = parameters["kernel-size"].toObject();
+	QJsonObject filterJson = p["filter"].toObject();
+	_filter->load(filterJson);
+
+	QJsonObject filterParameters = _filter->save()["parameters"].toObject();
+	QJsonObject size = filterParameters["size"].toObject();
 
 	sb_sizeX->setValue(size["x"].toInt(sb_sizeX->value()));
-	sb_sizeY->setValue(size["y"].toInt(sb_sizeX->value()));
+	sb_sizeY->setValue(size["y"].toInt(sb_sizeY->value()));
+}
+
+void ResizeFilterModel::syncFilterParameters() const
+{
+	QJsonObject size;
+	size["x"] = sb_sizeX->value();
+	size["y"] = sb_sizeY->value();
+
+	QJsonObject parameters;
+	parameters["size"] = size;
+
+	QJsonObject root;
+	root["parameters"] = parameters;
+
+	_filter->load(root);
 }
 
 void ResizeFilterModel::applyFilter()
 {
 	if (_originalNodeData)
 	{
-		const auto d = std::dynamic_pointer_cast<FrameNodeData>(_originalNodeData);
-		if (d && !frameset::isEmpty(d->frame()))
+		auto d = std::dynamic_pointer_cast<MatNodeData>(_originalNodeData);
+		if (d && !d->mat().empty())
 		{
-			const frameset::Frame inputFrame = std::dynamic_pointer_cast<FrameNodeData>(_originalNodeData)->frame();
-			const cv::Mat inputMat = frameset::toMat(inputFrame);
-			cv::Mat outputMat;
-			cv::Size size(sb_sizeX->value(), sb_sizeY->value());
-			cv::resize(inputMat, outputMat, size, 0.0f, 0.0f, cv::InterpolationFlags::INTER_AREA);
+			cv::Mat mat = d->mat();
+			_filter->apply(mat);
 
-			const frameset::Frame outputFrame = frameset::toFrame(outputMat);
-
-			_currentNodeData = std::make_shared<FrameNodeData>(outputFrame);
+			_currentNodeData = std::make_shared<MatNodeData>(mat);
 		}
 	}
 	emit dataUpdated(0);

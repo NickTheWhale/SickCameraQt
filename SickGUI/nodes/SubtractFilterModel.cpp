@@ -44,7 +44,6 @@ QJsonObject SubtractFilterModel::save() const
 {
 	QJsonObject root;
 	root["model-name"] = modelName();
-	root["filterable"] = false;
 	return root;
 }
 
@@ -56,12 +55,15 @@ void SubtractFilterModel::applyFilter()
 {
 	if (_portNodeData0 && _portNodeData1)
 	{
-		frameset::Frame frame0 = std::dynamic_pointer_cast<FrameNodeData>(_portNodeData0)->frame();
-		frameset::Frame frame1 = std::dynamic_pointer_cast<FrameNodeData>(_portNodeData1)->frame();
+		auto d0 = std::dynamic_pointer_cast<MatNodeData>(_portNodeData0);
+		auto d1 = std::dynamic_pointer_cast<MatNodeData>(_portNodeData1);
 
-		if (frameset::size(frame0) == frameset::size(frame1))
+		if (d0 && d1 && d0->mat().size() == d1->mat().size() && d0->mat().type() == d1->mat().type())
 		{
-			_currentNodeData = std::make_shared<FrameNodeData>(frameset::difference(frame0, frame1));
+			cv::Mat outputMat;
+
+			cv::absdiff(d0->mat(), d1->mat(), outputMat);
+			_currentNodeData = std::make_shared<MatNodeData>(outputMat);
 		}
 	}
 
