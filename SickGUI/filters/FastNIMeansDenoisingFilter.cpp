@@ -11,6 +11,11 @@ FastNIMeansDenoisingFilter::~FastNIMeansDenoisingFilter()
 {
 }
 
+std::unique_ptr<FilterBase> FastNIMeansDenoisingFilter::clone() const
+{
+	return std::make_unique<FastNIMeansDenoisingFilter>(*this);
+}
+
 bool FastNIMeansDenoisingFilter::apply(cv::Mat& mat)
 {
 	if (mat.empty())

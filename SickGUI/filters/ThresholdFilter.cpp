@@ -12,6 +12,11 @@ ThresholdFilter::~ThresholdFilter()
 {
 }
 
+std::unique_ptr<FilterBase> ThresholdFilter::clone() const
+{
+    return std::make_unique<ThresholdFilter>(*this);
+}
+
 bool ThresholdFilter::apply(cv::Mat& mat)
 {
     if (mat.empty())

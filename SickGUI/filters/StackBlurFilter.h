@@ -7,6 +7,8 @@ public:
 	StackBlurFilter();
 	~StackBlurFilter() override;
 
+	std::unique_ptr<FilterBase> clone() const override;
+
 	const QString type() const override { return "stack-blur-filter"; }
 	bool apply(cv::Mat& mat) override;
 

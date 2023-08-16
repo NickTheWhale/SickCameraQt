@@ -11,6 +11,12 @@ MedianBlurFilter::~MedianBlurFilter()
 {
 }
 
+std::unique_ptr<FilterBase> MedianBlurFilter::clone() const
+{
+	return std::make_unique<MedianBlurFilter>(*this);
+}
+
+
 bool MedianBlurFilter::apply(cv::Mat& mat)
 {
 	if (mat.empty())

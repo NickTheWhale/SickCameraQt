@@ -8,6 +8,7 @@ class FilterBase : public QtNodes::Serializable
 {
 public:
 	virtual ~FilterBase() {};
+	virtual std::unique_ptr<FilterBase> clone() const = 0;
 	virtual const QString type() const = 0;
 	virtual bool apply(cv::Mat&) = 0;
 

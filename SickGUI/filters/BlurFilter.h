@@ -7,6 +7,8 @@ public:
     BlurFilter();
     ~BlurFilter() override;
 
+    std::unique_ptr<FilterBase> clone() const override;
+
     const QString type() const override { return "blur-filter"; }
     bool apply(cv::Mat& mat) override;
 

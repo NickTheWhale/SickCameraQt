@@ -7,6 +7,8 @@ public:
     FastNIMeansDenoisingFilter();
     ~FastNIMeansDenoisingFilter() override;
 
+    std::unique_ptr<FilterBase> clone() const override;
+
     const QString type() const override { return "fast-non-local-means-denoising-filter"; }
     bool apply(cv::Mat& mat) override;
 

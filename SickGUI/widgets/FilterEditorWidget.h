@@ -5,6 +5,7 @@
 #include <NodeDelegateModelRegistry.hpp>
 #include <FilterFlowGraphModel.h>
 #include <DataFlowGraphicsScene.hpp>
+#include <FilterManager.h>
 
 #include <qpushbutton.h>
 
@@ -12,6 +13,8 @@ static std::shared_ptr<QtNodes::NodeDelegateModelRegistry> registerDataModels();
 
 class FilterEditorWidget : public QtNodes::GraphicsView
 {
+	Q_OBJECT
+
 public slots:
 	void save();
 	void load();
@@ -30,6 +33,8 @@ private:
 	FilterFlowGraphModel graph;
 	QtNodes::DataFlowGraphicsScene* scene = nullptr;
 	std::shared_ptr<QtNodes::NodeDelegateModelRegistry> registry;
+
+	FilterManager filterManager;
 
 	//QPushButton* validateButton = nullptr;
 	QPushButton* applyButton = nullptr;

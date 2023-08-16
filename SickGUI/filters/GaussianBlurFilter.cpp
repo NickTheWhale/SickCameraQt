@@ -10,6 +10,11 @@ GaussianBlurFilter::~GaussianBlurFilter()
 {
 }
 
+std::unique_ptr<FilterBase> GaussianBlurFilter::clone() const
+{
+	return std::make_unique<GaussianBlurFilter>(*this);
+}
+
 bool GaussianBlurFilter::apply(cv::Mat& mat)
 {
 	if (mat.empty())

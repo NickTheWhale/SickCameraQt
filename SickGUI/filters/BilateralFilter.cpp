@@ -3,7 +3,7 @@
 #include <opencv2/imgproc.hpp>
 
 BilateralFilter::BilateralFilter() :
-    diameter(0),
+    diameter(1),
     sigmaColor(0),
     sigmaSpace(0)
 {
@@ -11,6 +11,11 @@ BilateralFilter::BilateralFilter() :
 
 BilateralFilter::~BilateralFilter()
 {
+}
+
+std::unique_ptr<FilterBase> BilateralFilter::clone() const
+{
+    return std::make_unique<BilateralFilter>(*this);
 }
 
 bool BilateralFilter::apply(cv::Mat& mat)

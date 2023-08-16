@@ -13,6 +13,7 @@
 #include <SubtractFilterModel.h>
 #include <FrameSourceModel.h>
 #include <FrameViewerModel.h>
+#include <PlcSourceModel.h>
 
 #include <qlayout.h>
 #include <qdebug.h>
@@ -94,7 +95,6 @@ const bool FilterEditorWidget::validatePlcFlags(QtNodes::NodeId& startNodeId, Qt
 const void FilterEditorWidget::applyFlow()
 {
 	QJsonArray json;
-	
 
 	QtNodes::NodeId startNodeId, endNodeId;
 	if (!validatePlcFlags(startNodeId, endNodeId))
@@ -104,13 +104,16 @@ const void FilterEditorWidget::applyFlow()
 	}
 
 	json = graph.computeFilterJson(startNodeId, endNodeId);
-	if (json.isEmpty())
+	if (json.isEmpty() && !graph.nodesUniquelyConnected(startNodeId, endNodeId))
 	{
-		qDebug() << "filter json is empty";
+		qDebug() << "filter json is empty and nodes are not uniquely connected";
 		return;
 	}
 
-	//emit updatedFilters(json);
+	if (json.isEmpty())
+		qDebug() << "filter json is empty and nodes are uniquely connected";
+
+	emit updatedFilters(json);
 }
 
 std::shared_ptr<QtNodes::NodeDelegateModelRegistry> registerDataModels()
@@ -129,6 +132,7 @@ std::shared_ptr<QtNodes::NodeDelegateModelRegistry> registerDataModels()
 	ret->registerModel<ResizeFilterModel>("Filters");
 	ret->registerModel<SubtractFilterModel>("Filters");
 	ret->registerModel<FrameSourceModel>("Sources");
+	ret->registerModel<PlcSourceModel>("Sources");
 	ret->registerModel<FrameViewerModel>("Viewers");
 
 	return ret;

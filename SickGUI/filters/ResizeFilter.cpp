@@ -12,6 +12,11 @@ ResizeFilter::~ResizeFilter()
 {
 }
 
+std::unique_ptr<FilterBase> ResizeFilter::clone() const
+{
+	return std::make_unique<ResizeFilter>(*this);
+}
+
 bool ResizeFilter::apply(cv::Mat& mat)
 {
 	if (mat.empty())

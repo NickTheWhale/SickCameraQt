@@ -26,9 +26,35 @@ QtNodes::NodeId FilterFlowGraphModel::addNode(QString const nodeType)
 	//}
 }
 
+bool FilterFlowGraphModel::nodesDirectConnected(QtNodes::NodeId startNodeId, QtNodes::NodeId endNodeId) const
+{
+	if (!nodeExists(startNodeId) || !nodeExists(endNodeId)) {
+		return false;
+	}
+
+	std::unordered_set<QtNodes::ConnectionId> connections = allConnectionIds(startNodeId);
+
+	for (const QtNodes::ConnectionId& connection : connections)
+	{
+		QtNodes::NodeId connectedNodeId = (connection.inNodeId == startNodeId) ? connection.outNodeId : connection.inNodeId;
+
+		if (connectedNodeId == endNodeId) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
+bool FilterFlowGraphModel::nodesUniquelyConnected(QtNodes::NodeId startNodeId, QtNodes::NodeId endNodeId) const
+{
+	return nodesDirectConnected(startNodeId, endNodeId) && allConnectionIds(startNodeId).size() == 1;
+}
+
 bool FilterFlowGraphModel::nodesConnected(QtNodes::NodeId startNodeId, QtNodes::NodeId endNodeId) const
 {
 	// breadth-first traversal
+
 	if (!nodeExists(startNodeId) || !nodeExists(endNodeId)) {
 		return false;
 	}
@@ -45,9 +71,6 @@ bool FilterFlowGraphModel::nodesConnected(QtNodes::NodeId startNodeId, QtNodes::
 
 		if (currentNodeId == endNodeId)
 		{
-			for (const auto& cid : visitedNodes)
-				qDebug() << this->nodeData(cid, QtNodes::NodeRole::Type);
-
 			return true;
 		}
 
@@ -63,7 +86,8 @@ bool FilterFlowGraphModel::nodesConnected(QtNodes::NodeId startNodeId, QtNodes::
 		for (const QtNodes::ConnectionId& connection : connections)
 		{
 			QtNodes::NodeId nextNodeId = connection.inNodeId;
-			if (nextNodeId == currentNodeId) {
+			if (nextNodeId == currentNodeId) 
+			{
 				nextNodeId = connection.outNodeId;
 			}
 
@@ -94,7 +118,6 @@ const std::vector<QtNodes::NodeId> FilterFlowGraphModel::computeFilterChainIDs(Q
 
 		if (connections.size() != 1 || (!isFilter && currentNode != endNodeId))
 		{
-			qDebug() << "early return";
 			return std::vector<QtNodes::NodeId>();
 		}
 
@@ -118,7 +141,11 @@ const QJsonArray FilterFlowGraphModel::computeFilterJson(QtNodes::NodeId startNo
 
 	auto ids = computeFilterChainIDs(startNodeId, endNodeId);
 	for (const auto& id : ids)
-		json.append(saveNode(id));
+	{
+		QJsonObject filter = saveNode(id)["internal-data"].toObject()["filter"].toObject();
+		if (!filter.empty())
+			json.append(filter);
+	}
 
 	return json;
 }

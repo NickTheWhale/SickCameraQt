@@ -11,6 +11,8 @@
 #include <qthread.h>
 #include <qrect.h>
 #include <qmutex.h>
+#include <qjsonarray.h>
+#include <FilterManager.h>
 
 #include <Frameset.h>
 #include "..\VisionaryCamera.h"
@@ -48,6 +50,7 @@ public:
 
 	void setMask(const QRectF& maskNorm);
 	void setEnableMask(const bool enable);
+	void setFilters(const QJsonArray& filters);
 
 protected:
 	/**
@@ -61,8 +64,12 @@ private:
 
 	QMutex maskMutex;
 	QRectF maskNorm;
+	
 	QMutex maskEnabledMutex;
 	volatile bool maskEnabled = false;
+	
+	QMutex filterMutex;
+	FilterManager filterManager;
 
 	//void applyMask(frameset::Frameset& fs, const QRectF& maskNorm);
 };

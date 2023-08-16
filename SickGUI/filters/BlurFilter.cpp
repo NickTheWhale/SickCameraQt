@@ -12,6 +12,11 @@ BlurFilter::~BlurFilter()
 {
 }
 
+std::unique_ptr<FilterBase> BlurFilter::clone() const
+{
+	return std::make_unique<BlurFilter>(*this);
+}
+
 bool BlurFilter::apply(cv::Mat& mat)
 {
 	if (mat.empty())

@@ -57,7 +57,13 @@ void CaptureThread::run()
 				frameset::mask(fs, maskNorm);
 			}
 
-			threadInterface.pushPlcFrame(fs);
+			// apply plc filters
+			frameset::Frameset plcFs = fs;
+			cv::Mat depthMat = frameset::toMat(plcFs.depth);
+			filterManager.applyFilters(depthMat);
+			plcFs.depth = frameset::toFrame(depthMat);
+			threadInterface.pushPlcFrame(plcFs);
+
 			threadInterface.pushGuiFrame(fs);
 			threadInterface.pushWebFrame(fs);
 		}
@@ -82,4 +88,10 @@ void CaptureThread::setEnableMask(const bool enable)
 {
 	QMutexLocker locker(&maskEnabledMutex);
 	maskEnabled = enable;
+}
+
+void CaptureThread::setFilters(const QJsonArray& filters)
+{
+	QMutexLocker locker(&filterMutex);
+	filterManager.makeFilters(filters);
 }

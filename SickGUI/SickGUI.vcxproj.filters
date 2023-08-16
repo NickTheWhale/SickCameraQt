@@ -322,6 +322,9 @@
     <ClCompile Include="nodes\MatNodeData.h">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="nodes\PlcSourceModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="snap7\snap7.h">
@@ -510,9 +513,6 @@
     <ClInclude Include="nodeeditor\include\QtNodes\internal\StyleCollection.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="widgets\FilterEditorWidget.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="filters\FilterManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -657,6 +657,12 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="FilterFlowGraphModel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="widgets\FilterEditorWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="PlcSourceModel.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

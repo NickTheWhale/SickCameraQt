@@ -211,6 +211,11 @@ void SickGUI::makeConnections()
 {
 	QObject::connect(captureThread, &CaptureThread::addTime, cycleTimeWidget, &CycleTimeWidget::addCamTime);
 	QObject::connect(plcThread, &PlcThread::addTime, cycleTimeWidget, &CycleTimeWidget::addPlcTime);
+	QObject::connect(filterEditorWidget, &FilterEditorWidget::updatedFilters, this,
+		[&](const QJsonArray& filters)
+		{
+			captureThread->setFilters(filters);
+		});
 }
 
 void SickGUI::startThreads(QPromise<ThreadResult>& promise)
@@ -236,7 +241,7 @@ ThreadResult SickGUI::startCamThread()
 				return ret;
 			}
 		}
-		
+
 		qInfo() << "opening camera";
 		OpenResult openRet = camera->open();
 		if (openRet.error != ErrorCode::NONE_ERROR)
@@ -248,7 +253,7 @@ ThreadResult SickGUI::startCamThread()
 			ret.message = "failed to open camera: " + openRet.message;
 			return ret;
 		}
-		
+
 		qInfo() << "starting underlying camera thread handler";
 		if (!captureThread)
 		{

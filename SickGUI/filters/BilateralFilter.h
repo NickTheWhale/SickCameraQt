@@ -7,6 +7,8 @@ public:
     BilateralFilter();
     ~BilateralFilter() override;
 
+    std::unique_ptr<FilterBase> clone() const override;
+
     const QString type() const override { return "bilateral-filter"; }
     bool apply(cv::Mat& mat) override;
 

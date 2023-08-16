@@ -150,6 +150,7 @@ xcopy /y /d /f "C:\opencv\build\x64\vc16\bin\opencv_world480d.dll" "$(OutDir)"</
     <ClCompile Include="filters\ResizeFilter.cpp" />
     <ClCompile Include="filters\StackBlurFilter.cpp" />
     <ClCompile Include="filters\ThresholdFilter.cpp" />
+    <ClCompile Include="nodes\PlcSourceModel.cpp" />
     <ClCompile Include="widgets\FilterEditorWidget.cpp" />
     <ClCompile Include="Frameset.cpp" />
     <ClCompile Include="nodeeditor\src\AbstractGraphModel.cpp" />
@@ -271,7 +272,7 @@ xcopy /y /d /f "C:\opencv\build\x64\vc16\bin\opencv_world480d.dll" "$(OutDir)"</
     <ClInclude Include="filters\ResizeFilter.h" />
     <ClInclude Include="filters\StackBlurFilter.h" />
     <ClInclude Include="filters\ThresholdFilter.h" />
-    <ClInclude Include="widgets\FilterEditorWidget.h" />
+    <QtMoc Include="widgets\FilterEditorWidget.h" />
     <ClInclude Include="Frameset.h" />
     <QtMoc Include="nodeeditor\include\QtNodes\internal\AbstractGraphModel.hpp" />
     <ClInclude Include="nodeeditor\include\QtNodes\internal\AbstractNodeGeometry.hpp" />
@@ -308,6 +309,7 @@ xcopy /y /d /f "C:\opencv\build\x64\vc16\bin\opencv_world480d.dll" "$(OutDir)"</
     <ClInclude Include="nodeeditor\src\DefaultVerticalNodeGeometry.hpp" />
     <ClInclude Include="nodeeditor\src\NodeConnectionInteraction.hpp" />
     <ClInclude Include="nodeeditor\src\UndoCommands.hpp" />
+    <QtMoc Include="PlcSourceModel.h" />
     <ClInclude Include="threads\ThreadInterface.h" />
     <QtMoc Include="CustomMessageHandler.h" />
     <QtMoc Include="widgets\CycleTime.h" />

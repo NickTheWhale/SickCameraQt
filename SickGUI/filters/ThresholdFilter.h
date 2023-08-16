@@ -7,6 +7,8 @@ public:
     ThresholdFilter();
     ~ThresholdFilter() override;
 
+    std::unique_ptr<FilterBase> clone() const override;
+
     const QString type() const override { return "threshold-filter"; }
     bool apply(cv::Mat& mat) override;
 

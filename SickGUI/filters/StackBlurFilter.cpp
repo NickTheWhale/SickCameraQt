@@ -12,6 +12,11 @@ StackBlurFilter::~StackBlurFilter()
 {
 }
 
+std::unique_ptr<FilterBase> StackBlurFilter::clone() const
+{
+    return std::make_unique<StackBlurFilter>(*this);
+}
+
 bool StackBlurFilter::apply(cv::Mat& mat)
 {
     if (mat.empty())
