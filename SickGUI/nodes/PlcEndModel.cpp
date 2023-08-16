@@ -1,9 +1,7 @@
 #include "PlcEndModel.h"
 
-PlcEndModel::PlcEndModel() :
-	_widget(new QWidget())
+PlcEndModel::PlcEndModel()
 {
-	_widget->setMaximumSize(0, 0);
 }
 
 unsigned int PlcEndModel::nPorts(QtNodes::PortType const portType) const
@@ -24,6 +22,13 @@ unsigned int PlcEndModel::nPorts(QtNodes::PortType const portType) const
 	return result;
 }
 
+QWidget* PlcEndModel::embeddedWidget()
+{
+	if (_widget)
+		createWidgets();
+	return _widget;
+}
+
 QJsonObject PlcEndModel::save() const
 {
 	QJsonObject root;
@@ -33,4 +38,10 @@ QJsonObject PlcEndModel::save() const
 
 void PlcEndModel::load(QJsonObject const& p)
 {
+}
+
+void PlcEndModel::createWidgets()
+{
+	_widget = new QWidget();
+	_widget->resize(0, 0);
 }

@@ -6,34 +6,8 @@
 #include <qtimer.h>
 
 FrameSourceModel::FrameSourceModel() :
-    _widget(new QWidget()),
     threadInterface(ThreadInterface::instance())
 {
-    auto snapshotButton = new QPushButton("Snapshot");
-    connect(snapshotButton, &QPushButton::pressed, this, [=]() 
-        { 
-            _frame = threadInterface.peekGuiFrame().depth;
-            emit dataUpdated(0);
-        });
-    auto continuousCheckBox = new QCheckBox("Continuous");
-    auto timer = new QTimer(_widget);
-    connect(continuousCheckBox, &QCheckBox::stateChanged, this, [=]()
-        {
-            bool enabled = continuousCheckBox->isChecked();
-            snapshotButton->setEnabled(!enabled);
-            enabled ? timer->start(100) : timer->stop();
-        });
-    connect(timer, &QTimer::timeout, this, [=]()
-        {
-            _frame = threadInterface.peekGuiFrame().depth;
-            emit dataUpdated(0);
-        });
-    
-    auto vbox = new QVBoxLayout();
-    vbox->addWidget(continuousCheckBox);
-    vbox->addWidget(snapshotButton);
-
-    _widget->setLayout(vbox);
 }
 
 unsigned int FrameSourceModel::nPorts(QtNodes::PortType const portType) const
@@ -62,6 +36,13 @@ std::shared_ptr<QtNodes::NodeData> FrameSourceModel::outData(QtNodes::PortIndex 
     return std::make_shared<MatNodeData>(mat);
 }
 
+QWidget* FrameSourceModel::embeddedWidget()
+{
+    if (!_widget)
+        createWidgets();
+    return _widget;
+}
+
 QJsonObject FrameSourceModel::save() const
 {
     QJsonObject root;
@@ -72,4 +53,34 @@ QJsonObject FrameSourceModel::save() const
 
 void FrameSourceModel::load(QJsonObject const& p)
 {
+}
+
+void FrameSourceModel::createWidgets()
+{
+    _widget = new QWidget();
+    auto snapshotButton = new QPushButton("Snapshot");
+    connect(snapshotButton, &QPushButton::pressed, this, [=]()
+        {
+            _frame = threadInterface.peekGuiFrame().depth;
+            emit dataUpdated(0);
+        });
+    auto continuousCheckBox = new QCheckBox("Continuous");
+    auto timer = new QTimer(_widget);
+    connect(continuousCheckBox, &QCheckBox::stateChanged, this, [=]()
+        {
+            bool enabled = continuousCheckBox->isChecked();
+            snapshotButton->setEnabled(!enabled);
+            enabled ? timer->start(100) : timer->stop();
+        });
+    connect(timer, &QTimer::timeout, this, [=]()
+        {
+            _frame = threadInterface.peekGuiFrame().depth;
+            emit dataUpdated(0);
+        });
+
+    auto vbox = new QVBoxLayout();
+    vbox->addWidget(continuousCheckBox);
+    vbox->addWidget(snapshotButton);
+
+    _widget->setLayout(vbox);
 }

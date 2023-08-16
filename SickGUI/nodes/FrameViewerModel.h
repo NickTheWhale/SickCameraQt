@@ -52,7 +52,7 @@ public:
 
 	void setInData(std::shared_ptr<QtNodes::NodeData> nodeData, QtNodes::PortIndex const portIndex) override;
 
-	QWidget* embeddedWidget() override { return _widget; }
+	QWidget* embeddedWidget() override;
 
 	bool resizable() const override { return true; }
 
@@ -63,10 +63,13 @@ public:
 private:
 	QWidget* _widget = nullptr;
 	ImageLabel* _image = nullptr;
+
 	QComboBox* _colorBox = nullptr;
+	int colorIndex;
 
 	frameset::Frame _frame;
 
 	std::shared_ptr<QtNodes::NodeData> _currentNodeData;
+	void createWidgets();
 };
 

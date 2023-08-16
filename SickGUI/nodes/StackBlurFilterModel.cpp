@@ -7,36 +7,11 @@
 #include <opencv2/imgproc.hpp>
 
 StackBlurFilterModel::StackBlurFilterModel() :
-	_widget(new QWidget()),
-	sb_sizeX(new QSpinBox()),
-	sb_sizeY(new QSpinBox()),
+	sizeX(1),
+	sizeY(1),
 	_filter(std::make_unique<StackBlurFilter>())
 {
-	sb_sizeX->setRange(1, 99);
-	sb_sizeY->setRange(1, 99);
 
-	sb_sizeX->setSingleStep(2);
-	sb_sizeY->setSingleStep(2);
-
-	connect(sb_sizeX, &QSpinBox::valueChanged, this, [=]() { syncFilterParameters(); applyFilter(); });
-	connect(sb_sizeY, &QSpinBox::valueChanged, this, [=]() { syncFilterParameters(); applyFilter(); });
-
-	connect(sb_sizeX, &QSpinBox::editingFinished, this, [=]() { sb_sizeX->setValue(makeOdd(sb_sizeX->value())); });
-	connect(sb_sizeY, &QSpinBox::editingFinished, this, [=]() { sb_sizeY->setValue(makeOdd(sb_sizeY->value())); });
-
-	auto hboxTop = new QHBoxLayout();
-	auto hboxBottom = new QHBoxLayout();
-	hboxTop->addWidget(new QLabel("Kernal Size (px)"));
-	hboxBottom->addWidget(sb_sizeX);
-	hboxBottom->addWidget(new QLabel("x"));
-	hboxBottom->addWidget(sb_sizeY);
-
-	auto vbox = new QVBoxLayout();
-	vbox->addLayout(hboxTop);
-	vbox->addLayout(hboxBottom);
-
-	_widget->setLayout(vbox);
-	syncFilterParameters();
 }
 
 void StackBlurFilterModel::setInData(std::shared_ptr<QtNodes::NodeData> nodeData, QtNodes::PortIndex const portIndex)
@@ -45,6 +20,13 @@ void StackBlurFilterModel::setInData(std::shared_ptr<QtNodes::NodeData> nodeData
 	_currentNodeData = nodeData;
 
 	applyFilter();
+}
+
+QWidget* StackBlurFilterModel::embeddedWidget()
+{
+	if (!_widget)
+		createWidgets();
+	return _widget;
 }
 
 QJsonObject StackBlurFilterModel::save() const
@@ -65,15 +47,15 @@ void StackBlurFilterModel::load(QJsonObject const& p)
 	QJsonObject filterParameters = _filter->save()["parameters"].toObject();
 	QJsonObject size = filterParameters["kernel-size"].toObject();
 
-	sb_sizeX->setValue(makeOdd(size["x"].toInt(sb_sizeX->value())));
-	sb_sizeY->setValue(makeOdd(size["y"].toInt(sb_sizeX->value())));
+	sizeX = makeOdd(size["x"].toInt(sizeX));
+	sizeY = makeOdd(size["y"].toInt(sizeY));
 }
 
 void StackBlurFilterModel::syncFilterParameters() const
 {
 	QJsonObject size;
-	size["x"] = sb_sizeX->value();
-	size["y"] = sb_sizeY->value();
+	size["x"] = sizeX;
+	size["y"] = sizeY;
 
 	QJsonObject parameters;
 	parameters["kernel-size"] = size;
@@ -102,8 +84,42 @@ void StackBlurFilterModel::applyFilter()
 
 const int StackBlurFilterModel::makeOdd(const int number) const
 {
-	if (number % 2 != 0)
-		return number;
+	return number | 1;
+}
 
-	return std::max(1, number - 1);
+
+void StackBlurFilterModel::createWidgets()
+{
+	sb_sizeX = new QSpinBox();
+	sb_sizeY = new QSpinBox();
+
+	sb_sizeX->setRange(1, 99);
+	sb_sizeY->setRange(1, 99);
+
+	sb_sizeX->setSingleStep(2);
+	sb_sizeY->setSingleStep(2);
+
+	sb_sizeX->setValue(sizeX);
+	sb_sizeY->setValue(sizeY);
+
+	connect(sb_sizeX, &QSpinBox::valueChanged, this, [=](int value) { sizeX = makeOdd(value); syncFilterParameters(); applyFilter(); });
+	connect(sb_sizeY, &QSpinBox::valueChanged, this, [=](int value) { sizeY = makeOdd(value); syncFilterParameters(); applyFilter(); });
+
+	connect(sb_sizeX, &QSpinBox::editingFinished, this, [=]() { sb_sizeX->setValue(makeOdd(sb_sizeX->value())); });
+	connect(sb_sizeY, &QSpinBox::editingFinished, this, [=]() { sb_sizeY->setValue(makeOdd(sb_sizeY->value())); });
+
+	auto hboxTop = new QHBoxLayout();
+	auto hboxBottom = new QHBoxLayout();
+	hboxTop->addWidget(new QLabel("Kernal Size (px)"));
+	hboxBottom->addWidget(sb_sizeX);
+	hboxBottom->addWidget(new QLabel("x"));
+	hboxBottom->addWidget(sb_sizeY);
+
+	auto vbox = new QVBoxLayout();
+	vbox->addLayout(hboxTop);
+	vbox->addLayout(hboxBottom);
+
+	_widget = new QWidget();
+	_widget->setLayout(vbox);
+	syncFilterParameters();
 }

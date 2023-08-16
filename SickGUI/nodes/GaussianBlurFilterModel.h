@@ -30,7 +30,7 @@ public:
 
 	void setInData(std::shared_ptr<QtNodes::NodeData> nodeData, QtNodes::PortIndex const portIndex) override;
 
-	QWidget* embeddedWidget() override { return _widget; }
+	QWidget* embeddedWidget() override;
 
 	bool resizable() const override { return false; }
 
@@ -39,7 +39,7 @@ public:
 	void load(QJsonObject const& p) override;
 
 private:
-	QWidget* _widget;
+	QWidget* _widget = nullptr;
 	std::shared_ptr<QtNodes::NodeData> _currentNodeData;
 	std::shared_ptr<QtNodes::NodeData> _originalNodeData;
 	
@@ -49,9 +49,16 @@ private:
 	QDoubleSpinBox* sb_sigmaX = nullptr;
 	QDoubleSpinBox* sb_sigmaY = nullptr;
 
+	int sizeX;
+	int sizeY;
+
+	double sigmaX;
+	double sigmaY;
+
 	std::unique_ptr<FilterBase> _filter;
 	void syncFilterParameters() const;
 	void applyFilter();
 	const int makeOdd(const int number) const;
+	void createWidgets();
 };
 

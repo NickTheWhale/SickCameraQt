@@ -129,7 +129,7 @@ xcopy /y /d /f "C:\opencv\build\x64\vc16\bin\opencv_world480d.dll" "$(OutDir)"</
     <ClCompile Include="filters\BilateralFilter.cpp" />
     <ClCompile Include="filters\BlurFilter.cpp" />
     <ClCompile Include="filters\FastNIMeansDenoisingFilter.cpp" />
-    <ClCompile Include="FilterFlowGraphModel.cpp" />
+    <ClCompile Include="nodes\FilterFlowGraphModel.cpp" />
     <ClCompile Include="filters\FilterManager.cpp" />
     <ClCompile Include="filters\GaussianBlurFilter.cpp" />
     <ClCompile Include="filters\MedianBlurFilter.cpp" />
@@ -256,7 +256,7 @@ xcopy /y /d /f "C:\opencv\build\x64\vc16\bin\opencv_world480d.dll" "$(OutDir)"</
     <QtMoc Include="nodes\FastNIMeansDenoisingFilterModel.h" />
     <QtMoc Include="nodes\GaussianBlurFilterModel.h" />
     <QtMoc Include="nodes\MedianBlurFilterModel.h" />
-    <QtMoc Include="FilterFlowGraphModel.h" />
+    <QtMoc Include="nodes\FilterFlowGraphModel.h" />
     <ClInclude Include="filters\BilateralFilter.h" />
     <ClInclude Include="filters\BlurFilter.h" />
     <ClInclude Include="filters\FastNIMeansDenoisingFilter.h" />
@@ -309,7 +309,7 @@ xcopy /y /d /f "C:\opencv\build\x64\vc16\bin\opencv_world480d.dll" "$(OutDir)"</
     <ClInclude Include="nodeeditor\src\DefaultVerticalNodeGeometry.hpp" />
     <ClInclude Include="nodeeditor\src\NodeConnectionInteraction.hpp" />
     <ClInclude Include="nodeeditor\src\UndoCommands.hpp" />
-    <QtMoc Include="PlcSourceModel.h" />
+    <QtMoc Include="nodes\PlcSourceModel.h" />
     <ClInclude Include="threads\ThreadInterface.h" />
     <QtMoc Include="CustomMessageHandler.h" />
     <QtMoc Include="widgets\CycleTime.h" />

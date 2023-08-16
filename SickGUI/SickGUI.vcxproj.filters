@@ -289,7 +289,7 @@
     <ClCompile Include="nodes\PlcEndModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FilterFlowGraphModel.cpp">
+    <ClCompile Include="nodes\FilterFlowGraphModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="filters\FilterManager.cpp">
@@ -656,13 +656,13 @@
     <QtMoc Include="nodes\PlcEndModel.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="FilterFlowGraphModel.h">
+    <QtMoc Include="nodes\FilterFlowGraphModel.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="widgets\FilterEditorWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="PlcSourceModel.h">
+    <QtMoc Include="nodes\PlcSourceModel.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

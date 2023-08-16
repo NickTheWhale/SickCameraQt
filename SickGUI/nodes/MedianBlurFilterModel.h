@@ -30,7 +30,7 @@ public:
 
 	void setInData(std::shared_ptr<QtNodes::NodeData> nodeData, QtNodes::PortIndex const portIndex) override;
 
-	QWidget* embeddedWidget() override { return _widget; }
+	QWidget* embeddedWidget() override;
 
 	bool resizable() const override { return false; }
 
@@ -39,15 +39,20 @@ public:
 	void load(QJsonObject const& p) override;
 
 private:
-	QWidget* _widget;
+	QWidget* _widget = nullptr;
 	std::shared_ptr<QtNodes::NodeData> _currentNodeData;
 	std::shared_ptr<QtNodes::NodeData> _originalNodeData;
 
-	QRadioButton* size3 = nullptr;
-	QRadioButton* size5 = nullptr;
+	QRadioButton* rb_size3 = nullptr;
+	QRadioButton* rb_size5 = nullptr;
+
+	enum KERNEL_SIZE {SMALL = 3, LARGE = 5};
+	KERNEL_SIZE kernelSize;
 
 	std::unique_ptr<FilterBase> _filter;
 	void syncFilterParameters() const;
 	void applyFilter();
+	void sizeSelected();
+	void createWidgets();
 };
 

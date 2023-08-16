@@ -1,9 +1,7 @@
 #include "PlcStartModel.h"
 
-PlcStartModel::PlcStartModel() :
-	_widget(new QWidget())
+PlcStartModel::PlcStartModel()
 {
-	_widget->setMaximumSize(0, 0);
 }
 
 unsigned int PlcStartModel::nPorts(QtNodes::PortType const portType) const
@@ -24,6 +22,13 @@ unsigned int PlcStartModel::nPorts(QtNodes::PortType const portType) const
 	return result;
 }
 
+QWidget* PlcStartModel::embeddedWidget()
+{
+	if (!_widget)
+		createWidgets();
+	return _widget;
+}
+
 QJsonObject PlcStartModel::save() const
 {
 	QJsonObject root;
@@ -33,4 +38,10 @@ QJsonObject PlcStartModel::save() const
 
 void PlcStartModel::load(QJsonObject const& p)
 {
+}
+
+void PlcStartModel::createWidgets()
+{
+	_widget = new QWidget();
+	_widget->resize(0, 0);
 }

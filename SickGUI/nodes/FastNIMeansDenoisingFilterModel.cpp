@@ -3,18 +3,9 @@
 #include <qformlayout.h>
 
 FastNIMeansDenoisingFilterModel::FastNIMeansDenoisingFilterModel() :
-	_widget(new QWidget()),
-	sb_h(new QDoubleSpinBox()),
+	hVal(0.0),
 	_filter(std::make_unique<FastNIMeansDenoisingFilter>())
 {
-	sb_h->setRange(0.0, 100.0);
-	connect(sb_h, &QDoubleSpinBox::valueChanged, this, [=]() { syncFilterParameters(); applyFilter(); });
-
-	auto form = new QFormLayout();
-	form->addRow("H", sb_h);
-
-	_widget->setLayout(form);
-	syncFilterParameters();
 }
 
 void FastNIMeansDenoisingFilterModel::setInData(std::shared_ptr<QtNodes::NodeData> nodeData, QtNodes::PortIndex const portIndex)
@@ -23,6 +14,13 @@ void FastNIMeansDenoisingFilterModel::setInData(std::shared_ptr<QtNodes::NodeDat
 	_currentNodeData = nodeData;
 
 	applyFilter();
+}
+
+QWidget* FastNIMeansDenoisingFilterModel::embeddedWidget()
+{
+	if (!_widget)
+		createWidgets();
+	return _widget;
 }
 
 QJsonObject FastNIMeansDenoisingFilterModel::save() const
@@ -41,13 +39,13 @@ void FastNIMeansDenoisingFilterModel::load(QJsonObject const& p)
 	_filter->load(filterJson);
 
 	QJsonObject filterParameters = _filter->save()["parameters"].toObject();
-	sb_h->setValue(filterParameters["h"].toDouble(sb_h->value()));
+	hVal = filterParameters["h"].toDouble(hVal);
 }
 
 void FastNIMeansDenoisingFilterModel::syncFilterParameters() const
 {
 	QJsonObject parameters;
-	parameters["h"] = sb_h->value();
+	parameters["h"] = hVal;
 
 	QJsonObject root;
 	root["parameters"] = parameters;
@@ -69,4 +67,21 @@ void FastNIMeansDenoisingFilterModel::applyFilter()
 		}
 	}
 	emit dataUpdated(0);
+}
+
+void FastNIMeansDenoisingFilterModel::createWidgets()
+{
+	sb_h = new QDoubleSpinBox();
+
+	sb_h->setRange(0.0, 100.0);
+	sb_h->setValue(hVal);
+	connect(sb_h, &QDoubleSpinBox::valueChanged, this, [=](double value) {hVal = value; syncFilterParameters(); applyFilter(); });
+	sb_h->setValue(hVal);
+
+	auto form = new QFormLayout();
+	form->addRow("H", sb_h);
+
+	_widget = new QWidget();
+	_widget->setLayout(form);
+	syncFilterParameters();
 }

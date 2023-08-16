@@ -7,42 +7,13 @@
 #include <opencv2/imgproc.hpp>
 
 GaussianBlurFilterModel::GaussianBlurFilterModel() :
-	_widget(new QWidget()),
-	sb_sizeX(new QSpinBox()),
-	sb_sizeY(new QSpinBox()),
-	sb_sigmaX(new QDoubleSpinBox()),
-	sb_sigmaY(new QDoubleSpinBox()),
+	sizeX(1),
+	sizeY(1),
+	sigmaX(0.0),
+	sigmaY(0.0),
 	_filter(std::make_unique<GaussianBlurFilter>())
 {
-	sb_sizeX->setRange(1, 99);
-	sb_sizeY->setRange(1, 99);
-	sb_sigmaX->setRange(0.0, 100.0);
-	sb_sigmaY->setRange(0.0, 100.0);
 
-	connect(sb_sizeX, &QSpinBox::valueChanged, this, [=]() { syncFilterParameters(); applyFilter(); });
-	connect(sb_sizeY, &QSpinBox::valueChanged, this, [=]() { syncFilterParameters(); applyFilter(); });
-	connect(sb_sigmaX, &QDoubleSpinBox::valueChanged, this, [=]() { syncFilterParameters(); applyFilter(); });
-	connect(sb_sigmaY, &QDoubleSpinBox::valueChanged, this, [=]() { syncFilterParameters(); applyFilter(); });
-
-	connect(sb_sizeX, &QSpinBox::editingFinished, this, [=]() { sb_sizeX->setValue(makeOdd(sb_sizeX->value())); });
-	connect(sb_sizeY, &QSpinBox::editingFinished, this, [=]() { sb_sizeY->setValue(makeOdd(sb_sizeY->value())); });
-
-	auto hbox = new QHBoxLayout();
-	hbox->addWidget(sb_sizeX);
-	hbox->addWidget(new QLabel("x"));
-	hbox->addWidget(sb_sizeY);
-
-	auto form = new QFormLayout();
-	form->addRow("Sigma X", sb_sigmaX);
-	form->addRow("Sigma Y", sb_sigmaY);
-
-	auto vbox = new QVBoxLayout();
-	vbox->addWidget(new QLabel("Kernal Size (px)"));
-	vbox->addLayout(hbox);
-	vbox->addLayout(form);
-
-	_widget->setLayout(vbox);
-	syncFilterParameters();
 }
 
 void GaussianBlurFilterModel::setInData(std::shared_ptr<QtNodes::NodeData> nodeData, QtNodes::PortIndex const portIndex)
@@ -51,6 +22,13 @@ void GaussianBlurFilterModel::setInData(std::shared_ptr<QtNodes::NodeData> nodeD
 	_currentNodeData = nodeData;
 
 	applyFilter();
+}
+
+QWidget* GaussianBlurFilterModel::embeddedWidget()
+{
+	if (!_widget)
+		createWidgets();
+	return _widget;
 }
 
 QJsonObject GaussianBlurFilterModel::save() const
@@ -72,22 +50,22 @@ void GaussianBlurFilterModel::load(QJsonObject const& p)
 	QJsonObject size = filterParameters["kernel-size"].toObject();
 	QJsonObject sigma = filterParameters["sigma"].toObject();
 
-	sb_sizeX->setValue(size["x"].toInt(sb_sizeX->value()));
-	sb_sizeY->setValue(size["y"].toInt(sb_sizeY->value()));
+	sizeX = size["x"].toInt(sizeX);
+	sizeY = size["y"].toInt(sizeY);
 
-	sb_sigmaX->setValue(sigma["x"].toDouble(sb_sigmaX->value()));
-	sb_sigmaY->setValue(sigma["y"].toDouble(sb_sigmaY->value()));
+	sigmaX = sigma["x"].toDouble(sigmaX);
+	sigmaY = sigma["y"].toDouble(sigmaY);
 }
 
 void GaussianBlurFilterModel::syncFilterParameters() const
 {
 	QJsonObject size;
-	size["x"] = makeOdd(sb_sizeX->value());
-	size["y"] = makeOdd(sb_sizeY->value());
+	size["x"] = makeOdd(sizeX);
+	size["y"] = makeOdd(sizeY);
 
 	QJsonObject sigma;
-	sigma["x"] = sb_sigmaX->value();
-	sigma["y"] = sb_sigmaY->value();
+	sigma["x"] = sigmaX;
+	sigma["y"] = sigmaY;
 
 	QJsonObject parameters;
 	parameters["kernel-size"] = size;
@@ -117,8 +95,49 @@ void GaussianBlurFilterModel::applyFilter()
 
 const int GaussianBlurFilterModel::makeOdd(const int number) const
 {
-	if (number % 2 != 0)
-		return number;
+	return number | 1;
+}
 
-	return std::max(1, number - 1);
+void GaussianBlurFilterModel::createWidgets()
+{
+	sb_sizeX = new QSpinBox();
+	sb_sizeY = new QSpinBox();
+	sb_sigmaX = new QDoubleSpinBox();
+	sb_sigmaY = new QDoubleSpinBox();
+
+	sb_sizeX->setRange(1, 99);
+	sb_sizeY->setRange(1, 99);
+	sb_sigmaX->setRange(0.0, 100.0);
+	sb_sigmaY->setRange(0.0, 100.0);
+
+	sb_sizeX->setValue(sizeX);
+	sb_sizeY->setValue(sizeY);
+	sb_sigmaX->setValue(sigmaX);
+	sb_sigmaY->setValue(sigmaY);
+
+	connect(sb_sizeX, &QSpinBox::valueChanged, this, [=](int value) { sizeX = makeOdd(value); syncFilterParameters(); applyFilter(); });
+	connect(sb_sizeY, &QSpinBox::valueChanged, this, [=](int value) { sizeY = makeOdd(value); syncFilterParameters(); applyFilter(); });
+	connect(sb_sigmaX, &QDoubleSpinBox::valueChanged, this, [=](double value) { sigmaX = value; syncFilterParameters(); applyFilter(); });
+	connect(sb_sigmaY, &QDoubleSpinBox::valueChanged, this, [=](double value) { sigmaY = value; syncFilterParameters(); applyFilter(); });
+
+	connect(sb_sizeX, &QSpinBox::editingFinished, this, [=]() { sb_sizeX->setValue(makeOdd(sb_sizeX->value())); });
+	connect(sb_sizeY, &QSpinBox::editingFinished, this, [=]() { sb_sizeY->setValue(makeOdd(sb_sizeY->value())); });
+
+	auto hbox = new QHBoxLayout();
+	hbox->addWidget(sb_sizeX);
+	hbox->addWidget(new QLabel("x"));
+	hbox->addWidget(sb_sizeY);
+
+	auto form = new QFormLayout();
+	form->addRow("Sigma X", sb_sigmaX);
+	form->addRow("Sigma Y", sb_sigmaY);
+
+	auto vbox = new QVBoxLayout();
+	vbox->addWidget(new QLabel("Kernal Size (px)"));
+	vbox->addLayout(hbox);
+	vbox->addLayout(form);
+
+	_widget = new QWidget();
+	_widget->setLayout(vbox);
+	syncFilterParameters();
 }

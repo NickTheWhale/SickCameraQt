@@ -6,30 +6,10 @@
 #include <opencv2/imgproc.hpp>
 
 BlurFilterModel::BlurFilterModel() :
-	_widget(new QWidget()),
-	sb_sizeX(new QSpinBox()),
-	sb_sizeY(new QSpinBox()),
+	sizeX(1),
+	sizeY(1),
 	_filter(std::make_unique<BlurFilter>())
 {
-	sb_sizeX->setRange(1, 99);
-	sb_sizeY->setRange(1, 99);
-
-	connect(sb_sizeX, &QSpinBox::valueChanged, this, [=]() { syncFilterParameters(); applyFilter(); });
-	connect(sb_sizeY, &QSpinBox::valueChanged, this, [=]() { syncFilterParameters(); applyFilter(); });
-
-	auto hboxTop = new QHBoxLayout();
-	auto hboxBottom = new QHBoxLayout();
-	hboxTop->addWidget(new QLabel("Kernal Size (px)"));
-	hboxBottom->addWidget(sb_sizeX);
-	hboxBottom->addWidget(new QLabel("x"));
-	hboxBottom->addWidget(sb_sizeY);
-
-	auto vbox = new QVBoxLayout();
-	vbox->addLayout(hboxTop);
-	vbox->addLayout(hboxBottom);
-
-	_widget->setLayout(vbox);
-	syncFilterParameters();
 }
 
 void BlurFilterModel::setInData(std::shared_ptr<QtNodes::NodeData> nodeData, QtNodes::PortIndex const portIndex)
@@ -38,6 +18,13 @@ void BlurFilterModel::setInData(std::shared_ptr<QtNodes::NodeData> nodeData, QtN
 	_currentNodeData = nodeData;
 
 	applyFilter();
+}
+
+QWidget* BlurFilterModel::embeddedWidget()
+{
+	if (!_widget)
+		createWidgets();
+	return _widget;
 }
 
 QJsonObject BlurFilterModel::save() const
@@ -57,15 +44,15 @@ void BlurFilterModel::load(QJsonObject const& p)
 
 	QJsonObject filterParameters = _filter->save()["parameters"].toObject();
 	QJsonObject size = filterParameters["kernel-size"].toObject();
-	sb_sizeX->setValue(size["x"].toInt(sb_sizeX->value()));
-	sb_sizeY->setValue(size["y"].toInt(sb_sizeY->value()));
+	sizeX = size["x"].toInt(sizeX);
+	sizeY = size["y"].toInt(sizeY);
 }
 
 void BlurFilterModel::syncFilterParameters() const
 {
 	QJsonObject size;
-	size["x"] = sb_sizeX->value();
-	size["y"] = sb_sizeY->value();
+	size["x"] = sizeX;
+	size["y"] = sizeY;
 
 	QJsonObject parameters;
 	parameters["kernel-size"] = size;
@@ -90,4 +77,34 @@ void BlurFilterModel::applyFilter()
 		}
 	}
 	emit dataUpdated(0);
+}
+
+void BlurFilterModel::createWidgets()
+{
+	sb_sizeX = new QSpinBox();
+	sb_sizeY = new QSpinBox();
+
+	sb_sizeX->setRange(1, 99);
+	sb_sizeY->setRange(1, 99);
+
+	sb_sizeX->setValue(sizeX);
+	sb_sizeY->setValue(sizeY);
+
+	connect(sb_sizeX, &QSpinBox::valueChanged, this, [=](int value) { sizeX = value; syncFilterParameters(); applyFilter(); });
+	connect(sb_sizeY, &QSpinBox::valueChanged, this, [=](int value) { sizeY = value; syncFilterParameters(); applyFilter(); });
+
+	auto hboxTop = new QHBoxLayout();
+	auto hboxBottom = new QHBoxLayout();
+	hboxTop->addWidget(new QLabel("Kernal Size (px)"));
+	hboxBottom->addWidget(sb_sizeX);
+	hboxBottom->addWidget(new QLabel("x"));
+	hboxBottom->addWidget(sb_sizeY);
+
+	auto vbox = new QVBoxLayout();
+	vbox->addLayout(hboxTop);
+	vbox->addLayout(hboxBottom);
+
+	_widget = new QWidget();
+	_widget->setLayout(vbox);
+	syncFilterParameters();
 }

@@ -6,25 +6,10 @@
 #include <opencv2/imgproc.hpp>
 
 MedianBlurFilterModel::MedianBlurFilterModel() :
-	_widget(new QWidget()),
-	size3(new QRadioButton("3")),
-	size5(new QRadioButton("5")),
+	kernelSize(SMALL),
 	_filter(std::make_unique<MedianBlurFilter>())
 {
-	size3->setChecked(true);
-	connect(size3, &QRadioButton::toggled, this, [=]() { syncFilterParameters(); applyFilter(); });
-	connect(size5, &QRadioButton::toggled, this, [=]() { syncFilterParameters(); applyFilter(); });
 
-	auto hbox = new QHBoxLayout();
-	hbox->addWidget(size3);
-	hbox->addWidget(size5);
-
-	auto vbox = new QVBoxLayout();
-	vbox->addWidget(new QLabel("Kernal Size (px)"));
-	vbox->addLayout(hbox);
-
-	_widget->setLayout(vbox);
-	syncFilterParameters();
 }
 
 void MedianBlurFilterModel::setInData(std::shared_ptr<QtNodes::NodeData> nodeData, QtNodes::PortIndex const portIndex)
@@ -33,6 +18,13 @@ void MedianBlurFilterModel::setInData(std::shared_ptr<QtNodes::NodeData> nodeDat
 	_currentNodeData = nodeData;
 
 	applyFilter();
+}
+
+QWidget* MedianBlurFilterModel::embeddedWidget()
+{
+	if (!_widget)
+		createWidgets();
+	return _widget;
 }
 
 QJsonObject MedianBlurFilterModel::save() const
@@ -51,17 +43,17 @@ void MedianBlurFilterModel::load(QJsonObject const& p)
 	_filter->load(filterJson);
 
 	QJsonObject filterParameters = _filter->save()["parameters"].toObject();
-	const int size = filterParameters["kernel-size"].toInt(0);
+	const int size = filterParameters["kernel-size"].toInt(SMALL);
 	if (size == 5)
-		size5->setChecked(true);
+		kernelSize = LARGE;
 	else
-		size3->setChecked(true);
+		kernelSize = SMALL;
 }
 
 void MedianBlurFilterModel::syncFilterParameters() const
 {
 	QJsonObject parameters;
-	parameters["kernel-size"] = size3->isChecked() ? 3 : 5;
+	parameters["kernel-size"] = kernelSize;
 
 	QJsonObject root;
 	root["parameters"] = parameters;
@@ -83,4 +75,46 @@ void MedianBlurFilterModel::applyFilter()
 		}
 	}
 	emit dataUpdated(0);
+}
+
+void MedianBlurFilterModel::createWidgets()
+{
+	rb_size3 = new QRadioButton("3");
+	rb_size5 = new QRadioButton("5");
+
+	rb_size3->setChecked(true);
+	rb_size5->setChecked(kernelSize == LARGE);
+
+	connect(rb_size3, &QRadioButton::toggled, this, [=]()
+		{
+			sizeSelected();
+			syncFilterParameters();
+			applyFilter();
+		});
+	connect(rb_size5, &QRadioButton::toggled, this, [=]()
+		{
+			sizeSelected();
+			syncFilterParameters();
+			applyFilter();
+		});
+
+	auto hbox = new QHBoxLayout();
+	hbox->addWidget(rb_size3);
+	hbox->addWidget(rb_size5);
+
+	auto vbox = new QVBoxLayout();
+	vbox->addWidget(new QLabel("Kernal Size (px)"));
+	vbox->addLayout(hbox);
+
+	_widget = new QWidget();
+	_widget->setLayout(vbox);
+	syncFilterParameters();
+}
+
+void MedianBlurFilterModel::sizeSelected()
+{
+	if (rb_size3->isChecked())
+		kernelSize = SMALL;
+	else if (rb_size5->isChecked())
+		kernelSize = LARGE;		
 }

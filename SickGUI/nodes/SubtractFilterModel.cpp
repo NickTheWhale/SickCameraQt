@@ -1,9 +1,7 @@
 #include "SubtractFilterModel.h"
 
-SubtractFilterModel::SubtractFilterModel() :
-	_widget(new QWidget())
+SubtractFilterModel::SubtractFilterModel()
 {
-	_widget->resize(QSize(0, 0));
 }
 
 unsigned int SubtractFilterModel::nPorts(QtNodes::PortType const portType) const
@@ -40,6 +38,13 @@ void SubtractFilterModel::setInData(std::shared_ptr<QtNodes::NodeData> nodeData,
 	applyFilter();
 }
 
+QWidget* SubtractFilterModel::embeddedWidget()
+{
+	if (!_widget)
+		createWidgets();
+	return _widget;
+}
+
 QJsonObject SubtractFilterModel::save() const
 {
 	QJsonObject root;
@@ -68,4 +73,10 @@ void SubtractFilterModel::applyFilter()
 	}
 
 	emit dataUpdated(0);
+}
+
+void SubtractFilterModel::createWidgets()
+{
+	_widget = new QWidget();
+	_widget->resize(0, 0);
 }
