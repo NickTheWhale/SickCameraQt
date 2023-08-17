@@ -325,6 +325,21 @@
     <ClCompile Include="nodes\PlcSourceModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="filters\CropFilter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="filters\SimpleMovingAverageFilter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="filters\ExponentialMovingAverageFilter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nodes\CropFilterModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleMovingAverageFilterModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="snap7\snap7.h">
@@ -543,6 +558,15 @@
     <ClInclude Include="filters\ThresholdFilter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="filters\CropFilter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="filters\SimpleMovingAverageFilter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="filters\ExponentialMovingAverageFilter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="threads\CaptureThread.h">
@@ -663,6 +687,12 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="nodes\PlcSourceModel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nodes\CropFilterModel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="SimpleMovingAverageFilterModel.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

@@ -44,10 +44,15 @@ void MedianBlurFilterModel::load(QJsonObject const& p)
 
 	QJsonObject filterParameters = _filter->save()["parameters"].toObject();
 	const int size = filterParameters["kernel-size"].toInt(SMALL);
-	if (size == 5)
+	if (size == LARGE)
 		kernelSize = LARGE;
 	else
 		kernelSize = SMALL;
+
+	if (!_widget)
+		createWidgets();
+	rb_size3->setChecked(kernelSize == SMALL);
+	rb_size5->setChecked(kernelSize == LARGE);
 }
 
 void MedianBlurFilterModel::syncFilterParameters() const
@@ -82,7 +87,7 @@ void MedianBlurFilterModel::createWidgets()
 	rb_size3 = new QRadioButton("3");
 	rb_size5 = new QRadioButton("5");
 
-	rb_size3->setChecked(true);
+	rb_size3->setChecked(kernelSize == SMALL);
 	rb_size5->setChecked(kernelSize == LARGE);
 
 	connect(rb_size3, &QRadioButton::toggled, this, [=]()

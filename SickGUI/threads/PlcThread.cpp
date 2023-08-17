@@ -7,6 +7,8 @@
 #include <ThreadInterface.h>
 #include <qdebug.h>
 #include <array>
+#include <opencv2/imgproc.hpp>
+#include <opencv2/core.hpp>
 
 bool PlcThread::startPlc(TS7Client* client)
 {
@@ -33,23 +35,20 @@ void PlcThread::run()
 
 		if (frameset::isValid(fs))
 		{
-			msleep(1000);
 			std::array<uint32_t, WRITE_BUFFER_SIZE> data;
-			int offset = 0;
-			//data[offset++] = Fingerprint::average(fs.depth);
-			data[offset++] = 1;
-			data[offset++] = fs.depth.number;
-			data[offset++] = fs.depth.width;
-			data[offset++] = fs.depth.height;
-			data[offset++] = fs.depth.time;
-			data[offset++] = frameset::isEmpty(fs);
-			static uint32_t loopCount = 0;
-			data[offset++] = ++loopCount;
-			data[offset++] = QRandomGenerator::global()->bounded(0, (qint64)std::numeric_limits<qint64>::max());
-			data[offset++] = QRandomGenerator::global()->bounded(0, (qint64)std::numeric_limits<qint64>::max());
-			data[offset++] = QRandomGenerator::global()->bounded(0, (qint64)std::numeric_limits<qint64>::max());
 
-			if (!writeDB2(data))
+			cv::Mat mat = frameset::toMat(fs.depth);
+			cv::resize(mat, mat, cv::Size(WRITE_IMAGE_WIDTH, WRITE_IMAGE_HEIGHT), 0.0, 0.0, cv::InterpolationFlags::INTER_AREA);
+
+			for (int y = 0; y < mat.rows; ++y)
+			{
+				for (int x = 0; x < mat.cols; ++x)
+				{
+					data[y * mat.cols + x] = mat.at<uint16_t>(cv::Point(x, y));
+				}
+			}
+
+			if (!write(data))
 			{
 				if (client->Connect() != 0)
 					qWarning() << "plc failed to reconnect";
@@ -69,26 +68,26 @@ void PlcThread::run()
 	}
 }
 
-bool PlcThread::readDB2()
-{
-	byte buffer[4];
-	if (client->DBRead(2, 0, 4, &buffer) != 0)
-	{
-		qWarning() << "failed to read DB2";
-		return false;
-	}
+//bool PlcThread::readDB2()
+//{
+//	byte buffer[4];
+//	if (client->DBRead(2, 0, 4, &buffer) != 0)
+//	{
+//		qWarning() << "failed to read DB2";
+//		return false;
+//	}
+//
+//	for (const auto& _byte : buffer)
+//	{
+//		qDebug() << "byte:" << _byte;
+//	}
+//	return true;
+//}
 
-	for (const auto& _byte : buffer)
-	{
-		qDebug() << "byte:" << _byte;
-	}
-	return true;
-}
-
-bool PlcThread::writeDB2(const std::array<uint32_t, WRITE_BUFFER_SIZE>& data)
+bool PlcThread::write(const std::array<uint32_t, WRITE_BUFFER_SIZE>& data)
 {
 	const int area = S7AreaDB;
-	const int DBNumber = 3;
+	const int DBNumber = 2;
 	const int start = 0;
 
 	std::array<byte, WRITE_BUFFER_SIZE * 4> buffer;
@@ -98,21 +97,17 @@ bool PlcThread::writeDB2(const std::array<uint32_t, WRITE_BUFFER_SIZE>& data)
 		SetDWordAt(buffer.data(), i * 4, data[i]);
 	}
 
-	int ret = client->DBWrite(DBNumber, start, WRITE_BUFFER_SIZE * 4, buffer.data());
-	if (ret != 0)
-	{
-		qWarning() << "failed to write DB2: " << CliErrorText(ret);
-		return false;
-	}
-	return true;
+	return client->DBWrite(DBNumber, start, WRITE_BUFFER_SIZE * 4, buffer.data()) == 0;
 }
 
 void PlcThread::setCycleTimeTarget(const qint64 cycleTime)
 {
+	QMutexLocker locker(&cycleTimeMutex);
 	this->cycleTimeTarget = cycleTime;
 }
 
 const qint64 PlcThread::getCycleTimeTarget() const
 {
+	QMutexLocker locker(&cycleTimeMutex);
 	return cycleTimeTarget;
 }

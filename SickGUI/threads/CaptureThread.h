@@ -47,9 +47,6 @@ public:
 	 * @brief Stops capturing frames.
 	 */
 	void stopCapture();
-
-	void setMask(const QRectF& maskNorm);
-	void setEnableMask(const bool enable);
 	void setFilters(const QJsonArray& filters);
 
 protected:
@@ -61,12 +58,6 @@ protected:
 private:
 	VisionaryCamera* camera;
 	volatile bool _stop = false;
-
-	QMutex maskMutex;
-	QRectF maskNorm;
-	
-	QMutex maskEnabledMutex;
-	volatile bool maskEnabled = false;
 	
 	QMutex filterMutex;
 	FilterManager filterManager;

@@ -8,6 +8,8 @@
 #include <ResizeFilter.h>
 #include <StackBlurFilter.h>
 #include <ThresholdFilter.h>
+#include <CropFilter.h>
+#include <SimpleMovingAverageFilter.h>
 
 void FilterManager::makeFilters(const QJsonArray& json)
 {
@@ -83,6 +85,12 @@ FilterBase* FilterManager::makeFilter(const QString type)
 
 	if (type == ThresholdFilter().type())
 		return new ThresholdFilter();
+
+	if (type == CropFilter().type())
+		return  new CropFilter();
+
+	if (type == SimpleMovingAverageFilter().type())
+		return new SimpleMovingAverageFilter();
 	
 	return nullptr;
 }

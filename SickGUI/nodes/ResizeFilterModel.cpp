@@ -48,8 +48,12 @@ void ResizeFilterModel::load(QJsonObject const& p)
 	QJsonObject size = filterParameters["size"].toObject();
 
 	sizeX = size["x"].toInt(sizeX);
-
 	sizeY = size["y"].toInt(sizeY);
+
+	if (!_widget)
+		createWidgets();
+	sb_sizeX->setValue(sizeX);
+	sb_sizeY->setValue(sizeY);
 }
 
 void ResizeFilterModel::syncFilterParameters() const

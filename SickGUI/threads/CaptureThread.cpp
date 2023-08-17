@@ -35,59 +35,40 @@ void CaptureThread::run()
 	while (!_stop)
 	{
 		QThread::msleep(1);
-		frameset::Frameset fs;
-		if (!camera->getNextFrameset(fs))
+		frameset::Frameset fs_raw;
+		if (!camera->getNextFrameset(fs_raw))
 		{
 			qWarning() << "capture thread: failed to get frameset";
 			continue;
 		}
 
-		if (!frameset::isValid(fs))
+		if (!frameset::isValid(fs_raw))
 		{
 			qWarning() << "capture thread: invalid frameset";
 			continue;
 		}
 
-		if (fs.depth.number > prevNumber)
+		if (fs_raw.depth.number <= prevNumber)
 		{
-			prevNumber = fs.depth.number;
-
-			if (maskEnabled)
-			{
-				frameset::mask(fs, maskNorm);
-			}
-
-			// apply plc filters
-			frameset::Frameset plcFs = fs;
-			cv::Mat depthMat = frameset::toMat(plcFs.depth);
-			filterManager.applyFilters(depthMat);
-			plcFs.depth = frameset::toFrame(depthMat);
-			threadInterface.pushPlcFrame(plcFs);
-
-			threadInterface.pushGuiFrame(fs);
-			threadInterface.pushWebFrame(fs);
+			qWarning() << "capture thread: received old frameset";
+			continue;
 		}
-		else
-		{
-			qDebug() << "capture thread: received old frameset";
-		}
+
+		prevNumber = fs_raw.depth.number;
+
+		// apply plc filters
+		frameset::Frameset fs_plc = fs_raw;
+		cv::Mat depthMat = frameset::toMat(fs_plc.depth);
+		filterManager.applyFilters(depthMat);
+		fs_plc.depth = frameset::toFrame(depthMat);
+
+		threadInterface.pushPlcFrame(fs_plc);
+		threadInterface.pushRawFrame(fs_raw);
 		qint64 time = cycleTimer.restart();
 		emit addTime(static_cast<int>(time));
 	}
 
 	camera->stopCapture();
-}
-
-void CaptureThread::setMask(const QRectF& maskNorm)
-{
-	QMutexLocker locker(&maskMutex);
-	this->maskNorm = maskNorm;
-}
-
-void CaptureThread::setEnableMask(const bool enable)
-{
-	QMutexLocker locker(&maskEnabledMutex);
-	maskEnabled = enable;
 }
 
 void CaptureThread::setFilters(const QJsonArray& filters)

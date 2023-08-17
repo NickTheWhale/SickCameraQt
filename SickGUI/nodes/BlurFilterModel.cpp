@@ -46,6 +46,11 @@ void BlurFilterModel::load(QJsonObject const& p)
 	QJsonObject size = filterParameters["kernel-size"].toObject();
 	sizeX = size["x"].toInt(sizeX);
 	sizeY = size["y"].toInt(sizeY);
+
+	if (!_widget)
+		createWidgets();
+	sb_sizeX->setValue(sizeX);
+	sb_sizeY->setValue(sizeY);
 }
 
 void BlurFilterModel::syncFilterParameters() const

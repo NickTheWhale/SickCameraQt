@@ -12,9 +12,11 @@
 #include <Frameset.h>
 #include <boost/circular_buffer.hpp>
 #include <qtimer.h>
+#include <qmutex.h>
 
-
-constexpr size_t WRITE_BUFFER_SIZE = 10;
+constexpr size_t WRITE_IMAGE_WIDTH = 36;
+constexpr size_t WRITE_IMAGE_HEIGHT = 36;
+constexpr size_t WRITE_BUFFER_SIZE = WRITE_IMAGE_WIDTH * WRITE_IMAGE_HEIGHT;
 
 class PlcThread : public QThread
 {
@@ -48,11 +50,12 @@ protected:
 
 private:
 	volatile bool _stop = false;
+	mutable QMutex cycleTimeMutex;
 	qint64 cycleTimeTarget = 10;
 
 	TS7Client* client;
 	
-	bool readDB2();
-	bool writeDB2(const std::array<uint32_t, WRITE_BUFFER_SIZE>& data);
+	//bool readDB2();
+	bool write(const std::array<uint32_t, WRITE_BUFFER_SIZE>& data);
 };
 

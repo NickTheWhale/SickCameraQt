@@ -61,7 +61,7 @@ void FrameSourceModel::createWidgets()
     auto snapshotButton = new QPushButton("Snapshot");
     connect(snapshotButton, &QPushButton::pressed, this, [=]()
         {
-            _frame = threadInterface.peekGuiFrame().depth;
+            _frame = threadInterface.peekRawFrame().depth;
             emit dataUpdated(0);
         });
     auto continuousCheckBox = new QCheckBox("Continuous");
@@ -74,7 +74,7 @@ void FrameSourceModel::createWidgets()
         });
     connect(timer, &QTimer::timeout, this, [=]()
         {
-            _frame = threadInterface.peekGuiFrame().depth;
+            _frame = threadInterface.peekRawFrame().depth;
             emit dataUpdated(0);
         });
 

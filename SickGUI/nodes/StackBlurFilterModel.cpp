@@ -49,6 +49,11 @@ void StackBlurFilterModel::load(QJsonObject const& p)
 
 	sizeX = makeOdd(size["x"].toInt(sizeX));
 	sizeY = makeOdd(size["y"].toInt(sizeY));
+
+	if (!_widget)
+		createWidgets();
+	sb_sizeX->setValue(sizeX);
+	sb_sizeY->setValue(sizeY);
 }
 
 void StackBlurFilterModel::syncFilterParameters() const

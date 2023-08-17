@@ -55,6 +55,13 @@ void GaussianBlurFilterModel::load(QJsonObject const& p)
 
 	sigmaX = sigma["x"].toDouble(sigmaX);
 	sigmaY = sigma["y"].toDouble(sigmaY);
+
+	if (!_widget)
+		createWidgets();
+	sb_sizeX->setValue(sizeX);
+	sb_sizeY->setValue(sizeY);
+	sb_sigmaX->setValue(sigmaX);
+	sb_sigmaY->setValue(sigmaY);
 }
 
 void GaussianBlurFilterModel::syncFilterParameters() const

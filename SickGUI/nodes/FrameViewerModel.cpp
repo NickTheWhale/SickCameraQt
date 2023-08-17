@@ -52,6 +52,10 @@ QJsonObject FrameViewerModel::save() const
 void FrameViewerModel::load(QJsonObject const& p)
 {
 	colorIndex = p["colormap"].toInt(colorIndex);
+
+	if (!_widget)
+		createWidgets();
+	_colorBox->setCurrentIndex(std::clamp(colorIndex, 0, _colorBox->maxCount()));
 }
 
 void FrameViewerModel::createWidgets()

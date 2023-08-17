@@ -45,6 +45,11 @@ void ThresholdFilterModel::load(QJsonObject const& p)
 
 	lower = filterParameters["lower"].toInt(lower);
 	upper = filterParameters["upper"].toInt(upper);
+
+	if (!_widget)
+		createWidgets();
+	sb_lower->setValue(lower);
+	sb_upper->setValue(upper);
 }
 
 void ThresholdFilterModel::syncFilterParameters() const
@@ -82,7 +87,7 @@ void ThresholdFilterModel::createWidgets()
 
 	sb_lower->setRange(0, std::numeric_limits<uint16_t>::max());
 	sb_upper->setRange(0, std::numeric_limits<uint16_t>::max());
-	
+
 	sb_lower->setValue(lower);
 	sb_upper->setValue(upper);
 

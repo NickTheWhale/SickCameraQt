@@ -95,7 +95,7 @@ FrameCompareWidget::~FrameCompareWidget()
 
 void FrameCompareWidget::getReferenceSnapshot()
 {
-	refFs = threadInterface.peekGuiFrame();
+	refFs = threadInterface.peekRawFrame();
 	frameset::ImageOptions options(tinycolormap::Turbo, true, 0, 0, false, false);
 	QImage image = frameset::toQImage(refFs.depth, options);
 	refImageLabel->setPixmap(QPixmap::fromImage(image));
@@ -103,7 +103,7 @@ void FrameCompareWidget::getReferenceSnapshot()
 
 void FrameCompareWidget::getCurrentSnapshot()
 {
-	curFs = threadInterface.peekGuiFrame();
+	curFs = threadInterface.peekRawFrame();
 	if (!frameset::isEmpty(refFs) && !frameset::isEmpty(curFs))
 		compare();
 }

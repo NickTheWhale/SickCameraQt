@@ -13,16 +13,10 @@ void ThreadInterface::pushPlcFrame(const frameset::Frameset& fs)
 	plcBuffer.push_back(fs);
 }
 
-void ThreadInterface::pushGuiFrame(const frameset::Frameset& fs)
+void ThreadInterface::pushRawFrame(const frameset::Frameset& fs)
 {
-	QMutexLocker locker(&guiMutex);
-	guiBuffer.push_back(fs);
-}
-
-void ThreadInterface::pushWebFrame(const frameset::Frameset& fs)
-{
-	QMutexLocker locker(&webMutex);
-	webBuffer.push_back(fs);
+	QMutexLocker locker(&rawMutex);
+	rawBuffer.push_back(fs);
 }
 
 const frameset::Frameset ThreadInterface::peekPlcFrame()
@@ -36,24 +30,13 @@ const frameset::Frameset ThreadInterface::peekPlcFrame()
 	return fs;
 }
 
-const frameset::Frameset ThreadInterface::peekGuiFrame()
+const frameset::Frameset ThreadInterface::peekRawFrame()
 {
-	QMutexLocker locker(&guiMutex);
+	QMutexLocker locker(&rawMutex);
 	frameset::Frameset fs;
-	if (!guiBuffer.empty())
+	if (!rawBuffer.empty())
 	{
-		fs = guiBuffer.front();
-	}
-	return fs;
-}
-
-const frameset::Frameset ThreadInterface::peekWebFrame()
-{
-	QMutexLocker locker(&webMutex);
-	frameset::Frameset fs;
-	if (!webBuffer.empty())
-	{
-		fs = webBuffer.front();
+		fs = rawBuffer.front();
 	}
 	return fs;
 }
@@ -70,34 +53,21 @@ const frameset::Frameset ThreadInterface::popPlcFrame()
 	return fs;
 }
 
-const frameset::Frameset ThreadInterface::popGuiFrame()
+const frameset::Frameset ThreadInterface::popRawFrame()
 {
-	QMutexLocker locker(&guiMutex);
+	QMutexLocker locker(&rawMutex);
 	frameset::Frameset fs;
-	if (!guiBuffer.empty())
+	if (!rawBuffer.empty())
 	{
-		fs = guiBuffer.front();
-		guiBuffer.pop_front();
-	}
-	return fs;
-}
-
-const frameset::Frameset ThreadInterface::popWebFrame()
-{
-	QMutexLocker locker(&webMutex);
-	frameset::Frameset fs;
-	if (!webBuffer.empty())
-	{
-		fs = webBuffer.front();
-		webBuffer.pop_front();
+		fs = rawBuffer.front();
+		rawBuffer.pop_front();
 	}
 	return fs;
 }
 
 ThreadInterface::ThreadInterface() :
 	plcBuffer(bufferSize),
-	guiBuffer(bufferSize),
-	webBuffer(bufferSize)
+	rawBuffer(bufferSize)
 {
 
 }

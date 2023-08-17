@@ -73,12 +73,11 @@
       <UndefinePreprocessorDefinitions>%(UndefinePreprocessorDefinitions)</UndefinePreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>opencv_world480d.lib;opencv_world480.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opencv_world480.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(ProjectDir)\opencv\bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /y /d /f "C:\opencv\build\x64\vc16\bin\opencv_world480.dll" "$(OutDir)"
-xcopy /y /d /f "C:\opencv\build\x64\vc16\bin\opencv_world480d.dll" "$(OutDir)"</Command>
+      <Command>xcopy /y /d /f "C:\opencv\build\x64\vc16\bin\opencv_world480.dll" "$(OutDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -92,12 +91,11 @@ xcopy /y /d /f "C:\opencv\build\x64\vc16\bin\opencv_world480d.dll" "$(OutDir)"</
       <UndefinePreprocessorDefinitions>%(UndefinePreprocessorDefinitions)</UndefinePreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>opencv_world480d.lib;opencv_world480.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opencv_world480.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(ProjectDir)\opencv\bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /y /d /f "C:\opencv\build\x64\vc16\bin\opencv_world480.dll" "$(OutDir)"
-xcopy /y /d /f "C:\opencv\build\x64\vc16\bin\opencv_world480d.dll" "$(OutDir)"</Command>
+      <Command>xcopy /y /d /f "C:\opencv\build\x64\vc16\bin\opencv_world480.dll" "$(OutDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
@@ -126,6 +124,9 @@ xcopy /y /d /f "C:\opencv\build\x64\vc16\bin\opencv_world480d.dll" "$(OutDir)"</
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
+    <ClCompile Include="nodes\CropFilterModel.cpp" />
+    <ClCompile Include="filters\CropFilter.cpp" />
+    <ClCompile Include="filters\ExponentialMovingAverageFilter.cpp" />
     <ClCompile Include="filters\BilateralFilter.cpp" />
     <ClCompile Include="filters\BlurFilter.cpp" />
     <ClCompile Include="filters\FastNIMeansDenoisingFilter.cpp" />
@@ -151,6 +152,8 @@ xcopy /y /d /f "C:\opencv\build\x64\vc16\bin\opencv_world480d.dll" "$(OutDir)"</
     <ClCompile Include="filters\StackBlurFilter.cpp" />
     <ClCompile Include="filters\ThresholdFilter.cpp" />
     <ClCompile Include="nodes\PlcSourceModel.cpp" />
+    <ClCompile Include="filters\SimpleMovingAverageFilter.cpp" />
+    <ClCompile Include="SimpleMovingAverageFilterModel.cpp" />
     <ClCompile Include="widgets\FilterEditorWidget.cpp" />
     <ClCompile Include="Frameset.cpp" />
     <ClCompile Include="nodeeditor\src\AbstractGraphModel.cpp" />
@@ -257,6 +260,9 @@ xcopy /y /d /f "C:\opencv\build\x64\vc16\bin\opencv_world480d.dll" "$(OutDir)"</
     <QtMoc Include="nodes\GaussianBlurFilterModel.h" />
     <QtMoc Include="nodes\MedianBlurFilterModel.h" />
     <QtMoc Include="nodes\FilterFlowGraphModel.h" />
+    <QtMoc Include="nodes\CropFilterModel.h" />
+    <ClInclude Include="filters\CropFilter.h" />
+    <ClInclude Include="filters\ExponentialMovingAverageFilter.h" />
     <ClInclude Include="filters\BilateralFilter.h" />
     <ClInclude Include="filters\BlurFilter.h" />
     <ClInclude Include="filters\FastNIMeansDenoisingFilter.h" />
@@ -310,6 +316,8 @@ xcopy /y /d /f "C:\opencv\build\x64\vc16\bin\opencv_world480d.dll" "$(OutDir)"</
     <ClInclude Include="nodeeditor\src\NodeConnectionInteraction.hpp" />
     <ClInclude Include="nodeeditor\src\UndoCommands.hpp" />
     <QtMoc Include="nodes\PlcSourceModel.h" />
+    <ClInclude Include="filters\SimpleMovingAverageFilter.h" />
+    <QtMoc Include="SimpleMovingAverageFilterModel.h" />
     <ClInclude Include="threads\ThreadInterface.h" />
     <QtMoc Include="CustomMessageHandler.h" />
     <QtMoc Include="widgets\CycleTime.h" />

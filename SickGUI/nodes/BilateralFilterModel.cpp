@@ -47,6 +47,12 @@ void BilateralFilterModel::load(QJsonObject const& p)
 	diameter = filterParameters["diameter"].toInt(diameter);
 	sigmaColor = filterParameters["sigma-color"].toDouble(sigmaColor);
 	sigmaSpace = filterParameters["sigma-space"].toDouble(sigmaSpace);
+
+	if (!_widget)
+		createWidgets();
+	sb_diameter->setValue(diameter);
+	sb_sigmaColor->setValue(sigmaColor);
+	sb_sigmaSpace->setValue(sigmaSpace);
 }
 
 void BilateralFilterModel::syncFilterParameters() const
