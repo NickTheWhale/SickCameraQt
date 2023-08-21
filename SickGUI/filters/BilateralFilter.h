@@ -16,8 +16,17 @@ public:
     void load(QJsonObject const& p) override;
 
 private:
+    const uint16_t diameterMin = 1;
+    const uint16_t diameterMax = std::numeric_limits<uint16_t>::max();
     uint16_t diameter;
+
+    const double sigmaColorMin = 0.0;
+    const double sigmaColorMax = std::numeric_limits<double>::max();
     double sigmaColor;
+
+
+    const double sigmaSpaceMin = 0.0;
+    const double sigmaSpaceMax = std::numeric_limits<double>::max();
     double sigmaSpace;
 };
 

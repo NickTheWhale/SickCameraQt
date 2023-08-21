@@ -14,10 +14,6 @@
 #include <qtimer.h>
 #include <qmutex.h>
 
-constexpr size_t WRITE_IMAGE_WIDTH = 36;
-constexpr size_t WRITE_IMAGE_HEIGHT = 36;
-constexpr size_t WRITE_BUFFER_SIZE = WRITE_IMAGE_WIDTH * WRITE_IMAGE_HEIGHT;
-
 class PlcThread : public QThread
 {
 	Q_OBJECT
@@ -42,20 +38,21 @@ public:
 	 */
 	void stopPlc();
 
-	void setCycleTimeTarget(const qint64 cycleTime);
-	const qint64 getCycleTimeTarget() const;
-
 protected:
 	void run() override;
 
 private:
 	volatile bool _stop = false;
-	mutable QMutex cycleTimeMutex;
+
 	qint64 cycleTimeTarget = 10;
+	qint32 dbNumber = 0;
+	qint32 dbStart = 0;
+	qint32 imageWidth = 1;
+	qint32 imageHeight = 1;
 
 	TS7Client* client;
 	
-	//bool readDB2();
-	bool write(const std::array<uint32_t, WRITE_BUFFER_SIZE>& data);
+	int write(const std::vector<uint32_t>& data);
+	void loadConfiguration();
 };
 

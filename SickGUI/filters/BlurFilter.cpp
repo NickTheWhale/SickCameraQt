@@ -54,6 +54,6 @@ void BlurFilter::load(QJsonObject const& p)
 	sizeX = size["x"].toInt(sizeX);
 	sizeY = size["y"].toInt(sizeY);
 
-	sizeX = std::clamp(sizeX, uint16_t(1), std::numeric_limits<uint16_t>::max());
-	sizeY = std::clamp(sizeY, uint16_t(1), std::numeric_limits<uint16_t>::max());
+	sizeX = std::clamp(sizeX, sizeXMin, sizeXMax);
+	sizeY = std::clamp(sizeY, sizeYMin, sizeYMax);
 }

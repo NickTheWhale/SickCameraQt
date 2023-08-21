@@ -21,7 +21,9 @@ bool GaussianBlurFilter::apply(cv::Mat& mat)
 		return false;
 
     cv::Mat output;
-	cv::Size size(makeOdd(sizeX), makeOdd(sizeY));
+	sizeX = makeOdd(sizeX);
+	sizeY = makeOdd(sizeY);
+	cv::Size size(sizeX, sizeY);
     cv::GaussianBlur(mat, output, size, sigmaX, sigmaY);
 
 	mat = output;

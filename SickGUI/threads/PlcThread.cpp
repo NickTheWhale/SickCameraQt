@@ -1,14 +1,19 @@
 #include "PlcThread.h"
-#include "qdebug.h"
+
 #include <algorithm>
-#include <snap7.h>
+#include <array>
+
 #include <qelapsedtimer.h>
 #include <qrandom.h>
-#include <ThreadInterface.h>
+#include <qsettings.h>
 #include <qdebug.h>
-#include <array>
+
+#include <snap7.h>
 #include <opencv2/imgproc.hpp>
 #include <opencv2/core.hpp>
+#include <ThreadInterface.h>
+
+#include <global.h>
 
 bool PlcThread::startPlc(TS7Client* client)
 {
@@ -24,6 +29,7 @@ void PlcThread::stopPlc()
 
 void PlcThread::run()
 {
+	loadConfiguration();
 	ThreadInterface& threadInterface = ThreadInterface::instance();
 	uint32_t lastNumber = 0;
 	QElapsedTimer cycleTimer;
@@ -31,14 +37,16 @@ void PlcThread::run()
 	while (!_stop)
 	{
 		msleep(1);
-		frameset::Frameset fs = threadInterface.peekPlcFrame();
+		frameset::Frameset fs = threadInterface.peekFilteredFrame();
 
 		if (frameset::isValid(fs))
 		{
-			std::array<uint32_t, WRITE_BUFFER_SIZE> data;
 
 			cv::Mat mat = frameset::toMat(fs.depth);
-			cv::resize(mat, mat, cv::Size(WRITE_IMAGE_WIDTH, WRITE_IMAGE_HEIGHT), 0.0, 0.0, cv::InterpolationFlags::INTER_AREA);
+			cv::resize(mat, mat, cv::Size(imageWidth, imageHeight), 0.0, 0.0, cv::InterpolationFlags::INTER_AREA);
+
+			std::vector<uint32_t> data;
+			data.resize(static_cast<size_t>(mat.rows) * static_cast<size_t>(mat.cols));
 
 			for (int y = 0; y < mat.rows; ++y)
 			{
@@ -48,12 +56,15 @@ void PlcThread::run()
 				}
 			}
 
-			if (!write(data))
+			data.insert(data.begin(), fs.depth.number);
+
+			int ret = write(data);
+			if (ret != 0)
 			{
+				auto error = CliErrorText(ret);
+				qWarning() << error;
 				if (client->Connect() != 0)
 					qWarning() << "plc failed to reconnect";
-				else
-					qInfo() << "plc reconnected";
 				msleep(100);
 			}
 		}
@@ -68,46 +79,29 @@ void PlcThread::run()
 	}
 }
 
-//bool PlcThread::readDB2()
-//{
-//	byte buffer[4];
-//	if (client->DBRead(2, 0, 4, &buffer) != 0)
-//	{
-//		qWarning() << "failed to read DB2";
-//		return false;
-//	}
-//
-//	for (const auto& _byte : buffer)
-//	{
-//		qDebug() << "byte:" << _byte;
-//	}
-//	return true;
-//}
-
-bool PlcThread::write(const std::array<uint32_t, WRITE_BUFFER_SIZE>& data)
+int PlcThread::write(const std::vector<uint32_t>& data)
 {
 	const int area = S7AreaDB;
-	const int DBNumber = 2;
-	const int start = 0;
 
-	std::array<byte, WRITE_BUFFER_SIZE * 4> buffer;
+	std::vector<byte> buffer;
+	buffer.resize(data.size() * sizeof(uint32_t));
 
-	for (int i = 0; i < data.size(); ++i)
+	for (size_t i = 0; i < data.size(); ++i)
 	{
-		SetDWordAt(buffer.data(), i * 4, data[i]);
+		SetDWordAt(buffer.data(), i * sizeof(uint32_t), data[i]);
 	}
-
-	return client->DBWrite(DBNumber, start, WRITE_BUFFER_SIZE * 4, buffer.data()) == 0;
+	
+	return client->DBWrite(dbNumber, dbStart, buffer.size(), buffer.data());
 }
 
-void PlcThread::setCycleTimeTarget(const qint64 cycleTime)
+void PlcThread::loadConfiguration()
 {
-	QMutexLocker locker(&cycleTimeMutex);
-	this->cycleTimeTarget = cycleTime;
-}
+	const auto ConfigPath = global::CONFIG_FILE_RELATIVE_PATH;
+	QSettings settings(ConfigPath, QSettings::Format::IniFormat);
 
-const qint64 PlcThread::getCycleTimeTarget() const
-{
-	QMutexLocker locker(&cycleTimeMutex);
-	return cycleTimeTarget;
+	cycleTimeTarget = settings.value("plc/cycle_time_target_ms", cycleTimeTarget).value<qint64>();
+	dbNumber = settings.value("plc/db_number", dbNumber).value<qint32>();
+	dbStart = settings.value("plc/db_start", dbStart).value<qint32>();
+	imageWidth = settings.value("plc/image_width", imageWidth).value<qint32>();
+	imageHeight = settings.value("plc/image_height", imageHeight).value<qint32>();
 }

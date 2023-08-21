@@ -7,7 +7,7 @@ ThreadInterface& ThreadInterface::instance()
 	return _instance;
 }
 
-void ThreadInterface::pushPlcFrame(const frameset::Frameset& fs)
+void ThreadInterface::pushFilteredFrame(const frameset::Frameset& fs)
 {
 	QMutexLocker locker(&plcMutex);
 	plcBuffer.push_back(fs);
@@ -19,7 +19,7 @@ void ThreadInterface::pushRawFrame(const frameset::Frameset& fs)
 	rawBuffer.push_back(fs);
 }
 
-const frameset::Frameset ThreadInterface::peekPlcFrame()
+const frameset::Frameset ThreadInterface::peekFilteredFrame()
 {
 	QMutexLocker locker(&plcMutex);
 	frameset::Frameset fs;
@@ -41,7 +41,7 @@ const frameset::Frameset ThreadInterface::peekRawFrame()
 	return fs;
 }
 
-const frameset::Frameset ThreadInterface::popPlcFrame()
+const frameset::Frameset ThreadInterface::popFilteredFrame()
 {
 	QMutexLocker locker(&plcMutex);
 	frameset::Frameset fs;

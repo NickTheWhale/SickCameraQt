@@ -8,13 +8,13 @@ class ThreadInterface
 public:
 	static ThreadInterface& instance();
 
-	void pushPlcFrame(const frameset::Frameset& fs);
+	void pushFilteredFrame(const frameset::Frameset& fs);
 	void pushRawFrame(const frameset::Frameset& fs);
 
-	const frameset::Frameset peekPlcFrame();
+	const frameset::Frameset peekFilteredFrame();
 	const frameset::Frameset peekRawFrame();
 
-	const frameset::Frameset popPlcFrame();
+	const frameset::Frameset popFilteredFrame();
 	const frameset::Frameset popRawFrame();
 	
 private:

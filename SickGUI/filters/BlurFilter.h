@@ -16,7 +16,12 @@ public:
     void load(QJsonObject const& p) override;
 
 private:
+    uint16_t sizeXMin = 1;
+    uint16_t sizeXMax = std::numeric_limits<uint16_t>::max();
     uint16_t sizeX;
+
+    uint16_t sizeYMin = 1;
+    uint16_t sizeYMax = std::numeric_limits<uint16_t>::max();
     uint16_t sizeY;
 };
 

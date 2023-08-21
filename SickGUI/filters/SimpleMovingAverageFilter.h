@@ -17,9 +17,9 @@ public:
     void load(QJsonObject const& p) override;
 
 private:
-    uint16_t bufferSize;
-    const uint16_t maxBufferSize = 10;
     const uint16_t minBufferSize = 2;
+    const uint16_t maxBufferSize = 10;
+    uint16_t bufferSize;
 
     std::deque<cv::Mat> buffer;
 };

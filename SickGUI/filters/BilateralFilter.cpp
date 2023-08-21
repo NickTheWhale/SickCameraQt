@@ -55,5 +55,7 @@ void BilateralFilter::load(QJsonObject const& p)
     sigmaColor = parameters["sigma-color"].toDouble(sigmaColor);
     sigmaSpace =  parameters["sigma-space"].toDouble(sigmaSpace);
 
-    diameter = std::clamp(diameter, uint16_t(1), std::numeric_limits<uint16_t>::max());
+    diameter = std::clamp(diameter, diameterMin, diameterMax);
+    sigmaColor = std::clamp(sigmaColor, sigmaColorMin, sigmaColorMax);
+    sigmaSpace = std::clamp(sigmaSpace, sigmaSpaceMin, sigmaSpaceMax);
 }

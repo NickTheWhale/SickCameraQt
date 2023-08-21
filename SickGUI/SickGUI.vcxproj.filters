@@ -337,7 +337,10 @@
     <ClCompile Include="nodes\CropFilterModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SimpleMovingAverageFilterModel.cpp">
+    <ClCompile Include="nodes\SimpleMovingAverageFilterModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ExponentialMovingAverageFilterModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -567,6 +570,9 @@
     <ClInclude Include="filters\ExponentialMovingAverageFilter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="global.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="threads\CaptureThread.h">
@@ -692,7 +698,10 @@
     <QtMoc Include="nodes\CropFilterModel.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="SimpleMovingAverageFilterModel.h">
+    <QtMoc Include="nodes\SimpleMovingAverageFilterModel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ExponentialMovingAverageFilterModel.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

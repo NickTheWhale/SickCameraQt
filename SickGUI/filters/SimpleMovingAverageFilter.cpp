@@ -26,6 +26,10 @@ bool SimpleMovingAverageFilter::apply(cv::Mat& mat)
 	while (buffer.size() > bufferSize)
 		buffer.pop_front();
 
+	for (const cv::Mat& currMat : buffer)
+		if (currMat.type() != mat.type() || currMat.size() != mat.size())
+			return false;
+	
 	// average
 	cv::Mat firstMat = buffer.front();
 	cv::Size size = firstMat.size();

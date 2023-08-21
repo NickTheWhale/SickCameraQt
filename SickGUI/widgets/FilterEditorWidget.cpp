@@ -13,6 +13,7 @@
 #include <SubtractFilterModel.h>
 #include <CropFilterModel.h>
 #include <SimpleMovingAverageFilterModel.h>
+#include <ExponentialMovingAverageFilterModel.h>
 #include <FrameSourceModel.h>
 #include <FrameViewerModel.h>
 #include <PlcSourceModel.h>
@@ -135,6 +136,7 @@ std::shared_ptr<QtNodes::NodeDelegateModelRegistry> registerDataModels()
 	ret->registerModel<SubtractFilterModel>("Filters");
 	ret->registerModel<CropFilterModel>("Filters");
 	ret->registerModel<SimpleMovingAverageFilterModel>("Filters");
+	ret->registerModel<ExponentialMovingAverageFilterModel>("Filters");
 	ret->registerModel<FrameSourceModel>("Sources");
 	ret->registerModel<PlcSourceModel>("Sources");
 	ret->registerModel<FrameViewerModel>("Viewers");

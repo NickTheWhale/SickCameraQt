@@ -47,11 +47,6 @@ class VisionaryCamera : public QObject
 {
 	Q_OBJECT
 
-public slots:
-	void setDepthFilterRange(const uint16_t low, const uint16_t high);
-	void setDepthFilterEnable(const bool enable);
-	void setDepthMaskEnable(const bool enable);
-
 public:
 	/**
 	 * @brief VisionaryCamera constructor.
@@ -111,21 +106,9 @@ public:
 	*/
 	bool getNextFrameset(frameset::Frameset& fs);
 
-	/**
-	 * @brief Gets camera parameters.
-	 * @return camera parameters.
-	*/
-	const std::map<std::string, std::string> getParameters();
+	const std::string getIpAddress() const;
 
-	/**
-	 * @brief Gets camera availability.
-	 *
-	 * This method runs a network scan to get a list of all available cameras and then
-	 * checks if the current camera's ip address matches any camera in the list.
-	 * @param timeout Scan timeout in milliseconds.
-	 * @return true if available, false otherwise.
-	*/
-	bool available(int timeout);
+	const short getDataPort() const;
 
 private:
 	const unsigned int openTimeout = 5000;
@@ -134,12 +117,8 @@ private:
 	const std::string ipAddress;
 	const short dataPort;
 
-	std::map<std::string, std::string> parameters;
-
 	visionary::FrameGrabber<visionary::VisionaryTMiniData> frameGrabber;
 	std::shared_ptr<visionary::VisionaryTMiniData> pDataHandler;
 	std::shared_ptr<visionary::VisionaryControl> pVisionaryControl;
-
-	const bool ping(const std::string ip);
 };
 

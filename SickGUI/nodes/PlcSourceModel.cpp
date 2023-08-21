@@ -61,7 +61,7 @@ void PlcSourceModel::createWidgets()
     auto snapshotButton = new QPushButton("Snapshot");
     connect(snapshotButton, &QPushButton::pressed, this, [=]()
         {
-            _frame = threadInterface.peekPlcFrame().depth;
+            _frame = threadInterface.peekFilteredFrame().depth;
             emit dataUpdated(0);
         });
     auto continuousCheckBox = new QCheckBox("Continuous");
@@ -74,7 +74,7 @@ void PlcSourceModel::createWidgets()
         });
     connect(timer, &QTimer::timeout, this, [=]()
         {
-            _frame = threadInterface.peekPlcFrame().depth;
+            _frame = threadInterface.peekFilteredFrame().depth;
             emit dataUpdated(0);
         });
 

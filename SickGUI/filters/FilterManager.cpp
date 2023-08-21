@@ -10,6 +10,7 @@
 #include <ThresholdFilter.h>
 #include <CropFilter.h>
 #include <SimpleMovingAverageFilter.h>
+#include <ExponentialMovingAverageFilterModel.h>
 
 void FilterManager::makeFilters(const QJsonArray& json)
 {
@@ -17,7 +18,7 @@ void FilterManager::makeFilters(const QJsonArray& json)
 
 	if (json == previousJson)
 		return;
-	
+
 	previousJson = json;
 	_filters.clear();
 	for (const auto& filterRef : previousJson)
@@ -53,7 +54,7 @@ std::vector<std::unique_ptr<FilterBase>> FilterManager::filters()
 	QMutexLocker locker(&filterMutex);
 
 	std::vector<std::unique_ptr<FilterBase>> newFilters;
-	
+
 	for (const auto& filter : _filters)
 		newFilters.push_back(filter->clone());
 
@@ -87,10 +88,13 @@ FilterBase* FilterManager::makeFilter(const QString type)
 		return new ThresholdFilter();
 
 	if (type == CropFilter().type())
-		return  new CropFilter();
+		return new CropFilter();
 
 	if (type == SimpleMovingAverageFilter().type())
 		return new SimpleMovingAverageFilter();
-	
+
+	if (type == ExponentialMovingAverageFilter().type())
+		return new ExponentialMovingAverageFilter();
+
 	return nullptr;
 }

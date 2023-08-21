@@ -59,10 +59,15 @@ void CaptureThread::run()
 		// apply plc filters
 		frameset::Frameset fs_plc = fs_raw;
 		cv::Mat depthMat = frameset::toMat(fs_plc.depth);
-		filterManager.applyFilters(depthMat);
-		fs_plc.depth = frameset::toFrame(depthMat);
+		const bool applied = filterManager.applyFilters(depthMat);
+		if (!applied)
+			qDebug() << "filters not applied";
+		const frameset::Frame depth = frameset::toFrame(depthMat);
+		fs_plc.depth.data = depth.data;
+		fs_plc.depth.height = depth.height;
+		fs_plc.depth.width = depth.width;
 
-		threadInterface.pushPlcFrame(fs_plc);
+		threadInterface.pushFilteredFrame(fs_plc);
 		threadInterface.pushRawFrame(fs_raw);
 		qint64 time = cycleTimer.restart();
 		emit addTime(static_cast<int>(time));

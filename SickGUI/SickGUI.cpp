@@ -19,12 +19,14 @@
 #include <qmenubar.h>
 #include <qmenu.h>
 #include <qcoreapplication.h>
+#include <qstatusbar.h>
 
 #include <snap7.h>
 
 #include <CloseDockWidget.h>
 #include <HistogramWidget.h>
 #include <VisionaryAutoIPScanCustom.h>
+#include <global.h>
 
 SickGUI::SickGUI(CustomMessageHandler* messageHandler, QWidget* parent) :
 	messageHandler(messageHandler),
@@ -101,12 +103,12 @@ void SickGUI::initializeWidgets()
 
 	connect(messageHandler, &CustomMessageHandler::newMessage, loggingWidget, &LoggingWidget::showMessage);
 
-	CloseDockWidget* dock = new CloseDockWidget("Log", this);
-	dock->setObjectName("loggingWidgetDock");
-	dock->setAllowedAreas(Qt::DockWidgetArea::AllDockWidgetAreas);
-	dock->setWidget(loggingWidget);
-	dock->adjustSize();
-	addDockWidget(Qt::DockWidgetArea::RightDockWidgetArea, dock);
+	CloseDockWidget* loggingDock = new CloseDockWidget("Log", this);
+	loggingDock->setObjectName("loggingWidgetDock");
+	loggingDock->setAllowedAreas(Qt::DockWidgetArea::AllDockWidgetAreas);
+	loggingDock->setWidget(loggingWidget);
+	loggingDock->adjustSize();
+	addDockWidget(Qt::DockWidgetArea::RightDockWidgetArea, loggingDock);
 #pragma endregion
 
 #pragma region FILTER_EDITOR
@@ -118,18 +120,15 @@ void SickGUI::initializeWidgets()
 #pragma region CYCLE_TIME_DOCK
 	cycleTimeWidget = new CycleTimeWidget(this);
 	cycleTimeWidget->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
-	dock = new CloseDockWidget("Cycle Time", this);
-	dock->setObjectName("cycleTimeWidgetDock");
-	dock->setAllowedAreas(Qt::DockWidgetArea::AllDockWidgetAreas);
-	dock->setWidget(cycleTimeWidget);
-	dock->adjustSize();
-	addDockWidget(Qt::DockWidgetArea::RightDockWidgetArea, dock);
+	CloseDockWidget* cycleTimeDock = new CloseDockWidget("Cycle Time", this);
+	cycleTimeDock->setObjectName("cycleTimeWidgetDock");
+	cycleTimeDock->setAllowedAreas(Qt::DockWidgetArea::AllDockWidgetAreas);
+	cycleTimeDock->setWidget(cycleTimeWidget);
+	cycleTimeDock->adjustSize();
+	addDockWidget(Qt::DockWidgetArea::RightDockWidgetArea, cycleTimeDock);
 #pragma endregion
 
 #pragma region TOOL_BAR
-	// file menu
-	QMenu* fileMenu = new QMenu("File", this);
-
 	// filter menu
 	QMenu* filterMenu = new QMenu("Filters", this);
 	QAction* filterSaveAction = filterMenu->addAction("Save");
@@ -138,10 +137,28 @@ void SickGUI::initializeWidgets()
 	QAction* filterLoadAction = filterMenu->addAction("Load");
 	connect(filterLoadAction, &QAction::triggered, filterEditorWidget, &FilterEditorWidget::load);
 
+	// view menu
+	QMenu* viewMenu = new QMenu("View", this);
+	QAction* logViewAction = viewMenu->addAction("Log");
+	logViewAction->setCheckable(true);
+	connect(logViewAction, &QAction::triggered, this, [=](bool checked) { loggingDock->setHidden(!checked); });
+	connect(loggingDock, &CloseDockWidget::visibilityChanged, this, [=](bool visible) { logViewAction->setChecked(visible); });
+
+	QAction* cycleTimeViewAction = viewMenu->addAction("Cycle Times");
+	cycleTimeViewAction->setCheckable(true);
+	connect(cycleTimeViewAction, &QAction::triggered, this, [=](bool checked) { cycleTimeDock->setHidden(!checked); });
+	connect(cycleTimeDock, &CloseDockWidget::visibilityChanged, this, [=](bool visible) { cycleTimeViewAction->setChecked(visible); });
+
+	connect(viewMenu, &QMenu::triggered, this, [=]()
+		{
+			logViewAction->setChecked(!loggingDock->isHidden());
+			cycleTimeViewAction->setChecked(!cycleTimeDock->isHidden());
+		});
+
 	// menubar
 	QMenuBar* menuBar = new QMenuBar(this);
-	menuBar->addMenu(fileMenu);
 	menuBar->addMenu(filterMenu);
+	menuBar->addMenu(viewMenu);
 
 	this->setMenuBar(menuBar);
 #pragma endregion
@@ -195,9 +212,13 @@ void SickGUI::checkThreads()
 		QMessageBox::information(this, "Info", "Application will close now");
 		//QCoreApplication::quit();
 	}
-	else
+	//else
 	{
 		makeConnections();
+
+		const QString ipText = QString("camera: %1 | plc: %2").arg(cameraIpAddress.c_str()).arg(plcIpAddress.c_str());
+		auto sb = this->statusBar();
+		sb->addPermanentWidget(new QLabel(ipText, this));
 
 		QTimer::singleShot(1000, [this]()
 			{
@@ -336,7 +357,6 @@ ThreadResult SickGUI::startPlcThread()
 			}
 		}
 
-		plcThread->setCycleTimeTarget(plcCycleTimeTarget);
 		ret.error = !plcThread->startPlc(s7Client);
 		if (!ret.error)
 		{
@@ -383,13 +403,13 @@ void SickGUI::restoreLayout()
 
 void SickGUI::loadConfiguration()
 {
-	QSettings settings(CONFIG_PATH, QSettings::Format::IniFormat);
+	const auto ConfigPath = global::CONFIG_FILE_RELATIVE_PATH;
+	QSettings settings(ConfigPath, QSettings::Format::IniFormat);
 
 	// plc
 	plcIpAddress = settings.value("plc/ip", "").value<QString>().toStdString();
 	plcRack = settings.value("plc/rack", 0).value<qint16>();
 	plcSlot = settings.value("plc/slot", 0).value<qint16>();
-	plcCycleTimeTarget = settings.value("plc/cycle_time_target_ms", 10).value<qint64>();
 
 	// camera
 	cameraIpAddress = settings.value("camera/ip", "").value<QString>().toStdString();

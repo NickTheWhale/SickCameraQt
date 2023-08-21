@@ -125,8 +125,6 @@ private:
 
 	void loadConfiguration();
 
-	const QString CONFIG_PATH = "configuration/configuration.ini";
-
 	std::string plcIpAddress = "";
 	qint16 plcRack = 0;
 	qint16 plcSlot = 0;
