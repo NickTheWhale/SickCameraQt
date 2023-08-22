@@ -41,7 +41,7 @@ void CycleTimeWidget::addPlcTime(const int time)
 		plcWatchDog = new QTimer(this);
 		plcWatchDog->callOnTimeout(this, &CycleTimeWidget::nullPlcTimes);
 	}
-	int timeOut = plcTimes->times().p75 > 0 ? std::max(plcTimes->times().p75 * 5, minWatchDogDuration) : minWatchDogDuration;
+	int timeOut = plcTimes->times().current > 0 ? std::max(plcTimes->times().current * 5, minWatchDogDuration) : minWatchDogDuration;
 	plcWatchDog->start(timeOut);
 }
 
@@ -54,7 +54,7 @@ void CycleTimeWidget::addCamTime(const int time)
 		camWatchDog = new QTimer(this);
 		camWatchDog->callOnTimeout(this, &CycleTimeWidget::nullCamTimes);
 	}
-	int timeOut = camTimes->times().p75 > 0 ? std::max(camTimes->times().p75 * 5, minWatchDogDuration) : minWatchDogDuration;
+	int timeOut = camTimes->times().current > 0 ? std::max(camTimes->times().current * 5, minWatchDogDuration) : minWatchDogDuration;
 	camWatchDog->start(timeOut);
 }
 
@@ -67,7 +67,7 @@ void CycleTimeWidget::addWebTime(const int time)
 		webWatchDog = new QTimer(this);
 		webWatchDog->callOnTimeout(this, &CycleTimeWidget::nullWebTimes);
 	}
-	int timeOut = webTimes->times().p75 > 0 ? std::max(webTimes->times().p75 * 5, minWatchDogDuration) : minWatchDogDuration;
+	int timeOut = webTimes->times().current > 0 ? std::max(webTimes->times().current * 5, minWatchDogDuration) : minWatchDogDuration;
 	webWatchDog->start(timeOut);
 }
 

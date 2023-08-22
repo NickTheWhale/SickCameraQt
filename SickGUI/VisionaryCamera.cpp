@@ -13,7 +13,7 @@ using namespace visionary;
 
 VisionaryCamera::VisionaryCamera(std::string ipAddress, short dataPort, QObject* parent) :
 	QObject(parent),
-	ipAddress(ipAddress), 
+	ipAddress(ipAddress),
 	dataPort(dataPort),
 	frameGrabber(ipAddress, htons(dataPort), grabberTimeout)
 {
@@ -83,8 +83,6 @@ bool VisionaryCamera::getNextFrameset(frameset::Frameset& fs)
 		return false;
 
 	std::vector<uint16_t> depthData = pDataHandler->getDistanceMap();
-	//for (uint16_t& val : depthData)
-	//	val >>= 2;
 
 	const uint32_t height = pDataHandler->getHeight();
 	const uint32_t width = pDataHandler->getWidth();

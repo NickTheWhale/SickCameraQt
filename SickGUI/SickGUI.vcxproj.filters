@@ -340,7 +340,10 @@
     <ClCompile Include="nodes\SimpleMovingAverageFilterModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ExponentialMovingAverageFilterModel.cpp">
+    <ClCompile Include="nodes\ExponentialMovingAverageFilterModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nodes\FilterFlowGraphicsScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -701,7 +704,10 @@
     <QtMoc Include="nodes\SimpleMovingAverageFilterModel.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="ExponentialMovingAverageFilterModel.h">
+    <QtMoc Include="nodes\ExponentialMovingAverageFilterModel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nodes\FilterFlowGraphicsScene.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

@@ -10,7 +10,7 @@ public:
 
 	QtNodes::NodeDataType type() const override
 	{
-		return { "mat", "mat" };
+		return { "cv::Mat", "Mat" };
 	}
 
 	cv::Mat mat() const { return _mat; }

@@ -28,12 +28,11 @@ class CaptureThread : public QThread
 	Q_OBJECT
 
 signals:
-	/**
-	 * @brief Signal emitted when the connection to the camera is lost.
-	 */
-	void lostConnection();
-
 	void addTime(const int time);
+
+	void filtersApplied(const QJsonArray& filters);
+
+	void filtersFailed();
 
 public:
 	/**
@@ -48,6 +47,7 @@ public:
 	 */
 	void stopCapture();
 	void setFilters(const QJsonArray& filters);
+	const QJsonArray getFiltersJson();
 
 protected:
 	/**

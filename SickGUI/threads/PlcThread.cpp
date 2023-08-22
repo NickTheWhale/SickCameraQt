@@ -39,35 +39,36 @@ void PlcThread::run()
 		msleep(1);
 		frameset::Frameset fs = threadInterface.peekFilteredFrame();
 
-		if (frameset::isValid(fs))
+		if (!frameset::isValid(fs) || fs.depth.number <= lastNumber)
+			continue;
+
+		lastNumber = fs.depth.number;
+		cv::Mat mat = frameset::toMat(fs.depth);
+		cv::resize(mat, mat, cv::Size(imageWidth, imageHeight), 0.0, 0.0, cv::InterpolationFlags::INTER_AREA);
+
+		std::vector<uint32_t> data;
+		data.resize(static_cast<size_t>(mat.rows) * static_cast<size_t>(mat.cols));
+
+		for (int y = 0; y < mat.rows; ++y)
 		{
-
-			cv::Mat mat = frameset::toMat(fs.depth);
-			cv::resize(mat, mat, cv::Size(imageWidth, imageHeight), 0.0, 0.0, cv::InterpolationFlags::INTER_AREA);
-
-			std::vector<uint32_t> data;
-			data.resize(static_cast<size_t>(mat.rows) * static_cast<size_t>(mat.cols));
-
-			for (int y = 0; y < mat.rows; ++y)
+			for (int x = 0; x < mat.cols; ++x)
 			{
-				for (int x = 0; x < mat.cols; ++x)
-				{
-					data[y * mat.cols + x] = mat.at<uint16_t>(cv::Point(x, y));
-				}
-			}
-
-			data.insert(data.begin(), fs.depth.number);
-
-			int ret = write(data);
-			if (ret != 0)
-			{
-				auto error = CliErrorText(ret);
-				qWarning() << error;
-				if (client->Connect() != 0)
-					qWarning() << "plc failed to reconnect";
-				msleep(100);
+				data[y * mat.cols + x] = mat.at<uint16_t>(cv::Point(x, y));
 			}
 		}
+
+		data.insert(data.begin(), fs.depth.number);
+
+		int ret = write(data);
+		if (ret != 0)
+		{
+			auto error = CliErrorText(ret);
+			qWarning() << error;
+			if (client->Connect() != 0)
+				qWarning() << "plc failed to reconnect";
+			msleep(100);
+		}
+
 
 		const qint64 timeLeft = cycleTimeTarget - cycleTimer.elapsed();
 		if (timeLeft > 0)
@@ -90,7 +91,7 @@ int PlcThread::write(const std::vector<uint32_t>& data)
 	{
 		SetDWordAt(buffer.data(), i * sizeof(uint32_t), data[i]);
 	}
-	
+
 	return client->DBWrite(dbNumber, dbStart, buffer.size(), buffer.data());
 }
 

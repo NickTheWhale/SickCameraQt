@@ -24,11 +24,9 @@
 FilterEditorWidget::FilterEditorWidget(QWidget* parent) :
 	GraphicsView(parent),
 	graph(registerDataModels()),
-	scene(new QtNodes::DataFlowGraphicsScene(graph, this)),
-	//validateButton(new QPushButton("Validate PLC Flow", this)),
+	scene(new QtNodes::FilterFlowGraphicsScene(graph, this)),
 	applyButton(new QPushButton("Apply Flow To PLC Stream", this))
 {
-	//connect(validateButton, &QPushButton::pressed, this, &FilterEditorWidget::validateFlow);
 	connect(applyButton, &QPushButton::pressed, this, &FilterEditorWidget::applyFlow);
 
 	this->setScene(scene);
@@ -49,14 +47,8 @@ void FilterEditorWidget::setButtonGeometry()
 {
 	const QPoint bottomRight(size().width(), size().height());
 	const QPoint pad(5, 5);
-	//const QPoint padx(5, 0);
 	const QPoint applyButtonSize(applyButton->size().width(), applyButton->size().height());
-	//const QPoint validateButtonSize(validateButton->size().width(), validateButton->size().height());
-	//const QPoint validateButtonSizeX(validateButtonSize.x(), 0);
 	const QPoint applyPos = bottomRight - pad - applyButtonSize;
-	//const QPoint validatePos = applyPos - validateButtonSizeX - padx;
-
-	//validateButton->move(validatePos);
 	applyButton->move(applyPos);
 }
 

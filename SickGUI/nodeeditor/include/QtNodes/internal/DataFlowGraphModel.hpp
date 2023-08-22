@@ -10,8 +10,6 @@
 
 #include <QJsonObject>
 
-#include <memory>
-
 namespace QtNodes {
 
 class NODE_EDITOR_PUBLIC DataFlowGraphModel : public AbstractGraphModel, public Serializable

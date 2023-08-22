@@ -61,6 +61,12 @@ std::vector<std::unique_ptr<FilterBase>> FilterManager::filters()
 	return newFilters;
 }
 
+const QJsonArray FilterManager::filtersJson()
+{
+	QMutexLocker locker(&filterMutex);
+	return previousJson;
+}
+
 FilterBase* FilterManager::makeFilter(const QString type)
 {
 	if (type == BilateralFilter().type())

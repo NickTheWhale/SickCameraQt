@@ -14,6 +14,7 @@ public:
 	bool applyFilters(cv::Mat& mat);
 
 	std::vector<std::unique_ptr<FilterBase>> filters();
+	const QJsonArray filtersJson();
 
 private:
 	std::vector<std::unique_ptr<FilterBase>> _filters;

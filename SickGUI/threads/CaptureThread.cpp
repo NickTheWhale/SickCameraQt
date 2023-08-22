@@ -57,17 +57,25 @@ void CaptureThread::run()
 		prevNumber = fs_raw.depth.number;
 
 		// apply plc filters
-		frameset::Frameset fs_plc = fs_raw;
-		cv::Mat depthMat = frameset::toMat(fs_plc.depth);
-		const bool applied = filterManager.applyFilters(depthMat);
-		if (!applied)
-			qDebug() << "filters not applied";
-		const frameset::Frame depth = frameset::toFrame(depthMat);
-		fs_plc.depth.data = depth.data;
-		fs_plc.depth.height = depth.height;
-		fs_plc.depth.width = depth.width;
+		frameset::Frameset fs_filtered = fs_raw;
+		cv::Mat depthMat = frameset::toMat(fs_filtered.depth);
 
-		threadInterface.pushFilteredFrame(fs_plc);
+		if (filterManager.applyFilters(depthMat))
+		{
+			emit filtersApplied(getFiltersJson());
+			
+			const frameset::Frame depth = frameset::toFrame(depthMat);
+			fs_filtered.depth.data = depth.data;
+			fs_filtered.depth.height = depth.height;
+			fs_filtered.depth.width = depth.width;
+
+			threadInterface.pushFilteredFrame(fs_filtered);
+		}
+		else
+		{
+			emit filtersFailed();
+		}
+
 		threadInterface.pushRawFrame(fs_raw);
 		qint64 time = cycleTimer.restart();
 		emit addTime(static_cast<int>(time));
@@ -80,4 +88,10 @@ void CaptureThread::setFilters(const QJsonArray& filters)
 {
 	QMutexLocker locker(&filterMutex);
 	filterManager.makeFilters(filters);
+}
+
+const QJsonArray CaptureThread::getFiltersJson()
+{
+	QMutexLocker locker(&filterMutex);
+	return filterManager.filtersJson();
 }

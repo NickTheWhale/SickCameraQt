@@ -23,7 +23,7 @@ bool MedianBlurFilter::apply(cv::Mat& mat)
 		return false;
 
 	if (size != 3 && size != 5)
-		return false;
+		size = 3;
     
 	cv::Mat output;
     cv::medianBlur(mat, output, size);

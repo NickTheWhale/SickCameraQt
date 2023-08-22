@@ -4,7 +4,7 @@
 #include <GraphicsView.hpp>
 #include <NodeDelegateModelRegistry.hpp>
 #include <FilterFlowGraphModel.h>
-#include <DataFlowGraphicsScene.hpp>
+#include <FilterFlowGraphicsScene.h>
 #include <FilterManager.h>
 
 #include <qpushbutton.h>
@@ -30,8 +30,8 @@ protected:
 	void resizeEvent(QResizeEvent* event) override;
 
 private:
-	FilterFlowGraphModel graph;
-	QtNodes::DataFlowGraphicsScene* scene = nullptr;
+	QtNodes::FilterFlowGraphModel graph;
+	QtNodes::FilterFlowGraphicsScene* scene = nullptr;
 	std::shared_ptr<QtNodes::NodeDelegateModelRegistry> registry;
 
 	FilterManager filterManager;

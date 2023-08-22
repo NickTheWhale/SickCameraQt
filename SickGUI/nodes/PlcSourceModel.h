@@ -22,6 +22,8 @@ public:
 public:
 	virtual QString modelName() const { return QString("Plc Source"); }
 
+	bool portCaptionVisible(QtNodes::PortType, QtNodes::PortIndex) const override { return true; };
+
 	unsigned int nPorts(QtNodes::PortType const portType) const override;
 
 	QtNodes::NodeDataType dataType(QtNodes::PortType const portType, QtNodes::PortIndex const portIndex) const override { return MatNodeData().type(); }

@@ -124,7 +124,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
-    <ClCompile Include="ExponentialMovingAverageFilterModel.cpp" />
+    <ClCompile Include="nodes\ExponentialMovingAverageFilterModel.cpp" />
+    <ClCompile Include="nodes\FilterFlowGraphicsScene.cpp" />
     <ClCompile Include="nodes\CropFilterModel.cpp" />
     <ClCompile Include="filters\CropFilter.cpp" />
     <ClCompile Include="filters\ExponentialMovingAverageFilter.cpp" />
@@ -262,7 +263,8 @@
     <QtMoc Include="nodes\MedianBlurFilterModel.h" />
     <QtMoc Include="nodes\FilterFlowGraphModel.h" />
     <QtMoc Include="nodes\CropFilterModel.h" />
-    <QtMoc Include="ExponentialMovingAverageFilterModel.h" />
+    <QtMoc Include="nodes\ExponentialMovingAverageFilterModel.h" />
+    <QtMoc Include="nodes\FilterFlowGraphicsScene.h" />
     <ClInclude Include="filters\CropFilter.h" />
     <ClInclude Include="filters\ExponentialMovingAverageFilter.h" />
     <ClInclude Include="filters\BilateralFilter.h" />

@@ -23,12 +23,12 @@ bool BilateralFilter::apply(cv::Mat& mat)
     if (mat.empty())
         return false;
 
+    cv::Mat input32F;
+    cv::Mat output32F;
     cv::Mat output;
-    mat.convertTo(mat, CV_8U, 255.0 / 65535.0);
-    cv::normalize(mat, mat, 0, 255, cv::NormTypes::NORM_MINMAX);
-    cv::bilateralFilter(mat, output, diameter, sigmaColor, sigmaSpace);
-    output.convertTo(output, CV_16U, 65535.0 / 255.0);
-
+    mat.convertTo(input32F, CV_32F);
+    cv::bilateralFilter(input32F, output32F, diameter, sigmaColor, sigmaSpace);
+    output32F.convertTo(output, CV_16U);
     mat = output;
 
     return true;

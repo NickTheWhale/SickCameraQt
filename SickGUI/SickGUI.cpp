@@ -196,8 +196,9 @@ void SickGUI::checkThreads()
 	if (camThreadResult.error && plcThreadResult.error)
 	{
 		//std::string msg = std::format("Failed to connect to camera and plc.\nCamera error: {}\nPlc error: {}", camThreadResult.message, plcThreadResult.message);
-		std::string msg = "Failed to connect to camera and plc";
-		QMessageBox::critical(this, "Error", msg.c_str());
+		//std::string msg = "Failed to connect to camera and plc";
+		QString msg = QString("Failed to connect to camera and plc.\n\tCamera error: %1\n\tPlc error: %2").arg(camThreadResult.message).arg(plcThreadResult.message);
+		QMessageBox::critical(this, "Error", msg);
 	}
 	else if (camThreadResult.error)
 	{
@@ -207,12 +208,12 @@ void SickGUI::checkThreads()
 	{
 		QMessageBox::critical(this, "Error", "Failed to connect to plc");
 	}
-	if (camThreadResult.error || plcThreadResult.error)
-	{
-		QMessageBox::information(this, "Info", "Application will close now");
-		//QCoreApplication::quit();
-	}
-	//else
+	//if (camThreadResult.error || plcThreadResult.error)
+	//{
+	//	QMessageBox::information(this, "Info", "Application will close now");
+	//	QCoreApplication::quit();
+	//}
+	else
 	{
 		makeConnections();
 
@@ -271,7 +272,7 @@ ThreadResult SickGUI::startCamThread()
 			camera = nullptr;
 			qCritical() << "failed to open camera: " << openRet.message;
 			ret.error = true;
-			ret.message = "failed to open camera: " + openRet.message;
+			ret.message = openRet.message;
 			return ret;
 		}
 
@@ -340,7 +341,7 @@ ThreadResult SickGUI::startPlcThread()
 		{
 			qCritical() << "failed to connect plc " << plcIpAddress << ": " << CliErrorText(connectRet);
 			ret.error = true;
-			ret.message = "failed to connect plc " + QString(plcIpAddress.c_str()) + ": " + QString(CliErrorText(connectRet).c_str());
+			ret.message = QString(CliErrorText(connectRet).c_str());
 			return ret;
 		}
 
