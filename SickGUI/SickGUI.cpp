@@ -238,6 +238,7 @@ void SickGUI::makeConnections()
 		{
 			captureThread->setFilters(filters);
 		});
+	QObject::connect(captureThread, &CaptureThread::filtersApplied, filterEditorWidget, &FilterEditorWidget::captureFiltersApplied);
 }
 
 void SickGUI::startThreads(QPromise<ThreadResult>& promise)

@@ -8,6 +8,8 @@
 #include <FilterManager.h>
 
 #include <qpushbutton.h>
+#include <qscrollarea.h>
+#include <qlabel.h>
 
 static std::shared_ptr<QtNodes::NodeDelegateModelRegistry> registerDataModels();
 
@@ -18,12 +20,13 @@ class FilterEditorWidget : public QtNodes::GraphicsView
 public slots:
 	void save();
 	void load();
+	void captureFiltersApplied(const QJsonArray& filters);
 
 signals:
 	void updatedFilters(const QJsonArray& filters);
 
 public:
-	FilterEditorWidget(QWidget* parent = nullptr);                     
+	FilterEditorWidget(QWidget* parent = nullptr);
 	~FilterEditorWidget();
 
 protected:
@@ -36,11 +39,20 @@ private:
 
 	FilterManager filterManager;
 
-	//QPushButton* validateButton = nullptr;
 	QPushButton* applyButton = nullptr;
 
+	QPushButton* scrollAreaButton = nullptr;
+	QLabel* scrollAreaLabel = nullptr;
+	QScrollArea* scrollArea = nullptr;
+
+	QtNodes::NodeStyle validStyle;
+	QtNodes::NodeStyle invalidStyle;
+
 	void setButtonGeometry();
-	const bool validatePlcFlags(QtNodes::NodeId& startNodeId, QtNodes::NodeId& endNodeId) const;
-	const void applyFlow();
+	void setScrollAreaGeometry();
+	const std::pair<std::vector<QtNodes::NodeId>, std::vector<QtNodes::NodeId>> getPlcIds() const;
+	void validateAndApplyFlow();
+	void updateNodeColors(const QtNodes::Style& style, const std::vector<QtNodes::NodeId>& ids);
+	void updateNodeColors(const QtNodes::Style& style, const std::unordered_set<QtNodes::NodeId>& ids);
 };
 

@@ -9,7 +9,7 @@
 
 namespace QtNodes {
 
-class Style // : public QObject
+class Style //: public QObject
 {
     //Q_OBJECT
 

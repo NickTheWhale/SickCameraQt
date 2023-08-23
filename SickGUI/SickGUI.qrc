@@ -17,6 +17,8 @@
         <file>icons/open_in_new_FILL0_wght400_GRAD0_opsz20.png</file>
         <file>icons/restart_alt_FILL0_wght400_GRAD0_opsz20.png</file>
         <file>icons/baseline_linked_camera_white_48dp.png</file>
-        <file alias="DefaultStyle.json">nodeeditor/resources/DefaultStyle.json</file>
+        <file alias="DefaultStyle.json">nodes/styles/DefaultStyle.json</file>
+        <file alias="InvalidStyle.json">nodes/styles/InvalidStyle.json</file>
+        <file alias="ValidStyle.json">nodes/styles/ValidStyle.json</file>
     </qresource>
 </RCC>

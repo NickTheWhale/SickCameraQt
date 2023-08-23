@@ -180,7 +180,7 @@ namespace QtNodes {
 		return (_models.find(nodeId) != _models.end());
 	}
 
-	bool FilterFlowGraphModel::nodesDirectConnected(NodeId startNodeId, NodeId endNodeId) const
+	bool FilterFlowGraphModel::nodesDirectlyConnected(const NodeId startNodeId, const NodeId endNodeId) const
 	{
 		if (!nodeExists(startNodeId) || !nodeExists(endNodeId)) {
 			return false;
@@ -200,12 +200,12 @@ namespace QtNodes {
 		return false;
 	}
 
-	bool FilterFlowGraphModel::nodesUniquelyConnected(NodeId startNodeId, NodeId endNodeId) const
+	bool FilterFlowGraphModel::nodesUniquelyConnected(const NodeId startNodeId, const NodeId endNodeId) const
 	{
-		return nodesDirectConnected(startNodeId, endNodeId) && allConnectionIds(startNodeId).size() == 1;
+		return nodesDirectlyConnected(startNodeId, endNodeId) && allConnectionIds(startNodeId).size() == 1;
 	}
 
-	bool FilterFlowGraphModel::nodesConnected(NodeId startNodeId, NodeId endNodeId) const
+	bool FilterFlowGraphModel::nodesConnected(const NodeId startNodeId, const NodeId endNodeId) const
 	{
 		// breadth-first traversal
 
@@ -254,7 +254,7 @@ namespace QtNodes {
 		return false;
 	}
 
-	const std::vector<NodeId> FilterFlowGraphModel::computeFilterChainIDs(NodeId startNodeId, NodeId endNodeId)
+	const std::vector<NodeId> FilterFlowGraphModel::nonBranchingConnections(const NodeId startNodeId, const NodeId endNodeId) const
 	{
 		std::vector<NodeId> chain;
 		if (!nodeExists(startNodeId) || !nodeExists(endNodeId))
@@ -264,21 +264,19 @@ namespace QtNodes {
 
 		while (currentNode != startNodeId)
 		{
-			auto getName = [this](NodeId id) { return nodeData(id, NodeRole::Type).toString(); };
-			auto name = getName(currentNode);
-			auto connections = this->connections(currentNode, PortType::In, PortIndex(0));
-			QJsonObject internalJson = nodeData(currentNode, NodeRole::InternalData).toJsonObject()["internal-data"].toObject();
-			bool isFilter = internalJson.contains("filter");
+			const auto inConnections = this->connections(currentNode, PortType::In, PortIndex(0));
+			const auto outConnections = this->connections(currentNode, PortType::Out, PortIndex(0));
+			const QJsonObject internalJson = nodeData(currentNode, NodeRole::InternalData).toJsonObject()["internal-data"].toObject();
+			const bool isFilter = internalJson.contains("filter");
 
-			if (connections.size() != 1 || (!isFilter && currentNode != endNodeId))
+			if (inConnections.size() != 1 || (outConnections.size() != 1 && currentNode != endNodeId) || (!isFilter && currentNode != endNodeId))
 			{
 				return std::vector<NodeId>();
 			}
 
 			chain.push_back(currentNode);
 
-			NodeId nextNode = (connections.begin()->inNodeId == currentNode) ? connections.begin()->outNodeId : connections.begin()->inNodeId;
-
+			NodeId nextNode = (inConnections.begin()->inNodeId == currentNode) ? inConnections.begin()->outNodeId : inConnections.begin()->inNodeId;
 
 			currentNode = nextNode;
 		}
@@ -289,19 +287,92 @@ namespace QtNodes {
 		return chain;
 	}
 
-	const QJsonArray FilterFlowGraphModel::computeFilterJson(NodeId startNodeId, NodeId endNodeId)
+	const std::unordered_set<NodeId> FilterFlowGraphModel::branchingConnections(const NodeId startNodeId, const NodeId endNodeId) const
 	{
-		QJsonArray json;
+		// breadth-first traversal
 
-		auto ids = computeFilterChainIDs(startNodeId, endNodeId);
-		for (const auto& id : ids)
-		{
-			QJsonObject filter = saveNode(id)["internal-data"].toObject()["filter"].toObject();
-			if (!filter.empty())
-				json.append(filter);
+		if (!nodeExists(startNodeId) || !nodeExists(endNodeId)) {
+			return std::unordered_set<NodeId>();
 		}
 
-		return json;
+		std::unordered_set<NodeId> visitedNodes;
+		std::deque<NodeId> nodesToVisit;
+		nodesToVisit.push_back(startNodeId);
+
+		while (!nodesToVisit.empty())
+		{
+			NodeId currentNodeId = nodesToVisit.front();
+			nodesToVisit.pop_front();
+
+			if (currentNodeId == endNodeId)
+			{
+				return visitedNodes;
+			}
+
+			if (visitedNodes.find(currentNodeId) != visitedNodes.end())
+			{
+				continue;
+			}
+
+			visitedNodes.insert(currentNodeId);
+
+			std::unordered_set<ConnectionId> connections = allConnectionIds(currentNodeId);
+
+			for (const ConnectionId& connection : connections)
+			{
+				NodeId nextNodeId = connection.inNodeId;
+				if (nextNodeId == currentNodeId)
+				{
+					nextNodeId = connection.outNodeId;
+				}
+
+				if (visitedNodes.find(nextNodeId) == visitedNodes.end())
+				{
+					nodesToVisit.push_back(nextNodeId);
+				}
+			}
+		}
+		return std::unordered_set<NodeId>();
+	}
+
+	const std::unordered_set<NodeId> FilterFlowGraphModel::branchingConnections(const NodeId inputNodeId) const
+	{
+		std::unordered_set<NodeId> connectedNodes;
+
+		// Check if the input node exists
+		if (!nodeExists(inputNodeId)) {
+			return connectedNodes;
+		}
+
+		std::unordered_set<NodeId> visitedNodes;
+
+		std::deque<NodeId> nodesToVisit;
+		nodesToVisit.push_back(inputNodeId);
+
+		while (!nodesToVisit.empty()) {
+			NodeId currentNodeId = nodesToVisit.front();
+			nodesToVisit.pop_front();
+
+			// Skip already visited nodes
+			if (visitedNodes.find(currentNodeId) != visitedNodes.end()) {
+				continue;
+			}
+
+			visitedNodes.insert(currentNodeId);
+
+			std::unordered_set<ConnectionId> connections = allConnectionIds(currentNodeId);
+
+			for (const ConnectionId& connection : connections) {
+				NodeId connectedNodeId = (connection.inNodeId == currentNodeId) ? connection.outNodeId : connection.inNodeId;
+
+				if (visitedNodes.find(connectedNodeId) == visitedNodes.end()) {
+					connectedNodes.insert(connectedNodeId);
+					nodesToVisit.push_back(connectedNodeId);
+				}
+			}
+		}
+
+		return connectedNodes;
 	}
 
 	QVariant FilterFlowGraphModel::nodeData(NodeId nodeId, NodeRole role) const
@@ -408,7 +479,9 @@ namespace QtNodes {
 			if (it != _models.end())
 			{
 				auto& model = it->second;
-				model->setNodeStyle(value.value<NodeStyle>());
+				const auto styleJson = value.value<QJsonObject>();
+				const auto style = NodeStyle(styleJson);
+				model->setNodeStyle(style);
 				result = true;
 			}
 		} break;

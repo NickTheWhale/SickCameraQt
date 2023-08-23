@@ -528,9 +528,6 @@
     <ClInclude Include="nodeeditor\include\QtNodes\internal\Serializable.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="nodeeditor\include\QtNodes\internal\Style.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="nodeeditor\include\QtNodes\internal\StyleCollection.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -574,6 +571,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="global.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nodeeditor\include\QtNodes\internal\Style.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -724,5 +724,8 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Doxyfile" />
+    <None Include="nodes\styles\ValidStyle.json" />
+    <None Include="nodes\styles\InvalidStyle.json" />
+    <None Include="nodes\styles\DefaultStyle.json" />
   </ItemGroup>
 </Project>

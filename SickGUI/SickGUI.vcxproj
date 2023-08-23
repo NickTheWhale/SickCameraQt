@@ -69,7 +69,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <PreprocessorDefinitions>NOMINMAX;NODE_EDITOR_STATIC</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NOMINMAX;NODE_EDITOR_STATIC;STYLE_DEBUG</PreprocessorDefinitions>
       <UndefinePreprocessorDefinitions>%(UndefinePreprocessorDefinitions)</UndefinePreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -385,6 +385,9 @@
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\configuration</DestinationFolders>
     </CopyFileToFolders>
     <None Include="Doxyfile" />
+    <None Include="nodes\styles\DefaultStyle.json" />
+    <None Include="nodes\styles\InvalidStyle.json" />
+    <None Include="nodes\styles\ValidStyle.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -24,20 +24,22 @@ namespace QtNodes {
         };
 
     public:
-        bool nodesDirectConnected(NodeId startNodeId, NodeId endNodeId) const;
-       
-        bool nodesUniquelyConnected(NodeId startNodeId, NodeId endNodeId) const;
-       
-        bool nodesConnected(NodeId startNodeId, NodeId endNodeId) const;
-       
-        const std::vector<NodeId> computeFilterChainIDs(NodeId startNodeId, NodeId endNodeId);
-       
-        const QJsonArray computeFilterJson(NodeId startNodeId, NodeId endNodeId);
-
-    public:
         FilterFlowGraphModel(std::shared_ptr<NodeDelegateModelRegistry> registry);
 
         std::shared_ptr<NodeDelegateModelRegistry> dataModelRegistry() { return _registry; }
+
+    public:
+        bool nodesDirectlyConnected(const NodeId startNodeId, const NodeId endNodeId) const;
+       
+        bool nodesUniquelyConnected(const NodeId startNodeId, const NodeId endNodeId) const;
+       
+        bool nodesConnected(const NodeId startNodeId, const NodeId endNodeId) const;
+
+        const std::vector<NodeId> nonBranchingConnections(NodeId startNodeId, NodeId endNodeId) const;
+
+        const std::unordered_set<NodeId> branchingConnections(const NodeId startNodeId, const NodeId endNodeId) const;
+
+        const std::unordered_set<NodeId> branchingConnections(const NodeId inputNodeId) const;
 
     public:
         std::unordered_set<NodeId> allNodeIds() const override;
