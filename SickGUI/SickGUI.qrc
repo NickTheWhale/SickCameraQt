@@ -20,5 +20,7 @@
         <file alias="DefaultStyle.json">nodes/styles/DefaultStyle.json</file>
         <file alias="InvalidStyle.json">nodes/styles/InvalidStyle.json</file>
         <file alias="ValidStyle.json">nodes/styles/ValidStyle.json</file>
+        <file>icons/chevron_left_FILL0_wght400_GRAD0_opsz40.png</file>
+        <file>icons/chevron_right_FILL0_wght400_GRAD0_opsz40.png</file>
     </qresource>
 </RCC>

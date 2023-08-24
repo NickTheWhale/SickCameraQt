@@ -21,32 +21,53 @@
 #include <qlayout.h>
 #include <qdebug.h>
 
+#include <algorithm>
+
 FilterEditorWidget::FilterEditorWidget(QWidget* parent) :
 	GraphicsView(parent),
 	graph(registerDataModels()),
 	scene(new QtNodes::FilterFlowGraphicsScene(graph, this)),
 	applyButton(new QPushButton("Apply Flow To PLC Stream", this)),
-	scrollAreaButton(new QPushButton("-", this)),
-	scrollAreaLabel(new QLabel(this)),
-	scrollArea(new QScrollArea(this))
+	textEditButton(new QPushButton(this)),
+	textEdit(new QTextEdit(this))
 {
+	textEdit->setReadOnly(true);
+	textEdit->setUndoRedoEnabled(false);
+
 	validStyle.loadJsonFile(":/SickGUI/ValidStyle.json");
 	invalidStyle.loadJsonFile(":/SickGUI/InvalidStyle.json");
+	defaultStyle.loadJsonFile(":/SickGUI/DefaultStyle.json");
 
-	connect(applyButton, &QPushButton::pressed, this, &FilterEditorWidget::validateAndApplyFlow);
-	connect(scrollAreaButton, &QPushButton::pressed, this, [=]()
+	connect(applyButton, &QPushButton::pressed, this, &FilterEditorWidget::applyFilters);
+	connect(textEditButton, &QPushButton::pressed, this, [=]()
 		{
-			scrollArea->setVisible(!scrollArea->isVisible());
-			if (scrollArea->isVisible())
-				scrollAreaButton->move(QPoint(scrollArea->width() + 5, 5));
-			else
-				scrollAreaButton->move(QPoint(5, 5));
+			textEditVisible = !textEditVisible;
+			setTextEditGeometry(size());
+		});
+	connect(&graph, &QtNodes::FilterFlowGraphModel::connectionCreated, this, [&]()
+		{
+			if (!blockAutomaticColorUpdates)
+				updateAllColors();
+		});
+	connect(&graph, &QtNodes::FilterFlowGraphModel::connectionDeleted, this, [&]()
+		{
+			if (!blockAutomaticColorUpdates)
+				updateAllColors();
+		});
+	connect(&graph, &QtNodes::FilterFlowGraphModel::nodeCreated, this, [&]()
+		{
+			if (!blockAutomaticColorUpdates)
+				updateAllColors();
+		});
+	connect(&graph, &QtNodes::FilterFlowGraphModel::nodeDeleted, this, [&]()
+		{
+			if (!blockAutomaticColorUpdates)
+				updateAllColors();
 		});
 
-	scrollArea->setWidget(scrollAreaLabel);
-
 	this->setScene(scene);
-	setButtonGeometry();
+	setButtonGeometry(size());
+	setTextEditGeometry(size());
 }
 
 FilterEditorWidget::~FilterEditorWidget()
@@ -55,25 +76,36 @@ FilterEditorWidget::~FilterEditorWidget()
 
 void FilterEditorWidget::resizeEvent(QResizeEvent* event)
 {
-	setButtonGeometry();
-	setScrollAreaGeometry();
+	setButtonGeometry(event->size());
+	setTextEditGeometry(event->size());
 	GraphicsView::resizeEvent(event);
 }
 
-void FilterEditorWidget::setButtonGeometry()
+void FilterEditorWidget::setButtonGeometry(const QSize size)
 {
-	const QPoint bottomRight(size().width(), size().height());
+	const QPoint bottomRight(size.width(), size.height());
 	const QPoint pad(5, 5);
 	const QPoint applyButtonSize(applyButton->size().width(), applyButton->size().height());
 	const QPoint applyPos = bottomRight - pad - applyButtonSize;
 	applyButton->move(applyPos);
 }
 
-void FilterEditorWidget::setScrollAreaGeometry()
+void FilterEditorWidget::setTextEditGeometry(const QSize size)
 {
 	const QPoint pad(5, 5);
-	scrollArea->move(pad);
-	scrollArea->resize((size().width() / 5) - pad.x(), size().height() - pad.y() - pad.y());
+	textEdit->setVisible(textEditVisible);
+	if (textEdit->isVisible())
+	{
+		textEdit->move(pad);
+		textEdit->resize((size.width() / 5) - pad.x(), size.height() - pad.y() - pad.y());
+		textEditButton->move(QPoint(textEdit->width() + pad.x(), pad.y()));
+		textEditButton->setIcon(QIcon(":/SickGUI/icons/chevron_left_FILL0_wght400_GRAD0_opsz40.png"));
+	}
+	else
+	{
+		textEditButton->move(pad);
+		textEditButton->setIcon(QIcon(":/SickGUI/icons/chevron_right_FILL0_wght400_GRAD0_opsz40.png"));
+	}
 }
 
 const std::pair<std::vector<QtNodes::NodeId>, std::vector<QtNodes::NodeId>> FilterEditorWidget::getPlcIds() const
@@ -95,120 +127,177 @@ const std::pair<std::vector<QtNodes::NodeId>, std::vector<QtNodes::NodeId>> Filt
 	return ids;
 }
 
-void FilterEditorWidget::validateAndApplyFlow()
+FilterEditorWidget::FlowTuple FilterEditorWidget::computeFilterFlow()
 {
-	// 1. do we have exactly 2 plc flags?
-	//     yes - go to 2
-	//     no - apply invalid style to all plc flags
-	// 2. are the plc flags uniquely connected?
-	//     yes - emit an empty filter chain, apply valid style
-	//     no - go to 3
-	// 3. are the flags connected through a single path?
-	//     yes - emit the path filters, apply valid style to path
-	//     no - go to 4
-	// 4. are the flags connected thourgh a path with branches?
-	//     yes - apply invalid style to all nodes in path
-	//     no - go to 5
-	// 5. are the flags connected at all?
-
 	const auto plcIds = getPlcIds();
-	const auto startIdCount = plcIds.first.size();
-	const auto endIdCount = plcIds.second.size();
+	const size_t startIdCount = plcIds.first.size();
+	const size_t endIdCount = plcIds.second.size();
 	if (startIdCount != 1 || endIdCount != 1)
 	{
 		qDebug() << __FUNCTION__ << "must have exactly 1 start and end flag. You have" << startIdCount << "start flag(s) and" << endIdCount << "end flag(s)";
 
-		std::unordered_set<QtNodes::NodeId> idsToColor;
+		InvalidateIdSet idsToInvalidate;
 		for (const auto& plcId : plcIds.first)
 		{
-			idsToColor.insert(plcId);
+			idsToInvalidate.insert(plcId);
 			const auto plcBranchIds = graph.branchingConnections(plcId);
 			for (const auto& id : plcBranchIds)
-				idsToColor.insert(id);
+				idsToInvalidate.insert(id);
 		}
 
 		for (const auto& plcId : plcIds.second)
 		{
-			idsToColor.insert(plcId);
+			idsToInvalidate.insert(plcId);
 			const auto plcBranchIds = graph.branchingConnections(plcId);
 			for (const auto& id : plcBranchIds)
-				idsToColor.insert(id);
+				idsToInvalidate.insert(id);
 		}
 
-		updateNodeColors(invalidStyle, idsToColor);
+		DefaultIdSet idsToDefault;
+		const auto allIds = graph.allNodeIds();
+		for (const auto& id : allIds)
+			if (idsToInvalidate.count(id) == 0)
+				idsToDefault.insert(id);
 
-		return;
+		//updateNodeColors(invalidStyle, idsToInvalidate);
+		//updateNodeColors(defaultStyle, idsToDefault);
+
+		return std::make_tuple(false, QJsonArray(), ValidateIdSet(), idsToDefault, idsToInvalidate);
 	}
 
-	const auto plcStartNode = plcIds.first.front();
-	const auto plcEndNode = plcIds.second.front();
+	const QtNodes::NodeId plcStartNode = plcIds.first.front();
+	const QtNodes::NodeId plcEndNode = plcIds.second.front();
 
 	if (!graph.nodesConnected(plcStartNode, plcEndNode))
 	{
 		qDebug() << __FUNCTION__ << "you have 1 start and end flag, but they are not connected";
 
-		std::unordered_set<QtNodes::NodeId> idsToColor;
+		InvalidateIdSet idsToInvalidate;
 		for (const auto& plcId : plcIds.first)
 		{
-			idsToColor.insert(plcId);
+			idsToInvalidate.insert(plcId);
 			const auto plcBranchIds = graph.branchingConnections(plcId);
 			for (const auto& id : plcBranchIds)
-				idsToColor.insert(id);
+				idsToInvalidate.insert(id);
 		}
 
 		for (const auto& plcId : plcIds.second)
 		{
-			idsToColor.insert(plcId);
+			idsToInvalidate.insert(plcId);
 			const auto plcBranchIds = graph.branchingConnections(plcId);
 			for (const auto& id : plcBranchIds)
-				idsToColor.insert(id);
+				idsToInvalidate.insert(id);
 		}
 
-		updateNodeColors(invalidStyle, idsToColor);
+		DefaultIdSet idsToDefault;
+		const auto allIds = graph.allNodeIds();
+		for (const auto& id : allIds)
+			if (idsToInvalidate.count(id) == 0)
+				idsToDefault.insert(id);
 
-		return;
+		//updateNodeColors(invalidStyle, idsToInvalidate);
+		//updateNodeColors(defaultStyle, idsToDefault);
+
+		return std::make_tuple(false, QJsonArray(), ValidateIdSet(), idsToDefault, idsToInvalidate);
 	}
 
 	if (graph.nodesUniquelyConnected(plcStartNode, plcEndNode))
 	{
 		qDebug() << __FUNCTION__ << "plc nodes are uniquely connected";
-		updateNodeColors(validStyle, plcIds.first);
-		updateNodeColors(validStyle, plcIds.second);
+		//updateNodeColors(validStyle, plcIds.first);
+		//updateNodeColors(validStyle, plcIds.second);
 
-		emit updatedFilters(QJsonArray());
+		ValidateIdSet idsToValidate;
+		for (const auto& id : plcIds.first)
+			idsToValidate.insert(id);
+		for (const auto& id : plcIds.second)
+			idsToValidate.insert(id);
 
-		return;
+		DefaultIdSet idsToDefault;
+		const auto allIds = graph.allNodeIds();
+		for (const auto& id : allIds)
+			if (idsToValidate.count(id) == 0)
+				idsToDefault.insert(id);
+
+
+		//emit updatedFilters(QJsonArray());
+
+		return std::make_tuple(true, QJsonArray(), idsToValidate, idsToDefault, InvalidateIdSet());
 	}
 
 	const auto nonBranchingIds = graph.nonBranchingConnections(plcStartNode, plcEndNode);
 	if (!nonBranchingIds.empty())
 	{
 		qDebug() << __FUNCTION__ << "plc nodes are connected through a non-branching path";
-		updateNodeColors(validStyle, nonBranchingIds);
+		//updateNodeColors(validStyle, nonBranchingIds);
 
+		ValidateIdSet idsToValidate;
 		QJsonArray json;
 		for (const auto& id : nonBranchingIds)
 		{
 			QJsonObject filter = graph.saveNode(id)["internal-data"].toObject()["filter"].toObject();
 			if (!filter.empty())
 				json.append(filter);
+			idsToValidate.insert(id);
 		}
 
-		emit updatedFilters(json);
+		//emit updatedFilters(json);
 
-		return;
+		DefaultIdSet idsToDefault;
+		const auto allIds = graph.allNodeIds();
+		for (const auto& id : allIds)
+			if (idsToValidate.count(id) == 0)
+				idsToDefault.insert(id);
+
+		return std::make_tuple(true, json, idsToValidate, idsToDefault, InvalidateIdSet());
 	}
 
 	const auto branchingIds = graph.branchingConnections(plcStartNode, plcEndNode);
 	if (!branchingIds.empty())
 	{
 		qDebug() << __FUNCTION__ << "plc nodes are connected through a branching path";
-		updateNodeColors(invalidStyle, branchingIds);
+		//updateNodeColors(invalidStyle, branchingIds);
+		InvalidateIdSet idsToInvalidate = branchingIds;
+		idsToInvalidate.insert(plcEndNode);
+		InvalidateIdSet endBranches = graph.branchingConnections(plcEndNode);
+		for (const auto& id : endBranches)
+			idsToInvalidate.insert(id);
 
-		return;
+		DefaultIdSet idsToDefault;
+		const auto allIds = graph.allNodeIds();
+		for (const auto& id : allIds)
+			if (idsToInvalidate.count(id) == 0)
+				idsToDefault.insert(id);
+
+		return std::make_tuple(false, QJsonArray(), ValidateIdSet(), DefaultIdSet(), idsToInvalidate);
 	}
 
 	qDebug() << __FUNCTION__ << "got through all the ' if's '";
+	return FlowTuple{ false, QJsonArray(), ValidateIdSet(), DefaultIdSet(), InvalidateIdSet() };
+}
+
+void FilterEditorWidget::applyFilters()
+{
+	const FlowTuple flow = computeFilterFlow();
+	const ValidJson validJson = std::get<0>(flow);
+	if (validJson)
+	{
+		emit updatedFilters(std::get<1>(flow));
+	}
+	updateAllColors(std::get<2>(flow), std::get<3>(flow), std::get<4>(flow));
+}
+
+void FilterEditorWidget::updateAllColors(const ValidateIdSet& validateSet, const DefaultIdSet& defaultSet, const InvalidateIdSet& invalidateSet)
+{
+	updateNodeColors(validStyle, validateSet);
+	updateNodeColors(defaultStyle, defaultSet);
+	updateNodeColors(invalidStyle, invalidateSet);
+}
+
+void FilterEditorWidget::updateAllColors()
+{
+	const FlowTuple flow = computeFilterFlow();
+	updateAllColors(std::get<2>(flow), std::get<3>(flow), std::get<4>(flow));
 }
 
 void FilterEditorWidget::updateNodeColors(const QtNodes::Style& style, const std::vector<QtNodes::NodeId>& ids)
@@ -228,6 +317,7 @@ void FilterEditorWidget::updateNodeColors(const QtNodes::Style& style, const std
 		emit graph.nodeUpdated(id);
 	}
 }
+
 
 std::shared_ptr<QtNodes::NodeDelegateModelRegistry> registerDataModels()
 {
@@ -263,6 +353,7 @@ void FilterEditorWidget::load()
 {
 	try
 	{
+		blockAutomaticColorUpdates = true;
 		scene->load();
 	}
 	catch (const std::logic_error& e)
@@ -273,23 +364,65 @@ void FilterEditorWidget::load()
 	{
 		qWarning() << "Failed to load node(s). This may be due to invalid json format or outdated flow file";
 	}
+	blockAutomaticColorUpdates = false;
+	updateAllColors();
+}
+
+void jsonObjectToHtml(const QJsonObject& obj, QString& html)
+{
+	QJsonObject::const_iterator it;
+	for (it = obj.constBegin(); it != obj.constEnd(); ++it)
+	{
+		html += "<dt>" + it.key() + "</dt>";
+		if (it.value().isObject())
+		{
+			html += "<dd><dl>";
+			jsonObjectToHtml(it.value().toObject(), html);
+			html += "</dd></dl>";
+		}
+		else
+		{
+			html += "<dt>" + it.value().toVariant().toString() + "</dt>";
+		}
+	}
+}
+
+
+QString jsonArrayToHtml(const QJsonArray& array)
+{
+	QString html;
+	html += "<dl>";
+
+	for (const auto& filter : array)
+	{
+		jsonObjectToHtml(filter.toObject(), html);
+	}
+
+	html += "</dl>";
+	return html;
 }
 
 void FilterEditorWidget::captureFiltersApplied(const QJsonArray& filters)
 {
-	
-	QString filterString;
+	if (filters == lastJson && !filters.empty())
+		return;
 
-	for (const auto& filterRef : filters)
+	lastJson = filters;
+
+	if (lastJson.empty())
 	{
-		QJsonObject filterJson = filterRef.toObject();
-		QString type = filterJson["type"].toString();
-		filterString += type;
-		filterString += "\n";
+		textEdit->setHtml("<b>No filters being applied</b>");
 	}
+	else
+	{
+		QString formattedFilters = jsonArrayToHtml(filters);
+		textEdit->setHtml(formattedFilters);
+		qDebug() << formattedFilters;
+	}
+}
 
-	qDebug() << __FUNCTION__ << filterString;
-
-	scrollAreaLabel->setText(filterString);
-	scrollAreaLabel->adjustSize();
+void FilterEditorWidget::captureFiltersFailed()
+{
+	lastJson = QJsonArray();
+	textEdit->clear();
 }

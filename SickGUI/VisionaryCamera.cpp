@@ -82,15 +82,13 @@ bool VisionaryCamera::getNextFrameset(frameset::Frameset& fs)
 	if (!frameGrabber.getNextFrame(pDataHandler))
 		return false;
 
-	std::vector<uint16_t> depthData = pDataHandler->getDistanceMap();
-
 	const uint32_t height = pDataHandler->getHeight();
 	const uint32_t width = pDataHandler->getWidth();
 	const uint32_t number = pDataHandler->getFrameNum();
 	const uint64_t time = pDataHandler->getTimestampMS();
 
 
-	const frameset::Frame depthFrame(depthData, height, width, number, time);
+	const frameset::Frame depthFrame(pDataHandler->getDistanceMap(), height, width, number, time);
 	const frameset::Frame intensityFrame(pDataHandler->getIntensityMap(), height, width, number, time);
 	const frameset::Frame stateFrame(pDataHandler->getStateMap(), height, width, number, time);
 

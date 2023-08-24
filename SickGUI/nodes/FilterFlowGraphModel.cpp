@@ -281,6 +281,10 @@ namespace QtNodes {
 			currentNode = nextNode;
 		}
 
+		const auto startOutConnections = this->connections(startNodeId, PortType::Out, PortIndex(0));
+		if (startOutConnections.size() != 1)
+			return std::vector<NodeId>();
+
 		chain.push_back(startNodeId);
 
 		std::reverse(chain.begin(), chain.end());
