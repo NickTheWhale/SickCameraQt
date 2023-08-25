@@ -20,6 +20,7 @@
 
 #include <qlayout.h>
 #include <qdebug.h>
+#include <qstack.h>
 
 #include <algorithm>
 
@@ -373,31 +374,59 @@ void jsonObjectToHtml(const QJsonObject& obj, QString& html)
 	QJsonObject::const_iterator it;
 	for (it = obj.constBegin(); it != obj.constEnd(); ++it)
 	{
-		html += "<dt>" + it.key() + "</dt>";
 		if (it.value().isObject())
 		{
-			html += "<dd><dl>";
+			html += "<dt>";
+			html += "<div style=\"font-size:16px\">";
+			html += it.key();
+			html += "</div>";
+			html += "</dt>";
+
+			html += "<dd>";
+			html += "<dl>";
 			jsonObjectToHtml(it.value().toObject(), html);
-			html += "</dd></dl>";
+			html += "</dl>";
+			html += "</dd>";
 		}
 		else
 		{
-			html += "<dt>" + it.value().toVariant().toString() + "</dt>";
+			html += "<dt>";
+			html += "<div style=\"font-size:16px\">";
+			html += it.key() + ": " + it.value().toVariant().toString();
+			html += "</div>";
+			html += "</dt>";
 		}
 	}
 }
-
 
 QString jsonArrayToHtml(const QJsonArray& array)
 {
 	QString html;
 	html += "<dl>";
 
+	size_t filterNum = 0;
 	for (const auto& filter : array)
 	{
-		jsonObjectToHtml(filter.toObject(), html);
-	}
+		const auto type = filter.toObject()["type"].toVariant().toString();
+		const auto parameters = filter.toObject()["parameters"].toObject();
+		
+		html += "<dt>";
+		html += "<div style=\"font-size:20px;\">";
+		html += QString::number(filterNum + 1) + ". " + type;
+		html += "</div>";
+		html += "</dt>";
 
+		html += "<dd>";
+		html += "<dl>";
+		jsonObjectToHtml(parameters, html);
+		html += "</dl>";
+		html += "</dd>";
+		
+		if (filterNum < array.size() - 1)
+			html += "<hr>";
+		
+		++filterNum;
+	}
 	html += "</dl>";
 	return html;
 }
@@ -417,7 +446,7 @@ void FilterEditorWidget::captureFiltersApplied(const QJsonArray& filters)
 	{
 		QString formattedFilters = jsonArrayToHtml(filters);
 		textEdit->setHtml(formattedFilters);
-		qDebug() << formattedFilters;
+		qDebug().noquote().nospace() << formattedFilters;
 	}
 }
 
