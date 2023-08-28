@@ -64,6 +64,7 @@ public:
 
 private:
 	QWidget* _widget = nullptr;
+	QSize widgetSize;
 	ImageLabel* _image = nullptr;
 
 	QComboBox* _colorBox = nullptr;

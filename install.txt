@@ -1,0 +1,6 @@
+1. install Qt 6.5.1_msvc2019_64
+    a. do this one first, it takes awhile
+
+2. install "Visual Studio 2022"
+    a. install "Desktop development with C++" workload
+    b. install "Qt Visual Stuido Tools" extension

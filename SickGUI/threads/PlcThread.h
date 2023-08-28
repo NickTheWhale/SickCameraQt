@@ -20,6 +20,8 @@ class PlcThread : public QThread
 
 signals:
 	void addTime(const int time);
+	void disconnected();
+	void reconnected();
 
 public:
 	/**

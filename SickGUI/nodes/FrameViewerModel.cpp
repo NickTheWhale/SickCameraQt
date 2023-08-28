@@ -42,24 +42,36 @@ QWidget* FrameViewerModel::embeddedWidget()
 
 QJsonObject FrameViewerModel::save() const
 {
+	QJsonObject size;
+	size["x"] = _widget->size().width();
+	size["y"] = _widget->size().height();
+
 	QJsonObject root;
 	root["model-name"] = name();
 	root["colormap"] = colorIndex;
+	root["size"] = size;
 
 	return root;
 }
 
 void FrameViewerModel::load(QJsonObject const& p)
 {
+	const QJsonObject size = p["size"].toObject();
+	const int sizeX = size["x"].toInt(_widget->size().width());
+	const int sizeY = size["y"].toInt(_widget->size().height());
+
+	widgetSize = QSize(sizeX, sizeY);
 	colorIndex = p["colormap"].toInt(colorIndex);
 
 	if (!_widget)
 		createWidgets();
 	_colorBox->setCurrentIndex(std::clamp(colorIndex, 0, _colorBox->maxCount()));
+	_widget->resize(widgetSize);
 }
 
 void FrameViewerModel::createWidgets()
 {
+	_widget = new QWidget();
 	_image = new ImageLabel();
 	_colorBox = new QComboBox();
 
@@ -67,6 +79,7 @@ void FrameViewerModel::createWidgets()
 		_colorBox->addItem(action.name, action.colormapType);
 
 	_colorBox->setCurrentIndex(std::clamp(colorIndex, 0, _colorBox->maxCount()));
+	_widget->resize(widgetSize);
 
 	connect(_colorBox, &QComboBox::currentIndexChanged, this, [=](int index) { colorIndex = index; });
 
@@ -76,6 +89,5 @@ void FrameViewerModel::createWidgets()
 
 	_image->setMinimumSize(100, 100);
 
-	_widget = new QWidget();
 	_widget->setLayout(vbox);
 }

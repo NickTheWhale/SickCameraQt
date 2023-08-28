@@ -66,9 +66,13 @@ FilterEditorWidget::FilterEditorWidget(QWidget* parent) :
 				updateAllColors();
 		});
 
+	this->setMinimumSize(500, 300);
+	textEdit->setStyleSheet("QTextEdit { background-color: rgba(255, 255, 255, 200) }");
+
 	this->setScene(scene);
 	setButtonGeometry(size());
 	setTextEditGeometry(size());
+	adjustSize();
 }
 
 FilterEditorWidget::~FilterEditorWidget()
@@ -77,6 +81,8 @@ FilterEditorWidget::~FilterEditorWidget()
 
 void FilterEditorWidget::resizeEvent(QResizeEvent* event)
 {
+	qDebug() << event->size();
+
 	setButtonGeometry(event->size());
 	setTextEditGeometry(event->size());
 	GraphicsView::resizeEvent(event);
@@ -98,8 +104,9 @@ void FilterEditorWidget::setTextEditGeometry(const QSize size)
 	if (textEdit->isVisible())
 	{
 		textEdit->move(pad);
-		textEdit->resize((size.width() / 5) - pad.x(), size.height() - pad.y() - pad.y());
-		textEditButton->move(QPoint(textEdit->width() + pad.x(), pad.y()));
+		const QSize textEditSize = QSize(400, size.height() - pad.y() - pad.y());
+		textEdit->resize(textEditSize);
+		textEditButton->move(QPoint(textEdit->width() + pad.x() + 3, pad.y() - 1));
 		textEditButton->setIcon(QIcon(":/SickGUI/icons/chevron_left_FILL0_wght400_GRAD0_opsz40.png"));
 	}
 	else

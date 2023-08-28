@@ -62,11 +62,22 @@ void PlcThread::run()
 		int ret = write(data);
 		if (ret != 0)
 		{
+			emit disconnected();
 			auto error = CliErrorText(ret);
 			qWarning() << error;
 			if (client->Connect() != 0)
+			{
 				qWarning() << "plc failed to reconnect";
+			}
+			else
+			{
+				emit reconnected();
+			}
 			msleep(100);
+		}
+		else
+		{
+			emit reconnected();
 		}
 
 

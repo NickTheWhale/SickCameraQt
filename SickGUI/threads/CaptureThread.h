@@ -34,6 +34,10 @@ signals:
 
 	void filtersFailed();
 
+	void disconnected();
+
+	void reconnected();
+
 public:
 	/**
 	 * @brief Starts capturing frames from the specified camera.

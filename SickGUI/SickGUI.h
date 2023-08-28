@@ -125,6 +125,13 @@ private:
 
 	void loadConfiguration();
 
+	void updateStatusBar();
+	bool cameraConnected = false;
+	bool plcConnected = false;
+	bool lastCameraConnected = false;
+	bool lastPlcConnected = false;
+	QLabel* statusLabel = nullptr;
+
 	std::string plcIpAddress = "";
 	qint16 plcRack = 0;
 	qint16 plcSlot = 0;

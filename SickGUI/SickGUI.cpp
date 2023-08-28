@@ -162,6 +162,13 @@ void SickGUI::initializeWidgets()
 
 	this->setMenuBar(menuBar);
 #pragma endregion
+
+#pragma region MISC
+
+	statusLabel = new QLabel(this);
+
+#pragma endregion
+
 }
 
 bool SickGUI::createCamera()
@@ -217,9 +224,8 @@ void SickGUI::checkThreads()
 	{
 		makeConnections();
 
-		const QString ipText = QString("camera: %1 | plc: %2").arg(cameraIpAddress.c_str()).arg(plcIpAddress.c_str());
-		auto sb = this->statusBar();
-		sb->addPermanentWidget(new QLabel(ipText, this));
+		updateStatusBar();
+		this->statusBar()->addPermanentWidget(statusLabel);
 
 		QTimer::singleShot(1000, [this]()
 			{
@@ -240,6 +246,12 @@ void SickGUI::makeConnections()
 		});
 	QObject::connect(captureThread, &CaptureThread::filtersApplied, filterEditorWidget, &FilterEditorWidget::captureFiltersApplied);
 	QObject::connect(captureThread, &CaptureThread::filtersFailed, filterEditorWidget, &FilterEditorWidget::captureFiltersFailed);
+	
+	QObject::connect(captureThread, &CaptureThread::reconnected, this, [&]() { cameraConnected = true; updateStatusBar(); });
+	QObject::connect(captureThread, &CaptureThread::disconnected, this, [&]() { cameraConnected = false; updateStatusBar();  });
+
+	QObject::connect(plcThread, &PlcThread::reconnected, this, [&]() { plcConnected = true; updateStatusBar(); });
+	QObject::connect(plcThread, &PlcThread::disconnected, this, [&]() { plcConnected = false; updateStatusBar(); });
 }
 
 void SickGUI::startThreads(QPromise<ThreadResult>& promise)
@@ -416,4 +428,24 @@ void SickGUI::loadConfiguration()
 
 	// camera
 	cameraIpAddress = settings.value("camera/ip", "").value<QString>().toStdString();
+}
+
+void SickGUI::updateStatusBar()
+{
+	if (plcConnected != lastPlcConnected || cameraConnected != lastCameraConnected)
+	{
+		lastPlcConnected = plcConnected;
+		lastCameraConnected = cameraConnected;
+
+		const QString connectedStyle = "color: green;";
+		const QString disconnectedStyle = "color: red;";
+
+		const QString text = QString("camera: <span style=\"%1\">%2</span> | plc: <span style=\"%3\">%4</span>")
+			.arg(cameraConnected ? connectedStyle : disconnectedStyle)
+			.arg(cameraIpAddress.c_str())
+			.arg(plcConnected ? connectedStyle : disconnectedStyle)
+			.arg(plcIpAddress.c_str());
+
+		statusLabel->setText(text);
+	}
 }

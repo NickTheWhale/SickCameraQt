@@ -51,6 +51,7 @@ public slots:
 
 signals:
 	void newMask(const QRectF& maskNorm);
+	void resized(QSize size);
 
 protected:
 	/**

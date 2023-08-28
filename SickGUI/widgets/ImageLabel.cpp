@@ -33,6 +33,8 @@ void ImageLabel::resizeEvent(QResizeEvent* e)
 {
 	if (!pix.isNull())
 		QLabel::setPixmap(scaledPixmap());
+
+	emit resized(this->size());
 }
 
 void ImageLabel::contextMenuEvent(QContextMenuEvent* event)
@@ -119,5 +121,5 @@ QSize ImageLabel::minimumSizeHint() const
 
 QSize ImageLabel::sizeHint() const
 {
-	return pix.size();
+	return pix.isNull() ? QWidget::sizeHint() : pix.size();
 }

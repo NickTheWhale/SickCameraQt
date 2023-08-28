@@ -96,8 +96,8 @@ void ThresholdFilterModel::createWidgets()
 
 	auto form = new QFormLayout();
 
-	form->addRow("Lower", sb_lower);
-	form->addRow("Upper", sb_upper);
+	form->addRow("Lower (1/4 mm)", sb_lower);
+	form->addRow("Upper (1/4 mm)", sb_upper);
 
 	_widget = new QWidget();
 	_widget->setLayout(form);

@@ -38,9 +38,12 @@ void CaptureThread::run()
 		frameset::Frameset fs_raw;
 		if (!camera->getNextFrameset(fs_raw))
 		{
+			emit disconnected();
 			qWarning() << "capture thread: failed to get frameset";
 			continue;
 		}
+			
+		emit reconnected();
 
 		if (!frameset::isValid(fs_raw))
 		{
