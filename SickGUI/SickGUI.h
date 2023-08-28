@@ -12,16 +12,14 @@
 #include <qpromise.h>
 #include <qmainwindow.h>
 #include <qfuturewatcher.h>
+#include <qlabel.h>
 
 #include "VisionaryCamera.h"
 #include <CaptureThread.h>
 #include <PlcThread.h>
 
-#include <HistogramWidget.h>
 #include <CycleTimeWidget.h>
 #include <LoggingWidget.h>
-#include <CameraViewWidget.h>
-#include <FrameCompareWidget.h>
 #include <FilterEditorWidget.h>
 
 #include <Frameset.h>

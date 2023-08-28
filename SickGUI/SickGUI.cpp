@@ -20,11 +20,10 @@
 #include <qmenu.h>
 #include <qcoreapplication.h>
 #include <qstatusbar.h>
+#include <qdockwidget.h>
 
 #include <snap7.h>
 
-#include <CloseDockWidget.h>
-#include <HistogramWidget.h>
 #include <VisionaryAutoIPScanCustom.h>
 #include <global.h>
 
@@ -103,7 +102,7 @@ void SickGUI::initializeWidgets()
 
 	connect(messageHandler, &CustomMessageHandler::newMessage, loggingWidget, &LoggingWidget::showMessage);
 
-	CloseDockWidget* loggingDock = new CloseDockWidget("Log", this);
+	QDockWidget* loggingDock = new QDockWidget("Log", this);
 	loggingDock->setObjectName("loggingWidgetDock");
 	loggingDock->setAllowedAreas(Qt::DockWidgetArea::AllDockWidgetAreas);
 	loggingDock->setWidget(loggingWidget);
@@ -120,7 +119,7 @@ void SickGUI::initializeWidgets()
 #pragma region CYCLE_TIME_DOCK
 	cycleTimeWidget = new CycleTimeWidget(this);
 	cycleTimeWidget->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
-	CloseDockWidget* cycleTimeDock = new CloseDockWidget("Cycle Time", this);
+	QDockWidget* cycleTimeDock = new QDockWidget("Cycle Time", this);
 	cycleTimeDock->setObjectName("cycleTimeWidgetDock");
 	cycleTimeDock->setAllowedAreas(Qt::DockWidgetArea::AllDockWidgetAreas);
 	cycleTimeDock->setWidget(cycleTimeWidget);
@@ -142,12 +141,12 @@ void SickGUI::initializeWidgets()
 	QAction* logViewAction = viewMenu->addAction("Log");
 	logViewAction->setCheckable(true);
 	connect(logViewAction, &QAction::triggered, this, [=](bool checked) { loggingDock->setHidden(!checked); });
-	connect(loggingDock, &CloseDockWidget::visibilityChanged, this, [=](bool visible) { logViewAction->setChecked(visible); });
+	connect(loggingDock, &QDockWidget::visibilityChanged, this, [=](bool visible) { logViewAction->setChecked(visible); });
 
 	QAction* cycleTimeViewAction = viewMenu->addAction("Cycle Times");
 	cycleTimeViewAction->setCheckable(true);
 	connect(cycleTimeViewAction, &QAction::triggered, this, [=](bool checked) { cycleTimeDock->setHidden(!checked); });
-	connect(cycleTimeDock, &CloseDockWidget::visibilityChanged, this, [=](bool visible) { cycleTimeViewAction->setChecked(visible); });
+	connect(cycleTimeDock, &QDockWidget::visibilityChanged, this, [=](bool visible) { cycleTimeViewAction->setChecked(visible); });
 
 	connect(viewMenu, &QMenu::triggered, this, [=]()
 		{

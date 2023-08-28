@@ -58,12 +58,6 @@
     <ClCompile Include="widgets\ImageLabel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="widgets\HistogramWidget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="widgets\CloseDockWidget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="sickapi\include\libs\smart_ptr\src\sp_collector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -157,19 +151,7 @@
     <ClCompile Include="App.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="threads\QAutoWebSocket.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="threads\ThreadInterface.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="widgets\RangeSlider.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="widgets\CameraViewWidget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="widgets\FrameCompareWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Frameset.cpp">
@@ -587,12 +569,6 @@
     <QtMoc Include="widgets\ImageLabel.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="widgets\HistogramWidget.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="widgets\CloseDockWidget.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="CustomMessageHandler.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -608,19 +584,7 @@
     <QtMoc Include="widgets\LogTextEdit.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="threads\QAutoWebSocket.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="widgets\RangeSlider.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="VisionaryCamera.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="widgets\CameraViewWidget.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="widgets\FrameCompareWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="nodeeditor\include\QtNodes\internal\AbstractGraphModel.hpp">

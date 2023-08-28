@@ -32,13 +32,13 @@
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
     <QtInstall>6.5.1_msvc2019_64</QtInstall>
-    <QtModules>core;gui;widgets;websockets;charts</QtModules>
+    <QtModules>core;gui;widgets;charts;</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
     <QtDeploy>true</QtDeploy>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
     <QtInstall>6.5.1_msvc2019_64</QtInstall>
-    <QtModules>core;gui;widgets;websockets;charts</QtModules>
+    <QtModules>core;gui;widgets;charts;</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
     <QtDeploy>true</QtDeploy>
   </PropertyGroup>
@@ -57,14 +57,14 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <IncludePath>$(ProjectDir)\boost;$(ProjectDir)\filters;$(ProjectDir)\threads;$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(ProjectDir)\widgets;$(ProjectDir)\sickapi\include;$(ProjectDir)\sickapi\src;$(ProjectDir)\sickapi\3pp;$(ProjectDir)\sickapi\camimpl;$(ProjectDir)\qcustomplot;$(ProjectDir)\;$(ProjectDir)\pointcloudlibrary\3rdParty\Eigen\eigen3;$(ProjectDir)\pointcloudlibrary\include\pcl-1.13;$(ProjectDir)\nodeeditor\include\;$(ProjectDir)\nodeeditor\include\QtNodes\;$(ProjectDir)\nodeeditor\include\QtNodes\internal\;$(ProjectDir)\nodes;C:\opencv\build\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)\filters;$(ProjectDir)\threads;$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(ProjectDir)\widgets;$(ProjectDir)\sickapi\include;$(ProjectDir)\sickapi\src;$(ProjectDir)\sickapi\3pp;$(ProjectDir)\sickapi\camimpl;$(ProjectDir)\qcustomplot;$(ProjectDir)\;$(ProjectDir)\pointcloudlibrary\3rdParty\Eigen\eigen3;$(ProjectDir)\pointcloudlibrary\include\pcl-1.13;$(ProjectDir)\nodeeditor\include\;$(ProjectDir)\nodeeditor\include\QtNodes\;$(ProjectDir)\nodeeditor\include\QtNodes\internal\;$(ProjectDir)\nodes;$(ProjectDir)\boost;$(OPENCV_DIR)\build\include;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)$(Platform)\$(ProjectName)\$(Configuration)\</OutDir>
-    <LibraryPath>C:\opencv\build\x64\vc16\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(OPENCV_DIR)\build\x64\vc16\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <IncludePath>$(ProjectDir)\filters;$(ProjectDir)\threads;$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(ProjectDir)\widgets;$(ProjectDir)\sickapi\include;$(ProjectDir)\sickapi\src;$(ProjectDir)\sickapi\3pp;$(ProjectDir)\sickapi\camimpl;$(ProjectDir)\qcustomplot;$(ProjectDir)\;$(ProjectDir)\pointcloudlibrary\3rdParty\Eigen\eigen3;$(ProjectDir)\pointcloudlibrary\include\pcl-1.13;$(ProjectDir)\nodeeditor\include\;$(ProjectDir)\nodeeditor\include\QtNodes\;$(ProjectDir)\nodeeditor\include\QtNodes\internal\;$(ProjectDir)\nodes;C:\opencv\build\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)\filters;$(ProjectDir)\threads;$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(ProjectDir)\widgets;$(ProjectDir)\sickapi\include;$(ProjectDir)\sickapi\src;$(ProjectDir)\sickapi\3pp;$(ProjectDir)\sickapi\camimpl;$(ProjectDir)\qcustomplot;$(ProjectDir)\;$(ProjectDir)\pointcloudlibrary\3rdParty\Eigen\eigen3;$(ProjectDir)\pointcloudlibrary\include\pcl-1.13;$(ProjectDir)\nodeeditor\include\;$(ProjectDir)\nodeeditor\include\QtNodes\;$(ProjectDir)\nodeeditor\include\QtNodes\internal\;$(ProjectDir)\nodes;$(ProjectDir)\boost;$(OPENCV_DIR)\build\include;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)$(Platform)\$(ProjectName)\$(Configuration)\</OutDir>
-    <LibraryPath>C:\opencv\build\x64\vc16\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(OPENCV_DIR)\build\x64\vc16\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -74,10 +74,10 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>opencv_world480d.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(ProjectDir)\opencv\bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /y /d /f "C:\opencv\build\x64\vc16\bin\opencv_world480d.dll" "$(OutDir)"</Command>
+      <Command>xcopy /y /d /f "$(OPENCV_DIR)\build\x64\vc16\bin\opencv_world480d.dll" "$(OutDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -92,10 +92,10 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>opencv_world480.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(ProjectDir)\opencv\bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /y /d /f "C:\opencv\build\x64\vc16\bin\opencv_world480.dll" "$(OutDir)"</Command>
+      <Command>xcopy /y /d /f "$(OPENCV_DIR)\build\x64\vc16\bin\opencv_world480.dll" "$(OutDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
@@ -182,11 +182,7 @@
     <ClCompile Include="nodeeditor\src\NodeStyle.cpp" />
     <ClCompile Include="nodeeditor\src\StyleCollection.cpp" />
     <ClCompile Include="nodeeditor\src\UndoCommands.cpp" />
-    <ClCompile Include="widgets\FrameCompareWidget.cpp" />
-    <ClCompile Include="widgets\CameraViewWidget.cpp" />
-    <ClCompile Include="widgets\RangeSlider.cpp" />
     <ClCompile Include="threads\ThreadInterface.cpp" />
-    <ClCompile Include="threads\QAutoWebSocket.cpp" />
     <ClCompile Include="CustomMessageHandler.cpp">
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
       <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).moc</QtMocFileName>
@@ -197,7 +193,6 @@
     <ClCompile Include="widgets\CycleTimeWidget.cpp" />
     <ClCompile Include="widgets\LogTextEdit.cpp" />
     <ClCompile Include="widgets\LoggingWidget.cpp" />
-    <ClCompile Include="widgets\CloseDockWidget.cpp" />
     <ClCompile Include="threads\CaptureThread.cpp">
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
       <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).moc</QtMocFileName>
@@ -234,7 +229,6 @@
     <ClCompile Include="VisionaryAutoIPScanCustom.cpp" />
     <ClCompile Include="VisionaryCamera.cpp" />
     <ClCompile Include="widgets\ImageLabel.cpp" />
-    <ClCompile Include="widgets\HistogramWidget.cpp" />
     <QtRcc Include="SickGUI.qrc" />
     <QtMoc Include="SickGUI.h" />
     <ClCompile Include="SickGUI.cpp">
@@ -246,13 +240,8 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="widgets\CameraViewWidget.h" />
     <QtMoc Include="widgets\ImageLabel.h" />
-    <QtMoc Include="widgets\HistogramWidget.h" />
-    <QtMoc Include="widgets\CloseDockWidget.h" />
     <ClInclude Include="App.h" />
-    <QtMoc Include="widgets\RangeSlider.h" />
-    <QtMoc Include="widgets\FrameCompareWidget.h" />
     <QtMoc Include="nodes\ThresholdFilterModel.h" />
     <QtMoc Include="nodes\FrameSourceModel.h" />
     <QtMoc Include="nodes\FrameViewerModel.h" />
@@ -329,7 +318,6 @@
     <QtMoc Include="widgets\CycleTimeWidget.h" />
     <QtMoc Include="widgets\LogTextEdit.h" />
     <QtMoc Include="widgets\LoggingWidget.h" />
-    <QtMoc Include="threads\QAutoWebSocket.h" />
     <ClInclude Include="sickapi\src\AuthenticationLegacy.h" />
     <ClInclude Include="sickapi\src\AuthenticationSecure.h" />
     <ClInclude Include="sickapi\src\CoLa2ProtocolHandler.h" />
