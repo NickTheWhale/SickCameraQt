@@ -57,7 +57,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <IncludePath>$(ProjectDir)\filters;$(ProjectDir)\threads;$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(ProjectDir)\widgets;$(ProjectDir)\sickapi\include;$(ProjectDir)\sickapi\src;$(ProjectDir)\sickapi\3pp;$(ProjectDir)\sickapi\camimpl;$(ProjectDir)\qcustomplot;$(ProjectDir)\;$(ProjectDir)\pointcloudlibrary\3rdParty\Eigen\eigen3;$(ProjectDir)\pointcloudlibrary\include\pcl-1.13;$(ProjectDir)\nodeeditor\include\;$(ProjectDir)\nodeeditor\include\QtNodes\;$(ProjectDir)\nodeeditor\include\QtNodes\internal\;$(ProjectDir)\nodes;C:\opencv\build\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)\boost;$(ProjectDir)\filters;$(ProjectDir)\threads;$(ProjectDir)\sickapi;$(ProjectDir)\snap7;$(ProjectDir)\widgets;$(ProjectDir)\sickapi\include;$(ProjectDir)\sickapi\src;$(ProjectDir)\sickapi\3pp;$(ProjectDir)\sickapi\camimpl;$(ProjectDir)\qcustomplot;$(ProjectDir)\;$(ProjectDir)\pointcloudlibrary\3rdParty\Eigen\eigen3;$(ProjectDir)\pointcloudlibrary\include\pcl-1.13;$(ProjectDir)\nodeeditor\include\;$(ProjectDir)\nodeeditor\include\QtNodes\;$(ProjectDir)\nodeeditor\include\QtNodes\internal\;$(ProjectDir)\nodes;C:\opencv\build\include;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)$(Platform)\$(ProjectName)\$(Configuration)\</OutDir>
     <LibraryPath>C:\opencv\build\x64\vc16\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
@@ -388,19 +388,10 @@
     <None Include="nodes\styles\DefaultStyle.json" />
     <None Include="nodes\styles\InvalidStyle.json" />
     <None Include="nodes\styles\ValidStyle.json" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
     <Import Project="$(QtMsBuild)\qt.targets" />
   </ImportGroup>
-  <ImportGroup Label="ExtensionTargets">
-    <Import Project="..\packages\boost.1.82.0\build\boost.targets" Condition="Exists('..\packages\boost.1.82.0\build\boost.targets')" />
-  </ImportGroup>
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\boost.1.82.0\build\boost.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\boost.1.82.0\build\boost.targets'))" />
-  </Target>
+  <ImportGroup Label="ExtensionTargets" />
 </Project>

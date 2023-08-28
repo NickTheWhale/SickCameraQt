@@ -722,7 +722,6 @@
     <Library Include="snap7\snap7.lib" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
     <None Include="Doxyfile" />
     <None Include="nodes\styles\ValidStyle.json" />
     <None Include="nodes\styles\InvalidStyle.json" />
