@@ -7,3 +7,8 @@
 3. install "Visual Studio 2022"
     a. install "Desktop development with C++" workload
     b. install "Qt Visual Stuido Tools" extension
+    c. set the qt version in the extension
+
+4. clone (or download zip) of this repo
+
+5. open .sln
