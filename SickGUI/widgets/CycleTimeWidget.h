@@ -10,11 +10,9 @@ class CycleTimeWidget : public QWidget
 public slots:
 	void addPlcTime(const int time);
 	void addCamTime(const int time);
-	void addWebTime(const int time);
 
 	void resetPlcTimes();
 	void resetCamTimes();
-	void resetWebTimes();
 
 public:
 	explicit CycleTimeWidget(QWidget* parent = nullptr);
@@ -24,13 +22,10 @@ private:
 
 	CycleTime* plcTimes;
 	CycleTime* camTimes;
-	CycleTime* webTimes;
 
 	QTimer* plcWatchDog = nullptr;
 	QTimer* camWatchDog = nullptr;
-	QTimer* webWatchDog = nullptr;
 
 	void nullPlcTimes();
 	void nullCamTimes();
-	void nullWebTimes();
 };

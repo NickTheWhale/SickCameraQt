@@ -21,6 +21,8 @@
 #include <qlayout.h>
 #include <qdebug.h>
 #include <qstack.h>
+#include <qtimer.h>
+#include <qmessagebox.h>
 
 #include <algorithm>
 
@@ -43,7 +45,7 @@ FilterEditorWidget::FilterEditorWidget(QWidget* parent) :
 	connect(textEditButton, &QPushButton::pressed, this, [=]()
 		{
 			textEditVisible = !textEditVisible;
-			setTextEditGeometry(size());
+			setAllGeometry(size());
 		});
 	connect(&graph, &QtNodes::FilterFlowGraphModel::connectionCreated, this, [&]()
 		{
@@ -68,10 +70,8 @@ FilterEditorWidget::FilterEditorWidget(QWidget* parent) :
 
 	this->setMinimumSize(500, 300);
 	textEdit->setStyleSheet("QTextEdit { background-color: rgba(255, 255, 255, 200) }");
-
 	this->setScene(scene);
-	setButtonGeometry(size());
-	setTextEditGeometry(size());
+	setAllGeometry(size());
 	adjustSize();
 }
 
@@ -81,10 +81,7 @@ FilterEditorWidget::~FilterEditorWidget()
 
 void FilterEditorWidget::resizeEvent(QResizeEvent* event)
 {
-	qDebug() << event->size();
-
-	setButtonGeometry(event->size());
-	setTextEditGeometry(event->size());
+	setAllGeometry(event->size());
 	GraphicsView::resizeEvent(event);
 }
 
@@ -116,6 +113,17 @@ void FilterEditorWidget::setTextEditGeometry(const QSize size)
 	}
 }
 
+void FilterEditorWidget::setAllGeometry(const QSize size)
+{
+	setButtonGeometry(size);
+	setTextEditGeometry(size);
+}
+
+void FilterEditorWidget::showMessage(const QString msg)
+{
+	QMessageBox::information(this, "Message", msg);
+}
+
 const std::pair<std::vector<QtNodes::NodeId>, std::vector<QtNodes::NodeId>> FilterEditorWidget::getPlcIds() const
 {
 	std::pair<std::vector<QtNodes::NodeId>, std::vector<QtNodes::NodeId>> ids;
@@ -137,12 +145,13 @@ const std::pair<std::vector<QtNodes::NodeId>, std::vector<QtNodes::NodeId>> Filt
 
 FilterEditorWidget::FlowTuple FilterEditorWidget::computeFilterFlow()
 {
+	QString message;
 	const auto plcIds = getPlcIds();
 	const size_t startIdCount = plcIds.first.size();
 	const size_t endIdCount = plcIds.second.size();
 	if (startIdCount != 1 || endIdCount != 1)
 	{
-		qDebug() << __FUNCTION__ << "must have exactly 1 start and end flag. You have" << startIdCount << "start flag(s) and" << endIdCount << "end flag(s)";
+		message = "Invalid PLC flag count, you must have 1 of each.";
 
 		InvalidateIdSet idsToInvalidate;
 		for (const auto& plcId : plcIds.first)
@@ -167,10 +176,7 @@ FilterEditorWidget::FlowTuple FilterEditorWidget::computeFilterFlow()
 			if (idsToInvalidate.count(id) == 0)
 				idsToDefault.insert(id);
 
-		//updateNodeColors(invalidStyle, idsToInvalidate);
-		//updateNodeColors(defaultStyle, idsToDefault);
-
-		return std::make_tuple(false, QJsonArray(), ValidateIdSet(), idsToDefault, idsToInvalidate);
+		return std::make_tuple(false, QJsonArray(), ValidateIdSet(), idsToDefault, idsToInvalidate, message);
 	}
 
 	const QtNodes::NodeId plcStartNode = plcIds.first.front();
@@ -178,7 +184,7 @@ FilterEditorWidget::FlowTuple FilterEditorWidget::computeFilterFlow()
 
 	if (!graph.nodesConnected(plcStartNode, plcEndNode))
 	{
-		qDebug() << __FUNCTION__ << "you have 1 start and end flag, but they are not connected";
+		message = "PLC flags not connected.";
 
 		InvalidateIdSet idsToInvalidate;
 		for (const auto& plcId : plcIds.first)
@@ -203,17 +209,12 @@ FilterEditorWidget::FlowTuple FilterEditorWidget::computeFilterFlow()
 			if (idsToInvalidate.count(id) == 0)
 				idsToDefault.insert(id);
 
-		//updateNodeColors(invalidStyle, idsToInvalidate);
-		//updateNodeColors(defaultStyle, idsToDefault);
-
-		return std::make_tuple(false, QJsonArray(), ValidateIdSet(), idsToDefault, idsToInvalidate);
+		return std::make_tuple(false, QJsonArray(), ValidateIdSet(), idsToDefault, idsToInvalidate, message);
 	}
 
 	if (graph.nodesUniquelyConnected(plcStartNode, plcEndNode))
 	{
-		qDebug() << __FUNCTION__ << "plc nodes are uniquely connected";
-		//updateNodeColors(validStyle, plcIds.first);
-		//updateNodeColors(validStyle, plcIds.second);
+		message = "PLC flags are uniquely connected.";
 
 		ValidateIdSet idsToValidate;
 		for (const auto& id : plcIds.first)
@@ -227,17 +228,13 @@ FilterEditorWidget::FlowTuple FilterEditorWidget::computeFilterFlow()
 			if (idsToValidate.count(id) == 0)
 				idsToDefault.insert(id);
 
-
-		//emit updatedFilters(QJsonArray());
-
-		return std::make_tuple(true, QJsonArray(), idsToValidate, idsToDefault, InvalidateIdSet());
+		return std::make_tuple(true, QJsonArray(), idsToValidate, idsToDefault, InvalidateIdSet(), message);
 	}
 
 	const auto nonBranchingIds = graph.nonBranchingConnections(plcStartNode, plcEndNode);
 	if (!nonBranchingIds.empty())
 	{
-		qDebug() << __FUNCTION__ << "plc nodes are connected through a non-branching path";
-		//updateNodeColors(validStyle, nonBranchingIds);
+		message = "PLC flags are connected";
 
 		ValidateIdSet idsToValidate;
 		QJsonArray json;
@@ -249,22 +246,20 @@ FilterEditorWidget::FlowTuple FilterEditorWidget::computeFilterFlow()
 			idsToValidate.insert(id);
 		}
 
-		//emit updatedFilters(json);
-
 		DefaultIdSet idsToDefault;
 		const auto allIds = graph.allNodeIds();
 		for (const auto& id : allIds)
 			if (idsToValidate.count(id) == 0)
 				idsToDefault.insert(id);
 
-		return std::make_tuple(true, json, idsToValidate, idsToDefault, InvalidateIdSet());
+		return std::make_tuple(true, json, idsToValidate, idsToDefault, InvalidateIdSet(), message);
 	}
 
 	const auto branchingIds = graph.branchingConnections(plcStartNode, plcEndNode);
 	if (!branchingIds.empty())
 	{
-		qDebug() << __FUNCTION__ << "plc nodes are connected through a branching path";
-		//updateNodeColors(invalidStyle, branchingIds);
+		message = "PLC flags are connected through invalid path.";
+
 		InvalidateIdSet idsToInvalidate = branchingIds;
 		idsToInvalidate.insert(plcEndNode);
 		InvalidateIdSet endBranches = graph.branchingConnections(plcEndNode);
@@ -277,11 +272,10 @@ FilterEditorWidget::FlowTuple FilterEditorWidget::computeFilterFlow()
 			if (idsToInvalidate.count(id) == 0)
 				idsToDefault.insert(id);
 
-		return std::make_tuple(false, QJsonArray(), ValidateIdSet(), DefaultIdSet(), idsToInvalidate);
+		return std::make_tuple(false, QJsonArray(), ValidateIdSet(), DefaultIdSet(), idsToInvalidate, message);
 	}
 
-	qDebug() << __FUNCTION__ << "got through all the ' if's '";
-	return FlowTuple{ false, QJsonArray(), ValidateIdSet(), DefaultIdSet(), InvalidateIdSet() };
+	return FlowTuple{ false, QJsonArray(), ValidateIdSet(), DefaultIdSet(), InvalidateIdSet(), QString() };
 }
 
 void FilterEditorWidget::applyFilters()
@@ -291,6 +285,10 @@ void FilterEditorWidget::applyFilters()
 	if (validJson)
 	{
 		emit updatedFilters(std::get<1>(flow));
+	}
+	else
+	{
+		showMessage(std::get<5>(flow));
 	}
 	updateAllColors(std::get<2>(flow), std::get<3>(flow), std::get<4>(flow));
 }
@@ -325,7 +323,6 @@ void FilterEditorWidget::updateNodeColors(const QtNodes::Style& style, const std
 		emit graph.nodeUpdated(id);
 	}
 }
-
 
 std::shared_ptr<QtNodes::NodeDelegateModelRegistry> registerDataModels()
 {
@@ -434,31 +431,34 @@ QString jsonArrayToHtml(const QJsonArray& array)
 		
 		++filterNum;
 	}
+
 	html += "</dl>";
 	return html;
 }
 
 void FilterEditorWidget::captureFiltersApplied(const QJsonArray& filters)
 {
-	if (filters == lastJson && !filters.empty())
+	if (filters == lastFilters && !filters.empty())
 		return;
 
-	lastJson = filters;
+	lastFilters = filters;
 
-	if (lastJson.empty())
+	QString html = "<b>Current Filters:</b><br>";
+
+	if (lastFilters.empty())
 	{
-		textEdit->setHtml("<b>No filters being applied</b>");
+		html += "<br>No filters being applied";
 	}
 	else
 	{
-		QString formattedFilters = jsonArrayToHtml(filters);
-		textEdit->setHtml(formattedFilters);
-		qDebug().noquote().nospace() << formattedFilters;
+		html += jsonArrayToHtml(lastFilters);
 	}
+
+	textEdit->setHtml(html);
 }
 
 void FilterEditorWidget::captureFiltersFailed()
 {
-	lastJson = QJsonArray();
-	textEdit->clear();
+	lastFilters = QJsonArray();
+	textEdit->setHtml("<b>Failed to apply filters</b>");
 }

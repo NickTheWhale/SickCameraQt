@@ -197,7 +197,6 @@ void SickGUI::checkThreads()
 {
 	ThreadResult camThreadResult = threadWatcher->resultAt(0);
 	ThreadResult plcThreadResult = threadWatcher->resultAt(1);
-	//ThreadResult webThreadResult = threadWatcher->resultAt(2);
 
 	if (camThreadResult.error && plcThreadResult.error)
 	{
@@ -214,11 +213,14 @@ void SickGUI::checkThreads()
 	{
 		QMessageBox::critical(this, "Error", "Failed to connect to plc");
 	}
-	//if (camThreadResult.error || plcThreadResult.error)
-	//{
-	//	QMessageBox::information(this, "Info", "Application will close now");
-	//	QCoreApplication::quit();
-	//}
+	if (camThreadResult.error || plcThreadResult.error)
+	{
+		constexpr auto msg = """Due to being unable to connect the camera and/or plc"""
+								 """, the application is only usable as a node editor"""
+							     """. Please check your configuration and restart to"""
+								 """ enable camera and plc functionality""";
+		QMessageBox::information(this, "Info", msg);
+	}
 	else
 	{
 		makeConnections();
