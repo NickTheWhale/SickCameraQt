@@ -46,7 +46,7 @@ Select your desired configuration and then *'Build Solution'* either in the *'bu
 * Run qtwindeploy
 * Copy opencv dll's using xcopy
 
-If all goes well, you should see a success message. If you get any errors, the *'output'* window should point you in the right direction on what to google, or you can open an new issue.
+If all goes well, you should see a success message. If you get any errors, the *'output'* window should point you in the right direction on what to google, or you can open a new issue.
 
 ## Distributing
 
