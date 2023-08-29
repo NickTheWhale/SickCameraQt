@@ -5,7 +5,6 @@ Siemens Step 7 PLC interface for Sick Visionary-T Mini TOF camera with flexible 
 
 ## Installation
 
-*[Prebuilt binaries](https://github.com/NickTheWhale/SickCameraQt/releases)* 
 1. **Install Qt**
 * [Download Qt 6.5.1](https://www.qt.io/download)
 > **Note:** The program was written with Qt 6.5.1, but should be compatable with 6.x.x. If you do decide to use a version other than 6.5.1, you will have to set the SickGUI 'Configuration Properties \> Qt Project Settings \> Qt Installation' to the appropriate value.
@@ -49,3 +48,26 @@ Select your desired configuration and then *'Build Solution'* either in the *'bu
 
 If all goes well, you should see a success message. If you get any errors, the *'output'* window should point you in the right direction on what to google, or you can open an new issue.
 
+## Distributing
+
+After building, Visual Studio will generate a *'./x64'* directory containing each project's build output. 
+
+![Build output directories](./docs/images/output_directories.jpg)
+
+The TestServer project just contains the executable and the snap7 dll. SickGUI will contain the executable, Qt dll's, and a Visual C++ Redistributable installer. If you can build the project successfully then you won't have to run the Visual C++ installer but it may be necessary when deploying the application on a different computer. To deploy, follow these steps:
+
+* Obtain build output (either by building from source or by downloading the [pre built binaries](https://github.com/NickTheWhale/SickCameraQt/releases))
+* Transfer the entire contents of the build output to the target PC
+* Run the Visual C++ Redistributable installer (likely called vc_redist.x64.exe)
+* Setup the camera settings using [Sopas Engineering Tool](https://cdn.sick.com/us/en/) (optional)
+* Modify configuration file
+
+## Configuration
+
+[Example configuration file](./configuration_example.ini)
+
+The configuration file is loaded at application startup and is used to set the PLC and camera settings. 
+
+## Prebuilt Binaries
+
+If you just want to download the latest version without building from source, you can do so [here](https://github.com/NickTheWhale/SickCameraQt/releases).
