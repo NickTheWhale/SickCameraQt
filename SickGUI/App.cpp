@@ -4,7 +4,6 @@ App::App(int& argc, char** argv) : QApplication(argc, argv)
 {
 }
 
-
 // useful for performance testing
 //bool App::notify(QObject* receiver, QEvent* event)
 //{

@@ -165,6 +165,7 @@ void SickGUI::initializeWidgets()
 #pragma region MISC
 
 	statusLabel = new QLabel(this);
+	this->statusBar()->addPermanentWidget(statusLabel);
 
 #pragma endregion
 
@@ -226,7 +227,6 @@ void SickGUI::checkThreads()
 		makeConnections();
 
 		updateStatusBar();
-		this->statusBar()->addPermanentWidget(statusLabel);
 
 		QTimer::singleShot(1000, [this]()
 			{

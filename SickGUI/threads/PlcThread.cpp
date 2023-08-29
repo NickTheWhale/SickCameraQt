@@ -64,7 +64,7 @@ void PlcThread::run()
 		{
 			emit disconnected();
 			auto error = CliErrorText(ret);
-			qWarning() << error;
+			qWarning() << "plc thread: write error:" << error;
 			if (client->Connect() != 0)
 			{
 				qWarning() << "plc failed to reconnect";
@@ -79,7 +79,6 @@ void PlcThread::run()
 		{
 			emit reconnected();
 		}
-
 
 		const qint64 timeLeft = cycleTimeTarget - cycleTimer.elapsed();
 		if (timeLeft > 0)
