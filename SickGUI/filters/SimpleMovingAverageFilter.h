@@ -1,3 +1,12 @@
+/*****************************************************************//**
+ * @file   SimpleMovingAverageFilter.h
+ * @brief  Moving average filter. Maintains internal buffer of size [2, 10]. When apply() is called, the mat is added to the 
+ * buffer and then all mats within the buffer are averaged.
+ * 
+ * @author Nicholas Loehrke
+ * @date   August 2023
+ *********************************************************************/
+
 #pragma once
 #include "FilterBase.h"
 #include <deque>

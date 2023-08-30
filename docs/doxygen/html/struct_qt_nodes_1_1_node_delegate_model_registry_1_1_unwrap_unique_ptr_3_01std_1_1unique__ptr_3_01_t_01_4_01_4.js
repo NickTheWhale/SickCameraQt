@@ -1,0 +1,4 @@
+var struct_qt_nodes_1_1_node_delegate_model_registry_1_1_unwrap_unique_ptr_3_01std_1_1unique__ptr_3_01_t_01_4_01_4 =
+[
+    [ "type", "struct_qt_nodes_1_1_node_delegate_model_registry_1_1_unwrap_unique_ptr_3_01std_1_1unique__ptr_3_01_t_01_4_01_4.html#a7f6a2b17818598f5e6a14b3d38f7c0d3", null ]
+];

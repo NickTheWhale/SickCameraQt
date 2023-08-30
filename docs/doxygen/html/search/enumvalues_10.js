@@ -5,7 +5,10 @@ var searchData=
   ['session_5fno_5fresources_2',['SESSION_NO_RESOURCES',['../namespacevisionary_1_1_co_la_error.html#a4e410cc8da3d2a084c58ed78e89c3454a41dab1fe720ec4595aef9488fbd8853c',1,'visionary::CoLaError']]],
   ['session_5funknown_5fid_3',['SESSION_UNKNOWN_ID',['../namespacevisionary_1_1_co_la_error.html#a4e410cc8da3d2a084c58ed78e89c3454a211c35c380920b33ac0fac6f325e754d',1,'visionary::CoLaError']]],
   ['set_5fport_5ffailed_4',['SET_PORT_FAILED',['../namespacevisionary_1_1_co_la_error.html#a4e410cc8da3d2a084c58ed78e89c3454abb02759230e051e5dde8d6f04471125d',1,'visionary::CoLaError']]],
-  ['state_5',['State',['../_stream_8h.html#a0b8b584f5fb32277059bc4e6b9bcd6f0ae2e1bc9aabbeab5b3e8f070a18e38f90',1,'Stream.h']]],
-  ['sul1_6',['SUL1',['../namespacevisionary.html#a557238be3b0c43e9f28b6dc68ecd86c0aa80c8c8738c41978c04a8c180e60f69e',1,'visionary']]],
-  ['sul2_7',['SUL2',['../namespacevisionary.html#a557238be3b0c43e9f28b6dc68ecd86c0ac816ac5587719e3cc59da98593d9dfbe',1,'visionary']]]
+  ['size_5',['Size',['../namespace_qt_nodes.html#a21a521c8e3ae884aa19df1f67d7eb596a6f6cb72d544962fa333e2e34ce64f719',1,'QtNodes']]],
+  ['small_6',['SMALL',['../class_median_blur_filter_model.html#aa18b5e17a1dfebeef5e041fe8165f2f8a21c047214cab3a4624d02e63f5158c51',1,'MedianBlurFilterModel']]],
+  ['state_7',['State',['../_stream_8h.html#a0b8b584f5fb32277059bc4e6b9bcd6f0ae2e1bc9aabbeab5b3e8f070a18e38f90',1,'Stream.h']]],
+  ['style_8',['Style',['../namespace_qt_nodes.html#a21a521c8e3ae884aa19df1f67d7eb596aae284f900f9d6e21ba69144cfc91e41b',1,'QtNodes']]],
+  ['sul1_9',['SUL1',['../namespacevisionary.html#a557238be3b0c43e9f28b6dc68ecd86c0aa80c8c8738c41978c04a8c180e60f69e',1,'visionary']]],
+  ['sul2_10',['SUL2',['../namespacevisionary.html#a557238be3b0c43e9f28b6dc68ecd86c0ac816ac5587719e3cc59da98593d9dfbe',1,'visionary']]]
 ];

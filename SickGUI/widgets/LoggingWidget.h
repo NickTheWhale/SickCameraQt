@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   LoggingWidget.h
+ * @brief  Displays log messages using a LogTextEdit. Output's are buffered for performance.
+ * 
+ * @author Nicholas Loehrke
+ * @date   August 2023
+ *********************************************************************/
+
 #pragma once
 #include <qwidget.h>
 #include <qtextedit.h>

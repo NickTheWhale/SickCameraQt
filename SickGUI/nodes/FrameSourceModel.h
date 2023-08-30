@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   FrameSourceModel.h
+ * @brief  Retrieves raw (unfiltered) frames from ThreadInterface.
+ * 
+ * @author Nicholas Loehrke
+ * @date   August 2023
+ *********************************************************************/
+
 #pragma once
 #include <NodeDelegateModel.hpp>
 #include <ImageLabel.h>

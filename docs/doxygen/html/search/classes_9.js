@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['openresult_0',['OpenResult',['../struct_open_result.html',1,'']]]
+  ['loggingwidget_0',['LoggingWidget',['../class_logging_widget.html',1,'']]],
+  ['logtextedit_1',['LogTextEdit',['../class_log_text_edit.html',1,'']]]
 ];

@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   CycleTimeWidget.h
+ * @brief  Displays the cycle times of each thread and handles "graying out" stale times.
+ * 
+ * @author Nicholas Loehrke
+ * @date   August 2023
+ *********************************************************************/
+
 #pragma once
 #include <qwidget.h>
 

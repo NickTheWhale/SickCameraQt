@@ -49,9 +49,6 @@
     <ClCompile Include="snap7\snap7.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="VisionaryAutoIPScanCustom.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="SickGUI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -333,9 +330,6 @@
     <ClInclude Include="snap7\snap7.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="VisionaryAutoIPScanCustom.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Stream.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -558,6 +552,9 @@
     <ClInclude Include="nodeeditor\include\QtNodes\internal\Style.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="VisionaryCamera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="threads\CaptureThread.h">
@@ -582,9 +579,6 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="widgets\LogTextEdit.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="VisionaryCamera.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="nodeeditor\include\QtNodes\internal\AbstractGraphModel.hpp">

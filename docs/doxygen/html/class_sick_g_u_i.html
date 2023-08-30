@@ -91,8 +91,8 @@ $(document).ready(function(){initNavTree('class_sick_g_u_i.html',''); initResiza
 
 <div class="header">
   <div class="summary">
-<a href="#pub-slots">Public Slots</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-slots">Private Slots</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_sick_g_u_i-members.html">List of all members</a>  </div>
@@ -108,21 +108,6 @@ Inheritance diagram for SickGUI:</div>
   <img src="class_sick_g_u_i.png" alt=""/>
  </div></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-slots" name="pub-slots"></a>
-Public Slots</h2></td></tr>
-<tr class="memitem:a9c4920226e6f464d0744ddc0995ec90d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a9c4920226e6f464d0744ddc0995ec90d">playVideo</a> ()</td></tr>
-<tr class="memdesc:a9c4920226e6f464d0744ddc0995ec90d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Slot to start live video stream and histograms.  <br /></td></tr>
-<tr class="separator:a9c4920226e6f464d0744ddc0995ec90d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4333916b17fdae5bd1d90152b8e613d5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a4333916b17fdae5bd1d90152b8e613d5">pauseVideo</a> ()</td></tr>
-<tr class="memdesc:a4333916b17fdae5bd1d90152b8e613d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Slot to pause live video stream and histograms.  <br /></td></tr>
-<tr class="separator:a4333916b17fdae5bd1d90152b8e613d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad92ec970e9e45866ec7f7554ab1b13f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#ad92ec970e9e45866ec7f7554ab1b13f7">newFrameset</a> (<a class="el" href="struct_frameset_1_1frameset__t.html">Frameset::frameset_t</a> fs)</td></tr>
-<tr class="memdesc:ad92ec970e9e45866ec7f7554ab1b13f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Slot to receive new frameset emitted by captureThread.  <br /></td></tr>
-<tr class="separator:ad92ec970e9e45866ec7f7554ab1b13f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a69fa81855a9c4aeb49c3c68b8002091c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a69fa81855a9c4aeb49c3c68b8002091c">showStatusBarMessage</a> (const QString &amp;msg, int timeout=0)</td></tr>
-<tr class="memdesc:a69fa81855a9c4aeb49c3c68b8002091c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Slot to show a message on the status bar.  <br /></td></tr>
-<tr class="separator:a69fa81855a9c4aeb49c3c68b8002091c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ac2108b9674f2203e840f2f68ffe4074d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#ac2108b9674f2203e840f2f68ffe4074d">SickGUI</a> (<a class="el" href="class_custom_message_handler.html">CustomMessageHandler</a> *<a class="el" href="class_sick_g_u_i.html#adc141da4a37b777b7cf6261444400e36">messageHandler</a>, QWidget *parent=nullptr)</td></tr>
@@ -130,108 +115,83 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac17d52e06e5c5e20df4dc4114332aa8c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#ac17d52e06e5c5e20df4dc4114332aa8c">~SickGUI</a> ()</td></tr>
 <tr class="separator:ac17d52e06e5c5e20df4dc4114332aa8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-slots" name="pri-slots"></a>
+Private Slots</h2></td></tr>
+<tr class="memitem:a93cfef918e585738172a2239600f8acd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a93cfef918e585738172a2239600f8acd">checkThreads</a> ()</td></tr>
+<tr class="memdesc:a93cfef918e585738172a2239600f8acd"><td class="mdescLeft">&#160;</td><td class="mdescRight">QFutureWatcher callback to check camera and plc thread start status.  <br /></td></tr>
+<tr class="separator:a93cfef918e585738172a2239600f8acd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:ab547535d9ffe1eac0597e8af13d269c9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#ab547535d9ffe1eac0597e8af13d269c9">closeEvent</a> (QCloseEvent *event) override</td></tr>
 <tr class="memdesc:ab547535d9ffe1eac0597e8af13d269c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the main window is closing. Used to save dock layout.  <br /></td></tr>
 <tr class="separator:ab547535d9ffe1eac0597e8af13d269c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aba95da04d9673e22c036f4bf1e771b4d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#aba95da04d9673e22c036f4bf1e771b4d">initializeWidgets</a> ()</td></tr>
-<tr class="memdesc:aba95da04d9673e22c036f4bf1e771b4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes widgets.  <br /></td></tr>
 <tr class="separator:aba95da04d9673e22c036f4bf1e771b4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a58dc3b0a223fbb4056cd7a38daa05979"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a58dc3b0a223fbb4056cd7a38daa05979">initializeWebServerConnection</a> ()</td></tr>
-<tr class="memdesc:a58dc3b0a223fbb4056cd7a38daa05979"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes web connection.  <br /></td></tr>
-<tr class="separator:a58dc3b0a223fbb4056cd7a38daa05979"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeab61b5b968b32eb196d6d9595cf327f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#aeab61b5b968b32eb196d6d9595cf327f">updateDisplay</a> ()</td></tr>
-<tr class="memdesc:aeab61b5b968b32eb196d6d9595cf327f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shows latest camera frame.  <br /></td></tr>
-<tr class="separator:aeab61b5b968b32eb196d6d9595cf327f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a945bc46b6b9517e84d1e99a1c53de7c9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a945bc46b6b9517e84d1e99a1c53de7c9">updateCharts</a> ()</td></tr>
-<tr class="memdesc:a945bc46b6b9517e84d1e99a1c53de7c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates depth and intensity histograms.  <br /></td></tr>
-<tr class="separator:a945bc46b6b9517e84d1e99a1c53de7c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a11ff085123ca1e18e0796ebab720b487"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a11ff085123ca1e18e0796ebab720b487">updateWeb</a> ()</td></tr>
-<tr class="separator:a11ff085123ca1e18e0796ebab720b487"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09428bf68aaa7a52cdb8b3b93ade497d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a09428bf68aaa7a52cdb8b3b93ade497d">writeImage</a> (QImage image)</td></tr>
-<tr class="memdesc:a09428bf68aaa7a52cdb8b3b93ade497d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes QImage to display.  <br /></td></tr>
-<tr class="separator:a09428bf68aaa7a52cdb8b3b93ade497d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb8fd7dc56a1b3356ad28edae28373bf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#afb8fd7dc56a1b3356ad28edae28373bf">createCamera</a> ()</td></tr>
-<tr class="memdesc:afb8fd7dc56a1b3356ad28edae28373bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="class_camera.html">Camera</a>.  <br /></td></tr>
 <tr class="separator:afb8fd7dc56a1b3356ad28edae28373bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a93cfef918e585738172a2239600f8acd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a93cfef918e585738172a2239600f8acd">checkThreads</a> ()</td></tr>
-<tr class="memdesc:a93cfef918e585738172a2239600f8acd"><td class="mdescLeft">&#160;</td><td class="mdescRight">QFutureWatcher callback to check camera and plc thread start status.  <br /></td></tr>
-<tr class="separator:a93cfef918e585738172a2239600f8acd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09f3f29f7823af7995af473dc8d0a203"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a09f3f29f7823af7995af473dc8d0a203">makeConnections</a> ()</td></tr>
+<tr class="memdesc:a09f3f29f7823af7995af473dc8d0a203"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes signal-slot connections.  <br /></td></tr>
+<tr class="separator:a09f3f29f7823af7995af473dc8d0a203"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d3dd70c621ea296e2cd43e343fda0f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a7d3dd70c621ea296e2cd43e343fda0f3">startThreads</a> (QPromise&lt; <a class="el" href="struct_thread_result.html">ThreadResult</a> &gt; &amp;promise)</td></tr>
 <tr class="memdesc:a7d3dd70c621ea296e2cd43e343fda0f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method to start camera and plc threads.  <br /></td></tr>
 <tr class="separator:a7d3dd70c621ea296e2cd43e343fda0f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61709373310dd26eae8d7dbeae61e16f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_thread_result.html">ThreadResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a61709373310dd26eae8d7dbeae61e16f">startCameraThread</a> ()</td></tr>
-<tr class="memdesc:a61709373310dd26eae8d7dbeae61e16f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts camera thread.  <br /></td></tr>
-<tr class="separator:a61709373310dd26eae8d7dbeae61e16f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14aac43c64f9743491bb2b3782037359"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_thread_result.html">ThreadResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a14aac43c64f9743491bb2b3782037359">startCamThread</a> ()</td></tr>
+<tr class="memdesc:a14aac43c64f9743491bb2b3782037359"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts camera thread.  <br /></td></tr>
+<tr class="separator:a14aac43c64f9743491bb2b3782037359"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a157e3bdf891adea8a185d1e44f1d181a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_thread_result.html">ThreadResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a157e3bdf891adea8a185d1e44f1d181a">startPlcThread</a> ()</td></tr>
 <tr class="memdesc:a157e3bdf891adea8a185d1e44f1d181a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts plc thread.  <br /></td></tr>
 <tr class="separator:a157e3bdf891adea8a185d1e44f1d181a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a10196da0ff8310703c172eac4f61e29f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a10196da0ff8310703c172eac4f61e29f">saveSettings</a> ()</td></tr>
-<tr class="memdesc:a10196da0ff8310703c172eac4f61e29f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves window state and geometry.  <br /></td></tr>
-<tr class="separator:a10196da0ff8310703c172eac4f61e29f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a805420ecff9d15222ef5dbb1ec7672e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a805420ecff9d15222ef5dbb1ec7672e4">restoreSettings</a> ()</td></tr>
-<tr class="memdesc:a805420ecff9d15222ef5dbb1ec7672e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restores window state and geometry.  <br /></td></tr>
-<tr class="separator:a805420ecff9d15222ef5dbb1ec7672e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c1990ebe6a7d44eaee242ddf9f09b6e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a3c1990ebe6a7d44eaee242ddf9f09b6e">saveLayout</a> ()</td></tr>
+<tr class="separator:a3c1990ebe6a7d44eaee242ddf9f09b6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d2f74aca7c6ef88403c3dbd96c2515b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a3d2f74aca7c6ef88403c3dbd96c2515b">restoreLayout</a> ()</td></tr>
+<tr class="separator:a3d2f74aca7c6ef88403c3dbd96c2515b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb5c52ec88b06a98b900279dadd13d3d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#abb5c52ec88b06a98b900279dadd13d3d">loadConfiguration</a> ()</td></tr>
+<tr class="separator:abb5c52ec88b06a98b900279dadd13d3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae09c57e3a4cef1dc0826376a6ddc05b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#ae09c57e3a4cef1dc0826376a6ddc05b6">updateStatusBar</a> ()</td></tr>
+<tr class="memdesc:ae09c57e3a4cef1dc0826376a6ddc05b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the plc and camera ip address colors based on connection status.  <br /></td></tr>
+<tr class="separator:ae09c57e3a4cef1dc0826376a6ddc05b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a128ff334147d36ed8ad57df7dfa93dd3"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a128ff334147d36ed8ad57df7dfa93dd3">PLC_IP_ADDRESS</a> = &quot;127.0.0.1&quot;</td></tr>
-<tr class="separator:a128ff334147d36ed8ad57df7dfa93dd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96591b891c2f7f1cc2625e4ee38d6de6"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a96591b891c2f7f1cc2625e4ee38d6de6">PLC_RACK</a> = 0</td></tr>
-<tr class="separator:a96591b891c2f7f1cc2625e4ee38d6de6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97ae8842dfc4cfffed2fe2a7d78313a6"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a97ae8842dfc4cfffed2fe2a7d78313a6">PLC_SLOT</a> = 2</td></tr>
-<tr class="separator:a97ae8842dfc4cfffed2fe2a7d78313a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa00b7661eba6d0fe8942bc1ada405db4"><td class="memItemLeft" align="right" valign="top">Ui::SickGUIClass&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#aa00b7661eba6d0fe8942bc1ada405db4">ui</a></td></tr>
-<tr class="separator:aa00b7661eba6d0fe8942bc1ada405db4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a75814cc5d72a9b976c5162c66951da34"><td class="memItemLeft" align="right" valign="top">const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a75814cc5d72a9b976c5162c66951da34">framesetBufferSize</a> = 2</td></tr>
-<tr class="separator:a75814cc5d72a9b976c5162c66951da34"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ec97b3bc8d22d4daae60c47d3db82cc"><td class="memItemLeft" align="right" valign="top">boost::circular_buffer&lt; <a class="el" href="struct_frameset_1_1frameset__t.html">Frameset::frameset_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a0ec97b3bc8d22d4daae60c47d3db82cc">framesetBuffer</a></td></tr>
-<tr class="separator:a0ec97b3bc8d22d4daae60c47d3db82cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a121577d54443bb9a94d27532cddb352c"><td class="memItemLeft" align="right" valign="top">QMutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a121577d54443bb9a94d27532cddb352c">framesetMutex</a></td></tr>
-<tr class="separator:a121577d54443bb9a94d27532cddb352c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24da7b9eeaed1134cfb599d9b9956899"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_camera.html">Camera</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a24da7b9eeaed1134cfb599d9b9956899">camera</a> = nullptr</td></tr>
-<tr class="separator:a24da7b9eeaed1134cfb599d9b9956899"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d2cc4aed025cc3535ee0e68d6d3699f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a9d2cc4aed025cc3535ee0e68d6d3699f">cameraConnected</a> = <a class="el" href="snap7_8h.html#a65e9886d74aaee76545e83dd09011727">false</a></td></tr>
+<tr class="separator:a9d2cc4aed025cc3535ee0e68d6d3699f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a363bc59b385d5850eac131a4bff571e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a363bc59b385d5850eac131a4bff571e6">plcConnected</a> = <a class="el" href="snap7_8h.html#a65e9886d74aaee76545e83dd09011727">false</a></td></tr>
+<tr class="separator:a363bc59b385d5850eac131a4bff571e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1656f75a802a40df987b76c2a7cadac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#ab1656f75a802a40df987b76c2a7cadac">lastCameraConnected</a> = <a class="el" href="snap7_8h.html#a65e9886d74aaee76545e83dd09011727">false</a></td></tr>
+<tr class="separator:ab1656f75a802a40df987b76c2a7cadac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2da1621895b6d4af116d64f78e9f3c4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#ae2da1621895b6d4af116d64f78e9f3c4">lastPlcConnected</a> = <a class="el" href="snap7_8h.html#a65e9886d74aaee76545e83dd09011727">false</a></td></tr>
+<tr class="separator:ae2da1621895b6d4af116d64f78e9f3c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c6fe16e346d750ec6c602cf8035a84d"><td class="memItemLeft" align="right" valign="top">QLabel *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a1c6fe16e346d750ec6c602cf8035a84d">statusLabel</a> = nullptr</td></tr>
+<tr class="separator:a1c6fe16e346d750ec6c602cf8035a84d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51467eee0236244a744c4b8bfb7d2361"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a51467eee0236244a744c4b8bfb7d2361">plcIpAddress</a> = &quot;&quot;</td></tr>
+<tr class="separator:a51467eee0236244a744c4b8bfb7d2361"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c0930f81fea13970225333af431441e"><td class="memItemLeft" align="right" valign="top">qint16&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a9c0930f81fea13970225333af431441e">plcRack</a> = 0</td></tr>
+<tr class="separator:a9c0930f81fea13970225333af431441e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add7d026346dc53a83c6206f9bd3ae5af"><td class="memItemLeft" align="right" valign="top">qint16&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#add7d026346dc53a83c6206f9bd3ae5af">plcSlot</a> = 0</td></tr>
+<tr class="separator:add7d026346dc53a83c6206f9bd3ae5af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b8dec297bdb4a4256738d3e3125ea1c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_thread_interface.html">ThreadInterface</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a9b8dec297bdb4a4256738d3e3125ea1c">threadInterface</a></td></tr>
+<tr class="separator:a9b8dec297bdb4a4256738d3e3125ea1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63dcd66ebab13050af478dd22b83755b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a63dcd66ebab13050af478dd22b83755b">cameraIpAddress</a> = &quot;&quot;</td></tr>
+<tr class="separator:a63dcd66ebab13050af478dd22b83755b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af67adf00a36cd8985535177b1331a3d3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_visionary_camera.html">VisionaryCamera</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#af67adf00a36cd8985535177b1331a3d3">camera</a> = nullptr</td></tr>
+<tr class="separator:af67adf00a36cd8985535177b1331a3d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac10b9ef943f5250c86717b9e7bedd888"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_capture_thread.html">CaptureThread</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#ac10b9ef943f5250c86717b9e7bedd888">captureThread</a> = nullptr</td></tr>
 <tr class="separator:ac10b9ef943f5250c86717b9e7bedd888"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e47c8e7c5e78860684d301e7cf4dc52"><td class="memItemLeft" align="right" valign="top">TS7Client *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a2e47c8e7c5e78860684d301e7cf4dc52">s7Client</a> = nullptr</td></tr>
 <tr class="separator:a2e47c8e7c5e78860684d301e7cf4dc52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade1ec9372abf32c5d5e1c013f410302f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_plc_thread.html">PlcThread</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#ade1ec9372abf32c5d5e1c013f410302f">plcThread</a> = nullptr</td></tr>
 <tr class="separator:ade1ec9372abf32c5d5e1c013f410302f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb8c851a17e1ad5bce761f0f0efceb62"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_auto_web_socket.html">AutoWebSocket</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#adb8c851a17e1ad5bce761f0f0efceb62">webSocket</a> = nullptr</td></tr>
-<tr class="separator:adb8c851a17e1ad5bce761f0f0efceb62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0c7435df9e56bcfa9319d163b775be7"><td class="memItemLeft" align="right" valign="top">qint64&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#ab0c7435df9e56bcfa9319d163b775be7">plcCycleTimeTarget</a> = 0</td></tr>
+<tr class="separator:ab0c7435df9e56bcfa9319d163b775be7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9cc60cd1112015de11d32e7580744c4"><td class="memItemLeft" align="right" valign="top">QFutureWatcher&lt; <a class="el" href="struct_thread_result.html">ThreadResult</a> &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#ad9cc60cd1112015de11d32e7580744c4">threadWatcher</a></td></tr>
 <tr class="separator:ad9cc60cd1112015de11d32e7580744c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a79774394e644af7618da69f2c6c4e66a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_aspect_ratio_pixmap_label.html">AspectRatioPixmapLabel</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a79774394e644af7618da69f2c6c4e66a">cameraView</a> = nullptr</td></tr>
-<tr class="separator:a79774394e644af7618da69f2c6c4e66a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1e87536903e3914f7a6f6b2164ddbfdb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_histogram_widget.html">HistogramWidget</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a1e87536903e3914f7a6f6b2164ddbfdb">depthHistogram</a> = nullptr</td></tr>
-<tr class="separator:a1e87536903e3914f7a6f6b2164ddbfdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac5d18fcd2b8510f9509cc1ce2faa3ff0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_histogram_widget.html">HistogramWidget</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#ac5d18fcd2b8510f9509cc1ce2faa3ff0">intensityHistogram</a> = nullptr</td></tr>
-<tr class="separator:ac5d18fcd2b8510f9509cc1ce2faa3ff0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18fecc2a68864b0c79c38e3ffaa79a92"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_filter_editor_widget.html">FilterEditorWidget</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a18fecc2a68864b0c79c38e3ffaa79a92">filterEditorWidget</a> = nullptr</td></tr>
+<tr class="separator:a18fecc2a68864b0c79c38e3ffaa79a92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17c9865786c5fce8dc10d4c57c32e18c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_cycle_time_widget.html">CycleTimeWidget</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a17c9865786c5fce8dc10d4c57c32e18c">cycleTimeWidget</a> = nullptr</td></tr>
+<tr class="separator:a17c9865786c5fce8dc10d4c57c32e18c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e0c4d33f94e1a222efcf6417797ad04"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_logging_widget.html">LoggingWidget</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a9e0c4d33f94e1a222efcf6417797ad04">loggingWidget</a> = nullptr</td></tr>
 <tr class="separator:a9e0c4d33f94e1a222efcf6417797ad04"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6ce4e4e0b35a6a9724dc6b65966663a"><td class="memItemLeft" align="right" valign="top">QTimer *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#ae6ce4e4e0b35a6a9724dc6b65966663a">displayTimer</a> = nullptr</td></tr>
-<tr class="separator:ae6ce4e4e0b35a6a9724dc6b65966663a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a76fa715b877311476825849499094d81"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a76fa715b877311476825849499094d81">displayTimerInterval</a> = 50</td></tr>
-<tr class="separator:a76fa715b877311476825849499094d81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6865bf21957258e2f86c8199c09fe51"><td class="memItemLeft" align="right" valign="top">QTimer *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#af6865bf21957258e2f86c8199c09fe51">chartTimer</a> = nullptr</td></tr>
-<tr class="separator:af6865bf21957258e2f86c8199c09fe51"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af149144055fa48f328b5f2ac7ef33840"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#af149144055fa48f328b5f2ac7ef33840">chartTimerInterval</a> = 100</td></tr>
-<tr class="separator:af149144055fa48f328b5f2ac7ef33840"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add434979478bc928006434e66dc400be"><td class="memItemLeft" align="right" valign="top">QTimer *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#add434979478bc928006434e66dc400be">webTimer</a> = nullptr</td></tr>
-<tr class="separator:add434979478bc928006434e66dc400be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c01c3abf3ed2a78f46076fe1a6c0acb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a4c01c3abf3ed2a78f46076fe1a6c0acb">webTimerInterval</a> = 100</td></tr>
-<tr class="separator:a4c01c3abf3ed2a78f46076fe1a6c0acb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ce1582efdaa435d7a5e72dbfaf21261"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_stream_8h.html#a0b8b584f5fb32277059bc4e6b9bcd6f0">Stream</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a0ce1582efdaa435d7a5e72dbfaf21261">streamType</a></td></tr>
-<tr class="separator:a0ce1582efdaa435d7a5e72dbfaf21261"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a67185a0cbb471906016aff71fcdaf9f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacetinycolormap.html#a61cc7d7b7c1d4086d2763172baed0551">tinycolormap::ColormapType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a67185a0cbb471906016aff71fcdaf9f1">streamColorMapType</a></td></tr>
-<tr class="separator:a67185a0cbb471906016aff71fcdaf9f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad7201b584ad55725222fe8da3a6c7eb8"><td class="memItemLeft" align="right" valign="top">volatile <a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#ad7201b584ad55725222fe8da3a6c7eb8">invertedColor</a></td></tr>
-<tr class="separator:ad7201b584ad55725222fe8da3a6c7eb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61a4758059628345dcd24e49b268ea00"><td class="memItemLeft" align="right" valign="top">QLabel *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a61a4758059628345dcd24e49b268ea00">statusBarLabel</a> = nullptr</td></tr>
-<tr class="separator:a61a4758059628345dcd24e49b268ea00"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3f3c28bafbbf618a444eeab04d164b6d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#a3f3c28bafbbf618a444eeab04d164b6d">overLayStats</a> = <a class="el" href="snap7_8h.html#a65e9886d74aaee76545e83dd09011727">false</a></td></tr>
-<tr class="separator:a3f3c28bafbbf618a444eeab04d164b6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc141da4a37b777b7cf6261444400e36"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_custom_message_handler.html">CustomMessageHandler</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sick_g_u_i.html#adc141da4a37b777b7cf6261444400e36">messageHandler</a> = nullptr</td></tr>
 <tr class="separator:adc141da4a37b777b7cf6261444400e36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -283,7 +243,7 @@ Private Attributes</h2></td></tr>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a93cfef918e585738172a2239600f8acd" name="a93cfef918e585738172a2239600f8acd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a93cfef918e585738172a2239600f8acd">&#9670;&#160;</a></span>checkThreads()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a93cfef918e585738172a2239600f8acd">&#9670;&#160;</a></span>checkThreads</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -300,13 +260,13 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">slot</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>QFutureWatcher callback to check camera and plc thread start status. </p>
-<dl class="section note"><dt>Note</dt><dd>If startThreads is not successful, a popup will show which thread(s) errored and then the application will close. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>If startThreads is not successful. </dd></dl>
 
 </div>
 </div>
@@ -367,37 +327,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Creates a new <a class="el" href="class_camera.html">Camera</a>. </p>
-<dl class="section return"><dt>Returns</dt><dd>true if created, false otherwise. </dd></dl>
-
-</div>
-</div>
-<a id="a58dc3b0a223fbb4056cd7a38daa05979" name="a58dc3b0a223fbb4056cd7a38daa05979"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a58dc3b0a223fbb4056cd7a38daa05979">&#9670;&#160;</a></span>initializeWebServerConnection()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> SickGUI::initializeWebServerConnection </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Initializes web connection. </p>
-<dl class="section return"><dt>Returns</dt><dd>true if successful, false otherwise. </dd></dl>
-
 </div>
 </div>
 <a id="aba95da04d9673e22c036f4bf1e771b4d" name="aba95da04d9673e22c036f4bf1e771b4d"></a>
@@ -423,12 +352,10 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Initializes widgets. </p>
-
 </div>
 </div>
-<a id="ad92ec970e9e45866ec7f7554ab1b13f7" name="ad92ec970e9e45866ec7f7554ab1b13f7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad92ec970e9e45866ec7f7554ab1b13f7">&#9670;&#160;</a></span>newFrameset</h2>
+<a id="abb5c52ec88b06a98b900279dadd13d3d" name="abb5c52ec88b06a98b900279dadd13d3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb5c52ec88b06a98b900279dadd13d3d">&#9670;&#160;</a></span>loadConfiguration()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -437,97 +364,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void SickGUI::newFrameset </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_frameset_1_1frameset__t.html">Frameset::frameset_t</a>&#160;</td>
-          <td class="paramname"><em>fs</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Slot to receive new frameset emitted by captureThread. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">fs</td><td>Output frameset. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a4333916b17fdae5bd1d90152b8e613d5" name="a4333916b17fdae5bd1d90152b8e613d5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4333916b17fdae5bd1d90152b8e613d5">&#9670;&#160;</a></span>pauseVideo</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SickGUI::pauseVideo </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Slot to pause live video stream and histograms. </p>
-<dl class="section note"><dt>Note</dt><dd>This slot has no effect on the plcThread and will not pause the plcThread's frame capture. </dd></dl>
-
-</div>
-</div>
-<a id="a9c4920226e6f464d0744ddc0995ec90d" name="a9c4920226e6f464d0744ddc0995ec90d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9c4920226e6f464d0744ddc0995ec90d">&#9670;&#160;</a></span>playVideo</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SickGUI::playVideo </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Slot to start live video stream and histograms. </p>
-<dl class="section note"><dt>Note</dt><dd>This slot has no effect on the plcThread and will not effect the plcThread's ability to receive new frames. </dd></dl>
-
-</div>
-</div>
-<a id="a805420ecff9d15222ef5dbb1ec7672e4" name="a805420ecff9d15222ef5dbb1ec7672e4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a805420ecff9d15222ef5dbb1ec7672e4">&#9670;&#160;</a></span>restoreSettings()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SickGUI::restoreSettings </td>
+          <td class="memname">void SickGUI::loadConfiguration </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -540,12 +377,10 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Restores window state and geometry. </p>
-
 </div>
 </div>
-<a id="a10196da0ff8310703c172eac4f61e29f" name="a10196da0ff8310703c172eac4f61e29f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a10196da0ff8310703c172eac4f61e29f">&#9670;&#160;</a></span>saveSettings()</h2>
+<a id="a09f3f29f7823af7995af473dc8d0a203" name="a09f3f29f7823af7995af473dc8d0a203"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09f3f29f7823af7995af473dc8d0a203">&#9670;&#160;</a></span>makeConnections()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -554,7 +389,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void SickGUI::saveSettings </td>
+          <td class="memname">void SickGUI::makeConnections </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -567,12 +402,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Saves window state and geometry. </p>
+<p>Makes signal-slot connections. </p>
 
 </div>
 </div>
-<a id="a69fa81855a9c4aeb49c3c68b8002091c" name="a69fa81855a9c4aeb49c3c68b8002091c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a69fa81855a9c4aeb49c3c68b8002091c">&#9670;&#160;</a></span>showStatusBarMessage</h2>
+<a id="a3d2f74aca7c6ef88403c3dbd96c2515b" name="a3d2f74aca7c6ef88403c3dbd96c2515b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d2f74aca7c6ef88403c3dbd96c2515b">&#9670;&#160;</a></span>restoreLayout()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -581,44 +416,23 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void SickGUI::showStatusBarMessage </td>
+          <td class="memname">void SickGUI::restoreLayout </td>
           <td>(</td>
-          <td class="paramtype">const QString &amp;&#160;</td>
-          <td class="paramname"><em>msg</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>timeout</em> = <code>0</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Slot to show a message on the status bar. </p>
-<dl class="section note"><dt>Note</dt><dd>*Messages shown with this method are not required to be persistent even with a timeout of 0. </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">msg</td><td>Message to show. </td></tr>
-    <tr><td class="paramname">timeout</td><td>How long to display the message in milliseconds. Use timeout = 0 for a persistent* message. </td></tr>
-  </table>
-  </dd>
-</dl>
-
 </div>
 </div>
-<a id="a61709373310dd26eae8d7dbeae61e16f" name="a61709373310dd26eae8d7dbeae61e16f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a61709373310dd26eae8d7dbeae61e16f">&#9670;&#160;</a></span>startCameraThread()</h2>
+<a id="a3c1990ebe6a7d44eaee242ddf9f09b6e" name="a3c1990ebe6a7d44eaee242ddf9f09b6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c1990ebe6a7d44eaee242ddf9f09b6e">&#9670;&#160;</a></span>saveLayout()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -627,7 +441,32 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_thread_result.html">ThreadResult</a> SickGUI::startCameraThread </td>
+          <td class="memname">void SickGUI::saveLayout </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a14aac43c64f9743491bb2b3782037359" name="a14aac43c64f9743491bb2b3782037359"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14aac43c64f9743491bb2b3782037359">&#9670;&#160;</a></span>startCamThread()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_thread_result.html">ThreadResult</a> SickGUI::startCamThread </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -641,7 +480,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Starts camera thread. </p>
-<p>Creates and open a <a class="el" href="class_camera.html">Camera</a>, assigns camera to a <a class="el" href="class_capture_thread.html" title="The CaptureThread class handles the capture of frames from a camera.">CaptureThread</a>, and starts the <a class="el" href="class_capture_thread.html" title="The CaptureThread class handles the capture of frames from a camera.">CaptureThread</a>. Also connects the <a class="el" href="class_capture_thread.html" title="The CaptureThread class handles the capture of frames from a camera.">CaptureThread</a>'s newFrameset signal to <a class="el" href="class_sick_g_u_i.html#ad92ec970e9e45866ec7f7554ab1b13f7" title="Slot to receive new frameset emitted by captureThread.">SickGUI::newFrameset</a> slot.</p>
+<p>Creates and open a Camera, assigns camera to a <a class="el" href="class_capture_thread.html" title="The CaptureThread class handles the capture of frames from a camera.">CaptureThread</a>, and starts the <a class="el" href="class_capture_thread.html" title="The CaptureThread class handles the capture of frames from a camera.">CaptureThread</a>.</p>
 <dl class="section return"><dt>Returns</dt><dd>true if started, false otherwise. </dd></dl>
 
 </div>
@@ -670,8 +509,8 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Starts plc thread. </p>
-<p>Creates snap7 client, connects to plc, and starts <a class="el" href="class_plc_thread.html">PlcThread</a>. Also connects the <a class="el" href="class_capture_thread.html" title="The CaptureThread class handles the capture of frames from a camera.">CaptureThread</a>'s newFrameset signal to <a class="el" href="class_plc_thread.html#a1c3c07593f1adc04dca82099e52a4656" title="Slot to receive new frameset emitted by captureThread.">PlcThread::newFrameset</a> slot.</p>
-<dl class="section note"><dt>Note</dt><dd>This method cannot be called unless <a class="el" href="class_sick_g_u_i.html#a61709373310dd26eae8d7dbeae61e16f" title="Starts camera thread.">startCameraThread()</a> was called and returned true.</dd></dl>
+<p>Creates snap7 client, connects to plc, and starts <a class="el" href="class_plc_thread.html">PlcThread</a>.</p>
+<dl class="section note"><dt>Note</dt><dd>This method cannot be called unless <a class="el" href="class_sick_g_u_i.html#a14aac43c64f9743491bb2b3782037359" title="Starts camera thread.">startCamThread()</a> was called and returned true.</dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>true if started, false otherwise. </dd></dl>
 
 </div>
@@ -710,8 +549,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a945bc46b6b9517e84d1e99a1c53de7c9" name="a945bc46b6b9517e84d1e99a1c53de7c9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a945bc46b6b9517e84d1e99a1c53de7c9">&#9670;&#160;</a></span>updateCharts()</h2>
+<a id="ae09c57e3a4cef1dc0826376a6ddc05b6" name="ae09c57e3a4cef1dc0826376a6ddc05b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae09c57e3a4cef1dc0826376a6ddc05b6">&#9670;&#160;</a></span>updateStatusBar()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -720,7 +559,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void SickGUI::updateCharts </td>
+          <td class="memname">void SickGUI::updateStatusBar </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -733,101 +572,13 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Updates depth and intensity histograms. </p>
-<p>Grabs the latest frameset from the frameset buffer and calls <a class="el" href="class_histogram_widget.html#a599bda635a4751bd6c83349eb407ab77" title="Updates the histogram with the provided data.">HistogramWidget::updateHistogram</a> followed by HistogramWidget::update(). </p>
-
-</div>
-</div>
-<a id="aeab61b5b968b32eb196d6d9595cf327f" name="aeab61b5b968b32eb196d6d9595cf327f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeab61b5b968b32eb196d6d9595cf327f">&#9670;&#160;</a></span>updateDisplay()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SickGUI::updateDisplay </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Shows latest camera frame. </p>
-<p>Grabs the latest frameset from the frameset buffer and converts the selected frame type to a QImage. Optionally overlays statistics. Uses <a class="el" href="class_sick_g_u_i.html#a09428bf68aaa7a52cdb8b3b93ade497d" title="Writes QImage to display.">SickGUI::writeImage()</a> to display the image </p>
-
-</div>
-</div>
-<a id="a11ff085123ca1e18e0796ebab720b487" name="a11ff085123ca1e18e0796ebab720b487"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a11ff085123ca1e18e0796ebab720b487">&#9670;&#160;</a></span>updateWeb()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SickGUI::updateWeb </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a09428bf68aaa7a52cdb8b3b93ade497d" name="a09428bf68aaa7a52cdb8b3b93ade497d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a09428bf68aaa7a52cdb8b3b93ade497d">&#9670;&#160;</a></span>writeImage()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SickGUI::writeImage </td>
-          <td>(</td>
-          <td class="paramtype">QImage&#160;</td>
-          <td class="paramname"><em>image</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Writes QImage to display. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">image</td><td>Image to write. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Updates the plc and camera ip address colors based on connection status. </p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a24da7b9eeaed1134cfb599d9b9956899" name="a24da7b9eeaed1134cfb599d9b9956899"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a24da7b9eeaed1134cfb599d9b9956899">&#9670;&#160;</a></span>camera</h2>
+<a id="af67adf00a36cd8985535177b1331a3d3" name="af67adf00a36cd8985535177b1331a3d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af67adf00a36cd8985535177b1331a3d3">&#9670;&#160;</a></span>camera</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -836,7 +587,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_camera.html">Camera</a>* SickGUI::camera = nullptr</td>
+          <td class="memname"><a class="el" href="class_visionary_camera.html">VisionaryCamera</a>* SickGUI::camera = nullptr</td>
         </tr>
       </table>
   </td>
@@ -848,8 +599,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a79774394e644af7618da69f2c6c4e66a" name="a79774394e644af7618da69f2c6c4e66a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a79774394e644af7618da69f2c6c4e66a">&#9670;&#160;</a></span>cameraView</h2>
+<a id="a9d2cc4aed025cc3535ee0e68d6d3699f" name="a9d2cc4aed025cc3535ee0e68d6d3699f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d2cc4aed025cc3535ee0e68d6d3699f">&#9670;&#160;</a></span>cameraConnected</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -858,7 +609,29 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_aspect_ratio_pixmap_label.html">AspectRatioPixmapLabel</a>* SickGUI::cameraView = nullptr</td>
+          <td class="memname"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> SickGUI::cameraConnected = <a class="el" href="snap7_8h.html#a65e9886d74aaee76545e83dd09011727">false</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a63dcd66ebab13050af478dd22b83755b" name="a63dcd66ebab13050af478dd22b83755b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63dcd66ebab13050af478dd22b83755b">&#9670;&#160;</a></span>cameraIpAddress</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string SickGUI::cameraIpAddress = &quot;&quot;</td>
         </tr>
       </table>
   </td>
@@ -892,8 +665,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="af6865bf21957258e2f86c8199c09fe51" name="af6865bf21957258e2f86c8199c09fe51"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af6865bf21957258e2f86c8199c09fe51">&#9670;&#160;</a></span>chartTimer</h2>
+<a id="a17c9865786c5fce8dc10d4c57c32e18c" name="a17c9865786c5fce8dc10d4c57c32e18c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17c9865786c5fce8dc10d4c57c32e18c">&#9670;&#160;</a></span>cycleTimeWidget</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -902,7 +675,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">QTimer* SickGUI::chartTimer = nullptr</td>
+          <td class="memname"><a class="el" href="class_cycle_time_widget.html">CycleTimeWidget</a>* SickGUI::cycleTimeWidget = nullptr</td>
         </tr>
       </table>
   </td>
@@ -914,8 +687,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="af149144055fa48f328b5f2ac7ef33840" name="af149144055fa48f328b5f2ac7ef33840"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af149144055fa48f328b5f2ac7ef33840">&#9670;&#160;</a></span>chartTimerInterval</h2>
+<a id="a18fecc2a68864b0c79c38e3ffaa79a92" name="a18fecc2a68864b0c79c38e3ffaa79a92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18fecc2a68864b0c79c38e3ffaa79a92">&#9670;&#160;</a></span>filterEditorWidget</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -924,7 +697,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int SickGUI::chartTimerInterval = 100</td>
+          <td class="memname"><a class="el" href="class_filter_editor_widget.html">FilterEditorWidget</a>* SickGUI::filterEditorWidget = nullptr</td>
         </tr>
       </table>
   </td>
@@ -936,8 +709,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a1e87536903e3914f7a6f6b2164ddbfdb" name="a1e87536903e3914f7a6f6b2164ddbfdb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1e87536903e3914f7a6f6b2164ddbfdb">&#9670;&#160;</a></span>depthHistogram</h2>
+<a id="ab1656f75a802a40df987b76c2a7cadac" name="ab1656f75a802a40df987b76c2a7cadac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1656f75a802a40df987b76c2a7cadac">&#9670;&#160;</a></span>lastCameraConnected</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -946,7 +719,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_histogram_widget.html">HistogramWidget</a>* SickGUI::depthHistogram = nullptr</td>
+          <td class="memname"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> SickGUI::lastCameraConnected = <a class="el" href="snap7_8h.html#a65e9886d74aaee76545e83dd09011727">false</a></td>
         </tr>
       </table>
   </td>
@@ -958,8 +731,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ae6ce4e4e0b35a6a9724dc6b65966663a" name="ae6ce4e4e0b35a6a9724dc6b65966663a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae6ce4e4e0b35a6a9724dc6b65966663a">&#9670;&#160;</a></span>displayTimer</h2>
+<a id="ae2da1621895b6d4af116d64f78e9f3c4" name="ae2da1621895b6d4af116d64f78e9f3c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2da1621895b6d4af116d64f78e9f3c4">&#9670;&#160;</a></span>lastPlcConnected</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -968,139 +741,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">QTimer* SickGUI::displayTimer = nullptr</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a76fa715b877311476825849499094d81" name="a76fa715b877311476825849499094d81"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a76fa715b877311476825849499094d81">&#9670;&#160;</a></span>displayTimerInterval</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int SickGUI::displayTimerInterval = 50</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a0ec97b3bc8d22d4daae60c47d3db82cc" name="a0ec97b3bc8d22d4daae60c47d3db82cc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0ec97b3bc8d22d4daae60c47d3db82cc">&#9670;&#160;</a></span>framesetBuffer</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">boost::circular_buffer&lt;<a class="el" href="struct_frameset_1_1frameset__t.html">Frameset::frameset_t</a>&gt; SickGUI::framesetBuffer</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a75814cc5d72a9b976c5162c66951da34" name="a75814cc5d72a9b976c5162c66951da34"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a75814cc5d72a9b976c5162c66951da34">&#9670;&#160;</a></span>framesetBufferSize</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const size_t SickGUI::framesetBufferSize = 2</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a121577d54443bb9a94d27532cddb352c" name="a121577d54443bb9a94d27532cddb352c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a121577d54443bb9a94d27532cddb352c">&#9670;&#160;</a></span>framesetMutex</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">QMutex SickGUI::framesetMutex</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ac5d18fcd2b8510f9509cc1ce2faa3ff0" name="ac5d18fcd2b8510f9509cc1ce2faa3ff0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac5d18fcd2b8510f9509cc1ce2faa3ff0">&#9670;&#160;</a></span>intensityHistogram</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_histogram_widget.html">HistogramWidget</a>* SickGUI::intensityHistogram = nullptr</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ad7201b584ad55725222fe8da3a6c7eb8" name="ad7201b584ad55725222fe8da3a6c7eb8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad7201b584ad55725222fe8da3a6c7eb8">&#9670;&#160;</a></span>invertedColor</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">volatile <a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> SickGUI::invertedColor</td>
+          <td class="memname"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> SickGUI::lastPlcConnected = <a class="el" href="snap7_8h.html#a65e9886d74aaee76545e83dd09011727">false</a></td>
         </tr>
       </table>
   </td>
@@ -1156,8 +797,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a3f3c28bafbbf618a444eeab04d164b6d" name="a3f3c28bafbbf618a444eeab04d164b6d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3f3c28bafbbf618a444eeab04d164b6d">&#9670;&#160;</a></span>overLayStats</h2>
+<a id="a363bc59b385d5850eac131a4bff571e6" name="a363bc59b385d5850eac131a4bff571e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a363bc59b385d5850eac131a4bff571e6">&#9670;&#160;</a></span>plcConnected</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1166,7 +807,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> SickGUI::overLayStats = <a class="el" href="snap7_8h.html#a65e9886d74aaee76545e83dd09011727">false</a></td>
+          <td class="memname"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> SickGUI::plcConnected = <a class="el" href="snap7_8h.html#a65e9886d74aaee76545e83dd09011727">false</a></td>
         </tr>
       </table>
   </td>
@@ -1178,8 +819,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a128ff334147d36ed8ad57df7dfa93dd3" name="a128ff334147d36ed8ad57df7dfa93dd3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a128ff334147d36ed8ad57df7dfa93dd3">&#9670;&#160;</a></span>PLC_IP_ADDRESS</h2>
+<a id="ab0c7435df9e56bcfa9319d163b775be7" name="ab0c7435df9e56bcfa9319d163b775be7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0c7435df9e56bcfa9319d163b775be7">&#9670;&#160;</a></span>plcCycleTimeTarget</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1188,7 +829,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const std::string SickGUI::PLC_IP_ADDRESS = &quot;127.0.0.1&quot;</td>
+          <td class="memname">qint64 SickGUI::plcCycleTimeTarget = 0</td>
         </tr>
       </table>
   </td>
@@ -1200,8 +841,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a96591b891c2f7f1cc2625e4ee38d6de6" name="a96591b891c2f7f1cc2625e4ee38d6de6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a96591b891c2f7f1cc2625e4ee38d6de6">&#9670;&#160;</a></span>PLC_RACK</h2>
+<a id="a51467eee0236244a744c4b8bfb7d2361" name="a51467eee0236244a744c4b8bfb7d2361"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51467eee0236244a744c4b8bfb7d2361">&#9670;&#160;</a></span>plcIpAddress</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1210,7 +851,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const int SickGUI::PLC_RACK = 0</td>
+          <td class="memname">std::string SickGUI::plcIpAddress = &quot;&quot;</td>
         </tr>
       </table>
   </td>
@@ -1222,8 +863,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a97ae8842dfc4cfffed2fe2a7d78313a6" name="a97ae8842dfc4cfffed2fe2a7d78313a6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a97ae8842dfc4cfffed2fe2a7d78313a6">&#9670;&#160;</a></span>PLC_SLOT</h2>
+<a id="a9c0930f81fea13970225333af431441e" name="a9c0930f81fea13970225333af431441e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c0930f81fea13970225333af431441e">&#9670;&#160;</a></span>plcRack</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1232,7 +873,29 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const int SickGUI::PLC_SLOT = 2</td>
+          <td class="memname">qint16 SickGUI::plcRack = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="add7d026346dc53a83c6206f9bd3ae5af" name="add7d026346dc53a83c6206f9bd3ae5af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add7d026346dc53a83c6206f9bd3ae5af">&#9670;&#160;</a></span>plcSlot</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">qint16 SickGUI::plcSlot = 0</td>
         </tr>
       </table>
   </td>
@@ -1288,8 +951,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a61a4758059628345dcd24e49b268ea00" name="a61a4758059628345dcd24e49b268ea00"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a61a4758059628345dcd24e49b268ea00">&#9670;&#160;</a></span>statusBarLabel</h2>
+<a id="a1c6fe16e346d750ec6c602cf8035a84d" name="a1c6fe16e346d750ec6c602cf8035a84d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c6fe16e346d750ec6c602cf8035a84d">&#9670;&#160;</a></span>statusLabel</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1298,7 +961,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">QLabel* SickGUI::statusBarLabel = nullptr</td>
+          <td class="memname">QLabel* SickGUI::statusLabel = nullptr</td>
         </tr>
       </table>
   </td>
@@ -1310,8 +973,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a67185a0cbb471906016aff71fcdaf9f1" name="a67185a0cbb471906016aff71fcdaf9f1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a67185a0cbb471906016aff71fcdaf9f1">&#9670;&#160;</a></span>streamColorMapType</h2>
+<a id="a9b8dec297bdb4a4256738d3e3125ea1c" name="a9b8dec297bdb4a4256738d3e3125ea1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b8dec297bdb4a4256738d3e3125ea1c">&#9670;&#160;</a></span>threadInterface</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1320,29 +983,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespacetinycolormap.html#a61cc7d7b7c1d4086d2763172baed0551">tinycolormap::ColormapType</a> SickGUI::streamColorMapType</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a0ce1582efdaa435d7a5e72dbfaf21261" name="a0ce1582efdaa435d7a5e72dbfaf21261"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0ce1582efdaa435d7a5e72dbfaf21261">&#9670;&#160;</a></span>streamType</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="_stream_8h.html#a0b8b584f5fb32277059bc4e6b9bcd6f0">Stream</a> SickGUI::streamType</td>
+          <td class="memname"><a class="el" href="class_thread_interface.html">ThreadInterface</a>&amp; SickGUI::threadInterface</td>
         </tr>
       </table>
   </td>
@@ -1365,94 +1006,6 @@ Private Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">QFutureWatcher&lt;<a class="el" href="struct_thread_result.html">ThreadResult</a>&gt;* SickGUI::threadWatcher</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aa00b7661eba6d0fe8942bc1ada405db4" name="aa00b7661eba6d0fe8942bc1ada405db4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa00b7661eba6d0fe8942bc1ada405db4">&#9670;&#160;</a></span>ui</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Ui::SickGUIClass SickGUI::ui</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="adb8c851a17e1ad5bce761f0f0efceb62" name="adb8c851a17e1ad5bce761f0f0efceb62"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adb8c851a17e1ad5bce761f0f0efceb62">&#9670;&#160;</a></span>webSocket</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_auto_web_socket.html">AutoWebSocket</a>* SickGUI::webSocket = nullptr</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="add434979478bc928006434e66dc400be" name="add434979478bc928006434e66dc400be"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#add434979478bc928006434e66dc400be">&#9670;&#160;</a></span>webTimer</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">QTimer* SickGUI::webTimer = nullptr</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a4c01c3abf3ed2a78f46076fe1a6c0acb" name="a4c01c3abf3ed2a78f46076fe1a6c0acb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4c01c3abf3ed2a78f46076fe1a6c0acb">&#9670;&#160;</a></span>webTimerInterval</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int SickGUI::webTimerInterval = 100</td>
         </tr>
       </table>
   </td>

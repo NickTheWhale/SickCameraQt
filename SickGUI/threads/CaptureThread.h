@@ -1,6 +1,6 @@
 /*****************************************************************//**
  * @file   CaptureThread.h
- * @brief  QThread subclass used to retrieve frames from the Camera
+ * @brief  QThread subclass used to retrieve and filter frames from the Camera.
  *
  * @author Nicholas Loehrke
  * @date   June 2023
@@ -8,14 +8,14 @@
 
 #pragma once
 
+#include <FilterManager.h>
+#include <Frameset.h>
+#include <VisionaryCamera.h>
+
 #include <qthread.h>
 #include <qrect.h>
 #include <qmutex.h>
 #include <qjsonarray.h>
-#include <FilterManager.h>
-
-#include <Frameset.h>
-#include "..\VisionaryCamera.h"
 
 /**
  * @brief The CaptureThread class handles the capture of frames from a camera.
@@ -65,6 +65,4 @@ private:
 	
 	QMutex filterMutex;
 	FilterManager filterManager;
-
-	//void applyMask(frameset::Frameset& fs, const QRectF& maskNorm);
 };

@@ -17,5 +17,6 @@ var structtinycolormap_1_1_color =
     [ "ri", "structtinycolormap_1_1_color.html#a2b3765e29b370b07ca8515cab9b6c8bb", null ],
     [ "operator*", "structtinycolormap_1_1_color.html#a99ff546bb36d44d12dec1d3a47980bc2", null ],
     [ "operator+", "structtinycolormap_1_1_color.html#ac2463e086bfc1d8bf6f66ea43d4e2308", null ],
+    [ "operator-", "structtinycolormap_1_1_color.html#a3aa0a2d48d466a30ddb2dde63718b411", null ],
     [ "data", "structtinycolormap_1_1_color.html#a53cb11070fe0ef22fd86bac09bb178fe", null ]
 ];

@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   Frameset.h
+ * @brief  Defines frameset struct and some helper functions
+ * 
+ * @author Nicholas Loehrke
+ * @date   August 2023
+ *********************************************************************/
+
 #pragma once
 #include <vector>
 
@@ -11,6 +19,9 @@
 
 namespace frameset
 {
+	/**
+	 * @brief Defines how to apply color maps to depth frames.
+	 */
 	struct ImageOptions
 	{
 		tinycolormap::ColormapType colormap;
@@ -86,5 +97,6 @@ namespace frameset
 	void mask(Frameset& fs, const QRectF& maskNorm);
 }
 
+// needed for signals and slots
 Q_DECLARE_METATYPE(frameset::Frame);
 Q_DECLARE_METATYPE(frameset::Frameset);

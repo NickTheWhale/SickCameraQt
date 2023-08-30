@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   FilterFlowGraphModel.h
+ * @brief  QtNodes::AbstractGraphModel implementation for data flow. Contains functions used to verify filter flows.
+ * 
+ * @author Nicholas Loehrke
+ * @date   August 2023
+ *********************************************************************/
+
 #pragma once
 
 #include "AbstractGraphModel.hpp"

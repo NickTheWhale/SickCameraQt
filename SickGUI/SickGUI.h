@@ -9,11 +9,6 @@
  *********************************************************************/
 #pragma once
 
-#include <qpromise.h>
-#include <qmainwindow.h>
-#include <qfuturewatcher.h>
-#include <qlabel.h>
-
 #include "VisionaryCamera.h"
 #include <CaptureThread.h>
 #include <PlcThread.h>
@@ -27,6 +22,11 @@
 #include "TinyColormap.hpp"
 #include <ThreadInterface.h>
 #include "CustomMessageHandler.h"
+
+#include <qpromise.h>
+#include <qmainwindow.h>
+#include <qfuturewatcher.h>
+#include <qlabel.h>
 
 class CaptureThread;
 
@@ -52,8 +52,7 @@ private slots:
 	/**
 	 * @brief QFutureWatcher callback to check camera and plc thread start status.
 	 *
-	 * @note If startThreads is not successful, a popup will show which thread(s) errored
-	 *       and then the application will close.
+	 * @note If startThreads is not successful.
 	 */
 	void checkThreads();
 
@@ -65,19 +64,14 @@ private:
 	 */
 	void closeEvent(QCloseEvent* event) override;
 
-	/**
-	 * @brief Initializes widgets.
-	 *
-	 */
 	void initializeWidgets();
 
-	/**
-	 * @brief Creates a new Camera.
-	 *
-	 * @return true if created, false otherwise.
-	 */
 	bool createCamera();
 
+	/**
+	 * @brief Makes signal-slot connections.
+	 * 
+	 */
 	void makeConnections();
 
 	/**
@@ -91,7 +85,6 @@ private:
 	 * @brief Starts camera thread.
 	 *
 	 * Creates and open a Camera, assigns camera to a CaptureThread, and starts the CaptureThread.
-	 * Also connects the CaptureThread's newFrameset signal to SickGUI::newFrameset slot.
 	 *
 	 * @return true if started, false otherwise.
 	 */
@@ -101,7 +94,6 @@ private:
 	 * @brief Starts plc thread.
 	 *
 	 * Creates snap7 client, connects to plc, and starts PlcThread.
-	 * Also connects the CaptureThread's newFrameset signal to PlcThread::newFrameset slot.
 	 *
 	 * @note This method cannot be called unless startCamThread() was called and returned true.
 	 *
@@ -109,21 +101,19 @@ private:
 	 */
 	ThreadResult startPlcThread();
 
-	/**
-	 * @brief Saves window state and geometry.
-	 *
-	 */
 	void saveLayout();
 
-	/**
-	 * @brief Restores window state and geometry.
-	 *
-	 */
 	void restoreLayout();
 
 	void loadConfiguration();
-
+	
+	/**
+	 * @brief Updates the plc and camera ip address colors based on connection status.
+	 * 
+	 */
 	void updateStatusBar();
+
+private:
 	bool cameraConnected = false;
 	bool plcConnected = false;
 	bool lastCameraConnected = false;

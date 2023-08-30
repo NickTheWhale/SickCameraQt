@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   ResizeFilter.h
+ * @brief  OpenCV resize filter. Uses INTER_AREA interpolation.
+ * 
+ * @author Nicholas Loehrke
+ * @date   August 2023
+ *********************************************************************/
+
 #pragma once
 #include "FilterBase.h"
 

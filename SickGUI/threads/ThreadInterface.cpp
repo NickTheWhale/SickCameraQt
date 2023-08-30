@@ -9,8 +9,8 @@ ThreadInterface& ThreadInterface::instance()
 
 void ThreadInterface::pushFilteredFrame(const frameset::Frameset& fs)
 {
-	QMutexLocker locker(&plcMutex);
-	plcBuffer.push_back(fs);
+	QMutexLocker locker(&filteredMutex);
+	filteredBuffer.push_back(fs);
 }
 
 void ThreadInterface::pushRawFrame(const frameset::Frameset& fs)
@@ -21,11 +21,11 @@ void ThreadInterface::pushRawFrame(const frameset::Frameset& fs)
 
 const frameset::Frameset ThreadInterface::peekFilteredFrame()
 {
-	QMutexLocker locker(&plcMutex);
+	QMutexLocker locker(&filteredMutex);
 	frameset::Frameset fs;
-	if (!plcBuffer.empty())
+	if (!filteredBuffer.empty())
 	{
-		fs = plcBuffer.front();
+		fs = filteredBuffer.front();
 	}
 	return fs;
 }
@@ -43,12 +43,12 @@ const frameset::Frameset ThreadInterface::peekRawFrame()
 
 const frameset::Frameset ThreadInterface::popFilteredFrame()
 {
-	QMutexLocker locker(&plcMutex);
+	QMutexLocker locker(&filteredMutex);
 	frameset::Frameset fs;
-	if (!plcBuffer.empty())
+	if (!filteredBuffer.empty())
 	{
-		fs = plcBuffer.front();
-		plcBuffer.pop_front();
+		fs = filteredBuffer.front();
+		filteredBuffer.pop_front();
 	}
 	return fs;
 }
@@ -66,7 +66,7 @@ const frameset::Frameset ThreadInterface::popRawFrame()
 }
 
 ThreadInterface::ThreadInterface() :
-	plcBuffer(bufferSize),
+	filteredBuffer(bufferSize),
 	rawBuffer(bufferSize)
 {
 

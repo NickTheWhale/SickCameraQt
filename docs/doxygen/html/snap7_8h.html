@@ -162,6 +162,18 @@ Typedefs</h2></td></tr>
 <tr class="separator:a665850731be93369caab88d34c54dc00"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae966a0314b9b0dca4c2cb8486213a705"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="snap7_8h.html#aacc262b7acb8ef2b1d38df8b855bc0f6">word</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="snap7_8h.html#ae966a0314b9b0dca4c2cb8486213a705">pword</a></td></tr>
 <tr class="separator:ae966a0314b9b0dca4c2cb8486213a705"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a803294c1468d13e521b6a7ef28688ec5"><td class="memItemLeft" align="right" valign="top">typedef int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="snap7_8h.html#a803294c1468d13e521b6a7ef28688ec5">smallint</a></td></tr>
+<tr class="separator:a803294c1468d13e521b6a7ef28688ec5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7d025582555888250855180c0a6f235"><td class="memItemLeft" align="right" valign="top">typedef int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="snap7_8h.html#ab7d025582555888250855180c0a6f235">longint</a></td></tr>
+<tr class="separator:ab7d025582555888250855180c0a6f235"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a500b4457269786fec9e88c5ec55376e1"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="snap7_8h.html#a3d2fcf4deaa34e5652fef200e52b956b">longword</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="snap7_8h.html#a500b4457269786fec9e88c5ec55376e1">plongword</a></td></tr>
+<tr class="separator:a500b4457269786fec9e88c5ec55376e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75429df3aff4b850977847ba203c4152"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="snap7_8h.html#a803294c1468d13e521b6a7ef28688ec5">smallint</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="snap7_8h.html#a75429df3aff4b850977847ba203c4152">psmallint</a></td></tr>
+<tr class="separator:a75429df3aff4b850977847ba203c4152"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22f99c0a9153023bf78272e6fbb0a982"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="snap7_8h.html#ab7d025582555888250855180c0a6f235">longint</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="snap7_8h.html#a22f99c0a9153023bf78272e6fbb0a982">plongint</a></td></tr>
+<tr class="separator:a22f99c0a9153023bf78272e6fbb0a982"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0522fe87f2817ec28914ea43b9fee34"><td class="memItemLeft" align="right" valign="top">typedef float *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="snap7_8h.html#ac0522fe87f2817ec28914ea43b9fee34">pfloat</a></td></tr>
+<tr class="separator:ac0522fe87f2817ec28914ea43b9fee34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98c8f7507dcb7b9543151a18d40b6b0e"><td class="memItemLeft" align="right" valign="top">typedef uintptr_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="snap7_8h.html#a98c8f7507dcb7b9543151a18d40b6b0e">S7Object</a></td></tr>
 <tr class="separator:a98c8f7507dcb7b9543151a18d40b6b0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1062901a7428fdd9c7f180f5e01ea056"><td class="memItemLeft" align="right" valign="top">typedef int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a></td></tr>
@@ -461,6 +473,38 @@ Functions</h2></td></tr>
 <tr class="separator:aa1146526ed707623db0754e57764f100"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a62c4dbe18769fbc30cc45cfe578bcb5d"><td class="memItemLeft" align="right" valign="top">int <a class="el" href="snap7_8h.html#a9d788225533cdad3848aa5f83020fbc3">S7API</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="snap7_8h.html#a62c4dbe18769fbc30cc45cfe578bcb5d">Par_ErrorText</a> (int Error, char *Text, int TextLen)</td></tr>
 <tr class="separator:a62c4dbe18769fbc30cc45cfe578bcb5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64918f4d9e844c123f82bb86e958f792"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="snap7_8h.html#a64918f4d9e844c123f82bb86e958f792">GetBitAt</a> (void *Buffer, int Pos, int Bit)</td></tr>
+<tr class="separator:a64918f4d9e844c123f82bb86e958f792"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0860b2b4ce7f428bceff7fddcb829585"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#ab8ef12fab634c171394422d0ee8baf94">byte</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="snap7_8h.html#a0860b2b4ce7f428bceff7fddcb829585">GetByteAt</a> (void *Buffer, int Pos)</td></tr>
+<tr class="separator:a0860b2b4ce7f428bceff7fddcb829585"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a790b893226f0bb8360caaff1a7ba165f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#aacc262b7acb8ef2b1d38df8b855bc0f6">word</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="snap7_8h.html#a790b893226f0bb8360caaff1a7ba165f">GetWordAt</a> (void *Buffer, int Pos)</td></tr>
+<tr class="separator:a790b893226f0bb8360caaff1a7ba165f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bf0c5b478fe1f29a688ad9879a14c5c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a803294c1468d13e521b6a7ef28688ec5">smallint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="snap7_8h.html#a2bf0c5b478fe1f29a688ad9879a14c5c">GetIntAt</a> (void *Buffer, int Pos)</td></tr>
+<tr class="separator:a2bf0c5b478fe1f29a688ad9879a14c5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a3c79adb441dde82e6721b773485b95"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a3d2fcf4deaa34e5652fef200e52b956b">longword</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="snap7_8h.html#a2a3c79adb441dde82e6721b773485b95">GetDWordAt</a> (void *Buffer, int Pos)</td></tr>
+<tr class="separator:a2a3c79adb441dde82e6721b773485b95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada19a55646518b1041f9789606e4f7c8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#ab7d025582555888250855180c0a6f235">longint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="snap7_8h.html#ada19a55646518b1041f9789606e4f7c8">GetDIntAt</a> (void *Buffer, int Pos)</td></tr>
+<tr class="separator:ada19a55646518b1041f9789606e4f7c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac624b44e811a0a85e6363e4d51f3f1aa"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="snap7_8h.html#ac624b44e811a0a85e6363e4d51f3f1aa">GetRealAt</a> (void *Buffer, int Pos)</td></tr>
+<tr class="separator:ac624b44e811a0a85e6363e4d51f3f1aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd7c77de6a69daba1d89bbcbc46b3753"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structtm.html">tm</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="snap7_8h.html#abd7c77de6a69daba1d89bbcbc46b3753">GetDateTimeAt</a> (void *Buffer, int Pos)</td></tr>
+<tr class="separator:abd7c77de6a69daba1d89bbcbc46b3753"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac506771f8824082fc1810009801326dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="snap7_8h.html#ac506771f8824082fc1810009801326dd">SetBitAt</a> (void *Buffer, int Pos, int Bit, <a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> Value)</td></tr>
+<tr class="separator:ac506771f8824082fc1810009801326dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb453bf5da8de0667705c713df495b1e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="snap7_8h.html#acb453bf5da8de0667705c713df495b1e">SetByteAt</a> (void *Buffer, int Pos, <a class="el" href="snap7_8h.html#ab8ef12fab634c171394422d0ee8baf94">byte</a> Value)</td></tr>
+<tr class="separator:acb453bf5da8de0667705c713df495b1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95a6df0e67f2a48476b606442cd48f41"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="snap7_8h.html#a95a6df0e67f2a48476b606442cd48f41">SetWordAt</a> (void *Buffer, int Pos, <a class="el" href="snap7_8h.html#aacc262b7acb8ef2b1d38df8b855bc0f6">word</a> Value)</td></tr>
+<tr class="separator:a95a6df0e67f2a48476b606442cd48f41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a631a1b896b13d6fd1199ed7e87549ca0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="snap7_8h.html#a631a1b896b13d6fd1199ed7e87549ca0">SetIntAt</a> (void *Buffer, int Pos, <a class="el" href="snap7_8h.html#a803294c1468d13e521b6a7ef28688ec5">smallint</a> Value)</td></tr>
+<tr class="separator:a631a1b896b13d6fd1199ed7e87549ca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afae993588cf701a5eab4c16ad0f63936"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="snap7_8h.html#afae993588cf701a5eab4c16ad0f63936">SetDWordAt</a> (void *Buffer, int Pos, <a class="el" href="snap7_8h.html#a3d2fcf4deaa34e5652fef200e52b956b">longword</a> Value)</td></tr>
+<tr class="separator:afae993588cf701a5eab4c16ad0f63936"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a413e1ac799463c2198db05a01c548199"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="snap7_8h.html#a413e1ac799463c2198db05a01c548199">SetDIntAt</a> (void *Buffer, int Pos, <a class="el" href="snap7_8h.html#ab7d025582555888250855180c0a6f235">longint</a> Value)</td></tr>
+<tr class="separator:a413e1ac799463c2198db05a01c548199"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11eab3aa59876f7d623df215f3557cfc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="snap7_8h.html#a11eab3aa59876f7d623df215f3557cfc">SetRealAt</a> (void *Buffer, int Pos, float Value)</td></tr>
+<tr class="separator:a11eab3aa59876f7d623df215f3557cfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8db1b8293cbce488b8dddffd1f9e1de9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="snap7_8h.html#a8db1b8293cbce488b8dddffd1f9e1de9">SetDateTimeAt</a> (void *Buffer, int Pos, <a class="el" href="structtm.html">tm</a> Value)</td></tr>
+<tr class="separator:a8db1b8293cbce488b8dddffd1f9e1de9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -1055,6 +1099,20 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="ab7d025582555888250855180c0a6f235" name="ab7d025582555888250855180c0a6f235"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7d025582555888250855180c0a6f235">&#9670;&#160;</a></span>longint</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int32_t <a class="el" href="snap7_8h.html#ab7d025582555888250855180c0a6f235">longint</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a3d2fcf4deaa34e5652fef200e52b956b" name="a3d2fcf4deaa34e5652fef200e52b956b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3d2fcf4deaa34e5652fef200e52b956b">&#9670;&#160;</a></span>longword</h2>
 
@@ -1077,6 +1135,20 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">typedef <a class="el" href="snap7_8h.html#ab8ef12fab634c171394422d0ee8baf94">byte</a>* <a class="el" href="snap7_8h.html#a665850731be93369caab88d34c54dc00">pbyte</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac0522fe87f2817ec28914ea43b9fee34" name="ac0522fe87f2817ec28914ea43b9fee34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0522fe87f2817ec28914ea43b9fee34">&#9670;&#160;</a></span>pfloat</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef float* <a class="el" href="snap7_8h.html#ac0522fe87f2817ec28914ea43b9fee34">pfloat</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1147,6 +1219,34 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">typedef void(<a class="el" href="snap7_8h.html#a9d788225533cdad3848aa5f83020fbc3">S7API</a> * pfn_SrvCallBack) (void *usrPtr, <a class="el" href="snap7_8h.html#a47606d433a2f84c9c65147e7e2daf167">PSrvEvent</a> PEvent, int Size)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a22f99c0a9153023bf78272e6fbb0a982" name="a22f99c0a9153023bf78272e6fbb0a982"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22f99c0a9153023bf78272e6fbb0a982">&#9670;&#160;</a></span>plongint</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="snap7_8h.html#ab7d025582555888250855180c0a6f235">longint</a>* <a class="el" href="snap7_8h.html#a22f99c0a9153023bf78272e6fbb0a982">plongint</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a500b4457269786fec9e88c5ec55376e1" name="a500b4457269786fec9e88c5ec55376e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a500b4457269786fec9e88c5ec55376e1">&#9670;&#160;</a></span>plongword</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="snap7_8h.html#a3d2fcf4deaa34e5652fef200e52b956b">longword</a>* <a class="el" href="snap7_8h.html#a500b4457269786fec9e88c5ec55376e1">plongword</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1307,6 +1407,20 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a75429df3aff4b850977847ba203c4152" name="a75429df3aff4b850977847ba203c4152"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75429df3aff4b850977847ba203c4152">&#9670;&#160;</a></span>psmallint</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="snap7_8h.html#a803294c1468d13e521b6a7ef28688ec5">smallint</a>* <a class="el" href="snap7_8h.html#a75429df3aff4b850977847ba203c4152">psmallint</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a47606d433a2f84c9c65147e7e2daf167" name="a47606d433a2f84c9c65147e7e2daf167"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a47606d433a2f84c9c65147e7e2daf167">&#9670;&#160;</a></span>PSrvEvent</h2>
 
@@ -1357,6 +1471,20 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">typedef uintptr_t <a class="el" href="snap7_8h.html#a98c8f7507dcb7b9543151a18d40b6b0e">S7Object</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a803294c1468d13e521b6a7ef28688ec5" name="a803294c1468d13e521b6a7ef28688ec5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a803294c1468d13e521b6a7ef28688ec5">&#9670;&#160;</a></span>smallint</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int16_t <a class="el" href="snap7_8h.html#a803294c1468d13e521b6a7ef28688ec5">smallint</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -4419,6 +4547,236 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a64918f4d9e844c123f82bb86e958f792" name="a64918f4d9e844c123f82bb86e958f792"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64918f4d9e844c123f82bb86e958f792">&#9670;&#160;</a></span>GetBitAt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> GetBitAt </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>Buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Bit</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0860b2b4ce7f428bceff7fddcb829585" name="a0860b2b4ce7f428bceff7fddcb829585"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0860b2b4ce7f428bceff7fddcb829585">&#9670;&#160;</a></span>GetByteAt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="snap7_8h.html#ab8ef12fab634c171394422d0ee8baf94">byte</a> GetByteAt </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>Buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Pos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abd7c77de6a69daba1d89bbcbc46b3753" name="abd7c77de6a69daba1d89bbcbc46b3753"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd7c77de6a69daba1d89bbcbc46b3753">&#9670;&#160;</a></span>GetDateTimeAt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structtm.html">tm</a> GetDateTimeAt </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>Buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Pos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ada19a55646518b1041f9789606e4f7c8" name="ada19a55646518b1041f9789606e4f7c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada19a55646518b1041f9789606e4f7c8">&#9670;&#160;</a></span>GetDIntAt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="snap7_8h.html#ab7d025582555888250855180c0a6f235">longint</a> GetDIntAt </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>Buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Pos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2a3c79adb441dde82e6721b773485b95" name="a2a3c79adb441dde82e6721b773485b95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a3c79adb441dde82e6721b773485b95">&#9670;&#160;</a></span>GetDWordAt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="snap7_8h.html#a3d2fcf4deaa34e5652fef200e52b956b">longword</a> GetDWordAt </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>Buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Pos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2bf0c5b478fe1f29a688ad9879a14c5c" name="a2bf0c5b478fe1f29a688ad9879a14c5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bf0c5b478fe1f29a688ad9879a14c5c">&#9670;&#160;</a></span>GetIntAt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="snap7_8h.html#a803294c1468d13e521b6a7ef28688ec5">smallint</a> GetIntAt </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>Buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Pos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac624b44e811a0a85e6363e4d51f3f1aa" name="ac624b44e811a0a85e6363e4d51f3f1aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac624b44e811a0a85e6363e4d51f3f1aa">&#9670;&#160;</a></span>GetRealAt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float GetRealAt </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>Buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Pos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a790b893226f0bb8360caaff1a7ba165f" name="a790b893226f0bb8360caaff1a7ba165f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a790b893226f0bb8360caaff1a7ba165f">&#9670;&#160;</a></span>GetWordAt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="snap7_8h.html#aacc262b7acb8ef2b1d38df8b855bc0f6">word</a> GetWordAt </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>Buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Pos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="adbd45035d99f3011f9fc49d5ec21430a" name="adbd45035d99f3011f9fc49d5ec21430a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adbd45035d99f3011f9fc49d5ec21430a">&#9670;&#160;</a></span>Par_AsBSend()</h2>
 
@@ -5060,6 +5418,284 @@ Variables</h2></td></tr>
           <td></td>
           <td class="paramtype"><a class="el" href="snap7_8h.html#a3d2fcf4deaa34e5652fef200e52b956b">longword</a>&#160;</td>
           <td class="paramname"><em>Timeout</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac506771f8824082fc1810009801326dd" name="ac506771f8824082fc1810009801326dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac506771f8824082fc1810009801326dd">&#9670;&#160;</a></span>SetBitAt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SetBitAt </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>Buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Bit</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td>
+          <td class="paramname"><em>Value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acb453bf5da8de0667705c713df495b1e" name="acb453bf5da8de0667705c713df495b1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb453bf5da8de0667705c713df495b1e">&#9670;&#160;</a></span>SetByteAt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SetByteAt </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>Buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="snap7_8h.html#ab8ef12fab634c171394422d0ee8baf94">byte</a>&#160;</td>
+          <td class="paramname"><em>Value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8db1b8293cbce488b8dddffd1f9e1de9" name="a8db1b8293cbce488b8dddffd1f9e1de9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8db1b8293cbce488b8dddffd1f9e1de9">&#9670;&#160;</a></span>SetDateTimeAt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SetDateTimeAt </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>Buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structtm.html">tm</a>&#160;</td>
+          <td class="paramname"><em>Value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a413e1ac799463c2198db05a01c548199" name="a413e1ac799463c2198db05a01c548199"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a413e1ac799463c2198db05a01c548199">&#9670;&#160;</a></span>SetDIntAt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SetDIntAt </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>Buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="snap7_8h.html#ab7d025582555888250855180c0a6f235">longint</a>&#160;</td>
+          <td class="paramname"><em>Value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afae993588cf701a5eab4c16ad0f63936" name="afae993588cf701a5eab4c16ad0f63936"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afae993588cf701a5eab4c16ad0f63936">&#9670;&#160;</a></span>SetDWordAt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SetDWordAt </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>Buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="snap7_8h.html#a3d2fcf4deaa34e5652fef200e52b956b">longword</a>&#160;</td>
+          <td class="paramname"><em>Value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a631a1b896b13d6fd1199ed7e87549ca0" name="a631a1b896b13d6fd1199ed7e87549ca0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a631a1b896b13d6fd1199ed7e87549ca0">&#9670;&#160;</a></span>SetIntAt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SetIntAt </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>Buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="snap7_8h.html#a803294c1468d13e521b6a7ef28688ec5">smallint</a>&#160;</td>
+          <td class="paramname"><em>Value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a11eab3aa59876f7d623df215f3557cfc" name="a11eab3aa59876f7d623df215f3557cfc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11eab3aa59876f7d623df215f3557cfc">&#9670;&#160;</a></span>SetRealAt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SetRealAt </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>Buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>Value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a95a6df0e67f2a48476b606442cd48f41" name="a95a6df0e67f2a48476b606442cd48f41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95a6df0e67f2a48476b606442cd48f41">&#9670;&#160;</a></span>SetWordAt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SetWordAt </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>Buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="snap7_8h.html#aacc262b7acb8ef2b1d38df8b855bc0f6">word</a>&#160;</td>
+          <td class="paramname"><em>Value</em>&#160;</td>
         </tr>
         <tr>
           <td></td>

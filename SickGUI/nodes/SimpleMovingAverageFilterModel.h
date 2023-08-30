@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   SimpleMovingAverageFilterModel.h
+ * @brief  SimpleMovingAverageFilter node.
+ * 
+ * @author Nicholas Loehrke
+ * @date   August 2023
+ *********************************************************************/
+
 #pragma once
 #include <NodeDelegateModel.hpp>
 

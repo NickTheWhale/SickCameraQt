@@ -8,11 +8,11 @@
 
 #pragma once
 
+#include <vector>
+
 #include <qlabel>
 #include <qpixmap>
 #include <qresizeevent>
-#include <vector>
-#include <qrubberband.h>
 
 /**
  * @brief The CameraViewLabel class is a QLabel subclass that displays a resizable pixmap while maintaining aspect ratio.
@@ -47,32 +47,11 @@ public slots:
 	 * @param pixmap The pixmap to be displayed.
 	 */
 	void setPixmap(const QPixmap& p);
-	void clearMask();
-
-signals:
-	void newMask(const QRectF& maskNorm);
-	void resized(QSize size);
 
 protected:
-	/**
-	 * @brief Overridden method that is called when the label is resized.
-	 * @param event The resize event object.
-	 */
 	void resizeEvent(QResizeEvent*) override;
-
-	/**
-	 * @brief Overridden method that is called when a context menu event occurs.
-	 * @param event The context menu event object.
-	 */
 	void contextMenuEvent(QContextMenuEvent* event) override;
 
-	void mousePressEvent(QMouseEvent* event) override;
-	void mouseMoveEvent(QMouseEvent* event) override;
-	void mouseReleaseEvent(QMouseEvent* event) override;
-
 private:
-	QPixmap pix; /**< The original pixmap. */
-	QRubberBand* rubberBand = nullptr;
-	QPoint rubberBandOrigin;
-	QRectF maskNorm;
+	QPixmap pix;
 };

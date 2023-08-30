@@ -1,17 +1,17 @@
 #include "PlcThread.h"
 
-#include <algorithm>
-#include <array>
+#include <snap7.h>
+#include <opencv2/imgproc.hpp>
+#include <opencv2/core.hpp>
+#include <ThreadInterface.h>
 
 #include <qelapsedtimer.h>
 #include <qrandom.h>
 #include <qsettings.h>
 #include <qdebug.h>
 
-#include <snap7.h>
-#include <opencv2/imgproc.hpp>
-#include <opencv2/core.hpp>
-#include <ThreadInterface.h>
+#include <algorithm>
+#include <array>
 
 #include <global.h>
 

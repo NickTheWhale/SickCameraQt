@@ -1,18 +1,20 @@
 var searchData=
 [
-  ['data_0',['data',['../union_hash__state.html#a936b335f7aa23b39f89ee6aa3bb3ff17',1,'Hash_state::data'],['../structtinycolormap_1_1_color.html#a53cb11070fe0ef22fd86bac09bb178fe',1,'tinycolormap::Color::data']]],
+  ['data_0',['data',['../structframeset_1_1_frame.html#a04302439b863c92338d23b4fb869dceb',1,'frameset::Frame::data'],['../union_hash__state.html#a936b335f7aa23b39f89ee6aa3bb3ff17',1,'Hash_state::data'],['../structtinycolormap_1_1_color.html#a53cb11070fe0ef22fd86bac09bb178fe',1,'tinycolormap::Color::data']]],
   ['data_1',['Data',['../struct_t_s7_s_z_l.html#a03aa82eb89ac215a12a64c77f2f72adc',1,'TS7SZL']]],
-  ['dataport_2',['dataPort',['../class_visionary_camera.html#adfa4a1f0527921ba5dbb9dfa656eb6ac',1,'VisionaryCamera']]],
+  ['dataport_2',['dataPort',['../class_visionary_camera.html#a5cb91a0039dec5507ba170ad45b90d1f',1,'VisionaryCamera']]],
   ['dbcount_3',['DBCount',['../struct_t_s7_blocks_list.html#a0188c117b565fe68f4b961037418235a',1,'TS7BlocksList']]],
   ['dbnumber_4',['DBNumber',['../struct_t_s7_tag.html#ac0d2ab2df88d5489f2c5061326a7b706',1,'TS7Tag::DBNumber'],['../struct_t_s7_data_item.html#af72b96d23f8c37a9a04a158a8b0a78a3',1,'TS7DataItem::DBNumber']]],
-  ['default_5fbroadcast_5faddr_5',['DEFAULT_BROADCAST_ADDR',['../namespacevisionary.html#aad5749cc912ebc1b24c6e3d3c5b68eb5',1,'visionary::DEFAULT_BROADCAST_ADDR'],['../namespacevisionary.html#aad5749cc912ebc1b24c6e3d3c5b68eb5',1,'visionary::DEFAULT_BROADCAST_ADDR']]],
-  ['default_5fport_6',['DEFAULT_PORT',['../classvisionary_1_1_visionary_auto_i_p_scan.html#a97169d0c4b779a554f5e163414261823',1,'visionary::VisionaryAutoIPScan::DEFAULT_PORT'],['../namespacevisionary.html#ab941e1054d2148dfa000b3281734387c',1,'visionary::DEFAULT_PORT'],['../namespacevisionary.html#a2a53cf18c11e6f36c34e8363ec7d2550',1,'visionary::DEFAULT_PORT']]],
-  ['defualt_5fgateway_7',['DEFUALT_GATEWAY',['../structvisionary_1_1_visionary_auto_i_p_scan_custom_1_1_com_key__t.html#a4665ed3786ca6b58a262d9eb166f18b4',1,'visionary::VisionaryAutoIPScanCustom::ComKey_t']]],
-  ['depth_8',['depth',['../struct_frameset_1_1frameset__t.html#a048aa959e3735838ab521d98de2e8420',1,'Frameset::frameset_t']]],
-  ['depthhistogram_9',['depthHistogram',['../class_sick_g_u_i.html#a1e87536903e3914f7a6f6b2164ddbfdb',1,'SickGUI']]],
-  ['devicename_10',['DeviceName',['../structvisionary_1_1_visionary_auto_i_p_scan_1_1_device_info.html#ab8ec160013ba372d3dcb0305bd16b8ee',1,'visionary::VisionaryAutoIPScan::DeviceInfo::DeviceName'],['../structvisionary_1_1_visionary_auto_i_p_scan_custom_1_1_device_info.html#a67db361ed7ea4aebe1215aa0848f8aa4',1,'visionary::VisionaryAutoIPScanCustom::DeviceInfo::DeviceName']]],
-  ['digest_11',['digest',['../classvisionary_1_1_m_d5.html#af7f022dda5a3f8dc263b33c53107e9ec',1,'visionary::MD5']]],
-  ['displaytimer_12',['displayTimer',['../class_sick_g_u_i.html#ae6ce4e4e0b35a6a9724dc6b65966663a',1,'SickGUI']]],
-  ['displaytimerinterval_13',['displayTimerInterval',['../class_sick_g_u_i.html#a76fa715b877311476825849499094d81',1,'SickGUI']]],
-  ['distance_5fmap_5funit_14',['DISTANCE_MAP_UNIT',['../classvisionary_1_1_visionary_t_mini_data.html#ab8b73640a77096ef37638dc0e8e9e59a',1,'visionary::VisionaryTMiniData']]]
+  ['dbnumber_5',['dbNumber',['../class_plc_thread.html#a2594f198e04873cf935832da562fa5c7',1,'PlcThread']]],
+  ['dbstart_6',['dbStart',['../class_plc_thread.html#a1b341dffeb9a2c4184c4e92e2fcd9625',1,'PlcThread']]],
+  ['default_5fbroadcast_5faddr_7',['DEFAULT_BROADCAST_ADDR',['../namespacevisionary.html#aad5749cc912ebc1b24c6e3d3c5b68eb5',1,'visionary']]],
+  ['default_5fport_8',['DEFAULT_PORT',['../classvisionary_1_1_visionary_auto_i_p_scan.html#a97169d0c4b779a554f5e163414261823',1,'visionary::VisionaryAutoIPScan::DEFAULT_PORT'],['../namespacevisionary.html#ab941e1054d2148dfa000b3281734387c',1,'visionary::DEFAULT_PORT']]],
+  ['defaultstyle_9',['defaultStyle',['../class_filter_editor_widget.html#a7bf6395c7bed9f28b384efc1b20d75de',1,'FilterEditorWidget']]],
+  ['depth_10',['depth',['../structframeset_1_1_frameset.html#aa70a1816646d66867174979d262b8e7e',1,'frameset::Frameset']]],
+  ['devicename_11',['DeviceName',['../structvisionary_1_1_visionary_auto_i_p_scan_1_1_device_info.html#ab8ec160013ba372d3dcb0305bd16b8ee',1,'visionary::VisionaryAutoIPScan::DeviceInfo']]],
+  ['diameter_12',['diameter',['../class_bilateral_filter.html#a85882b613e663c22464c7abdf0dafd22',1,'BilateralFilter::diameter'],['../class_bilateral_filter_model.html#a136fbc95b7fa7631a821c373ddfbf324',1,'BilateralFilterModel::diameter']]],
+  ['diametermax_13',['diameterMax',['../class_bilateral_filter.html#ac47ef4ffa3c9764b9b00c5f1163632bc',1,'BilateralFilter']]],
+  ['diametermin_14',['diameterMin',['../class_bilateral_filter.html#a75b0324ac3aed82950fc259adda54320',1,'BilateralFilter']]],
+  ['digest_15',['digest',['../classvisionary_1_1_m_d5.html#af7f022dda5a3f8dc263b33c53107e9ec',1,'visionary::MD5']]],
+  ['distance_5fmap_5funit_16',['DISTANCE_MAP_UNIT',['../classvisionary_1_1_visionary_t_mini_data.html#ab8b73640a77096ef37638dc0e8e9e59a',1,'visionary::VisionaryTMiniData']]]
 ];

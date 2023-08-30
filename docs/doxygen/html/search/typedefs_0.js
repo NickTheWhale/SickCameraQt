@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['axes_5ft_0',['axes_t',['../struct_histogram_widget_1_1_holder_of_static_histogram.html#ae1c2fbb843d59c6c28198ab05914fe60',1,'HistogramWidget::HolderOfStaticHistogram']]]
+  ['bool_0',['bool',['../snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056',1,'snap7.h']]],
+  ['byte_1',['byte',['../snap7_8h.html#ab8ef12fab634c171394422d0ee8baf94',1,'snap7.h']]]
 ];

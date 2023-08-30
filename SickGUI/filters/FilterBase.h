@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   FilterBase.h
+ * @brief  Filter base class useful for polymorphism.
+ * 
+ * @author Nicholas Loehrke
+ * @date   August 2023
+ *********************************************************************/
+
 #pragma once
 #include <qjsonobject.h>
 #include <opencv2/core.hpp>
@@ -16,6 +24,6 @@ public:
 	virtual void load(QJsonObject const&) override = 0;
 
 protected:
-	const uint16_t makeOdd(const uint16_t n) const { return n | 1; }
+	constexpr uint16_t makeOdd(const uint16_t n) const { return n | 1; }
 };
 

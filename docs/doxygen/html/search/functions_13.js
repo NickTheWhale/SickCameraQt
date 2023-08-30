@@ -1,12 +1,19 @@
 var searchData=
 [
-  ['visionaryautoipscan_0',['VisionaryAutoIPScan',['../classvisionary_1_1_visionary_auto_i_p_scan.html#abc7047632d08e632234cba125caf8fe0',1,'visionary::VisionaryAutoIPScan']]],
-  ['visionaryautoipscancustom_1',['VisionaryAutoIPScanCustom',['../classvisionary_1_1_visionary_auto_i_p_scan_custom.html#afdc5045ee454eb286589efab956a460b',1,'visionary::VisionaryAutoIPScanCustom']]],
-  ['visionarycamera_2',['VisionaryCamera',['../class_visionary_camera.html#a75f30ae4583f8751c8d2304914ee5040',1,'VisionaryCamera']]],
-  ['visionarycontrol_3',['VisionaryControl',['../classvisionary_1_1_visionary_control.html#a39afb77e82405e38da3618419ddf2271',1,'visionary::VisionaryControl']]],
-  ['visionarydata_4',['VisionaryData',['../classvisionary_1_1_visionary_data.html#a01cab51a4c920142659c7b6fb8d0ec84',1,'visionary::VisionaryData']]],
-  ['visionarydatastream_5',['VisionaryDataStream',['../classvisionary_1_1_visionary_data_stream.html#afb7121dbec6775b74648949058adac8e',1,'visionary::VisionaryDataStream']]],
-  ['visionarysdata_6',['VisionarySData',['../classvisionary_1_1_visionary_s_data.html#ab1fd5f6cbe8c800a0fba09ca929c7065',1,'visionary::VisionarySData']]],
-  ['visionarytdata_7',['VisionaryTData',['../classvisionary_1_1_visionary_t_data.html#a793b3fee24f4ffccc51a236f9910a34a',1,'visionary::VisionaryTData']]],
-  ['visionarytminidata_8',['VisionaryTMiniData',['../classvisionary_1_1_visionary_t_mini_data.html#a926fea0415f6d43d41159bbeb1f9d75e',1,'visionary::VisionaryTMiniData']]]
+  ['takescenejsonfromclipboard_0',['takeSceneJsonFromClipboard',['../class_qt_nodes_1_1_paste_command.html#a4bddee35d25ec3bc3bfebf8a072d1c91',1,'QtNodes::PasteCommand']]],
+  ['tcpsocket_1',['TcpSocket',['../classvisionary_1_1_tcp_socket.html#a3534fd61d8171da3939f6770928f06e6',1,'visionary::TcpSocket']]],
+  ['threadinterface_2',['ThreadInterface',['../class_thread_interface.html#ac50e0fbeb839773cf42076179a8bfd2e',1,'ThreadInterface']]],
+  ['threadresult_3',['ThreadResult',['../struct_thread_result.html#a8e410a07d55f72f063d87d54c20bd77b',1,'ThreadResult']]],
+  ['thresholdfilter_4',['ThresholdFilter',['../class_threshold_filter.html#a12ba3301d876524d9790d20d4125774a',1,'ThresholdFilter']]],
+  ['thresholdfiltermodel_5',['ThresholdFilterModel',['../class_threshold_filter_model.html#ae8ca5694e81e3a2a8572e8d6243705ec',1,'ThresholdFilterModel']]],
+  ['times_6',['times',['../class_cycle_time.html#ad3c7f6e94afd6716ffc5e84be20e0521',1,'CycleTime']]],
+  ['toframe_7',['toFrame',['../namespaceframeset.html#a1e968a4a20479825c064249dc860ab1c',1,'frameset']]],
+  ['tojson_8',['toJson',['../class_qt_nodes_1_1_connection_style.html#ac8cec8474cd7490202085a2111d2ef38',1,'QtNodes::ConnectionStyle::toJson()'],['../class_qt_nodes_1_1_graphics_view_style.html#add026df74d60fe14404c355f007ed1d7',1,'QtNodes::GraphicsViewStyle::toJson()'],['../class_qt_nodes_1_1_node_style.html#ac9c26d0657e622e58c0d751843580610',1,'QtNodes::NodeStyle::toJson()'],['../class_qt_nodes_1_1_style.html#a6d63b6d2325a89debc1b1f3a2caf5b3c',1,'QtNodes::Style::toJson()'],['../namespace_qt_nodes.html#a4c5c1e8eea201f03424daa4d7b938819',1,'QtNodes::toJson()']]],
+  ['tomat_9',['toMat',['../namespaceframeset.html#a520963ccab20ff69e4cbe661baa20e85',1,'frameset']]],
+  ['toqimage_10',['toQImage',['../namespaceframeset.html#afb4bf4e7cee512da9b61842337e54b5c',1,'frameset']]],
+  ['transform_11',['transform',['../classvisionary_1_1_m_d5.html#aa42ea0a0d3fdcfa9c05f7a0eba167e68',1,'visionary::MD5']]],
+  ['transformpointcloud_12',['transformPointCloud',['../classvisionary_1_1_visionary_data.html#a987fc90b4d16151d40ffd017c9f652f6',1,'visionary::VisionaryData']]],
+  ['traversegraphandpopulategraphicsobjects_13',['traverseGraphAndPopulateGraphicsObjects',['../class_qt_nodes_1_1_basic_graphics_scene.html#a2d6b9041c277fdcbf7279cf8e11e7c8d',1,'QtNodes::BasicGraphicsScene']]],
+  ['tryconnect_14',['tryConnect',['../class_qt_nodes_1_1_node_connection_interaction.html#ad4ae111406fe2cbb30c83281290d1c32',1,'QtNodes::NodeConnectionInteraction']]],
+  ['type_15',['type',['../class_exponential_moving_average_filter.html#ad3d26a281299f2cdec0dd52c72dc753c',1,'ExponentialMovingAverageFilter::type()'],['../class_fast_n_i_means_denoising_filter.html#a4e8c720a57518028691d0bce44e6d3d1',1,'FastNIMeansDenoisingFilter::type()'],['../class_filter_base.html#a1c9b22d3d679dac1f1e3abb7ac859cb2',1,'FilterBase::type()'],['../class_gaussian_blur_filter.html#a424eadc4d839affe0f8391b2c4a2bae0',1,'GaussianBlurFilter::type()'],['../class_median_blur_filter.html#af91df6733dffe3378335fa2ab7e77f37',1,'MedianBlurFilter::type()'],['../class_resize_filter.html#ad54640a6bccf39bafa52a01111c3c36a',1,'ResizeFilter::type()'],['../class_simple_moving_average_filter.html#a98e4049192d523074618638f06e11ac2',1,'SimpleMovingAverageFilter::type()'],['../class_stack_blur_filter.html#a5048527e9b555ba5b4386761e6680988',1,'StackBlurFilter::type()'],['../class_threshold_filter.html#a9c47a77cdc0c54a015e001231815260a',1,'ThresholdFilter::type()'],['../class_qt_nodes_1_1_connection_graphics_object.html#a0c56f4adbb85c7b93fe8e2d39ec97e58',1,'QtNodes::ConnectionGraphicsObject::type()'],['../class_qt_nodes_1_1_node_data.html#aa79c0c6357029beb519f7329ac352369',1,'QtNodes::NodeData::type()'],['../class_qt_nodes_1_1_node_graphics_object.html#a885019fe81aa9522ee8bb3eb9ff75da7',1,'QtNodes::NodeGraphicsObject::type()'],['../class_mat_node_data.html#a8e87eef72bb77487d8456513af5d8e43',1,'MatNodeData::type()'],['../class_blur_filter.html#aac1315b1996f1b6472d6ddd5ab272ea8',1,'BlurFilter::type()'],['../class_bilateral_filter.html#aeb2d8c5fd3a6252d7b676252311f9a47',1,'BilateralFilter::type()'],['../class_crop_filter.html#a7ad5fb1ff23c3eeef7b607d3a97eeff0',1,'CropFilter::type()']]]
 ];

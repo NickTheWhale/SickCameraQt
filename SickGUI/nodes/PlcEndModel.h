@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   PlcEndModel.h
+ * @brief  Special PLC end flag used to indicate end of filter flow.
+ * 
+ * @author Nicholas Loehrke
+ * @date   August 2023
+ *********************************************************************/
+
 #pragma once
 #include <NodeDelegateModel.hpp>
 

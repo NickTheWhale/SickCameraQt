@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   LogTextEdit.h
+ * @brief  Scrolling text edit with pause support and maximum line count.
+ * 
+ * @author Nicholas Loehrke
+ * @date   August 2023
+ *********************************************************************/
+
 #pragma once
 #include <qtextedit.h>
 class LogTextEdit : public QTextEdit

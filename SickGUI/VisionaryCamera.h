@@ -1,6 +1,6 @@
 /*****************************************************************//**
  * @file   VisionaryCamera.h
- * @brief  Implementation of Camera interface for Sick Visionary-T Mini.
+ * @brief  Visionary T Mini camera interface. Sorta handles auto reconnection.
  *
  * @author Nicholas Loehrke
  * @date   June 2023
@@ -40,23 +40,18 @@ struct OpenResult
 	}
 };
 
-/**
- * @brief Implementation of Camera interface for Sick Visionary-T Mini.
- */
-class VisionaryCamera : public QObject
+class VisionaryCamera
 {
-	Q_OBJECT
-
 public:
 	/**
 	 * @brief VisionaryCamera constructor.
 	 *
 	 * @note Construction does not ensure the camera is accessible. Construction only creates
 	 * the necessary handlers to interface with a camera.
-	 * @param ipAddress IP address of the camera (optional). ex. "192.168.0.1".
+	 * @param ipAddress IP address of the camera. ex. "192.168.0.1".
 	 * @param dataPort Blob control port (optional).
 	*/
-	VisionaryCamera(std::string ipAddress = "", short dataPort = 2114, QObject* parent = nullptr);
+	VisionaryCamera(std::string ipAddress, short dataPort = 2114);
 
 	/**
 	 * @brief Camera destructor. Calls close().
@@ -66,9 +61,7 @@ public:
 	/**
 	 * @brief Opens data and control streams to the camera.
 	 *
-	 * Opens data and control streams to the camera with the specified ip address. If the
-	 * ip address is empty (""), an attempt is made to scan the network and find the first
-	 * available camera.
+	 * Opens data and control streams to the camera with the specified ip address.
 	 * @return OpenResult.
 	*/
 	OpenResult open();
@@ -78,14 +71,6 @@ public:
 	 * @return true
 	*/
 	bool close();
-
-	/**
-	 * @brief Gets connection status.
-	 * @return true is open, false otherwise.
-	*/
-	bool isOpen();
-
-	bool isAvailable();
 
 	/**
 	 * @brief Starts continuous mode acquisition.
@@ -100,7 +85,7 @@ public:
 	bool stopCapture();
 
 	/**
-	 * @brief Polls camera for the latest FramesetType.
+	 * @brief Queries frameset from camera handler buffer. Note that the depth frame is in units of 1/4mm
 	 * @param fs Output FramesetType.
 	 * @return true if FramesetType was received, false otherwise.
 	*/

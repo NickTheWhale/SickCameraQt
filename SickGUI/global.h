@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   global.h
+ * @brief  Global constants
+ * 
+ * @author Nicholas Loehrke
+ * @date   August 2023
+ *********************************************************************/
+
 #pragma once
 
 #include <qstring.h>	

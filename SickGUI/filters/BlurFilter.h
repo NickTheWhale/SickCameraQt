@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   BlurFilter.h
+ * @brief  OpenCV blur filter.
+ * 
+ * @author Nicholas Loehrke
+ * @date   August 2023
+ *********************************************************************/
+
 #pragma once
 #include "FilterBase.h"
 

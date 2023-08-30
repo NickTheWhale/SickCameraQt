@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   PlcSourceModel.h
+ * @brief  Retrieves filtered frames from the ThreadInterface singleton.
+ * 
+ * @author Nicholas Loehrke
+ * @date   August 2023
+ *********************************************************************/
+
 #pragma once
 #include <NodeDelegateModel.hpp>
 #include <ImageLabel.h>

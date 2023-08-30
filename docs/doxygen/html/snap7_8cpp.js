@@ -1,7 +1,27 @@
 var snap7_8cpp =
 [
+    [ "BCDtoByte", "snap7_8cpp.html#aaa11fcaa059f5b4d57a8d6394c2833ad", null ],
     [ "CliErrorText", "snap7_8cpp.html#a51d28d7d8db9b30376d2bb232418d431", null ],
+    [ "GetBitAt", "snap7_8cpp.html#a64918f4d9e844c123f82bb86e958f792", null ],
+    [ "GetByteAt", "snap7_8cpp.html#a0860b2b4ce7f428bceff7fddcb829585", null ],
+    [ "GetDateTimeAt", "snap7_8cpp.html#abd7c77de6a69daba1d89bbcbc46b3753", null ],
+    [ "GetDIntAt", "snap7_8cpp.html#ada19a55646518b1041f9789606e4f7c8", null ],
+    [ "GetDWordAt", "snap7_8cpp.html#a2a3c79adb441dde82e6721b773485b95", null ],
+    [ "GetIntAt", "snap7_8cpp.html#a2bf0c5b478fe1f29a688ad9879a14c5c", null ],
+    [ "GetRealAt", "snap7_8cpp.html#ac624b44e811a0a85e6363e4d51f3f1aa", null ],
+    [ "GetWordAt", "snap7_8cpp.html#a790b893226f0bb8360caaff1a7ba165f", null ],
     [ "ParErrorText", "snap7_8cpp.html#a8a64546ff5f84c3b4ac41d75bd376d5a", null ],
+    [ "SetBitAt", "snap7_8cpp.html#ac506771f8824082fc1810009801326dd", null ],
+    [ "SetByteAt", "snap7_8cpp.html#acb453bf5da8de0667705c713df495b1e", null ],
+    [ "SetDateTimeAt", "snap7_8cpp.html#a8db1b8293cbce488b8dddffd1f9e1de9", null ],
+    [ "SetDIntAt", "snap7_8cpp.html#a413e1ac799463c2198db05a01c548199", null ],
+    [ "SetDWordAt", "snap7_8cpp.html#afae993588cf701a5eab4c16ad0f63936", null ],
+    [ "SetIntAt", "snap7_8cpp.html#a631a1b896b13d6fd1199ed7e87549ca0", null ],
+    [ "SetRealAt", "snap7_8cpp.html#a11eab3aa59876f7d623df215f3557cfc", null ],
+    [ "SetWordAt", "snap7_8cpp.html#a95a6df0e67f2a48476b606442cd48f41", null ],
     [ "SrvErrorText", "snap7_8cpp.html#a05b365ff588715efb8a9953d6b279969", null ],
-    [ "SrvEventText", "snap7_8cpp.html#a87a8e098118e38a4779386895c2b6bef", null ]
+    [ "SrvEventText", "snap7_8cpp.html#a87a8e098118e38a4779386895c2b6bef", null ],
+    [ "SwapDWord", "snap7_8cpp.html#a4691e92f0e6257d4c6c403960e473c8f", null ],
+    [ "SwapWord", "snap7_8cpp.html#a080b2ded6b969b1fcd0c2be2715d285f", null ],
+    [ "WordToBCD", "snap7_8cpp.html#a3b56a6dfe774769dd7a0f020fed5abb8", null ]
 ];

@@ -1,3 +1,12 @@
+/*****************************************************************//**
+ * @file   FilterManager.h
+ * @brief  Helper class used to create filter objects from their json representation. Used by the captureThread to 
+ * create unique filter objects from the filterNodeEditor.
+ * 
+ * @author Nicholas Loehrke
+ * @date   August 2023
+ *********************************************************************/
+
 #pragma once
 #include <vector>
 #include <FilterBase.h>

@@ -1,0 +1,28 @@
+var class_resize_filter_model =
+[
+    [ "ResizeFilterModel", "class_resize_filter_model.html#a259a816c5739d74791468eb53d0d244c", null ],
+    [ "~ResizeFilterModel", "class_resize_filter_model.html#ad2b3e2bfc5af33ec6221304ef8d7ebe5", null ],
+    [ "applyFilter", "class_resize_filter_model.html#a1204772322c4b722dc8239889809189f", null ],
+    [ "caption", "class_resize_filter_model.html#a936539df91247bfa45b805ace0ed8a01", null ],
+    [ "createWidgets", "class_resize_filter_model.html#a6cd723abed95f9edf1f62e7a1c4c55c1", null ],
+    [ "dataType", "class_resize_filter_model.html#adb8553ef21e45c00f46cd6d3d3580843", null ],
+    [ "embeddedWidget", "class_resize_filter_model.html#a75dbe2e7166249c9c4006349840d8afb", null ],
+    [ "load", "class_resize_filter_model.html#aa46cbd7b9d3d7392916ae1c81cbd475c", null ],
+    [ "modelName", "class_resize_filter_model.html#adc8ac00ee516f96db34e19a860c67eef", null ],
+    [ "name", "class_resize_filter_model.html#aa7590eafb263e7df9c0a5abb562e4cab", null ],
+    [ "nPorts", "class_resize_filter_model.html#ac86b1dddfb3744d88ab2b92d5ad84f87", null ],
+    [ "outData", "class_resize_filter_model.html#a6c22cdc1e563383f8828d541b7a81e5c", null ],
+    [ "portCaptionVisible", "class_resize_filter_model.html#a5d3e98b28e228c2eae9af014aeaa9f1c", null ],
+    [ "resizable", "class_resize_filter_model.html#a48f4be771816424fb8de9ae0e0c8c0cc", null ],
+    [ "save", "class_resize_filter_model.html#a418ee9673e50e289f68ae940684df1f9", null ],
+    [ "setInData", "class_resize_filter_model.html#abc7894e6686a0b6531589a2eccd10f78", null ],
+    [ "syncFilterParameters", "class_resize_filter_model.html#a497db22a4609268ceda820e642a2b557", null ],
+    [ "_currentNodeData", "class_resize_filter_model.html#af1461c33ecdd125eed8464974e665384", null ],
+    [ "_filter", "class_resize_filter_model.html#a8a9ecb89da258cb2d25865aa9500fe9a", null ],
+    [ "_originalNodeData", "class_resize_filter_model.html#a5dcecdc9cecb7450836b2acc2dfd5048", null ],
+    [ "_widget", "class_resize_filter_model.html#a75366240516d11608f2bcc99a90bc88f", null ],
+    [ "sb_sizeX", "class_resize_filter_model.html#a0a09f94e984ee52ab044dcd3ee04d1ee", null ],
+    [ "sb_sizeY", "class_resize_filter_model.html#a6427acd9b26e78865ba9745925da9ae8", null ],
+    [ "sizeX", "class_resize_filter_model.html#ae8bdc00d8927a45f31f2d59c4c0d692f", null ],
+    [ "sizeY", "class_resize_filter_model.html#a6f156cddead5e75fe899e7d0c760f339", null ]
+];

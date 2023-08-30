@@ -94,7 +94,6 @@ void SickGUI::closeEvent(QCloseEvent* event)
 
 void SickGUI::initializeWidgets()
 {
-	// QLabel used to display live camera lastImage
 #pragma region LOGGING_DOCK
 	loggingWidget = new LoggingWidget(this);
 	loggingWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -168,7 +167,6 @@ void SickGUI::initializeWidgets()
 	this->statusBar()->addPermanentWidget(statusLabel);
 
 #pragma endregion
-
 }
 
 bool SickGUI::createCamera()
@@ -177,16 +175,6 @@ bool SickGUI::createCamera()
 	{
 		delete camera;
 		camera = nullptr;
-	}
-
-	if (cameraIpAddress == "")
-	{
-		visionary::VisionaryAutoIPScanCustom scanner;
-		auto devices = scanner.doScan(10000);
-		if (devices.empty())
-			return false;
-		else
-			cameraIpAddress = devices.front().IpAddress;
 	}
 
 	camera = new(std::nothrow) VisionaryCamera(cameraIpAddress);

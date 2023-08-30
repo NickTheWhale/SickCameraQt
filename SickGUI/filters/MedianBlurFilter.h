@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   MedianBlurFilter.h
+ * @brief  OpenCV median blur filter.
+ * 
+ * @author Nicholas Loehrke
+ * @date   August 2023
+ *********************************************************************/
+
 #pragma once
 #include "FilterBase.h"
 

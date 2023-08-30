@@ -91,7 +91,7 @@ $(document).ready(function(){initNavTree('class_plc_thread.html',''); initResiza
 
 <div class="header">
   <div class="summary">
-<a href="#pub-slots">Public Slots</a> &#124;
+<a href="#signals">Signals</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
@@ -109,11 +109,14 @@ Inheritance diagram for PlcThread:</div>
   <img src="class_plc_thread.png" alt=""/>
  </div></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-slots" name="pub-slots"></a>
-Public Slots</h2></td></tr>
-<tr class="memitem:a1c3c07593f1adc04dca82099e52a4656"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plc_thread.html#a1c3c07593f1adc04dca82099e52a4656">newFrameset</a> (<a class="el" href="struct_frameset_1_1frameset__t.html">Frameset::frameset_t</a> fs)</td></tr>
-<tr class="memdesc:a1c3c07593f1adc04dca82099e52a4656"><td class="mdescLeft">&#160;</td><td class="mdescRight">Slot to receive new frameset emitted by captureThread.  <br /></td></tr>
-<tr class="separator:a1c3c07593f1adc04dca82099e52a4656"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="signals" name="signals"></a>
+Signals</h2></td></tr>
+<tr class="memitem:a31d81f3fd53bc9dc87ad99921356d217"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plc_thread.html#a31d81f3fd53bc9dc87ad99921356d217">addTime</a> (const int time)</td></tr>
+<tr class="separator:a31d81f3fd53bc9dc87ad99921356d217"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70e9a43f7499df50f89911d439311223"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plc_thread.html#a70e9a43f7499df50f89911d439311223">disconnected</a> ()</td></tr>
+<tr class="separator:a70e9a43f7499df50f89911d439311223"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a403e0eb65417d4a5bbbbc3e949e9ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plc_thread.html#a9a403e0eb65417d4a5bbbbc3e949e9ac">reconnected</a> ()</td></tr>
+<tr class="separator:a9a403e0eb65417d4a5bbbbc3e949e9ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -121,7 +124,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a37f5221523c0ccff2658c72e843090b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the thread.  <br /></td></tr>
 <tr class="separator:a37f5221523c0ccff2658c72e843090b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae6489b6fa75222070685959b08eb718a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plc_thread.html#ae6489b6fa75222070685959b08eb718a">stopPlc</a> ()</td></tr>
-<tr class="memdesc:ae6489b6fa75222070685959b08eb718a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop the thread.  <br /></td></tr>
 <tr class="separator:ae6489b6fa75222070685959b08eb718a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
@@ -131,23 +133,31 @@ Protected Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a3689e6ef90cdc5367a083afcb06532d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plc_thread.html#a3689e6ef90cdc5367a083afcb06532d8">uploadDB</a> ()</td></tr>
-<tr class="separator:a3689e6ef90cdc5367a083afcb06532d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a432644bc49250b0af209b0ba431278"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plc_thread.html#a8a432644bc49250b0af209b0ba431278">write</a> (const std::vector&lt; uint32_t &gt; &amp;data)</td></tr>
+<tr class="separator:a8a432644bc49250b0af209b0ba431278"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8cd7012bd52f616094e81f20eacc77f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plc_thread.html#ac8cd7012bd52f616094e81f20eacc77f">loadConfiguration</a> ()</td></tr>
+<tr class="separator:ac8cd7012bd52f616094e81f20eacc77f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:afe0a214dce053ebc47650c8c1aa8e858"><td class="memItemLeft" align="right" valign="top">volatile <a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plc_thread.html#afe0a214dce053ebc47650c8c1aa8e858">_stop</a> = <a class="el" href="snap7_8h.html#a65e9886d74aaee76545e83dd09011727">false</a></td></tr>
 <tr class="separator:afe0a214dce053ebc47650c8c1aa8e858"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0a2ba35d1ff1ec1e40e048c3620749f"><td class="memItemLeft" align="right" valign="top">qint64&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plc_thread.html#ad0a2ba35d1ff1ec1e40e048c3620749f">cycleTimeTarget</a> = 10</td></tr>
+<tr class="separator:ad0a2ba35d1ff1ec1e40e048c3620749f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2594f198e04873cf935832da562fa5c7"><td class="memItemLeft" align="right" valign="top">qint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plc_thread.html#a2594f198e04873cf935832da562fa5c7">dbNumber</a> = 0</td></tr>
+<tr class="separator:a2594f198e04873cf935832da562fa5c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b341dffeb9a2c4184c4e92e2fcd9625"><td class="memItemLeft" align="right" valign="top">qint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plc_thread.html#a1b341dffeb9a2c4184c4e92e2fcd9625">dbStart</a> = 0</td></tr>
+<tr class="separator:a1b341dffeb9a2c4184c4e92e2fcd9625"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af64586283b15d7b412653e1caa65fdec"><td class="memItemLeft" align="right" valign="top">qint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plc_thread.html#af64586283b15d7b412653e1caa65fdec">imageWidth</a> = 1</td></tr>
+<tr class="separator:af64586283b15d7b412653e1caa65fdec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeacc4077f711ed9c14ebc22f197b0206"><td class="memItemLeft" align="right" valign="top">qint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plc_thread.html#aeacc4077f711ed9c14ebc22f197b0206">imageHeight</a> = 1</td></tr>
+<tr class="separator:aeacc4077f711ed9c14ebc22f197b0206"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afaa14ee89bfa0a5daa42c8d14c17ce5c"><td class="memItemLeft" align="right" valign="top">TS7Client *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plc_thread.html#afaa14ee89bfa0a5daa42c8d14c17ce5c">client</a></td></tr>
 <tr class="separator:afaa14ee89bfa0a5daa42c8d14c17ce5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ade54841de8028a7346fbf06f9b8f7e75"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_frameset_1_1frameset__t.html">Frameset::frameset_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plc_thread.html#ade54841de8028a7346fbf06f9b8f7e75">fsBuff</a></td></tr>
-<tr class="separator:ade54841de8028a7346fbf06f9b8f7e75"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac8be357de4eda83a626c84eb8a8aa169"><td class="memItemLeft" align="right" valign="top">QMutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plc_thread.html#ac8be357de4eda83a626c84eb8a8aa169">framesetMutex</a></td></tr>
-<tr class="separator:ac8be357de4eda83a626c84eb8a8aa169"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a1c3c07593f1adc04dca82099e52a4656" name="a1c3c07593f1adc04dca82099e52a4656"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1c3c07593f1adc04dca82099e52a4656">&#9670;&#160;</a></span>newFrameset</h2>
+<a id="a31d81f3fd53bc9dc87ad99921356d217" name="a31d81f3fd53bc9dc87ad99921356d217"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31d81f3fd53bc9dc87ad99921356d217">&#9670;&#160;</a></span>addTime</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -156,27 +166,94 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void PlcThread::newFrameset </td>
+          <td class="memname">void PlcThread::addTime </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_frameset_1_1frameset__t.html">Frameset::frameset_t</a>&#160;</td>
-          <td class="paramname"><em>fs</em></td><td>)</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>time</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Slot to receive new frameset emitted by captureThread. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">fs</td><td>Output frameset. </td></tr>
-  </table>
-  </dd>
-</dl>
+</div>
+</div>
+<a id="a70e9a43f7499df50f89911d439311223" name="a70e9a43f7499df50f89911d439311223"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70e9a43f7499df50f89911d439311223">&#9670;&#160;</a></span>disconnected</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PlcThread::disconnected </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac8cd7012bd52f616094e81f20eacc77f" name="ac8cd7012bd52f616094e81f20eacc77f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8cd7012bd52f616094e81f20eacc77f">&#9670;&#160;</a></span>loadConfiguration()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PlcThread::loadConfiguration </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9a403e0eb65417d4a5bbbbc3e949e9ac" name="a9a403e0eb65417d4a5bbbbc3e949e9ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a403e0eb65417d4a5bbbbc3e949e9ac">&#9670;&#160;</a></span>reconnected</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PlcThread::reconnected </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -228,7 +305,7 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd><a class="el" href="class_plc_thread.html">PlcThread</a> does not take ownership of the client. You must free the resources once the thread has stopped. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd><a class="el" href="class_plc_thread.html">PlcThread</a> does not take ownership of the client object. </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>
@@ -248,12 +325,10 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Stop the thread. </p>
-
 </div>
 </div>
-<a id="a3689e6ef90cdc5367a083afcb06532d8" name="a3689e6ef90cdc5367a083afcb06532d8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3689e6ef90cdc5367a083afcb06532d8">&#9670;&#160;</a></span>uploadDB()</h2>
+<a id="a8a432644bc49250b0af209b0ba431278" name="a8a432644bc49250b0af209b0ba431278"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a432644bc49250b0af209b0ba431278">&#9670;&#160;</a></span>write()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -262,9 +337,10 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void PlcThread::uploadDB </td>
+          <td class="memname">int PlcThread::write </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">const std::vector&lt; uint32_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -322,8 +398,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ac8be357de4eda83a626c84eb8a8aa169" name="ac8be357de4eda83a626c84eb8a8aa169"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac8be357de4eda83a626c84eb8a8aa169">&#9670;&#160;</a></span>framesetMutex</h2>
+<a id="ad0a2ba35d1ff1ec1e40e048c3620749f" name="ad0a2ba35d1ff1ec1e40e048c3620749f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0a2ba35d1ff1ec1e40e048c3620749f">&#9670;&#160;</a></span>cycleTimeTarget</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -332,7 +408,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">QMutex PlcThread::framesetMutex</td>
+          <td class="memname">qint64 PlcThread::cycleTimeTarget = 10</td>
         </tr>
       </table>
   </td>
@@ -344,8 +420,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ade54841de8028a7346fbf06f9b8f7e75" name="ade54841de8028a7346fbf06f9b8f7e75"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ade54841de8028a7346fbf06f9b8f7e75">&#9670;&#160;</a></span>fsBuff</h2>
+<a id="a2594f198e04873cf935832da562fa5c7" name="a2594f198e04873cf935832da562fa5c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2594f198e04873cf935832da562fa5c7">&#9670;&#160;</a></span>dbNumber</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -354,7 +430,73 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_frameset_1_1frameset__t.html">Frameset::frameset_t</a> PlcThread::fsBuff</td>
+          <td class="memname">qint32 PlcThread::dbNumber = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1b341dffeb9a2c4184c4e92e2fcd9625" name="a1b341dffeb9a2c4184c4e92e2fcd9625"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b341dffeb9a2c4184c4e92e2fcd9625">&#9670;&#160;</a></span>dbStart</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">qint32 PlcThread::dbStart = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeacc4077f711ed9c14ebc22f197b0206" name="aeacc4077f711ed9c14ebc22f197b0206"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeacc4077f711ed9c14ebc22f197b0206">&#9670;&#160;</a></span>imageHeight</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">qint32 PlcThread::imageHeight = 1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af64586283b15d7b412653e1caa65fdec" name="af64586283b15d7b412653e1caa65fdec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af64586283b15d7b412653e1caa65fdec">&#9670;&#160;</a></span>imageWidth</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">qint32 PlcThread::imageWidth = 1</td>
         </tr>
       </table>
   </td>
@@ -367,8 +509,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="_plc_thread_8h_source.html">PlcThread.h</a></li>
-<li><a class="el" href="_plc_thread_8cpp.html">PlcThread.cpp</a></li>
+<li>threads/<a class="el" href="_plc_thread_8h_source.html">PlcThread.h</a></li>
+<li>threads/<a class="el" href="_plc_thread_8cpp.html">PlcThread.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

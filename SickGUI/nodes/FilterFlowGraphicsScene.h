@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   FilterFlowGraphicsScene.h
+ * @brief  Scene to display nodes.
+ * 
+ * @author Nicholas Loehrke
+ * @date   August 2023
+ *********************************************************************/
+
 #pragma once
 
 #include "BasicGraphicsScene.hpp"

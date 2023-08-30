@@ -1,6 +1,6 @@
 /*****************************************************************//**
  * @file   PlcThread.h
- * @brief  QThread subclass used to communicate with a Siemens Step7 PLC
+ * @brief  QThread subclass used to communicate with a Siemens Step7 PLC.
  * 
  * @author Nicholas Loehrke
  * @date   June 2023
@@ -28,16 +28,10 @@ public:
 	 * @brief Starts the thread.
 	 * 
 	 * @param client Snap7 client
-	 * @note  PlcThread does not take ownership of the client. You must
-	 *        free the resources once the thread has stopped.
+	 * @note  PlcThread does not take ownership of the client object.
 	 * @return 
 	 */
 	bool startPlc(TS7Client* client);
-
-	/**
-	 * @brief Stop the thread.
-	 * 
-	 */
 	void stopPlc();
 
 protected:

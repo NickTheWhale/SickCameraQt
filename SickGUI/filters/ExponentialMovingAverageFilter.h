@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   ExponentialMovingAverageFilter.h
+ * @brief  Similar to SimpleMovingAverageFilter, weights older frames in the buffer exponentially lower.
+ * 
+ * @author Nicholas Loehrke
+ * @date   August 2023
+ *********************************************************************/
+
 #pragma once
 #include "FilterBase.h"
 #include <deque>

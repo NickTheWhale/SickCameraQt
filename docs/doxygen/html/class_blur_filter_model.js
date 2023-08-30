@@ -1,0 +1,28 @@
+var class_blur_filter_model =
+[
+    [ "BlurFilterModel", "class_blur_filter_model.html#afa53c04507001c4f770d713eb5789091", null ],
+    [ "~BlurFilterModel", "class_blur_filter_model.html#a15858293be9d65cdb1e637172d1f6eca", null ],
+    [ "applyFilter", "class_blur_filter_model.html#ac1b32f0cda311921d72ef7af4541b718", null ],
+    [ "caption", "class_blur_filter_model.html#ad07ac7b09c2d47347dfe0a4357d28362", null ],
+    [ "createWidgets", "class_blur_filter_model.html#a8e57ef23df210f24670b9e7eb2998798", null ],
+    [ "dataType", "class_blur_filter_model.html#aa8cd583025a6cd6bfd905f0e8c211471", null ],
+    [ "embeddedWidget", "class_blur_filter_model.html#a93b9ba38c52f4562576c55ed42e13d8d", null ],
+    [ "load", "class_blur_filter_model.html#a362e91fbc0a94eadd066c7283dd0ae65", null ],
+    [ "modelName", "class_blur_filter_model.html#a3a6fa2fbc7d862d240a78cd411931ea5", null ],
+    [ "name", "class_blur_filter_model.html#aab05d5c9e294bdeaef6262bf8a92a5cb", null ],
+    [ "nPorts", "class_blur_filter_model.html#a0683362cfae01e3d1615f90d28b82d37", null ],
+    [ "outData", "class_blur_filter_model.html#a17650be3c2319ba036ecec7f56b35227", null ],
+    [ "portCaptionVisible", "class_blur_filter_model.html#a676d3d073ec8ff3517d943cf06d8ca5c", null ],
+    [ "resizable", "class_blur_filter_model.html#acd9bd7e32b7ff928868ff5425bcdf43f", null ],
+    [ "save", "class_blur_filter_model.html#a05f7962b32151159fbef41fe7cece9a5", null ],
+    [ "setInData", "class_blur_filter_model.html#ac5865f8f3f551896b2375080480a8be5", null ],
+    [ "syncFilterParameters", "class_blur_filter_model.html#a2df39cae2588f74155d9646309465fea", null ],
+    [ "_currentNodeData", "class_blur_filter_model.html#a605ed8a2c77b6b39abd7a67806491b1c", null ],
+    [ "_filter", "class_blur_filter_model.html#a8fbcd6086014ae9cdea3828e618f0f55", null ],
+    [ "_originalNodeData", "class_blur_filter_model.html#a628b349cb5d14f3a49e43739b8ad7446", null ],
+    [ "_widget", "class_blur_filter_model.html#ae713e5ce4f3d1b5ee34844cb0f6458bb", null ],
+    [ "sb_sizeX", "class_blur_filter_model.html#a741bc98844d5aaf65c5ceb9d873cb60d", null ],
+    [ "sb_sizeY", "class_blur_filter_model.html#a087cbac03b8040371db8e641767ffb4e", null ],
+    [ "sizeX", "class_blur_filter_model.html#a018e33fac38fce7094b7459c99d0662e", null ],
+    [ "sizeY", "class_blur_filter_model.html#a71d11020b887d8d3331bb7e4b05a132a", null ]
+];

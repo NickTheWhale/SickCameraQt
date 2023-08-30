@@ -1,3 +1,12 @@
+/*****************************************************************//**
+ * @file   CycleTime.h
+ * @brief  Maintains a circular buffer of cycle time samples 
+ * and performs statistical calculations of the current, average, worst, 75th percentile, and 95th percentile.
+ * 
+ * @author Nicholas Loehrke
+ * @date   August 2023
+ *********************************************************************/
+
 #pragma once
 #include <qwidget.h>
 #include <boost/circular_buffer.hpp>

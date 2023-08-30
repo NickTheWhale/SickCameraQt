@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['stream_0',['Stream',['../_stream_8h.html#a0b8b584f5fb32277059bc4e6b9bcd6f0',1,'Stream.h']]]
+  ['looseend_0',['LooseEnd',['../class_qt_nodes_1_1_connection_state.html#af4bcfc1c7ff04d5cf83c7237b6953480',1,'QtNodes::ConnectionState']]]
 ];

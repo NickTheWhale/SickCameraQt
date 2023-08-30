@@ -1,0 +1,26 @@
+var class_fast_n_i_means_denoising_filter_model =
+[
+    [ "FastNIMeansDenoisingFilterModel", "class_fast_n_i_means_denoising_filter_model.html#ac62b6d2285663e9c50d801ef667bb976", null ],
+    [ "~FastNIMeansDenoisingFilterModel", "class_fast_n_i_means_denoising_filter_model.html#ac57e5d65d7d460702bf493750ef6816d", null ],
+    [ "applyFilter", "class_fast_n_i_means_denoising_filter_model.html#a72fc4f3ec275bbe2a01531adc0e07c06", null ],
+    [ "caption", "class_fast_n_i_means_denoising_filter_model.html#a855a9c153e65cd07b311e5db4aeb515b", null ],
+    [ "createWidgets", "class_fast_n_i_means_denoising_filter_model.html#aa7246945bd4c4a7077ffc50e5d387936", null ],
+    [ "dataType", "class_fast_n_i_means_denoising_filter_model.html#a1b0a4399df90714b48ac2ec9387fd4f9", null ],
+    [ "embeddedWidget", "class_fast_n_i_means_denoising_filter_model.html#ade4ee11a7e50b48783886f6c4c371084", null ],
+    [ "load", "class_fast_n_i_means_denoising_filter_model.html#aef1666514f87568429a7398e5703a9ad", null ],
+    [ "modelName", "class_fast_n_i_means_denoising_filter_model.html#a2ef5cfe2d4decad2786e13c4113dd3f9", null ],
+    [ "name", "class_fast_n_i_means_denoising_filter_model.html#a5354b9cc62f85aeef6ea2d97b0282cbf", null ],
+    [ "nPorts", "class_fast_n_i_means_denoising_filter_model.html#ac4f4d4b3932f7506d4eca0bcffa0a66a", null ],
+    [ "outData", "class_fast_n_i_means_denoising_filter_model.html#a74dc11a53f46a145c56f1fff94bb62fd", null ],
+    [ "portCaptionVisible", "class_fast_n_i_means_denoising_filter_model.html#a8f23fed0f6ae924a1b2081ff9e296165", null ],
+    [ "resizable", "class_fast_n_i_means_denoising_filter_model.html#a6e2c9abc25ce42bfe8f3159e1da92a44", null ],
+    [ "save", "class_fast_n_i_means_denoising_filter_model.html#a39ddea50676f6fb17a35a5d9120c57c0", null ],
+    [ "setInData", "class_fast_n_i_means_denoising_filter_model.html#a60320a40d8587ef3ea57ff2e6912fc1d", null ],
+    [ "syncFilterParameters", "class_fast_n_i_means_denoising_filter_model.html#aae2d4550d6978d490853b80d54696de5", null ],
+    [ "_currentNodeData", "class_fast_n_i_means_denoising_filter_model.html#aab3c58da415a8b6c55b93a4ec00ed79c", null ],
+    [ "_filter", "class_fast_n_i_means_denoising_filter_model.html#a770127142129fbd5f203ec5e874c80b5", null ],
+    [ "_originalNodeData", "class_fast_n_i_means_denoising_filter_model.html#ac51fea3b2f50f49c6b803c2819b5220c", null ],
+    [ "_widget", "class_fast_n_i_means_denoising_filter_model.html#af2423709a8dc9a9348bfc0244e07d040", null ],
+    [ "hVal", "class_fast_n_i_means_denoising_filter_model.html#a9bf1f3ff52a16d5eb50f4047a030fbaa", null ],
+    [ "sb_h", "class_fast_n_i_means_denoising_filter_model.html#a845f801b2e305e9339f41b52d5d984df", null ]
+];

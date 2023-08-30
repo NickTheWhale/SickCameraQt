@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   StackBlurFilterModel.h
+ * @brief  StackBlur node.
+ * 
+ * @author Nicholas Loehrke
+ * @date   August 2023
+ *********************************************************************/
+
 #pragma once
 #include <NodeDelegateModel.hpp>
 

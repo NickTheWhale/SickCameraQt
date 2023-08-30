@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   FastNIMeansDenoisingFilter.h
+ * @brief  OpenCV non local means denoising filter.
+ * 
+ * @author Nicholas Loehrke
+ * @date   August 2023
+ *********************************************************************/
+
 #pragma once
 #include "FilterBase.h"
 

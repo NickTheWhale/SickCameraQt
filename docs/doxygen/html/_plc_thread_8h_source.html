@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.7"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SickGUI: PlcThread.h Source File</title>
+<title>SickGUI: threads/PlcThread.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -97,55 +97,66 @@ $(document).ready(function(){initNavTree('_plc_thread_8h_source.html',''); initR
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;qthread.h&gt;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;<a class="code" href="snap7_8h.html">snap7.h</a>&gt;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="_visionary_frameset_8h.html">VisionaryFrameset.h</a>&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;<a class="code" href="_frameset_8h.html">Frameset.h</a>&gt;</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;boost/circular_buffer.hpp&gt;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;qmutex.h&gt;</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;qtimer.h&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;qtimer.h&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;qmutex.h&gt;</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="class_plc_thread.html">   17</a></span><span class="keyword">class </span><a class="code hl_class" href="class_plc_thread.html">PlcThread</a> : <span class="keyword">public</span> QThread</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    Q_OBJECT</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">public</span> slots:</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordtype">void</span> <a class="code hl_slot" href="class_plc_thread.html#a1c3c07593f1adc04dca82099e52a4656">newFrameset</a>(<a class="code hl_struct" href="struct_frameset_1_1frameset__t.html">Frameset::frameset_t</a> fs);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_plc_thread.html#a37f5221523c0ccff2658c72e843090b3">startPlc</a>(TS7Client* <a class="code hl_variable" href="class_plc_thread.html#afaa14ee89bfa0a5daa42c8d14c17ce5c">client</a>);</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_plc_thread.html#ae6489b6fa75222070685959b08eb718a">stopPlc</a>();</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_plc_thread.html#a3d2bdf5c50e851c1032c25ef0f41ce73">run</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_plc_thread.html#a3689e6ef90cdc5367a083afcb06532d8">uploadDB</a>();</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="class_plc_thread.html#afe0a214dce053ebc47650c8c1aa8e858">   52</a></span>    <span class="keyword">volatile</span> <span class="keywordtype">bool</span> <a class="code hl_variable" href="class_plc_thread.html#afe0a214dce053ebc47650c8c1aa8e858">_stop</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="class_plc_thread.html#afaa14ee89bfa0a5daa42c8d14c17ce5c">   53</a></span>    TS7Client* <a class="code hl_variable" href="class_plc_thread.html#afaa14ee89bfa0a5daa42c8d14c17ce5c">client</a>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>signals:</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="class_plc_thread.html#a31d81f3fd53bc9dc87ad99921356d217">   22</a></span>    <span class="keywordtype">void</span> <a class="code hl_signal" href="class_plc_thread.html#a31d81f3fd53bc9dc87ad99921356d217">addTime</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> time);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="class_plc_thread.html#a70e9a43f7499df50f89911d439311223">   23</a></span>    <span class="keywordtype">void</span> <a class="code hl_signal" href="class_plc_thread.html#a70e9a43f7499df50f89911d439311223">disconnected</a>();</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="class_plc_thread.html#a9a403e0eb65417d4a5bbbbc3e949e9ac">   24</a></span>    <span class="keywordtype">void</span> <a class="code hl_signal" href="class_plc_thread.html#a9a403e0eb65417d4a5bbbbc3e949e9ac">reconnected</a>();</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_plc_thread.html#a37f5221523c0ccff2658c72e843090b3">startPlc</a>(TS7Client* <a class="code hl_variable" href="class_plc_thread.html#afaa14ee89bfa0a5daa42c8d14c17ce5c">client</a>);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_plc_thread.html#ae6489b6fa75222070685959b08eb718a">stopPlc</a>();</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_plc_thread.html#a3d2bdf5c50e851c1032c25ef0f41ce73">run</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="class_plc_thread.html#afe0a214dce053ebc47650c8c1aa8e858">   41</a></span>    <span class="keyword">volatile</span> <span class="keywordtype">bool</span> <a class="code hl_variable" href="class_plc_thread.html#afe0a214dce053ebc47650c8c1aa8e858">_stop</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="class_plc_thread.html#ad0a2ba35d1ff1ec1e40e048c3620749f">   43</a></span>    qint64 <a class="code hl_variable" href="class_plc_thread.html#ad0a2ba35d1ff1ec1e40e048c3620749f">cycleTimeTarget</a> = 10;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="class_plc_thread.html#a2594f198e04873cf935832da562fa5c7">   44</a></span>    qint32 <a class="code hl_variable" href="class_plc_thread.html#a2594f198e04873cf935832da562fa5c7">dbNumber</a> = 0;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="class_plc_thread.html#a1b341dffeb9a2c4184c4e92e2fcd9625">   45</a></span>    qint32 <a class="code hl_variable" href="class_plc_thread.html#a1b341dffeb9a2c4184c4e92e2fcd9625">dbStart</a> = 0;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="class_plc_thread.html#af64586283b15d7b412653e1caa65fdec">   46</a></span>    qint32 <a class="code hl_variable" href="class_plc_thread.html#af64586283b15d7b412653e1caa65fdec">imageWidth</a> = 1;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="class_plc_thread.html#aeacc4077f711ed9c14ebc22f197b0206">   47</a></span>    qint32 <a class="code hl_variable" href="class_plc_thread.html#aeacc4077f711ed9c14ebc22f197b0206">imageHeight</a> = 1;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="class_plc_thread.html#afaa14ee89bfa0a5daa42c8d14c17ce5c">   49</a></span>    TS7Client* <a class="code hl_variable" href="class_plc_thread.html#afaa14ee89bfa0a5daa42c8d14c17ce5c">client</a>;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="class_plc_thread.html#a8a432644bc49250b0af209b0ba431278">write</a>(<span class="keyword">const</span> std::vector&lt;uint32_t&gt;&amp; data);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_plc_thread.html#ac8cd7012bd52f616094e81f20eacc77f">loadConfiguration</a>();</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>};</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="class_plc_thread.html#ade54841de8028a7346fbf06f9b8f7e75">   55</a></span>    <a class="code hl_struct" href="struct_frameset_1_1frameset__t.html">Frameset::frameset_t</a> <a class="code hl_variable" href="class_plc_thread.html#ade54841de8028a7346fbf06f9b8f7e75">fsBuff</a>;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="class_plc_thread.html#ac8be357de4eda83a626c84eb8a8aa169">   56</a></span>    QMutex <a class="code hl_variable" href="class_plc_thread.html#ac8be357de4eda83a626c84eb8a8aa169">framesetMutex</a>;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>};</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="ttc" id="a_visionary_frameset_8h_html"><div class="ttname"><a href="_visionary_frameset_8h.html">VisionaryFrameset.h</a></div><div class="ttdoc">Defines a frameset and contains frame to QImage helper functions.</div></div>
+<div class="ttc" id="a_frameset_8h_html"><div class="ttname"><a href="_frameset_8h.html">Frameset.h</a></div><div class="ttdoc">Defines frameset struct and some helper functions.</div></div>
 <div class="ttc" id="aclass_plc_thread_html"><div class="ttname"><a href="class_plc_thread.html">PlcThread</a></div><div class="ttdef"><b>Definition</b> PlcThread.h:18</div></div>
-<div class="ttc" id="aclass_plc_thread_html_a1c3c07593f1adc04dca82099e52a4656"><div class="ttname"><a href="class_plc_thread.html#a1c3c07593f1adc04dca82099e52a4656">PlcThread::newFrameset</a></div><div class="ttdeci">void newFrameset(Frameset::frameset_t fs)</div><div class="ttdoc">Slot to receive new frameset emitted by captureThread.</div><div class="ttdef"><b>Definition</b> PlcThread.cpp:16</div></div>
-<div class="ttc" id="aclass_plc_thread_html_a3689e6ef90cdc5367a083afcb06532d8"><div class="ttname"><a href="class_plc_thread.html#a3689e6ef90cdc5367a083afcb06532d8">PlcThread::uploadDB</a></div><div class="ttdeci">void uploadDB()</div><div class="ttdef"><b>Definition</b> PlcThread.cpp:52</div></div>
-<div class="ttc" id="aclass_plc_thread_html_a37f5221523c0ccff2658c72e843090b3"><div class="ttname"><a href="class_plc_thread.html#a37f5221523c0ccff2658c72e843090b3">PlcThread::startPlc</a></div><div class="ttdeci">bool startPlc(TS7Client *client)</div><div class="ttdoc">Starts the thread.</div><div class="ttdef"><b>Definition</b> PlcThread.cpp:8</div></div>
-<div class="ttc" id="aclass_plc_thread_html_a3d2bdf5c50e851c1032c25ef0f41ce73"><div class="ttname"><a href="class_plc_thread.html#a3d2bdf5c50e851c1032c25ef0f41ce73">PlcThread::run</a></div><div class="ttdeci">void run() override</div><div class="ttdef"><b>Definition</b> PlcThread.cpp:32</div></div>
-<div class="ttc" id="aclass_plc_thread_html_ac8be357de4eda83a626c84eb8a8aa169"><div class="ttname"><a href="class_plc_thread.html#ac8be357de4eda83a626c84eb8a8aa169">PlcThread::framesetMutex</a></div><div class="ttdeci">QMutex framesetMutex</div><div class="ttdef"><b>Definition</b> PlcThread.h:56</div></div>
-<div class="ttc" id="aclass_plc_thread_html_ade54841de8028a7346fbf06f9b8f7e75"><div class="ttname"><a href="class_plc_thread.html#ade54841de8028a7346fbf06f9b8f7e75">PlcThread::fsBuff</a></div><div class="ttdeci">Frameset::frameset_t fsBuff</div><div class="ttdef"><b>Definition</b> PlcThread.h:55</div></div>
-<div class="ttc" id="aclass_plc_thread_html_ae6489b6fa75222070685959b08eb718a"><div class="ttname"><a href="class_plc_thread.html#ae6489b6fa75222070685959b08eb718a">PlcThread::stopPlc</a></div><div class="ttdeci">void stopPlc()</div><div class="ttdoc">Stop the thread.</div><div class="ttdef"><b>Definition</b> PlcThread.cpp:27</div></div>
-<div class="ttc" id="aclass_plc_thread_html_afaa14ee89bfa0a5daa42c8d14c17ce5c"><div class="ttname"><a href="class_plc_thread.html#afaa14ee89bfa0a5daa42c8d14c17ce5c">PlcThread::client</a></div><div class="ttdeci">TS7Client * client</div><div class="ttdef"><b>Definition</b> PlcThread.h:53</div></div>
-<div class="ttc" id="aclass_plc_thread_html_afe0a214dce053ebc47650c8c1aa8e858"><div class="ttname"><a href="class_plc_thread.html#afe0a214dce053ebc47650c8c1aa8e858">PlcThread::_stop</a></div><div class="ttdeci">volatile bool _stop</div><div class="ttdef"><b>Definition</b> PlcThread.h:52</div></div>
+<div class="ttc" id="aclass_plc_thread_html_a1b341dffeb9a2c4184c4e92e2fcd9625"><div class="ttname"><a href="class_plc_thread.html#a1b341dffeb9a2c4184c4e92e2fcd9625">PlcThread::dbStart</a></div><div class="ttdeci">qint32 dbStart</div><div class="ttdef"><b>Definition</b> PlcThread.h:45</div></div>
+<div class="ttc" id="aclass_plc_thread_html_a2594f198e04873cf935832da562fa5c7"><div class="ttname"><a href="class_plc_thread.html#a2594f198e04873cf935832da562fa5c7">PlcThread::dbNumber</a></div><div class="ttdeci">qint32 dbNumber</div><div class="ttdef"><b>Definition</b> PlcThread.h:44</div></div>
+<div class="ttc" id="aclass_plc_thread_html_a31d81f3fd53bc9dc87ad99921356d217"><div class="ttname"><a href="class_plc_thread.html#a31d81f3fd53bc9dc87ad99921356d217">PlcThread::addTime</a></div><div class="ttdeci">void addTime(const int time)</div></div>
+<div class="ttc" id="aclass_plc_thread_html_a37f5221523c0ccff2658c72e843090b3"><div class="ttname"><a href="class_plc_thread.html#a37f5221523c0ccff2658c72e843090b3">PlcThread::startPlc</a></div><div class="ttdeci">bool startPlc(TS7Client *client)</div><div class="ttdoc">Starts the thread.</div><div class="ttdef"><b>Definition</b> PlcThread.cpp:18</div></div>
+<div class="ttc" id="aclass_plc_thread_html_a3d2bdf5c50e851c1032c25ef0f41ce73"><div class="ttname"><a href="class_plc_thread.html#a3d2bdf5c50e851c1032c25ef0f41ce73">PlcThread::run</a></div><div class="ttdeci">void run() override</div><div class="ttdef"><b>Definition</b> PlcThread.cpp:30</div></div>
+<div class="ttc" id="aclass_plc_thread_html_a70e9a43f7499df50f89911d439311223"><div class="ttname"><a href="class_plc_thread.html#a70e9a43f7499df50f89911d439311223">PlcThread::disconnected</a></div><div class="ttdeci">void disconnected()</div></div>
+<div class="ttc" id="aclass_plc_thread_html_a8a432644bc49250b0af209b0ba431278"><div class="ttname"><a href="class_plc_thread.html#a8a432644bc49250b0af209b0ba431278">PlcThread::write</a></div><div class="ttdeci">int write(const std::vector&lt; uint32_t &gt; &amp;data)</div><div class="ttdef"><b>Definition</b> PlcThread.cpp:93</div></div>
+<div class="ttc" id="aclass_plc_thread_html_a9a403e0eb65417d4a5bbbbc3e949e9ac"><div class="ttname"><a href="class_plc_thread.html#a9a403e0eb65417d4a5bbbbc3e949e9ac">PlcThread::reconnected</a></div><div class="ttdeci">void reconnected()</div></div>
+<div class="ttc" id="aclass_plc_thread_html_ac8cd7012bd52f616094e81f20eacc77f"><div class="ttname"><a href="class_plc_thread.html#ac8cd7012bd52f616094e81f20eacc77f">PlcThread::loadConfiguration</a></div><div class="ttdeci">void loadConfiguration()</div><div class="ttdef"><b>Definition</b> PlcThread.cpp:108</div></div>
+<div class="ttc" id="aclass_plc_thread_html_ad0a2ba35d1ff1ec1e40e048c3620749f"><div class="ttname"><a href="class_plc_thread.html#ad0a2ba35d1ff1ec1e40e048c3620749f">PlcThread::cycleTimeTarget</a></div><div class="ttdeci">qint64 cycleTimeTarget</div><div class="ttdef"><b>Definition</b> PlcThread.h:43</div></div>
+<div class="ttc" id="aclass_plc_thread_html_ae6489b6fa75222070685959b08eb718a"><div class="ttname"><a href="class_plc_thread.html#ae6489b6fa75222070685959b08eb718a">PlcThread::stopPlc</a></div><div class="ttdeci">void stopPlc()</div><div class="ttdef"><b>Definition</b> PlcThread.cpp:25</div></div>
+<div class="ttc" id="aclass_plc_thread_html_aeacc4077f711ed9c14ebc22f197b0206"><div class="ttname"><a href="class_plc_thread.html#aeacc4077f711ed9c14ebc22f197b0206">PlcThread::imageHeight</a></div><div class="ttdeci">qint32 imageHeight</div><div class="ttdef"><b>Definition</b> PlcThread.h:47</div></div>
+<div class="ttc" id="aclass_plc_thread_html_af64586283b15d7b412653e1caa65fdec"><div class="ttname"><a href="class_plc_thread.html#af64586283b15d7b412653e1caa65fdec">PlcThread::imageWidth</a></div><div class="ttdeci">qint32 imageWidth</div><div class="ttdef"><b>Definition</b> PlcThread.h:46</div></div>
+<div class="ttc" id="aclass_plc_thread_html_afaa14ee89bfa0a5daa42c8d14c17ce5c"><div class="ttname"><a href="class_plc_thread.html#afaa14ee89bfa0a5daa42c8d14c17ce5c">PlcThread::client</a></div><div class="ttdeci">TS7Client * client</div><div class="ttdef"><b>Definition</b> PlcThread.h:49</div></div>
+<div class="ttc" id="aclass_plc_thread_html_afe0a214dce053ebc47650c8c1aa8e858"><div class="ttname"><a href="class_plc_thread.html#afe0a214dce053ebc47650c8c1aa8e858">PlcThread::_stop</a></div><div class="ttdeci">volatile bool _stop</div><div class="ttdef"><b>Definition</b> PlcThread.h:41</div></div>
 <div class="ttc" id="asnap7_8h_html"><div class="ttname"><a href="snap7_8h.html">snap7.h</a></div></div>
-<div class="ttc" id="astruct_frameset_1_1frameset__t_html"><div class="ttname"><a href="struct_frameset_1_1frameset__t.html">Frameset::frameset_t</a></div><div class="ttdoc">Defines a frameset.</div><div class="ttdef"><b>Definition</b> VisionaryFrameset.h:27</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="_plc_thread_8h.html">PlcThread.h</a></li>
+    <li class="navelem"><a class="el" href="dir_b71e9c10552984757907f0ca0d59e659.html">threads</a></li><li class="navelem"><a class="el" href="_plc_thread_8h.html">PlcThread.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
   </ul>
 </div>

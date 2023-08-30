@@ -228,7 +228,6 @@
     <ClCompile Include="sickapi\src\VisionaryTData.cpp" />
     <ClCompile Include="sickapi\src\VisionaryTMiniData.cpp" />
     <ClCompile Include="snap7\snap7.cpp" />
-    <ClCompile Include="VisionaryAutoIPScanCustom.cpp" />
     <ClCompile Include="VisionaryCamera.cpp" />
     <ClCompile Include="widgets\ImageLabel.cpp" />
     <QtRcc Include="SickGUI.qrc" />
@@ -354,8 +353,7 @@
     <QtMoc Include="threads\CaptureThread.h" />
     <QtMoc Include="threads\PlcThread.h" />
     <ClInclude Include="snap7\snap7.h" />
-    <ClInclude Include="VisionaryAutoIPScanCustom.h" />
-    <QtMoc Include="VisionaryCamera.h" />
+    <ClInclude Include="VisionaryCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="snap7\snap7.dll">

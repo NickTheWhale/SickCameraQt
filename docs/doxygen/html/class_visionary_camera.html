@@ -98,113 +98,56 @@ $(document).ready(function(){initNavTree('class_visionary_camera.html',''); init
 </div><!--header-->
 <div class="contents">
 
-<p>Implementation of <a class="el" href="class_camera.html">Camera</a> interface for Sick Visionary-T Mini.  
- <a href="class_visionary_camera.html#details">More...</a></p>
-
 <p><code>#include &lt;<a class="el" href="_visionary_camera_8h_source.html">VisionaryCamera.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for VisionaryCamera:</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="class_visionary_camera.png" usemap="#VisionaryCamera_map" alt=""/>
-  <map id="VisionaryCamera_map" name="VisionaryCamera_map">
-<area href="class_camera.html" alt="Camera" shape="rect" coords="0,56,110,80"/>
-  </map>
-</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a75f30ae4583f8751c8d2304914ee5040"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_visionary_camera.html#a75f30ae4583f8751c8d2304914ee5040">VisionaryCamera</a> (std::string <a class="el" href="class_visionary_camera.html#aa3cd1611be3c6f74f88ea729000913a4">ipAddress</a>=&quot;&quot;, short <a class="el" href="class_visionary_camera.html#adfa4a1f0527921ba5dbb9dfa656eb6ac">dataPort</a>=2114)</td></tr>
-<tr class="memdesc:a75f30ae4583f8751c8d2304914ee5040"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_visionary_camera.html" title="Implementation of Camera interface for Sick Visionary-T Mini.">VisionaryCamera</a> constructor.  <br /></td></tr>
-<tr class="separator:a75f30ae4583f8751c8d2304914ee5040"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aadd4d48cc3e8689a19c57cd9b99ae0cb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_visionary_camera.html#aadd4d48cc3e8689a19c57cd9b99ae0cb">~VisionaryCamera</a> () override</td></tr>
-<tr class="memdesc:aadd4d48cc3e8689a19c57cd9b99ae0cb"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_camera.html">Camera</a> destructor. Calls <a class="el" href="class_visionary_camera.html#ae088c2402d1ea9956b06028eb375d924" title="Closes data and control streams to the camera.">close()</a>.  <br /></td></tr>
-<tr class="separator:aadd4d48cc3e8689a19c57cd9b99ae0cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0117c3ad75bfb00c746aeeba3802ee37"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_open_result.html">OpenResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_visionary_camera.html#a0117c3ad75bfb00c746aeeba3802ee37">open</a> () override</td></tr>
-<tr class="memdesc:a0117c3ad75bfb00c746aeeba3802ee37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens data and control streams to the camera.  <br /></td></tr>
-<tr class="separator:a0117c3ad75bfb00c746aeeba3802ee37"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae088c2402d1ea9956b06028eb375d924"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_visionary_camera.html#ae088c2402d1ea9956b06028eb375d924">close</a> () override</td></tr>
-<tr class="memdesc:ae088c2402d1ea9956b06028eb375d924"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes data and control streams to the camera.  <br /></td></tr>
-<tr class="separator:ae088c2402d1ea9956b06028eb375d924"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af4ab7f3401b4b522a51af10750e92c0c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_visionary_camera.html#af4ab7f3401b4b522a51af10750e92c0c">isOpen</a> () override</td></tr>
-<tr class="memdesc:af4ab7f3401b4b522a51af10750e92c0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets connection status.  <br /></td></tr>
-<tr class="separator:af4ab7f3401b4b522a51af10750e92c0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a830a20b540edee0a375a709fb654bb87"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_visionary_camera.html#a830a20b540edee0a375a709fb654bb87">startCapture</a> () override</td></tr>
-<tr class="memdesc:a830a20b540edee0a375a709fb654bb87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts continuous mode acquisition.  <br /></td></tr>
-<tr class="separator:a830a20b540edee0a375a709fb654bb87"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2bc1fd6055fc9fa1fae727fc790b0820"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_visionary_camera.html#a2bc1fd6055fc9fa1fae727fc790b0820">stopCapture</a> () override</td></tr>
-<tr class="memdesc:a2bc1fd6055fc9fa1fae727fc790b0820"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops acquisition.  <br /></td></tr>
-<tr class="separator:a2bc1fd6055fc9fa1fae727fc790b0820"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8bfda3741ab9a0525b1adc837a47391a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_visionary_camera.html#a8bfda3741ab9a0525b1adc837a47391a">getNextFrameset</a> (<a class="el" href="struct_frameset_1_1frameset__t.html">Frameset::frameset_t</a> &amp;fs) override</td></tr>
-<tr class="memdesc:a8bfda3741ab9a0525b1adc837a47391a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Polls camera for the latest frameset.  <br /></td></tr>
-<tr class="separator:a8bfda3741ab9a0525b1adc837a47391a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a248b76b210f97ea28890a7bfb1248bde"><td class="memItemLeft" align="right" valign="top">const std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_visionary_camera.html#a248b76b210f97ea28890a7bfb1248bde">getParameters</a> () override</td></tr>
-<tr class="memdesc:a248b76b210f97ea28890a7bfb1248bde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets camera parameters.  <br /></td></tr>
-<tr class="separator:a248b76b210f97ea28890a7bfb1248bde"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d3622fbb38c2725a339c44cc46bd9e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_visionary_camera.html#a6d3622fbb38c2725a339c44cc46bd9e6">available</a> (int timeout)</td></tr>
-<tr class="memdesc:a6d3622fbb38c2725a339c44cc46bd9e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets camera availability.  <br /></td></tr>
-<tr class="separator:a6d3622fbb38c2725a339c44cc46bd9e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a91c42e96a17e393d77f97d6920ea57d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_visionary_camera.html#a91c42e96a17e393d77f97d6920ea57d9">setIp</a> (std::string <a class="el" href="class_visionary_camera.html#aa3cd1611be3c6f74f88ea729000913a4">ipAddress</a>)</td></tr>
-<tr class="memdesc:a91c42e96a17e393d77f97d6920ea57d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">IP address setter.  <br /></td></tr>
-<tr class="separator:a91c42e96a17e393d77f97d6920ea57d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad6991dbcf7c18c6edffb983dd6b17ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_visionary_camera.html#aad6991dbcf7c18c6edffb983dd6b17ec">setDataPort</a> (short <a class="el" href="class_visionary_camera.html#adfa4a1f0527921ba5dbb9dfa656eb6ac">dataPort</a>)</td></tr>
-<tr class="memdesc:aad6991dbcf7c18c6edffb983dd6b17ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Blob control port setter.  <br /></td></tr>
-<tr class="separator:aad6991dbcf7c18c6edffb983dd6b17ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_class_camera"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_camera')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_camera.html">Camera</a></td></tr>
-<tr class="memitem:a01f94c3543f56ede7af49dc778f19331 inherit pub_methods_class_camera"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a01f94c3543f56ede7af49dc778f19331">Camera</a> ()</td></tr>
-<tr class="memdesc:a01f94c3543f56ede7af49dc778f19331 inherit pub_methods_class_camera"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor for the <a class="el" href="class_camera.html">Camera</a> class.  <br /></td></tr>
-<tr class="separator:a01f94c3543f56ede7af49dc778f19331 inherit pub_methods_class_camera"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9ed2a1433c5afdfb9cdf5b282fbc350 inherit pub_methods_class_camera"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#ac9ed2a1433c5afdfb9cdf5b282fbc350">~Camera</a> ()</td></tr>
-<tr class="memdesc:ac9ed2a1433c5afdfb9cdf5b282fbc350 inherit pub_methods_class_camera"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for the <a class="el" href="class_camera.html">Camera</a> class.  <br /></td></tr>
-<tr class="separator:ac9ed2a1433c5afdfb9cdf5b282fbc350 inherit pub_methods_class_camera"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a036fbd17384082fef82fbd9a3c5232f7 inherit pub_methods_class_camera"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="struct_open_result.html">OpenResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a036fbd17384082fef82fbd9a3c5232f7">open</a> ()=0</td></tr>
-<tr class="memdesc:a036fbd17384082fef82fbd9a3c5232f7 inherit pub_methods_class_camera"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens the camera device.  <br /></td></tr>
-<tr class="separator:a036fbd17384082fef82fbd9a3c5232f7 inherit pub_methods_class_camera"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a56cb2dfa677ed0c1bed120b4d4a769a1 inherit pub_methods_class_camera"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a56cb2dfa677ed0c1bed120b4d4a769a1">close</a> ()=0</td></tr>
-<tr class="memdesc:a56cb2dfa677ed0c1bed120b4d4a769a1 inherit pub_methods_class_camera"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes the camera device.  <br /></td></tr>
-<tr class="separator:a56cb2dfa677ed0c1bed120b4d4a769a1 inherit pub_methods_class_camera"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a70c5abd6bd16f5c91fc3768d6d76f49c inherit pub_methods_class_camera"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a70c5abd6bd16f5c91fc3768d6d76f49c">isOpen</a> ()=0</td></tr>
-<tr class="memdesc:a70c5abd6bd16f5c91fc3768d6d76f49c inherit pub_methods_class_camera"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the camera device is open.  <br /></td></tr>
-<tr class="separator:a70c5abd6bd16f5c91fc3768d6d76f49c inherit pub_methods_class_camera"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acdb890f53f359f4a1c3c72a8772228f0 inherit pub_methods_class_camera"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#acdb890f53f359f4a1c3c72a8772228f0">startCapture</a> ()=0</td></tr>
-<tr class="memdesc:acdb890f53f359f4a1c3c72a8772228f0 inherit pub_methods_class_camera"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts capturing frames from the camera device.  <br /></td></tr>
-<tr class="separator:acdb890f53f359f4a1c3c72a8772228f0 inherit pub_methods_class_camera"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0701c1d212f7c236e13f8980d2b2e566 inherit pub_methods_class_camera"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a0701c1d212f7c236e13f8980d2b2e566">stopCapture</a> ()=0</td></tr>
-<tr class="memdesc:a0701c1d212f7c236e13f8980d2b2e566 inherit pub_methods_class_camera"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops capturing frames from the camera device.  <br /></td></tr>
-<tr class="separator:a0701c1d212f7c236e13f8980d2b2e566 inherit pub_methods_class_camera"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb93b43b0cca34497d614de8068e6ddf inherit pub_methods_class_camera"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#afb93b43b0cca34497d614de8068e6ddf">getNextFrameset</a> (<a class="el" href="struct_frameset_1_1frameset__t.html">Frameset::frameset_t</a> &amp;fs)=0</td></tr>
-<tr class="memdesc:afb93b43b0cca34497d614de8068e6ddf inherit pub_methods_class_camera"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the next frameset from the camera device.  <br /></td></tr>
-<tr class="separator:afb93b43b0cca34497d614de8068e6ddf inherit pub_methods_class_camera"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0d47627924a42ad2d42354144cd6670 inherit pub_methods_class_camera"><td class="memItemLeft" align="right" valign="top">virtual const std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#ac0d47627924a42ad2d42354144cd6670">getParameters</a> ()</td></tr>
-<tr class="memdesc:ac0d47627924a42ad2d42354144cd6670 inherit pub_methods_class_camera"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the parameters of the camera device.  <br /></td></tr>
-<tr class="separator:ac0d47627924a42ad2d42354144cd6670 inherit pub_methods_class_camera"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7b9466df6509c7668a0f5e0f190435a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_visionary_camera.html#ac7b9466df6509c7668a0f5e0f190435a">VisionaryCamera</a> (std::string <a class="el" href="class_visionary_camera.html#aeb32335872b44cbc3d7224d9b6ef4248">ipAddress</a>, short <a class="el" href="class_visionary_camera.html#a5cb91a0039dec5507ba170ad45b90d1f">dataPort</a>=2114)</td></tr>
+<tr class="memdesc:ac7b9466df6509c7668a0f5e0f190435a"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_visionary_camera.html">VisionaryCamera</a> constructor.  <br /></td></tr>
+<tr class="separator:ac7b9466df6509c7668a0f5e0f190435a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af992c77d97f027b050687e9a6d797dbe"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_visionary_camera.html#af992c77d97f027b050687e9a6d797dbe">~VisionaryCamera</a> ()</td></tr>
+<tr class="memdesc:af992c77d97f027b050687e9a6d797dbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Camera destructor. Calls <a class="el" href="class_visionary_camera.html#afeb82c69a775b3671534bb2cbbd66b55" title="Closes data and control streams to the camera.">close()</a>.  <br /></td></tr>
+<tr class="separator:af992c77d97f027b050687e9a6d797dbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a928f76364135a95a000691e2f754e9ff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_open_result.html">OpenResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_visionary_camera.html#a928f76364135a95a000691e2f754e9ff">open</a> ()</td></tr>
+<tr class="memdesc:a928f76364135a95a000691e2f754e9ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens data and control streams to the camera.  <br /></td></tr>
+<tr class="separator:a928f76364135a95a000691e2f754e9ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afeb82c69a775b3671534bb2cbbd66b55"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_visionary_camera.html#afeb82c69a775b3671534bb2cbbd66b55">close</a> ()</td></tr>
+<tr class="memdesc:afeb82c69a775b3671534bb2cbbd66b55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes data and control streams to the camera.  <br /></td></tr>
+<tr class="separator:afeb82c69a775b3671534bb2cbbd66b55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adaab84e12a1ca73fe3b2c20a887c3e6c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_visionary_camera.html#adaab84e12a1ca73fe3b2c20a887c3e6c">startCapture</a> ()</td></tr>
+<tr class="memdesc:adaab84e12a1ca73fe3b2c20a887c3e6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts continuous mode acquisition.  <br /></td></tr>
+<tr class="separator:adaab84e12a1ca73fe3b2c20a887c3e6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a73ddb087b2a8c16152d66836bba210"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_visionary_camera.html#a4a73ddb087b2a8c16152d66836bba210">stopCapture</a> ()</td></tr>
+<tr class="memdesc:a4a73ddb087b2a8c16152d66836bba210"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops acquisition.  <br /></td></tr>
+<tr class="separator:a4a73ddb087b2a8c16152d66836bba210"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45979a48d2cc3478780ab7d1f9865c58"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_visionary_camera.html#a45979a48d2cc3478780ab7d1f9865c58">getNextFrameset</a> (<a class="el" href="structframeset_1_1_frameset.html">frameset::Frameset</a> &amp;fs)</td></tr>
+<tr class="memdesc:a45979a48d2cc3478780ab7d1f9865c58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queries frameset from camera handler buffer. Note that the depth frame is in units of 1/4mm.  <br /></td></tr>
+<tr class="separator:a45979a48d2cc3478780ab7d1f9865c58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad013443ed0825c68a82fe0d82741a32f"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_visionary_camera.html#ad013443ed0825c68a82fe0d82741a32f">getIpAddress</a> () const</td></tr>
+<tr class="separator:ad013443ed0825c68a82fe0d82741a32f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a358788ad82750ce870cc01c1e6e7f6f8"><td class="memItemLeft" align="right" valign="top">const short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_visionary_camera.html#a358788ad82750ce870cc01c1e6e7f6f8">getDataPort</a> () const</td></tr>
+<tr class="separator:a358788ad82750ce870cc01c1e6e7f6f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a2fecef2c301eb9b743478d0a18a88acb"><td class="memItemLeft" align="right" valign="top">const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_visionary_camera.html#a2fecef2c301eb9b743478d0a18a88acb">openTimeout</a> = 5000</td></tr>
 <tr class="separator:a2fecef2c301eb9b743478d0a18a88acb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b34378b6aa568bc2db14695cabad9f8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_visionary_camera.html#a1b34378b6aa568bc2db14695cabad9f8">connected</a> = <a class="el" href="snap7_8h.html#a65e9886d74aaee76545e83dd09011727">false</a></td></tr>
-<tr class="separator:a1b34378b6aa568bc2db14695cabad9f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b22f8ea7136233f9493ed00d303276f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_visionary_camera.html#a4b22f8ea7136233f9493ed00d303276f">capturing</a> = <a class="el" href="snap7_8h.html#a65e9886d74aaee76545e83dd09011727">false</a></td></tr>
-<tr class="separator:a4b22f8ea7136233f9493ed00d303276f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3cd1611be3c6f74f88ea729000913a4"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_visionary_camera.html#aa3cd1611be3c6f74f88ea729000913a4">ipAddress</a></td></tr>
-<tr class="separator:aa3cd1611be3c6f74f88ea729000913a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adfa4a1f0527921ba5dbb9dfa656eb6ac"><td class="memItemLeft" align="right" valign="top">short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_visionary_camera.html#adfa4a1f0527921ba5dbb9dfa656eb6ac">dataPort</a></td></tr>
-<tr class="separator:adfa4a1f0527921ba5dbb9dfa656eb6ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a561b0b19600acd135577cfcce3d15937"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_visionary_camera.html#a561b0b19600acd135577cfcce3d15937">parameters</a></td></tr>
-<tr class="separator:a561b0b19600acd135577cfcce3d15937"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1bbe8b033886a927d8179b3f46bb45a"><td class="memItemLeft" align="right" valign="top">const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_visionary_camera.html#ad1bbe8b033886a927d8179b3f46bb45a">grabberTimeout</a> = 5000</td></tr>
+<tr class="separator:ad1bbe8b033886a927d8179b3f46bb45a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb32335872b44cbc3d7224d9b6ef4248"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_visionary_camera.html#aeb32335872b44cbc3d7224d9b6ef4248">ipAddress</a></td></tr>
+<tr class="separator:aeb32335872b44cbc3d7224d9b6ef4248"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cb91a0039dec5507ba170ad45b90d1f"><td class="memItemLeft" align="right" valign="top">const short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_visionary_camera.html#a5cb91a0039dec5507ba170ad45b90d1f">dataPort</a></td></tr>
+<tr class="separator:a5cb91a0039dec5507ba170ad45b90d1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65f51df11643afce7c19676268bef79a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classvisionary_1_1_frame_grabber.html">visionary::FrameGrabber</a>&lt; <a class="el" href="classvisionary_1_1_visionary_t_mini_data.html">visionary::VisionaryTMiniData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_visionary_camera.html#a65f51df11643afce7c19676268bef79a">frameGrabber</a></td></tr>
+<tr class="separator:a65f51df11643afce7c19676268bef79a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45cde19a45dcae5cf49cb72d7e1f9554"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classvisionary_1_1_visionary_t_mini_data.html">visionary::VisionaryTMiniData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_visionary_camera.html#a45cde19a45dcae5cf49cb72d7e1f9554">pDataHandler</a></td></tr>
 <tr class="separator:a45cde19a45dcae5cf49cb72d7e1f9554"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9614c64144234b5726a49e6b969dace"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classvisionary_1_1_visionary_data_stream.html">visionary::VisionaryDataStream</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_visionary_camera.html#aa9614c64144234b5726a49e6b969dace">pDataStream</a></td></tr>
-<tr class="separator:aa9614c64144234b5726a49e6b969dace"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d62868e0a9b719fc37e96670074f16a"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classvisionary_1_1_visionary_control.html">visionary::VisionaryControl</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_visionary_camera.html#a8d62868e0a9b719fc37e96670074f16a">pVisionaryControl</a></td></tr>
 <tr class="separator:a8d62868e0a9b719fc37e96670074f16a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Implementation of <a class="el" href="class_camera.html">Camera</a> interface for Sick Visionary-T Mini. </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a75f30ae4583f8751c8d2304914ee5040" name="a75f30ae4583f8751c8d2304914ee5040"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a75f30ae4583f8751c8d2304914ee5040">&#9670;&#160;</a></span>VisionaryCamera()</h2>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ac7b9466df6509c7668a0f5e0f190435a" name="ac7b9466df6509c7668a0f5e0f190435a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7b9466df6509c7668a0f5e0f190435a">&#9670;&#160;</a></span>VisionaryCamera()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -213,7 +156,7 @@ Private Attributes</h2></td></tr>
           <td class="memname">VisionaryCamera::VisionaryCamera </td>
           <td>(</td>
           <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>ipAddress</em> = <code>&quot;&quot;</code>, </td>
+          <td class="paramname"><em>ipAddress</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -229,11 +172,11 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><a class="el" href="class_visionary_camera.html" title="Implementation of Camera interface for Sick Visionary-T Mini.">VisionaryCamera</a> constructor. </p>
+<p><a class="el" href="class_visionary_camera.html">VisionaryCamera</a> constructor. </p>
 <dl class="section note"><dt>Note</dt><dd>Construction does not ensure the camera is accessible. Construction only creates the necessary handlers to interface with a camera. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ipAddress</td><td>IP address of the camera (optional). ex. "192.168.0.1". </td></tr>
+    <tr><td class="paramname">ipAddress</td><td>IP address of the camera. ex. "192.168.0.1". </td></tr>
     <tr><td class="paramname">dataPort</td><td>Blob control port (optional). </td></tr>
   </table>
   </dd>
@@ -241,14 +184,11 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="aadd4d48cc3e8689a19c57cd9b99ae0cb" name="aadd4d48cc3e8689a19c57cd9b99ae0cb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aadd4d48cc3e8689a19c57cd9b99ae0cb">&#9670;&#160;</a></span>~VisionaryCamera()</h2>
+<a id="af992c77d97f027b050687e9a6d797dbe" name="af992c77d97f027b050687e9a6d797dbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af992c77d97f027b050687e9a6d797dbe">&#9670;&#160;</a></span>~VisionaryCamera()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">VisionaryCamera::~VisionaryCamera </td>
@@ -257,53 +197,18 @@ Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p><a class="el" href="class_camera.html">Camera</a> destructor. Calls <a class="el" href="class_visionary_camera.html#ae088c2402d1ea9956b06028eb375d924" title="Closes data and control streams to the camera.">close()</a>. </p>
+<p>Camera destructor. Calls <a class="el" href="class_visionary_camera.html#afeb82c69a775b3671534bb2cbbd66b55" title="Closes data and control streams to the camera.">close()</a>. </p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a6d3622fbb38c2725a339c44cc46bd9e6" name="a6d3622fbb38c2725a339c44cc46bd9e6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6d3622fbb38c2725a339c44cc46bd9e6">&#9670;&#160;</a></span>available()</h2>
+<a id="afeb82c69a775b3671534bb2cbbd66b55" name="afeb82c69a775b3671534bb2cbbd66b55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afeb82c69a775b3671534bb2cbbd66b55">&#9670;&#160;</a></span>close()</h2>
 
 <div class="memitem">
 <div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> VisionaryCamera::available </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>timeout</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Gets camera availability. </p>
-<p>This method runs a network scan to get a list of all available cameras and then checks if the current camera's ip address matches any camera in the list. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">timeout</td><td>Scan timeout in milliseconds. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true if available, false otherwise. </dd></dl>
-
-</div>
-</div>
-<a id="ae088c2402d1ea9956b06028eb375d924" name="ae088c2402d1ea9956b06028eb375d924"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae088c2402d1ea9956b06028eb375d924">&#9670;&#160;</a></span>close()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> VisionaryCamera::close </td>
@@ -312,125 +217,79 @@ Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Closes data and control streams to the camera. </p>
 <dl class="section return"><dt>Returns</dt><dd>true </dd></dl>
 
-<p>Implements <a class="el" href="class_camera.html#a56cb2dfa677ed0c1bed120b4d4a769a1">Camera</a>.</p>
-
 </div>
 </div>
-<a id="a8bfda3741ab9a0525b1adc837a47391a" name="a8bfda3741ab9a0525b1adc837a47391a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8bfda3741ab9a0525b1adc837a47391a">&#9670;&#160;</a></span>getNextFrameset()</h2>
+<a id="a358788ad82750ce870cc01c1e6e7f6f8" name="a358788ad82750ce870cc01c1e6e7f6f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a358788ad82750ce870cc01c1e6e7f6f8">&#9670;&#160;</a></span>getDataPort()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const short VisionaryCamera::getDataPort </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad013443ed0825c68a82fe0d82741a32f" name="ad013443ed0825c68a82fe0d82741a32f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad013443ed0825c68a82fe0d82741a32f">&#9670;&#160;</a></span>getIpAddress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string VisionaryCamera::getIpAddress </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a45979a48d2cc3478780ab7d1f9865c58" name="a45979a48d2cc3478780ab7d1f9865c58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45979a48d2cc3478780ab7d1f9865c58">&#9670;&#160;</a></span>getNextFrameset()</h2>
+
+<div class="memitem">
+<div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> VisionaryCamera::getNextFrameset </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_frameset_1_1frameset__t.html">Frameset::frameset_t</a> &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="structframeset_1_1_frameset.html">frameset::Frameset</a> &amp;&#160;</td>
           <td class="paramname"><em>fs</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Polls camera for the latest frameset. </p>
+<p>Queries frameset from camera handler buffer. Note that the depth frame is in units of 1/4mm. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">fs</td><td>Output frameset. </td></tr>
+    <tr><td class="paramname">fs</td><td>Output FramesetType. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true if frameset was received, false otherwise. </dd></dl>
-
-<p>Implements <a class="el" href="class_camera.html#afb93b43b0cca34497d614de8068e6ddf">Camera</a>.</p>
+<dl class="section return"><dt>Returns</dt><dd>true if FramesetType was received, false otherwise. </dd></dl>
 
 </div>
 </div>
-<a id="a248b76b210f97ea28890a7bfb1248bde" name="a248b76b210f97ea28890a7bfb1248bde"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a248b76b210f97ea28890a7bfb1248bde">&#9670;&#160;</a></span>getParameters()</h2>
+<a id="a928f76364135a95a000691e2f754e9ff" name="a928f76364135a95a000691e2f754e9ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a928f76364135a95a000691e2f754e9ff">&#9670;&#160;</a></span>open()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const std::map&lt; std::string, std::string &gt; VisionaryCamera::getParameters </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Gets camera parameters. </p>
-<dl class="section return"><dt>Returns</dt><dd>camera parameters. </dd></dl>
-
-<p>Reimplemented from <a class="el" href="class_camera.html#ac0d47627924a42ad2d42354144cd6670">Camera</a>.</p>
-
-</div>
-</div>
-<a id="af4ab7f3401b4b522a51af10750e92c0c" name="af4ab7f3401b4b522a51af10750e92c0c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af4ab7f3401b4b522a51af10750e92c0c">&#9670;&#160;</a></span>isOpen()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> VisionaryCamera::isOpen </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Gets connection status. </p>
-<dl class="section return"><dt>Returns</dt><dd>true is open, false otherwise. </dd></dl>
-
-<p>Implements <a class="el" href="class_camera.html#a70c5abd6bd16f5c91fc3768d6d76f49c">Camera</a>.</p>
-
-</div>
-</div>
-<a id="a0117c3ad75bfb00c746aeeba3802ee37" name="a0117c3ad75bfb00c746aeeba3802ee37"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0117c3ad75bfb00c746aeeba3802ee37">&#9670;&#160;</a></span>open()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="struct_open_result.html">OpenResult</a> VisionaryCamera::open </td>
@@ -439,82 +298,18 @@ Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Opens data and control streams to the camera. </p>
-<p>Opens data and control streams to the camera with the specified ip address. If the ip address is empty (""), an attempt is made to scan the network and find the first available camera. </p><dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_open_result.html">OpenResult</a>. </dd></dl>
-
-<p>Implements <a class="el" href="class_camera.html#a036fbd17384082fef82fbd9a3c5232f7">Camera</a>.</p>
+<p>Opens data and control streams to the camera with the specified ip address. </p><dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_open_result.html">OpenResult</a>. </dd></dl>
 
 </div>
 </div>
-<a id="aad6991dbcf7c18c6edffb983dd6b17ec" name="aad6991dbcf7c18c6edffb983dd6b17ec"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aad6991dbcf7c18c6edffb983dd6b17ec">&#9670;&#160;</a></span>setDataPort()</h2>
+<a id="adaab84e12a1ca73fe3b2c20a887c3e6c" name="adaab84e12a1ca73fe3b2c20a887c3e6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adaab84e12a1ca73fe3b2c20a887c3e6c">&#9670;&#160;</a></span>startCapture()</h2>
 
 <div class="memitem">
 <div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void VisionaryCamera::setDataPort </td>
-          <td>(</td>
-          <td class="paramtype">short&#160;</td>
-          <td class="paramname"><em>dataPort</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Blob control port setter. </p>
-<dl class="section note"><dt>Note</dt><dd>Setting the port only affects subsequent calls <a class="el" href="class_visionary_camera.html#a0117c3ad75bfb00c746aeeba3802ee37" title="Opens data and control streams to the camera.">open()</a>. Setting the port will not affect the current connection. </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">dataPort</td><td>Data port. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a91c42e96a17e393d77f97d6920ea57d9" name="a91c42e96a17e393d77f97d6920ea57d9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a91c42e96a17e393d77f97d6920ea57d9">&#9670;&#160;</a></span>setIp()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void VisionaryCamera::setIp </td>
-          <td>(</td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>ipAddress</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>IP address setter. </p>
-<dl class="section note"><dt>Note</dt><dd>Setting the IP address only affects subsequent calls <a class="el" href="class_visionary_camera.html#a0117c3ad75bfb00c746aeeba3802ee37" title="Opens data and control streams to the camera.">open()</a>. Setting the IP address will not affect the current connection. </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ipAddress</td><td>IP address in "x.x.x.x" format. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a830a20b540edee0a375a709fb654bb87" name="a830a20b540edee0a375a709fb654bb87"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a830a20b540edee0a375a709fb654bb87">&#9670;&#160;</a></span>startCapture()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> VisionaryCamera::startCapture </td>
@@ -523,28 +318,18 @@ Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Starts continuous mode acquisition. </p>
 <dl class="section return"><dt>Returns</dt><dd>true if capture started, false otherwise. </dd></dl>
 
-<p>Implements <a class="el" href="class_camera.html#acdb890f53f359f4a1c3c72a8772228f0">Camera</a>.</p>
-
 </div>
 </div>
-<a id="a2bc1fd6055fc9fa1fae727fc790b0820" name="a2bc1fd6055fc9fa1fae727fc790b0820"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2bc1fd6055fc9fa1fae727fc790b0820">&#9670;&#160;</a></span>stopCapture()</h2>
+<a id="a4a73ddb087b2a8c16152d66836bba210" name="a4a73ddb087b2a8c16152d66836bba210"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a73ddb087b2a8c16152d66836bba210">&#9670;&#160;</a></span>stopCapture()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> VisionaryCamera::stopCapture </td>
@@ -553,23 +338,16 @@ Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Stops acquisition. </p>
 <dl class="section return"><dt>Returns</dt><dd>true if capture stopped, false otherwise. </dd></dl>
 
-<p>Implements <a class="el" href="class_camera.html#a0701c1d212f7c236e13f8980d2b2e566">Camera</a>.</p>
-
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a4b22f8ea7136233f9493ed00d303276f" name="a4b22f8ea7136233f9493ed00d303276f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4b22f8ea7136233f9493ed00d303276f">&#9670;&#160;</a></span>capturing</h2>
+<a id="a5cb91a0039dec5507ba170ad45b90d1f" name="a5cb91a0039dec5507ba170ad45b90d1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5cb91a0039dec5507ba170ad45b90d1f">&#9670;&#160;</a></span>dataPort</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -578,7 +356,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> VisionaryCamera::capturing = <a class="el" href="snap7_8h.html#a65e9886d74aaee76545e83dd09011727">false</a></td>
+          <td class="memname">const short VisionaryCamera::dataPort</td>
         </tr>
       </table>
   </td>
@@ -590,8 +368,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a1b34378b6aa568bc2db14695cabad9f8" name="a1b34378b6aa568bc2db14695cabad9f8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1b34378b6aa568bc2db14695cabad9f8">&#9670;&#160;</a></span>connected</h2>
+<a id="a65f51df11643afce7c19676268bef79a" name="a65f51df11643afce7c19676268bef79a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65f51df11643afce7c19676268bef79a">&#9670;&#160;</a></span>frameGrabber</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -600,7 +378,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> VisionaryCamera::connected = <a class="el" href="snap7_8h.html#a65e9886d74aaee76545e83dd09011727">false</a></td>
+          <td class="memname"><a class="el" href="classvisionary_1_1_frame_grabber.html">visionary::FrameGrabber</a>&lt;<a class="el" href="classvisionary_1_1_visionary_t_mini_data.html">visionary::VisionaryTMiniData</a>&gt; VisionaryCamera::frameGrabber</td>
         </tr>
       </table>
   </td>
@@ -612,8 +390,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="adfa4a1f0527921ba5dbb9dfa656eb6ac" name="adfa4a1f0527921ba5dbb9dfa656eb6ac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adfa4a1f0527921ba5dbb9dfa656eb6ac">&#9670;&#160;</a></span>dataPort</h2>
+<a id="ad1bbe8b033886a927d8179b3f46bb45a" name="ad1bbe8b033886a927d8179b3f46bb45a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1bbe8b033886a927d8179b3f46bb45a">&#9670;&#160;</a></span>grabberTimeout</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -622,7 +400,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">short VisionaryCamera::dataPort</td>
+          <td class="memname">const unsigned int VisionaryCamera::grabberTimeout = 5000</td>
         </tr>
       </table>
   </td>
@@ -634,8 +412,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="aa3cd1611be3c6f74f88ea729000913a4" name="aa3cd1611be3c6f74f88ea729000913a4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa3cd1611be3c6f74f88ea729000913a4">&#9670;&#160;</a></span>ipAddress</h2>
+<a id="aeb32335872b44cbc3d7224d9b6ef4248" name="aeb32335872b44cbc3d7224d9b6ef4248"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb32335872b44cbc3d7224d9b6ef4248">&#9670;&#160;</a></span>ipAddress</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -644,7 +422,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::string VisionaryCamera::ipAddress</td>
+          <td class="memname">const std::string VisionaryCamera::ipAddress</td>
         </tr>
       </table>
   </td>
@@ -678,28 +456,6 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a561b0b19600acd135577cfcce3d15937" name="a561b0b19600acd135577cfcce3d15937"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a561b0b19600acd135577cfcce3d15937">&#9670;&#160;</a></span>parameters</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::map&lt;std::string, std::string&gt; VisionaryCamera::parameters</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a45cde19a45dcae5cf49cb72d7e1f9554" name="a45cde19a45dcae5cf49cb72d7e1f9554"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a45cde19a45dcae5cf49cb72d7e1f9554">&#9670;&#160;</a></span>pDataHandler</h2>
 
@@ -711,28 +467,6 @@ Private Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">std::shared_ptr&lt;<a class="el" href="classvisionary_1_1_visionary_t_mini_data.html">visionary::VisionaryTMiniData</a>&gt; VisionaryCamera::pDataHandler</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aa9614c64144234b5726a49e6b969dace" name="aa9614c64144234b5726a49e6b969dace"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa9614c64144234b5726a49e6b969dace">&#9670;&#160;</a></span>pDataStream</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::shared_ptr&lt;<a class="el" href="classvisionary_1_1_visionary_data_stream.html">visionary::VisionaryDataStream</a>&gt; VisionaryCamera::pDataStream</td>
         </tr>
       </table>
   </td>
@@ -767,8 +501,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>cameraimpl/<a class="el" href="_visionary_camera_8h_source.html">VisionaryCamera.h</a></li>
-<li>cameraimpl/<a class="el" href="_visionary_camera_8cpp.html">VisionaryCamera.cpp</a></li>
+<li><a class="el" href="_visionary_camera_8h_source.html">VisionaryCamera.h</a></li>
+<li><a class="el" href="_visionary_camera_8cpp.html">VisionaryCamera.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

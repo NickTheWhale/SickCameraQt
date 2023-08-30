@@ -1,3 +1,12 @@
+/*****************************************************************//**
+ * @file   main.cpp
+ * @brief  Attaches message handler and creates main window
+ * 
+ * @author Nicholas Loehrke
+ * @date   August 2023
+ *********************************************************************/
+
+
 #include "SickGUI.h"
 #include "App.h"
 #include <qsharedmemory.h>
@@ -13,6 +22,7 @@ void msgHandler(QtMsgType type, const QMessageLogContext& context, const QString
 
 int main(int argc, char* argv[])
 {
+	// this is used to redirect qDebug(), qWarning(), qCritical(), etc. to the logging widget.
 	qInstallMessageHandler(msgHandler);
 
 	App app(argc, argv);

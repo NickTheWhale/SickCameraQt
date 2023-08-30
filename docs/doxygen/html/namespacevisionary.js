@@ -66,7 +66,6 @@ var namespacevisionary =
     [ "CoLaParameterWriter", "classvisionary_1_1_co_la_parameter_writer.html", "classvisionary_1_1_co_la_parameter_writer" ],
     [ "ControlSession", "classvisionary_1_1_control_session.html", "classvisionary_1_1_control_session" ],
     [ "DataSetsActive", "structvisionary_1_1_data_sets_active.html", "structvisionary_1_1_data_sets_active" ],
-    [ "Endpoint", "structvisionary_1_1_endpoint.html", "structvisionary_1_1_endpoint" ],
     [ "FrameGrabber", "classvisionary_1_1_frame_grabber.html", "classvisionary_1_1_frame_grabber" ],
     [ "FrameGrabberBase", "classvisionary_1_1_frame_grabber_base.html", "classvisionary_1_1_frame_grabber_base" ],
     [ "IAuthentication", "classvisionary_1_1_i_authentication.html", "classvisionary_1_1_i_authentication" ],
@@ -80,7 +79,6 @@ var namespacevisionary =
     [ "TcpSocket", "classvisionary_1_1_tcp_socket.html", "classvisionary_1_1_tcp_socket" ],
     [ "UdpSocket", "classvisionary_1_1_udp_socket.html", "classvisionary_1_1_udp_socket" ],
     [ "VisionaryAutoIPScan", "classvisionary_1_1_visionary_auto_i_p_scan.html", "classvisionary_1_1_visionary_auto_i_p_scan" ],
-    [ "VisionaryAutoIPScanCustom", "classvisionary_1_1_visionary_auto_i_p_scan_custom.html", "classvisionary_1_1_visionary_auto_i_p_scan_custom" ],
     [ "VisionaryControl", "classvisionary_1_1_visionary_control.html", "classvisionary_1_1_visionary_control" ],
     [ "VisionaryData", "classvisionary_1_1_visionary_data.html", "classvisionary_1_1_visionary_data" ],
     [ "VisionaryDataStream", "classvisionary_1_1_visionary_data_stream.html", "classvisionary_1_1_visionary_data_stream" ],
@@ -93,14 +91,6 @@ var namespacevisionary =
       [ "INVALID_AS_NAN", "namespacevisionary.html#a9361aa279d6b7abd9b7e9107cb1711d1ab105957661bfa9b3451156a56a1e08c2", null ],
       [ "INVALID_AS_ZERO", "namespacevisionary.html#a9361aa279d6b7abd9b7e9107cb1711d1abd8f02c715d3a2e9449cfd31a01d095a", null ],
       [ "INVALID_SKIP", "namespacevisionary.html#a9361aa279d6b7abd9b7e9107cb1711d1a29882b575af80fc294e4aec01172680f", null ]
-    ] ],
-    [ "Protocol", "namespacevisionary.html#a7ef1d3a98ca68cb810ab2c7312c9e363", [
-      [ "COLA_B", "namespacevisionary.html#a7ef1d3a98ca68cb810ab2c7312c9e363a06992eb88e950c9bfde00d29344512f1", null ],
-      [ "COLA_2_0", "namespacevisionary.html#a7ef1d3a98ca68cb810ab2c7312c9e363a8c5842f238f78905f5934250b95d2060", null ],
-      [ "COLA_2_1", "namespacevisionary.html#a7ef1d3a98ca68cb810ab2c7312c9e363a5115474bca61cbf1039891678ee09e8c", null ],
-      [ "COLA_A", "namespacevisionary.html#a7ef1d3a98ca68cb810ab2c7312c9e363a3f980bc1b713e1b7aedbdb804ce9c149", null ],
-      [ "HTTP", "namespacevisionary.html#a7ef1d3a98ca68cb810ab2c7312c9e363a293c9ea246ff9985dc6f62a650f78986", null ],
-      [ "HTTPS", "namespacevisionary.html#a7ef1d3a98ca68cb810ab2c7312c9e363a0e8433f9a404f1f3ba601c14b026d321", null ]
     ] ],
     [ "ProtocolType", "namespacevisionary.html#a557238be3b0c43e9f28b6dc68ecd86c0", [
       [ "UNKNOWN", "namespacevisionary.html#a557238be3b0c43e9f28b6dc68ecd86c0ac65541ca6ae3fa7ef69edc1804a7de12", null ],
@@ -132,7 +122,5 @@ var namespacevisionary =
     [ "readUnalignLittleEndian", "namespacevisionary.html#a451e7357de40d74240234ad0c53d6c11", null ],
     [ "bad_point", "namespacevisionary.html#aa8b6cea77ed543f87f8a489e67b3b72f", null ],
     [ "DEFAULT_BROADCAST_ADDR", "namespacevisionary.html#aad5749cc912ebc1b24c6e3d3c5b68eb5", null ],
-    [ "DEFAULT_BROADCAST_ADDR", "namespacevisionary.html#aad5749cc912ebc1b24c6e3d3c5b68eb5", null ],
-    [ "DEFAULT_PORT", "namespacevisionary.html#ab941e1054d2148dfa000b3281734387c", null ],
-    [ "DEFAULT_PORT", "namespacevisionary.html#a2a53cf18c11e6f36c34e8363ec7d2550", null ]
+    [ "DEFAULT_PORT", "namespacevisionary.html#ab941e1054d2148dfa000b3281734387c", null ]
 ];

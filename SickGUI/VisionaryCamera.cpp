@@ -1,18 +1,17 @@
 #include "VisionaryCamera.h"
-#include "../VisionaryAutoIPScanCustom.h"
-#include <Frameset.h>
 #include <CoLaParameterWriter.h>
 #include <CoLaCommand.h>
 #include <CoLaCommandType.h>
+#include <Frameset.h>
+
 #include <qdebug.h>
-#include <vector>
 #include <qtimer.h>
+
+#include <vector>
 
 using namespace visionary;
 
-
-VisionaryCamera::VisionaryCamera(std::string ipAddress, short dataPort, QObject* parent) :
-	QObject(parent),
+VisionaryCamera::VisionaryCamera(std::string ipAddress, short dataPort) :
 	ipAddress(ipAddress),
 	dataPort(dataPort),
 	frameGrabber(ipAddress, htons(dataPort), grabberTimeout)
@@ -55,14 +54,10 @@ bool VisionaryCamera::close()
 	if (pVisionaryControl)
 	{
 		pVisionaryControl->stopAcquisition();
+		// logout sometimes segfaults. Doesn't seem necessary to do anyway
 		//pVisionaryControl->logout();
 		pVisionaryControl->close();
 	}
-	return true;
-}
-
-bool VisionaryCamera::isOpen()
-{
 	return true;
 }
 
@@ -86,7 +81,6 @@ bool VisionaryCamera::getNextFrameset(frameset::Frameset& fs)
 	const uint32_t width = pDataHandler->getWidth();
 	const uint32_t number = pDataHandler->getFrameNum();
 	const uint64_t time = pDataHandler->getTimestampMS();
-
 
 	const frameset::Frame depthFrame(pDataHandler->getDistanceMap(), height, width, number, time);
 	const frameset::Frame intensityFrame(pDataHandler->getIntensityMap(), height, width, number, time);

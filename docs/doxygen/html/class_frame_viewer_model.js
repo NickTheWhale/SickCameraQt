@@ -1,0 +1,25 @@
+var class_frame_viewer_model =
+[
+    [ "FrameViewerModel", "class_frame_viewer_model.html#a75f64a7ecfca93a45124730ea37d51a3", null ],
+    [ "~FrameViewerModel", "class_frame_viewer_model.html#a00a155527bacafb2aa755ef483f584a3", null ],
+    [ "caption", "class_frame_viewer_model.html#aa1f3889539e57a3bbb4698417a89b2a2", null ],
+    [ "createWidgets", "class_frame_viewer_model.html#a6adc994fe0fb8341069d20a27ef32470", null ],
+    [ "dataType", "class_frame_viewer_model.html#a279b53bbbfe0a763c021f81b7f381951", null ],
+    [ "embeddedWidget", "class_frame_viewer_model.html#af52cfc7ddaf58a5217815cec6039b380", null ],
+    [ "load", "class_frame_viewer_model.html#a3e50547b6313c726cbc13c519391d146", null ],
+    [ "modelName", "class_frame_viewer_model.html#adc331712165fa482c24046cab08329b5", null ],
+    [ "name", "class_frame_viewer_model.html#a1824c5e4da6bdae1c2414ed8f5ac2ead", null ],
+    [ "nPorts", "class_frame_viewer_model.html#a329eb61b3888416bd8bf6ede51cc0fb8", null ],
+    [ "outData", "class_frame_viewer_model.html#a549c428849b4091b036b147926bdd45f", null ],
+    [ "portCaptionVisible", "class_frame_viewer_model.html#ad818b24b93cb44fd68da1f81a11dd845", null ],
+    [ "resizable", "class_frame_viewer_model.html#a5905450ae8360a4fabb77e1f4c6064a0", null ],
+    [ "save", "class_frame_viewer_model.html#ab2d88df808c4482085c5195645d88b82", null ],
+    [ "setInData", "class_frame_viewer_model.html#a192221bc90bd6a55c6a45829a2841237", null ],
+    [ "_colorBox", "class_frame_viewer_model.html#acd11df130780d0eae66287b91fd9b276", null ],
+    [ "_currentNodeData", "class_frame_viewer_model.html#a74e3a6eb7b9a62268e61c2116ac91f38", null ],
+    [ "_frame", "class_frame_viewer_model.html#a0d799965874fa7367d4e96121d611b00", null ],
+    [ "_image", "class_frame_viewer_model.html#a91a9384a03efedfac764f27a8639b283", null ],
+    [ "_widget", "class_frame_viewer_model.html#a3ff2d75cf1468a5db952fd735ea5799c", null ],
+    [ "colorIndex", "class_frame_viewer_model.html#ad25cf9050fb780624bc6d32dc4690c2b", null ],
+    [ "widgetSize", "class_frame_viewer_model.html#a8707151eadaa0bb01926f139c322b651", null ]
+];

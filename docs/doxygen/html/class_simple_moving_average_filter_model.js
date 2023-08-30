@@ -1,0 +1,26 @@
+var class_simple_moving_average_filter_model =
+[
+    [ "SimpleMovingAverageFilterModel", "class_simple_moving_average_filter_model.html#a67cd4735c2122c7a54c8375cd2460995", null ],
+    [ "~SimpleMovingAverageFilterModel", "class_simple_moving_average_filter_model.html#ab3c7437f1395c690284abbe4e9481bed", null ],
+    [ "applyFilter", "class_simple_moving_average_filter_model.html#ae73d229ee0cca84dd5b65fda69a5e2dd", null ],
+    [ "caption", "class_simple_moving_average_filter_model.html#a2c50cc21b38182bdfd3ae471304041e9", null ],
+    [ "createWidgets", "class_simple_moving_average_filter_model.html#a0d97552d1d59bd976d7bea9ae4079af0", null ],
+    [ "dataType", "class_simple_moving_average_filter_model.html#aa5c7238af47547032deaa57bdedba106", null ],
+    [ "embeddedWidget", "class_simple_moving_average_filter_model.html#a1dc1fa39d1539bdef1bdd78aa25bf7d5", null ],
+    [ "load", "class_simple_moving_average_filter_model.html#a55f957d04f28a3fffb55d414d4473b9a", null ],
+    [ "modelName", "class_simple_moving_average_filter_model.html#ab9144e6582be7044a08808ec48bd6498", null ],
+    [ "name", "class_simple_moving_average_filter_model.html#a1a1828565a773ed6dae5c5399d53ff63", null ],
+    [ "nPorts", "class_simple_moving_average_filter_model.html#a77f3cadb86541e7f3fc130a060874b7b", null ],
+    [ "outData", "class_simple_moving_average_filter_model.html#a47c3581709694f7c2e98082f56fdf17c", null ],
+    [ "portCaptionVisible", "class_simple_moving_average_filter_model.html#a4d1dc08d373e4ffb7d208d45804c0fab", null ],
+    [ "resizable", "class_simple_moving_average_filter_model.html#a09317816d6275575534ea9f3ef457a90", null ],
+    [ "save", "class_simple_moving_average_filter_model.html#a5960731ff5d2b3c3149daa817e496a28", null ],
+    [ "setInData", "class_simple_moving_average_filter_model.html#a57acaae81f7230a212e28c9202e83259", null ],
+    [ "syncFilterParameters", "class_simple_moving_average_filter_model.html#a28baf24599800eb085c2177c666c8aca", null ],
+    [ "_currentNodeData", "class_simple_moving_average_filter_model.html#afc1b0572167c26745056aefa160e0d31", null ],
+    [ "_filter", "class_simple_moving_average_filter_model.html#a493cdf665138d2f96fcf3b09c68abbca", null ],
+    [ "_originalNodeData", "class_simple_moving_average_filter_model.html#aafdbe92828d4dd16396b89b149fc597e", null ],
+    [ "_widget", "class_simple_moving_average_filter_model.html#a33d81e317ccf6aa66cbde732cead5dea", null ],
+    [ "bufferSize", "class_simple_moving_average_filter_model.html#abba0af9489a51237c33407b421613bb6", null ],
+    [ "sb_bufferSize", "class_simple_moving_average_filter_model.html#aca3203dcb83353877fbad2a94fdade03", null ]
+];

@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   PlcStartModel.h
+ * @brief  Special PLC start flag used to indicate start of filter flow.
+ * 
+ * @author Nicholas Loehrke
+ * @date   August 2023
+ *********************************************************************/
+
 #pragma once
 #include <NodeDelegateModel.hpp>
 

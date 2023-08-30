@@ -1,7 +1,8 @@
 #include "CaptureThread.h"
 
-#include <qelapsedtimer.h>
 #include <ThreadInterface.h>
+
+#include <qelapsedtimer.h>
 #include <qdebug.h>
 
 bool CaptureThread::startCapture(VisionaryCamera* camera)

@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   ThreadInterface.h
+ * @brief  Singleton that maintains mutex protected frameset::Frameset circular buffers for interthread communication.
+ * 
+ * @author Nicholas Loehrke
+ * @date   August 2023
+ *********************************************************************/
+
 #pragma once
 #include <Frameset.h>
 #include <boost/circular_buffer.hpp>
@@ -22,10 +30,10 @@ private:
 	~ThreadInterface();
 
 	const int bufferSize = 2;
-	boost::circular_buffer<frameset::Frameset> plcBuffer;
+	boost::circular_buffer<frameset::Frameset> filteredBuffer;
 	boost::circular_buffer<frameset::Frameset> rawBuffer;
 
-	QMutex plcMutex;
+	QMutex filteredMutex;
 	QMutex rawMutex;
 };
 
