@@ -24,7 +24,6 @@
 
 #include <snap7.h>
 
-#include <VisionaryAutoIPScanCustom.h>
 #include <global.h>
 
 SickGUI::SickGUI(CustomMessageHandler* messageHandler, QWidget* parent) :
