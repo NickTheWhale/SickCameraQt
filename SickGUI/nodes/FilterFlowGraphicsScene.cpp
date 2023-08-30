@@ -147,7 +147,7 @@ namespace QtNodes {
 	void FilterFlowGraphicsScene::save() const
 	{
 		QString fileName = QFileDialog::getSaveFileName(nullptr,
-			tr("Open Flow Scene"),
+			tr("Save Flow Scene"),
 			QDir::homePath(),
 			tr("Flow Scene Files (*.flow)"));
 
