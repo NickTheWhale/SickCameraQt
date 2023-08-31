@@ -10,12 +10,13 @@ var searchData=
   ['filteredmutex_7',['filteredMutex',['../class_thread_interface.html#ac69870e5fd0a78f284199244357f3541',1,'ThreadInterface']]],
   ['filtermanager_8',['filterManager',['../class_capture_thread.html#a24efc1e89659de38fd29eb71643db038',1,'CaptureThread::filterManager'],['../class_filter_editor_widget.html#aa4eee80b5551d2d264f06e3f6dd4aca3',1,'FilterEditorWidget::filterManager']]],
   ['filtermutex_9',['filterMutex',['../class_filter_manager.html#ae8f6434580c8557a1c7ad501b3e6edc9',1,'FilterManager::filterMutex'],['../class_capture_thread.html#abad5d9432c48663fd06787d781ab2c1b',1,'CaptureThread::filterMutex']]],
-  ['finalized_10',['finalized',['../classvisionary_1_1_m_d5.html#aa1c6f1808e12cc73f98c7baa0ff0ecd1',1,'visionary::MD5']]],
-  ['finegridcolor_11',['FineGridColor',['../class_qt_nodes_1_1_graphics_view_style.html#a6202f2ef5178fa6b58ccf52019168afd',1,'QtNodes::GraphicsViewStyle']]],
-  ['fontcolor_12',['FontColor',['../class_qt_nodes_1_1_node_style.html#a5d6d090296ad98ed0bf01257a31f7e95',1,'QtNodes::NodeStyle']]],
-  ['fontcolorfaded_13',['FontColorFaded',['../class_qt_nodes_1_1_node_style.html#a921a9f455cf1dcd91bc1ce824ccec342',1,'QtNodes::NodeStyle']]],
-  ['framegrabber_14',['frameGrabber',['../class_visionary_camera.html#a65f51df11643afce7c19676268bef79a',1,'VisionaryCamera']]],
-  ['framegrabberbase_15',['frameGrabberBase',['../classvisionary_1_1_frame_grabber.html#ad7343eee3dc754206f7d4a97b0997799',1,'visionary::FrameGrabber']]],
-  ['fx_16',['fx',['../structvisionary_1_1_camera_parameters.html#adc28f3af0f90c44b3786cf812b0168a2',1,'visionary::CameraParameters']]],
-  ['fy_17',['fy',['../structvisionary_1_1_camera_parameters.html#a71ed00b523cb51ca3c4b8b5e079b6653',1,'visionary::CameraParameters']]]
+  ['filtertextedit_10',['filterTextEdit',['../class_filter_editor_widget.html#ab42f83a3da30e90c57cb13f6b6d0a917',1,'FilterEditorWidget']]],
+  ['finalized_11',['finalized',['../classvisionary_1_1_m_d5.html#aa1c6f1808e12cc73f98c7baa0ff0ecd1',1,'visionary::MD5']]],
+  ['finegridcolor_12',['FineGridColor',['../class_qt_nodes_1_1_graphics_view_style.html#a6202f2ef5178fa6b58ccf52019168afd',1,'QtNodes::GraphicsViewStyle']]],
+  ['fontcolor_13',['FontColor',['../class_qt_nodes_1_1_node_style.html#a5d6d090296ad98ed0bf01257a31f7e95',1,'QtNodes::NodeStyle']]],
+  ['fontcolorfaded_14',['FontColorFaded',['../class_qt_nodes_1_1_node_style.html#a921a9f455cf1dcd91bc1ce824ccec342',1,'QtNodes::NodeStyle']]],
+  ['framegrabber_15',['frameGrabber',['../class_visionary_camera.html#a65f51df11643afce7c19676268bef79a',1,'VisionaryCamera']]],
+  ['framegrabberbase_16',['frameGrabberBase',['../classvisionary_1_1_frame_grabber.html#ad7343eee3dc754206f7d4a97b0997799',1,'visionary::FrameGrabber']]],
+  ['fx_17',['fx',['../structvisionary_1_1_camera_parameters.html#adc28f3af0f90c44b3786cf812b0168a2',1,'visionary::CameraParameters']]],
+  ['fy_18',['fy',['../structvisionary_1_1_camera_parameters.html#a71ed00b523cb51ca3c4b8b5e079b6653',1,'visionary::CameraParameters']]]
 ];

@@ -18,7 +18,6 @@
 #include <FilterEditorWidget.h>
 
 #include <Frameset.h>
-#include "Stream.h"
 #include "TinyColormap.hpp"
 #include <ThreadInterface.h>
 #include "CustomMessageHandler.h"

@@ -73,9 +73,11 @@ The configuration file is loaded at application startup and is used to set the P
 If you just want to download the latest version without building from source, you can do so [here](https://github.com/NickTheWhale/SickCameraQt/releases).
 
 
-## Libraries
-* [OpenCV 4.8.0](https://opencv.org/)
-* [nodeeditor](https://github.com/paceholder/nodeeditor) (commit #5465ddc)
+## Libraries Used
 * [Boost 1.83.0](https://www.boost.org/)
-* [Sick C++ API](https://www.sick.com/us/en/machine-vision/3d-machine-vision/visionary-t-mini/c/g555625)
+* [nodeeditor](https://github.com/paceholder/nodeeditor)
+* [OpenCV 4.8.0](https://opencv.org/)
 * [Qt 6.5.1](https://www.qt.io/)
+* [Sick C++ API](https://www.sick.com/us/en/machine-vision/3d-machine-vision/visionary-t-mini/c/g555625)
+* [Snap7](https://snap7.sourceforge.net/)
+* [tinycolormap](https://github.com/yuki-koyama/tinycolormap)

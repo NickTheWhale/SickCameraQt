@@ -43,7 +43,7 @@ namespace QtNodes {
        
         bool nodesConnected(const NodeId startNodeId, const NodeId endNodeId) const;
 
-        const std::vector<NodeId> nonBranchingConnections(NodeId startNodeId, NodeId endNodeId) const;
+        const std::vector<NodeId> nonBranchingFilterableConnections(NodeId startNodeId, NodeId endNodeId) const;
 
         const std::unordered_set<NodeId> branchingConnections(const NodeId startNodeId, const NodeId endNodeId) const;
 

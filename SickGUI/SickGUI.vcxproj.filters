@@ -330,9 +330,6 @@
     <ClInclude Include="snap7\snap7.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Stream.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="TinyColormap.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>

@@ -32,10 +32,10 @@ FilterEditorWidget::FilterEditorWidget(QWidget* parent) :
 	scene(new QtNodes::FilterFlowGraphicsScene(graph, this)),
 	applyButton(new QPushButton("Apply Flow To PLC Stream", this)),
 	textEditButton(new QPushButton(this)),
-	textEdit(new QTextEdit(this))
+	filterTextEdit(new QTextEdit(this))
 {
-	textEdit->setReadOnly(true);
-	textEdit->setUndoRedoEnabled(false);
+	filterTextEdit->setReadOnly(true);
+	filterTextEdit->setUndoRedoEnabled(false);
 
 	validStyle.loadJsonFile(":/SickGUI/ValidStyle.json");
 	invalidStyle.loadJsonFile(":/SickGUI/InvalidStyle.json");
@@ -69,7 +69,7 @@ FilterEditorWidget::FilterEditorWidget(QWidget* parent) :
 		});
 
 	this->setMinimumSize(500, 300);
-	textEdit->setStyleSheet("QTextEdit { background-color: rgba(255, 255, 255, 200) }");
+	filterTextEdit->setStyleSheet("QTextEdit { background-color: rgba(255, 255, 255, 200) }");
 	this->setScene(scene);
 	setAllGeometry(size());
 	adjustSize();
@@ -97,13 +97,13 @@ void FilterEditorWidget::setButtonGeometry(const QSize size)
 void FilterEditorWidget::setTextEditGeometry(const QSize size)
 {
 	const QPoint pad(5, 5);
-	textEdit->setVisible(textEditVisible);
-	if (textEdit->isVisible())
+	filterTextEdit->setVisible(textEditVisible);
+	if (filterTextEdit->isVisible())
 	{
-		textEdit->move(pad);
+		filterTextEdit->move(pad);
 		const QSize textEditSize = QSize(400, size.height() - pad.y() - pad.y());
-		textEdit->resize(textEditSize);
-		textEditButton->move(QPoint(textEdit->width() + pad.x() + 3, pad.y() - 1));
+		filterTextEdit->resize(textEditSize);
+		textEditButton->move(QPoint(filterTextEdit->width() + pad.x() + 3, pad.y() - 1));
 		textEditButton->setIcon(QIcon(":/SickGUI/icons/chevron_left_FILL0_wght400_GRAD0_opsz40.png"));
 	}
 	else
@@ -146,37 +146,13 @@ const std::pair<std::vector<QtNodes::NodeId>, std::vector<QtNodes::NodeId>> Filt
 FilterEditorWidget::FlowTuple FilterEditorWidget::computeFilterFlow()
 {
 	QString message;
-	const auto plcIds = getPlcIds();
+	const PlcIds plcIds = getPlcIds();
 	const size_t startIdCount = plcIds.first.size();
 	const size_t endIdCount = plcIds.second.size();
+	
 	if (startIdCount != 1 || endIdCount != 1)
 	{
-		message = "Invalid PLC flag count, you must have 1 of each.";
-
-		InvalidateIdSet idsToInvalidate;
-		for (const auto& plcId : plcIds.first)
-		{
-			idsToInvalidate.insert(plcId);
-			const auto plcBranchIds = graph.branchingConnections(plcId);
-			for (const auto& id : plcBranchIds)
-				idsToInvalidate.insert(id);
-		}
-
-		for (const auto& plcId : plcIds.second)
-		{
-			idsToInvalidate.insert(plcId);
-			const auto plcBranchIds = graph.branchingConnections(plcId);
-			for (const auto& id : plcBranchIds)
-				idsToInvalidate.insert(id);
-		}
-
-		DefaultIdSet idsToDefault;
-		const auto allIds = graph.allNodeIds();
-		for (const auto& id : allIds)
-			if (idsToInvalidate.count(id) == 0)
-				idsToDefault.insert(id);
-
-		return std::make_tuple(false, QJsonArray(), ValidateIdSet(), idsToDefault, idsToInvalidate, message);
+		return handleInvalidFlagCount(plcIds);
 	}
 
 	const QtNodes::NodeId plcStartNode = plcIds.first.front();
@@ -184,98 +160,148 @@ FilterEditorWidget::FlowTuple FilterEditorWidget::computeFilterFlow()
 
 	if (!graph.nodesConnected(plcStartNode, plcEndNode))
 	{
-		message = "PLC flags not connected.";
-
-		InvalidateIdSet idsToInvalidate;
-		for (const auto& plcId : plcIds.first)
-		{
-			idsToInvalidate.insert(plcId);
-			const auto plcBranchIds = graph.branchingConnections(plcId);
-			for (const auto& id : plcBranchIds)
-				idsToInvalidate.insert(id);
-		}
-
-		for (const auto& plcId : plcIds.second)
-		{
-			idsToInvalidate.insert(plcId);
-			const auto plcBranchIds = graph.branchingConnections(plcId);
-			for (const auto& id : plcBranchIds)
-				idsToInvalidate.insert(id);
-		}
-
-		DefaultIdSet idsToDefault;
-		const auto allIds = graph.allNodeIds();
-		for (const auto& id : allIds)
-			if (idsToInvalidate.count(id) == 0)
-				idsToDefault.insert(id);
-
-		return std::make_tuple(false, QJsonArray(), ValidateIdSet(), idsToDefault, idsToInvalidate, message);
+		return handleDisconnectedFlags(plcIds);
 	}
 
 	if (graph.nodesUniquelyConnected(plcStartNode, plcEndNode))
 	{
-		message = "PLC flags are uniquely connected.";
-
-		ValidateIdSet idsToValidate;
-		for (const auto& id : plcIds.first)
-			idsToValidate.insert(id);
-		for (const auto& id : plcIds.second)
-			idsToValidate.insert(id);
-
-		DefaultIdSet idsToDefault;
-		const auto allIds = graph.allNodeIds();
-		for (const auto& id : allIds)
-			if (idsToValidate.count(id) == 0)
-				idsToDefault.insert(id);
-
-		return std::make_tuple(true, QJsonArray(), idsToValidate, idsToDefault, InvalidateIdSet(), message);
+		return handleUniquelyConnectedFlags(plcIds);
 	}
 
-	const auto nonBranchingIds = graph.nonBranchingConnections(plcStartNode, plcEndNode);
+	const auto nonBranchingIds = graph.nonBranchingFilterableConnections(plcStartNode, plcEndNode);
 	if (!nonBranchingIds.empty())
 	{
-		message = "PLC flags are connected";
-
-		ValidateIdSet idsToValidate;
-		QJsonArray json;
-		for (const auto& id : nonBranchingIds)
-		{
-			QJsonObject filter = graph.saveNode(id)["internal-data"].toObject()["filter"].toObject();
-			if (!filter.empty())
-				json.append(filter);
-			idsToValidate.insert(id);
-		}
-
-		DefaultIdSet idsToDefault;
-		const auto allIds = graph.allNodeIds();
-		for (const auto& id : allIds)
-			if (idsToValidate.count(id) == 0)
-				idsToDefault.insert(id);
-
-		return std::make_tuple(true, json, idsToValidate, idsToDefault, InvalidateIdSet(), message);
+		return handleConnectedFlags(nonBranchingIds);
 	}
 
-	const auto branchingIds = graph.branchingConnections(plcStartNode, plcEndNode);
+	const NodeIdSet branchingIds = graph.branchingConnections(plcStartNode, plcEndNode);
 	if (!branchingIds.empty())
 	{
-		message = "PLC flags are connected through invalid path.";
-
-		InvalidateIdSet idsToInvalidate = branchingIds;
-		idsToInvalidate.insert(plcEndNode);
-		InvalidateIdSet endBranches = graph.branchingConnections(plcEndNode);
-		for (const auto& id : endBranches)
-			idsToInvalidate.insert(id);
-
-		DefaultIdSet idsToDefault;
-		const auto allIds = graph.allNodeIds();
-		for (const auto& id : allIds)
-			if (idsToInvalidate.count(id) == 0)
-				idsToDefault.insert(id);
-
-		return std::make_tuple(false, QJsonArray(), ValidateIdSet(), DefaultIdSet(), idsToInvalidate, message);
+		return handleInvalidConnectedFlags(plcEndNode, branchingIds);
 	}
 
 	return FlowTuple{ false, QJsonArray(), ValidateIdSet(), DefaultIdSet(), InvalidateIdSet(), QString() };
+}
+
+FilterEditorWidget::FlowTuple FilterEditorWidget::handleInvalidFlagCount(const PlcIds& plcIds)
+{
+	const QString message = "Invalid PLC flag count, you must have 1 of each.";
+
+	InvalidateIdSet idsToInvalidate;
+	for (const auto& plcId : plcIds.first)
+	{
+		idsToInvalidate.insert(plcId);
+		const auto plcBranchIds = graph.branchingConnections(plcId);
+		for (const auto& id : plcBranchIds)
+			idsToInvalidate.insert(id);
+	}
+
+	for (const auto& plcId : plcIds.second)
+	{
+		idsToInvalidate.insert(plcId);
+		const auto plcBranchIds = graph.branchingConnections(plcId);
+		for (const auto& id : plcBranchIds)
+			idsToInvalidate.insert(id);
+	}
+
+	DefaultIdSet idsToDefault;
+	const auto allIds = graph.allNodeIds();
+	for (const auto& id : allIds)
+		if (idsToInvalidate.count(id) == 0)
+			idsToDefault.insert(id);
+
+	return std::make_tuple(false, QJsonArray(), ValidateIdSet(), idsToDefault, idsToInvalidate, message);
+}
+
+FilterEditorWidget::FlowTuple FilterEditorWidget::handleDisconnectedFlags(const PlcIds& plcIds)
+{
+	const QString message = "PLC flags not connected.";
+
+	InvalidateIdSet idsToInvalidate;
+	for (const auto& plcId : plcIds.first)
+	{
+		idsToInvalidate.insert(plcId);
+		const auto plcBranchIds = graph.branchingConnections(plcId);
+		for (const auto& id : plcBranchIds)
+			idsToInvalidate.insert(id);
+	}
+
+	for (const auto& plcId : plcIds.second)
+	{
+		idsToInvalidate.insert(plcId);
+		const auto plcBranchIds = graph.branchingConnections(plcId);
+		for (const auto& id : plcBranchIds)
+			idsToInvalidate.insert(id);
+	}
+
+	DefaultIdSet idsToDefault;
+	const auto allIds = graph.allNodeIds();
+	for (const auto& id : allIds)
+		if (idsToInvalidate.count(id) == 0)
+			idsToDefault.insert(id);
+
+	return std::make_tuple(false, QJsonArray(), ValidateIdSet(), idsToDefault, idsToInvalidate, message);
+}
+
+FilterEditorWidget::FlowTuple FilterEditorWidget::handleUniquelyConnectedFlags(const PlcIds& plcIds)
+{
+	const QString message = "PLC flags are uniquely connected.";
+
+	ValidateIdSet idsToValidate;
+	for (const auto& id : plcIds.first)
+		idsToValidate.insert(id);
+	for (const auto& id : plcIds.second)
+		idsToValidate.insert(id);
+
+	DefaultIdSet idsToDefault;
+	const auto allIds = graph.allNodeIds();
+	for (const auto& id : allIds)
+		if (idsToValidate.count(id) == 0)
+			idsToDefault.insert(id);
+
+	return std::make_tuple(true, QJsonArray(), idsToValidate, idsToDefault, InvalidateIdSet(), message);
+}
+
+FilterEditorWidget::FlowTuple FilterEditorWidget::handleConnectedFlags(const std::vector<QtNodes::NodeId>& nonBranchingIds)
+{
+	const QString message = "PLC flags are connected";
+
+	ValidateIdSet idsToValidate;
+	QJsonArray json;
+	for (const auto& id : nonBranchingIds)
+	{
+		QJsonObject filter = graph.saveNode(id)["internal-data"].toObject()["filter"].toObject();
+		if (!filter.empty())
+			json.append(filter);
+		idsToValidate.insert(id);
+	}
+
+	DefaultIdSet idsToDefault;
+	const auto allIds = graph.allNodeIds();
+	for (const auto& id : allIds)
+		if (idsToValidate.count(id) == 0)
+			idsToDefault.insert(id);
+
+	return std::make_tuple(true, json, idsToValidate, idsToDefault, InvalidateIdSet(), message);
+}
+
+FilterEditorWidget::FlowTuple FilterEditorWidget::handleInvalidConnectedFlags(const QtNodes::NodeId plcEndNode, const NodeIdSet& branchingIds)
+{
+	const QString message = "PLC flags are connected through invalid path.";
+
+	InvalidateIdSet idsToInvalidate = branchingIds;
+	idsToInvalidate.insert(plcEndNode);
+	InvalidateIdSet endBranches = graph.branchingConnections(plcEndNode);
+	for (const auto& id : endBranches)
+		idsToInvalidate.insert(id);
+
+	DefaultIdSet idsToDefault;
+	const auto allIds = graph.allNodeIds();
+	for (const auto& id : allIds)
+		if (idsToInvalidate.count(id) == 0)
+			idsToDefault.insert(id);
+
+	return std::make_tuple(false, QJsonArray(), ValidateIdSet(), DefaultIdSet(), idsToInvalidate, message);
 }
 
 void FilterEditorWidget::applyFilters()
@@ -454,11 +480,11 @@ void FilterEditorWidget::captureFiltersApplied(const QJsonArray& filters)
 		html += jsonArrayToHtml(lastFilters);
 	}
 
-	textEdit->setHtml(html);
+	filterTextEdit->setHtml(html);
 }
 
 void FilterEditorWidget::captureFiltersFailed()
 {
 	lastFilters = QJsonArray();
-	textEdit->setHtml("<b>Failed to apply filters</b>");
+	filterTextEdit->setHtml("<b>Failed to apply filters</b>");
 }

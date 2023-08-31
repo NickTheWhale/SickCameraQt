@@ -17,10 +17,9 @@ var searchData=
   ['stackblurfilter_2eh_14',['StackBlurFilter.h',['../_stack_blur_filter_8h.html',1,'']]],
   ['stackblurfiltermodel_2ecpp_15',['StackBlurFilterModel.cpp',['../_stack_blur_filter_model_8cpp.html',1,'']]],
   ['stackblurfiltermodel_2eh_16',['StackBlurFilterModel.h',['../_stack_blur_filter_model_8h.html',1,'']]],
-  ['stream_2eh_17',['Stream.h',['../_stream_8h.html',1,'']]],
-  ['style_2ehpp_18',['Style.hpp',['../_style_8hpp.html',1,'']]],
-  ['stylecollection_2ecpp_19',['StyleCollection.cpp',['../_style_collection_8cpp.html',1,'']]],
-  ['stylecollection_2ehpp_20',['StyleCollection.hpp',['../_style_collection_8hpp.html',1,'']]],
-  ['subtractfiltermodel_2ecpp_21',['SubtractFilterModel.cpp',['../_subtract_filter_model_8cpp.html',1,'']]],
-  ['subtractfiltermodel_2eh_22',['SubtractFilterModel.h',['../_subtract_filter_model_8h.html',1,'']]]
+  ['style_2ehpp_17',['Style.hpp',['../_style_8hpp.html',1,'']]],
+  ['stylecollection_2ecpp_18',['StyleCollection.cpp',['../_style_collection_8cpp.html',1,'']]],
+  ['stylecollection_2ehpp_19',['StyleCollection.hpp',['../_style_collection_8hpp.html',1,'']]],
+  ['subtractfiltermodel_2ecpp_20',['SubtractFilterModel.cpp',['../_subtract_filter_model_8cpp.html',1,'']]],
+  ['subtractfiltermodel_2eh_21',['SubtractFilterModel.h',['../_subtract_filter_model_8h.html',1,'']]]
 ];

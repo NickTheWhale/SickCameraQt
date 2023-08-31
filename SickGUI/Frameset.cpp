@@ -1105,7 +1105,6 @@ const bool frameset::isValid(const Frame& frame)
 
 void frameset::clip(Frame& frame, uint16_t lower, uint16_t upper)
 {
-	//Q_ASSERT_X(upper > lower, __FUNCTION__, "upper must be greater lower");
 	if (upper < lower)
 	{
 		std::swap(upper, lower);
@@ -1121,17 +1120,13 @@ void frameset::clip(Frame& frame, uint16_t lower, uint16_t upper)
 
 void frameset::clamp(Frame& frame, uint16_t lower, uint16_t upper)
 {
-	//Q_ASSERT_X(upper > lower, __FUNCTION__, "upper must be greater lower");
 	if (upper < lower)
 	{
 		std::swap(upper, lower);
 	}
 	for (uint16_t& val : frame.data)
 	{
-		if (val > upper)
-			val = upper;
-		else if (val < lower)
-			val = lower;
+		val = std::clamp(val, lower, upper);
 	}
 }
 
@@ -1143,19 +1138,24 @@ void frameset::mask(Frame& frame, const QRectF& maskNorm)
 	if (size(frame).isEmpty())
 		return;
 
-	auto test = maskNorm.size();
+	// "unnormalize" mask to frame size
 	const QPoint maskTopLeft = QPoint(maskNorm.topLeft().x() * frame.width, maskNorm.topLeft().y() * frame.height);
 	const QPoint maskBottomRight = QPoint(maskNorm.bottomRight().x() * frame.width, maskNorm.bottomRight().y() * frame.height) - QPoint(1, 1);
 
+	// "normalized" in this context does not mean [0, 1]. Read https://doc.qt.io/qt-6/qrect.html#normalized
 	const QRect mask = QRect(maskTopLeft, maskBottomRight).normalized();
+
+	// if the mask has zero size, dont bother continuing
 	if (mask.size().isEmpty())
 		return;
+
 	const size_t maskedWidth = mask.width();
 	const size_t maskedHeight = mask.height();
 
 	const std::vector<uint16_t> bufferCopy(frame.data);
 	frame.data.clear();
 
+	// iterate through mask coordinates and copy to buffer
 	for (size_t y = maskTopLeft.y(); y < maskTopLeft.y() + maskedHeight; ++y)
 	{
 		for (size_t x = maskTopLeft.x(); x < maskTopLeft.x() + maskedWidth; ++x)
@@ -1166,6 +1166,7 @@ void frameset::mask(Frame& frame, const QRectF& maskNorm)
 		}
 	}
 
+	// update height and width
 	frame.height = maskedHeight;
 	frame.width = maskedWidth;
 
@@ -1180,41 +1181,53 @@ const QImage frameset::toQImage(const Frame& frame, const ImageOptions& options)
 		return image;
 
 	// exposure limits
-	uint16_t min;
-	uint16_t max;
+	uint16_t exposureMin;
+	uint16_t exposureMax;
+
+	// set exposureMin and exposureMax to lowest non zero value and highest value, respectively
 	if (options.autoExposure)
 	{
-		max = std::numeric_limits<uint16_t>::min();
-		min = std::numeric_limits<uint16_t>::max();
+		exposureMax = std::numeric_limits<uint16_t>::min();
+		exposureMin = std::numeric_limits<uint16_t>::max();
 		for (const uint16_t& val : frame.data)
 		{
-			if (val > 0 && val < min)
-				min = val;
-			if (val > max)
-				max = val;
+			if (val > 0 && val < exposureMin)
+				exposureMin = val;
+			if (val > exposureMax)
+				exposureMax = val;
 		}
 	}
+	// or use specified limits
 	else
 	{
-		min = options.exposureLow;
-		max = options.exposureHigh;
+		exposureMin = options.exposureLow;
+		exposureMax = options.exposureHigh;
 	}
-	const double delta = max - min;
+	// just in case
+	if (exposureMin > exposureMax)
+		std::swap(exposureMin, exposureMax);
 
+	const double delta = exposureMax - exposureMin;
+
+	// iterate through frame data, convert pixel value to a color, and assign to image
 	QRgb* imagePtr = reinterpret_cast<QRgb*>(image.bits());
 	for (size_t y = 0; y < frame.height; ++y)
 	{
 		for (size_t x = 0; x < frame.width; ++x)
 		{
-			uint16_t val = frame.data[y * frame.width + x];
+			const uint16_t val = frame.data[y * frame.width + x];
 			double valNorm = 0;
 			if (delta > 0)
 			{
-				valNorm = (val - min) / delta;
+				// normalize raw pixel value 
+				valNorm = (val - exposureMin) / delta;
 				if (options.logarithmic)
 					valNorm = linToLog(valNorm);
 			}
+			
+			// calculate pixel color from normalized value, inverting if required
 			tinycolormap::Color color = options.invert ? tinycolormap::Color(255, 255, 255) - tinycolormap::GetColor(valNorm, options.colormap) : tinycolormap::GetColor(valNorm, options.colormap);
+			// assign image pixel color
 			imagePtr[y * frame.width + x] = qRgba((valNorm > 0) * color.ri(), (valNorm > 0) * color.gi(), (valNorm > 0) * color.bi(), (valNorm > 0) * 255);
 		}
 	}
@@ -1261,6 +1274,8 @@ const frameset::Frame frameset::difference(const Frame& lhs, const Frame& rhs)
 	Q_ASSERT_X(lhs.data.size() == rhs.data.size(), __FUNCTION__, "frames must have same sizes");
 	Q_ASSERT_X(size(lhs) == size(rhs), __FUNCTION__, "frames must have same sizes");
 	Frame diff;
+	
+	// per-pixel absolute difference
 	for (size_t i = 0; i < lhs.data.size(); ++i)
 	{
 		int32_t delta = lhs.data[i] - rhs.data[i];

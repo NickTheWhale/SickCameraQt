@@ -25,7 +25,7 @@ var class_qt_nodes_1_1_filter_flow_graph_model =
     [ "nodesConnected", "class_qt_nodes_1_1_filter_flow_graph_model.html#af047afb52cc037ece338a50a9e2ff227", null ],
     [ "nodesDirectlyConnected", "class_qt_nodes_1_1_filter_flow_graph_model.html#a7fcc63973c650020cd70593fbc7d9a41", null ],
     [ "nodesUniquelyConnected", "class_qt_nodes_1_1_filter_flow_graph_model.html#a6765d5131a6d90f470d11102d8e51b54", null ],
-    [ "nonBranchingConnections", "class_qt_nodes_1_1_filter_flow_graph_model.html#a0a3bdb924f46815cd96115763f1c7cfd", null ],
+    [ "nonBranchingFilterableConnections", "class_qt_nodes_1_1_filter_flow_graph_model.html#a842fcf45e8ee955896e7c6badba7f7f0", null ],
     [ "onOutPortDataUpdated", "class_qt_nodes_1_1_filter_flow_graph_model.html#a9f35ea315a297e5d34beb4162076ec06", null ],
     [ "portData", "class_qt_nodes_1_1_filter_flow_graph_model.html#a4ab9dc5a620d627bd75225d3c95ab81a", null ],
     [ "propagateEmptyDataTo", "class_qt_nodes_1_1_filter_flow_graph_model.html#a8b6a7ec1d3e9b8987264854f9329e724", null ],

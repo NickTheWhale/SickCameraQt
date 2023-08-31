@@ -254,7 +254,7 @@ namespace QtNodes {
 		return false;
 	}
 
-	const std::vector<NodeId> FilterFlowGraphModel::nonBranchingConnections(const NodeId startNodeId, const NodeId endNodeId) const
+	const std::vector<NodeId> FilterFlowGraphModel::nonBranchingFilterableConnections(const NodeId startNodeId, const NodeId endNodeId) const
 	{
 		std::vector<NodeId> chain;
 		if (!nodeExists(startNodeId) || !nodeExists(endNodeId))

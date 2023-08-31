@@ -9,12 +9,13 @@ ImageLabel::ImageLabel(QWidget* parent) : QLabel(parent)
 	this->setMinimumSize(1, 1);
 	setScaledContents(false);
 	this->cursor().setShape(Qt::CrossCursor);
-	// this can be nice for debugging layout issues
+	// this can be nice for debugging layout issues since it makes a think border
 	//this->setFrameStyle(2);
 }
 
 void ImageLabel::setPixmap(const QPixmap& p)
 {
+	// cache the latest pixmap and display the scalled version
 	pix = p;
 	QLabel::setPixmap(scaledPixmap());
 	QLabel::setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
@@ -22,11 +23,13 @@ void ImageLabel::setPixmap(const QPixmap& p)
 
 QPixmap ImageLabel::scaledPixmap() const
 {
+	// scale cached pixmap to the size of the widget
 	return !pix.isNull() ? pix.scaled(this->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation) : QPixmap();
 }
 
 void ImageLabel::resizeEvent(QResizeEvent* e)
 {
+	// resize the pixmap
 	if (!pix.isNull())
 		QLabel::setPixmap(scaledPixmap());
 }
@@ -37,6 +40,7 @@ void ImageLabel::contextMenuEvent(QContextMenuEvent* event)
 		return;
 
 	QMenu menu(this);
+	// add option to save the displayed pixmap to file
 	QAction* saveAction = menu.addAction("Save as Image");
 	QAction* selectedAction = menu.exec(event->globalPos());
 	if (selectedAction == saveAction)
@@ -54,10 +58,12 @@ void ImageLabel::contextMenuEvent(QContextMenuEvent* event)
 
 QSize ImageLabel::minimumSizeHint() const
 {
+	// needed for proper layouting
 	return QSize(1, 1);
 }
 
 QSize ImageLabel::sizeHint() const
 {
+	// give qt an idea of what size to make this
 	return pix.isNull() ? QWidget::sizeHint() : pix.size();
 }

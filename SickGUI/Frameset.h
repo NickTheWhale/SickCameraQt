@@ -25,10 +25,13 @@ namespace frameset
 	struct ImageOptions
 	{
 		tinycolormap::ColormapType colormap;
+		// if autoExposure = false, exposureLow and exposureHigh will be used
 		bool autoExposure;
 		uint16_t exposureLow;
 		uint16_t exposureHigh;
+		// inverts the color
 		bool invert;
+		// treats input as logarithmic data. Useful for intensity map
 		bool logarithmic;
 
 		ImageOptions(
@@ -77,26 +80,87 @@ namespace frameset
 		Frame state;
 	};
 
+	
 	// frame functions
+
+	/**
+	 * @brief Returns frame value at specified coordinate. No bounds checking!
+	 */
 	const uint16_t at(const Frame& frame, const uint32_t x, const uint32_t y);
+
+	/**
+	 * @brief Return frame size.
+	 */
 	const QSize size(const Frame& frame);
+
+	/**
+	 * @brief Equivalent to size(&frame).isEmpty().
+	 */
 	const bool isEmpty(const Frame& frame);
+
+	/**
+	 * @brief Returns true if frame data size equals frame.height * frame.width and frame is not empty.
+	 */
 	const bool isValid(const Frame& frame);
+
+	/**
+	 * @brief Sets all frame values outside of [lower, upper] to zero.
+	 */
 	void clip(Frame& frame, uint16_t lower, uint16_t upper);
+
+	/**
+	 * @brief Per-pixel std::clamp().
+	 */
 	void clamp(Frame& frame, uint16_t lower, uint16_t upper);
+
+	/**
+	 * @brief Any pixels outside of maskNorm rectangle are set to zero.
+	 */
 	void mask(Frame& frame, const QRectF& maskNorm);
+
+	/**
+	 * @brief Converts frame to QImage using given ImageOptions.
+	 */
 	const QImage toQImage(const Frame& frame, const ImageOptions& options);
+
+	/**
+	 * @brief Creates a Frame from given cv::Mat.
+	 */
 	const Frame toFrame(const cv::Mat& mat);
+
+	/**
+	 * @brief Creates a cv::Mat from give Frame.
+	 */
 	const cv::Mat toMat(const Frame& frame);
+
+	/**
+	 * @brief Per-pixel absolute difference. Input frames must have same size.
+	 */
 	const Frame difference(const Frame& lhs, const Frame& rhs);
 
 	// frameset functions
+
+	/**
+	 * @brief Returns true if all frames within frameset have the same dimensions.
+	 */
 	const bool isUniform(const Frameset& fs);
+
+	/**
+	 * @brief Returns true if any frame within the given frameset is empty.
+	 */
 	const bool isEmpty(const Frameset& fs);
+
+	/**
+	 * @brief Returns true if all frames within the given frameset are valid.
+	 */
 	const bool isValid(const Frameset& fs);
+
+	/**
+	 * @brief Masks each frame within the given frameset.
+	 */
 	void mask(Frameset& fs, const QRectF& maskNorm);
 }
 
-// needed for signals and slots
+// needed (I think) for signals and slots
 Q_DECLARE_METATYPE(frameset::Frame);
 Q_DECLARE_METATYPE(frameset::Frameset);

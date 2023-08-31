@@ -117,12 +117,16 @@ Inheritance diagram for FilterEditorWidget:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-slots" name="pub-slots"></a>
 Public Slots</h2></td></tr>
 <tr class="memitem:a03c93ca34d49e9601fc16428a5a3dd8b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_editor_widget.html#a03c93ca34d49e9601fc16428a5a3dd8b">save</a> ()</td></tr>
+<tr class="memdesc:a03c93ca34d49e9601fc16428a5a3dd8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves current flow to disk.  <br /></td></tr>
 <tr class="separator:a03c93ca34d49e9601fc16428a5a3dd8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0da63323013c1b6ce408fce693cf2ffa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_editor_widget.html#a0da63323013c1b6ce408fce693cf2ffa">load</a> ()</td></tr>
+<tr class="memdesc:a0da63323013c1b6ce408fce693cf2ffa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads flow from disk.  <br /></td></tr>
 <tr class="separator:a0da63323013c1b6ce408fce693cf2ffa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d6b619d8761e1e046d10eedc1a10571"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_editor_widget.html#a1d6b619d8761e1e046d10eedc1a10571">captureFiltersApplied</a> (const QJsonArray &amp;filters)</td></tr>
+<tr class="memdesc:a1d6b619d8761e1e046d10eedc1a10571"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the left hand panel that shows what filters are currently being applied by the capture thread.  <br /></td></tr>
 <tr class="separator:a1d6b619d8761e1e046d10eedc1a10571"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac30d8a50896ec0c3be9037cb2ae30933"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_editor_widget.html#ac30d8a50896ec0c3be9037cb2ae30933">captureFiltersFailed</a> ()</td></tr>
+<tr class="memdesc:ac30d8a50896ec0c3be9037cb2ae30933"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the capture thread fails to apply a filter(s).  <br /></td></tr>
 <tr class="separator:ac30d8a50896ec0c3be9037cb2ae30933"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_slots_class_qt_nodes_1_1_graphics_view"><td colspan="2" onclick="javascript:toggleInherit('pub_slots_class_qt_nodes_1_1_graphics_view')"><img src="closed.png" alt="-"/>&#160;Public Slots inherited from <a class="el" href="class_qt_nodes_1_1_graphics_view.html">QtNodes::GraphicsView</a></td></tr>
 <tr class="memitem:ac94b4c9d7ca41888bba90654c82d6be3 inherit pub_slots_class_qt_nodes_1_1_graphics_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_qt_nodes_1_1_graphics_view.html#ac94b4c9d7ca41888bba90654c82d6be3">scaleUp</a> ()</td></tr>
@@ -143,6 +147,7 @@ Public Slots</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="signals" name="signals"></a>
 Signals</h2></td></tr>
 <tr class="memitem:a07d24d6eed3a4dcc686989b55a47d4d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_editor_widget.html#a07d24d6eed3a4dcc686989b55a47d4d7">updatedFilters</a> (const QJsonArray &amp;filters)</td></tr>
+<tr class="memdesc:a07d24d6eed3a4dcc686989b55a47d4d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used to pass new filters to the capture thread.  <br /></td></tr>
 <tr class="separator:a07d24d6eed3a4dcc686989b55a47d4d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header signals_class_qt_nodes_1_1_graphics_view"><td colspan="2" onclick="javascript:toggleInherit('signals_class_qt_nodes_1_1_graphics_view')"><img src="closed.png" alt="-"/>&#160;Signals inherited from <a class="el" href="class_qt_nodes_1_1_graphics_view.html">QtNodes::GraphicsView</a></td></tr>
 <tr class="memitem:affac0b5dcb4766adb0a264bcf2066274 inherit signals_class_qt_nodes_1_1_graphics_view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_qt_nodes_1_1_graphics_view.html#affac0b5dcb4766adb0a264bcf2066274">scaleChanged</a> (double scale)</td></tr>
@@ -208,6 +213,9 @@ Protected Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-types" name="pri-types"></a>
 Private Types</h2></td></tr>
+<tr class="memitem:a0e9ae50e61ce7fe8d52fb9e5d9721aba"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_editor_widget.html#a0e9ae50e61ce7fe8d52fb9e5d9721aba">PlcIds</a> = std::pair&lt; std::vector&lt; <a class="el" href="namespace_qt_nodes.html#a00ec3ccf5832b8e7f7e12896707f74d7">QtNodes::NodeId</a> &gt;, std::vector&lt; <a class="el" href="namespace_qt_nodes.html#a00ec3ccf5832b8e7f7e12896707f74d7">QtNodes::NodeId</a> &gt; &gt;</td></tr>
+<tr class="memdesc:a0e9ae50e61ce7fe8d52fb9e5d9721aba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Searches the graph and finds the id's of every plc start and end node.  <br /></td></tr>
+<tr class="separator:a0e9ae50e61ce7fe8d52fb9e5d9721aba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af182251efcf574f148ee901fd54eb324"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_editor_widget.html#af182251efcf574f148ee901fd54eb324">ValidJson</a> = <a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a></td></tr>
 <tr class="separator:af182251efcf574f148ee901fd54eb324"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f20910f2adf7923db4f40a5daf5ce04"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_editor_widget.html#a5f20910f2adf7923db4f40a5daf5ce04">NodeIdSet</a> = std::unordered_set&lt; <a class="el" href="namespace_qt_nodes.html#a00ec3ccf5832b8e7f7e12896707f74d7">QtNodes::NodeId</a> &gt;</td></tr>
@@ -224,17 +232,32 @@ Private Types</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a3da7dd31269e8426fcbeae8f49b79e9f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_editor_widget.html#a3da7dd31269e8426fcbeae8f49b79e9f">setButtonGeometry</a> (const QSize size)</td></tr>
+<tr class="memdesc:a3da7dd31269e8426fcbeae8f49b79e9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets 'applyButton' geometry and position based on 'filterTextEdit' visibility.  <br /></td></tr>
 <tr class="separator:a3da7dd31269e8426fcbeae8f49b79e9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7906e8b44e9b3e726a5a445ead73bfad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_editor_widget.html#a7906e8b44e9b3e726a5a445ead73bfad">setTextEditGeometry</a> (const QSize size)</td></tr>
+<tr class="memdesc:a7906e8b44e9b3e726a5a445ead73bfad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets 'filterTextEdit' geometry and position based on visibility.  <br /></td></tr>
 <tr class="separator:a7906e8b44e9b3e726a5a445ead73bfad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf93f020491f52da561410f1a59d42eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_editor_widget.html#acf93f020491f52da561410f1a59d42eb">setAllGeometry</a> (const QSize size)</td></tr>
+<tr class="memdesc:acf93f020491f52da561410f1a59d42eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calls 'setButtonGeometry' and 'setTextEditGeometry'.  <br /></td></tr>
 <tr class="separator:acf93f020491f52da561410f1a59d42eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a612c8639189882e4916ad7c4a64e46d5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_editor_widget.html#a612c8639189882e4916ad7c4a64e46d5">showMessage</a> (const QString msg)</td></tr>
+<tr class="memdesc:a612c8639189882e4916ad7c4a64e46d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shows popup message.  <br /></td></tr>
 <tr class="separator:a612c8639189882e4916ad7c4a64e46d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51294774e3449d36d8e16628a089cc46"><td class="memItemLeft" align="right" valign="top">const std::pair&lt; std::vector&lt; <a class="el" href="namespace_qt_nodes.html#a00ec3ccf5832b8e7f7e12896707f74d7">QtNodes::NodeId</a> &gt;, std::vector&lt; <a class="el" href="namespace_qt_nodes.html#a00ec3ccf5832b8e7f7e12896707f74d7">QtNodes::NodeId</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_editor_widget.html#a51294774e3449d36d8e16628a089cc46">getPlcIds</a> () const</td></tr>
+<tr class="memitem:a51294774e3449d36d8e16628a089cc46"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_filter_editor_widget.html#a0e9ae50e61ce7fe8d52fb9e5d9721aba">PlcIds</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_editor_widget.html#a51294774e3449d36d8e16628a089cc46">getPlcIds</a> () const</td></tr>
 <tr class="separator:a51294774e3449d36d8e16628a089cc46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34968655896bb4313031e17a757a482a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_filter_editor_widget.html#af88f254b65a73fdc806d9a960fcbb306">FlowTuple</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_editor_widget.html#a34968655896bb4313031e17a757a482a">computeFilterFlow</a> ()</td></tr>
+<tr class="memdesc:a34968655896bb4313031e17a757a482a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the filter flow based on PLC flags and graph connections.  <br /></td></tr>
 <tr class="separator:a34968655896bb4313031e17a757a482a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5730c3ebbfdb86bc0891653b8a09bf47"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_filter_editor_widget.html#af88f254b65a73fdc806d9a960fcbb306">FlowTuple</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_editor_widget.html#a5730c3ebbfdb86bc0891653b8a09bf47">handleInvalidFlagCount</a> (const <a class="el" href="class_filter_editor_widget.html#a0e9ae50e61ce7fe8d52fb9e5d9721aba">PlcIds</a> &amp;plcIds)</td></tr>
+<tr class="separator:a5730c3ebbfdb86bc0891653b8a09bf47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a546e24563be4dd10b8daeb3695b506a7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_filter_editor_widget.html#af88f254b65a73fdc806d9a960fcbb306">FlowTuple</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_editor_widget.html#a546e24563be4dd10b8daeb3695b506a7">handleDisconnectedFlags</a> (const <a class="el" href="class_filter_editor_widget.html#a0e9ae50e61ce7fe8d52fb9e5d9721aba">PlcIds</a> &amp;plcIds)</td></tr>
+<tr class="separator:a546e24563be4dd10b8daeb3695b506a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fb3790168f0b05852618ec78332bb9e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_filter_editor_widget.html#af88f254b65a73fdc806d9a960fcbb306">FlowTuple</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_editor_widget.html#a8fb3790168f0b05852618ec78332bb9e">handleUniquelyConnectedFlags</a> (const <a class="el" href="class_filter_editor_widget.html#a0e9ae50e61ce7fe8d52fb9e5d9721aba">PlcIds</a> &amp;plcIds)</td></tr>
+<tr class="separator:a8fb3790168f0b05852618ec78332bb9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a597159513712a6b377c1485cb1a1c9e3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_filter_editor_widget.html#af88f254b65a73fdc806d9a960fcbb306">FlowTuple</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_editor_widget.html#a597159513712a6b377c1485cb1a1c9e3">handleConnectedFlags</a> (const std::vector&lt; <a class="el" href="namespace_qt_nodes.html#a00ec3ccf5832b8e7f7e12896707f74d7">QtNodes::NodeId</a> &gt; &amp;nonBranchingIds)</td></tr>
+<tr class="separator:a597159513712a6b377c1485cb1a1c9e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80f6e9cc2d0bf3e8a8afdb4ab6a53547"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_filter_editor_widget.html#af88f254b65a73fdc806d9a960fcbb306">FlowTuple</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_editor_widget.html#a80f6e9cc2d0bf3e8a8afdb4ab6a53547">handleInvalidConnectedFlags</a> (const <a class="el" href="namespace_qt_nodes.html#a00ec3ccf5832b8e7f7e12896707f74d7">QtNodes::NodeId</a> plcEndNode, const <a class="el" href="class_filter_editor_widget.html#a5f20910f2adf7923db4f40a5daf5ce04">NodeIdSet</a> &amp;branchingIds)</td></tr>
+<tr class="separator:a80f6e9cc2d0bf3e8a8afdb4ab6a53547"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97ec046a541417fc53da4dacd94bbc7d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_editor_widget.html#a97ec046a541417fc53da4dacd94bbc7d">applyFilters</a> ()</td></tr>
 <tr class="separator:a97ec046a541417fc53da4dacd94bbc7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeb7d8fe10c195c9e64785d2a6976b36c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_editor_widget.html#aeb7d8fe10c195c9e64785d2a6976b36c">updateAllColors</a> (const <a class="el" href="class_filter_editor_widget.html#aadfa526024ed47c81146e6ee0c937d45">ValidateIdSet</a> &amp;validateSet, const <a class="el" href="class_filter_editor_widget.html#a94dddcc5f552933f4eca9f39862d3c47">DefaultIdSet</a> &amp;defaultSet, const <a class="el" href="class_filter_editor_widget.html#a7266197579fd1660a1ca2ea7593e61cf">InvalidateIdSet</a> &amp;invalidateSet)</td></tr>
@@ -260,8 +283,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a1aab137fb1116b117be1288f316b3971"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9dc79735eedd220cb89d9157fd7f735"><td class="memItemLeft" align="right" valign="top">QPushButton *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_editor_widget.html#ae9dc79735eedd220cb89d9157fd7f735">textEditButton</a> = nullptr</td></tr>
 <tr class="separator:ae9dc79735eedd220cb89d9157fd7f735"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d093384692d71e167ad50588b722174"><td class="memItemLeft" align="right" valign="top">QTextEdit *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_editor_widget.html#a6d093384692d71e167ad50588b722174">textEdit</a> = nullptr</td></tr>
-<tr class="separator:a6d093384692d71e167ad50588b722174"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab42f83a3da30e90c57cb13f6b6d0a917"><td class="memItemLeft" align="right" valign="top">QTextEdit *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_editor_widget.html#ab42f83a3da30e90c57cb13f6b6d0a917">filterTextEdit</a> = nullptr</td></tr>
+<tr class="separator:ab42f83a3da30e90c57cb13f6b6d0a917"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa17df7aacfd5f41dcc5dec768abeaa5d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_editor_widget.html#aa17df7aacfd5f41dcc5dec768abeaa5d">textEditVisible</a> = <a class="el" href="snap7_8h.html#a41f9c5fb8b08eb5dc3edce4dcb37fee7">true</a></td></tr>
 <tr class="separator:aa17df7aacfd5f41dcc5dec768abeaa5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c8c9dca61876a4104f071f7f67bf84f"><td class="memItemLeft" align="right" valign="top">QJsonArray&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_editor_widget.html#a7c8c9dca61876a4104f071f7f67bf84f">lastFilters</a></td></tr>
@@ -361,6 +384,31 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0e9ae50e61ce7fe8d52fb9e5d9721aba" name="a0e9ae50e61ce7fe8d52fb9e5d9721aba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e9ae50e61ce7fe8d52fb9e5d9721aba">&#9670;&#160;</a></span>PlcIds</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_filter_editor_widget.html#a0e9ae50e61ce7fe8d52fb9e5d9721aba">FilterEditorWidget::PlcIds</a> =  std::pair&lt;std::vector&lt;<a class="el" href="namespace_qt_nodes.html#a00ec3ccf5832b8e7f7e12896707f74d7">QtNodes::NodeId</a>&gt;, std::vector&lt;<a class="el" href="namespace_qt_nodes.html#a00ec3ccf5832b8e7f7e12896707f74d7">QtNodes::NodeId</a>&gt; &gt;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Searches the graph and finds the id's of every plc start and end node. </p>
+<dl class="section return"><dt>Returns</dt><dd>vector of plc start and end nodes </dd></dl>
 
 </div>
 </div>
@@ -494,6 +542,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Updates the left hand panel that shows what filters are currently being applied by the capture thread. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filters</td><td>Json representation of the filter applied objects. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="ac30d8a50896ec0c3be9037cb2ae30933" name="ac30d8a50896ec0c3be9037cb2ae30933"></a>
@@ -518,6 +574,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Called when the capture thread fails to apply a filter(s). </p>
 
 </div>
 </div>
@@ -544,6 +602,18 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Computes the filter flow based on PLC flags and graph connections. </p>
+<p>This method computes the filter flow based on the plc flag nodes and the connections within the graph. If checks if there are exactly 1 start and 1 end plc flag node, and if they are connected through a non branching chain of 'filterable' nodes.</p>
+<dl class="section return"><dt>Returns</dt><dd>A tuple containing information about the computed filter flow.<ul>
+<li>The first element indicates whether the filter flow is valid.</li>
+<li>The second element is a json array containing the json representation of the filter objects.</li>
+<li>The third element is a set of node id's to set style to valid.</li>
+<li>The fourth element is a set of node id's to set style to default.</li>
+<li>The fifth element is a set of node id's to set style to invalid.</li>
+<li>The sixth element is a message describing the outcome of the computation </li>
+</ul>
+</dd></dl>
+
 </div>
 </div>
 <a id="a51294774e3449d36d8e16628a089cc46" name="a51294774e3449d36d8e16628a089cc46"></a>
@@ -560,6 +630,146 @@ Private Attributes</h2></td></tr>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a597159513712a6b377c1485cb1a1c9e3" name="a597159513712a6b377c1485cb1a1c9e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a597159513712a6b377c1485cb1a1c9e3">&#9670;&#160;</a></span>handleConnectedFlags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_filter_editor_widget.html#af88f254b65a73fdc806d9a960fcbb306">FilterEditorWidget::FlowTuple</a> FilterEditorWidget::handleConnectedFlags </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="namespace_qt_nodes.html#a00ec3ccf5832b8e7f7e12896707f74d7">QtNodes::NodeId</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>nonBranchingIds</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a546e24563be4dd10b8daeb3695b506a7" name="a546e24563be4dd10b8daeb3695b506a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a546e24563be4dd10b8daeb3695b506a7">&#9670;&#160;</a></span>handleDisconnectedFlags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_filter_editor_widget.html#af88f254b65a73fdc806d9a960fcbb306">FilterEditorWidget::FlowTuple</a> FilterEditorWidget::handleDisconnectedFlags </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_filter_editor_widget.html#a0e9ae50e61ce7fe8d52fb9e5d9721aba">PlcIds</a> &amp;&#160;</td>
+          <td class="paramname"><em>plcIds</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a80f6e9cc2d0bf3e8a8afdb4ab6a53547" name="a80f6e9cc2d0bf3e8a8afdb4ab6a53547"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80f6e9cc2d0bf3e8a8afdb4ab6a53547">&#9670;&#160;</a></span>handleInvalidConnectedFlags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_filter_editor_widget.html#af88f254b65a73fdc806d9a960fcbb306">FilterEditorWidget::FlowTuple</a> FilterEditorWidget::handleInvalidConnectedFlags </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="namespace_qt_nodes.html#a00ec3ccf5832b8e7f7e12896707f74d7">QtNodes::NodeId</a>&#160;</td>
+          <td class="paramname"><em>plcEndNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_filter_editor_widget.html#a5f20910f2adf7923db4f40a5daf5ce04">NodeIdSet</a> &amp;&#160;</td>
+          <td class="paramname"><em>branchingIds</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5730c3ebbfdb86bc0891653b8a09bf47" name="a5730c3ebbfdb86bc0891653b8a09bf47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5730c3ebbfdb86bc0891653b8a09bf47">&#9670;&#160;</a></span>handleInvalidFlagCount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_filter_editor_widget.html#af88f254b65a73fdc806d9a960fcbb306">FilterEditorWidget::FlowTuple</a> FilterEditorWidget::handleInvalidFlagCount </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_filter_editor_widget.html#a0e9ae50e61ce7fe8d52fb9e5d9721aba">PlcIds</a> &amp;&#160;</td>
+          <td class="paramname"><em>plcIds</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8fb3790168f0b05852618ec78332bb9e" name="a8fb3790168f0b05852618ec78332bb9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8fb3790168f0b05852618ec78332bb9e">&#9670;&#160;</a></span>handleUniquelyConnectedFlags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_filter_editor_widget.html#af88f254b65a73fdc806d9a960fcbb306">FilterEditorWidget::FlowTuple</a> FilterEditorWidget::handleUniquelyConnectedFlags </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_filter_editor_widget.html#a0e9ae50e61ce7fe8d52fb9e5d9721aba">PlcIds</a> &amp;&#160;</td>
+          <td class="paramname"><em>plcIds</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
   </td>
@@ -593,6 +803,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Loads flow from disk. </p>
 
 </div>
 </div>
@@ -645,6 +857,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Saves current flow to disk. </p>
+
 </div>
 </div>
 <a id="acf93f020491f52da561410f1a59d42eb" name="acf93f020491f52da561410f1a59d42eb"></a>
@@ -670,6 +884,14 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Calls 'setButtonGeometry' and 'setTextEditGeometry'. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>this-&gt;size() </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -697,6 +919,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Sets 'applyButton' geometry and position based on 'filterTextEdit' visibility. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>this-&gt;size() </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a7906e8b44e9b3e726a5a445ead73bfad" name="a7906e8b44e9b3e726a5a445ead73bfad"></a>
@@ -723,6 +953,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Sets 'filterTextEdit' geometry and position based on visibility. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>this-&gt;size() </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a612c8639189882e4916ad7c4a64e46d5" name="a612c8639189882e4916ad7c4a64e46d5"></a>
@@ -748,6 +986,14 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Shows popup message. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td>Message to show </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -841,6 +1087,14 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Used to pass new filters to the capture thread. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filters</td><td>Json representation of the filter objects to apply. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -1005,6 +1259,28 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="ab42f83a3da30e90c57cb13f6b6d0a917" name="ab42f83a3da30e90c57cb13f6b6d0a917"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab42f83a3da30e90c57cb13f6b6d0a917">&#9670;&#160;</a></span>filterTextEdit</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QTextEdit* FilterEditorWidget::filterTextEdit = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a208246749b2f93e21311ae40e116b375" name="a208246749b2f93e21311ae40e116b375"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a208246749b2f93e21311ae40e116b375">&#9670;&#160;</a></span>graph</h2>
 
@@ -1104,28 +1380,6 @@ Private Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="class_qt_nodes_1_1_filter_flow_graphics_scene.html">QtNodes::FilterFlowGraphicsScene</a>* FilterEditorWidget::scene = nullptr</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a6d093384692d71e167ad50588b722174" name="a6d093384692d71e167ad50588b722174"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6d093384692d71e167ad50588b722174">&#9670;&#160;</a></span>textEdit</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">QTextEdit* FilterEditorWidget::textEdit = nullptr</td>
         </tr>
       </table>
   </td>

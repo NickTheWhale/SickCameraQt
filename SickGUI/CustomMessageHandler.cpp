@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   CustomMessageHandler.cpp
+ * @brief  Used as a bridge to redirect qDebug(), qWarning(), etc macro outputs.
+ * 
+ * @author Nicholas Loehrke
+ * @date   August 2023
+ *********************************************************************/
+
 #include "CustomMessageHandler.h"
 
 CustomMessageHandler::CustomMessageHandler(QObject* parent) : QObject(parent)

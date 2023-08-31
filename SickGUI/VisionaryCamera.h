@@ -8,13 +8,15 @@
 
 #pragma once
 
-#include <qobject.h>
 #include <VisionaryTMiniData.h>
 #include <VisionaryControl.h>
 #include <Framegrabber.h>
+#include <Frameset.h>
+
+#include <qobject.h>
+
 #include <string>
 #include <map>
-#include <Frameset.h>
 
 enum ErrorCode
 {

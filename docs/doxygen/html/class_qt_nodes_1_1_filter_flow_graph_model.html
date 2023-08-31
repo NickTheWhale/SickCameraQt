@@ -153,8 +153,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a6765d5131a6d90f470d11102d8e51b54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af047afb52cc037ece338a50a9e2ff227"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_qt_nodes_1_1_filter_flow_graph_model.html#af047afb52cc037ece338a50a9e2ff227">nodesConnected</a> (const <a class="el" href="namespace_qt_nodes.html#a00ec3ccf5832b8e7f7e12896707f74d7">NodeId</a> startNodeId, const <a class="el" href="namespace_qt_nodes.html#a00ec3ccf5832b8e7f7e12896707f74d7">NodeId</a> endNodeId) const</td></tr>
 <tr class="separator:af047afb52cc037ece338a50a9e2ff227"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a3bdb924f46815cd96115763f1c7cfd"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="namespace_qt_nodes.html#a00ec3ccf5832b8e7f7e12896707f74d7">NodeId</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_qt_nodes_1_1_filter_flow_graph_model.html#a0a3bdb924f46815cd96115763f1c7cfd">nonBranchingConnections</a> (<a class="el" href="namespace_qt_nodes.html#a00ec3ccf5832b8e7f7e12896707f74d7">NodeId</a> startNodeId, <a class="el" href="namespace_qt_nodes.html#a00ec3ccf5832b8e7f7e12896707f74d7">NodeId</a> endNodeId) const</td></tr>
-<tr class="separator:a0a3bdb924f46815cd96115763f1c7cfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a842fcf45e8ee955896e7c6badba7f7f0"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="namespace_qt_nodes.html#a00ec3ccf5832b8e7f7e12896707f74d7">NodeId</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_qt_nodes_1_1_filter_flow_graph_model.html#a842fcf45e8ee955896e7c6badba7f7f0">nonBranchingFilterableConnections</a> (<a class="el" href="namespace_qt_nodes.html#a00ec3ccf5832b8e7f7e12896707f74d7">NodeId</a> startNodeId, <a class="el" href="namespace_qt_nodes.html#a00ec3ccf5832b8e7f7e12896707f74d7">NodeId</a> endNodeId) const</td></tr>
+<tr class="separator:a842fcf45e8ee955896e7c6badba7f7f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aadaf954c421634ac29946ed77442b7f2"><td class="memItemLeft" align="right" valign="top">const std::unordered_set&lt; <a class="el" href="namespace_qt_nodes.html#a00ec3ccf5832b8e7f7e12896707f74d7">NodeId</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_qt_nodes_1_1_filter_flow_graph_model.html#aadaf954c421634ac29946ed77442b7f2">branchingConnections</a> (const <a class="el" href="namespace_qt_nodes.html#a00ec3ccf5832b8e7f7e12896707f74d7">NodeId</a> startNodeId, const <a class="el" href="namespace_qt_nodes.html#a00ec3ccf5832b8e7f7e12896707f74d7">NodeId</a> endNodeId) const</td></tr>
 <tr class="separator:aadaf954c421634ac29946ed77442b7f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac365c2e2e47ac4e2f2c41248d3ef18e9"><td class="memItemLeft" align="right" valign="top">const std::unordered_set&lt; <a class="el" href="namespace_qt_nodes.html#a00ec3ccf5832b8e7f7e12896707f74d7">NodeId</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_qt_nodes_1_1_filter_flow_graph_model.html#ac365c2e2e47ac4e2f2c41248d3ef18e9">branchingConnections</a> (const <a class="el" href="namespace_qt_nodes.html#a00ec3ccf5832b8e7f7e12896707f74d7">NodeId</a> inputNodeId) const</td></tr>
@@ -1047,14 +1047,14 @@ template&lt;typename NodeDelegateModelType &gt; </div>
 
 </div>
 </div>
-<a id="a0a3bdb924f46815cd96115763f1c7cfd" name="a0a3bdb924f46815cd96115763f1c7cfd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0a3bdb924f46815cd96115763f1c7cfd">&#9670;&#160;</a></span>nonBranchingConnections()</h2>
+<a id="a842fcf45e8ee955896e7c6badba7f7f0" name="a842fcf45e8ee955896e7c6badba7f7f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a842fcf45e8ee955896e7c6badba7f7f0">&#9670;&#160;</a></span>nonBranchingFilterableConnections()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const std::vector&lt; <a class="el" href="namespace_qt_nodes.html#a00ec3ccf5832b8e7f7e12896707f74d7">NodeId</a> &gt; QtNodes::FilterFlowGraphModel::nonBranchingConnections </td>
+          <td class="memname">const std::vector&lt; <a class="el" href="namespace_qt_nodes.html#a00ec3ccf5832b8e7f7e12896707f74d7">NodeId</a> &gt; QtNodes::FilterFlowGraphModel::nonBranchingFilterableConnections </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespace_qt_nodes.html#a00ec3ccf5832b8e7f7e12896707f74d7">NodeId</a>&#160;</td>
           <td class="paramname"><em>startNodeId</em>, </td>

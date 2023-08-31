@@ -1,10 +1,11 @@
 /*****************************************************************//**
  * @file   CustomMessageHandler.h
- * @brief  Used in conjuction with the logging widget to redirect qDebug(), qWarning(), etc macro outputs
+ * @brief  Used as a bridge to redirect qDebug(), qWarning(), etc macro outputs.
  * 
  * @author Nicholas Loehrke
  * @date   August 2023
  *********************************************************************/
+
 #pragma once
 
 #include <qobject.h>

@@ -1,6 +1,6 @@
 /*****************************************************************//**
  * @file   LogTextEdit.h
- * @brief  Scrolling text edit with pause support and maximum line count.
+ * @brief  Scrolling text edit with pause-on-scroll and maximum line count.
  * 
  * @author Nicholas Loehrke
  * @date   August 2023
@@ -19,6 +19,7 @@ public:
 	void setMaxLineCount(unsigned int maxLineCount);
 
 protected:
+	// called when the user right clicks to open manu
 	void contextMenuEvent(QContextMenuEvent* event) override;
 
 private:

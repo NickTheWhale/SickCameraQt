@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['textedit_0',['textEdit',['../class_filter_editor_widget.html#a6d093384692d71e167ad50588b722174',1,'FilterEditorWidget::textEdit'],['../class_logging_widget.html#aa305f810b41342de5ac390d9fc9ee8fe',1,'LoggingWidget::textEdit']]],
+  ['textedit_0',['textEdit',['../class_logging_widget.html#aa305f810b41342de5ac390d9fc9ee8fe',1,'LoggingWidget']]],
   ['texteditbutton_1',['textEditButton',['../class_filter_editor_widget.html#ae9dc79735eedd220cb89d9157fd7f735',1,'FilterEditorWidget']]],
   ['texteditvisible_2',['textEditVisible',['../class_filter_editor_widget.html#aa17df7aacfd5f41dcc5dec768abeaa5d',1,'FilterEditorWidget']]],
   ['threadinterface_3',['threadInterface',['../class_frame_source_model.html#a2b2056e074f08c53db2f581ce3099f52',1,'FrameSourceModel::threadInterface'],['../class_plc_source_model.html#a1cc83a1990e8ab53730bbdd117e20f3c',1,'PlcSourceModel::threadInterface'],['../class_sick_g_u_i.html#a9b8dec297bdb4a4256738d3e3125ea1c',1,'SickGUI::threadInterface']]],

@@ -17,7 +17,6 @@ var files_dup =
     [ "main.cpp", "main_8cpp.html", "main_8cpp" ],
     [ "SickGUI.cpp", "_sick_g_u_i_8cpp.html", null ],
     [ "SickGUI.h", "_sick_g_u_i_8h.html", "_sick_g_u_i_8h" ],
-    [ "Stream.h", "_stream_8h.html", "_stream_8h" ],
     [ "TinyColormap.hpp", "_tiny_colormap_8hpp.html", "_tiny_colormap_8hpp" ],
     [ "VisionaryCamera.cpp", "_visionary_camera_8cpp.html", null ],
     [ "VisionaryCamera.h", "_visionary_camera_8h.html", "_visionary_camera_8h" ]

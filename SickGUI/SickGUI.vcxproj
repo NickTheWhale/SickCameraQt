@@ -348,7 +348,6 @@
     <ClInclude Include="sickapi\src\VisionarySData.h" />
     <ClInclude Include="sickapi\src\VisionaryTData.h" />
     <ClInclude Include="sickapi\src\VisionaryTMiniData.h" />
-    <ClInclude Include="Stream.h" />
     <ClInclude Include="TinyColormap.hpp" />
     <QtMoc Include="threads\CaptureThread.h" />
     <QtMoc Include="threads\PlcThread.h" />
