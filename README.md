@@ -56,7 +56,7 @@ After building, Visual Studio will generate a *'./x64'* directory containing eac
 
 The TestServer project just contains the executable and the snap7 dll. SickGUI will contain the executable, Qt dll's, and a Visual C++ Redistributable installer. If you can build the project successfully then you won't have to run the Visual C++ installer but it may be necessary when deploying the application on a different computer. To deploy, follow these steps:
 
-* Obtain build output (either by building from source or by downloading the [pre built binaries](https://github.com/NickTheWhale/SickCameraQt/releases))
+* Obtain build output (either by building from source or by downloading the [prebuilt binaries](https://github.com/NickTheWhale/SickCameraQt/releases))
 * Transfer the entire contents of the build output to the target PC
 * Run the Visual C++ Redistributable installer (likely called vc_redist.x64.exe)
 * Setup the camera settings using [Sopas Engineering Tool](https://cdn.sick.com/us/en/) (optional)
@@ -64,10 +64,18 @@ The TestServer project just contains the executable and the snap7 dll. SickGUI w
 
 ## Configuration
 
-[Example configuration file](./configuration_example.ini)
+*[Example configuration file](./configuration_example.ini)*
 
 The configuration file is loaded at application startup and is used to set the PLC and camera settings. 
 
 ## Prebuilt Binaries
 
 If you just want to download the latest version without building from source, you can do so [here](https://github.com/NickTheWhale/SickCameraQt/releases).
+
+
+## Libraries
+* [OpenCV 4.8.0](https://opencv.org/)
+* [nodeeditor](https://github.com/paceholder/nodeeditor) (commit #5465ddc)
+* [Boost 1.83.0](https://www.boost.org/)
+* [Sick C++ API](https://www.sick.com/us/en/machine-vision/3d-machine-vision/visionary-t-mini/c/g555625)
+* [Qt 6.5.1](https://www.qt.io/)
