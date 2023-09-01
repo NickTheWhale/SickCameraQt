@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   ImageLabel.cpp
+ * @brief  QLabel subclass used to auto-scale a pixmap.
+ * 
+ * @author Nicholas Loehrke
+ * @date   September 2023
+ *********************************************************************/
+
 #include "ImageLabel.h"
 #include <qpainter.h>
 #include <qmenu.h>
@@ -15,7 +23,7 @@ ImageLabel::ImageLabel(QWidget* parent) : QLabel(parent)
 
 void ImageLabel::setPixmap(const QPixmap& p)
 {
-	// cache the latest pixmap and display the scalled version
+	// cache the latest pixmap and display the scaled version
 	pix = p;
 	QLabel::setPixmap(scaledPixmap());
 	QLabel::setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);

@@ -31,10 +31,32 @@ class CycleTime : public QWidget
 
 public:
 	explicit CycleTime(const QString title, const size_t bufferSize = 100, QWidget* parent = nullptr);
+
+	/**
+	 * @brief Add the given time to internal buffer and update statistics.
+	 * 
+	 * @param time
+	 */
 	void add(const int time);
+	
+	/**
+	 * @brief Clears and nulls times.
+	 * 
+	 */
 	void reset();
-	const Times times() const;
+
+	/**
+	 * @brief Grays times.
+	 * 
+	 */
 	void nullTimes();
+
+	/**
+	 * @brief Stats getters.
+	 * 
+	 * @return Times.
+	 */
+	const Times times() const;
 
 private:
 	boost::circular_buffer<int> buffer;
@@ -48,6 +70,15 @@ private:
 	const QString title;
 	bool isNulled = true;
 
+	/**
+	 * @brief Calculates statistics and displays them.
+	 * 
+	 */
 	void update();
+
+	/**
+	 * @brief Makes labels black.
+	 * 
+	 */
 	void unNullTimes();
 };

@@ -6,7 +6,6 @@
  * @date   August 2023
  *********************************************************************/
 
-
 #include "SickGUI.h"
 #include "App.h"
 #include <qsharedmemory.h>
@@ -18,6 +17,7 @@ CustomMessageHandler messageHandler;
 void msgHandler(QtMsgType type, const QMessageLogContext& context, const QString& message)
 {
 	messageHandler.handle(type, context, message);
+	qDebug() << context.category << context.file << context.function << context.line << context.version;
 }
 
 int main(int argc, char* argv[])

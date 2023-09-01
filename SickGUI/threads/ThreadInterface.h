@@ -16,13 +16,46 @@ class ThreadInterface
 public:
 	static ThreadInterface& instance();
 
-	void pushFilteredFrame(const frameset::Frameset& fs);
-	void pushRawFrame(const frameset::Frameset& fs);
+	/**
+	 * @brief Pushes filtered frameset to internal buffer.
+	 * 
+	 * @param fs Frameset to push.
+	 */
+	void pushFilteredFrameset(const frameset::Frameset& fs);
 
-	const frameset::Frameset peekFilteredFrame();
-	const frameset::Frameset peekRawFrame();
+	/**
+	 * @brief Pushes raw frameset to internal buffer.
+	 * 
+	 * @param fs Frameset to push.
+	 */
+	void pushRawFrameset(const frameset::Frameset& fs);
 
-	const frameset::Frameset popFilteredFrame();
+	/**
+	 * @brief Returns latest filtered frameset without removing it from the internal buffer.
+	 * 
+	 * @return Latest filtered frameset.
+	 */
+	const frameset::Frameset peekFilteredFrameset();
+
+	/**
+	 * @brief Returns latest raw frameset without removing it from the internal buffer.
+	 * 
+	 * @return Latest raw frameset.
+	 */
+	const frameset::Frameset peekRawFrameset();
+
+	/**
+	 * @brief Returns and removes latest filtered frameset from internal buffer.
+	 * 
+	 * @return Latest filtered frameset.
+	 */
+	const frameset::Frameset popFilteredFrameset();
+
+	/**
+	 * @brief Returns and removes latest raw frameset from internal buffer.
+	 * 
+	 * @return Latest raw frameset.
+	 */
 	const frameset::Frameset popRawFrame();
 	
 private:

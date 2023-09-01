@@ -293,7 +293,7 @@ namespace QtNodes {
 
 	const std::unordered_set<NodeId> FilterFlowGraphModel::branchingConnections(const NodeId startNodeId, const NodeId endNodeId) const
 	{
-		// breadth-first traversal
+		// breadth-first traversal with explicit queue
 
 		if (!nodeExists(startNodeId) || !nodeExists(endNodeId)) {
 			return std::unordered_set<NodeId>();

@@ -2,7 +2,7 @@
  * @file   TinyColormap.hpp
  * @brief  Functions to calculate color maps
  * 
- * @author Yuki Koyama, Nicholas Loehrke
+ * @author Yuki Koyama, modified by Nicholas Loehrke
  * @date   June 2023
  *********************************************************************/
 

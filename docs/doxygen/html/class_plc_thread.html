@@ -124,18 +124,22 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a37f5221523c0ccff2658c72e843090b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the thread.  <br /></td></tr>
 <tr class="separator:a37f5221523c0ccff2658c72e843090b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae6489b6fa75222070685959b08eb718a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plc_thread.html#ae6489b6fa75222070685959b08eb718a">stopPlc</a> ()</td></tr>
+<tr class="memdesc:ae6489b6fa75222070685959b08eb718a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets stop flag to true, but does not block/wait thread or disconnect plc.  <br /></td></tr>
 <tr class="separator:ae6489b6fa75222070685959b08eb718a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a3d2bdf5c50e851c1032c25ef0f41ce73"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plc_thread.html#a3d2bdf5c50e851c1032c25ef0f41ce73">run</a> () override</td></tr>
+<tr class="memdesc:a3d2bdf5c50e851c1032c25ef0f41ce73"><td class="mdescLeft">&#160;</td><td class="mdescRight">'Main loop'.  <br /></td></tr>
 <tr class="separator:a3d2bdf5c50e851c1032c25ef0f41ce73"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a8a432644bc49250b0af209b0ba431278"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plc_thread.html#a8a432644bc49250b0af209b0ba431278">write</a> (const std::vector&lt; uint32_t &gt; &amp;data)</td></tr>
+<tr class="memdesc:a8a432644bc49250b0af209b0ba431278"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends frame data to plc.  <br /></td></tr>
 <tr class="separator:a8a432644bc49250b0af209b0ba431278"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8cd7012bd52f616094e81f20eacc77f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plc_thread.html#ac8cd7012bd52f616094e81f20eacc77f">loadConfiguration</a> ()</td></tr>
+<tr class="memdesc:ac8cd7012bd52f616094e81f20eacc77f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads plc and thread settings from configuration file. This is done at thread start.  <br /></td></tr>
 <tr class="separator:ac8cd7012bd52f616094e81f20eacc77f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
@@ -230,6 +234,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Loads plc and thread settings from configuration file. This is done at thread start. </p>
+
 </div>
 </div>
 <a id="a9a403e0eb65417d4a5bbbbc3e949e9ac" name="a9a403e0eb65417d4a5bbbbc3e949e9ac"></a>
@@ -280,6 +286,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>'Main loop'. </p>
+
 </div>
 </div>
 <a id="a37f5221523c0ccff2658c72e843090b3" name="a37f5221523c0ccff2658c72e843090b3"></a>
@@ -325,6 +333,8 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Sets stop flag to true, but does not block/wait thread or disconnect plc. </p>
+
 </div>
 </div>
 <a id="a8a432644bc49250b0af209b0ba431278" name="a8a432644bc49250b0af209b0ba431278"></a>
@@ -350,6 +360,15 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Sends frame data to plc. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>Data to send. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Snap7 return code. </dd></dl>
 
 </div>
 </div>

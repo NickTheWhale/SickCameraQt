@@ -1,6 +1,6 @@
 /*****************************************************************//**
  * @file   PlcEndModel.h
- * @brief  Special PLC end flag used to indicate end of filter flow.
+ * @brief  Special node used to indicate the end of a filter flow. 
  * 
  * @author Nicholas Loehrke
  * @date   August 2023

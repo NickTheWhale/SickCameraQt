@@ -112,19 +112,25 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a22b71018cd408de7019597644f22adfa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cycle_time.html#a22b71018cd408de7019597644f22adfa">CycleTime</a> (const QString <a class="el" href="class_cycle_time.html#ac99a4d12261f6128bbdd5386940e2baa">title</a>, const size_t bufferSize=100, QWidget *parent=nullptr)</td></tr>
 <tr class="separator:a22b71018cd408de7019597644f22adfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f7225250f4b60b5e0188fff8556325e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cycle_time.html#a1f7225250f4b60b5e0188fff8556325e">add</a> (const int time)</td></tr>
+<tr class="memdesc:a1f7225250f4b60b5e0188fff8556325e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add the given time to internal buffer and update statistics.  <br /></td></tr>
 <tr class="separator:a1f7225250f4b60b5e0188fff8556325e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae63c6366b62e3fa9141975d2dfb5c512"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cycle_time.html#ae63c6366b62e3fa9141975d2dfb5c512">reset</a> ()</td></tr>
+<tr class="memdesc:ae63c6366b62e3fa9141975d2dfb5c512"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears and nulls times.  <br /></td></tr>
 <tr class="separator:ae63c6366b62e3fa9141975d2dfb5c512"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad3c7f6e94afd6716ffc5e84be20e0521"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="struct_times.html">Times</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cycle_time.html#ad3c7f6e94afd6716ffc5e84be20e0521">times</a> () const</td></tr>
-<tr class="separator:ad3c7f6e94afd6716ffc5e84be20e0521"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab25ebfc1570efa831c5caeab344f2b54"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cycle_time.html#ab25ebfc1570efa831c5caeab344f2b54">nullTimes</a> ()</td></tr>
+<tr class="memdesc:ab25ebfc1570efa831c5caeab344f2b54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Grays times.  <br /></td></tr>
 <tr class="separator:ab25ebfc1570efa831c5caeab344f2b54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3c7f6e94afd6716ffc5e84be20e0521"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="struct_times.html">Times</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cycle_time.html#ad3c7f6e94afd6716ffc5e84be20e0521">times</a> () const</td></tr>
+<tr class="memdesc:ad3c7f6e94afd6716ffc5e84be20e0521"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stats getters.  <br /></td></tr>
+<tr class="separator:ad3c7f6e94afd6716ffc5e84be20e0521"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:abfb02c12871d69ca2c690ef1514d5009"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cycle_time.html#abfb02c12871d69ca2c690ef1514d5009">update</a> ()</td></tr>
+<tr class="memdesc:abfb02c12871d69ca2c690ef1514d5009"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates statistics and displays them.  <br /></td></tr>
 <tr class="separator:abfb02c12871d69ca2c690ef1514d5009"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ff5b27e201070c0564a23afb536abb1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cycle_time.html#a8ff5b27e201070c0564a23afb536abb1">unNullTimes</a> ()</td></tr>
+<tr class="memdesc:a8ff5b27e201070c0564a23afb536abb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes labels black.  <br /></td></tr>
 <tr class="separator:a8ff5b27e201070c0564a23afb536abb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
@@ -208,6 +214,14 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Add the given time to internal buffer and update statistics. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">time</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="ab25ebfc1570efa831c5caeab344f2b54" name="ab25ebfc1570efa831c5caeab344f2b54"></a>
@@ -224,6 +238,8 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Grays times. </p>
 
 </div>
 </div>
@@ -242,6 +258,8 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Clears and nulls times. </p>
+
 </div>
 </div>
 <a id="ad3c7f6e94afd6716ffc5e84be20e0521" name="ad3c7f6e94afd6716ffc5e84be20e0521"></a>
@@ -258,6 +276,9 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Stats getters. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_times.html">Times</a>. </dd></dl>
 
 </div>
 </div>
@@ -284,6 +305,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Makes labels black. </p>
+
 </div>
 </div>
 <a id="abfb02c12871d69ca2c690ef1514d5009" name="abfb02c12871d69ca2c690ef1514d5009"></a>
@@ -308,6 +331,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Calculates statistics and displays them. </p>
 
 </div>
 </div>

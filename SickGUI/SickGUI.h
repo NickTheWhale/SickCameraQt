@@ -2,11 +2,12 @@
  * @file   SickGUI.h
  * @brief  Main GUI class
  *
- * Handles all UI interaction and creates capture and plc threads.
+ * Creates UI components and threads.
  *
  * @author Nicholas Loehrke
  * @date   June 2023
  *********************************************************************/
+
 #pragma once
 
 #include "VisionaryCamera.h"

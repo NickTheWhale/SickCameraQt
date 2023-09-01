@@ -1,30 +1,34 @@
+/*****************************************************************//**
+ * @file   SickGUI.cpp
+ * @brief  Main GUI class
+ *
+ * Creates UI components and threads.
+ *
+ * @author Nicholas Loehrke
+ * @date   September 2023
+ *********************************************************************/
+
 #include "SickGUI.h"
 
-#include <format>
+#include <snap7.h>
 
 #include <qtimer.h>
 #include <qmessagebox.h>
 #include <QtConcurrent/qtconcurrentrun.h>
 #include <qfuture.h>
-#include <qactiongroup.h>
-#include <qfontmetrics.h>
-#include <qpainter.h>
 #include <qsizepolicy.h>
-#include <qtoolbutton.h>
 #include <qmenu.h>
-#include <qpushbutton.h>
 #include <qsettings.h>
-#include <qbuffer.h>
-#include <qimage.h>
 #include <qmenubar.h>
 #include <qmenu.h>
-#include <qcoreapplication.h>
 #include <qstatusbar.h>
 #include <qdockwidget.h>
-
-#include <snap7.h>
+#include <qdesktopservices.h>
+#include <qapplication.h>
 
 #include <global.h>
+
+#include <format>
 
 SickGUI::SickGUI(CustomMessageHandler* messageHandler, QWidget* parent) :
 	messageHandler(messageHandler),
@@ -135,7 +139,7 @@ void SickGUI::initializeWidgets()
 	addDockWidget(Qt::DockWidgetArea::RightDockWidgetArea, cycleTimeDock);
 #pragma endregion
 
-#pragma region TOOL_BAR
+#pragma region MENU_BAR
 	// filter menu
 	QMenu* filterMenu = new QMenu("Filters", this);
 	QAction* filterSaveAction = filterMenu->addAction("Save");
@@ -156,6 +160,13 @@ void SickGUI::initializeWidgets()
 	connect(cycleTimeViewAction, &QAction::triggered, this, [=](bool checked) { cycleTimeDock->setHidden(!checked); });
 	connect(cycleTimeDock, &QDockWidget::visibilityChanged, this, [=](bool visible) { cycleTimeViewAction->setChecked(visible); });
 
+	// about menu
+	QMenu* aboutMenu = new QMenu("About", this);
+	QAction* aboutThis = aboutMenu->addAction("About");
+	QAction* aboutQt = aboutMenu->addAction("About Qt");
+	connect(aboutThis, &QAction::triggered, this, []() { QDesktopServices::openUrl(global::ABOUT_GITHUB_URL); });
+	connect(aboutQt, &QAction::triggered, this, [=]() { QApplication::aboutQt(); });
+
 	// used to sync state
 	connect(viewMenu, &QMenu::triggered, this, [=]()
 		{
@@ -167,6 +178,7 @@ void SickGUI::initializeWidgets()
 	QMenuBar* menuBar = new QMenuBar(this);
 	menuBar->addMenu(filterMenu);
 	menuBar->addMenu(viewMenu);
+	menuBar->addMenu(aboutMenu);
 
 	this->setMenuBar(menuBar);
 #pragma endregion
@@ -222,9 +234,9 @@ void SickGUI::checkThreads()
 	if (camThreadResult.error || plcThreadResult.error)
 	{
 		constexpr auto msg = """Due to being unable to connect the camera and/or plc"""
-								 """, the application is only usable as a node editor"""
-							     """. Please check your configuration and restart to"""
-								 """ enable camera and plc functionality""";
+			""", the application is only usable as a node editor"""
+			""". Please check your configuration and restart to"""
+			""" enable camera and plc functionality""";
 		QMessageBox::information(this, "Info", msg);
 	}
 	// if both threads threads started successfully
@@ -250,7 +262,7 @@ void SickGUI::makeConnections()
 	// cycle times
 	QObject::connect(captureThread, &CaptureThread::addTime, cycleTimeWidget, &CycleTimeWidget::addCamTime);
 	QObject::connect(plcThread, &PlcThread::addTime, cycleTimeWidget, &CycleTimeWidget::addPlcTime);
-	
+
 	// filters
 	QObject::connect(filterEditorWidget, &FilterEditorWidget::updatedFilters, this,
 		[&](const QJsonArray& filters)
@@ -261,7 +273,7 @@ void SickGUI::makeConnections()
 	// filter status
 	QObject::connect(captureThread, &CaptureThread::filtersApplied, filterEditorWidget, &FilterEditorWidget::captureFiltersApplied);
 	QObject::connect(captureThread, &CaptureThread::filtersFailed, filterEditorWidget, &FilterEditorWidget::captureFiltersFailed);
-	
+
 	// camera connection status
 	QObject::connect(captureThread, &CaptureThread::reconnected, this, [&]() { cameraConnected = true; updateStatusBar(); });
 	QObject::connect(captureThread, &CaptureThread::disconnected, this, [&]() { cameraConnected = false; updateStatusBar();  });
@@ -383,7 +395,7 @@ ThreadResult SickGUI::startPlcThread()
 			ret.message = QString(CliErrorText(connectRet).c_str());
 			return ret;
 		}
-		
+
 		// make plc thread if needed
 		if (!plcThread)
 		{

@@ -1,3 +1,13 @@
+/*****************************************************************//**
+ * @file   StackBlurFilterModel.cpp
+ * @brief  Implements QtNodes::NodeDelegateModel.
+ *
+ * @note See BilateralFilterModel method documentation since all models follow the same pattern.
+ * 
+ * @author Nicholas Loehrke
+ * @date   September 2023
+ *********************************************************************/
+
 #include "StackBlurFilterModel.h"
 
 #include <qlayout.h>

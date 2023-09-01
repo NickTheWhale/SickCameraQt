@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   GaussianBlurFilter.cpp
+ * @brief  OpenCV gaussian blur filter.
+ * 
+ * @author Nicholas Loehrke
+ * @date   September 2023
+ *********************************************************************/
+
 #include "GaussianBlurFilter.h"
 
 #include <opencv2/imgproc.hpp>

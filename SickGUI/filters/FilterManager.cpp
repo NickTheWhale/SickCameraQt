@@ -1,3 +1,12 @@
+/*****************************************************************//**
+ * @file   FilterManager.cpp
+ * @brief  Helper class used to create filter objects from their json representation. Used by the captureThread to 
+ * create unique filter objects from the filterNodeEditor.
+ * 
+ * @author Nicholas Loehrke
+ * @date   September 2023
+ *********************************************************************/
+
 #include "FilterManager.h"
 
 #include <BilateralFilter.h>
@@ -16,11 +25,15 @@ void FilterManager::makeFilters(const QJsonArray& json)
 {
 	QMutexLocker locker(&filterMutex);
 
+	// if the new filters are the same, don't bother making any
 	if (json == previousJson)
 		return;
 
+	// cache filter json
 	previousJson = json;
 	_filters.clear();
+
+	// for each filer json, make a new filter object
 	for (const auto& filterRef : previousJson)
 	{
 		QJsonObject filterJson = filterRef.toObject();
@@ -40,9 +53,9 @@ bool FilterManager::applyFilters(cv::Mat& mat)
 {
 	QMutexLocker locker(&filterMutex);
 
+	// apply each filter to the mat
 	for (auto& filter : _filters)
 	{
-		auto type = filter->type();
 		if (filter.get() && !filter->apply(mat))
 			return false;
 	}
@@ -53,8 +66,10 @@ std::vector<std::unique_ptr<FilterBase>> FilterManager::filters()
 {
 	QMutexLocker locker(&filterMutex);
 
+	// prepare filter copy
 	std::vector<std::unique_ptr<FilterBase>> newFilters;
 
+	// clone each filter
 	for (const auto& filter : _filters)
 		newFilters.push_back(filter->clone());
 

@@ -2,6 +2,8 @@
  * @file   FrameSourceModel.h
  * @brief  Retrieves raw (unfiltered) frames from ThreadInterface.
  * 
+ * @note See BilateralFilterModel method documentation since all models follow the same pattern.
+ * 
  * @author Nicholas Loehrke
  * @date   August 2023
  *********************************************************************/

@@ -32,9 +32,18 @@ public:
 	 * @return 
 	 */
 	bool startPlc(TS7Client* client);
+
+	/**
+	 * @brief Sets stop flag to true, but does not block/wait thread or disconnect plc.
+	 * 
+	 */
 	void stopPlc();
 
 protected:
+	/**
+	 * @brief 'Main loop'.
+	 * 
+	 */
 	void run() override;
 
 private:
@@ -48,7 +57,18 @@ private:
 
 	TS7Client* client;
 	
+	/**
+	 * @brief Sends frame data to plc.
+	 * 
+	 * @param data Data to send.
+	 * @return Snap7 return code.
+	 */
 	int write(const std::vector<uint32_t>& data);
+
+	/**
+	 * @brief Loads plc and thread settings from configuration file. This is done at thread start.
+	 * 
+	 */
 	void loadConfiguration();
 };
 

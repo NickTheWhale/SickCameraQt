@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   ExponentialMovingAverageFilter.cpp
+ * @brief  Similar to SimpleMovingAverageFilter, weights older frames in the buffer exponentially lower.
+ * 
+ * @author Nicholas Loehrke
+ * @date   September 2023
+ *********************************************************************/
+
 #include "ExponentialMovingAverageFilter.h"
 
 #include <opencv2/imgproc.hpp>

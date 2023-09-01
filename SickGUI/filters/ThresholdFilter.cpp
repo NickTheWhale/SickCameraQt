@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   ThresholdFilter.cpp
+ * @brief  OpenCV Threshold filter.
+ * 
+ * @author Nicholas Loehrke
+ * @date   September 2023
+ *********************************************************************/
+
 #include "ThresholdFilter.h"
 
 #include <opencv2/imgproc.hpp>

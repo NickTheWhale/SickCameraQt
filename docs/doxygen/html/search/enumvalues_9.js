@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['jet_0',['Jet',['../namespacetinycolormap.html#a61cc7d7b7c1d4086d2763172baed0551a06f81c051bce0442430ba38803b91d16',1,'tinycolormap']]]
+  ['small_0',['SMALL',['../class_median_blur_filter_model.html#aa18b5e17a1dfebeef5e041fe8165f2f8a21c047214cab3a4624d02e63f5158c51',1,'MedianBlurFilterModel']]]
 ];

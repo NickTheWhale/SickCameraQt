@@ -1,3 +1,13 @@
+/*****************************************************************//**
+ * @file   FrameViewerModel.cpp
+ * @brief  Node to view frame with selectable color maps.
+ *
+ * @note See BilateralFilterModel method documentation since all models follow the same pattern.
+ * 
+ * @author Nicholas Loehrke
+ * @date   September 2023
+ *********************************************************************/
+
 #include "FrameViewerModel.h"
 
 #include <qlayout.h>

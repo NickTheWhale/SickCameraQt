@@ -2,6 +2,8 @@
  * @file   PlcStartModel.h
  * @brief  Special PLC start flag used to indicate start of filter flow.
  * 
+ * @note See BilateralFilterModel method documentation since all models follow the same pattern.
+ * 
  * @author Nicholas Loehrke
  * @date   August 2023
  *********************************************************************/

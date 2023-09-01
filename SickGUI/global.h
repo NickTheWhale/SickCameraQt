@@ -13,4 +13,5 @@
 namespace global
 {
 	const QString CONFIG_FILE_RELATIVE_PATH = "configuration/configuration.ini";
+	const QString ABOUT_GITHUB_URL = "https://github.com/NickTheWhale/SickCameraQt";
 }

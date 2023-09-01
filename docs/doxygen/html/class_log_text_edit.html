@@ -113,6 +113,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac2c17f1670b37d8c2b29b78f7dbfbd40"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_log_text_edit.html#ac2c17f1670b37d8c2b29b78f7dbfbd40">LogTextEdit</a> (QWidget *parent=nullptr)</td></tr>
 <tr class="separator:ac2c17f1670b37d8c2b29b78f7dbfbd40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae247fa5cace31c214839ec37d464e451"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_log_text_edit.html#ae247fa5cace31c214839ec37d464e451">showMessage</a> (const QtMsgType level, const QString &amp;message)</td></tr>
+<tr class="memdesc:ae247fa5cace31c214839ec37d464e451"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays a log message.  <br /></td></tr>
 <tr class="separator:ae247fa5cace31c214839ec37d464e451"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b2e3ead87d8abaa8c5f85423dfec0a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_log_text_edit.html#a6b2e3ead87d8abaa8c5f85423dfec0a6">setMaxLineCount</a> (unsigned int <a class="el" href="class_log_text_edit.html#a689ff0967a782e40b6830b2c3a610e00">maxLineCount</a>)</td></tr>
 <tr class="separator:a6b2e3ead87d8abaa8c5f85423dfec0a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -120,23 +121,31 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a10bbf716eb586811612aa70cd734f40d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_log_text_edit.html#a10bbf716eb586811612aa70cd734f40d">contextMenuEvent</a> (QContextMenuEvent *event) override</td></tr>
+<tr class="memdesc:a10bbf716eb586811612aa70cd734f40d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Right click menu callback.  <br /></td></tr>
 <tr class="separator:a10bbf716eb586811612aa70cd734f40d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a7bb502844756995b5148e5c18e866d2c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_log_text_edit.html#a7bb502844756995b5148e5c18e866d2c">wheelEvent</a> (QWheelEvent *event) override</td></tr>
+<tr class="memdesc:a7bb502844756995b5148e5c18e866d2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mouse wheel callback. Used to pause or unpause scrolling.  <br /></td></tr>
 <tr class="separator:a7bb502844756995b5148e5c18e866d2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d8598a90fed513e763f9b0da372d542"><td class="memItemLeft" align="right" valign="top">const QColor&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_log_text_edit.html#a8d8598a90fed513e763f9b0da372d542">levelToColor</a> (const QtMsgType level) const</td></tr>
+<tr class="memdesc:a8d8598a90fed513e763f9b0da372d542"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts given log level to a color.  <br /></td></tr>
 <tr class="separator:a8d8598a90fed513e763f9b0da372d542"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc214df58c5e5f159edee79be8be3b54"><td class="memItemLeft" align="right" valign="top">const QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_log_text_edit.html#acc214df58c5e5f159edee79be8be3b54">levelToString</a> (const QtMsgType level) const</td></tr>
+<tr class="memdesc:acc214df58c5e5f159edee79be8be3b54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts given log level to a string representation.  <br /></td></tr>
 <tr class="separator:acc214df58c5e5f159edee79be8be3b54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a35a1ea10e674d129071216a9fa5cf6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_log_text_edit.html#a9a35a1ea10e674d129071216a9fa5cf6">clearExcessBlocks</a> ()</td></tr>
+<tr class="memdesc:a9a35a1ea10e674d129071216a9fa5cf6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes oldest log lines if output is full.  <br /></td></tr>
 <tr class="separator:a9a35a1ea10e674d129071216a9fa5cf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a6840c2b6b6ace46122e608d245429d"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_log_text_edit.html#a0a6840c2b6b6ace46122e608d245429d">full</a> () const</td></tr>
+<tr class="memdesc:a0a6840c2b6b6ace46122e608d245429d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if the log output has more lines than maxLineCount.  <br /></td></tr>
 <tr class="separator:a0a6840c2b6b6ace46122e608d245429d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa933e28a40c3768c50f315c5928943fc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_log_text_edit.html#aa933e28a40c3768c50f315c5928943fc">writeMessage</a> (const QtMsgType level, const QString &amp;message)</td></tr>
+<tr class="memdesc:aa933e28a40c3768c50f315c5928943fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats and writes message to output.  <br /></td></tr>
 <tr class="separator:aa933e28a40c3768c50f315c5928943fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9d8685942cc549f49d3a1d131648065"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_log_text_edit.html#ab9d8685942cc549f49d3a1d131648065">clear</a> ()</td></tr>
+<tr class="memdesc:ab9d8685942cc549f49d3a1d131648065"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear and unpauses output.  <br /></td></tr>
 <tr class="separator:ab9d8685942cc549f49d3a1d131648065"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
@@ -197,6 +206,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Clear and unpauses output. </p>
+
 </div>
 </div>
 <a id="a9a35a1ea10e674d129071216a9fa5cf6" name="a9a35a1ea10e674d129071216a9fa5cf6"></a>
@@ -221,6 +232,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Removes oldest log lines if output is full. </p>
 
 </div>
 </div>
@@ -248,6 +261,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Right click menu callback. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">event</td><td>Event. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a0a6840c2b6b6ace46122e608d245429d" name="a0a6840c2b6b6ace46122e608d245429d"></a>
@@ -272,6 +293,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Determines if the log output has more lines than maxLineCount. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if current line count is greater than maxLineCount, false otherwise. </dd></dl>
 
 </div>
 </div>
@@ -299,6 +323,15 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Converts given log level to a color. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Level</td><td>Log level. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Color. </dd></dl>
+
 </div>
 </div>
 <a id="acc214df58c5e5f159edee79be8be3b54" name="acc214df58c5e5f159edee79be8be3b54"></a>
@@ -324,6 +357,15 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Converts given log level to a string representation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Level</td><td>Log level. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Log level string. </dd></dl>
 
 </div>
 </div>
@@ -371,6 +413,16 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Displays a log message. </p>
+<p>Displays a log message, clearing excess blocks if needed.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">level</td><td>Log level. </td></tr>
+    <tr><td class="paramname">message</td><td>Message to show. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a7bb502844756995b5148e5c18e866d2c" name="a7bb502844756995b5148e5c18e866d2c"></a>
@@ -396,6 +448,14 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Mouse wheel callback. Used to pause or unpause scrolling. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">event</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -432,6 +492,16 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Formats and writes message to output. </p>
+<p>Message format: '[data + time] [color coded level] message'</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">level</td><td>Log level. </td></tr>
+    <tr><td class="paramname">message</td><td>Log message. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

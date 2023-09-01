@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   CropFilter.cpp
+ * @brief  Simple crop filter. Uses normalized dimensions.
+ * 
+ * @author Nicholas Loehrke
+ * @date   September 2023
+ *********************************************************************/
+
 #include "CropFilter.h"
 
 CropFilter::CropFilter() :

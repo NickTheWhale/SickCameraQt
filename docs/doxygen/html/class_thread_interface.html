@@ -104,17 +104,23 @@ $(document).ready(function(){initNavTree('class_thread_interface.html',''); init
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2bc43ef8fba6d81afd75cd76ceef518f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_thread_interface.html#a2bc43ef8fba6d81afd75cd76ceef518f">pushFilteredFrame</a> (const <a class="el" href="structframeset_1_1_frameset.html">frameset::Frameset</a> &amp;fs)</td></tr>
-<tr class="separator:a2bc43ef8fba6d81afd75cd76ceef518f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1993c070caf9b6a27cef46828c6b0515"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_thread_interface.html#a1993c070caf9b6a27cef46828c6b0515">pushRawFrame</a> (const <a class="el" href="structframeset_1_1_frameset.html">frameset::Frameset</a> &amp;fs)</td></tr>
-<tr class="separator:a1993c070caf9b6a27cef46828c6b0515"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a31cc91aa82441cd5fdbe7314f289e29f"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structframeset_1_1_frameset.html">frameset::Frameset</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_thread_interface.html#a31cc91aa82441cd5fdbe7314f289e29f">peekFilteredFrame</a> ()</td></tr>
-<tr class="separator:a31cc91aa82441cd5fdbe7314f289e29f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6506d2c6e47d38be51459368e5cc2bcb"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structframeset_1_1_frameset.html">frameset::Frameset</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_thread_interface.html#a6506d2c6e47d38be51459368e5cc2bcb">peekRawFrame</a> ()</td></tr>
-<tr class="separator:a6506d2c6e47d38be51459368e5cc2bcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec5b0d66c1a117b49284f6cb5e15aff2"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structframeset_1_1_frameset.html">frameset::Frameset</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_thread_interface.html#aec5b0d66c1a117b49284f6cb5e15aff2">popFilteredFrame</a> ()</td></tr>
-<tr class="separator:aec5b0d66c1a117b49284f6cb5e15aff2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23e58ca62821c8be649e13169187aad7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_thread_interface.html#a23e58ca62821c8be649e13169187aad7">pushFilteredFrameset</a> (const <a class="el" href="structframeset_1_1_frameset.html">frameset::Frameset</a> &amp;fs)</td></tr>
+<tr class="memdesc:a23e58ca62821c8be649e13169187aad7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pushes filtered frameset to internal buffer.  <br /></td></tr>
+<tr class="separator:a23e58ca62821c8be649e13169187aad7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fb2ecc953480c0beb0557253940e48f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_thread_interface.html#a9fb2ecc953480c0beb0557253940e48f">pushRawFrameset</a> (const <a class="el" href="structframeset_1_1_frameset.html">frameset::Frameset</a> &amp;fs)</td></tr>
+<tr class="memdesc:a9fb2ecc953480c0beb0557253940e48f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pushes raw frameset to internal buffer.  <br /></td></tr>
+<tr class="separator:a9fb2ecc953480c0beb0557253940e48f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f6c9ddc100f8bcabf5c4789da93d132"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structframeset_1_1_frameset.html">frameset::Frameset</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_thread_interface.html#a4f6c9ddc100f8bcabf5c4789da93d132">peekFilteredFrameset</a> ()</td></tr>
+<tr class="memdesc:a4f6c9ddc100f8bcabf5c4789da93d132"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns latest filtered frameset without removing it from the internal buffer.  <br /></td></tr>
+<tr class="separator:a4f6c9ddc100f8bcabf5c4789da93d132"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47d62cfb9c5de46729fd8c9b313d9e7a"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structframeset_1_1_frameset.html">frameset::Frameset</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_thread_interface.html#a47d62cfb9c5de46729fd8c9b313d9e7a">peekRawFrameset</a> ()</td></tr>
+<tr class="memdesc:a47d62cfb9c5de46729fd8c9b313d9e7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns latest raw frameset without removing it from the internal buffer.  <br /></td></tr>
+<tr class="separator:a47d62cfb9c5de46729fd8c9b313d9e7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab16cd22532d6d0bc4efe05b8d6692d93"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structframeset_1_1_frameset.html">frameset::Frameset</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_thread_interface.html#ab16cd22532d6d0bc4efe05b8d6692d93">popFilteredFrameset</a> ()</td></tr>
+<tr class="memdesc:ab16cd22532d6d0bc4efe05b8d6692d93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns and removes latest filtered frameset from internal buffer.  <br /></td></tr>
+<tr class="separator:ab16cd22532d6d0bc4efe05b8d6692d93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae71cfe13960ab5417db914ebd9adca49"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structframeset_1_1_frameset.html">frameset::Frameset</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_thread_interface.html#ae71cfe13960ab5417db914ebd9adca49">popRawFrame</a> ()</td></tr>
+<tr class="memdesc:ae71cfe13960ab5417db914ebd9adca49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns and removes latest raw frameset from internal buffer.  <br /></td></tr>
 <tr class="separator:ae71cfe13960ab5417db914ebd9adca49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
@@ -219,14 +225,14 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a31cc91aa82441cd5fdbe7314f289e29f" name="a31cc91aa82441cd5fdbe7314f289e29f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a31cc91aa82441cd5fdbe7314f289e29f">&#9670;&#160;</a></span>peekFilteredFrame()</h2>
+<a id="a4f6c9ddc100f8bcabf5c4789da93d132" name="a4f6c9ddc100f8bcabf5c4789da93d132"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f6c9ddc100f8bcabf5c4789da93d132">&#9670;&#160;</a></span>peekFilteredFrameset()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="structframeset_1_1_frameset.html">frameset::Frameset</a> ThreadInterface::peekFilteredFrame </td>
+          <td class="memname">const <a class="el" href="structframeset_1_1_frameset.html">frameset::Frameset</a> ThreadInterface::peekFilteredFrameset </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -234,16 +240,19 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Returns latest filtered frameset without removing it from the internal buffer. </p>
+<dl class="section return"><dt>Returns</dt><dd>Latest filtered frameset. </dd></dl>
+
 </div>
 </div>
-<a id="a6506d2c6e47d38be51459368e5cc2bcb" name="a6506d2c6e47d38be51459368e5cc2bcb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6506d2c6e47d38be51459368e5cc2bcb">&#9670;&#160;</a></span>peekRawFrame()</h2>
+<a id="a47d62cfb9c5de46729fd8c9b313d9e7a" name="a47d62cfb9c5de46729fd8c9b313d9e7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47d62cfb9c5de46729fd8c9b313d9e7a">&#9670;&#160;</a></span>peekRawFrameset()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="structframeset_1_1_frameset.html">frameset::Frameset</a> ThreadInterface::peekRawFrame </td>
+          <td class="memname">const <a class="el" href="structframeset_1_1_frameset.html">frameset::Frameset</a> ThreadInterface::peekRawFrameset </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -251,22 +260,28 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Returns latest raw frameset without removing it from the internal buffer. </p>
+<dl class="section return"><dt>Returns</dt><dd>Latest raw frameset. </dd></dl>
+
 </div>
 </div>
-<a id="aec5b0d66c1a117b49284f6cb5e15aff2" name="aec5b0d66c1a117b49284f6cb5e15aff2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aec5b0d66c1a117b49284f6cb5e15aff2">&#9670;&#160;</a></span>popFilteredFrame()</h2>
+<a id="ab16cd22532d6d0bc4efe05b8d6692d93" name="ab16cd22532d6d0bc4efe05b8d6692d93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab16cd22532d6d0bc4efe05b8d6692d93">&#9670;&#160;</a></span>popFilteredFrameset()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="structframeset_1_1_frameset.html">frameset::Frameset</a> ThreadInterface::popFilteredFrame </td>
+          <td class="memname">const <a class="el" href="structframeset_1_1_frameset.html">frameset::Frameset</a> ThreadInterface::popFilteredFrameset </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Returns and removes latest filtered frameset from internal buffer. </p>
+<dl class="section return"><dt>Returns</dt><dd>Latest filtered frameset. </dd></dl>
 
 </div>
 </div>
@@ -285,16 +300,19 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Returns and removes latest raw frameset from internal buffer. </p>
+<dl class="section return"><dt>Returns</dt><dd>Latest raw frameset. </dd></dl>
+
 </div>
 </div>
-<a id="a2bc43ef8fba6d81afd75cd76ceef518f" name="a2bc43ef8fba6d81afd75cd76ceef518f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2bc43ef8fba6d81afd75cd76ceef518f">&#9670;&#160;</a></span>pushFilteredFrame()</h2>
+<a id="a23e58ca62821c8be649e13169187aad7" name="a23e58ca62821c8be649e13169187aad7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23e58ca62821c8be649e13169187aad7">&#9670;&#160;</a></span>pushFilteredFrameset()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void ThreadInterface::pushFilteredFrame </td>
+          <td class="memname">void ThreadInterface::pushFilteredFrameset </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structframeset_1_1_frameset.html">frameset::Frameset</a> &amp;&#160;</td>
           <td class="paramname"><em>fs</em></td><td>)</td>
@@ -303,16 +321,24 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Pushes filtered frameset to internal buffer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fs</td><td>Frameset to push. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a id="a1993c070caf9b6a27cef46828c6b0515" name="a1993c070caf9b6a27cef46828c6b0515"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1993c070caf9b6a27cef46828c6b0515">&#9670;&#160;</a></span>pushRawFrame()</h2>
+<a id="a9fb2ecc953480c0beb0557253940e48f" name="a9fb2ecc953480c0beb0557253940e48f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fb2ecc953480c0beb0557253940e48f">&#9670;&#160;</a></span>pushRawFrameset()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void ThreadInterface::pushRawFrame </td>
+          <td class="memname">void ThreadInterface::pushRawFrameset </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structframeset_1_1_frameset.html">frameset::Frameset</a> &amp;&#160;</td>
           <td class="paramname"><em>fs</em></td><td>)</td>
@@ -320,6 +346,14 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Pushes raw frameset to internal buffer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fs</td><td>Frameset to push. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

@@ -106,7 +106,6 @@ Inheritance diagram for GaussianBlurFilter:</div>
   <img src="class_gaussian_blur_filter.png" usemap="#GaussianBlurFilter_map" alt=""/>
   <map id="GaussianBlurFilter_map" name="GaussianBlurFilter_map">
 <area href="class_filter_base.html" alt="FilterBase" shape="rect" coords="0,56,133,80"/>
-<area href="class_qt_nodes_1_1_serializable.html" alt="QtNodes::Serializable" shape="rect" coords="0,0,133,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -117,35 +116,38 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad9847d213883f97a1022a8ce7321c147"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_gaussian_blur_filter.html#ad9847d213883f97a1022a8ce7321c147">~GaussianBlurFilter</a> () override</td></tr>
 <tr class="separator:ad9847d213883f97a1022a8ce7321c147"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a06fdbea5aea43ecf6e346da5ba5d1021"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="class_filter_base.html">FilterBase</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_gaussian_blur_filter.html#a06fdbea5aea43ecf6e346da5ba5d1021">clone</a> () const override</td></tr>
+<tr class="memdesc:a06fdbea5aea43ecf6e346da5ba5d1021"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clones internal parameters and returns a std::unique_ptr to the new filter object.  <br /></td></tr>
 <tr class="separator:a06fdbea5aea43ecf6e346da5ba5d1021"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a424eadc4d839affe0f8391b2c4a2bae0"><td class="memItemLeft" align="right" valign="top">const QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_gaussian_blur_filter.html#a424eadc4d839affe0f8391b2c4a2bae0">type</a> () const override</td></tr>
+<tr class="memdesc:a424eadc4d839affe0f8391b2c4a2bae0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unique string identifier.  <br /></td></tr>
 <tr class="separator:a424eadc4d839affe0f8391b2c4a2bae0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e121ec408250f2adae905ed1a05bb4a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_gaussian_blur_filter.html#a6e121ec408250f2adae905ed1a05bb4a">apply</a> (cv::Mat &amp;mat) override</td></tr>
+<tr class="memdesc:a6e121ec408250f2adae905ed1a05bb4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies filter to the given mat.  <br /></td></tr>
 <tr class="separator:a6e121ec408250f2adae905ed1a05bb4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c278e36be3784ecfeeb344b19f7aea5"><td class="memItemLeft" align="right" valign="top">QJsonObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_gaussian_blur_filter.html#a4c278e36be3784ecfeeb344b19f7aea5">save</a> () const override</td></tr>
+<tr class="memdesc:a4c278e36be3784ecfeeb344b19f7aea5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves a json representation of the filter object.  <br /></td></tr>
 <tr class="separator:a4c278e36be3784ecfeeb344b19f7aea5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0cb945637d6052114f4adfc54961fbc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_gaussian_blur_filter.html#ab0cb945637d6052114f4adfc54961fbc">load</a> (QJsonObject const &amp;p) override</td></tr>
+<tr class="memdesc:ab0cb945637d6052114f4adfc54961fbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads a json representation of the filter object.  <br /></td></tr>
 <tr class="separator:ab0cb945637d6052114f4adfc54961fbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_filter_base"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_filter_base')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_filter_base.html">FilterBase</a></td></tr>
 <tr class="memitem:a69cc7472a68edafc479061d0f411bbaa inherit pub_methods_class_filter_base"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_base.html#a69cc7472a68edafc479061d0f411bbaa">~FilterBase</a> ()</td></tr>
 <tr class="separator:a69cc7472a68edafc479061d0f411bbaa inherit pub_methods_class_filter_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6adad809c8174eadd65ac5c44aba7384 inherit pub_methods_class_filter_base"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr&lt; <a class="el" href="class_filter_base.html">FilterBase</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_base.html#a6adad809c8174eadd65ac5c44aba7384">clone</a> () const =0</td></tr>
+<tr class="memdesc:a6adad809c8174eadd65ac5c44aba7384 inherit pub_methods_class_filter_base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clones internal parameters and returns a std::unique_ptr to the new filter object.  <br /></td></tr>
 <tr class="separator:a6adad809c8174eadd65ac5c44aba7384 inherit pub_methods_class_filter_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c9b22d3d679dac1f1e3abb7ac859cb2 inherit pub_methods_class_filter_base"><td class="memItemLeft" align="right" valign="top">virtual const QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_base.html#a1c9b22d3d679dac1f1e3abb7ac859cb2">type</a> () const =0</td></tr>
+<tr class="memdesc:a1c9b22d3d679dac1f1e3abb7ac859cb2 inherit pub_methods_class_filter_base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unique string identifier.  <br /></td></tr>
 <tr class="separator:a1c9b22d3d679dac1f1e3abb7ac859cb2 inherit pub_methods_class_filter_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1a2c3246be9f6cceb4aeba1811c60e7 inherit pub_methods_class_filter_base"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_base.html#ac1a2c3246be9f6cceb4aeba1811c60e7">apply</a> (cv::Mat &amp;)=0</td></tr>
+<tr class="memdesc:ac1a2c3246be9f6cceb4aeba1811c60e7 inherit pub_methods_class_filter_base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies filter to the given mat.  <br /></td></tr>
 <tr class="separator:ac1a2c3246be9f6cceb4aeba1811c60e7 inherit pub_methods_class_filter_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8cc29469bc30128689e4363c737789a7 inherit pub_methods_class_filter_base"><td class="memItemLeft" align="right" valign="top">virtual QJsonObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_base.html#a8cc29469bc30128689e4363c737789a7">save</a> () const override=0</td></tr>
+<tr class="memdesc:a8cc29469bc30128689e4363c737789a7 inherit pub_methods_class_filter_base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves a json representation of the filter object.  <br /></td></tr>
 <tr class="separator:a8cc29469bc30128689e4363c737789a7 inherit pub_methods_class_filter_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e70680f68064e75807c641df58db2b2 inherit pub_methods_class_filter_base"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_base.html#a7e70680f68064e75807c641df58db2b2">load</a> (QJsonObject const &amp;) override=0</td></tr>
+<tr class="memdesc:a7e70680f68064e75807c641df58db2b2 inherit pub_methods_class_filter_base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads a json representation of the filter object.  <br /></td></tr>
 <tr class="separator:a7e70680f68064e75807c641df58db2b2 inherit pub_methods_class_filter_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_class_qt_nodes_1_1_serializable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_qt_nodes_1_1_serializable')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_qt_nodes_1_1_serializable.html">QtNodes::Serializable</a></td></tr>
-<tr class="memitem:abac54db31ffc5fdd516cf47db986fa0d inherit pub_methods_class_qt_nodes_1_1_serializable"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_qt_nodes_1_1_serializable.html#abac54db31ffc5fdd516cf47db986fa0d">~Serializable</a> ()=default</td></tr>
-<tr class="separator:abac54db31ffc5fdd516cf47db986fa0d inherit pub_methods_class_qt_nodes_1_1_serializable"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a058649fcd4cb8c6e9b088030c89440 inherit pub_methods_class_qt_nodes_1_1_serializable"><td class="memItemLeft" align="right" valign="top">virtual QJsonObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_qt_nodes_1_1_serializable.html#a0a058649fcd4cb8c6e9b088030c89440">save</a> () const</td></tr>
-<tr class="separator:a0a058649fcd4cb8c6e9b088030c89440 inherit pub_methods_class_qt_nodes_1_1_serializable"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68fb56b71105df708cc97aed09e7f037 inherit pub_methods_class_qt_nodes_1_1_serializable"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_qt_nodes_1_1_serializable.html#a68fb56b71105df708cc97aed09e7f037">load</a> (QJsonObject const &amp;)</td></tr>
-<tr class="separator:a68fb56b71105df708cc97aed09e7f037 inherit pub_methods_class_qt_nodes_1_1_serializable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -162,6 +164,7 @@ Private Attributes</h2></td></tr>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_methods_class_filter_base"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_filter_base')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_filter_base.html">FilterBase</a></td></tr>
 <tr class="memitem:a8fde952aa08b4b6957663f8708bc0541 inherit pro_methods_class_filter_base"><td class="memItemLeft" align="right" valign="top">constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_base.html#a8fde952aa08b4b6957663f8708bc0541">makeOdd</a> (const uint16_t n) const</td></tr>
+<tr class="memdesc:a8fde952aa08b4b6957663f8708bc0541 inherit pro_methods_class_filter_base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes a number odd.  <br /></td></tr>
 <tr class="separator:a8fde952aa08b4b6957663f8708bc0541 inherit pro_methods_class_filter_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -221,7 +224,7 @@ Additional Inherited Members</h2></td></tr>
           <td class="memname"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> GaussianBlurFilter::apply </td>
           <td>(</td>
           <td class="paramtype">cv::Mat &amp;&#160;</td>
-          <td class="paramname"><em>mat</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -231,6 +234,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Applies filter to the given mat. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mat</td><td>to be filtered. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if filtered, false otherwise. </dd></dl>
 
 <p>Implements <a class="el" href="class_filter_base.html#ac1a2c3246be9f6cceb4aeba1811c60e7">FilterBase</a>.</p>
 
@@ -259,6 +271,9 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Clones internal parameters and returns a std::unique_ptr to the new filter object. </p>
+<dl class="section return"><dt>Returns</dt><dd>std::unique_ptr to the clone filter object. </dd></dl>
+
 <p>Implements <a class="el" href="class_filter_base.html#a6adad809c8174eadd65ac5c44aba7384">FilterBase</a>.</p>
 
 </div>
@@ -276,7 +291,7 @@ Additional Inherited Members</h2></td></tr>
           <td class="memname">void GaussianBlurFilter::load </td>
           <td>(</td>
           <td class="paramtype">QJsonObject const &amp;&#160;</td>
-          <td class="paramname"><em>p</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -286,6 +301,14 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Loads a json representation of the filter object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">json</td><td>filter object. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implements <a class="el" href="class_filter_base.html#a7e70680f68064e75807c641df58db2b2">FilterBase</a>.</p>
 
@@ -314,6 +337,9 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Saves a json representation of the filter object. </p>
+<dl class="section return"><dt>Returns</dt><dd>json filter object. </dd></dl>
+
 <p>Implements <a class="el" href="class_filter_base.html#a8cc29469bc30128689e4363c737789a7">FilterBase</a>.</p>
 
 </div>
@@ -340,6 +366,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Unique string identifier. </p>
+<dl class="section return"><dt>Returns</dt><dd>type </dd></dl>
 
 <p>Implements <a class="el" href="class_filter_base.html#a1c9b22d3d679dac1f1e3abb7ac859cb2">FilterBase</a>.</p>
 

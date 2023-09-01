@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['async_5fmethods_5fare_5fsuppressed_0',['ASYNC_METHODS_ARE_SUPPRESSED',['../namespacevisionary_1_1_co_la_error.html#a4e410cc8da3d2a084c58ed78e89c3454aab6a1ec66f75f6fc803a408249c6ae45',1,'visionary::CoLaError']]],
-  ['authorized_5fclient_1',['AUTHORIZED_CLIENT',['../classvisionary_1_1_i_authentication.html#a9d9871f50bf25a43e7faa4afb9e92f08ab7877fa4c9005b3a2490e05562310130',1,'visionary::IAuthentication']]]
+  ['camera_5fnot_5ffound_0',['CAMERA_NOT_FOUND',['../_visionary_camera_8h.html#a59e56af19e754a6aa26a612ebf91d05fa01b5235594809ad7cb20b259f7c47987',1,'VisionaryCamera.h']]],
+  ['cividis_1',['Cividis',['../namespacetinycolormap.html#a61cc7d7b7c1d4086d2763172baed0551af2bbeb6ea88812648675c5bcb73a0424',1,'tinycolormap']]],
+  ['cubehelix_2',['Cubehelix',['../namespacetinycolormap.html#a61cc7d7b7c1d4086d2763172baed0551a16bccc98e93fe4a70ef661d461264ec9',1,'tinycolormap']]]
 ];

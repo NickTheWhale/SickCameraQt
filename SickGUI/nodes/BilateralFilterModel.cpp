@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   BilateralFilterModel.cpp
+ * @brief  Implements QtNodes::NodeDelegateModel.
+ * 
+ * @author Nicholas Loehrke
+ * @date   September 2023
+ *********************************************************************/
+
 #include "BilateralFilterModel.h"
 
 #include <opencv2/imgproc.hpp>
@@ -22,6 +30,7 @@ void BilateralFilterModel::setInData(std::shared_ptr<QtNodes::NodeData> nodeData
 
 QWidget* BilateralFilterModel::embeddedWidget()
 {
+	// lazy load widget
 	if (!_widget)
 		createWidgets();
 	return _widget;
@@ -29,6 +38,7 @@ QWidget* BilateralFilterModel::embeddedWidget()
 
 QJsonObject BilateralFilterModel::save() const
 {
+	// set filter parameters from widget controls
 	syncFilterParameters();
 	QJsonObject root;
 	root["model-name"] = name();
@@ -48,8 +58,10 @@ void BilateralFilterModel::load(QJsonObject const& p)
 	sigmaColor = filterParameters["sigma-color"].toDouble(sigmaColor);
 	sigmaSpace = filterParameters["sigma-space"].toDouble(sigmaSpace);
 
+	// lazy load widget
 	if (!_widget)
 		createWidgets();
+	// sync widget control values
 	sb_diameter->setValue(diameter);
 	sb_sigmaColor->setValue(sigmaColor);
 	sb_sigmaSpace->setValue(sigmaSpace);
@@ -72,7 +84,9 @@ void BilateralFilterModel::applyFilter()
 {
 	if (_originalNodeData)
 	{
+		// down cast node data
 		auto d = std::dynamic_pointer_cast<MatNodeData>(_originalNodeData);
+		// if the down cast workd and the mat isnt empty, filter it
 		if (d && !d->mat().empty())
 		{
 			cv::Mat mat = d->mat();
@@ -81,6 +95,7 @@ void BilateralFilterModel::applyFilter()
 			_currentNodeData = std::make_shared<MatNodeData>(mat);
 		}
 	}
+	// signal that we updated the outData
 	emit dataUpdated(0);
 }
 

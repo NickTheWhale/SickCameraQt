@@ -1,3 +1,14 @@
+/*****************************************************************//**
+ * @file   PlcSourceModel.cpp
+ * @brief  Retrieves filtered frames from the ThreadInterface singleton.
+ * 
+ * @note   See BilateralFilterModel method documentation since all models follow the same pattern.
+ * 
+ * @author Nicholas Loehrke
+ * @date   September 2023
+ *********************************************************************/
+
+
 #include "PlcSourceModel.h"
 
 #include <qlayout.h>
@@ -61,7 +72,7 @@ void PlcSourceModel::createWidgets()
     auto snapshotButton = new QPushButton("Snapshot");
     connect(snapshotButton, &QPushButton::pressed, this, [=]()
         {
-            _frame = threadInterface.peekFilteredFrame().depth;
+            _frame = threadInterface.peekFilteredFrameset().depth;
             emit dataUpdated(0);
         });
     auto continuousCheckBox = new QCheckBox("Continuous");
@@ -74,7 +85,7 @@ void PlcSourceModel::createWidgets()
         });
     connect(timer, &QTimer::timeout, this, [=]()
         {
-            _frame = threadInterface.peekFilteredFrame().depth;
+            _frame = threadInterface.peekFilteredFrameset().depth;
             emit dataUpdated(0);
         });
 

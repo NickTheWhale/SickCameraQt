@@ -1,22 +1,6 @@
 var searchData=
 [
-  ['camera_5fnot_5ffound_0',['CAMERA_NOT_FOUND',['../_visionary_camera_8h.html#a59e56af19e754a6aa26a612ebf91d05fa01b5235594809ad7cb20b259f7c47987',1,'VisionaryCamera.h']]],
-  ['cannot_5fconnect_1',['CANNOT_CONNECT',['../namespacevisionary_1_1_co_la_error.html#a4e410cc8da3d2a084c58ed78e89c3454a433ec3f96eb9e2d1aaf2aaf0e327c51b',1,'visionary::CoLaError']]],
-  ['caption_2',['Caption',['../namespace_qt_nodes.html#a21a521c8e3ae884aa19df1f67d7eb596a272ba7d164aa836995be6319a698be84',1,'QtNodes::Caption'],['../namespace_qt_nodes.html#af6d1882f3ed15bd00d36cce7f2093989a272ba7d164aa836995be6319a698be84',1,'QtNodes::Caption']]],
-  ['captionvisible_3',['CaptionVisible',['../namespace_qt_nodes.html#a21a521c8e3ae884aa19df1f67d7eb596afe9d5822b019d924bc63bf0830e08b77',1,'QtNodes::CaptionVisible'],['../namespace_qt_nodes.html#af6d1882f3ed15bd00d36cce7f2093989afe9d5822b019d924bc63bf0830e08b77',1,'QtNodes::CaptionVisible']]],
-  ['cividis_4',['Cividis',['../namespacetinycolormap.html#a61cc7d7b7c1d4086d2763172baed0551af2bbeb6ea88812648675c5bcb73a0424',1,'tinycolormap']]],
-  ['cola_5f2_5',['COLA_2',['../classvisionary_1_1_visionary_control.html#ad48d462fa9f65368bb9be70191372395aa9b211b49f5b9598111333737dd2d438',1,'visionary::VisionaryControl']]],
-  ['cola_5fa_6',['COLA_A',['../classvisionary_1_1_visionary_control.html#ad48d462fa9f65368bb9be70191372395adb1c595bd56235ce4bddc6647f307b7f',1,'visionary::VisionaryControl']]],
-  ['cola_5fa_5finvalid_5fcharacter_7',['COLA_A_INVALID_CHARACTER',['../namespacevisionary_1_1_co_la_error.html#a4e410cc8da3d2a084c58ed78e89c3454af0a4dbe06095d5271936e6883c75ce4e',1,'visionary::CoLaError']]],
-  ['cola_5fb_8',['COLA_B',['../classvisionary_1_1_visionary_control.html#ad48d462fa9f65368bb9be70191372395afea7996bbc6aaec57eb498a273abfaa5',1,'visionary::VisionaryControl']]],
-  ['cola_5ferror_9',['COLA_ERROR',['../namespacevisionary_1_1_co_la_command_type.html#ac6a07ccab53586bbf1b77bb2bd94bde6a1137f7d4ad4e18aaaf54a31b9f3693d5',1,'visionary::CoLaCommandType']]],
-  ['cola_5fvalue_5funderflow_10',['COLA_VALUE_UNDERFLOW',['../namespacevisionary_1_1_co_la_error.html#a4e410cc8da3d2a084c58ed78e89c3454a77a71449349ff27b909e4050e26056b9',1,'visionary::CoLaError']]],
-  ['complex_5farrays_5fnot_5fsupported_11',['COMPLEX_ARRAYS_NOT_SUPPORTED',['../namespacevisionary_1_1_co_la_error.html#a4e410cc8da3d2a084c58ed78e89c3454a325ae7190c5be0b22925f56331c19539',1,'visionary::CoLaError']]],
-  ['connected_12',['Connected',['../class_qt_nodes_1_1_connection_state.html#af4bcfc1c7ff04d5cf83c7237b6953480a489e6c4721b3b371cf91fd31ff9db0c9',1,'QtNodes::ConnectionState']]],
-  ['connectionpolicyrole_13',['ConnectionPolicyRole',['../namespace_qt_nodes.html#af6d1882f3ed15bd00d36cce7f2093989a7dad3637a34e698d16dadb668e456137',1,'QtNodes']]],
-  ['crypt_5ffail_5ftestvector_14',['CRYPT_FAIL_TESTVECTOR',['../_s_h_a256_8h.html#abc6126af1d45847bc59afa0aa3216b04af98a132fdf93633389677f31f9bb39ca',1,'SHA256.h']]],
-  ['crypt_5fhash_5foverflow_15',['CRYPT_HASH_OVERFLOW',['../_s_h_a256_8h.html#abc6126af1d45847bc59afa0aa3216b04ad2105b6b6cf40ed1961673e347d532f2',1,'SHA256.h']]],
-  ['crypt_5finvalid_5farg_16',['CRYPT_INVALID_ARG',['../_s_h_a256_8h.html#abc6126af1d45847bc59afa0aa3216b04a92aa8bad3930f08d5a188bf72094b066',1,'SHA256.h']]],
-  ['crypt_5fok_17',['CRYPT_OK',['../_s_h_a256_8h.html#abc6126af1d45847bc59afa0aa3216b04ad0f4c9daf749fe6284266f9384b9e334',1,'SHA256.h']]],
-  ['cubehelix_18',['Cubehelix',['../namespacetinycolormap.html#a61cc7d7b7c1d4086d2763172baed0551a16bccc98e93fe4a70ef661d461264ec9',1,'tinycolormap']]]
+  ['heat_0',['Heat',['../namespacetinycolormap.html#a61cc7d7b7c1d4086d2763172baed0551a3978cae4d5df7c2ddf4f7e1c6239f336',1,'tinycolormap']]],
+  ['hot_1',['Hot',['../namespacetinycolormap.html#a61cc7d7b7c1d4086d2763172baed0551ae18267064fbc725d634963d008c5cc5a',1,'tinycolormap']]],
+  ['hsv_2',['HSV',['../namespacetinycolormap.html#a61cc7d7b7c1d4086d2763172baed0551ad9a22f02df1b4e906f0db01cac6cfa81',1,'tinycolormap']]]
 ];

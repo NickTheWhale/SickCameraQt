@@ -114,14 +114,19 @@ Inheritance diagram for CaptureThread:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="signals" name="signals"></a>
 Signals</h2></td></tr>
 <tr class="memitem:a787477c19fbea9ec7c9c55621a2906f4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_capture_thread.html#a787477c19fbea9ec7c9c55621a2906f4">addTime</a> (const int time)</td></tr>
+<tr class="memdesc:a787477c19fbea9ec7c9c55621a2906f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emits <a class="el" href="class_capture_thread.html#a7b3ce730549a2beea9ae989a4cf44d35" title="Overridden method from QThread that runs the capture loop.">run()</a> cycle time.  <br /></td></tr>
 <tr class="separator:a787477c19fbea9ec7c9c55621a2906f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac721934b5e30a9d8b86f138c2a4b5cb9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_capture_thread.html#ac721934b5e30a9d8b86f138c2a4b5cb9">filtersApplied</a> (const QJsonArray &amp;filters)</td></tr>
+<tr class="memdesc:ac721934b5e30a9d8b86f138c2a4b5cb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emits latest filters that are applied to the thread interface filtered framesets.  <br /></td></tr>
 <tr class="separator:ac721934b5e30a9d8b86f138c2a4b5cb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a218377d047639379f74e1e6d33b7fa23"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_capture_thread.html#a218377d047639379f74e1e6d33b7fa23">filtersFailed</a> ()</td></tr>
+<tr class="memdesc:a218377d047639379f74e1e6d33b7fa23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emitted if one or more filters failed to apply.  <br /></td></tr>
 <tr class="separator:a218377d047639379f74e1e6d33b7fa23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ab2b14797a9389e2f7039ec5e00f726"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_capture_thread.html#a4ab2b14797a9389e2f7039ec5e00f726">disconnected</a> ()</td></tr>
+<tr class="memdesc:a4ab2b14797a9389e2f7039ec5e00f726"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emitted when the camera fails to return a frameset.  <br /></td></tr>
 <tr class="separator:a4ab2b14797a9389e2f7039ec5e00f726"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3819ff242b1574fcdc4a6c860b93814"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_capture_thread.html#ae3819ff242b1574fcdc4a6c860b93814">reconnected</a> ()</td></tr>
+<tr class="memdesc:ae3819ff242b1574fcdc4a6c860b93814"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emitted when the camera succeeds in returning a frameset.  <br /></td></tr>
 <tr class="separator:ae3819ff242b1574fcdc4a6c860b93814"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -182,6 +187,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Emits <a class="el" href="class_capture_thread.html#a7b3ce730549a2beea9ae989a4cf44d35" title="Overridden method from QThread that runs the capture loop.">run()</a> cycle time. </p>
+
 </div>
 </div>
 <a id="a4ab2b14797a9389e2f7039ec5e00f726" name="a4ab2b14797a9389e2f7039ec5e00f726"></a>
@@ -206,6 +213,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Emitted when the camera fails to return a frameset. </p>
 
 </div>
 </div>
@@ -233,6 +242,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Emits latest filters that are applied to the thread interface filtered framesets. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filters</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a218377d047639379f74e1e6d33b7fa23" name="a218377d047639379f74e1e6d33b7fa23"></a>
@@ -257,6 +274,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Emitted if one or more filters failed to apply. </p>
 
 </div>
 </div>
@@ -299,6 +318,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Emitted when the camera succeeds in returning a frameset. </p>
 
 </div>
 </div>

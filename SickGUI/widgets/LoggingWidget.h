@@ -18,6 +18,9 @@ class LoggingWidget : public QWidget
 	Q_OBJECT
 
 public slots:
+	/**
+	 * @brief Adds message to internal buffer to be shown later.
+	 */
 	void showMessage(const QtMsgType level, const QString& message);
 
 public:
@@ -27,6 +30,9 @@ public:
 	void setMaxLineCount(unsigned int maxLineCount);
 
 private slots:
+	/**
+	 * @brief Cyclically called to show each message in the internal buffer.
+	 */
 	void processMessageBuffer();
 
 private:

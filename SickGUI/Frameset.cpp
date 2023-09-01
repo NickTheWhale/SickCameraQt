@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   Frameset.cpp
+ * @brief  Defines frameset struct and some helper functions
+ * 
+ * @author Nicholas Loehrke
+ * @date   September 2023
+ *********************************************************************/
+
 #include "Frameset.h"
 #include <TinyColormap.hpp>
 #include <qdebug.h>

@@ -27,6 +27,7 @@ void LogTextEdit::setMaxLineCount(unsigned int maxLineCount)
 
 void LogTextEdit::contextMenuEvent(QContextMenuEvent* event)
 {
+	// adds a clear option to popup menu
 	QMenu menu(this);
 	QAction* clearAction = menu.addAction("Clear");
 	QAction* selectedAction = menu.exec(event->globalPos());
@@ -38,6 +39,7 @@ void LogTextEdit::contextMenuEvent(QContextMenuEvent* event)
 
 void LogTextEdit::wheelEvent(QWheelEvent* event)
 {
+	// calls super
 	QTextEdit::wheelEvent(event);
 
 	const int rawDelta = event->angleDelta().y();

@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   PlcEndModel.cpp
+ * @brief  Special node used to indicate the end of a filter flow.
+ * 
+ * @author Nicholas Loehrke
+ * @date   September 2023
+ *********************************************************************/
+
 #include "PlcEndModel.h"
 
 PlcEndModel::PlcEndModel()

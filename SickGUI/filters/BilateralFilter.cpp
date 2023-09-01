@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   BilateralFilter.cpp
+ * @brief  OpenCV bilateral filter.
+ * 
+ * @author Nicholas Loehrke
+ * @date   September 2023
+ *********************************************************************/
+
 #include "BilateralFilter.h"
 
 #include <opencv2/imgproc.hpp>

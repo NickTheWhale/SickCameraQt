@@ -1,3 +1,12 @@
+/*****************************************************************//**
+ * @file   FilterEditorWidget.cpp
+ * @brief  Adds some filtering specific functions to QtNodes::GraphicsView.
+ * Handles verifying filter paths and displaying the current filters
+ *
+ * @author Nicholas Loehrke
+ * @date   September 2023
+ *********************************************************************/
+
 #include "FilterEditorWidget.h"
 
 #include <PlcStartModel.h>
@@ -34,42 +43,53 @@ FilterEditorWidget::FilterEditorWidget(QWidget* parent) :
 	textEditButton(new QPushButton(this)),
 	filterTextEdit(new QTextEdit(this))
 {
+	// disable some controls for the current filter display
 	filterTextEdit->setReadOnly(true);
 	filterTextEdit->setUndoRedoEnabled(false);
 
+	// cache node styles
 	validStyle.loadJsonFile(":/SickGUI/ValidStyle.json");
 	invalidStyle.loadJsonFile(":/SickGUI/InvalidStyle.json");
 	defaultStyle.loadJsonFile(":/SickGUI/DefaultStyle.json");
 
+	// apply filter button connection
 	connect(applyButton, &QPushButton::pressed, this, &FilterEditorWidget::applyFilters);
+
+	// show/hide current filter display
 	connect(textEditButton, &QPushButton::pressed, this, [=]()
 		{
 			textEditVisible = !textEditVisible;
 			setAllGeometry(size());
 		});
+
+	// the following connections are used to update the node style anytime you change nodes
+
 	connect(&graph, &QtNodes::FilterFlowGraphModel::connectionCreated, this, [&]()
 		{
-			if (!blockAutomaticColorUpdates)
-				updateAllColors();
+			if (!blockAutomaticStyleUpdates)
+				updateAllNodeStyles();
 		});
 	connect(&graph, &QtNodes::FilterFlowGraphModel::connectionDeleted, this, [&]()
 		{
-			if (!blockAutomaticColorUpdates)
-				updateAllColors();
+			if (!blockAutomaticStyleUpdates)
+				updateAllNodeStyles();
 		});
 	connect(&graph, &QtNodes::FilterFlowGraphModel::nodeCreated, this, [&]()
 		{
-			if (!blockAutomaticColorUpdates)
-				updateAllColors();
+			if (!blockAutomaticStyleUpdates)
+				updateAllNodeStyles();
 		});
 	connect(&graph, &QtNodes::FilterFlowGraphModel::nodeDeleted, this, [&]()
 		{
-			if (!blockAutomaticColorUpdates)
-				updateAllColors();
+			if (!blockAutomaticStyleUpdates)
+				updateAllNodeStyles();
 		});
 
-	this->setMinimumSize(500, 300);
+	// make the current filter display translucent
 	filterTextEdit->setStyleSheet("QTextEdit { background-color: rgba(255, 255, 255, 200) }");
+
+	// layout geometry stuff
+	this->setMinimumSize(500, 300);
 	this->setScene(scene);
 	setAllGeometry(size());
 	adjustSize();
@@ -81,12 +101,15 @@ FilterEditorWidget::~FilterEditorWidget()
 
 void FilterEditorWidget::resizeEvent(QResizeEvent* event)
 {
+	// updates free floating widgets (filter display, filter display button, apply button)
 	setAllGeometry(event->size());
 	GraphicsView::resizeEvent(event);
 }
 
-void FilterEditorWidget::setButtonGeometry(const QSize size)
+void FilterEditorWidget::setApplyButtonGeometry(const QSize size)
 {
+	// calculates apply button position based on widget size
+
 	const QPoint bottomRight(size.width(), size.height());
 	const QPoint pad(5, 5);
 	const QPoint applyButtonSize(applyButton->size().width(), applyButton->size().height());
@@ -96,6 +119,9 @@ void FilterEditorWidget::setButtonGeometry(const QSize size)
 
 void FilterEditorWidget::setTextEditGeometry(const QSize size)
 {
+	// calculates filter display and button positions based on filter display
+	//   visibility and widget size
+
 	const QPoint pad(5, 5);
 	filterTextEdit->setVisible(textEditVisible);
 	if (filterTextEdit->isVisible())
@@ -115,7 +141,7 @@ void FilterEditorWidget::setTextEditGeometry(const QSize size)
 
 void FilterEditorWidget::setAllGeometry(const QSize size)
 {
-	setButtonGeometry(size);
+	setApplyButtonGeometry(size);
 	setTextEditGeometry(size);
 }
 
@@ -128,10 +154,12 @@ const std::pair<std::vector<QtNodes::NodeId>, std::vector<QtNodes::NodeId>> Filt
 {
 	std::pair<std::vector<QtNodes::NodeId>, std::vector<QtNodes::NodeId>> ids;
 
+	// checks if given id is a plc start node based on node name
 	auto isPlcStartNode = [&](const QtNodes::NodeId id) -> bool { return graph.nodeData(id, QtNodes::NodeRole::Type) == PlcStartModel().name(); };
+	// checks if given id is a plc end node based on node name
 	auto isPlcEndNode = [&](const QtNodes::NodeId id) -> bool { return graph.nodeData(id, QtNodes::NodeRole::Type) == PlcEndModel().name(); };
 
-
+	// iterate all node id's and check if its a plc start or end node
 	for (const auto& id : graph.allNodeIds())
 	{
 		if (isPlcStartNode(id))
@@ -146,194 +174,240 @@ const std::pair<std::vector<QtNodes::NodeId>, std::vector<QtNodes::NodeId>> Filt
 FilterEditorWidget::FlowTuple FilterEditorWidget::computeFilterFlow()
 {
 	QString message;
+	// get all of the plc node ids
 	const PlcIds plcIds = getPlcIds();
+	// number of start nodes
 	const size_t startIdCount = plcIds.first.size();
+	// number of end nodes
 	const size_t endIdCount = plcIds.second.size();
-	
+
+	// check if there is a valid amount of plc nodes (1 start and 1 end)
 	if (startIdCount != 1 || endIdCount != 1)
 	{
 		return handleInvalidFlagCount(plcIds);
 	}
 
+	// if there is a valid amount, then we can get the start node id and end node id
 	const QtNodes::NodeId plcStartNode = plcIds.first.front();
 	const QtNodes::NodeId plcEndNode = plcIds.second.front();
 
+	// check if the plc nodes are connected
 	if (!graph.nodesConnected(plcStartNode, plcEndNode))
 	{
 		return handleDisconnectedFlags(plcIds);
 	}
 
+	// check if the plc nodes are connected directly to each other (not through any filters)
 	if (graph.nodesUniquelyConnected(plcStartNode, plcEndNode))
 	{
 		return handleUniquelyConnectedFlags(plcIds);
 	}
 
+	// check if the plc nodes are connected through a non-branching path, only through filter nodes
 	const auto nonBranchingIds = graph.nonBranchingFilterableConnections(plcStartNode, plcEndNode);
 	if (!nonBranchingIds.empty())
 	{
 		return handleConnectedFlags(nonBranchingIds);
 	}
 
+	// check if the plc nodes are connected through a branching path with any node type
 	const NodeIdSet branchingIds = graph.branchingConnections(plcStartNode, plcEndNode);
 	if (!branchingIds.empty())
 	{
 		return handleInvalidConnectedFlags(plcEndNode, branchingIds);
 	}
 
+	// base case
 	return FlowTuple{ false, QJsonArray(), ValidateIdSet(), DefaultIdSet(), InvalidateIdSet(), QString() };
 }
 
 FilterEditorWidget::FlowTuple FilterEditorWidget::handleInvalidFlagCount(const PlcIds& plcIds)
 {
+	const bool validFilterJson = false;
+	const QJsonArray filterJson = QJsonArray();
+	const ValidateIdSet idsToValidate = ValidateIdSet();
+	DefaultIdSet idsToDefault;
+	InvalidateIdSet idsToInvalidate;
 	const QString message = "Invalid PLC flag count, you must have 1 of each.";
 
-	InvalidateIdSet idsToInvalidate;
+	// all of the start plc id's should be invalidated and any nodes connected to each of the start plc nodes
 	for (const auto& plcId : plcIds.first)
 	{
 		idsToInvalidate.insert(plcId);
+		// invalidate any connected nodes connected to the plc start node
 		const auto plcBranchIds = graph.branchingConnections(plcId);
 		for (const auto& id : plcBranchIds)
 			idsToInvalidate.insert(id);
 	}
 
+	// all of the end plc id's should be invalidated and any nodes connected to each of the end plc nodes
 	for (const auto& plcId : plcIds.second)
 	{
 		idsToInvalidate.insert(plcId);
+		// invalidate any connected nodes connected to the plc end node
 		const auto plcBranchIds = graph.branchingConnections(plcId);
 		for (const auto& id : plcBranchIds)
 			idsToInvalidate.insert(id);
 	}
 
-	DefaultIdSet idsToDefault;
+	// any non plc node id should be defaulted
 	const auto allIds = graph.allNodeIds();
 	for (const auto& id : allIds)
 		if (idsToInvalidate.count(id) == 0)
 			idsToDefault.insert(id);
 
-	return std::make_tuple(false, QJsonArray(), ValidateIdSet(), idsToDefault, idsToInvalidate, message);
+	return std::make_tuple(validFilterJson, filterJson, idsToValidate, idsToDefault, idsToInvalidate, message);
 }
 
 FilterEditorWidget::FlowTuple FilterEditorWidget::handleDisconnectedFlags(const PlcIds& plcIds)
 {
+	const bool validFilterJson = false;
+	const QJsonArray filterJson = QJsonArray();
+	const ValidateIdSet idsToValidate = ValidateIdSet();
+	DefaultIdSet idsToDefault;
+	InvalidateIdSet idsToInvalidate;
 	const QString message = "PLC flags not connected.";
 
-	InvalidateIdSet idsToInvalidate;
+	// all of the start plc id's should be invalidated and any nodes connected to each of the start plc nodes
 	for (const auto& plcId : plcIds.first)
 	{
 		idsToInvalidate.insert(plcId);
+		// invalidate any connected nodes connected to the plc start node
 		const auto plcBranchIds = graph.branchingConnections(plcId);
 		for (const auto& id : plcBranchIds)
 			idsToInvalidate.insert(id);
 	}
 
+	// all of the end plc id's should be invalidated and any nodes connected to each of the end plc nodes
 	for (const auto& plcId : plcIds.second)
 	{
 		idsToInvalidate.insert(plcId);
+		// invalidate any connected nodes connected to the plc end node
 		const auto plcBranchIds = graph.branchingConnections(plcId);
 		for (const auto& id : plcBranchIds)
 			idsToInvalidate.insert(id);
 	}
 
-	DefaultIdSet idsToDefault;
+	// any non plc node id should be defaulted
 	const auto allIds = graph.allNodeIds();
 	for (const auto& id : allIds)
 		if (idsToInvalidate.count(id) == 0)
 			idsToDefault.insert(id);
 
-	return std::make_tuple(false, QJsonArray(), ValidateIdSet(), idsToDefault, idsToInvalidate, message);
+	return std::make_tuple(validFilterJson, filterJson, idsToValidate, idsToDefault, idsToInvalidate, message);
 }
 
 FilterEditorWidget::FlowTuple FilterEditorWidget::handleUniquelyConnectedFlags(const PlcIds& plcIds)
 {
+	const bool filterJsonValid = true;
+	const QJsonArray filterJson = QJsonArray();
+	ValidateIdSet idsToValidate;
+	DefaultIdSet idsToDefault;
+	const InvalidateIdSet idsToInvalidate = InvalidateIdSet();
 	const QString message = "PLC flags are uniquely connected.";
 
-	ValidateIdSet idsToValidate;
+	// "all" start ids should be validated. I say "all" because there really should only be 1 at this point.
 	for (const auto& id : plcIds.first)
 		idsToValidate.insert(id);
+	// "all" end ids should be validated. I say "all" because there really should only be 1 at this point.
 	for (const auto& id : plcIds.second)
 		idsToValidate.insert(id);
 
-	DefaultIdSet idsToDefault;
+	// any non plc node id should be defaulted
 	const auto allIds = graph.allNodeIds();
 	for (const auto& id : allIds)
 		if (idsToValidate.count(id) == 0)
 			idsToDefault.insert(id);
 
-	return std::make_tuple(true, QJsonArray(), idsToValidate, idsToDefault, InvalidateIdSet(), message);
+	return std::make_tuple(filterJsonValid, filterJson, idsToValidate, idsToDefault, idsToInvalidate, message);
 }
 
 FilterEditorWidget::FlowTuple FilterEditorWidget::handleConnectedFlags(const std::vector<QtNodes::NodeId>& nonBranchingIds)
 {
+	const bool filterJsonValid = true;
+	QJsonArray filterJson;
+	ValidateIdSet idsToValidate;
+	DefaultIdSet idsToDefault;
+	const InvalidateIdSet idsToInvalidate = InvalidateIdSet();
 	const QString message = "PLC flags are connected";
 
-	ValidateIdSet idsToValidate;
-	QJsonArray json;
+	// for all node id's in the connection path, we validate it and add it to the filterJson if its a filter
 	for (const auto& id : nonBranchingIds)
 	{
+		// get the json representation of the filter object
 		QJsonObject filter = graph.saveNode(id)["internal-data"].toObject()["filter"].toObject();
 		if (!filter.empty())
-			json.append(filter);
+			filterJson.append(filter);
 		idsToValidate.insert(id);
 	}
 
-	DefaultIdSet idsToDefault;
+	// any id thats not to be validated should be defaulted
 	const auto allIds = graph.allNodeIds();
 	for (const auto& id : allIds)
 		if (idsToValidate.count(id) == 0)
 			idsToDefault.insert(id);
 
-	return std::make_tuple(true, json, idsToValidate, idsToDefault, InvalidateIdSet(), message);
+	return std::make_tuple(filterJsonValid, filterJson, idsToValidate, idsToDefault, idsToInvalidate, message);
 }
 
 FilterEditorWidget::FlowTuple FilterEditorWidget::handleInvalidConnectedFlags(const QtNodes::NodeId plcEndNode, const NodeIdSet& branchingIds)
 {
+	const bool filterJsonValid = false;
+	const QJsonArray filterJson = QJsonArray();
+	const ValidateIdSet idsToValidate = ValidateIdSet();
+	DefaultIdSet idsToDefault;
+	InvalidateIdSet idsToInvalidate = branchingIds;
 	const QString message = "PLC flags are connected through invalid path.";
 
-	InvalidateIdSet idsToInvalidate = branchingIds;
+	// all nodes connected to the end node should be invalidated
 	idsToInvalidate.insert(plcEndNode);
 	InvalidateIdSet endBranches = graph.branchingConnections(plcEndNode);
 	for (const auto& id : endBranches)
 		idsToInvalidate.insert(id);
 
-	DefaultIdSet idsToDefault;
+	// any id thats not to be validated should be defaulted
 	const auto allIds = graph.allNodeIds();
 	for (const auto& id : allIds)
 		if (idsToInvalidate.count(id) == 0)
 			idsToDefault.insert(id);
 
-	return std::make_tuple(false, QJsonArray(), ValidateIdSet(), DefaultIdSet(), idsToInvalidate, message);
+	return std::make_tuple(filterJsonValid, filterJson, idsToValidate, idsToDefault, idsToInvalidate, message);
 }
 
 void FilterEditorWidget::applyFilters()
 {
 	const FlowTuple flow = computeFilterFlow();
 	const ValidJson validJson = std::get<0>(flow);
+	// if the filter json if valid, emit the filter json array
 	if (validJson)
 	{
 		emit updatedFilters(std::get<1>(flow));
 	}
+	// otherwise, show a message
 	else
 	{
 		showMessage(std::get<5>(flow));
 	}
-	updateAllColors(std::get<2>(flow), std::get<3>(flow), std::get<4>(flow));
+	// update node styles based on the computed flow
+	updateAllNodeStyles(std::get<2>(flow), std::get<3>(flow), std::get<4>(flow));
 }
 
-void FilterEditorWidget::updateAllColors(const ValidateIdSet& validateSet, const DefaultIdSet& defaultSet, const InvalidateIdSet& invalidateSet)
+void FilterEditorWidget::updateAllNodeStyles(const ValidateIdSet& validateSet, const DefaultIdSet& defaultSet, const InvalidateIdSet& invalidateSet)
 {
-	updateNodeColors(validStyle, validateSet);
-	updateNodeColors(defaultStyle, defaultSet);
-	updateNodeColors(invalidStyle, invalidateSet);
+	updateNodeStyles(validStyle, validateSet);
+	updateNodeStyles(defaultStyle, defaultSet);
+	updateNodeStyles(invalidStyle, invalidateSet);
 }
 
-void FilterEditorWidget::updateAllColors()
+void FilterEditorWidget::updateAllNodeStyles()
 {
 	const FlowTuple flow = computeFilterFlow();
-	updateAllColors(std::get<2>(flow), std::get<3>(flow), std::get<4>(flow));
+	updateAllNodeStyles(std::get<2>(flow), std::get<3>(flow), std::get<4>(flow));
 }
 
-void FilterEditorWidget::updateNodeColors(const QtNodes::Style& style, const std::vector<QtNodes::NodeId>& ids)
+void FilterEditorWidget::updateNodeStyles(const QtNodes::Style& style, const std::vector<QtNodes::NodeId>& ids)
 {
+	// for each node, update the style and signal that the node has been updated. This triggers a repaint
 	for (const auto& id : ids)
 	{
 		graph.setNodeData(id, QtNodes::NodeRole::Style, style.toJson());
@@ -341,8 +415,9 @@ void FilterEditorWidget::updateNodeColors(const QtNodes::Style& style, const std
 	}
 }
 
-void FilterEditorWidget::updateNodeColors(const QtNodes::Style& style, const std::unordered_set<QtNodes::NodeId>& ids)
+void FilterEditorWidget::updateNodeStyles(const QtNodes::Style& style, const std::unordered_set<QtNodes::NodeId>& ids)
 {
+	// for each node, update the style and signal that the node has been updated. This triggers a repaint
 	for (const auto& id : ids)
 	{
 		graph.setNodeData(id, QtNodes::NodeRole::Style, style.toJson());
@@ -377,6 +452,7 @@ std::shared_ptr<QtNodes::NodeDelegateModelRegistry> registerDataModels()
 
 void FilterEditorWidget::save()
 {
+	// saves nodes
 	scene->save();
 }
 
@@ -384,7 +460,8 @@ void FilterEditorWidget::load()
 {
 	try
 	{
-		blockAutomaticColorUpdates = true;
+		// block style since updateNodeStyles() can be kinda slow when adding a bunch of nodes
+		blockAutomaticStyleUpdates = true;
 		scene->load();
 	}
 	catch (const std::logic_error& e)
@@ -395,15 +472,18 @@ void FilterEditorWidget::load()
 	{
 		qWarning() << "Failed to load node(s). This may be due to invalid json format or outdated flow file";
 	}
-	blockAutomaticColorUpdates = false;
-	updateAllColors();
+	blockAutomaticStyleUpdates = false;
+	// update node styles once everything has loaded
+	updateAllNodeStyles();
 }
 
-void jsonObjectToHtml(const QJsonObject& obj, QString& html)
+void FilterEditorWidget::jsonObjectToHtml(const QJsonObject& obj, QString& html)
 {
 	QJsonObject::const_iterator it;
+	// iterate through object
 	for (it = obj.constBegin(); it != obj.constEnd(); ++it)
 	{
+		// if the value is an object, recur
 		if (it.value().isObject())
 		{
 			html += "<dt>";
@@ -418,6 +498,7 @@ void jsonObjectToHtml(const QJsonObject& obj, QString& html)
 			html += "</dl>";
 			html += "</dd>";
 		}
+		// otherwise, show value
 		else
 		{
 			html += "<dt>";
@@ -429,7 +510,7 @@ void jsonObjectToHtml(const QJsonObject& obj, QString& html)
 	}
 }
 
-QString jsonArrayToHtml(const QJsonArray& array)
+QString FilterEditorWidget::filterJsonArrayToHtml(const QJsonArray& array)
 {
 	QString html;
 	html += "<dl>";
@@ -437,9 +518,11 @@ QString jsonArrayToHtml(const QJsonArray& array)
 	size_t filterNum = 0;
 	for (const auto& filter : array)
 	{
+		// type or name of the filter
 		const auto type = filter.toObject()["type"].toVariant().toString();
+		// filter parameters
 		const auto parameters = filter.toObject()["parameters"].toObject();
-		
+
 		html += "<dt>";
 		html += "<div style=\"font-size:20px;\">";
 		html += QString::number(filterNum + 1) + ". " + type;
@@ -451,10 +534,11 @@ QString jsonArrayToHtml(const QJsonArray& array)
 		jsonObjectToHtml(parameters, html);
 		html += "</dl>";
 		html += "</dd>";
-		
+
+		// add a horizontal line
 		if (filterNum < array.size() - 1)
 			html += "<hr>";
-		
+
 		++filterNum;
 	}
 
@@ -464,6 +548,7 @@ QString jsonArrayToHtml(const QJsonArray& array)
 
 void FilterEditorWidget::captureFiltersApplied(const QJsonArray& filters)
 {
+	// prevent unnecessary updates
 	if (filters == lastFilters && !filters.empty())
 		return;
 
@@ -471,13 +556,15 @@ void FilterEditorWidget::captureFiltersApplied(const QJsonArray& filters)
 
 	QString html = "<b>Current Filters:</b><br>";
 
+	// if the filters are empty, say thath
 	if (lastFilters.empty())
 	{
 		html += "<br>No filters being applied";
 	}
+	// otherwise, generate html 
 	else
 	{
-		html += jsonArrayToHtml(lastFilters);
+		html += filterJsonArrayToHtml(lastFilters);
 	}
 
 	filterTextEdit->setHtml(html);
@@ -485,6 +572,7 @@ void FilterEditorWidget::captureFiltersApplied(const QJsonArray& filters)
 
 void FilterEditorWidget::captureFiltersFailed()
 {
+	// reset filter cache
 	lastFilters = QJsonArray();
 	filterTextEdit->setHtml("<b>Failed to apply filters</b>");
 }

@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   StackBlurFilter.cpp
+ * @brief  OpenCV stack blur filter.
+ * 
+ * @author Nicholas Loehrke
+ * @date   September 2023
+ *********************************************************************/
+
 #include "StackBlurFilter.h"
 
 #include <opencv2/imgproc.hpp>

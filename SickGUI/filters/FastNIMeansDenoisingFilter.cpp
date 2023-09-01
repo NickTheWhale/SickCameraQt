@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   FastNIMeansDenoisingFilter.cpp
+ * @brief  OpenCV non local means denoising filter.
+ * 
+ * @author Nicholas Loehrke
+ * @date   September 2023
+ *********************************************************************/
+
 #include "FastNIMeansDenoisingFilter.h"
 
 #include <opencv2/photo.hpp>

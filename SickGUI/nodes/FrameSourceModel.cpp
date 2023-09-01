@@ -1,3 +1,13 @@
+/*****************************************************************//**
+ * @file   FrameSourceModel.cpp
+ * @brief  Retrieves raw (unfiltered) frames from ThreadInterface.
+ *
+ * @note See BilateralFilterModel method documentation since all models follow the same pattern.
+ * 
+ * @author Nicholas Loehrke
+ * @date   September 2023
+ *********************************************************************/
+
 #include "FrameSourceModel.h"
 
 #include <qlayout.h>
@@ -61,7 +71,7 @@ void FrameSourceModel::createWidgets()
     auto snapshotButton = new QPushButton("Snapshot");
     connect(snapshotButton, &QPushButton::pressed, this, [=]()
         {
-            _frame = threadInterface.peekRawFrame().depth;
+            _frame = threadInterface.peekRawFrameset().depth;
             emit dataUpdated(0);
         });
     auto continuousCheckBox = new QCheckBox("Continuous");
@@ -74,7 +84,7 @@ void FrameSourceModel::createWidgets()
         });
     connect(timer, &QTimer::timeout, this, [=]()
         {
-            _frame = threadInterface.peekRawFrame().depth;
+            _frame = threadInterface.peekRawFrameset().depth;
             emit dataUpdated(0);
         });
 

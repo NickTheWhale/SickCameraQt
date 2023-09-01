@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['defaultidset_0',['DefaultIdSet',['../class_filter_editor_widget.html#a94dddcc5f552933f4eca9f39862d3c47',1,'FilterEditorWidget']]]
+  ['flowtuple_0',['FlowTuple',['../class_filter_editor_widget.html#af88f254b65a73fdc806d9a960fcbb306',1,'FilterEditorWidget']]]
 ];

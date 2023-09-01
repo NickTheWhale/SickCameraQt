@@ -1,3 +1,13 @@
+/*****************************************************************//**
+ * @file   ResizeFilterModel.cpp
+ * @brief  Implements QtNodes::NodeDelegateModel.
+ *
+ * @note See BilateralFilterModel method documentation since all models follow the same pattern.
+ * 
+ * @author Nicholas Loehrke
+ * @date   September 2023
+ *********************************************************************/
+
 #include "ResizeFilterModel.h"
 
 #include <opencv2/imgproc.hpp>

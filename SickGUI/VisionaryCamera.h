@@ -2,6 +2,9 @@
  * @file   VisionaryCamera.h
  * @brief  Visionary T Mini camera interface. Sorta handles auto reconnection.
  *
+ * Much of this code is adapted from SampleVisionaryTMiniFrameGrabber.cpp which can be
+ * downloaded from the Sick website.
+ * 
  * @author Nicholas Loehrke
  * @date   June 2023
  *********************************************************************/

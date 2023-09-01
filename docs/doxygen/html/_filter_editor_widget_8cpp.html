@@ -95,6 +95,9 @@ $(document).ready(function(){initNavTree('_filter_editor_widget_8cpp.html',''); 
   <div class="headertitle"><div class="title">FilterEditorWidget.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Adds some filtering specific functions to QtNodes::GraphicsView. Handles verifying filter paths and displaying the current filters.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="_filter_editor_widget_8h_source.html">FilterEditorWidget.h</a>&quot;</code><br />
 <code>#include &lt;<a class="el" href="_plc_start_model_8h_source.html">PlcStartModel.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="_plc_end_model_8h_source.html">PlcEndModel.h</a>&gt;</code><br />
@@ -122,60 +125,15 @@ $(document).ready(function(){initNavTree('_filter_editor_widget_8cpp.html',''); 
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a3b971a3e0e5643faf252b6592e5c85c9"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_qt_nodes_1_1_node_delegate_model_registry.html">QtNodes::NodeDelegateModelRegistry</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_filter_editor_widget_8cpp.html#a3b971a3e0e5643faf252b6592e5c85c9">registerDataModels</a> ()</td></tr>
+<tr class="memitem:a3b971a3e0e5643faf252b6592e5c85c9"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; QtNodes::NodeDelegateModelRegistry &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_filter_editor_widget_8cpp.html#a3b971a3e0e5643faf252b6592e5c85c9">registerDataModels</a> ()</td></tr>
+<tr class="memdesc:a3b971a3e0e5643faf252b6592e5c85c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers nodes so they can be added to the node editor.  <br /></td></tr>
 <tr class="separator:a3b971a3e0e5643faf252b6592e5c85c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeab7d92e3f3fc10cc7c745c793e46734"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_filter_editor_widget_8cpp.html#aeab7d92e3f3fc10cc7c745c793e46734">jsonObjectToHtml</a> (const QJsonObject &amp;obj, QString &amp;html)</td></tr>
-<tr class="separator:aeab7d92e3f3fc10cc7c745c793e46734"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c10f745d40100403ea414aec51669a7"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_filter_editor_widget_8cpp.html#a1c10f745d40100403ea414aec51669a7">jsonArrayToHtml</a> (const QJsonArray &amp;array)</td></tr>
-<tr class="separator:a1c10f745d40100403ea414aec51669a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="a1c10f745d40100403ea414aec51669a7" name="a1c10f745d40100403ea414aec51669a7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1c10f745d40100403ea414aec51669a7">&#9670;&#160;</a></span>jsonArrayToHtml()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">QString jsonArrayToHtml </td>
-          <td>(</td>
-          <td class="paramtype">const QJsonArray &amp;&#160;</td>
-          <td class="paramname"><em>array</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aeab7d92e3f3fc10cc7c745c793e46734" name="aeab7d92e3f3fc10cc7c745c793e46734"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeab7d92e3f3fc10cc7c745c793e46734">&#9670;&#160;</a></span>jsonObjectToHtml()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void jsonObjectToHtml </td>
-          <td>(</td>
-          <td class="paramtype">const QJsonObject &amp;&#160;</td>
-          <td class="paramname"><em>obj</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">QString &amp;&#160;</td>
-          <td class="paramname"><em>html</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Adds some filtering specific functions to QtNodes::GraphicsView. Handles verifying filter paths and displaying the current filters. </p>
+<dl class="section author"><dt>Author</dt><dd>Nicholas Loehrke </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>September 2023 </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a3b971a3e0e5643faf252b6592e5c85c9" name="a3b971a3e0e5643faf252b6592e5c85c9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3b971a3e0e5643faf252b6592e5c85c9">&#9670;&#160;</a></span>registerDataModels()</h2>
 
@@ -183,13 +141,15 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_ptr&lt; <a class="el" href="class_qt_nodes_1_1_node_delegate_model_registry.html">QtNodes::NodeDelegateModelRegistry</a> &gt; registerDataModels </td>
+          <td class="memname">std::shared_ptr&lt; QtNodes::NodeDelegateModelRegistry &gt; registerDataModels </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Registers nodes so they can be added to the node editor. </p>
 
 </div>
 </div>

@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   CaptureThread.cpp
+ * @brief  QThread subclass used to retrieve and filter frames from the Camera.
+ * 
+ * @author Nicholas Loehrke
+ * @date   September 2023
+ *********************************************************************/
+
 #include "CaptureThread.h"
 
 #include <ThreadInterface.h>
@@ -35,8 +43,11 @@ void CaptureThread::run()
 	cycleTimer.start();
 	while (!_stop)
 	{
+		// prevent tight loop
 		QThread::msleep(1);
 		frameset::Frameset fs_raw;
+
+		// get frameset
 		if (!camera->getNextFrameset(fs_raw))
 		{
 			emit disconnected();
@@ -46,12 +57,14 @@ void CaptureThread::run()
 			
 		emit reconnected();
 
+		// if the frameset is not valid, try again
 		if (!frameset::isValid(fs_raw))
 		{
 			qWarning() << "capture thread: invalid frameset";
 			continue;
 		}
 
+		// if the frameset is old, try again
 		if (fs_raw.depth.number <= prevNumber)
 		{
 			qWarning() << "capture thread: received old frameset";
@@ -64,6 +77,7 @@ void CaptureThread::run()
 		frameset::Frameset fs_filtered = fs_raw;
 		cv::Mat depthMat = frameset::toMat(fs_filtered.depth);
 
+		// if the filters apply, push to the thread interface
 		if (filterManager.applyFilters(depthMat))
 		{
 			emit filtersApplied(getFiltersJson());
@@ -73,14 +87,18 @@ void CaptureThread::run()
 			fs_filtered.depth.height = depth.height;
 			fs_filtered.depth.width = depth.width;
 
-			threadInterface.pushFilteredFrame(fs_filtered);
+			threadInterface.pushFilteredFrameset(fs_filtered);
 		}
+		// otherwise signal that they failed
 		else
 		{
 			emit filtersFailed();
 		}
 
-		threadInterface.pushRawFrame(fs_raw);
+		// push raw frameset
+		threadInterface.pushRawFrameset(fs_raw);
+
+		// calculate cycle time
 		qint64 time = cycleTimer.restart();
 		emit addTime(static_cast<int>(time));
 	}

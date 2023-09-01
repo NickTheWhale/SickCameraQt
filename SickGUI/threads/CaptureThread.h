@@ -28,14 +28,34 @@ class CaptureThread : public QThread
 	Q_OBJECT
 
 signals:
+	/**
+	 * @brief Emits run() cycle time.
+	 */
 	void addTime(const int time);
 
+	/**
+	 * @brief Emits latest filters that are applied to the thread interface filtered framesets.
+	 * 
+	 * @param filters
+	 */
 	void filtersApplied(const QJsonArray& filters);
 
+	/**
+	 * @brief Emitted if one or more filters failed to apply.
+	 * 
+	 */
 	void filtersFailed();
 
+	/**
+	 * @brief Emitted when the camera fails to return a frameset.
+	 * 
+	 */
 	void disconnected();
 
+	/**
+	 * @brief Emitted when the camera succeeds in returning a frameset.
+	 * 
+	 */
 	void reconnected();
 
 public:

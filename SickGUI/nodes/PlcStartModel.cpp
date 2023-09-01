@@ -1,3 +1,13 @@
+/*****************************************************************//**
+ * @file   PlcStartModel.cpp
+ * @brief  Special PLC start flag used to indicate start of filter flow.
+ * 
+ * @note See BilateralFilterModel method documentation since all models follow the same pattern.
+ * 
+ * @author Nicholas Loehrke
+ * @date   September 2023
+ *********************************************************************/
+
 #include "PlcStartModel.h"
 
 PlcStartModel::PlcStartModel()

@@ -104,17 +104,22 @@ $(document).ready(function(){initNavTree('class_filter_manager.html',''); initRe
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ae8594b6afcde045e0b46b21d7cd935d2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_manager.html#ae8594b6afcde045e0b46b21d7cd935d2">makeFilters</a> (const QJsonArray &amp;json)</td></tr>
+<tr class="memdesc:ae8594b6afcde045e0b46b21d7cd935d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates new filter objects from json representation in the given json array.  <br /></td></tr>
 <tr class="separator:ae8594b6afcde045e0b46b21d7cd935d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aebdeb636788984b7fe292ba0f4360998"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snap7_8h.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_manager.html#aebdeb636788984b7fe292ba0f4360998">applyFilters</a> (cv::Mat &amp;mat)</td></tr>
+<tr class="memdesc:aebdeb636788984b7fe292ba0f4360998"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterates through internal filter array and applys each filter to the given mat.  <br /></td></tr>
 <tr class="separator:aebdeb636788984b7fe292ba0f4360998"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f4b660924ac4a8b1b54d81a7dc594e7"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::unique_ptr&lt; <a class="el" href="class_filter_base.html">FilterBase</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_manager.html#a8f4b660924ac4a8b1b54d81a7dc594e7">filters</a> ()</td></tr>
+<tr class="memdesc:a8f4b660924ac4a8b1b54d81a7dc594e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns copy of internal filter buffer.  <br /></td></tr>
 <tr class="separator:a8f4b660924ac4a8b1b54d81a7dc594e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a825727ba543ab3fb2ccba6fda62cf06d"><td class="memItemLeft" align="right" valign="top">const QJsonArray&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_manager.html#a825727ba543ab3fb2ccba6fda62cf06d">filtersJson</a> ()</td></tr>
+<tr class="memdesc:a825727ba543ab3fb2ccba6fda62cf06d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns cached json from previous makeFilters call.  <br /></td></tr>
 <tr class="separator:a825727ba543ab3fb2ccba6fda62cf06d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a3e1fcc66029f42209c4702340dd82a0a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_filter_base.html">FilterBase</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filter_manager.html#a3e1fcc66029f42209c4702340dd82a0a">makeFilter</a> (const QString type)</td></tr>
+<tr class="memdesc:a3e1fcc66029f42209c4702340dd82a0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates raw pointer to a filter of given type.  <br /></td></tr>
 <tr class="separator:a3e1fcc66029f42209c4702340dd82a0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
@@ -143,6 +148,15 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Iterates through internal filter array and applys each filter to the given mat. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mat</td><td>Mat to be filtered. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if all filters were applied, false if any failed </dd></dl>
+
 </div>
 </div>
 <a id="a8f4b660924ac4a8b1b54d81a7dc594e7" name="a8f4b660924ac4a8b1b54d81a7dc594e7"></a>
@@ -160,6 +174,9 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Returns copy of internal filter buffer. </p>
+<dl class="section return"><dt>Returns</dt><dd>Copy of internal filter buffer. </dd></dl>
+
 </div>
 </div>
 <a id="a825727ba543ab3fb2ccba6fda62cf06d" name="a825727ba543ab3fb2ccba6fda62cf06d"></a>
@@ -176,6 +193,9 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Returns cached json from previous makeFilters call. </p>
+<dl class="section return"><dt>Returns</dt><dd>cached filter json. </dd></dl>
 
 </div>
 </div>
@@ -203,6 +223,15 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Creates raw pointer to a filter of given type. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>Filter type string. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Filter object or nullptr if 'type' does not exist. </dd></dl>
+
 </div>
 </div>
 <a id="ae8594b6afcde045e0b46b21d7cd935d2" name="ae8594b6afcde045e0b46b21d7cd935d2"></a>
@@ -220,6 +249,14 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Creates new filter objects from json representation in the given json array. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">json</td><td>Json array containing json representation of filters. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

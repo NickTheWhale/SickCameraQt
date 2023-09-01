@@ -31,7 +31,6 @@ var NAVTREE =
         [ "All", "namespacemembers.html", null ],
         [ "Functions", "namespacemembers_func.html", null ],
         [ "Variables", "namespacemembers_vars.html", null ],
-        [ "Typedefs", "namespacemembers_type.html", null ],
         [ "Enumerations", "namespacemembers_enum.html", null ],
         [ "Enumerator", "namespacemembers_eval.html", null ]
       ] ]
@@ -67,24 +66,14 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_abstract_graph_model_8cpp.html",
-"_filter_editor_widget_8h_source.html",
-"_tiny_colormap_8hpp.html#a61cc7d7b7c1d4086d2763172baed0551ad9a22f02df1b4e906f0db01cac6cfa81",
-"class_cycle_time.html#a75f8a04c1ec41cc174bf9df2e439c97a",
-"class_image_label.html#ab35076dd24597704b6c3271a7d7f81a1",
-"class_qt_nodes_1_1_abstract_node_painter.html#ad0d0ae13ad4d37712330d7978b1864dd",
-"class_qt_nodes_1_1_connection_style.html#aa8255c618f1c7134a382d1cef1d6bd20",
-"class_qt_nodes_1_1_filter_flow_graph_model.html#a469f95dfdc2b922a6e2389ff2cfe43f9",
-"class_qt_nodes_1_1_node_delegate_model.html#a756975278c1e4157e856c9ed7ed284cf",
-"class_qt_nodes_1_1_serializable.html#a68fb56b71105df708cc97aed09e7f037",
-"class_threshold_filter_model.html#a861f19e36c534f979b6b7410d65e14ff",
-"classvisionary_1_1_frame_grabber.html#afd4ffd0efd86f0736ab9b4e4ce359ec1",
-"classvisionary_1_1_visionary_control.html#a95da8bc24c5120e3a266a10774fad97f",
-"classvisionary_1_1_visionary_t_mini_data.html#af995ab58d0d0b8f8d6d908c2e406a7c1",
-"namespacetinycolormap.html#a61cc7d7b7c1d4086d2763172baed0551ad082478639043e0d55f8124ef2563243",
-"snap7_8h.html#a49285322f5f6d70d949e855ed5ebda36",
-"snap7_8h.html#ae6571e53a56156e8425687938b7570b2",
-"structstd_1_1hash_3_01std_1_1tuple_3_01_qt_nodes_1_1_node_id_00_01_qt_nodes_1_1_port_type_00_01_1504b1ff66aa5ba640606b68f668e79a.html"
+"_app_8cpp.html",
+"class_bilateral_filter_model.html#adc98794cf393c7e559e08b7148a7951b",
+"class_filter_editor_widget.html#aa17df7aacfd5f41dcc5dec768abeaa5d",
+"class_plc_thread.html#a8a432644bc49250b0af209b0ba431278",
+"class_stack_blur_filter_model.html#aee07f36b898cab07b1da58d523331d3e",
+"namespacetinycolormap.html#a61cc7d7b7c1d4086d2763172baed0551a06f81c051bce0442430ba38803b91d16",
+"snap7_8h.html#a7d78e112caef6282271f74ca15815181",
+"struct_t_s7_block_info.html#afa2aad5c3541620a0adb90cf55131812"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

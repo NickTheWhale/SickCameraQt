@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['loggingwidget_0',['LoggingWidget',['../class_logging_widget.html',1,'']]],
-  ['logtextedit_1',['LogTextEdit',['../class_log_text_edit.html',1,'']]]
+  ['nodegeometrydata_0',['NodeGeometryData',['../struct_qt_nodes_1_1_filter_flow_graph_model_1_1_node_geometry_data.html',1,'QtNodes::FilterFlowGraphModel']]]
 ];
